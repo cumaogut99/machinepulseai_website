@@ -32,14 +32,14 @@ export const STATS = [
         color: '#a855f7',
     },
     {
-        id: 'market',
-        value: 11.2,
-        suffix: 'B',
-        prefix: '$',
-        label: 'TAM (CAE Market)',
-        sublabel: 'Growing at 9.8% CAGR globally',
+        id: 'ram',
+        value: 8,
+        suffix: ' GB',
+        prefix: '',
+        label: 'Minimum RAM',
+        sublabel: 'Runs large-scale analysis on standard laptops',
         color: '#f59e0b',
-        decimal: true,
+        decimal: false,
     },
 ]
 

@@ -7,9 +7,9 @@ const CTA_CONTENT = {
     label: 'Early Access Now Open',
     title: 'Start analyzing smarter today',
     subtitle:
-        'Join engineers from defense, aerospace, and automotive organizations who are cutting analysis time by up to 70%. Free Beta — no credit card required.',
-    primaryCta: 'Download MachinePulseAI (Beta)',
-    primaryHref: '#download',
+        'Join engineers from defense, aerospace, and automotive organizations who are cutting analysis time by up to 70%. Request a demo and see MachinePulseAI in action.',
+    primaryCta: 'Request a Demo',
+    primaryHref: '#contact',
     secondaryCta: 'Talk to the Team',
     secondaryHref: '#contact',
 }
@@ -59,29 +59,28 @@ export default function CTABanner() {
                         {CTA_CONTENT.subtitle}
                     </p>
 
-                    {/* CTA Buttons */}
                     <div className="flex flex-col sm:flex-row items-center gap-4 mt-2">
-                        <a
+                        <button
                             id="cta-primary"
-                            href={CTA_CONTENT.primaryHref}
+                            onClick={() => window.openContactModal?.()}
                             className="btn-neon inline-flex items-center gap-2 bg-[#00f5ff]/8 text-[#00f5ff] font-semibold text-sm px-8 py-4 rounded-xl"
                         >
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                    d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                             </svg>
                             {CTA_CONTENT.primaryCta}
-                        </a>
-                        <a
+                        </button>
+                        <button
                             id="cta-secondary"
-                            href={CTA_CONTENT.secondaryHref}
+                            onClick={() => window.openContactModal?.()}
                             className="inline-flex items-center gap-2 text-sm text-slate-300 hover:text-white font-medium px-6 py-4 rounded-xl border border-white/10 hover:border-white/25 hover:bg-white/5 transition-all duration-200"
                         >
                             {CTA_CONTENT.secondaryCta}
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                             </svg>
-                        </a>
+                        </button>
                     </div>
 
                     {/* Trust line */}

@@ -59,9 +59,11 @@ function buildFftBars(showSpike) {
 
 /** Scrolling sensor data table */
 function DataStream({ rows }) {
-    const endRef = useRef(null)
+    const containerRef = useRef(null)
     useEffect(() => {
-        endRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+        if (containerRef.current) {
+            containerRef.current.scrollTop = containerRef.current.scrollHeight
+        }
     }, [rows])
 
     return (
@@ -87,7 +89,7 @@ function DataStream({ rows }) {
 
             {/* Scrolling rows */}
             <div className="flex-1 overflow-hidden relative">
-                <div className="absolute inset-0 overflow-y-auto" style={{ scrollbarWidth: 'none' }}>
+                <div ref={containerRef} className="absolute inset-0 overflow-y-auto" style={{ scrollbarWidth: 'none' }}>
                     {rows.map((row, i) => (
                         <motion.div
                             key={row.id}
@@ -112,7 +114,6 @@ function DataStream({ rows }) {
                             })}
                         </motion.div>
                     ))}
-                    <div ref={endRef} />
                 </div>
                 {/* Fade out top */}
                 <div className="absolute top-0 left-0 right-0 h-6 pointer-events-none"
@@ -265,7 +266,6 @@ function Typewriter({ text, speed = 28, onDone }) {
 function ChatPanel({ phase }) {
     const [visibleMessages, setVisibleMessages] = useState([])
     const [typingIdx, setTypingIdx] = useState(-1)
-    const endRef = useRef(null)
 
     useEffect(() => {
         if (phase < 3) {
@@ -286,8 +286,11 @@ function ChatPanel({ phase }) {
         return () => { clearTimeout(t1); clearTimeout(t2) }
     }, [phase])
 
+    const msgContainerRef = useRef(null)
     useEffect(() => {
-        endRef.current?.scrollIntoView({ behavior: 'smooth' })
+        if (msgContainerRef.current) {
+            msgContainerRef.current.scrollTop = msgContainerRef.current.scrollHeight
+        }
     }, [visibleMessages])
 
     return (
@@ -308,7 +311,7 @@ function ChatPanel({ phase }) {
             </div>
 
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto flex flex-col gap-2.5 px-3 py-3" style={{ scrollbarWidth: 'none' }}>
+            <div ref={msgContainerRef} className="flex-1 overflow-y-auto flex flex-col gap-2.5 px-3 py-3" style={{ scrollbarWidth: 'none' }}>
                 <AnimatePresence>
                     {visibleMessages.map((msg, i) => (
                         <motion.div
@@ -325,10 +328,10 @@ function ChatPanel({ phase }) {
                             )}
                             <div
                                 className={`max-w-[85%] rounded-xl px-3 py-2 text-[10px] leading-relaxed ${msg.role === 'user'
-                                        ? 'bg-white/8 text-slate-300 rounded-br-sm'
-                                        : msg.highlight
-                                            ? 'bg-[#f59e0b]/10 border border-[#f59e0b]/30 text-[#f59e0b] rounded-bl-sm'
-                                            : 'bg-white/4 border border-white/8 text-slate-400 rounded-bl-sm'
+                                    ? 'bg-white/8 text-slate-300 rounded-br-sm'
+                                    : msg.highlight
+                                        ? 'bg-[#f59e0b]/10 border border-[#f59e0b]/30 text-[#f59e0b] rounded-bl-sm'
+                                        : 'bg-white/4 border border-white/8 text-slate-400 rounded-bl-sm'
                                     }`}
                             >
                                 {i === typingIdx
@@ -339,7 +342,6 @@ function ChatPanel({ phase }) {
                         </motion.div>
                     ))}
                 </AnimatePresence>
-                <div ref={endRef} />
             </div>
 
             {/* Input bar (decorative) */}
@@ -359,8 +361,8 @@ function ChatPanel({ phase }) {
 function SourceBadge({ icon, label, active }) {
     return (
         <div className={`flex items-center gap-2 px-3 py-1.5 rounded-lg border transition-all duration-500 ${active
-                ? 'border-[#00f5ff]/30 bg-[#00f5ff]/8 text-[#00f5ff]'
-                : 'border-white/8 bg-white/[0.02] text-slate-500'
+            ? 'border-[#00f5ff]/30 bg-[#00f5ff]/8 text-[#00f5ff]'
+            : 'border-white/8 bg-white/[0.02] text-slate-500'
             }`}>
             <span className="text-base">{icon}</span>
             <div>
@@ -472,8 +474,8 @@ export default function HeroDemoAnimation() {
             {/* ── Source badges ─────────────────────────────────────── */}
             <div className="flex items-center gap-3 px-4 py-2.5 border-b border-white/5">
                 <span className="text-[9px] text-slate-600 uppercase tracking-widest mr-1">Source:</span>
-                <SourceBadge icon="✈️" label="Aircraft TEI / Engine Run" active={activeSource === 0} />
-                <SourceBadge icon="🚗" label="Ford Otosan / Chassis Test" active={activeSource === 1} />
+                <SourceBadge icon="✈️" label="Aerospace / Vibration Test" active={activeSource === 0} />
+                <SourceBadge icon="🚗" label="Automotive / Chassis Test" active={activeSource === 1} />
                 <div className="ml-auto flex items-center gap-1.5 text-[9px] text-[#00f5ff]/70">
                     <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}

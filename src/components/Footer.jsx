@@ -7,8 +7,8 @@ const FOOTER_LINKS = {
         { label: 'How It Works', href: '#how-it-works' },
         { label: 'Smart Assistant (AI)', href: '#agentic-architecture' },
         { label: 'Pricing', href: '#pricing' },
-        { label: 'System Requirements', href: '#' },
-        { label: 'Changelog', href: '#' },
+        { label: 'System Requirements', href: null, soon: true },
+        { label: 'Changelog', href: null, soon: true },
     ],
     Markets: [
         { label: 'Defense & Aerospace', href: '#targets' },
@@ -16,16 +16,15 @@ const FOOTER_LINKS = {
         { label: 'Energy & Industry', href: '#targets' },
     ],
     Resources: [
-        { label: 'Documentation', href: '#' },
-        { label: 'Downloads', href: '#download' },
-        { label: 'Blog', href: '#' },
-        { label: 'Research', href: '#' },
+        { label: 'Documentation', href: null, soon: true },
+        { label: 'Blog', href: null, soon: true },
+        { label: 'Research', href: null, soon: true },
     ],
     Company: [
-        { label: 'About', href: '#' },
-        { label: 'Contact', href: '#contact' },
-        { label: 'Privacy Policy', href: '#' },
-        { label: 'Terms', href: '#' },
+        { label: 'About', href: null, soon: true },
+        { label: 'Contact', href: null, modal: true },
+        { label: 'Privacy Policy', href: null, soon: true },
+        { label: 'Terms', href: null, soon: true },
     ],
 }
 
@@ -104,13 +103,35 @@ export default function Footer() {
                         <div key={group} className="flex flex-col gap-3">
                             <p className="text-xs font-semibold text-white tracking-wider">{group}</p>
                             {links.map((link) => (
-                                <a
-                                    key={link.label}
-                                    href={link.href}
-                                    className="text-xs text-slate-500 hover:text-slate-300 transition-colors duration-150"
-                                >
-                                    {link.label}
-                                </a>
+                                link.modal ? (
+                                    <button
+                                        key={link.label}
+                                        onClick={() => window.openContactModal?.()}
+                                        className="text-xs text-slate-500 hover:text-slate-300 transition-colors duration-150 text-left"
+                                    >
+                                        {link.label}
+                                    </button>
+                                ) : link.href ? (
+                                    <a
+                                        key={link.label}
+                                        href={link.href}
+                                        className="text-xs text-slate-500 hover:text-slate-300 transition-colors duration-150"
+                                    >
+                                        {link.label}
+                                    </a>
+                                ) : (
+                                    <span
+                                        key={link.label}
+                                        className="text-xs text-slate-700 cursor-default flex items-center gap-1.5"
+                                    >
+                                        {link.label}
+                                        {link.soon && (
+                                            <span className="text-[8px] font-medium text-slate-600 border border-slate-700 px-1 py-px rounded uppercase tracking-widest">
+                                                Soon
+                                            </span>
+                                        )}
+                                    </span>
+                                )
                             ))}
                         </div>
                     ))}

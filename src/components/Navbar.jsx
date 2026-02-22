@@ -7,8 +7,7 @@ import logoImg from '../assets/logo.png'
 const NAV_LINKS = [
     { label: 'Features', href: '#features' },
     { label: 'How It Works', href: '#how-it-works' },
-    { label: 'Docs', href: '#docs' },
-    { label: 'Blog', href: '#blog' },
+    { label: 'Pricing', href: '#pricing' },
 ]
 
 // ─── Navbar Component ───────────────────────────────────────────────────────
@@ -63,21 +62,20 @@ export default function Navbar() {
 
                     {/* ── CTA Buttons ────────────────────────────────── */}
                     <div className="hidden md:flex items-center gap-3">
-                        {/* Sign In Button */}
                         <button
-                            id="nav-login-btn"
+                            id="nav-contact-btn"
+                            onClick={() => window.openContactModal?.()}
                             className="text-sm text-slate-300 hover:text-white px-4 py-2 rounded-lg transition-all duration-200 hover:bg-white/5"
                         >
-                            Sign In
+                            Contact Sales
                         </button>
-
-                        {/* Download Button – Neon Highlighted */}
-                        <button
-                            id="nav-download-btn"
+                        <a
+                            id="nav-demo-btn"
+                            href="#pricing"
                             className="btn-neon text-sm font-medium text-[#00f5ff] px-5 py-2 rounded-lg"
                         >
-                            Download
-                        </button>
+                            Get a Demo
+                        </a>
                     </div>
 
                     {/* ── Mobile Hamburger ──────────────────────────── */}
@@ -119,12 +117,19 @@ export default function Navbar() {
                                 </a>
                             ))}
                             <div className="flex gap-3 pt-2 border-t border-white/5">
-                                <button className="flex-1 text-sm text-slate-300 hover:text-white py-2 rounded-lg hover:bg-white/5 transition-colors">
-                                    Sign In
+                                <button
+                                    onClick={() => { setMenuOpen(false); window.openContactModal?.() }}
+                                    className="flex-1 text-sm text-slate-300 hover:text-white py-2 rounded-lg hover:bg-white/5 transition-colors"
+                                >
+                                    Contact Sales
                                 </button>
-                                <button className="flex-1 btn-neon text-sm font-medium text-[#00f5ff] py-2 rounded-lg">
-                                    Download
-                                </button>
+                                <a
+                                    href="#pricing"
+                                    onClick={() => setMenuOpen(false)}
+                                    className="flex-1 btn-neon text-sm font-medium text-[#00f5ff] py-2 rounded-lg text-center"
+                                >
+                                    Get a Demo
+                                </a>
                             </div>
                         </div>
                     </motion.div>

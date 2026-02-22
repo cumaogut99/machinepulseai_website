@@ -11,7 +11,6 @@ const INDUSTRIES = [
         color: '#00f5ff',
         icon: '🛡️',
         companies: ['TUSAŞ', 'TEI', 'ASELSAN', 'Roketsan', 'HAVELSAN'],
-        stat: '~40% of product development time spent on test data analysis',
     },
     {
         id: 'automotive',
@@ -19,7 +18,6 @@ const INDUSTRIES = [
         color: '#3b82f6',
         icon: '🚗',
         companies: ['Ford Otosan', 'Tofaş', 'Karsan'],
-        stat: 'New vehicle cycles every 3–5 years demand faster prototype testing',
     },
     {
         id: 'energy',
@@ -27,16 +25,11 @@ const INDUSTRIES = [
         color: '#f59e0b',
         icon: '⚡',
         companies: ['Tüpraş', 'Erdemir'],
-        stat: 'Wind turbine & generator vibration analysis at scale',
     },
 ]
 
-// ─── Market Numbers ───────────────────────────────────────────────────────────
-const MARKET_NUMBERS = [
-    { label: 'TAM — Global CAE Market (2024)', value: '$11.2B', growth: '9.8% CAGR', color: '#00f5ff' },
-    { label: 'SAM — T&M Software Niche (2025)', value: '$1.8B', growth: 'Focus segment', color: '#3b82f6' },
-    { label: 'SOM — Priority TR Companies', value: '100+', growth: 'Defense · Auto · Energy', color: '#a855f7' },
-]
+
+
 
 const containerVariants = {
     hidden: {},
@@ -100,7 +93,7 @@ export default function Targets() {
                                 <h3 className="text-base font-bold text-white">{industry.name}</h3>
                             </div>
 
-                            {/* Company logos row (text-based) */}
+                            {/* Company badges */}
                             <div className="flex flex-wrap gap-2">
                                 {industry.companies.map((company) => (
                                     <span
@@ -115,50 +108,11 @@ export default function Targets() {
                                         {company}
                                     </span>
                                 ))}
-                                {/* TODO: Replace text badges with actual company logos when available */}
                             </div>
-
-                            {/* Stat */}
-                            <p className="text-xs text-slate-500 leading-relaxed border-t border-white/5 pt-4">
-                                📊 {industry.stat}
-                            </p>
                         </motion.div>
                     ))}
                 </motion.div>
 
-                {/* ── Market Size Numbers ── */}
-                <motion.div
-                    className="rounded-2xl border border-white/8 bg-white/[0.02] p-8"
-                    initial={{ opacity: 0, y: 24 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.7 }}
-                >
-                    <p className="text-xs font-semibold text-slate-500 tracking-widest uppercase mb-6 text-center">
-                        Market Opportunity
-                    </p>
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-                        {MARKET_NUMBERS.map((item, i) => (
-                            <motion.div
-                                key={item.label}
-                                initial={{ opacity: 0, y: 16 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.1, duration: 0.5 }}
-                                className="flex flex-col items-center text-center gap-2"
-                            >
-                                <div className="text-3xl font-bold" style={{ color: item.color }}>{item.value}</div>
-                                <div className="text-xs font-medium text-slate-400">{item.label}</div>
-                                <div
-                                    className="text-[10px] font-semibold px-2 py-0.5 rounded-full"
-                                    style={{ color: item.color, background: `${item.color}15` }}
-                                >
-                                    {item.growth}
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </motion.div>
             </div>
 
             {/* Bottom separator */}

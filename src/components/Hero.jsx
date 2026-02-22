@@ -1,17 +1,16 @@
 import { motion } from 'framer-motion'
-import HeroDemoAnimation from './HeroDemoAnimation.jsx'
+import HeroShowcase from './HeroShowcase.jsx'
 
 // ─── Hero Content Data ──────────────────────────────────────────────────────
 // TODO: Update text and links in this object as needed
 const HERO_CONTENT = {
-    badge: '🚀 Now in Beta · Free Access',
+    badge: '🚀 Now in Beta',
     title: 'Engineering Data,\nReborn.',
     subtitle:
-        'High-performance post-processing analysis platform for piston engines, vibration data, and massive datasets — minimal RAM, maximum insight.',
-    ctaLabel: 'Download MachinePulseAI (Beta)',
-    ctaHref: '#download', // TODO: Replace with real download URL
-    secondaryCtaLabel: 'Watch Demo',
-    secondaryCtaHref: '#demo', // TODO: Update when demo video is ready
+        'High-performance post-processing analysis platform for vibration, acoustic & test data — handle massive datasets with minimal RAM, maximum insight.',
+    ctaLabel: 'Request a Demo',
+    secondaryCtaLabel: 'See It Live',
+    secondaryCtaHref: '#hero-demo',
 }
 
 // ─── Framer Motion Variants ─────────────────────────────────────────────────
@@ -108,18 +107,18 @@ export default function Hero() {
                     variants={fadeUpVariant}
                     className="flex flex-col sm:flex-row items-center gap-4"
                 >
-                    {/* Primary CTA */}
-                    <a
+                    {/* Primary CTA — opens contact modal */}
+                    <button
                         id="hero-primary-cta"
-                        href={HERO_CONTENT.ctaHref}
+                        onClick={() => window.openContactModal?.()}
                         className="btn-neon inline-flex items-center gap-2 bg-[#00f5ff]/8 text-[#00f5ff] font-semibold text-sm px-7 py-3.5 rounded-xl"
                     >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                         </svg>
                         {HERO_CONTENT.ctaLabel}
-                    </a>
+                    </button>
 
                     {/* Secondary CTA */}
                     <a
@@ -147,7 +146,7 @@ export default function Hero() {
                         <svg className="w-3.5 h-3.5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
                             <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
-                        Free Beta
+                        Beta Access
                     </span>
                     <span className="flex items-center gap-1.5">
                         <svg className="w-3.5 h-3.5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
@@ -189,7 +188,7 @@ export default function Hero() {
                     className="hero-media-glow rounded-2xl overflow-hidden relative border border-white/8"
                     style={{ aspectRatio: '16/9' }}
                 >
-                    <HeroDemoAnimation />
+                    <HeroShowcase />
                 </div>
             </motion.div>
         </section>
