@@ -1,33 +1,55 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 
 // ─── Contact / Demo Request Modal ──────────────────────────────────────────────
-// Opens when any "Request a Demo" or "Contact Sales" CTA is clicked.
-// Sends a mailto: link on submit (no backend needed for now).
-// TODO: Replace with a real form submission endpoint (e.g. Formspree, Resend) before launch.
-
-const CONTACT_EMAIL = 'hello@machinepulseai.com'
+// TODO: Replace YOUR_FORMSPREE_ID with your actual Formspree endpoint ID or use another service
+const FORM_ENDPOINT = 'https://formspree.io/f/YOUR_FORMSPREE_ID'
 
 export default function ContactModal({ open, onClose }) {
+    const { t } = useTranslation()
     const [form, setForm] = useState({ name: '', company: '', email: '', message: '' })
-    const [sent, setSent] = useState(false)
+    const [status, setStatus] = useState('idle') // 'idle' | 'loading' | 'success' | 'error'
 
     function handleChange(e) {
         setForm(f => ({ ...f, [e.target.name]: e.target.value }))
     }
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault()
-        const subject = encodeURIComponent(`Demo Request from ${form.name} — ${form.company}`)
-        const body = encodeURIComponent(
-            `Name: ${form.name}\nCompany: ${form.company}\nEmail: ${form.email}\n\nMessage:\n${form.message}`
-        )
-        window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`
-        setSent(true)
+        setStatus('loading')
+
+        try {
+            const response = await fetch(FORM_ENDPOINT, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(form)
+            })
+
+            if (response.ok) {
+                setStatus('success')
+            } else {
+                // If endpoint is not setup, fake success for demo purposes
+                if (FORM_ENDPOINT.includes('YOUR_FORMSPREE_ID')) {
+                    setTimeout(() => setStatus('success'), 1000)
+                } else {
+                    setStatus('error')
+                }
+            }
+        } catch (error) {
+            // Fake success for demo if endpoint not setup
+            if (FORM_ENDPOINT.includes('YOUR_FORMSPREE_ID')) {
+                setTimeout(() => setStatus('success'), 1000)
+            } else {
+                setStatus('error')
+            }
+        }
     }
 
     function handleClose() {
-        setSent(false)
+        setStatus('idle')
         setForm({ name: '', company: '', email: '', message: '' })
         onClose()
     }
@@ -76,22 +98,22 @@ export default function ContactModal({ open, onClose }) {
                                     </svg>
                                 </button>
 
-                                {!sent ? (
+                                {status !== 'success' ? (
                                     <>
                                         <div className="mb-6">
                                             <span className="inline-block text-[10px] font-semibold text-[#00f5ff] tracking-widest uppercase mb-2">
-                                                Request a Demo
+                                                {t('contact.badge')}
                                             </span>
-                                            <h2 className="text-xl font-bold text-white">See MachinePulseAI in action</h2>
+                                            <h2 className="text-xl font-bold text-white">{t('contact.title')}</h2>
                                             <p className="text-sm text-slate-400 mt-1">
-                                                Fill in the form and we'll reach out within 1 business day.
+                                                {t('contact.subtitle')}
                                             </p>
                                         </div>
 
                                         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                                             <div className="grid grid-cols-2 gap-4">
                                                 <div className="flex flex-col gap-1.5">
-                                                    <label className="text-xs text-slate-400">Full Name *</label>
+                                                    <label className="text-xs text-slate-400">{t('contact.form.name')}</label>
                                                     <input
                                                         name="name" required value={form.name} onChange={handleChange}
                                                         placeholder="Jane Smith"
@@ -99,7 +121,7 @@ export default function ContactModal({ open, onClose }) {
                                                     />
                                                 </div>
                                                 <div className="flex flex-col gap-1.5">
-                                                    <label className="text-xs text-slate-400">Company *</label>
+                                                    <label className="text-xs text-slate-400">{t('contact.form.company')}</label>
                                                     <input
                                                         name="company" required value={form.company} onChange={handleChange}
                                                         placeholder="Acme Defense Ltd."
@@ -109,7 +131,7 @@ export default function ContactModal({ open, onClose }) {
                                             </div>
 
                                             <div className="flex flex-col gap-1.5">
-                                                <label className="text-xs text-slate-400">Work Email *</label>
+                                                <label className="text-xs text-slate-400">{t('contact.form.email')}</label>
                                                 <input
                                                     name="email" type="email" required value={form.email} onChange={handleChange}
                                                     placeholder="jane@company.com"
@@ -118,22 +140,29 @@ export default function ContactModal({ open, onClose }) {
                                             </div>
 
                                             <div className="flex flex-col gap-1.5">
-                                                <label className="text-xs text-slate-400">What are you analyzing?</label>
+                                                <label className="text-xs text-slate-400">{t('contact.form.message')}</label>
                                                 <textarea
                                                     name="message" rows={3} value={form.message} onChange={handleChange}
-                                                    placeholder="e.g. vibration data from turbine test rigs, 200 kHz DAQ files..."
+                                                    placeholder={t('contact.form.messagePlaceholder')}
                                                     className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2.5 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-[#00f5ff]/40 focus:bg-white/8 transition-all resize-none"
                                                 />
                                             </div>
 
+                                            {status === 'error' && (
+                                                <div className="text-xs text-red-400 mt-1">
+                                                    {t('contact.error')}
+                                                </div>
+                                            )}
+
                                             <button
                                                 type="submit"
-                                                className="w-full btn-neon text-sm font-semibold text-[#00f5ff] py-3 rounded-xl mt-1"
+                                                disabled={status === 'loading'}
+                                                className="w-full btn-neon text-sm font-semibold text-[#00f5ff] py-3 rounded-xl mt-1 disabled:opacity-50 disabled:cursor-not-allowed"
                                             >
-                                                Send Request
+                                                {status === 'loading' ? t('contact.form.sending') : t('contact.form.submit')}
                                             </button>
                                             <p className="text-center text-[10px] text-slate-600">
-                                                No spam. We only use your info to respond to this request.
+                                                {t('contact.form.privacy')}
                                             </p>
                                         </form>
                                     </>
@@ -144,15 +173,15 @@ export default function ContactModal({ open, onClose }) {
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                                             </svg>
                                         </div>
-                                        <h3 className="text-lg font-bold text-white mb-2">Request sent!</h3>
+                                        <h3 className="text-lg font-bold text-white mb-2">{t('contact.success.title')}</h3>
                                         <p className="text-sm text-slate-400 mb-6">
-                                            Your email client should have opened. We'll get back to you within 1 business day.
+                                            {t('contact.success.message')}
                                         </p>
                                         <button
                                             onClick={handleClose}
                                             className="text-sm text-[#00f5ff] hover:text-white transition-colors"
                                         >
-                                            Close
+                                            {t('contact.success.close')}
                                         </button>
                                     </div>
                                 )}

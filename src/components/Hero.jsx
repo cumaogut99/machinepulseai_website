@@ -1,17 +1,7 @@
 import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 import HeroShowcase from './HeroShowcase.jsx'
-
-// ─── Hero Content Data ──────────────────────────────────────────────────────
-// TODO: Update text and links in this object as needed
-const HERO_CONTENT = {
-    badge: '🚀 Now in Beta',
-    title: 'Engineering Data,\nReborn.',
-    subtitle:
-        'High-performance post-processing analysis platform for vibration, acoustic & test data — handle massive datasets with minimal RAM, maximum insight.',
-    ctaLabel: 'Request a Demo',
-    secondaryCtaLabel: 'See It Live',
-    secondaryCtaHref: '#hero-demo',
-}
 
 // ─── Framer Motion Variants ─────────────────────────────────────────────────
 const containerVariants = {
@@ -44,6 +34,8 @@ const mediaVariant = {
 
 // ─── Hero Component ─────────────────────────────────────────────────────────
 export default function Hero() {
+    const { t } = useTranslation();
+
     return (
         <section
             id="hero"
@@ -73,7 +65,7 @@ export default function Hero() {
                 {/* Badge */}
                 <motion.div variants={fadeUpVariant}>
                     <span className="inline-flex items-center gap-2 text-xs font-medium text-[#00f5ff] border border-[#00f5ff]/30 bg-[#00f5ff]/5 rounded-full px-4 py-1.5 mb-8 tracking-wide">
-                        {HERO_CONTENT.badge}
+                        {t('hero.badge')}
                     </span>
                 </motion.div>
 
@@ -83,10 +75,10 @@ export default function Hero() {
                     className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight mb-6"
                 >
                     {/* First line: plain white */}
-                    <span className="block">{HERO_CONTENT.title.split('\n')[0]}</span>
+                    <span className="block">{t('hero.title1')}</span>
                     {/* Second line: neon gradient — brand name highlight */}
                     <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#00f5ff] via-[#38bdf8] to-[#818cf8]">
-                        {HERO_CONTENT.title.split('\n')[1]}
+                        {t('hero.title2')}
                     </span>
                     {/* Brand name subtle tag below title */}
                     <span className="block text-base font-medium text-slate-500 mt-3 tracking-widest uppercase">
@@ -99,7 +91,7 @@ export default function Hero() {
                     variants={fadeUpVariant}
                     className="text-base sm:text-lg text-slate-400 leading-relaxed max-w-2xl mb-10"
                 >
-                    {HERO_CONTENT.subtitle}
+                    {t('hero.subtitle')}
                 </motion.p>
 
                 {/* CTA Buttons */}
@@ -117,13 +109,13 @@ export default function Hero() {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                                 d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                         </svg>
-                        {HERO_CONTENT.ctaLabel}
+                        {t('hero.ctaPrimary')}
                     </button>
 
                     {/* Secondary CTA */}
-                    <a
+                    <Link
                         id="hero-secondary-cta"
-                        href={HERO_CONTENT.secondaryCtaHref}
+                        to="/how-it-works"
                         className="inline-flex items-center gap-2 text-sm text-slate-300 hover:text-white font-medium px-5 py-3.5 rounded-xl border border-white/10 hover:border-white/25 hover:bg-white/5 transition-all duration-200"
                     >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -132,8 +124,8 @@ export default function Hero() {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                                 d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        {HERO_CONTENT.secondaryCtaLabel}
-                    </a>
+                        {t('hero.ctaSecondary')}
+                    </Link>
                 </motion.div>
 
                 {/* Trust indicators */}
@@ -141,24 +133,23 @@ export default function Hero() {
                     variants={fadeUpVariant}
                     className="flex items-center gap-6 mt-8 text-xs text-slate-500"
                 >
-                    {/* TODO: Update with real stats (download count, active users, etc.) */}
                     <span className="flex items-center gap-1.5">
                         <svg className="w-3.5 h-3.5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
                             <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
-                        Beta Access
+                        {t('hero.stats.beta')}
                     </span>
                     <span className="flex items-center gap-1.5">
                         <svg className="w-3.5 h-3.5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
                             <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
-                        Windows 10/11
+                        {t('hero.stats.os')}
                     </span>
                     <span className="flex items-center gap-1.5">
                         <svg className="w-3.5 h-3.5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
                             <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
-                        Runs on 8 GB RAM
+                        {t('hero.stats.ram')}
                     </span>
                 </motion.div>
             </motion.div>
