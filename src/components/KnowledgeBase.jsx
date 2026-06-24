@@ -59,7 +59,7 @@ export default function KnowledgeBase() {
     ];
 
     return (
-        <section className="relative py-14 px-6 overflow-hidden max-w-7xl mx-auto">
+        <section className="relative py-10 px-6 overflow-hidden max-w-7xl mx-auto">
             {/* Background effects */}
             <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#00f5ff]/5 blur-[120px] rounded-full pointer-events-none" />
             <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#a855f7]/5 blur-[120px] rounded-full pointer-events-none" />
@@ -69,7 +69,7 @@ export default function KnowledgeBase() {
                 whileInView="visible"
                 viewport={{ once: true, margin: "-100px" }}
                 variants={fadeUpVariant}
-                className="text-center mb-10 relative z-10"
+                className="text-center mb-8 relative z-10"
             >
                 <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 sr-only">
                     {t('knowledge.title')}

@@ -53,7 +53,7 @@ const itemVariants = {
 export default function HowItWorks() {
     const { t } = useTranslation()
     return (
-        <section id="how-it-works" className="relative py-16 px-6 overflow-hidden">
+        <section id="how-it-works" className="relative py-10 px-6 overflow-hidden">
             <div
                 className="absolute inset-0 pointer-events-none"
                 style={{ background: 'radial-gradient(ellipse 60% 40% at 20% 50%, rgba(0,245,255,0.04), transparent)' }}
@@ -63,7 +63,7 @@ export default function HowItWorks() {
             <div className="max-w-7xl mx-auto relative z-10">
                 {/* ── Header ── */}
                 <motion.div
-                    className="mb-12 max-w-2xl"
+                    className="mb-8 max-w-2xl"
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: '-80px' }}

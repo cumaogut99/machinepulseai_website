@@ -104,7 +104,7 @@ const cardVariants = {
 
 export default function AgenticArch() {
     return (
-        <section id="agentic-architecture" className="relative py-16 px-6 overflow-hidden">
+        <section id="agentic-architecture" className="relative py-10 px-6 overflow-hidden">
             {/* Background glow */}
             <div
                 className="absolute inset-0 pointer-events-none"
@@ -115,7 +115,7 @@ export default function AgenticArch() {
             <div className="max-w-7xl mx-auto relative z-10">
                 {/* ── Header ── */}
                 <motion.div
-                    className="text-center mb-12"
+                    className="text-center mb-8"
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: '-80px' }}

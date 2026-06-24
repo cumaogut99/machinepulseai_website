@@ -43,14 +43,14 @@ const itemVariants = {
 export default function Targets() {
     const { t } = useTranslation()
     return (
-        <section id="targets" className="relative py-14 px-6 overflow-hidden">
+        <section id="targets" className="relative py-10 px-6 overflow-hidden">
             {/* Top separator */}
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/8 to-transparent" />
 
             <div className="max-w-7xl mx-auto relative z-10">
                 {/* ── Header ── */}
                 <motion.div
-                    className="text-center mb-10"
+                    className="text-center mb-8"
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: '-80px' }}

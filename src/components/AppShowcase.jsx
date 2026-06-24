@@ -12,7 +12,7 @@ export default function AppShowcase() {
     const { t } = useTranslation()
 
     return (
-        <section id="app-showcase" className="relative py-14 px-6 overflow-hidden">
+        <section id="app-showcase" className="relative py-10 px-6 overflow-hidden">
             {/* Background glow */}
             <div
                 className="absolute inset-0 pointer-events-none"
@@ -23,7 +23,7 @@ export default function AppShowcase() {
             <div className="max-w-6xl mx-auto relative z-10">
                 {/* Header */}
                 <motion.div
-                    className="text-center mb-12"
+                    className="text-center mb-8"
                     initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: '-80px' }}

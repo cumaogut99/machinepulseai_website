@@ -9,7 +9,7 @@ export default function CTABanner() {
     const { open: openContact } = useContactModal()
 
     return (
-        <section id="cta" className="relative py-16 px-6 overflow-hidden">
+        <section id="cta" className="relative py-10 px-6 overflow-hidden">
             {/* Background radial glow */}
             <div
                 className="absolute inset-0 pointer-events-none"

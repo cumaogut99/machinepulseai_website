@@ -48,7 +48,7 @@ const Home = () => (
 
 // Inner pages share a compact top offset (navbar is 64px tall).
 const Page = ({ children }) => (
-    <main id="main" className="pt-20">
+    <main id="main" className="pt-14">
         <Suspense fallback={<PageFallback />}>
             {children}
             <CTABanner />
