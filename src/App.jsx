@@ -17,9 +17,7 @@ import AppShowcase from './components/AppShowcase.jsx'
 import CTABanner from './components/CTABanner.jsx'
 
 const ProductPage = lazy(() => import('./components/ProductPage.jsx'))
-const Targets = lazy(() => import('./components/Targets.jsx'))
 const Pricing = lazy(() => import('./components/Pricing.jsx'))
-const KnowledgeBase = lazy(() => import('./components/KnowledgeBase.jsx'))
 const WidgetCatalog = lazy(() => import('./components/WidgetCatalog.jsx'))
 
 // Scroll to top on route change
@@ -78,8 +76,6 @@ function AppShell() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/product" element={<Page><ProductPage /></Page>} />
-                    <Route path="/industries" element={<Page><Targets /></Page>} />
-                    <Route path="/knowledge-base" element={<Page><KnowledgeBase /></Page>} />
                     <Route path="/widgets" element={<Page><WidgetCatalog /></Page>} />
                     <Route path="/pricing" element={<Page><Pricing /></Page>} />
 
@@ -87,7 +83,9 @@ function AppShell() {
                     <Route path="/features" element={<Navigate to="/product" replace />} />
                     <Route path="/architecture" element={<Navigate to="/product" replace />} />
                     <Route path="/how-it-works" element={<Navigate to="/product" replace />} />
-                    <Route path="/solutions" element={<Navigate to="/industries" replace />} />
+                    <Route path="/solutions" element={<Navigate to="/" replace />} />
+                    <Route path="/industries" element={<Navigate to="/" replace />} />
+                    <Route path="/knowledge-base" element={<Navigate to="/" replace />} />
                 </Routes>
             </div>
             <Footer />

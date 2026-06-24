@@ -11,16 +11,6 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.machinepulseai.com.tr/industries</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.machinepulseai.com.tr/knowledge-base</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://www.machinepulseai.com.tr/widgets</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

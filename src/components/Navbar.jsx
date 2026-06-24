@@ -17,13 +17,6 @@ export default function Navbar() {
     const NAV_LINKS = [
         { label: t('nav.product'), href: '/product' },
         { label: t('nav.widgets'), href: '/widgets' },
-        { label: t('nav.industries'), href: '/industries' },
-        {
-            label: t('nav.resources'),
-            dropdown: [
-                { label: t('nav.knowledgeBase'), href: '/knowledge-base' },
-            ]
-        },
         { label: t('nav.pricing'), href: '/pricing' },
     ]
 

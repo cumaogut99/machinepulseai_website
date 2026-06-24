@@ -30,26 +30,6 @@ export const ROUTE_META = {
             description: 'Yetenekler, iş akışı ve yerleşik AI mimarisi: doğal dil ile analiz, Apache Arrow sıfır-kopya motoru, 8 GB RAM ile çalışma ve çok-eksenli görselleştirme.',
         },
     },
-    '/industries': {
-        en: {
-            title: `Industries — ${BRAND}`,
-            description: 'Built for high-stakes engineering in defense, aerospace, automotive and heavy industry where accuracy, speed and security are mission-critical.',
-        },
-        tr: {
-            title: `Sektörler — ${BRAND}`,
-            description: 'Doğruluk, hız ve güvenliğin kritik olduğu savunma, havacılık, otomotiv ve ağır sanayi için yüksek riskli mühendisliğe yönelik çözümler.',
-        },
-    },
-    '/knowledge-base': {
-        en: {
-            title: `Knowledge Base & Theory — ${BRAND}`,
-            description: 'Dive into the science behind FFT, order tracking, digital filtering, envelope analysis and acoustic sound quality.',
-        },
-        tr: {
-            title: `Bilgi Bankası ve Teori — ${BRAND}`,
-            description: 'FFT, order tracking, dijital filtreleme, zarf analizi ve akustik ses kalitesinin arkasındaki bilimi inceleyin.',
-        },
-    },
     '/widgets': {
         en: {
             title: `Widget Library — ${BRAND}`,

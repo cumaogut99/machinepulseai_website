@@ -8,15 +8,9 @@ const FOOTER_LINKS = {
     Product: [
         { label: 'Overview', route: '/product' },
         { label: 'Analysis Modules', route: '/widgets' },
-        { label: 'Knowledge Base', route: '/knowledge-base' },
         { label: 'Pricing', route: '/pricing' },
         { label: 'System Requirements', href: null, soon: true },
         { label: 'Changelog', href: null, soon: true },
-    ],
-    Markets: [
-        { label: 'Defense & Aerospace', route: '/industries' },
-        { label: 'Automotive', route: '/industries' },
-        { label: 'Energy & Industry', route: '/industries' },
     ],
     Resources: [
         { label: 'Documentation', href: null, soon: true },
