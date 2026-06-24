@@ -8,16 +8,34 @@ const resources = {
         translation: {
             "nav": {
                 "platform": "Platform",
+                "product": "Product",
                 "features": "Features",
                 "howItWorks": "How It Works",
                 "agenticArch": "Architecture",
                 "solutions": "Solutions",
+                "industries": "Industries",
                 "pricing": "Pricing",
                 "resources": "Resources",
                 "knowledgeBase": "Knowledge Base",
-                "widgets": "Widgets",
+                "widgets": "Analysis Modules",
                 "contactSales": "Contact Sales",
                 "getDemo": "Get a Demo"
+            },
+            "home": {
+                "featuresViewAll": "Explore the full product",
+                "industriesViewAll": "See all industries",
+                "whyTitle": "Why MachinePulseAI",
+                "whySubtitle": "Three things legacy post-processing tools can't give you.",
+                "why": {
+                    "ai": { "title": "Built-in AI Assistant", "desc": "Ask questions in plain language and get data-driven answers — no SQL, no scripting." },
+                    "scale": { "title": "Massive data, modest hardware", "desc": "Out-of-core engine analyzes 100 GB+ datasets on an 8 GB laptop without RAM errors." },
+                    "secure": { "title": "Fully offline & secure", "desc": "Runs air-gapped with no cloud dependency — built for classified and sensitive environments." }
+                },
+                "problem": {
+                    "eyebrow": "The Problem",
+                    "title": "Engineering data is growing faster than the tools to analyze it",
+                    "desc": "Gigabytes of sensor data, hours of manual preparation, and legacy tools that choke on large files. MachinePulseAI turns raw measurement data into insight in minutes — not days."
+                }
             },
             "appShowcase": {
                 "eyebrow": "The Real Application",
@@ -90,6 +108,12 @@ const resources = {
                 "eyebrow": "Target Markets",
                 "title": "Built for high-stakes engineering",
                 "subtitle": "Designed for engineers in sectors where data accuracy, speed, and security are mission-critical."
+            },
+            "agenticArch": {
+                "eyebrow": "Smart Engineering Assistant",
+                "titleBefore": "A platform with a",
+                "titleHighlight": "built-in AI Agent",
+                "subtitle": "A fully integrated ML + LLM + RAG system that understands your measurement data — and your organization's engineering history."
             },
             "cta": {
                 "label": "Early Access Now Open",
@@ -192,16 +216,34 @@ const resources = {
         translation: {
             "nav": {
                 "platform": "Platform",
+                "product": "Ürün",
                 "features": "Özellikler",
                 "howItWorks": "Nasıl Çalışır",
                 "agenticArch": "Mimari",
                 "solutions": "Çözümler",
+                "industries": "Sektörler",
                 "pricing": "Fiyatlandırma",
                 "resources": "Kaynaklar",
                 "knowledgeBase": "Bilgi Bankası",
-                "widgets": "Widget'lar",
+                "widgets": "Analiz Modülleri",
                 "contactSales": "Satışla İletişim",
                 "getDemo": "Demo İste"
+            },
+            "home": {
+                "featuresViewAll": "Ürünün tamamını keşfedin",
+                "industriesViewAll": "Tüm sektörleri görün",
+                "whyTitle": "Neden MachinePulseAI",
+                "whySubtitle": "Eski son-işleme araçlarının veremediği üç şey.",
+                "why": {
+                    "ai": { "title": "Yerleşik AI Asistanı", "desc": "Sorularınızı sade bir dille sorun, veriye dayalı yanıtlar alın — SQL yok, kod yok." },
+                    "scale": { "title": "Devasa veri, mütevazı donanım", "desc": "Bellek-dışı motor, 100 GB+ veri setlerini 8 GB dizüstünde RAM hatası olmadan analiz eder." },
+                    "secure": { "title": "Tamamen çevrimdışı ve güvenli", "desc": "Bulut bağımlılığı olmadan hava-boşluklu çalışır — gizli ve hassas ortamlar için tasarlandı." }
+                },
+                "problem": {
+                    "eyebrow": "Sorun",
+                    "title": "Mühendislik verisi, onu analiz eden araçlardan daha hızlı büyüyor",
+                    "desc": "Gigabaytlarca sensör verisi, saatlerce manuel hazırlık ve büyük dosyalarda tıkanan eski araçlar. MachinePulseAI ham ölçüm verisini günler değil, dakikalar içinde içgörüye dönüştürür."
+                }
             },
             "appShowcase": {
                 "eyebrow": "Gerçek Uygulama",
@@ -274,6 +316,12 @@ const resources = {
                 "eyebrow": "Hedef Pazarlar",
                 "title": "Yüksek riskli mühendislik için tasarlandı",
                 "subtitle": "Veri doğruluğu, hız ve güvenliğin kritik olduğu sektörlerdeki mühendisler için tasarlandı."
+            },
+            "agenticArch": {
+                "eyebrow": "Akıllı Mühendislik Asistanı",
+                "titleBefore": "Platformda",
+                "titleHighlight": "yerleşik bir AI Agent",
+                "subtitle": "Ölçüm verinizi — ve kurumunuzun mühendislik geçmişini — anlayan, tam entegre bir ML + LLM + RAG sistemi."
             },
             "cta": {
                 "label": "Erken Erişim Şimdi Açık",

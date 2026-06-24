@@ -1,5 +1,5 @@
 import { useEffect, lazy, Suspense } from 'react'
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
 import { useTranslation } from 'react-i18next'
 import { ContactModalProvider, useContactModal } from './context/ContactModalContext.jsx'
@@ -12,12 +12,11 @@ import ContactModal from './components/ContactModal.jsx'
 // code-split so the initial page load only ships what it needs.
 import Hero from './components/Hero.jsx'
 import Stats from './components/Stats.jsx'
+import WhySection from './components/WhySection.jsx'
 import AppShowcase from './components/AppShowcase.jsx'
 import CTABanner from './components/CTABanner.jsx'
 
-const Features = lazy(() => import('./components/Features.jsx'))
-const HowItWorks = lazy(() => import('./components/HowItWorks.jsx'))
-const AgenticArch = lazy(() => import('./components/AgenticArch.jsx'))
+const ProductPage = lazy(() => import('./components/ProductPage.jsx'))
 const Targets = lazy(() => import('./components/Targets.jsx'))
 const Pricing = lazy(() => import('./components/Pricing.jsx'))
 const KnowledgeBase = lazy(() => import('./components/KnowledgeBase.jsx'))
@@ -41,6 +40,7 @@ const Home = () => (
     <main id="main">
         <Hero />
         <Stats />
+        <WhySection />
         <AppShowcase />
         <CTABanner />
     </main>
@@ -77,13 +77,17 @@ function AppShell() {
             <div className="flex-grow">
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/features" element={<Page><Features /></Page>} />
-                    <Route path="/architecture" element={<Page><AgenticArch /></Page>} />
-                    <Route path="/how-it-works" element={<Page><HowItWorks /></Page>} />
-                    <Route path="/solutions" element={<Page><Targets /></Page>} />
+                    <Route path="/product" element={<Page><ProductPage /></Page>} />
+                    <Route path="/industries" element={<Page><Targets /></Page>} />
                     <Route path="/knowledge-base" element={<Page><KnowledgeBase /></Page>} />
                     <Route path="/widgets" element={<Page><WidgetCatalog /></Page>} />
                     <Route path="/pricing" element={<Page><Pricing /></Page>} />
+
+                    {/* Redirects from the former route structure */}
+                    <Route path="/features" element={<Navigate to="/product" replace />} />
+                    <Route path="/architecture" element={<Navigate to="/product" replace />} />
+                    <Route path="/how-it-works" element={<Navigate to="/product" replace />} />
+                    <Route path="/solutions" element={<Navigate to="/industries" replace />} />
                 </Routes>
             </div>
             <Footer />

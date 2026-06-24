@@ -20,43 +20,23 @@ export const ROUTE_META = {
             description: 'Titreşim, akustik ve test verileri için yüksek performanslı son-işleme analiz platformu — devasa veri setlerini minimum RAM ile maksimum içgörüyle yönetin.',
         },
     },
-    '/features': {
+    '/product': {
         en: {
-            title: `Features — ${BRAND}`,
-            description: 'Natural-language data analysis, Apache Arrow zero-copy engine, 8 GB RAM operation and multi-axis visualization — built for engineers.',
+            title: `Product — ${BRAND}`,
+            description: 'Capabilities, workflow and the built-in AI architecture: natural-language analysis, Apache Arrow zero-copy engine, 8 GB RAM operation and multi-axis visualization.',
         },
         tr: {
-            title: `Özellikler — ${BRAND}`,
-            description: 'Doğal dil ile veri analizi, Apache Arrow sıfır-kopya motoru, 8 GB RAM ile çalışma ve çok-eksenli görselleştirme — mühendisler için.',
+            title: `Ürün — ${BRAND}`,
+            description: 'Yetenekler, iş akışı ve yerleşik AI mimarisi: doğal dil ile analiz, Apache Arrow sıfır-kopya motoru, 8 GB RAM ile çalışma ve çok-eksenli görselleştirme.',
         },
     },
-    '/architecture': {
+    '/industries': {
         en: {
-            title: `Architecture — ${BRAND}`,
-            description: 'An integrated ML + LLM + RAG architecture that understands your measurement data and your organization’s engineering history.',
-        },
-        tr: {
-            title: `Mimari — ${BRAND}`,
-            description: 'Ölçüm verinizi ve kurumunuzun mühendislik geçmişini anlayan entegre ML + LLM + RAG mimarisi.',
-        },
-    },
-    '/how-it-works': {
-        en: {
-            title: `How It Works — ${BRAND}`,
-            description: 'From raw data to insight in minutes: import any dataset, run AI-powered analysis, visualize live, and generate reports in one click.',
-        },
-        tr: {
-            title: `Nasıl Çalışır — ${BRAND}`,
-            description: 'Ham veriden içgörüye dakikalar içinde: herhangi bir veriyi içe aktarın, yapay zeka destekli analiz çalıştırın, canlı görselleştirin ve tek tıkla rapor üretin.',
-        },
-    },
-    '/solutions': {
-        en: {
-            title: `Solutions — ${BRAND}`,
+            title: `Industries — ${BRAND}`,
             description: 'Built for high-stakes engineering in defense, aerospace, automotive and heavy industry where accuracy, speed and security are mission-critical.',
         },
         tr: {
-            title: `Çözümler — ${BRAND}`,
+            title: `Sektörler — ${BRAND}`,
             description: 'Doğruluk, hız ve güvenliğin kritik olduğu savunma, havacılık, otomotiv ve ağır sanayi için yüksek riskli mühendisliğe yönelik çözümler.',
         },
     },

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 
 // ─── Agent Architecture Data ───────────────────────────────────────────────────
 // Source: DeepCube document — "agentic" ML+LLM+RAG architecture description
@@ -103,6 +104,7 @@ const cardVariants = {
 }
 
 export default function AgenticArch() {
+    const { t } = useTranslation()
     return (
         <section id="agentic-architecture" className="relative py-10 px-6 overflow-hidden">
             {/* Background glow */}
@@ -122,17 +124,16 @@ export default function AgenticArch() {
                     transition={{ duration: 0.7 }}
                 >
                     <span className="inline-block text-xs font-semibold text-[#3b82f6] tracking-widest uppercase mb-4">
-                        Smart Engineering Assistant
+                        {t('agenticArch.eyebrow')}
                     </span>
                     <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-4">
-                        The only platform with a{' '}
+                        {t('agenticArch.titleBefore')}{' '}
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3b82f6] via-[#a855f7] to-[#ec4899]">
-                            built-in AI Agent
+                            {t('agenticArch.titleHighlight')}
                         </span>
                     </h2>
                     <p className="text-slate-400 text-base max-w-2xl mx-auto leading-relaxed">
-                        GlyphWorks, NI DIAdem, Flexpro, and Dewesoft don&apos;t have it. MachinePulseAI does.
-                        A fully integrated ML + LLM + RAG system that understands your data — and your company&apos;s history.
+                        {t('agenticArch.subtitle')}
                     </p>
                 </motion.div>
 

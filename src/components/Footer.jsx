@@ -1,21 +1,22 @@
+import { Link } from 'react-router-dom'
 import { useContactModal } from '../context/ContactModalContext.jsx'
 
 // ─── Footer Data ───────────────────────────────────────────────────────────────
-// TODO: Update links, email, and social URLs before launch
+// `route` = SPA route (react-router Link); `href` = external/anchor (<a>).
 
 const FOOTER_LINKS = {
     Product: [
-        { label: 'Features', href: '#features' },
-        { label: 'How It Works', href: '#how-it-works' },
-        { label: 'Smart Assistant (AI)', href: '#agentic-architecture' },
-        { label: 'Pricing', href: '#pricing' },
+        { label: 'Overview', route: '/product' },
+        { label: 'Analysis Modules', route: '/widgets' },
+        { label: 'Knowledge Base', route: '/knowledge-base' },
+        { label: 'Pricing', route: '/pricing' },
         { label: 'System Requirements', href: null, soon: true },
         { label: 'Changelog', href: null, soon: true },
     ],
     Markets: [
-        { label: 'Defense & Aerospace', href: '#targets' },
-        { label: 'Automotive', href: '#targets' },
-        { label: 'Energy & Industry', href: '#targets' },
+        { label: 'Defense & Aerospace', route: '/industries' },
+        { label: 'Automotive', route: '/industries' },
+        { label: 'Energy & Industry', route: '/industries' },
     ],
     Resources: [
         { label: 'Documentation', href: null, soon: true },
@@ -114,6 +115,14 @@ export default function Footer() {
                                     >
                                         {link.label}
                                     </button>
+                                ) : link.route ? (
+                                    <Link
+                                        key={link.label}
+                                        to={link.route}
+                                        className="text-xs text-slate-500 hover:text-slate-300 transition-colors duration-150"
+                                    >
+                                        {link.label}
+                                    </Link>
                                 ) : link.href ? (
                                     <a
                                         key={link.label}

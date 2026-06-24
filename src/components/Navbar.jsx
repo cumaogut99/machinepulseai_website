@@ -15,16 +15,9 @@ export default function Navbar() {
 
     // ─── Nav Link Data ──────────────────────────────────────────────────────────
     const NAV_LINKS = [
-        {
-            label: t('nav.platform'),
-            dropdown: [
-                { label: t('nav.features'), href: '/features' },
-                { label: t('nav.agenticArch'), href: '/architecture' },
-                { label: t('nav.howItWorks'), href: '/how-it-works' },
-            ]
-        },
+        { label: t('nav.product'), href: '/product' },
         { label: t('nav.widgets'), href: '/widgets' },
-        { label: t('nav.solutions'), href: '/solutions' },
+        { label: t('nav.industries'), href: '/industries' },
         {
             label: t('nav.resources'),
             dropdown: [
