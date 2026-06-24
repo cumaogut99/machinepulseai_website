@@ -1,8 +1,10 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, lazy, Suspense } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import PlaneScene from './PlaneScene'
 import CarScene from './CarScene'
-import HeroDemoAnimation from './HeroDemoAnimation'
+
+// The dashboard demo only appears after the intro scenes, so defer its bundle.
+const HeroDemoAnimation = lazy(() => import('./HeroDemoAnimation'))
 
 // Scene durations in ms
 const SCENE_DURATION_MS = 5500  // plane + car each
@@ -59,7 +61,9 @@ export default function HeroShowcase() {
                         initial={{ opacity: 0 }} animate={{ opacity: 1 }}
                         transition={{ duration: 0.65 }}
                     >
-                        <HeroDemoAnimation />
+                        <Suspense fallback={<div className="absolute inset-0 rounded-2xl bg-[#0d1117]" aria-hidden="true" />}>
+                            <HeroDemoAnimation />
+                        </Suspense>
                     </motion.div>
                 )}
             </AnimatePresence>

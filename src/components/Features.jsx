@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 
 // ─── Features Data ──────────────────────────────────────────────────────────
-// TODO: Add a new object to the array below to add a new feature card
+// Add a new object to the array below to add a new feature card.
 // Each object: { id, icon, tag, title, description, mediaNote }
 const FEATURES = [
     {
@@ -179,10 +180,11 @@ function FeatureCard({ feature }) {
 
 // ─── Features Section ───────────────────────────────────────────────────────
 export default function Features() {
+    const { t } = useTranslation()
     return (
         <section
             id="features"
-            className="relative py-28 px-6 overflow-hidden"
+            className="relative py-16 px-6 overflow-hidden"
         >
             {/* Section background */}
             <div
@@ -197,28 +199,24 @@ export default function Features() {
 
                 {/* ── Section Header ───────────────────────────────── */}
                 <motion.div
-                    className="text-center mb-16"
+                    className="text-center mb-10"
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: '-80px' }}
                     transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
                 >
                     <span className="inline-block text-xs font-semibold text-[#00f5ff] tracking-widest uppercase mb-4">
-                        Platform Features
+                        {t('features.eyebrow')}
                     </span>
                     <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-4">
-                        Built for Engineers
+                        {t('features.title')}
                     </h2>
                     <p className="text-slate-400 text-base max-w-xl mx-auto leading-relaxed">
-                        {/* TODO: Update the section subtitle here */}
-                        Every feature is optimized to overcome the real challenges of industrial data analysis.
+                        {t('features.subtitle')}
                     </p>
                 </motion.div>
 
                 {/* ── Feature Cards Grid (Bento Box) ───────────────── */}
-                {/*
-          Alternatif Bento: ilk kart 2 sütun: "grid-cols-1 md:grid-cols-5" + first card "md:col-span-2"
-        */}
                 <motion.div
                     className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
                     variants={sectionVariants}
@@ -230,8 +228,6 @@ export default function Features() {
                         <FeatureCard key={feature.id} feature={feature} />
                     ))}
                 </motion.div>
-
-                {/* TODO: Buraya "Tüm Özellikleri Gör" linki veya daha fazla kart eklenebilir */}
             </div>
         </section>
     )

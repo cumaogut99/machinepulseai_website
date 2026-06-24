@@ -1,3 +1,5 @@
+import { useContactModal } from '../context/ContactModalContext.jsx'
+
 // ─── Footer Data ───────────────────────────────────────────────────────────────
 // TODO: Update links, email, and social URLs before launch
 
@@ -59,6 +61,7 @@ const SOCIAL_LINKS = [
 ]
 
 export default function Footer() {
+    const { open: openContact } = useContactModal()
     const currentYear = new Date().getFullYear()
 
     return (
@@ -106,7 +109,7 @@ export default function Footer() {
                                 link.modal ? (
                                     <button
                                         key={link.label}
-                                        onClick={() => window.openContactModal?.()}
+                                        onClick={openContact}
                                         className="text-xs text-slate-500 hover:text-slate-300 transition-colors duration-150 text-left"
                                     >
                                         {link.label}

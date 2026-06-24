@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 
 // ─── Steps Data ───────────────────────────────────────────────────────────────
-// TODO: Update steps to match the actual product onboarding flow
 const STEPS = [
     {
         number: '01',
@@ -51,8 +51,9 @@ const itemVariants = {
 }
 
 export default function HowItWorks() {
+    const { t } = useTranslation()
     return (
-        <section id="how-it-works" className="relative py-28 px-6 overflow-hidden">
+        <section id="how-it-works" className="relative py-16 px-6 overflow-hidden">
             <div
                 className="absolute inset-0 pointer-events-none"
                 style={{ background: 'radial-gradient(ellipse 60% 40% at 20% 50%, rgba(0,245,255,0.04), transparent)' }}
@@ -62,24 +63,23 @@ export default function HowItWorks() {
             <div className="max-w-7xl mx-auto relative z-10">
                 {/* ── Header ── */}
                 <motion.div
-                    className="mb-20 max-w-2xl"
+                    className="mb-12 max-w-2xl"
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: '-80px' }}
                     transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
                 >
                     <span className="inline-block text-xs font-semibold text-[#00f5ff] tracking-widest uppercase mb-4">
-                        How It Works
+                        {t('howItWorks.eyebrow')}
                     </span>
                     <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-4">
-                        From raw data to insight{' '}
+                        {t('howItWorks.titleBefore')}{' '}
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00f5ff] to-[#3b82f6]">
-                            in minutes
+                            {t('howItWorks.titleHighlight')}
                         </span>
                     </h2>
                     <p className="text-slate-400 text-base leading-relaxed">
-                        What used to take 10–15 hours of manual data preparation now takes a few clicks.
-                        The AI handles the heavy lifting so engineers can focus on decisions, not spreadsheets.
+                        {t('howItWorks.subtitle')}
                     </p>
                 </motion.div>
 

@@ -12,7 +12,7 @@ export default function AppShowcase() {
     const { t } = useTranslation()
 
     return (
-        <section id="app-showcase" className="relative py-24 px-6 overflow-hidden">
+        <section id="app-showcase" className="relative py-14 px-6 overflow-hidden">
             {/* Background glow */}
             <div
                 className="absolute inset-0 pointer-events-none"

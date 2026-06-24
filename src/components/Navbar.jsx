@@ -2,11 +2,13 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { Link, useLocation } from 'react-router-dom'
+import { useContactModal } from '../context/ContactModalContext.jsx'
 import logoImg from '../assets/logo.png'
 
 // ─── Navbar Component ───────────────────────────────────────────────────────
 export default function Navbar() {
     const { t, i18n } = useTranslation();
+    const { open: openContact } = useContactModal()
     const [scrolled, setScrolled] = useState(false)
     const [menuOpen, setMenuOpen] = useState(false)
     const location = useLocation()
@@ -80,24 +82,29 @@ export default function Navbar() {
                                         <span className={`absolute -bottom-0.5 left-0 h-px bg-neon-cyan transition-all duration-300 ease-out ${location.pathname === link.href ? 'w-full' : 'w-0 group-hover:w-full'}`} />
                                     </Link>
                                 ) : (
-                                    <div className="cursor-pointer text-sm text-slate-400 hover:text-white transition-colors duration-200 relative py-2 flex items-center gap-1">
+                                    <button
+                                        type="button"
+                                        aria-haspopup="menu"
+                                        className="cursor-pointer text-sm text-slate-400 hover:text-white focus:text-white transition-colors duration-200 relative py-2 flex items-center gap-1"
+                                    >
                                         {link.label}
-                                        <svg className="w-3 h-3 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <svg className="w-3 h-3 transition-transform duration-200 group-hover:rotate-180 group-focus-within:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                                         </svg>
-                                        <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-neon-cyan group-hover:w-full transition-all duration-300 ease-out" />
-                                    </div>
+                                        <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-neon-cyan group-hover:w-full group-focus-within:w-full transition-all duration-300 ease-out" />
+                                    </button>
                                 )}
 
-                                {/* Dropdown Menu */}
+                                {/* Dropdown Menu — opens on hover or keyboard focus */}
                                 {link.dropdown && (
-                                    <div className="absolute top-full left-0 pt-4 hidden group-hover:block">
+                                    <div className="absolute top-full left-0 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-150" role="menu">
                                         <div className="bg-[#0a0a0a]/95 backdrop-blur-xl border border-white/10 rounded-xl p-2 w-48 shadow-2xl flex flex-col gap-1">
                                             {link.dropdown.map((sublink) => (
                                                 <Link
                                                     key={sublink.href}
                                                     to={sublink.href}
-                                                    className={`text-sm px-3 py-2 rounded-lg transition-colors ${location.pathname === sublink.href ? 'bg-white/10 text-white' : 'text-slate-400 hover:text-white hover:bg-white/5'}`}
+                                                    role="menuitem"
+                                                    className={`text-sm px-3 py-2 rounded-lg transition-colors ${location.pathname === sublink.href ? 'bg-white/10 text-white' : 'text-slate-400 hover:text-white hover:bg-white/5 focus:text-white focus:bg-white/5'}`}
                                                 >
                                                     {sublink.label}
                                                 </Link>
@@ -120,7 +127,7 @@ export default function Navbar() {
                         </button>
                         <button
                             id="nav-contact-btn"
-                            onClick={() => window.openContactModal?.()}
+                            onClick={openContact}
                             className="text-sm text-slate-300 hover:text-white px-4 py-2 rounded-lg transition-all duration-200 hover:bg-white/5"
                         >
                             {t('nav.contactSales')}
@@ -139,6 +146,8 @@ export default function Navbar() {
                         className="md:hidden p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
                         onClick={() => setMenuOpen((prev) => !prev)}
                         aria-label="Toggle menu"
+                        aria-expanded={menuOpen}
+                        aria-controls="mobile-menu"
                     >
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             {menuOpen
@@ -155,6 +164,7 @@ export default function Navbar() {
                 {menuOpen && (
                     <motion.div
                         key="mobile-menu"
+                        id="mobile-menu"
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
@@ -196,7 +206,7 @@ export default function Navbar() {
                             ))}
                             <div className="flex gap-3 pt-2 border-t border-white/5">
                                 <button
-                                    onClick={() => { setMenuOpen(false); window.openContactModal?.() }}
+                                    onClick={() => { setMenuOpen(false); openContact() }}
                                     className="flex-1 text-sm text-slate-300 hover:text-white py-2 rounded-lg hover:bg-white/5 transition-colors"
                                 >
                                     {t('nav.contactSales')}

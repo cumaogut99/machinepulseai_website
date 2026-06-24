@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 
 // ─── Target Industries & Companies ────────────────────────────────────────────
 // Source: DeepCube document — critical customer segments
-// TODO: Add real partnership logos when agreements are in place
 
 const INDUSTRIES = [
     {
@@ -41,28 +41,29 @@ const itemVariants = {
 }
 
 export default function Targets() {
+    const { t } = useTranslation()
     return (
-        <section id="targets" className="relative py-24 px-6 overflow-hidden">
+        <section id="targets" className="relative py-14 px-6 overflow-hidden">
             {/* Top separator */}
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/8 to-transparent" />
 
             <div className="max-w-7xl mx-auto relative z-10">
                 {/* ── Header ── */}
                 <motion.div
-                    className="text-center mb-16"
+                    className="text-center mb-10"
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: '-80px' }}
                     transition={{ duration: 0.7 }}
                 >
                     <span className="inline-block text-xs font-semibold text-[#f59e0b] tracking-widest uppercase mb-4">
-                        Target Markets
+                        {t('targets.eyebrow')}
                     </span>
                     <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-4">
-                        Built for high-stakes engineering
+                        {t('targets.title')}
                     </h2>
                     <p className="text-slate-400 text-base max-w-xl mx-auto leading-relaxed">
-                        Trusted by engineers in sectors where data accuracy, speed, and security are mission-critical.
+                        {t('targets.subtitle')}
                     </p>
                 </motion.div>
 

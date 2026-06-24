@@ -1,22 +1,15 @@
 import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
+import { useContactModal } from '../context/ContactModalContext.jsx'
 
 // ─── CTA Banner ───────────────────────────────────────────────────────────────
-// TODO: Update ctaHref and secondaryHref with real download/contact links
-
-const CTA_CONTENT = {
-    label: 'Early Access Now Open',
-    title: 'Start analyzing smarter today',
-    subtitle:
-        'Join engineers from defense, aerospace, and automotive organizations who are cutting analysis time by up to 70%. Request a demo and see MachinePulseAI in action.',
-    primaryCta: 'Request a Demo',
-    primaryHref: '#contact',
-    secondaryCta: 'Talk to the Team',
-    secondaryHref: '#contact',
-}
 
 export default function CTABanner() {
+    const { t } = useTranslation()
+    const { open: openContact } = useContactModal()
+
     return (
-        <section id="cta" className="relative py-28 px-6 overflow-hidden">
+        <section id="cta" className="relative py-16 px-6 overflow-hidden">
             {/* Background radial glow */}
             <div
                 className="absolute inset-0 pointer-events-none"
@@ -42,50 +35,50 @@ export default function CTABanner() {
                     {/* Label badge */}
                     <span className="inline-flex items-center gap-2 text-xs font-semibold text-[#00f5ff] border border-[#00f5ff]/30 bg-[#00f5ff]/5 rounded-full px-4 py-1.5 tracking-wide">
                         <span className="w-1.5 h-1.5 rounded-full bg-[#00f5ff] animate-pulse" />
-                        {CTA_CONTENT.label}
+                        {t('cta.label')}
                     </span>
 
                     {/* Headline */}
                     <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight">
-                        Start analyzing{' '}
+                        {t('cta.titleBefore')}{' '}
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00f5ff] via-[#38bdf8] to-[#818cf8]">
-                            smarter
+                            {t('cta.titleHighlight')}
                         </span>{' '}
-                        today
+                        {t('cta.titleAfter')}
                     </h2>
 
                     {/* Subtitle */}
                     <p className="text-slate-400 text-base leading-relaxed max-w-2xl">
-                        {CTA_CONTENT.subtitle}
+                        {t('cta.subtitle')}
                     </p>
 
                     <div className="flex flex-col sm:flex-row items-center gap-4 mt-2">
                         <button
                             id="cta-primary"
-                            onClick={() => window.openContactModal?.()}
+                            onClick={openContact}
                             className="btn-neon inline-flex items-center gap-2 bg-[#00f5ff]/8 text-[#00f5ff] font-semibold text-sm px-8 py-4 rounded-xl"
                         >
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                                     d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                             </svg>
-                            {CTA_CONTENT.primaryCta}
+                            {t('cta.primaryCta')}
                         </button>
                         <button
                             id="cta-secondary"
-                            onClick={() => window.openContactModal?.()}
+                            onClick={openContact}
                             className="inline-flex items-center gap-2 text-sm text-slate-300 hover:text-white font-medium px-6 py-4 rounded-xl border border-white/10 hover:border-white/25 hover:bg-white/5 transition-all duration-200"
                         >
-                            {CTA_CONTENT.secondaryCta}
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            {t('cta.secondaryCta')}
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                             </svg>
                         </button>
                     </div>
 
                     {/* Trust line */}
-                    <p className="text-xs text-slate-600 mt-2">
-                        Windows 10/11 · Minimum 8 GB RAM · No internet required
+                    <p className="text-xs text-slate-500 mt-2">
+                        {t('cta.trustLine')}
                     </p>
                 </motion.div>
             </div>

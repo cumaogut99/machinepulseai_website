@@ -123,7 +123,7 @@ export default function WidgetCatalog() {
     const hideLabel = t('widgets.hide')
 
     return (
-        <section className="relative py-24 px-6 overflow-hidden">
+        <section className="relative py-14 px-6 overflow-hidden">
             {/* Background glows */}
             <div className="absolute top-0 left-1/4 w-[28rem] h-[28rem] bg-[#00f5ff]/5 blur-[140px] rounded-full pointer-events-none" />
             <div className="absolute bottom-1/3 right-1/4 w-[28rem] h-[28rem] bg-[#a855f7]/5 blur-[140px] rounded-full pointer-events-none" />

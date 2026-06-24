@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
+import { useContactModal } from '../context/ContactModalContext.jsx'
 import HeroShowcase from './HeroShowcase.jsx'
 
 // ─── Framer Motion Variants ─────────────────────────────────────────────────
@@ -35,6 +36,7 @@ const mediaVariant = {
 // ─── Hero Component ─────────────────────────────────────────────────────────
 export default function Hero() {
     const { t } = useTranslation();
+    const { open: openContact } = useContactModal()
 
     return (
         <section
@@ -102,7 +104,7 @@ export default function Hero() {
                     {/* Primary CTA — opens contact modal */}
                     <button
                         id="hero-primary-cta"
-                        onClick={() => window.openContactModal?.()}
+                        onClick={openContact}
                         className="btn-neon inline-flex items-center gap-2 bg-[#00f5ff]/8 text-[#00f5ff] font-semibold text-sm px-7 py-3.5 rounded-xl"
                     >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

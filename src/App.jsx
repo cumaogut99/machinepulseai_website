@@ -1,20 +1,27 @@
-import { useState, useEffect } from 'react'
+import { useEffect, lazy, Suspense } from 'react'
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
+import { HelmetProvider } from 'react-helmet-async'
 import { useTranslation } from 'react-i18next'
+import { ContactModalProvider, useContactModal } from './context/ContactModalContext.jsx'
+import Seo from './seo/Seo.jsx'
 import Navbar from './components/Navbar.jsx'
-import Hero from './components/Hero.jsx'
-import Stats from './components/Stats.jsx'
-import Features from './components/Features.jsx'
-import HowItWorks from './components/HowItWorks.jsx'
-import AgenticArch from './components/AgenticArch.jsx'
-import Targets from './components/Targets.jsx'
-import Pricing from './components/Pricing.jsx'
-import CTABanner from './components/CTABanner.jsx'
 import Footer from './components/Footer.jsx'
 import ContactModal from './components/ContactModal.jsx'
-import KnowledgeBase from './components/KnowledgeBase.jsx'
-import WidgetCatalog from './components/WidgetCatalog.jsx'
+
+// Above-the-fold home content stays in the main bundle; everything else is
+// code-split so the initial page load only ships what it needs.
+import Hero from './components/Hero.jsx'
+import Stats from './components/Stats.jsx'
 import AppShowcase from './components/AppShowcase.jsx'
+import CTABanner from './components/CTABanner.jsx'
+
+const Features = lazy(() => import('./components/Features.jsx'))
+const HowItWorks = lazy(() => import('./components/HowItWorks.jsx'))
+const AgenticArch = lazy(() => import('./components/AgenticArch.jsx'))
+const Targets = lazy(() => import('./components/Targets.jsx'))
+const Pricing = lazy(() => import('./components/Pricing.jsx'))
+const KnowledgeBase = lazy(() => import('./components/KnowledgeBase.jsx'))
+const WidgetCatalog = lazy(() => import('./components/WidgetCatalog.jsx'))
 
 // Scroll to top on route change
 function ScrollToTop() {
@@ -25,8 +32,13 @@ function ScrollToTop() {
     return null
 }
 
+// Lightweight fallback while a lazy page chunk loads.
+function PageFallback() {
+    return <div className="min-h-[60vh]" aria-hidden="true" />
+}
+
 const Home = () => (
-    <main>
+    <main id="main">
         <Hero />
         <Stats />
         <AppShowcase />
@@ -34,93 +46,65 @@ const Home = () => (
     </main>
 )
 
-const FeaturesPage = () => (
-    <main className="pt-24">
-        <Features />
-        <CTABanner />
+// Inner pages share a compact top offset (navbar is 64px tall).
+const Page = ({ children }) => (
+    <main id="main" className="pt-20">
+        <Suspense fallback={<PageFallback />}>
+            {children}
+            <CTABanner />
+        </Suspense>
     </main>
 )
 
-const ArchitecturePage = () => (
-    <main className="pt-24">
-        <AgenticArch />
-        <CTABanner />
-    </main>
-)
-
-const HowItWorksPage = () => (
-    <main className="pt-24">
-        <HowItWorks />
-        <CTABanner />
-    </main>
-)
-
-const SolutionsPage = () => (
-    <main className="pt-24">
-        <Targets />
-        <CTABanner />
-    </main>
-)
-
-const KnowledgeBasePage = () => (
-    <main className="pt-24">
-        <KnowledgeBase />
-        <CTABanner />
-    </main>
-)
-
-const WidgetsPage = () => (
-    <main className="pt-24">
-        <WidgetCatalog />
-        <CTABanner />
-    </main>
-)
-
-const PricingPage = () => (
-    <main className="pt-24">
-        <Pricing />
-        <CTABanner />
-    </main>
-)
-
-function App() {
+function AppShell() {
     const { i18n } = useTranslation()
-    const [contactOpen, setContactOpen] = useState(false)
+    const { isOpen, close } = useContactModal()
 
     // Update document lang attribute when language changes
     useEffect(() => {
         document.documentElement.lang = i18n.language || 'tr'
     }, [i18n.language])
 
-    // Expose a global so any component can open the modal without prop drilling
-    useEffect(() => {
-        window.openContactModal = () => setContactOpen(true)
-        return () => { delete window.openContactModal }
-    }, [])
-
     return (
-        <Router>
-            <ScrollToTop />
-            <div className="bg-[#0a0a0a] min-h-screen flex flex-col text-white overflow-x-hidden">
-                <Navbar />
-                <div className="flex-grow">
-                    <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/features" element={<FeaturesPage />} />
-                        <Route path="/architecture" element={<ArchitecturePage />} />
-                        <Route path="/how-it-works" element={<HowItWorksPage />} />
-                        <Route path="/solutions" element={<SolutionsPage />} />
-                        <Route path="/knowledge-base" element={<KnowledgeBasePage />} />
-                        <Route path="/widgets" element={<WidgetsPage />} />
-                        <Route path="/pricing" element={<PricingPage />} />
-                    </Routes>
-                </div>
-                <Footer />
-
-                {/* ─── Global Contact / Demo Request Modal ────────────── */}
-                <ContactModal open={contactOpen} onClose={() => setContactOpen(false)} />
+        <div className="bg-[#0a0a0a] min-h-screen flex flex-col text-white overflow-x-hidden">
+            <a
+                href="#main"
+                className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[200] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-[#00f5ff] focus:text-black focus:font-semibold"
+            >
+                Skip to main content
+            </a>
+            <Navbar />
+            <div className="flex-grow">
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/features" element={<Page><Features /></Page>} />
+                    <Route path="/architecture" element={<Page><AgenticArch /></Page>} />
+                    <Route path="/how-it-works" element={<Page><HowItWorks /></Page>} />
+                    <Route path="/solutions" element={<Page><Targets /></Page>} />
+                    <Route path="/knowledge-base" element={<Page><KnowledgeBase /></Page>} />
+                    <Route path="/widgets" element={<Page><WidgetCatalog /></Page>} />
+                    <Route path="/pricing" element={<Page><Pricing /></Page>} />
+                </Routes>
             </div>
-        </Router>
+            <Footer />
+
+            {/* ─── Global Contact / Demo Request Modal ────────────── */}
+            <ContactModal open={isOpen} onClose={close} />
+        </div>
+    )
+}
+
+function App() {
+    return (
+        <HelmetProvider>
+            <ContactModalProvider>
+                <Router>
+                    <ScrollToTop />
+                    <Seo />
+                    <AppShell />
+                </Router>
+            </ContactModalProvider>
+        </HelmetProvider>
     )
 }
 

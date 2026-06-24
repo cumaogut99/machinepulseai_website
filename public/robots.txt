@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://machinepulseai.com/sitemap.xml
+Sitemap: https://www.machinepulseai.com.tr/sitemap.xml

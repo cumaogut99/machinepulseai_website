@@ -75,9 +75,94 @@ const resources = {
             "footer": {
                 "tagline": "Pioneering the next era of industrial analytics."
             },
+            "features": {
+                "eyebrow": "Platform Features",
+                "title": "Built for Engineers",
+                "subtitle": "Every feature is optimized to overcome the real challenges of industrial data analysis."
+            },
+            "howItWorks": {
+                "eyebrow": "How It Works",
+                "titleBefore": "From raw data to insight",
+                "titleHighlight": "in minutes",
+                "subtitle": "What used to take hours of manual data preparation now takes a few clicks. The AI handles the heavy lifting so engineers can focus on decisions, not spreadsheets."
+            },
+            "targets": {
+                "eyebrow": "Target Markets",
+                "title": "Built for high-stakes engineering",
+                "subtitle": "Designed for engineers in sectors where data accuracy, speed, and security are mission-critical."
+            },
+            "cta": {
+                "label": "Early Access Now Open",
+                "titleBefore": "Start analyzing",
+                "titleHighlight": "smarter",
+                "titleAfter": "today",
+                "subtitle": "Built for engineers in defense, aerospace, and automotive organizations. Request a demo and see MachinePulseAI in action.",
+                "primaryCta": "Request a Demo",
+                "secondaryCta": "Talk to the Team",
+                "trustLine": "Windows 10/11 · Minimum 8 GB RAM · No internet required"
+            },
+            "pricing": {
+                "eyebrow": "Packages & Modules",
+                "title": "Build the platform you need",
+                "subtitle": "Start with the base package, then add the widget groups and intelligence modules that fit your workflow. Contact us for a tailored quote.",
+                "baseLabel": "Always Included",
+                "addonLabel": "Optional Module",
+                "includedHeading": "Base Package",
+                "includedTagline": "The foundation — included in every license.",
+                "addonsHeading": "Add-on Modules",
+                "addonsTagline": "Extend the platform with analysis groups and intelligence modules.",
+                "selectCta": "Request a Quote",
+                "enterpriseTitle": "Enterprise & Defense",
+                "enterpriseBadge": "Custom Quote",
+                "enterpriseDesc": "Full platform access with on-site deployment, custom integrations, unlimited seats, and NDA-covered offline LLM setup for classified or air-gapped environments.",
+                "enterpriseCta": "Request a Demo",
+                "datasheetCta": "Download Datasheet",
+                "base": {
+                    "name": "Base Package",
+                    "tagline": "Data I/O · Preprocessing · Visualization",
+                    "desc": "Everything you need to import, clean and visualize measurement data — included in every license.",
+                    "features": [
+                        "Data import & export (CSV, MPAI)",
+                        "Out-of-core preprocessing engine",
+                        "Multi-channel time-series visualization",
+                        "Automated PDF / HTML reports",
+                        "Windows 10/11 desktop app"
+                    ]
+                },
+                "groups": {
+                    "filters": { "name": "Signal Filters", "desc": "FIR / IIR digital filtering, smoothing, differentiation and integration with mathematically correct boundary handling." },
+                    "analysis": { "name": "Frequency & Statistics", "desc": "FFT, PSD, octave spectra and statistical analysis of signals in the frequency and time domains." },
+                    "vibration": { "name": "Vibration & Structural", "desc": "Machinery diagnostics, modal analysis, rotor dynamics, order tracking and structural health." },
+                    "acoustics": { "name": "Acoustics & NVH", "desc": "Sound level, sound power, octave bands and perceptual sound-quality metrics." },
+                    "control": { "name": "Control & Mechatronics", "desc": "PID loop analysis, stability margins, system identification and navigation / IMU fusion." },
+                    "electrical": { "name": "Electrical & Power", "desc": "Power quality, harmonics, motor current signature analysis and drive diagnostics." },
+                    "materials": { "name": "Materials & Durability", "desc": "Fatigue, damage accumulation, strain / stress rosettes and lubrication / tribology." },
+                    "thermofluids": { "name": "Thermodynamics & Fluids", "desc": "Combustion cycles, gas exchange, heat transfer and fluid-dynamics analysis." },
+                    "vehicle": { "name": "Vehicle & Powertrain", "desc": "Vehicle-level powertrain and chassis test analysis modules." }
+                },
+                "ml": {
+                    "name": "ML Suite",
+                    "desc": "Production-grade machine learning for fault detection, anomaly diagnosis and predictive maintenance, with validated bearing-fault models."
+                },
+                "ai": {
+                    "name": "AI Assistant",
+                    "desc": "A natural-language interface (LLM + RAG) — ask questions in plain language and get data-driven answers. Fully offline, no cloud."
+                },
+                "enterpriseFeatures": [
+                    "All modules included — unlimited seats",
+                    "On-site deployment & hands-on training",
+                    "Custom API & data format integrations",
+                    "Classified / air-gapped LLM configuration",
+                    "Dedicated SLA & priority support"
+                ]
+            },
             "knowledge": {
                 "title": "Knowledge Base & Theory",
                 "subtitle": "Dive deep into the science behind vibration, acoustics, and signal processing.",
+                "cta": {
+                    "title": "Want to see these theories in action?",
+                    "subtitle": "MachinePulseAI automatically calculates and applies these concepts to your gigabytes of raw data in seconds."
+                },
                 "topics": {
                     "fft": {
                         "title": "Fast Fourier Transform (FFT)",
@@ -174,9 +259,94 @@ const resources = {
             "footer": {
                 "tagline": "Endüstriyel analitiğin yeni çağına öncülük ediyoruz."
             },
+            "features": {
+                "eyebrow": "Platform Özellikleri",
+                "title": "Mühendisler İçin Tasarlandı",
+                "subtitle": "Her özellik, endüstriyel veri analizinin gerçek zorluklarının üstesinden gelmek için optimize edilmiştir."
+            },
+            "howItWorks": {
+                "eyebrow": "Nasıl Çalışır",
+                "titleBefore": "Ham veriden içgörüye",
+                "titleHighlight": "dakikalar içinde",
+                "subtitle": "Eskiden saatler süren manuel veri hazırlığı artık birkaç tıklamayla yapılıyor. Yapay zeka ağır işi üstleniyor, böylece mühendisler tablolarla değil kararlarla ilgilenebiliyor."
+            },
+            "targets": {
+                "eyebrow": "Hedef Pazarlar",
+                "title": "Yüksek riskli mühendislik için tasarlandı",
+                "subtitle": "Veri doğruluğu, hız ve güvenliğin kritik olduğu sektörlerdeki mühendisler için tasarlandı."
+            },
+            "cta": {
+                "label": "Erken Erişim Şimdi Açık",
+                "titleBefore": "Bugün",
+                "titleHighlight": "daha akıllı",
+                "titleAfter": "analiz etmeye başlayın",
+                "subtitle": "Savunma, havacılık ve otomotiv kuruluşlarındaki mühendisler için tasarlandı. Demo isteyin ve MachinePulseAI'ı iş başında görün.",
+                "primaryCta": "Demo İste",
+                "secondaryCta": "Ekiple Görüşün",
+                "trustLine": "Windows 10/11 · En az 8 GB RAM · İnternet gerektirmez"
+            },
+            "pricing": {
+                "eyebrow": "Paketler ve Modüller",
+                "title": "İhtiyacınız olan platformu oluşturun",
+                "subtitle": "Baz paketle başlayın, ardından iş akışınıza uyan widget gruplarını ve zeka modüllerini ekleyin. Size özel teklif için bizimle iletişime geçin.",
+                "baseLabel": "Her Zaman Dahil",
+                "addonLabel": "İsteğe Bağlı Modül",
+                "includedHeading": "Baz Paket",
+                "includedTagline": "Temel — her lisansa dahildir.",
+                "addonsHeading": "Eklenti Modülleri",
+                "addonsTagline": "Platformu analiz grupları ve zeka modülleriyle genişletin.",
+                "selectCta": "Teklif İste",
+                "enterpriseTitle": "Kurumsal ve Savunma",
+                "enterpriseBadge": "Özel Teklif",
+                "enterpriseDesc": "Yerinde kurulum, özel entegrasyonlar, sınırsız lisans ve gizli veya hava-boşluklu ortamlar için NDA kapsamında çevrimdışı LLM kurulumuyla tam platform erişimi.",
+                "enterpriseCta": "Demo İste",
+                "datasheetCta": "Teknik Föyü İndir",
+                "base": {
+                    "name": "Baz Paket",
+                    "tagline": "Veri Giriş/Çıkış · Ön İşleme · Görselleştirme",
+                    "desc": "Ölçüm verisini içe aktarmak, temizlemek ve görselleştirmek için gereken her şey — her lisansa dahildir.",
+                    "features": [
+                        "Veri içe/dışa aktarma (CSV, MPAI)",
+                        "Bellek-dışı (out-of-core) ön işleme motoru",
+                        "Çok-kanallı zaman serisi görselleştirme",
+                        "Otomatik PDF / HTML raporları",
+                        "Windows 10/11 masaüstü uygulaması"
+                    ]
+                },
+                "groups": {
+                    "filters": { "name": "Sinyal Filtreleri", "desc": "Matematiksel olarak doğru sınır işleme ile FIR / IIR dijital filtreleme, yumuşatma, türev ve integral." },
+                    "analysis": { "name": "Frekans ve İstatistik", "desc": "Frekans ve zaman düzleminde FFT, PSD, oktav spektrumları ve istatistiksel sinyal analizi." },
+                    "vibration": { "name": "Titreşim ve Yapısal", "desc": "Makine tanılaması, modal analiz, rotor dinamiği, order tracking ve yapısal sağlık." },
+                    "acoustics": { "name": "Akustik ve NVH", "desc": "Ses seviyesi, ses gücü, oktav bantları ve algısal ses-kalitesi metrikleri." },
+                    "control": { "name": "Kontrol ve Mekatronik", "desc": "PID döngü analizi, kararlılık marjları, sistem tanımlama ve navigasyon / IMU füzyonu." },
+                    "electrical": { "name": "Elektrik ve Güç", "desc": "Güç kalitesi, harmonikler, motor akım imza analizi ve sürücü tanılaması." },
+                    "materials": { "name": "Malzeme ve Dayanıklılık", "desc": "Yorulma, hasar birikimi, gerinim / gerilme rozetleri ve yağlama / triboloji." },
+                    "thermofluids": { "name": "Termodinamik ve Akışkanlar", "desc": "Yanma çevrimleri, gaz değişimi, ısı transferi ve akışkanlar dinamiği analizi." },
+                    "vehicle": { "name": "Araç ve Güç Aktarma", "desc": "Araç seviyesinde güç aktarma ve şasi test analizi modülleri." }
+                },
+                "ml": {
+                    "name": "ML Paketi",
+                    "desc": "Doğrulanmış rulman-arıza modelleriyle arıza tespiti, anomali tanılama ve kestirimci bakım için üretim seviyesinde makine öğrenmesi."
+                },
+                "ai": {
+                    "name": "AI Asistanı",
+                    "desc": "Doğal dil arayüzü (LLM + RAG) — sorularınızı sade bir dille sorun, veriye dayalı yanıtlar alın. Tamamen çevrimdışı, bulut yok."
+                },
+                "enterpriseFeatures": [
+                    "Tüm modüller dahil — sınırsız lisans",
+                    "Yerinde kurulum ve uygulamalı eğitim",
+                    "Özel API ve veri formatı entegrasyonları",
+                    "Gizli / hava-boşluklu LLM yapılandırması",
+                    "Özel SLA ve öncelikli destek"
+                ]
+            },
             "knowledge": {
                 "title": "Bilgi Bankası ve Teori",
                 "subtitle": "Titreşim, akustik ve sinyal işlemenin arkasındaki bilimi derinlemesine inceleyin.",
+                "cta": {
+                    "title": "Bu teorileri iş başında görmek ister misiniz?",
+                    "subtitle": "MachinePulseAI bu kavramları gigabaytlarca ham verinize saniyeler içinde otomatik olarak hesaplayıp uygular."
+                },
                 "topics": {
                     "fft": {
                         "title": "Hızlı Fourier Dönüşümü (FFT)",
