@@ -127,21 +127,32 @@ export default function Navbar() {
                         </Link>
                     </div>
 
-                    {/* ── Mobile Hamburger ──────────────────────────── */}
-                    <button
-                        className="md:hidden p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
-                        onClick={() => setMenuOpen((prev) => !prev)}
-                        aria-label="Toggle menu"
-                        aria-expanded={menuOpen}
-                        aria-controls="mobile-menu"
-                    >
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            {menuOpen
-                                ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                                : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                            }
-                        </svg>
-                    </button>
+                    {/* ── Mobile controls: language toggle + hamburger ── */}
+                    <div className="md:hidden flex items-center gap-2">
+                        {/* Language toggle stays visible in the top bar so it's
+                            discoverable without opening the menu (mirrors desktop). */}
+                        <button
+                            onClick={toggleLanguage}
+                            className="text-xs font-semibold text-slate-400 hover:text-white px-2 py-1 rounded-md border border-white/10 hover:border-white/20 transition-all uppercase"
+                            aria-label="Toggle Language"
+                        >
+                            {i18n.language === 'tr' ? 'EN' : 'TR'}
+                        </button>
+                        <button
+                            className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
+                            onClick={() => setMenuOpen((prev) => !prev)}
+                            aria-label="Toggle menu"
+                            aria-expanded={menuOpen}
+                            aria-controls="mobile-menu"
+                        >
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                {menuOpen
+                                    ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                    : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                                }
+                            </svg>
+                        </button>
+                    </div>
                 </div>
             </div>
 
@@ -204,13 +215,6 @@ export default function Navbar() {
                                 >
                                     {t('nav.getDemo')}
                                 </Link>
-                                <button
-                                    onClick={() => { toggleLanguage(); setMenuOpen(false); }}
-                                    className="text-xs font-semibold text-slate-400 hover:text-white px-3 py-2 rounded-md border border-white/10 hover:border-white/20 transition-all uppercase"
-                                    aria-label="Toggle Language"
-                                >
-                                    {i18n.language === 'tr' ? 'EN' : 'TR'}
-                                </button>
                             </div>
                         </div>
                     </motion.div>
