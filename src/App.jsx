@@ -104,9 +104,11 @@ function App() {
     const COMING_SOON = true
 
     if (COMING_SOON) {
+        // Note: <Seo /> depends on react-router (useLocation) and must not be
+        // rendered outside <Router>. The static meta tags in index.html cover
+        // the landing, so we intentionally skip Seo here.
         return (
             <HelmetProvider>
-                <Seo />
                 <ComingSoon />
             </HelmetProvider>
         )
