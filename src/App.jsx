@@ -7,6 +7,7 @@ import Seo from './seo/Seo.jsx'
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
 import ContactModal from './components/ContactModal.jsx'
+import ComingSoon from './components/ComingSoon.jsx'
 
 // Above-the-fold home content stays in the main bundle; everything else is
 // code-split so the initial page load only ships what it needs.
@@ -97,6 +98,20 @@ function AppShell() {
 }
 
 function App() {
+    // Temporary launch gate: visitors only see the "Coming Soon" landing.
+    // The full site (AppShell and every component/route) is intentionally kept
+    // intact below — flip this to `false` to bring the real site back online.
+    const COMING_SOON = true
+
+    if (COMING_SOON) {
+        return (
+            <HelmetProvider>
+                <Seo />
+                <ComingSoon />
+            </HelmetProvider>
+        )
+    }
+
     return (
         <HelmetProvider>
             <ContactModalProvider>
