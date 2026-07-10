@@ -22,8 +22,12 @@
 //
 // The page derives its title, category name and accent colour by looking the
 // widget up in WIDGET_CATALOG, so those are never duplicated here.
-// Filled in category by category — not every widget is present yet.
+// Filled in category by category — not every widget is present yet. Large
+// categories live in their own file (e.g. widgetDetails.vibration.js) and are
+// merged into the registry at the bottom.
 // ─────────────────────────────────────────────────────────────────────────────
+
+import VIBRATION_WIDGET_DETAILS from './widgetDetails.vibration.js'
 
 const WIDGET_DETAILS = {
     // ── 1. DATA I/O ───────────────────────────────────────────────────────────
@@ -256,6 +260,9 @@ const WIDGET_DETAILS = {
             ],
         },
     },
+
+    // ── 2. VIBRATION & STRUCTURAL (see widgetDetails.vibration.js) ────────────
+    ...VIBRATION_WIDGET_DETAILS,
 }
 
 // Map of slug → widget id, for reverse lookup from the URL.
