@@ -1,6 +1,9 @@
+import { useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import katex from 'katex'
+import 'katex/dist/katex.min.css'
 import DETAIL from '../data/combustionAnalysisDetail.js'
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -12,6 +15,52 @@ import DETAIL from '../data/combustionAnalysisDetail.js'
 // ─────────────────────────────────────────────────────────────────────────────
 
 const ACCENT = '#f43f5e' // Thermodynamics & Fluids category accent
+
+// Publication-quality LaTeX for each formula, index-aligned with the `formulas`
+// array in combustionAnalysisDetail.js (math is language-neutral, so it lives
+// here rather than being duplicated across the bilingual content). The plain
+// `expr` string in the data file is the fallback if KaTeX ever fails to parse.
+const FORMULA_LATEX = [
+    'V(\\theta) = V_c + \\dfrac{V_d}{2}\\left[\\, R + 1 - \\cos\\theta - \\sqrt{R^{2} - \\sin^{2}\\theta} \\,\\right]',
+    'p_{\\mathrm{abs}}(\\theta) = p_{\\mathrm{meas}}(\\theta) + \\left[\\, p_{\\mathrm{man}} - p_{\\mathrm{meas}}(\\theta_{\\mathrm{ref}}) \\,\\right]',
+    'W_i = \\oint p\\,\\mathrm{d}V \\qquad \\mathrm{IMEP} = \\dfrac{W_i}{V_d}',
+    '\\dfrac{\\mathrm{d}Q_n}{\\mathrm{d}\\theta} = \\dfrac{\\gamma}{\\gamma-1}\\,p\\,\\dfrac{\\mathrm{d}V}{\\mathrm{d}\\theta} + \\dfrac{1}{\\gamma-1}\\,V\\,\\dfrac{\\mathrm{d}p}{\\mathrm{d}\\theta}',
+    '\\Delta p_{\\mathrm{comb},\\,i} = p_i - p_{i-1}\\left(\\dfrac{V_{i-1}}{V_i}\\right)^{\\!n}',
+    '\\mathrm{MFB}(\\theta) = \\dfrac{Q(\\theta) - Q_{\\mathrm{soc}}}{Q_{\\mathrm{eoc}} - Q_{\\mathrm{soc}}}',
+    '\\mathrm{MAPO} = \\max\\bigl|\\,\\mathrm{HP}\\{\\,p(\\theta)\\,\\}\\,\\bigr| \\qquad f \\approx 4\\text{–}20~\\mathrm{kHz}',
+    '\\mathrm{COV}_{\\mathrm{IMEP}} = \\dfrac{\\sigma_{\\mathrm{IMEP}}}{\\mu_{\\mathrm{IMEP}}}\\times 100\\%',
+    '\\log p = -n\\,\\log V + C \\quad\\Rightarrow\\quad \\text{fit } n',
+]
+
+// Renders one formula as typeset math, falling back to the plain expr on error.
+function Formula({ latex, fallback }) {
+    const html = useMemo(() => {
+        if (!latex) return null
+        try {
+            return katex.renderToString(latex, { displayMode: true, throwOnError: false })
+        } catch {
+            return null
+        }
+    }, [latex])
+
+    if (!html) {
+        return (
+            <code
+                className="block font-mono text-sm sm:text-base whitespace-nowrap px-4 py-3 rounded-lg"
+                style={{ color: ACCENT, background: '#00000055', border: `1px solid ${ACCENT}22` }}
+            >
+                {fallback}
+            </code>
+        )
+    }
+    return (
+        <div
+            className="katex-formula px-4 py-4 rounded-lg text-white/90"
+            style={{ background: '#00000055', border: `1px solid ${ACCENT}22` }}
+            dangerouslySetInnerHTML={{ __html: html }}
+        />
+    )
+}
 
 const fade = {
     hidden: { opacity: 0, y: 20 },
@@ -97,12 +146,7 @@ export default function CombustionAnalysisDetail() {
                             <div key={i} className="bg-white/[0.03] border border-white/8 rounded-2xl p-5">
                                 <h3 className="text-sm font-semibold text-white mb-3">{f.title}</h3>
                                 <div className="overflow-x-auto mb-3">
-                                    <code
-                                        className="block font-mono text-sm sm:text-base whitespace-nowrap px-4 py-3 rounded-lg"
-                                        style={{ color: ACCENT, background: '#00000055', border: `1px solid ${ACCENT}22` }}
-                                    >
-                                        {f.expr}
-                                    </code>
+                                    <Formula latex={FORMULA_LATEX[i]} fallback={f.expr} />
                                 </div>
                                 <p className="text-[13px] text-slate-400 leading-relaxed">{f.where}</p>
                             </div>
