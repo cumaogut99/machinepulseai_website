@@ -21,6 +21,7 @@ const ProductPage = lazy(() => import('./components/ProductPage.jsx'))
 const Pricing = lazy(() => import('./components/Pricing.jsx'))
 const WidgetCatalog = lazy(() => import('./components/WidgetCatalog.jsx'))
 const CombustionAnalysisDetail = lazy(() => import('./components/CombustionAnalysisDetail.jsx'))
+const WidgetDetail = lazy(() => import('./components/WidgetDetail.jsx'))
 
 // Scroll to top on route change
 function ScrollToTop() {
@@ -80,6 +81,7 @@ function AppShell() {
                     <Route path="/product" element={<Page><ProductPage /></Page>} />
                     <Route path="/widgets" element={<Page><WidgetCatalog /></Page>} />
                     <Route path="/widgets/combustion-analysis" element={<Page><CombustionAnalysisDetail /></Page>} />
+                    <Route path="/widgets/:slug" element={<Page><WidgetDetail /></Page>} />
                     <Route path="/pricing" element={<Page><Pricing /></Page>} />
 
                     {/* Redirects from the former route structure */}

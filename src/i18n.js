@@ -58,10 +58,13 @@ const resources = {
                 "noResults": "No widgets match your search.",
                 "detail": {
                     "back": "Back to widget library",
+                    "eyebrow": "Deep Dive",
+                    "inputsTitle": "What It Uses",
                     "channelsTitle": "Input Channels",
                     "channelsSubtitle": "Exactly which test-data channels the analysis consumes, and how each one is used.",
                     "formulasTitle": "Core Formulas",
                     "pipelineTitle": "Processing Pipeline",
+                    "stepsTitle": "How It Works",
                     "outputsTitle": "Outputs Produced"
                 }
             },
@@ -275,10 +278,13 @@ const resources = {
                 "noResults": "Aramanızla eşleşen widget yok.",
                 "detail": {
                     "back": "Widget kütüphanesine dön",
+                    "eyebrow": "Detaylı İnceleme",
+                    "inputsTitle": "Neyi Kullanır",
                     "channelsTitle": "Giriş Kanalları",
                     "channelsSubtitle": "Analizin tam olarak hangi test-verisi kanallarını kullandığı ve her birinin nasıl kullanıldığı.",
                     "formulasTitle": "Temel Formüller",
                     "pipelineTitle": "İşlem Hattı",
+                    "stepsTitle": "Nasıl Çalışır",
                     "outputsTitle": "Üretilen Çıktılar"
                 }
             },

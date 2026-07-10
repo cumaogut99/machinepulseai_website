@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import WIDGET_CATALOG from '../data/widgetCatalog.js'
+import { getWidgetDetailSlug } from '../data/widgetDetails.js'
 
 // ─────────────────────────────────────────────────────────────────────────────
 // WidgetCatalog — public gallery of every analysis widget in MachinePulseAI.
@@ -21,7 +22,9 @@ function WidgetCard({ widget, accent, lang, learnLabel, hideLabel, detailLabel }
     const [open, setOpen] = useState(false)
     const c = widget[lang] || widget.en
     const paragraphs = (c.theory || '').split('\n\n')
-    const detailPath = widget.detailPath
+    // Explicit override (combustion) wins; otherwise use the generic registry.
+    const detailSlug = getWidgetDetailSlug(widget.id)
+    const detailPath = widget.detailPath || (detailSlug ? `/widgets/${detailSlug}` : null)
 
     return (
         <motion.div
