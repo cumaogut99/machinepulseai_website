@@ -20,6 +20,7 @@ import CTABanner from './components/CTABanner.jsx'
 const ProductPage = lazy(() => import('./components/ProductPage.jsx'))
 const Pricing = lazy(() => import('./components/Pricing.jsx'))
 const WidgetCatalog = lazy(() => import('./components/WidgetCatalog.jsx'))
+const CombustionAnalysisDetail = lazy(() => import('./components/CombustionAnalysisDetail.jsx'))
 
 // Scroll to top on route change
 function ScrollToTop() {
@@ -78,6 +79,7 @@ function AppShell() {
                     <Route path="/" element={<Home />} />
                     <Route path="/product" element={<Page><ProductPage /></Page>} />
                     <Route path="/widgets" element={<Page><WidgetCatalog /></Page>} />
+                    <Route path="/widgets/combustion-analysis" element={<Page><CombustionAnalysisDetail /></Page>} />
                     <Route path="/pricing" element={<Page><Pricing /></Page>} />
 
                     {/* Redirects from the former route structure */}

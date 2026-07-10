@@ -53,8 +53,17 @@ const resources = {
                 "allCategories": "All",
                 "learnMore": "Learn the theory",
                 "hide": "Hide",
+                "viewDetail": "Detailed breakdown",
                 "plannedBadge": "Planned",
-                "noResults": "No widgets match your search."
+                "noResults": "No widgets match your search.",
+                "detail": {
+                    "back": "Back to widget library",
+                    "channelsTitle": "Input Channels",
+                    "channelsSubtitle": "Exactly which test-data channels the analysis consumes, and how each one is used.",
+                    "formulasTitle": "Core Formulas",
+                    "pipelineTitle": "Processing Pipeline",
+                    "outputsTitle": "Outputs Produced"
+                }
             },
             "hero": {
                 "badge": "🚀 Now in Beta",
@@ -261,8 +270,17 @@ const resources = {
                 "allCategories": "Tümü",
                 "learnMore": "Teoriyi öğren",
                 "hide": "Gizle",
+                "viewDetail": "Detaylı İncele",
                 "plannedBadge": "Planlanıyor",
-                "noResults": "Aramanızla eşleşen widget yok."
+                "noResults": "Aramanızla eşleşen widget yok.",
+                "detail": {
+                    "back": "Widget kütüphanesine dön",
+                    "channelsTitle": "Giriş Kanalları",
+                    "channelsSubtitle": "Analizin tam olarak hangi test-verisi kanallarını kullandığı ve her birinin nasıl kullanıldığı.",
+                    "formulasTitle": "Temel Formüller",
+                    "pipelineTitle": "İşlem Hattı",
+                    "outputsTitle": "Üretilen Çıktılar"
+                }
             },
             "hero": {
                 "badge": "🚀 Şimdi Beta'da",

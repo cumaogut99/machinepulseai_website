@@ -40,6 +40,16 @@ export const ROUTE_META = {
             description: 'Her analiz modülü açıklamasıyla — veri içe aktarmadan sinyal filtrelemeye, gelişmiş titreşim, akustik ve mühendislik tanılamasına kadar.',
         },
     },
+    '/widgets/combustion-analysis': {
+        en: {
+            title: `Advanced Combustion Analysis — ${BRAND}`,
+            description: 'In-cylinder combustion diagnostics deep dive: input channels, core formulas, processing pipeline and outputs — from indicated pressure to IMEP, heat release, MFB and knock.',
+        },
+        tr: {
+            title: `Gelişmiş Yanma Analizi — ${BRAND}`,
+            description: 'Silindir-içi yanma teşhisi derinlemesine: giriş kanalları, temel formüller, işlem hattı ve çıktılar — indike basınçtan IMEP, ısı salınımı, MFB ve vuruntuya.',
+        },
+    },
     '/pricing': {
         en: {
             title: `Packages — ${BRAND}`,

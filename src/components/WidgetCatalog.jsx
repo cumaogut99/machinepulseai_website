@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import WIDGET_CATALOG from '../data/widgetCatalog.js'
 
@@ -16,10 +17,11 @@ const cardVariants = {
 }
 
 // ── Single widget card ───────────────────────────────────────────────────────
-function WidgetCard({ widget, accent, lang, learnLabel, hideLabel }) {
+function WidgetCard({ widget, accent, lang, learnLabel, hideLabel, detailLabel }) {
     const [open, setOpen] = useState(false)
     const c = widget[lang] || widget.en
     const paragraphs = (c.theory || '').split('\n\n')
+    const detailPath = widget.detailPath
 
     return (
         <motion.div
@@ -81,6 +83,20 @@ function WidgetCard({ widget, accent, lang, learnLabel, hideLabel }) {
                     </motion.div>
                 )}
             </AnimatePresence>
+
+            {/* Optional deep-dive link to a dedicated detail page */}
+            {detailPath && (
+                <Link
+                    to={detailPath}
+                    className="self-start inline-flex items-center gap-1.5 text-xs font-semibold mt-1 px-3 py-1.5 rounded-lg border transition-colors"
+                    style={{ color: accent, borderColor: `${accent}55`, background: `${accent}12` }}
+                >
+                    {detailLabel}
+                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                </Link>
+            )}
         </motion.div>
     )
 }
@@ -121,6 +137,7 @@ export default function WidgetCatalog() {
 
     const learnLabel = t('widgets.learnMore')
     const hideLabel = t('widgets.hide')
+    const detailLabel = t('widgets.viewDetail')
 
     return (
         <section className="relative py-10 px-6 overflow-hidden">
@@ -250,6 +267,7 @@ export default function WidgetCatalog() {
                                             lang={lang}
                                             learnLabel={learnLabel}
                                             hideLabel={hideLabel}
+                                            detailLabel={detailLabel}
                                         />
                                     ))}
                                 </motion.div>
