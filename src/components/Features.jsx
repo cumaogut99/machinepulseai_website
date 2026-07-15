@@ -3,70 +3,101 @@ import { useTranslation } from 'react-i18next'
 
 // ─── Features Data ──────────────────────────────────────────────────────────
 // Add a new object to the array below to add a new feature card.
-// Each object: { id, icon, tag, title, description, mediaNote }
 const FEATURES = [
     {
         id: 'natural-language',
-        tag: 'AI Analysis',
+        en: {
+            tag: 'AI Analysis',
+            title: 'Natural Language Analysis',
+            description:
+                'Ask engineering questions in plain language. The assistant helps build the right analysis path while the data engine performs the heavy processing.',
+            mediaNote: 'Natural language interface screenshot',
+        },
+        tr: {
+            tag: 'AI Analiz',
+            title: 'Doğal Dil ile Analiz',
+            description:
+                'Mühendislik sorularını doğal dille sorun. Asistan doğru analiz yolunu kurmaya yardım eder; ağır işlemleri güçlü veri motoru yürütür.',
+            mediaNote: 'Doğal dil arayüzü ekran görüntüsü',
+        },
         icon: (
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
                     d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-3 3-3-3z" />
             </svg>
         ),
-        title: 'Natural Language Data Analysis',
-        description:
-            'Query your data in plain English without writing a single line of SQL or Python. The AI engine automatically runs the required analysis in the background.',
-        // TODO: Add screenshot, GIF, or icon animation for this feature here
-        mediaNote: 'Natural language interface screenshot',
         accentColor: '#00f5ff',
     },
     {
         id: 'apache-arrow',
-        tag: 'Performance',
+        en: {
+            tag: 'Performance',
+            title: 'MPAI Data Engine',
+            description:
+                'Convert many measurement file types into the native MPAI format, then process 200 GB+ datasets with low memory use and fast interactive access.',
+            mediaNote: 'MPAI conversion and memory benchmark',
+        },
+        tr: {
+            tag: 'Performans',
+            title: 'MPAI Veri Motoru',
+            description:
+                'Birçok ölçüm dosyası türünü yerel MPAI formatına dönüştürün; ardından 200 GB+ veri setlerini düşük bellek kullanımı ve hızlı etkileşimle işleyin.',
+            mediaNote: 'MPAI dönüşüm ve bellek karşılaştırması',
+        },
         icon: (
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
                     d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
         ),
-        title: 'Apache Arrow Integration',
-        description:
-            'Load 100+ GB datasets in seconds with a zero-copy memory architecture. The Polars-based data engine keeps memory usage at an absolute minimum.',
-        // TODO: Add Apache Arrow performance benchmark chart or animation here
-        mediaNote: 'Memory usage comparison chart',
         accentColor: '#3b82f6',
     },
     {
         id: 'low-ram',
-        tag: 'Efficiency',
+        en: {
+            tag: 'Efficiency',
+            title: 'Large Files, Modest Hardware',
+            description:
+                'Analyze large recorded test data on standard Windows workstations. Min-Max LOD rendering keeps dense signals responsive while preserving peaks.',
+            mediaNote: 'System resource usage indicator',
+        },
+        tr: {
+            tag: 'Verimlilik',
+            title: 'Büyük Dosya, Mütevazı Donanım',
+            description:
+                'Büyük kayıtlı test verilerini standart Windows iş istasyonlarında analiz edin. Min-Max LOD çizimi, yoğun sinyalleri tepe değerleri koruyarak akıcı tutar.',
+            mediaNote: 'Sistem kaynak kullanımı göstergesi',
+        },
         icon: (
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
                     d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18" />
             </svg>
         ),
-        title: 'Low System Requirements',
-        description:
-            'Analyze large-scale datasets with only 8 GB RAM. The LOD (Level of Detail) algorithm visualizes live 200 kHz data streams at a smooth 60 FPS.',
-        // TODO: Add system requirements table or screenshot showing low RAM usage here
-        mediaNote: 'System resource usage indicator',
         accentColor: '#a855f7',
     },
     {
         id: 'multi-axis',
-        tag: 'Visualization',
+        en: {
+            tag: 'Visualization',
+            title: 'Engineering Visualization',
+            description:
+                'Compare vibration, pressure, temperature and RPM channels with synchronized time, frequency, waterfall and distribution views in one workspace.',
+            mediaNote: 'Multi-axis chart dashboard screenshot',
+        },
+        tr: {
+            tag: 'Görselleştirme',
+            title: 'Mühendislik Görselleştirmesi',
+            description:
+                'Titreşim, basınç, sıcaklık ve RPM kanallarını tek çalışma alanında senkronize zaman, frekans, waterfall ve dağılım görünümleriyle karşılaştırın.',
+            mediaNote: 'Çok eksenli grafik panosu ekran görüntüsü',
+        },
         icon: (
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
                     d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
             </svg>
         ),
-        title: 'Multi-Axis Visualization',
-        description:
-            'Compare vibration, pressure, temperature, and RPM data in real-time with synchronized charts. FFT, waterfall, and scatter plot analysis — all in one platform.',
-        // TODO: Add multi-axis dashboard screenshot here
-        mediaNote: 'Multi-axis chart dashboard screenshot',
         accentColor: '#f59e0b',
     },
 ]
@@ -87,7 +118,9 @@ const cardVariants = {
 }
 
 // ─── Feature Card Sub-component ─────────────────────────────────────────────
-function FeatureCard({ feature }) {
+function FeatureCard({ feature, lang }) {
+    const content = feature[lang] || feature.en
+
     return (
         <motion.div
             variants={cardVariants}
@@ -121,11 +154,11 @@ function FeatureCard({ feature }) {
                             className="text-xs font-medium tracking-wide uppercase mb-1 block"
                             style={{ color: `${feature.accentColor}` }}
                         >
-                            {feature.tag}
+                            {content.tag}
                         </span>
                         {/* Title */}
                         <h3 className="text-base font-semibold text-white leading-snug">
-                            {feature.title}
+                            {content.title}
                         </h3>
                     </div>
                 </div>
@@ -133,14 +166,14 @@ function FeatureCard({ feature }) {
 
             {/* ── Description ──────────────────────────────────── */}
             <p className="text-sm text-slate-400 leading-relaxed">
-                {feature.description}
+                {content.description}
             </p>
 
             {/* ── Media Area ───────────────────────────────────── */}
             {/*
         TODO: Media content for each feature will be added here.
-        mediaNote: "{feature.mediaNote}"
-        Example – Image: <img src="..." alt={feature.title} className="w-full h-full object-cover" />
+        mediaNote: "{content.mediaNote}"
+        Example – Image: <img src="..." alt={content.title} className="w-full h-full object-cover" />
         Example – Video: <video src="..." autoPlay loop muted playsInline className="w-full h-full object-cover" />
       */}
             <div
@@ -162,7 +195,7 @@ function FeatureCard({ feature }) {
                     </svg>
                 </div>
                 <span className="text-xs text-slate-600">
-                    {feature.mediaNote}
+                    {content.mediaNote}
                 </span>
             </div>
 
@@ -180,7 +213,8 @@ function FeatureCard({ feature }) {
 
 // ─── Features Section ───────────────────────────────────────────────────────
 export default function Features() {
-    const { t } = useTranslation()
+    const { t, i18n } = useTranslation()
+    const lang = i18n.language?.startsWith('tr') ? 'tr' : 'en'
     return (
         <section
             id="features"
@@ -225,7 +259,7 @@ export default function Features() {
                     viewport={{ once: true, margin: '-60px' }}
                 >
                     {FEATURES.map((feature) => (
-                        <FeatureCard key={feature.id} feature={feature} />
+                        <FeatureCard key={feature.id} feature={feature} lang={lang} />
                     ))}
                 </motion.div>
             </div>

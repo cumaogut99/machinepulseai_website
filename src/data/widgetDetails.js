@@ -16,7 +16,9 @@
 //           steps?:   [{ step, detail }],
 //           outputs?: [{ name, desc }],
 //           channels?:[{ name, unit, source, usage }], channelsNote?,
-//           formulas?:[{ title, latex, expr, where }] },
+//           formulas?:[{ title, latex, expr, where }],
+//           assumptions?:[{ name, desc }],
+//           exampleMetrics?:[{ value, label, desc }] },
 //     tr: { …same shape… }
 //   }
 //
@@ -27,7 +29,27 @@
 // merged into the registry at the bottom.
 // ─────────────────────────────────────────────────────────────────────────────
 
+import ACOUSTICS_WIDGET_DETAILS from './widgetDetails.acoustics.js'
+import THERMOFLUIDS_WIDGET_DETAILS from './widgetDetails.thermofluids.js'
+import VIBRATION_WIDGET_EXTRAS from './widgetDetails.vibrationExtras.js'
 import VIBRATION_WIDGET_DETAILS from './widgetDetails.vibration.js'
+
+function mergeDetailExtras(details, extras) {
+    return Object.fromEntries(
+        Object.entries(details).map(([id, detail]) => {
+            const extra = extras[id]
+            if (!extra) return [id, detail]
+            return [
+                id,
+                {
+                    ...detail,
+                    en: { ...detail.en, ...extra.en },
+                    tr: { ...detail.tr, ...extra.tr },
+                },
+            ]
+        })
+    )
+}
 
 const WIDGET_DETAILS = {
     // ── 1. DATA I/O ───────────────────────────────────────────────────────────
@@ -262,7 +284,13 @@ const WIDGET_DETAILS = {
     },
 
     // ── 2. VIBRATION & STRUCTURAL (see widgetDetails.vibration.js) ────────────
-    ...VIBRATION_WIDGET_DETAILS,
+    ...mergeDetailExtras(VIBRATION_WIDGET_DETAILS, VIBRATION_WIDGET_EXTRAS),
+
+    // ── ACOUSTICS & NVH (see widgetDetails.acoustics.js) ─────────────────────
+    ...ACOUSTICS_WIDGET_DETAILS,
+
+    // ── THERMODYNAMICS & FLUIDS (see widgetDetails.thermofluids.js) ──────────
+    ...THERMOFLUIDS_WIDGET_DETAILS,
 }
 
 // Map of slug → widget id, for reverse lookup from the URL.

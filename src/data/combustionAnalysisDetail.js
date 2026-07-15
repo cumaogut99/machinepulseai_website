@@ -1,305 +1,411 @@
-// ─────────────────────────────────────────────────────────────────────────────
 // Deep-dive content for the "Advanced Combustion Analysis" widget.
-// Rendered by src/components/CombustionAnalysisDetail.jsx at the route
-// /widgets/combustion-analysis. Bilingual (en/tr) following the same
-// content-in-data pattern as widgetCatalog.engineering.js — the surrounding
-// chrome labels (section titles, table headers) come from i18n via t().
-//
-// Formulas are plain unicode strings so the page stays fully self-contained
-// (no external math renderer), matching the site's dependency-light approach.
-// ─────────────────────────────────────────────────────────────────────────────
+// Rendered by src/components/CombustionAnalysisDetail.jsx at
+// /widgets/combustion-analysis.
 
 const COMBUSTION_ANALYSIS_DETAIL = {
     en: {
         eyebrow: 'Thermodynamics & Fluids · Deep Dive',
         name: 'Advanced Combustion Analysis',
         tagline:
-            'In-cylinder combustion diagnostics from a crank-angle-resolved pressure trace — the same indicating workflow used by AVL IndiCom-class systems, rebuilt for offline post-processing.',
+            'Turns an in-cylinder pressure trace into the numbers engine teams use to judge combustion quality: IMEP, heat release, CA10/50/90, knock and cycle stability.',
         intro:
-            'This module reconstructs how every combustion cycle burns from a single high-speed pressure signal sampled against crank angle. It turns raw indicated pressure into the pressure–volume loop, the rate of heat release, the mass-fraction-burned phasing angles, knock intensity and cycle-to-cycle stability. Below is exactly which test-data channels feed the analysis, the formulas applied at each stage, the order of operations, and the outputs you get back.',
+            'For an engine team, the in-cylinder pressure trace is more than a curve. It is a record of how each cycle breathes, compresses, burns and expands. MachinePulseAI takes that crank-angle pressure data and turns it into clear engineering results: the pressure-volume loop, indicated work, heat-release timing, burn duration, knock intensity and cycle stability. Engineers can compare cylinders, operating points and calibration changes without rebuilding the same spreadsheet workflow for every test.',
 
-        // ── Input channels ──────────────────────────────────────────────────
         channels: [
             {
+                role: 'Required',
                 name: 'Cylinder Pressure  p(θ)',
                 unit: 'bar / MPa',
-                source: 'Piezoelectric transducer + charge amplifier, per cylinder',
+                source: 'Piezoelectric pressure transducer and charge amplifier, usually one channel per cylinder',
                 usage:
-                    'The core signal. Sampled crank-angle-based (typically 0.1–1.0° resolution) it drives every downstream result: the p–V loop, IMEP, heat release, peak pressure, knock and COV. It is first drift-corrected and pegged to an absolute reference (see pipeline step 2).',
+                    'This is the main signal. It shows how pressure rises and falls during each engine cycle. The module uses it to calculate the p-V loop, IMEP, heat-release rate, peak pressure, knock intensity and cycle-to-cycle variation. Because piezo sensors do not give a perfect absolute pressure level by themselves, the trace is conditioned and pegged before the main calculations.',
             },
             {
-                name: 'Crank Angle  θ  (shaft encoder)',
+                role: 'Required',
+                name: 'Crank Angle  θ',
                 unit: '° CA',
-                source: 'Optical encoder (e.g. 720 ppr) + once-per-cycle TDC marker',
+                source: 'Shaft encoder with a once-per-cycle TDC marker',
                 usage:
-                    'Provides the angle base every pressure sample is tied to, segments the stream into individual 720° cycles, and — through the slider-crank geometry — defines the instantaneous cylinder volume V(θ). An accurate TDC reference is critical: a 0.1° error in TDC shifts IMEP and heat-release results by several percent.',
+                    'Crank angle tells the software where each pressure sample belongs in the engine cycle. It is also used to split the recording into individual 720° cycles. The TDC reference matters a lot: even a small angle error can move the heat-release curve and shift IMEP results.',
             },
             {
+                role: 'Recommended',
                 name: 'Engine Speed  N',
                 unit: 'rpm',
-                source: 'Derived from encoder edge timing (or a tacho channel)',
+                source: 'Derived from encoder timing or supplied as a tacho channel',
                 usage:
-                    'Converts between the time and angle domains, sets the mean piston speed, and lets per-cycle metrics be reported against operating point. Also used to flag speed drift across the captured cycles.',
+                    'Speed lets results be tied to an operating point. It also helps detect whether the run was steady enough for averaging, or whether the engine drifted during the captured cycles.',
             },
             {
+                role: 'Recommended',
                 name: 'Intake Manifold Pressure  p_man (MAP)',
                 unit: 'kPa / bar',
-                source: 'Absolute piezoresistive sensor in the intake plenum',
+                source: 'Absolute pressure sensor in the intake plenum',
                 usage:
-                    'Reference for pressure pegging — the piezo pressure signal is relative, so its absolute level is fixed by forcing p(θ) at intake BDC to equal the measured manifold pressure. Also records engine load for each operating point.',
+                    'Used as the reference for pressure pegging. Near intake BDC, cylinder pressure is expected to be close to manifold pressure, so the measured pressure trace can be shifted onto an absolute pressure scale.',
             },
             {
-                name: 'Charge Temp. / Lambda / Fuel Flow',
+                role: 'Optional',
+                name: 'Charge Temperature / Lambda / Fuel Flow',
                 unit: '°C · λ · kg/h',
-                source: 'Intake thermocouple, wideband O₂, fuel meter (optional)',
+                source: 'Intake temperature sensor, wideband O₂ sensor and fuel-flow meter',
                 usage:
-                    'Optional. Used only for the full first-law heat-release variant: they set the temperature-dependent ratio of specific heats γ(T) and the total injected fuel energy, which together yield combustion efficiency. Without them the analysis falls back to the simplified apparent-heat-release model.',
+                    'Used when a fuller first-law heat-release estimate is needed. These channels help estimate gas properties and fuel energy. If they are not available, the module can still report apparent heat release and combustion phasing from pressure and geometry.',
             },
         ],
 
-        // ── Geometry constants (metadata, not channels) ─────────────────────
+        geometryLabel: 'Metadata',
         geometryNote:
-            'Engine geometry is supplied once as metadata, not as a channel: bore B, stroke S, connecting-rod length l, compression ratio r_c, and the number of cylinders. These define the volume curve used everywhere below.',
+            'Engine geometry is entered once as metadata: bore, stroke, connecting-rod length, compression ratio and cylinder count. These values define the cylinder volume curve V(θ). They are not measured channels, but the calculations depend on them.',
 
-        // ── Formulas ────────────────────────────────────────────────────────
         formulas: [
             {
-                title: 'Cylinder volume from crank angle (slider-crank)',
+                title: 'Cylinder volume from crank angle',
                 expr: 'V(θ) = V_c + (V_d / 2) · [ R + 1 − cos θ − √(R² − sin²θ) ]',
-                where: 'V_d = (π/4)·B²·S  (swept volume);  V_c = V_d /(r_c − 1)  (clearance volume);  R = l /(S/2)  (rod ratio). Converts the encoder angle into the instantaneous volume that every p–V and work calculation needs.',
+                where:
+                    'This converts crank angle into cylinder volume. Bore and stroke define the swept volume, compression ratio defines the clearance volume, and rod length shapes the curve near TDC. Once V(θ) is known, pressure can be plotted against volume and integrated.',
             },
             {
-                title: 'Pressure pegging (absolute referencing)',
+                title: 'Pressure pegging',
                 expr: 'p_abs(θ) = p_meas(θ) + [ p_man − p_meas(θ_ref) ]',
-                where: 'θ_ref is taken near intake BDC where cylinder pressure ≈ manifold pressure. Removes the unknown DC offset of the piezo signal so absolute-pressure results (IMEP, HRR) are valid.',
+                where:
+                    'Piezo pressure traces often have an offset. Pegging shifts the measured trace so that it matches a known pressure reference, usually manifold pressure near intake BDC. This step is small in code but important in practice.',
             },
             {
-                title: 'Indicated work & IMEP',
+                title: 'Indicated work and IMEP',
                 expr: 'W_i = ∮ p dV     IMEP = W_i / V_d',
-                where: 'The closed p–V loop area is the indicated work per cycle; dividing by swept volume gives the load-normalised IMEP. Net IMEP integrates the full 720°; gross IMEP uses only the 360° compression + expansion loop.',
+                where:
+                    'The area inside the p-V loop is the indicated work for one cycle. Dividing by swept volume gives IMEP, a convenient load number that can be compared between cylinders, operating points and engines.',
             },
             {
-                title: 'Heat release rate — first law (single-zone)',
+                title: 'Heat-release rate',
                 expr: 'dQ_n/dθ = (γ /(γ−1))·p·(dV/dθ) + (1 /(γ−1))·V·(dp/dθ)',
-                where: 'γ is the ratio of specific heats (≈1.30–1.35, or γ(T) with the optional channels). Gives the apparent net heat-release rate — when and how fast fuel energy is released.',
+                where:
+                    'This single-zone first-law estimate uses pressure, volume and their crank-angle derivatives. It answers a practical question: at which crank angles is the fuel energy being released, and how quickly?',
             },
             {
-                title: 'Rassweiler–Withrow (fast alternative)',
+                title: 'Rassweiler-Withrow pressure-rise method',
                 expr: 'Δp_comb,i = p_i − p_(i−1)·(V_(i−1)/V_i)^n',
-                where: 'Separates the pressure rise due to combustion from that due to volume change using the polytropic exponent n. Summing Δp_comb gives a mass-fraction-burned estimate without a full energy balance — robust and computationally cheap.',
+                where:
+                    'This method separates pressure rise caused by combustion from pressure change caused by piston motion. It is useful when engineers need reliable burn phasing without building a full thermodynamic model for every comparison.',
             },
             {
-                title: 'Mass fraction burned & phasing angles',
+                title: 'Mass fraction burned and phasing angles',
                 expr: 'MFB(θ) = [Q(θ) − Q_soc] / [Q_eoc − Q_soc]',
-                where: 'Q(θ) = ∫ (dQ_n/dθ) dθ is cumulative heat release. CA10, CA50, CA90 are the crank angles where MFB = 0.10, 0.50, 0.90. Burn duration = CA90 − CA10; CA50 near the optimum after TDC indicates well-phased combustion.',
+                where:
+                    'The cumulative heat-release curve is scaled from 0 to 1. CA10, CA50 and CA90 are the crank angles where 10%, 50% and 90% of the burn has occurred. These values are easier to compare than a full curve.',
             },
             {
                 title: 'Knock intensity (MAPO)',
                 expr: 'MAPO = max | HP-filter( p(θ) ) |  ,  band ≈ 4–20 kHz',
-                where: 'The pressure trace is band-pass/high-pass filtered inside a knock window; the Maximum Amplitude of Pressure Oscillation quantifies knock. A cycle is flagged as knocking when MAPO exceeds the calibrated threshold.',
+                where:
+                    'Knock appears as high-frequency pressure oscillation after combustion starts. The module filters the pressure trace inside a knock window and reports the maximum oscillation amplitude for each cycle.',
             },
             {
-                title: 'Cyclic variation of IMEP',
+                title: 'Cycle-to-cycle variation',
                 expr: 'COV_IMEP = (σ_IMEP / μ_IMEP) · 100 %',
-                where: 'Standard deviation of IMEP over many cycles divided by its mean. A primary measure of combustion stability, drivability and lean-limit margin (typically kept below ~5–10%).',
+                where:
+                    'COV of IMEP shows how repeatable the cycles are. A low value means stable combustion; a rising value usually points to misfire tendency, lean-limit operation, mixture issues or unstable ignition.',
             },
             {
-                title: 'Polytropic exponent (compression / expansion)',
+                title: 'Polytropic exponent',
                 expr: 'log p = −n · log V + C   →   fit n',
-                where: 'A straight-line fit on the log p – log V plot over the compression and expansion strokes returns the polytropic exponents, which reveal heat transfer and cylinder sealing versus the ideal adiabatic value.',
+                where:
+                    'Fitting the compression and expansion strokes on a log p versus log V plot gives the polytropic exponent. It is a useful sanity check for heat transfer, leakage and pressure referencing.',
             },
         ],
 
-        // ── Processing pipeline ─────────────────────────────────────────────
+        assumptions: [
+            {
+                name: 'TDC alignment must be trustworthy',
+                desc:
+                    'The module can calculate very detailed results, but it cannot hide a bad TDC reference. A small angle offset can move CA50, heat-release timing and IMEP.',
+            },
+            {
+                name: 'Pressure pegging is an engineering approximation',
+                desc:
+                    'Using manifold pressure near intake BDC is common, but it assumes the selected reference point is physically reasonable for the engine and operating condition.',
+            },
+            {
+                name: 'Single-zone heat release is not a full CFD model',
+                desc:
+                    'It is designed for fast diagnostics and comparison between tests. It does not resolve spatial temperature, flame shape or local mixture differences inside the cylinder.',
+            },
+            {
+                name: 'Knock thresholds need calibration',
+                desc:
+                    'MAPO is useful, but the pass/fail threshold depends on engine family, sensor mounting, pressure ringing and the chosen knock window.',
+            },
+        ],
+
         pipeline: [
             {
-                step: 'Cycle segmentation',
+                step: 'Split the recording into cycles',
                 detail:
-                    'The encoder TDC marker splits the continuous pressure stream into individual 720° engine cycles and locates top dead centre for each.',
+                    'The crank-angle signal and TDC marker divide the pressure trace into individual 720° cycles. This gives the module one comparable pressure curve per cycle.',
             },
             {
-                step: 'Pressure conditioning & pegging',
+                step: 'Clean and reference the pressure trace',
                 detail:
-                    'Drift/offset removal, optional cycle averaging, then absolute pegging against manifold pressure at intake BDC.',
+                    'The signal is checked for offset, drift and obvious bad cycles, then pegged to an absolute pressure reference before work and heat-release calculations begin.',
             },
             {
-                step: 'Volume reconstruction',
+                step: 'Build the cylinder volume curve',
                 detail:
-                    'The slider-crank formula builds V(θ) from geometry so each pressure sample has a matching volume — the basis of the p–V loop.',
+                    'Engine geometry is used to calculate V(θ), so every pressure sample has a matching volume sample.',
             },
             {
-                step: 'Work & IMEP integration',
+                step: 'Calculate work and load metrics',
                 detail:
-                    'The p–V loop is integrated to indicated work, normalised to net and gross IMEP.',
+                    'The p-V loop is integrated to get indicated work. IMEP is then reported per cycle, per cylinder and as an average.',
             },
             {
-                step: 'Heat release & MFB',
+                step: 'Estimate heat release and burn phasing',
                 detail:
-                    'Differentiating pressure gives the heat-release rate; integrating it gives cumulative heat and the mass-fraction-burned curve, from which CA10/50/90 are read.',
+                    'The module calculates heat-release rate, cumulative heat release and MFB, then reads CA10, CA50 and CA90 from the burn curve.',
             },
             {
-                step: 'Knock & stability',
+                step: 'Check knock and stability',
                 detail:
-                    'Band-pass filtering yields MAPO and a knock flag per cycle; IMEP across all cycles yields the COV and cyclic-dispersion statistics.',
+                    'High-frequency pressure oscillations are summarized as MAPO. IMEP variation across cycles is summarized as COV and dispersion statistics.',
             },
         ],
 
-        // ── Outputs ─────────────────────────────────────────────────────────
+        exampleMetrics: [
+            {
+                value: 'CA50 = 8.2° aTDC',
+                label: 'Combustion phasing',
+                desc: 'Half of the fuel energy is released shortly after top dead centre, which is usually close to the efficient operating window.',
+            },
+            {
+                value: 'IMEP COV = 2.7%',
+                label: 'Cycle stability',
+                desc: 'The run is stable enough for normal comparison; a much higher value would point to cyclic variation or misfire tendency.',
+            },
+            {
+                value: 'MAPO = 0.35 bar',
+                label: 'Knock intensity',
+                desc: 'The value is interpreted against the calibrated knock threshold for that engine and sensor setup.',
+            },
+            {
+                value: 'pmax = 82 bar @ 12° aTDC',
+                label: 'Peak pressure',
+                desc: 'Peak pressure and its crank location help compare combustion timing and mechanical load between tests.',
+            },
+        ],
+
         outputs: [
-            { name: 'p–V diagram', desc: 'Linear and log-log pressure–volume loops per cycle and averaged.' },
-            { name: 'IMEP (net & gross)', desc: 'Per-cycle and mean indicated mean effective pressure.' },
-            { name: 'Heat release rate', desc: 'dQ/dθ curve — apparent (first-law) or Rassweiler–Withrow.' },
-            { name: 'Cumulative heat release', desc: 'Integrated Q(θ) over the combustion event.' },
-            { name: 'Mass fraction burned', desc: 'MFB curve with CA10 / CA50 / CA90 and burn durations.' },
-            { name: 'Peak pressure & rise rate', desc: 'p_max and its crank location, plus max (dp/dθ) roughness metric.' },
-            { name: 'Knock intensity', desc: 'MAPO per cycle, knock flag and knock frequency across the run.' },
-            { name: 'COV of IMEP', desc: 'Cycle-to-cycle stability and dispersion statistics.' },
-            { name: 'Polytropic exponents', desc: 'Compression and expansion n values versus the adiabatic ideal.' },
-            { name: 'Phasing summary table', desc: 'Per-cylinder combustion phasing and load metrics for reporting.' },
+            { name: 'p-V diagram', desc: 'Linear and log-log pressure-volume loops, per cycle and averaged.' },
+            { name: 'IMEP report', desc: 'Net and gross IMEP per cycle, per cylinder and across the selected run.' },
+            { name: 'Heat-release curves', desc: 'Heat-release rate and cumulative heat release from pressure-based calculation.' },
+            { name: 'MFB and phasing table', desc: 'CA10, CA50, CA90, burn duration and related combustion timing values.' },
+            { name: 'Peak-pressure summary', desc: 'pmax, crank angle of pmax and maximum pressure-rise rate.' },
+            { name: 'Knock report', desc: 'MAPO per cycle, knock flags and knock frequency over the run.' },
+            { name: 'Stability report', desc: 'IMEP COV and cycle-dispersion metrics.' },
+            { name: 'Polytropic fit', desc: 'Compression and expansion n values for pressure-reference and sealing checks.' },
         ],
     },
 
     tr: {
-        eyebrow: 'Termodinamik ve Akışkanlar · Derinlemesine',
+        eyebrow: 'Termodinamik ve Akışkanlar · Detaylı İnceleme',
         name: 'Gelişmiş Yanma Analizi',
         tagline:
-            'Krank açısına göre çözümlenmiş bir basınç izinden silindir-içi yanma teşhisi — AVL IndiCom sınıfı indikasyon sistemlerinin kullandığı iş akışının, çevrimdışı son-işleme için yeniden kurgulanmış hâli.',
+            'Silindir içi basınç izini, motor ekiplerinin yanma kalitesini değerlendirmek için kullandığı metriklere dönüştürür: IMEP, ısı salınımı, CA10/50/90, vuruntu ve çevrim kararlılığı.',
         intro:
-            'Bu modül, krank açısına karşı örneklenen tek bir yüksek-hızlı basınç sinyalinden her yanma çevriminin nasıl yandığını yeniden kurar. Ham indike basıncı; basınç–hacim çevrimine, ısı salınım hızına, yanan kütle kesri fazlama açılarına, vuruntu şiddetine ve çevrimden çevrime kararlılığa dönüştürür. Aşağıda tam olarak hangi test-verisi kanallarının analize girdiği, her aşamada uygulanan formüller, işlem sırası ve elde ettiğiniz çıktılar yer alıyor.',
+            'Motor geliştirme ekipleri için silindir içi basınç izi yalnızca bir grafik değildir. Her çevrimin nasıl emdiğini, sıkıştırdığını, yandığını ve genişlediğini gösteren yoğun bir ölçüm kaydıdır. MachinePulseAI, krank açısına bağlı bu basınç verisini doğrudan mühendislik sonuçlarına dönüştürür: basınç-hacim çevrimi, indike iş, ısı salınım zamanlaması, yanma süresi, vuruntu şiddeti ve çevrim kararlılığı. Böylece silindirler, çalışma noktaları ve kalibrasyon değişiklikleri aynı elle hazırlanmış tablo akışını her testte yeniden kurmadan karşılaştırılabilir.',
 
         channels: [
             {
+                role: 'Zorunlu',
                 name: 'Silindir Basıncı  p(θ)',
                 unit: 'bar / MPa',
-                source: 'Piezoelektrik dönüştürücü + yük yükselteci, silindir başına',
+                source: 'Piezoelektrik basınç sensörü ve yük yükselteci; genelde silindir başına bir kanal',
                 usage:
-                    'Çekirdek sinyal. Krank açısı tabanlı örneklenir (tipik 0,1–1,0° çözünürlük) ve tüm sonraki sonuçları sürer: p–V çevrimi, IMEP, ısı salınımı, tepe basıncı, vuruntu ve COV. Önce sürüklenme (drift) düzeltilir ve mutlak referansa sabitlenir (pegleme — bkz. hat adımı 2).',
+                    'Ana sinyal budur. Her motor çevriminde basıncın nasıl yükselip düştüğünü gösterir. Modül bu sinyalden p-V çevrimini, IMEP’i, ısı salınım hızını, tepe basıncını, vuruntu şiddetini ve çevrimden çevrime değişimi hesaplar. Piezo sensörler tek başına kusursuz bir mutlak basınç seviyesi vermediği için ana hesaplardan önce basınç izi koşullandırılır ve referansa oturtulur.',
             },
             {
-                name: 'Krank Açısı  θ  (mil enkoderi)',
+                role: 'Zorunlu',
+                name: 'Krank Açısı  θ',
                 unit: '° KA',
-                source: 'Optik enkoder (örn. 720 ppr) + çevrim başına bir ÜÖN işareti',
+                source: 'Mil enkoderi ve çevrim başına bir ÜÖN işareti',
                 usage:
-                    'Her basınç örneğinin bağlandığı açı tabanını sağlar, akışı ayrı 720°lik çevrimlere böler ve biyel-krank geometrisi aracılığıyla anlık silindir hacmi V(θ)’yi tanımlar. Doğru bir ÜÖN referansı kritiktir: ÜÖN’de 0,1°lik bir hata IMEP ve ısı-salınımı sonuçlarını yüzde birkaç kaydırır.',
+                    'Krank açısı, her basınç örneğinin motor çevriminde nereye denk geldiğini söyler. Ayrıca kayıt ayrı 720°lik çevrimlere bu bilgiyle bölünür. Üst ölü nokta referansı çok önemlidir: küçük bir açı hatası bile ısı salınım eğrisini, CA50’yi ve IMEP sonucunu kaydırabilir.',
             },
             {
+                role: 'Önerilir',
                 name: 'Motor Hızı  N',
                 unit: 'dev/dk',
-                source: 'Enkoder kenar zamanlamasından türetilir (veya takometre kanalı)',
+                source: 'Enkoder zamanlamasından türetilir veya takometre kanalı olarak verilir',
                 usage:
-                    'Zaman ve açı düzlemleri arasında dönüşüm yapar, ortalama piston hızını belirler ve çevrim-başına metriklerin çalışma noktasına göre raporlanmasını sağlar. Ayrıca kaydedilen çevrimler boyunca hız sürüklenmesini işaretlemekte kullanılır.',
+                    'Motor hızı, sonuçları belirli bir çalışma noktasına bağlamayı sağlar. Ayrıca kaydın ortalama almak için yeterince kararlı olup olmadığını ya da ölçüm sırasında hızın sürüklenip sürüklenmediğini görmeye yardımcı olur.',
             },
             {
+                role: 'Önerilir',
                 name: 'Emme Manifold Basıncı  p_man (MAP)',
                 unit: 'kPa / bar',
-                source: 'Emme plenumunda mutlak piezorezistif sensör',
+                source: 'Emme plenumunda mutlak basınç sensörü',
                 usage:
-                    'Basınç peglemesi için referans — piezo basınç sinyali görecelidir, bu yüzden mutlak seviyesi, emme AÖN’de p(θ)’yi ölçülen manifold basıncına eşitleyerek sabitlenir. Ayrıca her çalışma noktası için motor yükünü kaydeder.',
+                    'Basınç peglemesi için referans olarak kullanılır. Emme alt ölü noktası civarında silindir basıncının manifold basıncına yakın olduğu kabul edilir; böylece ölçülen basınç izi mutlak basınç ölçeğine taşınır.',
             },
             {
+                role: 'Opsiyonel',
                 name: 'Dolgu Sıcaklığı / Lambda / Yakıt Debisi',
-                unit: '°C · λ · kg/s',
-                source: 'Emme termokuplu, geniş-bant O₂, yakıt sayacı (opsiyonel)',
+                unit: '°C · λ · kg/h',
+                source: 'Emme sıcaklık sensörü, geniş bant O₂ sensörü ve yakıt debimetresi',
                 usage:
-                    'Opsiyonel. Yalnızca tam birinci-yasa ısı-salınımı varyantı için kullanılır: sıcaklığa bağlı özgül ısı oranı γ(T)’yi ve toplam enjekte edilen yakıt enerjisini belirler; bunlar birlikte yanma verimini verir. Bunlar olmadan analiz, basitleştirilmiş görünür-ısı-salınımı modeline döner.',
+                    'Daha kapsamlı bir birinci-yasa ısı salınımı hesabı gerektiğinde kullanılır. Bu kanallar gaz özelliklerini ve yakıt enerjisini daha iyi tahmin etmeye yardım eder. Yoksa modül yine de basınç ve geometriden görünür ısı salınımı ve yanma fazlaması raporlayabilir.',
             },
         ],
 
+        geometryLabel: 'Meta veri',
         geometryNote:
-            'Motor geometrisi kanal olarak değil, bir kez meta-veri olarak verilir: çap B, strok S, biyel kolu uzunluğu l, sıkıştırma oranı r_c ve silindir sayısı. Bunlar aşağıdaki her yerde kullanılan hacim eğrisini tanımlar.',
+            'Motor geometrisi bir kez meta veri olarak girilir: çap, strok, biyel kolu uzunluğu, sıkıştırma oranı ve silindir sayısı. Bu değerler silindir hacmi eğrisi V(θ)’yi tanımlar. Bunlar ölçüm kanalı değildir, ancak hesapların temelidir.',
 
         formulas: [
             {
-                title: 'Krank açısından silindir hacmi (biyel-krank)',
+                title: 'Krank açısından silindir hacmi',
                 expr: 'V(θ) = V_c + (V_d / 2) · [ R + 1 − cos θ − √(R² − sin²θ) ]',
-                where: 'V_d = (π/4)·B²·S  (süpürme hacmi);  V_c = V_d /(r_c − 1)  (ölü hacim);  R = l /(S/2)  (biyel oranı). Enkoder açısını, tüm p–V ve iş hesaplarının gerektirdiği anlık hacme çevirir.',
+                where:
+                    'Bu formül krank açısını silindir hacmine çevirir. Çap ve strok süpürme hacmini, sıkıştırma oranı ölü hacmi, biyel uzunluğu ise ÜÖN çevresindeki hacim eğrisinin şeklini belirler. V(θ) bilindiğinde basınç hacme karşı çizilebilir ve integre edilebilir.',
             },
             {
-                title: 'Basınç peglemesi (mutlak referanslama)',
+                title: 'Basınç peglemesi',
                 expr: 'p_abs(θ) = p_ölçülen(θ) + [ p_man − p_ölçülen(θ_ref) ]',
-                where: 'θ_ref, silindir basıncının ≈ manifold basıncına eşit olduğu emme AÖN yakınında alınır. Piezo sinyalinin bilinmeyen DC ofsetini kaldırır, böylece mutlak-basınç sonuçları (IMEP, HRR) geçerli olur.',
+                where:
+                    'Piezo basınç izlerinde çoğu zaman bir ofset bulunur. Pegleme, ölçülen izi bilinen bir basınç referansına taşır; pratikte bu referans çoğunlukla emme AÖN civarındaki manifold basıncıdır. Kodda küçük görünen bu adım, sonuçların güvenilirliği için kritiktir.',
             },
             {
-                title: 'İndike iş & IMEP',
+                title: 'İndike iş ve IMEP',
                 expr: 'W_i = ∮ p dV     IMEP = W_i / V_d',
-                where: 'Kapalı p–V çevriminin alanı çevrim başına indike iştir; süpürme hacmine bölmek yük-normalize IMEP’i verir. Net IMEP tam 720°yi, brüt IMEP yalnızca 360°lik sıkıştırma + genleşme çevrimini integre eder.',
+                where:
+                    'p-V çevriminin içinde kalan alan bir çevrimin indike işidir. Bu değeri süpürme hacmine böldüğümüzde IMEP elde edilir. IMEP; silindirler, çalışma noktaları ve farklı motorlar arasında karşılaştırması kolay bir yük metriğidir.',
             },
             {
-                title: 'Isı salınım hızı — birinci yasa (tek-bölge)',
+                title: 'Isı salınım hızı',
                 expr: 'dQ_n/dθ = (γ /(γ−1))·p·(dV/dθ) + (1 /(γ−1))·V·(dp/dθ)',
-                where: 'γ özgül ısı oranıdır (≈1,30–1,35 veya opsiyonel kanallarla γ(T)). Görünür net ısı-salınım hızını verir — yakıt enerjisinin ne zaman ve ne kadar hızlı açığa çıktığını.',
+                where:
+                    'Bu tek-bölge birinci-yasa yaklaşımı basıncı, hacmi ve bunların krank açısına göre değişimini kullanır. Pratik soruya cevap verir: yakıt enerjisi hangi krank açılarında ve ne kadar hızlı açığa çıkıyor?',
             },
             {
-                title: 'Rassweiler–Withrow (hızlı alternatif)',
+                title: 'Rassweiler-Withrow basınç-artışı yöntemi',
                 expr: 'Δp_yanma,i = p_i − p_(i−1)·(V_(i−1)/V_i)^n',
-                where: 'Yanmadan kaynaklanan basınç artışını, hacim değişiminden kaynaklanandan politropik üs n kullanarak ayırır. Δp_yanma’nın toplamı, tam bir enerji dengesi olmadan yanan-kütle-kesri tahmini verir — gürbüz ve hesaplama açısından ucuz.',
+                where:
+                    'Bu yöntem, basınç artışının yanmadan gelen kısmını piston hareketinden gelen hacim etkisinden ayırır. Her karşılaştırma için tam bir termodinamik model kurmadan güvenilir yanma fazlaması görmek gerektiğinde kullanışlıdır.',
             },
             {
-                title: 'Yanan kütle kesri & fazlama açıları',
+                title: 'Yanan kütle kesri ve fazlama açıları',
                 expr: 'MFB(θ) = [Q(θ) − Q_soc] / [Q_eoc − Q_soc]',
-                where: 'Q(θ) = ∫ (dQ_n/dθ) dθ birikimli ısı salınımıdır. CA10, CA50, CA90 sırasıyla MFB = 0,10, 0,50, 0,90 olan krank açılarıdır. Yanma süresi = CA90 − CA10; ÜÖN sonrası optimuma yakın bir CA50 iyi fazlanmış yanmaya işaret eder.',
+                where:
+                    'Birikimli ısı salınım eğrisi 0 ile 1 arasına ölçeklenir. CA10, CA50 ve CA90; yanmanın %10, %50 ve %90 seviyesine ulaştığı krank açılarıdır. Bütün eğriye bakmak yerine bu üç sayı çoğu karşılaştırma için daha okunaklıdır.',
             },
             {
                 title: 'Vuruntu şiddeti (MAPO)',
                 expr: 'MAPO = maks | YG-filtre( p(θ) ) |  ,  bant ≈ 4–20 kHz',
-                where: 'Basınç izi bir vuruntu penceresi içinde bant-geçiren/yüksek-geçiren filtrelenir; Maksimum Basınç Salınım Genliği vuruntuyu niceler. MAPO kalibre eşiği aştığında çevrim vuruntulu olarak işaretlenir.',
+                where:
+                    'Vuruntu, yanma başladıktan sonra basınç izinde yüksek frekanslı salınımlar olarak görünür. Modül, seçilen vuruntu penceresinde basınç izini filtreler ve her çevrim için en büyük salınım genliğini raporlar.',
             },
             {
-                title: 'IMEP’in çevrimsel değişimi',
-                expr: 'COV_IMEP = (σ_IMEP / μ_IMEP) · %100',
-                where: 'IMEP’in çok sayıda çevrim üzerindeki standart sapmasının ortalamasına oranı. Yanma kararlılığının, sürüş kalitesinin ve fakir-sınır marjının temel ölçüsü (tipik olarak ~%5–10 altında tutulur).',
+                title: 'Çevrimden çevrime değişim',
+                expr: 'COV_IMEP = (σ_IMEP / μ_IMEP) · 100 %',
+                where:
+                    'IMEP’in COV değeri, çevrimlerin birbirini ne kadar tekrar ettiğini gösterir. Düşük değer kararlı yanmaya işaret eder; yükselen değer genelde tekleme eğilimi, fakir sınır, karışım problemi veya kararsız ateşleme ile ilişkilidir.',
             },
             {
-                title: 'Politropik üs (sıkıştırma / genleşme)',
+                title: 'Politropik üs',
                 expr: 'log p = −n · log V + C   →   n uydur',
-                where: 'log p – log V grafiğinde sıkıştırma ve genleşme stroklarına doğru-çizgi uydurması politropik üsleri verir; bunlar ideal adyabatik değere kıyasla ısı transferini ve silindir sızdırmazlığını ortaya koyar.',
+                where:
+                    'Sıkıştırma ve genleşme strokları log p - log V grafiğinde uydurularak politropik üs bulunur. Bu değer; ısı transferi, kaçak ve basınç referansı için yararlı bir sağlama kontrolüdür.',
+            },
+        ],
+
+        assumptions: [
+            {
+                name: 'ÜÖN hizalaması güvenilir olmalı',
+                desc:
+                    'Modül ayrıntılı sonuçlar üretebilir, ancak hatalı bir ÜÖN referansını sihirli biçimde düzeltemez. Küçük bir açı ofseti CA50’yi, ısı salınım zamanlamasını ve IMEP’i kaydırabilir.',
+            },
+            {
+                name: 'Basınç peglemesi mühendislik yaklaşımıdır',
+                desc:
+                    'Emme AÖN civarında manifold basıncını referans almak yaygın bir yöntemdir; ancak seçilen noktanın ilgili motor ve çalışma koşulu için fiziksel olarak anlamlı olması gerekir.',
+            },
+            {
+                name: 'Tek-bölge ısı salınımı CFD değildir',
+                desc:
+                    'Bu yaklaşım hızlı teşhis ve testler arası karşılaştırma için tasarlanır. Silindir içindeki yerel sıcaklığı, alev şeklini veya karışım dağılımını çözmez.',
+            },
+            {
+                name: 'Vuruntu eşiği kalibrasyon ister',
+                desc:
+                    'MAPO yararlı bir metriktir, fakat geçti/kaldı eşiği motor ailesine, sensör montajına, basınç çınlamasına ve seçilen vuruntu penceresine bağlıdır.',
             },
         ],
 
         pipeline: [
             {
-                step: 'Çevrim bölütleme',
+                step: 'Kaydı çevrimlere böl',
                 detail:
-                    'Enkoder ÜÖN işareti, sürekli basınç akışını ayrı 720°lik motor çevrimlerine böler ve her biri için üst ölü noktayı bulur.',
+                    'Krank açısı ve ÜÖN işareti, basınç izini ayrı 720°lik çevrimlere ayırır. Böylece her çevrim için karşılaştırılabilir bir basınç eğrisi elde edilir.',
             },
             {
-                step: 'Basınç koşullama & pegleme',
+                step: 'Basınç izini temizle ve referansa oturt',
                 detail:
-                    'Sürüklenme/ofset kaldırma, opsiyonel çevrim ortalaması, ardından emme AÖN’de manifold basıncına karşı mutlak pegleme.',
+                    'Ofset, sürüklenme ve belirgin hatalı çevrimler kontrol edilir; ardından iş ve ısı salınımı hesabından önce iz mutlak basınç referansına taşınır.',
             },
             {
-                step: 'Hacim yeniden kurulumu',
+                step: 'Silindir hacmi eğrisini kur',
                 detail:
-                    'Biyel-krank formülü, geometriden V(θ)’yi kurar; böylece her basınç örneğinin eşleşen bir hacmi olur — p–V çevriminin temeli.',
+                    'Motor geometrisi kullanılarak V(θ) hesaplanır. Böylece her basınç örneğinin karşılık geldiği bir hacim örneği olur.',
             },
             {
-                step: 'İş & IMEP integrasyonu',
+                step: 'İş ve yük metriklerini hesapla',
                 detail:
-                    'p–V çevrimi indike işe integre edilir, net ve brüt IMEP’e normalize edilir.',
+                    'p-V çevrimi integre edilerek indike iş bulunur. IMEP çevrim başına, silindir başına ve seçilen kayıt ortalaması olarak raporlanır.',
             },
             {
-                step: 'Isı salınımı & MFB',
+                step: 'Isı salınımını ve yanma fazlamasını çıkar',
                 detail:
-                    'Basıncın türevi ısı-salınım hızını verir; integrali birikimli ısıyı ve yanan-kütle-kesri eğrisini verir; bunlardan CA10/50/90 okunur.',
+                    'Modül ısı salınım hızını, birikimli ısı salınımını ve MFB eğrisini hesaplar; ardından CA10, CA50 ve CA90 değerlerini bu eğriden okur.',
             },
             {
-                step: 'Vuruntu & kararlılık',
+                step: 'Vuruntu ve kararlılığı kontrol et',
                 detail:
-                    'Bant-geçiren filtreleme çevrim başına MAPO ve vuruntu işareti verir; tüm çevrimlerdeki IMEP ise COV ve çevrimsel-dağılım istatistiklerini verir.',
+                    'Yüksek frekanslı basınç salınımları MAPO olarak özetlenir. Çevrimler arasındaki IMEP değişimi ise COV ve dağılım istatistikleriyle verilir.',
+            },
+        ],
+
+        exampleMetrics: [
+            {
+                value: 'CA50 = 8,2° ÜÖN sonrası',
+                label: 'Yanma fazlaması',
+                desc: 'Yakıt enerjisinin yarısı üst ölü noktadan kısa süre sonra açığa çıkmıştır; bu genelde verimli çalışma penceresine yakındır.',
+            },
+            {
+                value: 'IMEP COV = %2,7',
+                label: 'Çevrim kararlılığı',
+                desc: 'Kayıt normal karşılaştırma için yeterince kararlıdır; çok daha yüksek değer çevrimsel değişim veya tekleme eğilimi gösterebilir.',
+            },
+            {
+                value: 'MAPO = 0,35 bar',
+                label: 'Vuruntu şiddeti',
+                desc: 'Bu değer, ilgili motor ve sensör kurulumu için kalibre edilmiş vuruntu eşiğine göre yorumlanır.',
+            },
+            {
+                value: 'pmax = 82 bar @ 12° ÜÖN sonrası',
+                label: 'Tepe basıncı',
+                desc: 'Tepe basınç ve krank konumu; yanma zamanlamasını ve mekanik yükü testler arasında karşılaştırmaya yardımcı olur.',
             },
         ],
 
         outputs: [
-            { name: 'p–V diyagramı', desc: 'Çevrim başına ve ortalanmış lineer ve log-log basınç–hacim çevrimleri.' },
-            { name: 'IMEP (net & brüt)', desc: 'Çevrim-başına ve ortalama indike ortalama etkin basınç.' },
-            { name: 'Isı salınım hızı', desc: 'dQ/dθ eğrisi — görünür (birinci-yasa) veya Rassweiler–Withrow.' },
-            { name: 'Birikimli ısı salınımı', desc: 'Yanma olayı boyunca integre edilmiş Q(θ).' },
-            { name: 'Yanan kütle kesri', desc: 'CA10 / CA50 / CA90 ve yanma süreleriyle MFB eğrisi.' },
-            { name: 'Tepe basıncı & artış hızı', desc: 'p_max ve krank konumu, ayrıca maks (dp/dθ) sertlik metriği.' },
-            { name: 'Vuruntu şiddeti', desc: 'Çevrim başına MAPO, vuruntu işareti ve koşu boyunca vuruntu frekansı.' },
-            { name: 'IMEP’in COV’u', desc: 'Çevrimden çevrime kararlılık ve dağılım istatistikleri.' },
-            { name: 'Politropik üsler', desc: 'Adyabatik ideale karşı sıkıştırma ve genleşme n değerleri.' },
-            { name: 'Fazlama özet tablosu', desc: 'Raporlama için silindir-başına yanma fazlaması ve yük metrikleri.' },
+            { name: 'p-V diyagramı', desc: 'Çevrim başına ve ortalama lineer/log-log basınç-hacim çevrimleri.' },
+            { name: 'IMEP raporu', desc: 'Net ve brüt IMEP; çevrim başına, silindir başına ve seçilen kayıt boyunca.' },
+            { name: 'Isı salınım eğrileri', desc: 'Basınca dayalı hesaptan ısı salınım hızı ve birikimli ısı salınımı.' },
+            { name: 'MFB ve fazlama tablosu', desc: 'CA10, CA50, CA90, yanma süresi ve ilgili yanma zamanlaması değerleri.' },
+            { name: 'Tepe basınç özeti', desc: 'pmax, pmax krank açısı ve maksimum basınç artış hızı.' },
+            { name: 'Vuruntu raporu', desc: 'Çevrim başına MAPO, vuruntu işaretleri ve kayıt boyunca vuruntu sıklığı.' },
+            { name: 'Kararlılık raporu', desc: 'IMEP COV ve çevrimsel dağılım metrikleri.' },
+            { name: 'Politropik uyum', desc: 'Basınç referansı ve sızdırmazlık kontrolleri için sıkıştırma/genleşme n değerleri.' },
         ],
     },
 }

@@ -14,11 +14,10 @@ const resources = {
                 "agenticArch": "Architecture",
                 "solutions": "Solutions",
                 "industries": "Industries",
-                "pricing": "Pricing",
+                "pricing": "Packages",
                 "resources": "Resources",
                 "knowledgeBase": "Knowledge Base",
-                "widgets": "Analysis Modules",
-                "contactSales": "Contact Sales",
+                "widgets": "Module Library",
                 "getDemo": "Get a Demo"
             },
             "home": {
@@ -28,7 +27,7 @@ const resources = {
                 "whySubtitle": "Three things legacy post-processing tools can't give you.",
                 "why": {
                     "ai": { "title": "Built-in AI Assistant", "desc": "Ask questions in plain language and get data-driven answers — no SQL, no scripting." },
-                    "scale": { "title": "Massive data, modest hardware", "desc": "Out-of-core engine analyzes 100 GB+ datasets on an 8 GB laptop without RAM errors." },
+                    "scale": { "title": "Massive data, modest hardware", "desc": "Out-of-core engine analyzes 200 GB+ datasets on an 8 GB laptop without RAM errors." },
                     "secure": { "title": "Fully offline & secure", "desc": "Runs air-gapped with no cloud dependency — built for classified and sensitive environments." }
                 },
                 "problem": {
@@ -46,9 +45,9 @@ const resources = {
                 "caption": "Early prototype of the main workspace — node-graph pipeline, widget palette, output log and AI assistant."
             },
             "widgets": {
-                "eyebrow": "Module Library",
-                "title": "Every Widget, Explained",
-                "subtitle": "{{count}}+ analysis modules — from data import and signal filtering to advanced vibration, acoustic and engineering diagnostics. Click any card to learn the theory behind it.",
+                "eyebrow": "Technical Library",
+                "title": "Engineering Module Library",
+                "subtitle": "{{count}}+ modules with theory, input channels, formulas, processing steps and produced outputs — from data import and signal filtering to vibration, acoustic and engineering diagnostics.",
                 "searchPlaceholder": "Search widgets…",
                 "allCategories": "All",
                 "learnMore": "Learn the theory",
@@ -63,20 +62,22 @@ const resources = {
                     "channelsTitle": "Input Channels",
                     "channelsSubtitle": "Exactly which test-data channels the analysis consumes, and how each one is used.",
                     "formulasTitle": "Core Formulas",
+                    "assumptionsTitle": "Engineering Assumptions",
                     "pipelineTitle": "Processing Pipeline",
+                    "examplesTitle": "Example Result Readout",
                     "stepsTitle": "How It Works",
                     "outputsTitle": "Outputs Produced"
                 }
             },
             "hero": {
-                "badge": "🚀 Now in Beta",
-                "title1": "Engineering Data,",
-                "title2": "Reborn.",
-                "subtitle": "High-performance post-processing analysis platform for vibration, acoustic & test data — handle massive datasets with minimal RAM, maximum insight.",
+                "badge": "Early Access Open",
+                "title1": "Engineering Analysis",
+                "title2": "for Large Measurement Data",
+                "subtitle": "Import CSV, TDMS, MDF/MF4, Parquet and MPAI test data into one workspace; analyze 200 GB+ files with low memory use across vibration, acoustics, power and machine diagnostics.",
                 "ctaPrimary": "Request a Demo",
-                "ctaSecondary": "See It Live",
+                "ctaSecondary": "See the App",
                 "stats": {
-                    "beta": "Beta Access",
+                    "files": "200 GB+ files",
                     "os": "Windows 10/11",
                     "ram": "Runs on 8 GB RAM"
                 }
@@ -234,11 +235,10 @@ const resources = {
                 "agenticArch": "Mimari",
                 "solutions": "Çözümler",
                 "industries": "Sektörler",
-                "pricing": "Fiyatlandırma",
+                "pricing": "Paketler",
                 "resources": "Kaynaklar",
                 "knowledgeBase": "Bilgi Bankası",
-                "widgets": "Analiz Modülleri",
-                "contactSales": "Satışla İletişim",
+                "widgets": "Modül Kütüphanesi",
                 "getDemo": "Demo İste"
             },
             "home": {
@@ -248,7 +248,7 @@ const resources = {
                 "whySubtitle": "Eski son-işleme araçlarının veremediği üç şey.",
                 "why": {
                     "ai": { "title": "Yerleşik AI Asistanı", "desc": "Sorularınızı sade bir dille sorun, veriye dayalı yanıtlar alın — SQL yok, kod yok." },
-                    "scale": { "title": "Devasa veri, mütevazı donanım", "desc": "Bellek-dışı motor, 100 GB+ veri setlerini 8 GB dizüstünde RAM hatası olmadan analiz eder." },
+                    "scale": { "title": "Devasa veri, mütevazı donanım", "desc": "Bellek-dışı motor, 200 GB+ veri setlerini 8 GB dizüstünde RAM hatası olmadan analiz eder." },
                     "secure": { "title": "Tamamen çevrimdışı ve güvenli", "desc": "Bulut bağımlılığı olmadan hava-boşluklu çalışır — gizli ve hassas ortamlar için tasarlandı." }
                 },
                 "problem": {
@@ -266,9 +266,9 @@ const resources = {
                 "caption": "Ana çalışma alanının erken prototipi — düğüm-grafiği hattı, widget paleti, çıktı kaydı ve yapay zeka asistanı."
             },
             "widgets": {
-                "eyebrow": "Modül Kütüphanesi",
-                "title": "Her Widget, Açıklamasıyla",
-                "subtitle": "{{count}}+ analiz modülü — veri içe aktarmadan sinyal filtrelemeye, gelişmiş titreşim, akustik ve mühendislik tanılamasına kadar. Arkasındaki teoriyi öğrenmek için herhangi bir karta tıklayın.",
+                "eyebrow": "Teknik Kütüphane",
+                "title": "Mühendislik Modül Kütüphanesi",
+                "subtitle": "{{count}}+ modül; teori, giriş kanalları, formüller, işlem adımları ve üretilen çıktılarla açıklanır — veri içe aktarmadan sinyal filtrelemeye, titreşim, akustik ve mühendislik tanılamasına kadar.",
                 "searchPlaceholder": "Widget ara…",
                 "allCategories": "Tümü",
                 "learnMore": "Teoriyi öğren",
@@ -283,20 +283,22 @@ const resources = {
                     "channelsTitle": "Giriş Kanalları",
                     "channelsSubtitle": "Analizin tam olarak hangi test-verisi kanallarını kullandığı ve her birinin nasıl kullanıldığı.",
                     "formulasTitle": "Temel Formüller",
+                    "assumptionsTitle": "Mühendislik Varsayımları",
                     "pipelineTitle": "İşlem Hattı",
+                    "examplesTitle": "Örnek Sonuç Okuması",
                     "stepsTitle": "Nasıl Çalışır",
                     "outputsTitle": "Üretilen Çıktılar"
                 }
             },
             "hero": {
-                "badge": "🚀 Şimdi Beta'da",
-                "title1": "Mühendislik Verisi,",
-                "title2": "Yeniden Doğdu.",
-                "subtitle": "Titreşim, akustik ve test verileri için yüksek performanslı son işleme (post-processing) analiz platformu — devasa veri setlerini minimum RAM ile maksimum içgörüyle yönetin.",
+                "badge": "Erken Erişim Açık",
+                "title1": "Büyük Ölçüm Verileri İçin",
+                "title2": "Mühendislik Analiz Platformu",
+                "subtitle": "CSV, TDMS, MDF/MF4, Parquet ve MPAI test verilerini tek çalışma alanında içe aktarın; 200 GB+ dosyaları düşük bellek kullanımıyla titreşim, akustik, güç ve makine tanılama iş akışlarında analiz edin.",
                 "ctaPrimary": "Demo İste",
-                "ctaSecondary": "Canlı İncele",
+                "ctaSecondary": "Uygulamayı Gör",
                 "stats": {
-                    "beta": "Beta Erişimi",
+                    "files": "200 GB+ dosya",
                     "os": "Windows 10/11",
                     "ram": "8 GB RAM'de Çalışır"
                 }

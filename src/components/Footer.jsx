@@ -7,8 +7,8 @@ import { useContactModal } from '../context/ContactModalContext.jsx'
 const FOOTER_LINKS = {
     Product: [
         { label: 'Overview', route: '/product' },
-        { label: 'Analysis Modules', route: '/widgets' },
-        { label: 'Pricing', route: '/pricing' },
+        { label: 'Module Library', route: '/widgets' },
+        { label: 'Packages', route: '/pricing' },
         { label: 'System Requirements', href: null, soon: true },
         { label: 'Changelog', href: null, soon: true },
     ],

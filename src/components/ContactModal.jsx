@@ -3,8 +3,9 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 
 // ─── Contact / Demo Request Modal ──────────────────────────────────────────────
-// TODO: Replace YOUR_FORMSPREE_ID with your actual Formspree endpoint ID or use another service
-const FORM_ENDPOINT = 'https://formspree.io/f/YOUR_FORMSPREE_ID'
+// Set VITE_CONTACT_FORM_ENDPOINT in production to post to Formspree/CRM/etc.
+const FORM_ENDPOINT = import.meta.env.VITE_CONTACT_FORM_ENDPOINT || ''
+const CONTACT_EMAIL = import.meta.env.VITE_CONTACT_EMAIL || 'hello@machinepulseai.com.tr'
 
 export default function ContactModal({ open, onClose }) {
     const { t } = useTranslation()
@@ -19,6 +20,16 @@ export default function ContactModal({ open, onClose }) {
         e.preventDefault()
         setStatus('loading')
 
+        if (!FORM_ENDPOINT) {
+            const subject = encodeURIComponent(`MachinePulseAI demo request - ${form.company}`)
+            const body = encodeURIComponent(
+                `Name: ${form.name}\nCompany: ${form.company}\nEmail: ${form.email}\n\nMessage:\n${form.message}`
+            )
+            window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`
+            setStatus('idle')
+            return
+        }
+
         try {
             const response = await fetch(FORM_ENDPOINT, {
                 method: 'POST',
@@ -31,20 +42,10 @@ export default function ContactModal({ open, onClose }) {
             if (response.ok) {
                 setStatus('success')
             } else {
-                // If endpoint is not setup, fake success for demo purposes
-                if (FORM_ENDPOINT.includes('YOUR_FORMSPREE_ID')) {
-                    setTimeout(() => setStatus('success'), 1000)
-                } else {
-                    setStatus('error')
-                }
-            }
-        } catch (error) {
-            // Fake success for demo if endpoint not setup
-            if (FORM_ENDPOINT.includes('YOUR_FORMSPREE_ID')) {
-                setTimeout(() => setStatus('success'), 1000)
-            } else {
                 setStatus('error')
             }
+        } catch (error) {
+            setStatus('error')
         }
     }
 

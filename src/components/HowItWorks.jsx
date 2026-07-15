@@ -5,38 +5,74 @@ import { useTranslation } from 'react-i18next'
 const STEPS = [
     {
         number: '01',
-        tag: 'Import',
-        title: 'Load Any Dataset',
-        description:
-            'Drag and drop your sensor data files — CSV, MPAI, or raw DAQ output. The out-of-core engine handles 100 GB+ files without RAM errors, even on standard hardware.',
-        detail: 'Supports: CSV, MPAI, HDF5, MDF4, DIAdem TDM',
+        en: {
+            tag: 'Import',
+            title: 'Convert to MPAI',
+            description:
+                'Bring in measurement files from common engineering formats. MachinePulseAI converts them into the native MPAI container for fast, repeatable analysis.',
+            detail: 'CSV · Parquet · Excel · TDMS · MDF/MF4 · MPAI',
+        },
+        tr: {
+            tag: 'İçe Aktar',
+            title: 'MPAI Formatına Çevir',
+            description:
+                'Yaygın mühendislik ölçüm formatlarındaki dosyaları içe aktarın. MachinePulseAI bunları hızlı ve tekrarlanabilir analiz için yerel MPAI konteynerine dönüştürür.',
+            detail: 'CSV · Parquet · Excel · TDMS · MDF/MF4 · MPAI',
+        },
         color: '#00f5ff',
     },
     {
         number: '02',
-        tag: 'Analyze',
-        title: 'AI-Powered Processing',
-        description:
-            'Tell the Smart Engineering Assistant what you need — in plain English. The ML+LLM engine automatically runs FFT, filtering, anomaly detection, and statistical analysis.',
-        detail: 'FFT · Vibration · Pressure · Temperature · RPM · Coherence',
+        en: {
+            tag: 'Analyze',
+            title: 'Run Engineering Modules',
+            description:
+                'Use focused modules for filtering, FFT, vibration, acoustics, power, combustion and diagnostics while the data engine handles 200 GB+ datasets.',
+            detail: 'FFT · Vibration · Acoustics · Power · Combustion',
+        },
+        tr: {
+            tag: 'Analiz Et',
+            title: 'Mühendislik Modüllerini Çalıştır',
+            description:
+                'Filtreleme, FFT, titreşim, akustik, güç, yanma ve tanılama modüllerini kullanın; 200 GB+ veri setlerini güçlü veri motoru işler.',
+            detail: 'FFT · Titreşim · Akustik · Güç · Yanma',
+        },
         color: '#3b82f6',
     },
     {
         number: '03',
-        tag: 'Visualize',
-        title: 'Multi-Axis Live Charts',
-        description:
-            'Simultaneously compare dozens of sensor channels. Synchronized time-domain, frequency-domain, and waterfall plots update in real time at 60 FPS.',
-        detail: 'Time series · FFT · Waterfall · Scatter · Histogram',
+        en: {
+            tag: 'Visualize',
+            title: 'Explore Signals Interactively',
+            description:
+                'Compare many channels through synchronized time, frequency, waterfall, scatter and distribution views designed for dense measurement data.',
+            detail: 'Time series · Spectrum · Waterfall · Scatter · Histogram',
+        },
+        tr: {
+            tag: 'Görselleştir',
+            title: 'Sinyalleri Etkileşimli İncele',
+            description:
+                'Yoğun ölçüm verisi için tasarlanmış senkronize zaman, frekans, waterfall, saçılım ve dağılım görünümleriyle çok sayıda kanalı karşılaştırın.',
+            detail: 'Zaman serisi · Spektrum · Waterfall · Saçılım · Histogram',
+        },
         color: '#a855f7',
     },
     {
         number: '04',
-        tag: 'Report',
-        title: 'One-Click Reports',
-        description:
-            'Generate professional PDF/HTML reports in minutes — not days. The RAG-powered assistant references past reports and technical documents to draft findings automatically.',
-        detail: 'Was: 2–3 days → Now: minutes',
+        en: {
+            tag: 'Decide',
+            title: 'Turn Results Into Decisions',
+            description:
+                'Use the AI assistant and engineering context to summarize findings, compare runs and prepare the outputs your team needs for review.',
+            detail: 'Findings · Comparisons · Review-ready outputs',
+        },
+        tr: {
+            tag: 'Karar Ver',
+            title: 'Sonuçları Karara Dönüştür',
+            description:
+                'Bulguları özetlemek, test koşularını karşılaştırmak ve ekibin incelemesine hazır çıktılar hazırlamak için AI asistanı ve mühendislik bağlamını kullanın.',
+            detail: 'Bulgular · Karşılaştırmalar · İncelemeye hazır çıktılar',
+        },
         color: '#f59e0b',
     },
 ]
@@ -51,7 +87,8 @@ const itemVariants = {
 }
 
 export default function HowItWorks() {
-    const { t } = useTranslation()
+    const { t, i18n } = useTranslation()
+    const lang = i18n.language?.startsWith('tr') ? 'tr' : 'en'
     return (
         <section id="how-it-works" className="relative py-10 px-6 overflow-hidden">
             <div
@@ -92,6 +129,9 @@ export default function HowItWorks() {
                     viewport={{ once: true, margin: '-60px' }}
                 >
                     {STEPS.map((step, index) => (
+                        (() => {
+                            const content = step[lang] || step.en
+                            return (
                         <motion.div
                             key={step.number}
                             variants={itemVariants}
@@ -125,22 +165,22 @@ export default function HowItWorks() {
                                         className="text-[10px] font-semibold tracking-widest uppercase px-2.5 py-1 rounded-full"
                                         style={{ color: step.color, background: `${step.color}15`, border: `1px solid ${step.color}25` }}
                                     >
-                                        {step.tag}
+                                        {content.tag}
                                     </span>
                                 </div>
 
                                 {/* Title */}
-                                <h3 className="text-base font-semibold text-white leading-snug">{step.title}</h3>
+                                <h3 className="text-base font-semibold text-white leading-snug">{content.title}</h3>
 
                                 {/* Description */}
-                                <p className="text-sm text-slate-400 leading-relaxed flex-1">{step.description}</p>
+                                <p className="text-sm text-slate-400 leading-relaxed flex-1">{content.description}</p>
 
                                 {/* Detail badge */}
                                 <div
                                     className="text-[11px] font-medium rounded-lg px-3 py-2 leading-relaxed"
                                     style={{ background: `${step.color}08`, color: `${step.color}90`, border: `1px solid ${step.color}15` }}
                                 >
-                                    {step.detail}
+                                    {content.detail}
                                 </div>
 
                                 {/* Hover glow overlay */}
@@ -151,6 +191,8 @@ export default function HowItWorks() {
                                 />
                             </div>
                         </motion.div>
+                            )
+                        })()
                     ))}
                 </motion.div>
             </div>

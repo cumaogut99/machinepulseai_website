@@ -14,9 +14,16 @@ const AGENT_CAPABILITIES = [
                     d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
             </svg>
         ),
-        title: 'Natural Language Commands',
-        description:
-            'Tell the assistant what to analyze in plain English. "Show me the FFT of channel 3 between 1kHz and 10kHz" executes instantly — no coding required.',
+        en: {
+            title: 'Natural Language Commands',
+            description:
+                'Tell the assistant what to analyze in plain English. It helps turn an engineering question into the right sequence of analysis actions.',
+        },
+        tr: {
+            title: 'Doğal Dil Komutları',
+            description:
+                'Asistana neyi analiz etmek istediğinizi doğal dille söyleyin. Mühendislik sorusunu doğru analiz adımlarına dönüştürmeye yardım eder.',
+        },
         color: '#00f5ff',
     },
     {
@@ -27,9 +34,16 @@ const AGENT_CAPABILITIES = [
                     d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
             </svg>
         ),
-        title: 'Corporate Memory (RAG)',
-        description:
-            'The assistant learns from your past test reports and technical documents. It acts as a digital mentor — referencing institutional knowledge to guide engineers through anomalies.',
+        en: {
+            title: 'Corporate Memory (RAG)',
+            description:
+                'The assistant can reference past reports and technical documents, helping teams reuse institutional knowledge instead of starting from zero.',
+        },
+        tr: {
+            title: 'Kurumsal Hafıza (RAG)',
+            description:
+                'Asistan geçmiş raporları ve teknik dokümanları referans alabilir; ekiplerin kurumsal bilgiyi sıfırdan başlamadan kullanmasına yardım eder.',
+        },
         color: '#3b82f6',
     },
     {
@@ -40,9 +54,16 @@ const AGENT_CAPABILITIES = [
                     d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
             </svg>
         ),
-        title: 'Anomaly Detection (ML)',
-        description:
-            'Machine learning models trained on industry-standard datasets (CWRU, NASA Bearing) detect bearing faults, imbalance, and potential damage — validated at >0.95 F1-score.',
+        en: {
+            title: 'Anomaly Detection (ML)',
+            description:
+                'Machine learning modules support fault detection, anomaly diagnosis and predictive maintenance workflows for rotating machinery and test data.',
+        },
+        tr: {
+            title: 'Anomali Tespiti (ML)',
+            description:
+                'Makine öğrenmesi modülleri; döner makineler ve test verileri için arıza tespiti, anomali tanılama ve kestirimci bakım iş akışlarını destekler.',
+        },
         color: '#a855f7',
     },
     {
@@ -53,9 +74,16 @@ const AGENT_CAPABILITIES = [
                     d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
             </svg>
         ),
-        title: '100% Offline & Secure',
-        description:
-            'All AI processing runs locally — no cloud, no data leaving your network. Designed for defense, aerospace, and automotive organizations where data security is non-negotiable.',
+        en: {
+            title: 'Offline & Secure',
+            description:
+                'The platform is designed for local, controlled deployments where sensitive engineering data should stay inside the organization.',
+        },
+        tr: {
+            title: 'Çevrimdışı ve Güvenli',
+            description:
+                'Platform, hassas mühendislik verisinin kurum içinde kalması gereken yerel ve kontrollü kurulumlar için tasarlanır.',
+        },
         color: '#22c55e',
     },
     {
@@ -66,9 +94,16 @@ const AGENT_CAPABILITIES = [
                     d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
             </svg>
         ),
-        title: 'Open Python API',
-        description:
-            'Unlike black-box competitors, MachinePulseAI exposes a full Python API. Add your own algorithms, custom filters, and proprietary ML models directly into the analysis pipeline.',
+        en: {
+            title: 'Extensible Workflows',
+            description:
+                'Engineering teams can extend workflows with custom algorithms, filters and internal models while keeping the core analysis pipeline consistent.',
+        },
+        tr: {
+            title: 'Genişletilebilir İş Akışları',
+            description:
+                'Mühendislik ekipleri özel algoritmalar, filtreler ve kurum içi modeller ekleyebilir; temel analiz hattı tutarlı kalır.',
+        },
         color: '#f59e0b',
     },
     {
@@ -79,19 +114,65 @@ const AGENT_CAPABILITIES = [
                     d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>
         ),
-        title: 'Automated Reporting',
-        description:
-            'Generate professional engineering reports in PDF or HTML. The assistant cites relevant past findings and standards — turning 2–3 day reporting cycles into minutes.',
+        en: {
+            title: 'Review-Ready Outputs',
+            description:
+                'Summaries, comparisons and exportable results help engineers move from signal inspection to a decision-ready review faster.',
+        },
+        tr: {
+            title: 'İncelemeye Hazır Çıktılar',
+            description:
+                'Özetler, karşılaştırmalar ve dışa aktarılabilir sonuçlar; mühendislerin sinyal incelemesinden karar hazırlığına daha hızlı geçmesine yardım eder.',
+        },
         color: '#ec4899',
     },
 ]
 
 // ─── Architecture Diagram Labels ────────────────────────────────────────────
 const ARCH_LAYERS = [
-    { label: 'User Interface Layer', sublabel: 'PySide6 · Qt Widgets · Python API', color: '#00f5ff' },
-    { label: 'AI Agent Layer', sublabel: 'LLM · RAG · Anomaly Detection (ML)', color: '#3b82f6' },
-    { label: 'Data Engine Layer', sublabel: 'Apache Arrow · Polars · LOD · LTTB', color: '#a855f7' },
-    { label: 'C++ Performance Core', sublabel: 'QCustomPlot · OpenGL · Signal Processing', color: '#ec4899' },
+    {
+        en: { label: 'Application Workspace', sublabel: 'Node canvas · Widgets · Engineering workflow' },
+        tr: { label: 'Uygulama Çalışma Alanı', sublabel: 'Node canvas · Widgetlar · Mühendislik iş akışı' },
+        color: '#00f5ff',
+    },
+    {
+        en: { label: 'AI Assistant Layer', sublabel: 'Natural language · RAG · ML diagnostics' },
+        tr: { label: 'AI Asistan Katmanı', sublabel: 'Doğal dil · RAG · ML tanılama' },
+        color: '#3b82f6',
+    },
+    {
+        en: { label: 'MPAI Data Engine', sublabel: 'Multi-format import · 200 GB+ datasets · Min-Max LOD' },
+        tr: { label: 'MPAI Veri Motoru', sublabel: 'Çok formatlı içe aktarma · 200 GB+ veri · Min-Max LOD' },
+        color: '#a855f7',
+    },
+    {
+        en: { label: 'Performance Core', sublabel: 'C++ processing · Qt rendering · Signal analysis' },
+        tr: { label: 'Performans Çekirdeği', sublabel: 'C++ işleme · Qt çizim · Sinyal analizi' },
+        color: '#ec4899',
+    },
+]
+
+const COMPARISON_ROWS = [
+    {
+        en: { label: 'Large measurement files', ours: 'Native 200 GB+ path', typical: 'Often split or preprocessed' },
+        tr: { label: 'Büyük ölçüm dosyaları', ours: 'Yerel 200 GB+ akış', typical: 'Çoğu zaman bölme/ön işlem gerekir' },
+    },
+    {
+        en: { label: 'Engineering modules', ours: 'One connected workspace', typical: 'Separate tools and exports' },
+        tr: { label: 'Mühendislik modülleri', ours: 'Tek bağlı çalışma alanı', typical: 'Ayrı araçlar ve dışa aktarımlar' },
+    },
+    {
+        en: { label: 'AI assistance', ours: 'Built into the analysis flow', typical: 'Usually outside the toolchain' },
+        tr: { label: 'AI desteği', ours: 'Analiz akışının içinde', typical: 'Genelde araç zincirinin dışında' },
+    },
+    {
+        en: { label: 'Sensitive data', ours: 'Designed for local deployment', typical: 'Often cloud or file handoff' },
+        tr: { label: 'Hassas veri', ours: 'Yerel kurulum için tasarlanır', typical: 'Sıklıkla bulut veya dosya aktarımı' },
+    },
+    {
+        en: { label: 'Traceability', ours: 'MPAI-centered workflow', typical: 'Scattered intermediate files' },
+        tr: { label: 'İzlenebilirlik', ours: 'MPAI merkezli iş akışı', typical: 'Dağınık ara dosyalar' },
+    },
 ]
 
 const containerVariants = {
@@ -104,7 +185,8 @@ const cardVariants = {
 }
 
 export default function AgenticArch() {
-    const { t } = useTranslation()
+    const { t, i18n } = useTranslation()
+    const lang = i18n.language?.startsWith('tr') ? 'tr' : 'en'
     return (
         <section id="agentic-architecture" className="relative py-10 px-6 overflow-hidden">
             {/* Background glow */}
@@ -149,6 +231,9 @@ export default function AgenticArch() {
                         viewport={{ once: true, margin: '-60px' }}
                     >
                         {AGENT_CAPABILITIES.map((cap) => (
+                            (() => {
+                                const content = cap[lang] || cap.en
+                                return (
                             <motion.div
                                 key={cap.id}
                                 variants={cardVariants}
@@ -165,9 +250,11 @@ export default function AgenticArch() {
                                 >
                                     {cap.icon}
                                 </div>
-                                <h3 className="text-sm font-semibold text-white leading-snug">{cap.title}</h3>
-                                <p className="text-xs text-slate-400 leading-relaxed">{cap.description}</p>
+                                <h3 className="text-sm font-semibold text-white leading-snug">{content.title}</h3>
+                                <p className="text-xs text-slate-400 leading-relaxed">{content.description}</p>
                             </motion.div>
+                                )
+                            })()
                         ))}
                     </motion.div>
 
@@ -180,13 +267,16 @@ export default function AgenticArch() {
                         className="flex flex-col gap-3"
                     >
                         <p className="text-xs font-semibold text-slate-500 tracking-widest uppercase mb-2">
-                            System Architecture
+                            {lang === 'tr' ? 'Sistem Mimarisi' : 'System Architecture'}
                         </p>
 
                         {/* Stack layers */}
                         {ARCH_LAYERS.map((layer, i) => (
+                            (() => {
+                                const content = layer[lang] || layer.en
+                                return (
                             <motion.div
-                                key={layer.label}
+                                key={content.label}
                                 initial={{ opacity: 0, x: 20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
@@ -200,8 +290,8 @@ export default function AgenticArch() {
                                 {/* Left indicator */}
                                 <div className="w-1 h-8 rounded-full flex-shrink-0" style={{ background: layer.color }} />
                                 <div className="flex-1">
-                                    <div className="text-sm font-semibold text-white">{layer.label}</div>
-                                    <div className="text-xs text-slate-500 mt-0.5">{layer.sublabel}</div>
+                                    <div className="text-sm font-semibold text-white">{content.label}</div>
+                                    <div className="text-xs text-slate-500 mt-0.5">{content.sublabel}</div>
                                 </div>
                                 {/* Layer number */}
                                 <div
@@ -211,6 +301,8 @@ export default function AgenticArch() {
                                     L{i + 1}
                                 </div>
                             </motion.div>
+                                )
+                            })()
                         ))}
 
                         {/* Connector arrows */}
@@ -222,25 +314,24 @@ export default function AgenticArch() {
                             </div>
                         ))}
 
-                        {/* Comparison callout */}
+                        {/* Workflow comparison callout */}
                         <div className="mt-6 rounded-xl border border-white/5 bg-white/[0.02] p-5">
-                            <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-3">vs. Competitors</p>
+                            <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-3">
+                                {lang === 'tr' ? 'İş Akışı Farkı' : 'Workflow Difference'}
+                            </p>
                             <div className="space-y-2">
-                                {[
-                                    { label: 'Natural Language Interface', us: true, them: false },
-                                    { label: 'RAG Corporate Memory', us: true, them: false },
-                                    { label: 'Offline AI (100% Secure)', us: true, them: false },
-                                    { label: '100 GB+ File Support', us: true, them: false },
-                                    { label: 'Open Python API', us: true, them: false },
-                                ].map((row) => (
-                                    <div key={row.label} className="flex items-center justify-between gap-4 text-xs">
-                                        <span className="text-slate-400">{row.label}</span>
+                                {COMPARISON_ROWS.map((row) => {
+                                    const content = row[lang] || row.en
+                                    return (
+                                    <div key={content.label} className="flex items-center justify-between gap-4 text-xs">
+                                        <span className="text-slate-400">{content.label}</span>
                                         <div className="flex items-center gap-4">
-                                            <span className="text-green-400 font-semibold w-20 text-right">MachinePulseAI ✓</span>
-                                            <span className="text-slate-600 w-20 text-right">Others ✗</span>
+                                            <span className="text-green-400 font-semibold w-28 text-right">{content.ours}</span>
+                                            <span className="text-slate-600 w-28 text-right">{content.typical}</span>
                                         </div>
                                     </div>
-                                ))}
+                                    )
+                                })}
                             </div>
                         </div>
                     </motion.div>

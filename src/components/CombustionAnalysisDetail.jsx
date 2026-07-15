@@ -119,14 +119,23 @@ export default function CombustionAnalysisDetail() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {d.channels.map((ch, i) => (
                             <div key={i} className="bg-white/[0.03] border border-white/8 rounded-2xl p-5 flex flex-col gap-2">
-                                <div className="flex items-start justify-between gap-3">
+                                <div className="flex flex-col gap-2">
                                     <h3 className="text-base font-semibold text-white leading-snug font-mono">{ch.name}</h3>
-                                    <span
-                                        className="text-[11px] font-medium px-2 py-0.5 rounded-md whitespace-nowrap flex-shrink-0"
-                                        style={{ color: ACCENT, background: `${ACCENT}14`, border: `1px solid ${ACCENT}33` }}
-                                    >
-                                        {ch.unit}
-                                    </span>
+                                    <div className="flex flex-wrap items-center gap-2">
+                                        {ch.role && (
+                                            <span
+                                                className="text-[11px] font-semibold px-2 py-0.5 rounded-md whitespace-nowrap"
+                                                style={{ color: ACCENT, background: `${ACCENT}14`, border: `1px solid ${ACCENT}33` }}
+                                            >
+                                                {ch.role}
+                                            </span>
+                                        )}
+                                        {ch.unit && (
+                                            <span className="text-[11px] text-slate-300 px-2 py-0.5 rounded-md bg-white/[0.04] border border-white/10 whitespace-nowrap">
+                                                {ch.unit}
+                                            </span>
+                                        )}
+                                    </div>
                                 </div>
                                 <p className="text-xs text-slate-500 italic">{ch.source}</p>
                                 <p className="text-[13px] text-slate-400 leading-relaxed">{ch.usage}</p>
@@ -134,6 +143,9 @@ export default function CombustionAnalysisDetail() {
                         ))}
                     </div>
                     <p className="text-xs text-slate-500 leading-relaxed mt-5 max-w-3xl border-l-2 pl-4" style={{ borderColor: `${ACCENT}44` }}>
+                        {d.geometryLabel && (
+                            <span className="font-semibold text-slate-400 mr-1">{d.geometryLabel}:</span>
+                        )}
                         {d.geometryNote}
                     </p>
                 </motion.div>
@@ -153,6 +165,21 @@ export default function CombustionAnalysisDetail() {
                         ))}
                     </div>
                 </motion.div>
+
+                {/* ── Engineering assumptions ───────────────────── */}
+                {d.assumptions?.length > 0 && (
+                    <motion.div variants={fade} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-60px' }} className="mb-16">
+                        <SectionHeading>{t('widgets.detail.assumptionsTitle')}</SectionHeading>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            {d.assumptions.map((item, i) => (
+                                <div key={i} className="bg-white/[0.03] border border-white/8 rounded-xl p-4">
+                                    <h3 className="text-sm font-semibold text-white leading-snug">{item.name}</h3>
+                                    <p className="text-[13px] text-slate-400 leading-relaxed mt-1">{item.desc}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </motion.div>
+                )}
 
                 {/* ── Processing pipeline ─────────────────────────── */}
                 <motion.div variants={fade} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-60px' }} className="mb-16">
@@ -174,6 +201,22 @@ export default function CombustionAnalysisDetail() {
                         ))}
                     </ol>
                 </motion.div>
+
+                {/* ── Example result readout ─────────────────────── */}
+                {d.exampleMetrics?.length > 0 && (
+                    <motion.div variants={fade} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-60px' }} className="mb-16">
+                        <SectionHeading>{t('widgets.detail.examplesTitle')}</SectionHeading>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            {d.exampleMetrics.map((metric, i) => (
+                                <div key={i} className="bg-white/[0.03] border border-white/8 rounded-xl p-4">
+                                    <p className="text-sm font-mono font-semibold" style={{ color: ACCENT }}>{metric.value}</p>
+                                    <h3 className="text-sm font-semibold text-white leading-snug mt-2">{metric.label}</h3>
+                                    <p className="text-[13px] text-slate-400 leading-relaxed mt-1">{metric.desc}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </motion.div>
+                )}
 
                 {/* ── Outputs ─────────────────────────────────────── */}
                 <motion.div variants={fade} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-60px' }} className="mb-4">

@@ -2,26 +2,85 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { Link, useLocation } from 'react-router-dom'
-import { useContactModal } from '../context/ContactModalContext.jsx'
 import logoImg from '../assets/logo.png'
+
+const WIDGET_NAV_GROUPS = [
+    {
+        id: 'data_io',
+        en: 'Data I/O',
+        tr: 'Veri Giriş/Çıkış',
+    },
+    {
+        id: 'preprocessing',
+        en: 'Preprocessing',
+        tr: 'Ön İşleme',
+    },
+    {
+        id: 'filters',
+        en: 'Signal Filters',
+        tr: 'Sinyal Filtreleri',
+    },
+    {
+        id: 'analysis',
+        en: 'Frequency & Statistics',
+        tr: 'Frekans ve İstatistik',
+    },
+    {
+        id: 'visualization',
+        en: 'Visualization',
+        tr: 'Görselleştirme',
+    },
+    {
+        id: 'vibration',
+        en: 'Vibration & Structural',
+        tr: 'Titreşim ve Yapısal',
+    },
+    {
+        id: 'acoustics',
+        en: 'Acoustics & NVH',
+        tr: 'Akustik ve NVH',
+    },
+    {
+        id: 'electrical',
+        en: 'Electrical & Power',
+        tr: 'Elektrik ve Güç',
+    },
+    {
+        id: 'thermofluids',
+        en: 'Thermodynamics & Fluids',
+        tr: 'Termodinamik ve Akışkanlar',
+    },
+    {
+        id: 'reports',
+        en: 'Reports',
+        tr: 'Raporlama',
+    },
+]
 
 // ─── Navbar Component ───────────────────────────────────────────────────────
 export default function Navbar() {
     const { t, i18n } = useTranslation();
-    const { open: openContact } = useContactModal()
     const [scrolled, setScrolled] = useState(false)
     const [menuOpen, setMenuOpen] = useState(false)
     const location = useLocation()
+    const isTurkish = i18n.language?.startsWith('tr')
 
     // ─── Nav Link Data ──────────────────────────────────────────────────────────
     const NAV_LINKS = [
         { label: t('nav.product'), href: '/product' },
-        { label: t('nav.widgets'), href: '/widgets' },
+        {
+            label: t('nav.widgets'),
+            href: '/widgets',
+            dropdown: WIDGET_NAV_GROUPS.map((group) => ({
+                label: isTurkish ? group.tr : group.en,
+                href: `/widgets?category=${group.id}`,
+            })),
+        },
         { label: t('nav.pricing'), href: '/pricing' },
     ]
 
     const toggleLanguage = () => {
-        i18n.changeLanguage(i18n.language === 'tr' ? 'en' : 'tr');
+        i18n.changeLanguage(isTurkish ? 'en' : 'tr');
     }
 
     useEffect(() => {
@@ -59,38 +118,30 @@ export default function Navbar() {
                     <div className="hidden md:flex items-center gap-8">
                         {NAV_LINKS.map((link) => (
                             <div key={link.label} className="relative group">
-                                {link.href ? (
-                                    <Link
-                                        to={link.href}
-                                        className={`text-sm hover:text-white transition-colors duration-200 relative py-2 ${location.pathname === link.href ? 'text-white' : 'text-slate-400'}`}
-                                    >
-                                        {link.label}
-                                        <span className={`absolute -bottom-0.5 left-0 h-px bg-neon-cyan transition-all duration-300 ease-out ${location.pathname === link.href ? 'w-full' : 'w-0 group-hover:w-full'}`} />
-                                    </Link>
-                                ) : (
-                                    <button
-                                        type="button"
-                                        aria-haspopup="menu"
-                                        className="cursor-pointer text-sm text-slate-400 hover:text-white focus:text-white transition-colors duration-200 relative py-2 flex items-center gap-1"
-                                    >
-                                        {link.label}
+                                <Link
+                                    to={link.href}
+                                    aria-haspopup={link.dropdown ? 'menu' : undefined}
+                                    className={`text-sm hover:text-white transition-colors duration-200 relative py-2 flex items-center gap-1 ${location.pathname === link.href ? 'text-white' : 'text-slate-400'}`}
+                                >
+                                    {link.label}
+                                    {link.dropdown && (
                                         <svg className="w-3 h-3 transition-transform duration-200 group-hover:rotate-180 group-focus-within:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                                         </svg>
-                                        <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-neon-cyan group-hover:w-full group-focus-within:w-full transition-all duration-300 ease-out" />
-                                    </button>
-                                )}
+                                    )}
+                                    <span className={`absolute -bottom-0.5 left-0 h-px bg-neon-cyan transition-all duration-300 ease-out ${location.pathname === link.href ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+                                </Link>
 
                                 {/* Dropdown Menu — opens on hover or keyboard focus */}
                                 {link.dropdown && (
                                     <div className="absolute top-full left-0 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-150" role="menu">
-                                        <div className="bg-[#0a0a0a]/95 backdrop-blur-xl border border-white/10 rounded-xl p-2 w-48 shadow-2xl flex flex-col gap-1">
+                                        <div className="bg-[#0a0a0a]/95 backdrop-blur-xl border border-white/10 rounded-xl p-2 w-72 shadow-2xl grid grid-cols-2 gap-1">
                                             {link.dropdown.map((sublink) => (
                                                 <Link
                                                     key={sublink.href}
                                                     to={sublink.href}
                                                     role="menuitem"
-                                                    className={`text-sm px-3 py-2 rounded-lg transition-colors ${location.pathname === sublink.href ? 'bg-white/10 text-white' : 'text-slate-400 hover:text-white hover:bg-white/5 focus:text-white focus:bg-white/5'}`}
+                                                    className="text-xs px-3 py-2 rounded-lg transition-colors text-slate-400 hover:text-white hover:bg-white/5 focus:text-white focus:bg-white/5"
                                                 >
                                                     {sublink.label}
                                                 </Link>
@@ -109,14 +160,7 @@ export default function Navbar() {
                             className="text-xs font-semibold text-slate-400 hover:text-white px-2 py-1 rounded-md border border-white/10 hover:border-white/20 transition-all uppercase"
                             aria-label="Toggle Language"
                         >
-                            {i18n.language === 'tr' ? 'EN' : 'TR'}
-                        </button>
-                        <button
-                            id="nav-contact-btn"
-                            onClick={openContact}
-                            className="text-sm text-slate-300 hover:text-white px-4 py-2 rounded-lg transition-all duration-200 hover:bg-white/5"
-                        >
-                            {t('nav.contactSales')}
+                            {isTurkish ? 'EN' : 'TR'}
                         </button>
                         <Link
                             id="nav-demo-btn"
@@ -191,12 +235,6 @@ export default function Navbar() {
                                 </div>
                             ))}
                             <div className="flex gap-3 pt-2 border-t border-white/5">
-                                <button
-                                    onClick={() => { setMenuOpen(false); openContact() }}
-                                    className="flex-1 text-sm text-slate-300 hover:text-white py-2 rounded-lg hover:bg-white/5 transition-colors"
-                                >
-                                    {t('nav.contactSales')}
-                                </button>
                                 <Link
                                     to="/pricing"
                                     onClick={() => setMenuOpen(false)}
@@ -209,7 +247,7 @@ export default function Navbar() {
                                     className="text-xs font-semibold text-slate-400 hover:text-white px-3 py-2 rounded-md border border-white/10 hover:border-white/20 transition-all uppercase"
                                     aria-label="Toggle Language"
                                 >
-                                    {i18n.language === 'tr' ? 'EN' : 'TR'}
+                                    {isTurkish ? 'EN' : 'TR'}
                                 </button>
                             </div>
                         </div>

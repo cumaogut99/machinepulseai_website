@@ -195,6 +195,18 @@ export default function WidgetDetail() {
                     </motion.div>
                 )}
 
+                {/* ── Assumptions (optional) ─────────────────────── */}
+                {d.assumptions?.length > 0 && (
+                    <motion.div variants={fade} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-60px' }} className="mb-16">
+                        <SectionHeading accent={accent}>{t('widgets.detail.assumptionsTitle')}</SectionHeading>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            {d.assumptions.map((item, i) => (
+                                <InfoCard key={i} name={item.name} desc={item.desc} accent={accent} />
+                            ))}
+                        </div>
+                    </motion.div>
+                )}
+
                 {/* ── How it works (steps) ────────────────────────── */}
                 {d.steps?.length > 0 && (
                     <motion.div variants={fade} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-60px' }} className="mb-16">
@@ -215,6 +227,22 @@ export default function WidgetDetail() {
                                 </li>
                             ))}
                         </ol>
+                    </motion.div>
+                )}
+
+                {/* ── Example result readout (optional) ───────────── */}
+                {d.exampleMetrics?.length > 0 && (
+                    <motion.div variants={fade} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-60px' }} className="mb-16">
+                        <SectionHeading accent={accent}>{t('widgets.detail.examplesTitle')}</SectionHeading>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            {d.exampleMetrics.map((metric, i) => (
+                                <div key={i} className="bg-white/[0.03] border border-white/8 rounded-xl p-4">
+                                    <p className="text-sm font-mono font-semibold" style={{ color: accent }}>{metric.value}</p>
+                                    <h3 className="text-sm font-semibold text-white leading-snug mt-2">{metric.label}</h3>
+                                    <p className="text-[13px] text-slate-400 leading-relaxed mt-1">{metric.desc}</p>
+                                </div>
+                            ))}
+                        </div>
                     </motion.div>
                 )}
 

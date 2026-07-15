@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { motion, useInView, useMotionValue, useSpring, useTransform } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 
 // ─── Stats Data ──────────────────────────────────────────────────────────────
 // TODO: Update numbers as real data becomes available
@@ -8,36 +9,66 @@ export const STATS = [
         id: 'speedup',
         value: 70,
         suffix: '%',
-        prefix: 'Up to ',
-        label: 'Faster Analysis',
-        sublabel: 'vs. legacy tools like NI DIAdem & MATLAB',
+        en: {
+            prefix: 'Up to ',
+            label: 'Faster Analysis',
+            sublabel: 'Compared with manual export-and-script workflows',
+        },
+        tr: {
+            prefix: '%',
+            label: 'Daha Hızlı Analiz',
+            sublabel: 'Manuel dışa aktarma ve script iş akışlarına göre',
+            suffix: '',
+            valueFirst: false,
+        },
         color: '#00f5ff',
     },
     {
         id: 'filesize',
-        value: 100,
+        value: 200,
         suffix: ' GB+',
-        prefix: '',
-        label: 'File Size Supported',
-        sublabel: 'Out-of-core engine — no RAM errors',
+        en: {
+            prefix: '',
+            label: 'File Size Supported',
+            sublabel: 'MPAI engine for very large recorded datasets',
+        },
+        tr: {
+            prefix: '',
+            label: 'Dosya Boyutu Desteği',
+            sublabel: 'Çok büyük kayıtlı veri setleri için MPAI motoru',
+        },
         color: '#3b82f6',
     },
     {
-        id: 'samplerate',
-        value: 200,
-        suffix: ' kHz',
-        prefix: '',
-        label: 'Live Stream Rate',
-        sublabel: 'Real-time DAQ at 60 FPS visualization',
+        id: 'visualization',
+        value: 60,
+        suffix: ' FPS',
+        en: {
+            prefix: '',
+            label: 'Interactive Visualization',
+            sublabel: 'Min-Max LOD rendering for dense signals',
+        },
+        tr: {
+            prefix: '',
+            label: 'Etkileşimli Görselleştirme',
+            sublabel: 'Yoğun sinyaller için Min-Max LOD çizimi',
+        },
         color: '#a855f7',
     },
     {
         id: 'ram',
         value: 8,
         suffix: ' GB',
-        prefix: '',
-        label: 'Minimum RAM',
-        sublabel: 'Runs large-scale analysis on standard laptops',
+        en: {
+            prefix: '',
+            label: 'Minimum RAM',
+            sublabel: 'Runs large-scale analysis on standard laptops',
+        },
+        tr: {
+            prefix: '',
+            label: 'Minimum RAM',
+            sublabel: 'Büyük ölçekli analizi standart dizüstülerde çalıştırır',
+        },
         color: '#f59e0b',
         decimal: false,
     },
@@ -69,6 +100,9 @@ function AnimatedCounter({ value, prefix = '', suffix = '', decimal = false, col
 
 // ─── Stats Section ────────────────────────────────────────────────────────────
 export default function Stats() {
+    const { i18n } = useTranslation()
+    const lang = i18n.language?.startsWith('tr') ? 'tr' : 'en'
+
     return (
         <section id="stats" className="relative py-20 overflow-hidden">
             {/* Separator line top */}
@@ -84,6 +118,12 @@ export default function Stats() {
                     transition={{ duration: 0.6, staggerChildren: 0.1 }}
                 >
                     {STATS.map((stat, i) => (
+                        (() => {
+                            const content = stat[lang] || stat.en
+                            const prefix = content.prefix ?? stat.prefix ?? ''
+                            const suffix = content.suffix ?? stat.suffix ?? ''
+                            const valueFirst = content.valueFirst ?? true
+                            return (
                         <motion.div
                             key={stat.id}
                             initial={{ opacity: 0, y: 20 }}
@@ -95,15 +135,22 @@ export default function Stats() {
                             <div className="text-4xl sm:text-5xl font-bold tracking-tight">
                                 <AnimatedCounter
                                     value={stat.value}
-                                    prefix={stat.prefix}
-                                    suffix={stat.suffix}
+                                    prefix={valueFirst ? prefix : ''}
+                                    suffix={valueFirst ? suffix : ''}
                                     decimal={stat.decimal}
                                     color={stat.color}
                                 />
+                                {!valueFirst && (
+                                    <span className="tabular-nums" style={{ color: stat.color }}>
+                                        {prefix}
+                                    </span>
+                                )}
                             </div>
-                            <div className="text-sm font-semibold text-white">{stat.label}</div>
-                            <div className="text-xs text-slate-500 leading-snug max-w-[160px]">{stat.sublabel}</div>
+                            <div className="text-sm font-semibold text-white">{content.label}</div>
+                            <div className="text-xs text-slate-500 leading-snug max-w-[160px]">{content.sublabel}</div>
                         </motion.div>
+                            )
+                        })()
                     ))}
                 </motion.div>
             </div>

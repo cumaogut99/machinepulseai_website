@@ -1,6 +1,6 @@
-import { useState, useMemo } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import WIDGET_CATALOG from '../data/widgetCatalog.js'
 import { getWidgetDetailSlug } from '../data/widgetDetails.js'
@@ -108,14 +108,32 @@ function WidgetCard({ widget, accent, lang, learnLabel, hideLabel, detailLabel }
 export default function WidgetCatalog() {
     const { t, i18n } = useTranslation()
     const lang = i18n.language?.startsWith('tr') ? 'tr' : 'en'
+    const [searchParams, setSearchParams] = useSearchParams()
+    const categoryParam = searchParams.get('category')
 
-    const [activeCat, setActiveCat] = useState('all')
+    const categoryIds = useMemo(() => new Set(WIDGET_CATALOG.map((cat) => cat.id)), [])
+    const [activeCat, setActiveCat] = useState(
+        categoryParam && categoryIds.has(categoryParam) ? categoryParam : 'all'
+    )
     const [query, setQuery] = useState('')
 
     const totalAvailable = useMemo(
         () => WIDGET_CATALOG.filter((c) => c.status !== 'planned').reduce((s, c) => s + c.widgets.length, 0),
         []
     )
+
+    useEffect(() => {
+        setActiveCat(categoryParam && categoryIds.has(categoryParam) ? categoryParam : 'all')
+    }, [categoryParam, categoryIds])
+
+    function selectCategory(categoryId) {
+        setActiveCat(categoryId)
+        if (categoryId === 'all') {
+            setSearchParams({})
+            return
+        }
+        setSearchParams({ category: categoryId })
+    }
 
     // Filter categories + widgets by chip and search query.
     const visibleCategories = useMemo(() => {
@@ -189,7 +207,7 @@ export default function WidgetCatalog() {
                 {/* ── Category filter chips ───────────────────────── */}
                 <div className="flex flex-wrap justify-center gap-2 mb-12">
                     <button
-                        onClick={() => setActiveCat('all')}
+                        onClick={() => selectCategory('all')}
                         className={`text-xs font-medium px-3.5 py-1.5 rounded-full border transition-all ${activeCat === 'all'
                             ? 'bg-[#00f5ff]/10 border-[#00f5ff]/50 text-[#00f5ff]'
                             : 'bg-white/[0.03] border-white/10 text-slate-400 hover:text-white hover:border-white/20'
@@ -202,7 +220,7 @@ export default function WidgetCatalog() {
                         return (
                             <button
                                 key={cat.id}
-                                onClick={() => setActiveCat(cat.id)}
+                                onClick={() => selectCategory(cat.id)}
                                 className="text-xs font-medium px-3.5 py-1.5 rounded-full border transition-all flex items-center gap-1.5"
                                 style={active
                                     ? { background: `${cat.accent}1a`, borderColor: `${cat.accent}80`, color: cat.accent }
