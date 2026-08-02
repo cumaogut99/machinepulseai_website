@@ -85,6 +85,25 @@ function InfoCard({ name, desc, accent, check }) {
     )
 }
 
+function ControlGroup({ group, accent }) {
+    return (
+        <div className="bg-white/[0.03] border border-white/8 rounded-2xl p-5">
+            <h3 className="text-base font-semibold text-white leading-snug">{group.name}</h3>
+            {group.desc && (
+                <p className="text-[13px] text-slate-500 leading-relaxed mt-1">{group.desc}</p>
+            )}
+            <dl className="mt-4 divide-y divide-white/8">
+                {group.controls.map((control, index) => (
+                    <div key={index} className="py-3 first:pt-0 last:pb-0">
+                        <dt className="text-sm font-semibold" style={{ color: accent }}>{control.name}</dt>
+                        <dd className="text-[13px] text-slate-400 leading-relaxed mt-1">{control.desc}</dd>
+                    </div>
+                ))}
+            </dl>
+        </div>
+    )
+}
+
 export default function WidgetDetail() {
     const { t, i18n } = useTranslation()
     const { slug } = useParams()
@@ -100,6 +119,12 @@ export default function WidgetDetail() {
     const accent = found.category.accent
     const widgetName = (found.widget[lang] || found.widget.en).name
     const categoryName = (found.category[lang] || found.category.en).name
+    const subgroupName = found.widget.subgroup
+        ? (found.widget.subgroup[lang] || found.widget.subgroup.en)
+        : ''
+    const categoryPath = subgroupName
+        ? `${categoryName} · ${subgroupName}`
+        : categoryName
     const d = detail[lang] || detail.en
 
     return (
@@ -124,7 +149,7 @@ export default function WidgetDetail() {
                 {/* ── Hero ────────────────────────────────────────── */}
                 <motion.div variants={fade} initial="hidden" animate="visible" className="mb-14">
                     <span className="inline-block text-xs font-semibold tracking-widest uppercase mb-4" style={{ color: accent }}>
-                        {categoryName} · {t('widgets.detail.eyebrow')}
+                        {categoryPath} · {t('widgets.detail.eyebrow')}
                     </span>
                     <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight mb-5">
                         {widgetName}
@@ -174,6 +199,19 @@ export default function WidgetDetail() {
                                 {d.channelsNote}
                             </p>
                         )}
+                    </motion.div>
+                )}
+
+                {/* ── Controls and settings (optional) ─────────────── */}
+                {d.controlGroups?.length > 0 && (
+                    <motion.div variants={fade} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-60px' }} className="mb-16">
+                        <SectionHeading accent={accent}>{t('widgets.detail.controlsTitle')}</SectionHeading>
+                        <p className="text-sm text-slate-400 mb-6 max-w-3xl">{t('widgets.detail.controlsSubtitle')}</p>
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                            {d.controlGroups.map((group, index) => (
+                                <ControlGroup key={index} group={group} accent={accent} />
+                            ))}
+                        </div>
                     </motion.div>
                 )}
 

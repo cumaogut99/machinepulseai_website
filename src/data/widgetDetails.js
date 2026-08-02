@@ -16,6 +16,7 @@
 //           steps?:   [{ step, detail }],
 //           outputs?: [{ name, desc }],
 //           channels?:[{ name, unit, source, usage }], channelsNote?,
+//           controlGroups?:[{ name, desc?, controls:[{ name, desc }] }],
 //           formulas?:[{ title, latex, expr, where }],
 //           assumptions?:[{ name, desc }],
 //           exampleMetrics?:[{ value, label, desc }] },
@@ -30,6 +31,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import ACOUSTICS_WIDGET_DETAILS from './widgetDetails.acoustics.js'
+import FFT_WIDGET_DETAILS from './widgetDetails.fft.js'
 import THERMOFLUIDS_WIDGET_DETAILS from './widgetDetails.thermofluids.js'
 import VIBRATION_WIDGET_EXTRAS from './widgetDetails.vibrationExtras.js'
 import VIBRATION_WIDGET_DETAILS from './widgetDetails.vibration.js'
@@ -52,6 +54,9 @@ function mergeDetailExtras(details, extras) {
 }
 
 const WIDGET_DETAILS = {
+    // ── FFT / SPECTRUM ────────────────────────────────────────────────────────
+    ...FFT_WIDGET_DETAILS,
+
     // ── 1. DATA I/O ───────────────────────────────────────────────────────────
     file_reader: {
         slug: 'file-reader',

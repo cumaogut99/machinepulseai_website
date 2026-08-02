@@ -6,7 +6,7 @@ import WIDGET_CATALOG from '../data/widgetCatalog.js'
 import { getWidgetDetailSlug } from '../data/widgetDetails.js'
 
 // ─────────────────────────────────────────────────────────────────────────────
-// WidgetCatalog — public gallery of every analysis widget in MachinePulseAI.
+// WidgetCatalog — application-aligned gallery of MachinePulseAI modules.
 // Layout: search + category filter chips + responsive card grid. Each card shows
 // a summary and expands to reveal the educational "theory" text. Bilingual via
 // the current i18n language (en/tr); content lives in src/data/widgetCatalog.js.
@@ -18,7 +18,16 @@ const cardVariants = {
 }
 
 // ── Single widget card ───────────────────────────────────────────────────────
-function WidgetCard({ widget, accent, lang, learnLabel, hideLabel, detailLabel }) {
+function WidgetCard({
+    widget,
+    accent,
+    lang,
+    learnLabel,
+    hideLabel,
+    detailLabel,
+    plannedLabel,
+    isPlanned,
+}) {
     const [open, setOpen] = useState(false)
     const c = widget[lang] || widget.en
     const paragraphs = (c.theory || '').split('\n\n')
@@ -30,7 +39,7 @@ function WidgetCard({ widget, accent, lang, learnLabel, hideLabel, detailLabel }
         <motion.div
             variants={cardVariants}
             layout
-            className="card-hover-glow group relative flex flex-col bg-white/[0.03] border border-white/8 rounded-2xl overflow-hidden p-5 gap-3"
+            className={`card-hover-glow group relative flex flex-col bg-white/[0.03] border border-white/8 rounded-2xl overflow-hidden p-5 gap-3 ${isPlanned ? 'opacity-75' : ''}`}
         >
             {/* Top gradient accent */}
             <div
@@ -39,9 +48,19 @@ function WidgetCard({ widget, accent, lang, learnLabel, hideLabel, detailLabel }
                 aria-hidden="true"
             />
 
-            <h3 className="text-base font-semibold text-white leading-snug pr-2">
-                {c.name}
-            </h3>
+            <div className="flex items-start justify-between gap-3">
+                <h3 className="text-base font-semibold text-white leading-snug pr-2">
+                    {c.name}
+                </h3>
+                {isPlanned && (
+                    <span
+                        className="text-[9px] uppercase tracking-wide px-1.5 py-0.5 rounded border whitespace-nowrap"
+                        style={{ color: accent, borderColor: `${accent}55`, background: `${accent}12` }}
+                    >
+                        {plannedLabel}
+                    </span>
+                )}
+            </div>
 
             <p className="text-sm text-slate-400 leading-relaxed flex-1">
                 {c.summary}
@@ -104,6 +123,126 @@ function WidgetCard({ widget, accent, lang, learnLabel, hideLabel, detailLabel }
     )
 }
 
+function groupWidgets(widgets, lang) {
+    const groups = new Map()
+    for (const item of widgets) {
+        const itemGroup = item.subgroup
+        const key = itemGroup?.id || 'direct'
+        if (!groups.has(key)) {
+            groups.set(key, {
+                id: key,
+                label: itemGroup ? (itemGroup[lang] || itemGroup.en) : '',
+                widgets: [],
+            })
+        }
+        groups.get(key).widgets.push(item)
+    }
+    return [...groups.values()]
+}
+
+function WidgetGroup({
+    category,
+    group,
+    isPlanned,
+    isExpanded,
+    forceOpen,
+    onToggle,
+    lang,
+    learnLabel,
+    hideLabel,
+    detailLabel,
+    plannedLabel,
+    expandLabel,
+    collapseLabel,
+}) {
+    const collapsible = category.id === 'engineering' && Boolean(group.label)
+    const visible = !collapsible || forceOpen || isExpanded
+    const regionId = `${category.id}-${group.id}-widgets`
+    const toggleId = `${regionId}-toggle`
+
+    return (
+        <div>
+            {group.label && (
+                collapsible ? (
+                    <h3 className={visible ? 'mb-4' : ''}>
+                        <button
+                            id={toggleId}
+                            type="button"
+                            onClick={onToggle}
+                            className="group flex w-full items-center gap-2 rounded-lg px-2 py-2 text-left transition-colors hover:bg-white/[0.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
+                            aria-expanded={visible}
+                            aria-controls={regionId}
+                            aria-label={visible ? collapseLabel : expandLabel}
+                        >
+                            <span className="h-px w-5" style={{ background: `${category.accent}88` }} />
+                            <span className="text-sm font-semibold text-slate-300 group-hover:text-white">
+                                {group.label}
+                            </span>
+                            <span className="text-xs text-slate-600">({group.widgets.length})</span>
+                            <span className="ml-auto flex h-7 w-7 items-center justify-center rounded-full border border-white/10 text-slate-400 group-hover:text-white">
+                                <svg
+                                    className={`h-4 w-4 transition-transform duration-300 ${visible ? 'rotate-90' : ''}`}
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                    aria-hidden="true"
+                                >
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                </svg>
+                            </span>
+                        </button>
+                    </h3>
+                ) : (
+                    <div className="flex items-center gap-2 mb-4">
+                        <span className="h-px w-5" style={{ background: `${category.accent}88` }} />
+                        <h3 className="text-sm font-semibold text-slate-300">
+                            {group.label}
+                        </h3>
+                        <span className="text-xs text-slate-600">({group.widgets.length})</span>
+                    </div>
+                )
+            )}
+
+            <AnimatePresence initial={false}>
+                {visible && (
+                    <motion.div
+                        key="widgets"
+                        id={regionId}
+                        role={collapsible ? 'region' : undefined}
+                        aria-labelledby={collapsible ? toggleId : undefined}
+                        initial={collapsible ? { opacity: 0, height: 0 } : false}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.28, ease: [0.21, 0.47, 0.32, 0.98] }}
+                        className="overflow-hidden"
+                    >
+                        <motion.div
+                            className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 ${isPlanned ? 'opacity-80' : ''}`}
+                            variants={{ visible: { transition: { staggerChildren: 0.04 } } }}
+                            initial="hidden"
+                            animate="visible"
+                        >
+                            {group.widgets.map((widget) => (
+                                <WidgetCard
+                                    key={widget.id}
+                                    widget={widget}
+                                    accent={category.accent}
+                                    lang={lang}
+                                    learnLabel={learnLabel}
+                                    hideLabel={hideLabel}
+                                    detailLabel={detailLabel}
+                                    plannedLabel={plannedLabel}
+                                    isPlanned={isPlanned || widget.status === 'planned'}
+                                />
+                            ))}
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </div>
+    )
+}
+
 // ── Main catalog section ─────────────────────────────────────────────────────
 export default function WidgetCatalog() {
     const { t, i18n } = useTranslation()
@@ -116,9 +255,13 @@ export default function WidgetCatalog() {
         categoryParam && categoryIds.has(categoryParam) ? categoryParam : 'all'
     )
     const [query, setQuery] = useState('')
+    const [expandedGroups, setExpandedGroups] = useState(() => new Set())
 
     const totalAvailable = useMemo(
-        () => WIDGET_CATALOG.filter((c) => c.status !== 'planned').reduce((s, c) => s + c.widgets.length, 0),
+        () => WIDGET_CATALOG.reduce((sum, category) => {
+            if (category.status === 'planned') return sum
+            return sum + category.widgets.filter((item) => item.status !== 'planned').length
+        }, 0),
         []
     )
 
@@ -135,6 +278,15 @@ export default function WidgetCatalog() {
         setSearchParams({ category: categoryId })
     }
 
+    function toggleGroup(groupKey) {
+        setExpandedGroups((current) => {
+            const next = new Set(current)
+            if (next.has(groupKey)) next.delete(groupKey)
+            else next.add(groupKey)
+            return next
+        })
+    }
+
     // Filter categories + widgets by chip and search query.
     const visibleCategories = useMemo(() => {
         const q = query.trim().toLowerCase()
@@ -144,7 +296,12 @@ export default function WidgetCatalog() {
                 if (!q) return cat
                 const widgets = cat.widgets.filter((w) => {
                     const en = w.en, tr = w.tr
+                    const subgroupMatch = (
+                        (w.subgroup?.en || '').toLowerCase().includes(q) ||
+                        (w.subgroup?.tr || '').toLowerCase().includes(q)
+                    )
                     return (
+                        subgroupMatch ||
                         en.name.toLowerCase().includes(q) ||
                         en.summary.toLowerCase().includes(q) ||
                         (tr?.name || '').toLowerCase().includes(q) ||
@@ -159,6 +316,7 @@ export default function WidgetCatalog() {
     const learnLabel = t('widgets.learnMore')
     const hideLabel = t('widgets.hide')
     const detailLabel = t('widgets.viewDetail')
+    const plannedLabel = t('widgets.plannedBadge')
 
     return (
         <section className="relative py-10 px-6 overflow-hidden">
@@ -248,6 +406,7 @@ export default function WidgetCatalog() {
                     {visibleCategories.map((cat) => {
                         const meta = cat[lang] || cat.en
                         const isPlanned = cat.status === 'planned'
+                        const widgetGroups = groupWidgets(cat.widgets, lang)
                         return (
                             <motion.div
                                 key={cat.id}
@@ -273,25 +432,30 @@ export default function WidgetCatalog() {
                                     <p className="text-sm text-slate-500 mb-6 max-w-3xl">{meta.blurb}</p>
                                 )}
 
-                                {/* Widget grid */}
-                                <motion.div
-                                    className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 ${isPlanned ? 'opacity-80' : ''}`}
-                                    variants={{ visible: { transition: { staggerChildren: 0.04 } } }}
-                                    initial="hidden"
-                                    animate="visible"
-                                >
-                                    {cat.widgets.map((w) => (
-                                        <WidgetCard
-                                            key={w.id}
-                                            widget={w}
-                                            accent={cat.accent}
-                                            lang={lang}
-                                            learnLabel={learnLabel}
-                                            hideLabel={hideLabel}
-                                            detailLabel={detailLabel}
-                                        />
-                                    ))}
-                                </motion.div>
+                                {/* Direct widgets and application subgroups */}
+                                <div className="flex flex-col gap-6">
+                                    {widgetGroups.map((group) => {
+                                        const groupKey = `${cat.id}:${group.id}`
+                                        return (
+                                            <WidgetGroup
+                                                key={group.id}
+                                                category={cat}
+                                                group={group}
+                                                isPlanned={isPlanned}
+                                                isExpanded={expandedGroups.has(groupKey)}
+                                                forceOpen={Boolean(query.trim())}
+                                                onToggle={() => toggleGroup(groupKey)}
+                                                lang={lang}
+                                                learnLabel={learnLabel}
+                                                hideLabel={hideLabel}
+                                                detailLabel={detailLabel}
+                                                plannedLabel={plannedLabel}
+                                                expandLabel={t('widgets.expandGroup', { group: group.label })}
+                                                collapseLabel={t('widgets.collapseGroup', { group: group.label })}
+                                            />
+                                        )
+                                    })}
+                                </div>
                             </motion.div>
                         )
                     })}

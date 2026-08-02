@@ -50,6 +50,16 @@ export const ROUTE_META = {
             description: 'Silindir-içi yanma teşhisi derinlemesine: giriş kanalları, temel formüller, işlem hattı ve çıktılar — indike basınçtan IMEP, ısı salınımı, MFB ve vuruntuya.',
         },
     },
+    '/widgets/fft-spectrum': {
+        en: {
+            title: `FFT & Spectrum Analysis — ${BRAND}`,
+            description: 'FFT, Welch PSD and STFT explained through real controls, formulas, cursor-range behaviour, outputs and engineering interpretation limits.',
+        },
+        tr: {
+            title: `FFT ve Spektrum Analizi — ${BRAND}`,
+            description: 'FFT, Welch PSD ve STFT; gerçek kontroller, formüller, imleç aralığı davranışı, çıktılar ve mühendislik yorum sınırlarıyla açıklanır.',
+        },
+    },
     '/widgets/bearing-gear-fault': {
         en: { title: `Bearing & Gear Fault Diagnosis — ${BRAND}`, description: 'Envelope, kurtogram, cepstrum and gear-mesh diagnostics for rolling-element bearing and gearbox faults.' },
         tr: { title: `Rulman ve Dişli Arıza Teşhisi — ${BRAND}`, description: 'Rulman ve dişli kutusu arızaları için zarf, kurtogram, kepstrum ve dişli kavrama teşhisi.' },
@@ -71,8 +81,8 @@ export const ROUTE_META = {
         tr: { title: `Rotor Balanslama — ${BRAND}`, description: 'Deneme ağırlığı, etki katsayısı ve ISO 21940 hedefleriyle tek/çift düzlem rotor balanslama.' },
     },
     '/widgets/rotor-dynamics': {
-        en: { title: `Rotor Dynamics — ${BRAND}`, description: 'Shaft orbit, full-spectrum, whirl direction, keyphasor and critical-speed diagnostics for rotating machinery.' },
-        tr: { title: `Rotor Dinamiği — ${BRAND}`, description: 'Döner makineler için mil yörüngesi, tam spektrum, fırlama yönü, keyphasor ve kritik hız teşhisi.' },
+        en: { title: `Rotor Dynamics Learning Guide — ${BRAND}`, description: 'Learn XY shaft orbit, keyphasor phase, Bode and Polar response, shaft centreline, full spectrum, whirl direction and critical-speed diagnostics.' },
+        tr: { title: `Rotor Dinamiği Öğrenme Rehberi — ${BRAND}`, description: 'XY şaft orbiti, keyphasor fazı, Bode ve Polar yanıtı, shaft centreline, full spectrum, whirl yönü ve kritik hız analizini öğrenin.' },
     },
     '/widgets/shock-srs': {
         en: { title: `Shock & SRS — ${BRAND}`, description: 'Shock response spectrum analysis for drop, impact and transient qualification events.' },

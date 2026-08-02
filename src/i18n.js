@@ -1,11 +1,22 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
+import FFT_LEARNING_TRANSLATIONS from './i18n/fftLearning.js';
+import FFT_THEORY_TRANSLATIONS from './i18n/fftTheory.js';
+import FFT_CONTROL_GUIDE_EN from './i18n/fftControlGuide.en.js';
+import FFT_CONTROL_GUIDE_TR from './i18n/fftControlGuide.tr.js';
+import FFT_BEGINNER_TRANSLATIONS from './i18n/fftBeginner.js';
+import ROTOR_DYNAMICS_LEARNING_TRANSLATIONS from './i18n/rotorDynamicsLearning.js';
 
 // Çeviri metinleri
 const resources = {
     en: {
         translation: {
+            "fftLearn": FFT_LEARNING_TRANSLATIONS.en,
+            "fftTheory": FFT_THEORY_TRANSLATIONS.en,
+            "fftControls": FFT_CONTROL_GUIDE_EN,
+            "fftBeginner": FFT_BEGINNER_TRANSLATIONS.en,
+            "rotorLearn": ROTOR_DYNAMICS_LEARNING_TRANSLATIONS.en,
             "nav": {
                 "platform": "Platform",
                 "product": "Product",
@@ -52,7 +63,9 @@ const resources = {
                 "allCategories": "All",
                 "learnMore": "Learn the theory",
                 "hide": "Hide",
-                "viewDetail": "Detailed breakdown",
+                "viewDetail": "Learn in detail",
+                "expandGroup": "Show {{group}} widgets",
+                "collapseGroup": "Hide {{group}} widgets",
                 "plannedBadge": "Planned",
                 "noResults": "No widgets match your search.",
                 "detail": {
@@ -61,6 +74,8 @@ const resources = {
                     "inputsTitle": "What It Uses",
                     "channelsTitle": "Input Channels",
                     "channelsSubtitle": "Exactly which test-data channels the analysis consumes, and how each one is used.",
+                    "controlsTitle": "Controls and Settings",
+                    "controlsSubtitle": "What each button, selector and input changes — and what it does not change.",
                     "formulasTitle": "Core Formulas",
                     "assumptionsTitle": "Engineering Assumptions",
                     "pipelineTitle": "Processing Pipeline",
@@ -227,6 +242,11 @@ const resources = {
     },
     tr: {
         translation: {
+            "fftLearn": FFT_LEARNING_TRANSLATIONS.tr,
+            "fftTheory": FFT_THEORY_TRANSLATIONS.tr,
+            "fftControls": FFT_CONTROL_GUIDE_TR,
+            "fftBeginner": FFT_BEGINNER_TRANSLATIONS.tr,
+            "rotorLearn": ROTOR_DYNAMICS_LEARNING_TRANSLATIONS.tr,
             "nav": {
                 "platform": "Platform",
                 "product": "Ürün",
@@ -273,7 +293,9 @@ const resources = {
                 "allCategories": "Tümü",
                 "learnMore": "Teoriyi öğren",
                 "hide": "Gizle",
-                "viewDetail": "Detaylı İncele",
+                "viewDetail": "Detaylı Öğren",
+                "expandGroup": "{{group}} widgetlarını göster",
+                "collapseGroup": "{{group}} widgetlarını gizle",
                 "plannedBadge": "Planlanıyor",
                 "noResults": "Aramanızla eşleşen widget yok.",
                 "detail": {
@@ -282,6 +304,8 @@ const resources = {
                     "inputsTitle": "Neyi Kullanır",
                     "channelsTitle": "Giriş Kanalları",
                     "channelsSubtitle": "Analizin tam olarak hangi test-verisi kanallarını kullandığı ve her birinin nasıl kullanıldığı.",
+                    "controlsTitle": "Kontroller ve Ayarlar",
+                    "controlsSubtitle": "Her butonun, seçicinin ve giriş alanının neyi değiştirdiği — ve neyi değiştirmediği.",
                     "formulasTitle": "Temel Formüller",
                     "assumptionsTitle": "Mühendislik Varsayımları",
                     "pipelineTitle": "İşlem Hattı",

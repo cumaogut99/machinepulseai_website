@@ -3,59 +3,13 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { Link, useLocation } from 'react-router-dom'
 import logoImg from '../assets/logo.png'
+import { WIDGET_CATEGORIES } from '../data/widgetCatalog.categories.js'
 
-const WIDGET_NAV_GROUPS = [
-    {
-        id: 'data_io',
-        en: 'Data I/O',
-        tr: 'Veri Giriş/Çıkış',
-    },
-    {
-        id: 'preprocessing',
-        en: 'Preprocessing',
-        tr: 'Ön İşleme',
-    },
-    {
-        id: 'filters',
-        en: 'Signal Filters',
-        tr: 'Sinyal Filtreleri',
-    },
-    {
-        id: 'analysis',
-        en: 'Frequency & Statistics',
-        tr: 'Frekans ve İstatistik',
-    },
-    {
-        id: 'visualization',
-        en: 'Visualization',
-        tr: 'Görselleştirme',
-    },
-    {
-        id: 'vibration',
-        en: 'Vibration & Structural',
-        tr: 'Titreşim ve Yapısal',
-    },
-    {
-        id: 'acoustics',
-        en: 'Acoustics & NVH',
-        tr: 'Akustik ve NVH',
-    },
-    {
-        id: 'electrical',
-        en: 'Electrical & Power',
-        tr: 'Elektrik ve Güç',
-    },
-    {
-        id: 'thermofluids',
-        en: 'Thermodynamics & Fluids',
-        tr: 'Termodinamik ve Akışkanlar',
-    },
-    {
-        id: 'reports',
-        en: 'Reports',
-        tr: 'Raporlama',
-    },
-]
+const WIDGET_NAV_GROUPS = WIDGET_CATEGORIES.map((category) => ({
+    id: category.id,
+    en: category.en.name,
+    tr: category.tr.name,
+}))
 
 // ─── Navbar Component ───────────────────────────────────────────────────────
 export default function Navbar() {
