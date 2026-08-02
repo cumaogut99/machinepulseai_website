@@ -100,7 +100,10 @@ export default function FFTInterfaceTour() {
     const views = t('fftLearn.tour.views', { returnObjects: true })
     const view = views[activeViewIndex]
     const config = VIEW_CONFIG[activeViewIndex]
-    const points = config.points.map((entry, index) => ({
+    // The hotspot config and the translated copy must stay in lockstep. Clamp to
+    // the shorter list so a mismatch can never render an unlabelled hotspot.
+    const pointCount = Math.min(config.points.length, view.points.length)
+    const points = config.points.slice(0, pointCount).map((entry, index) => ({
         ...entry,
         ...view.points[index],
     }))
@@ -153,7 +156,7 @@ export default function FFTInterfaceTour() {
                             const selected = index === activePointIndex
                             return (
                                 <button
-                                    key={`${config.id}-${item.title}`}
+                                    key={`${config.id}-hotspot-${index}`}
                                     type="button"
                                     aria-label={`${index + 1}. ${item.title}`}
                                     aria-pressed={selected}
@@ -185,7 +188,7 @@ export default function FFTInterfaceTour() {
                     <div className="mt-4 grid gap-2">
                         {points.map((item, index) => (
                             <button
-                                key={item.title}
+                                key={`${config.id}-index-${index}`}
                                 type="button"
                                 aria-pressed={index === activePointIndex}
                                 onClick={() => setActivePointIndex(index)}
