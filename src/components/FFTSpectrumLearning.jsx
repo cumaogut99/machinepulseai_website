@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import FFT_WIDGET_DETAILS from '../data/widgetDetails.fft.js'
@@ -17,6 +18,34 @@ const NAV_KEYS = [
     'modes',
     'workflow',
 ]
+
+// Highlight the nav entry for the section currently under the sticky bar.
+function useActiveSection(sectionIds) {
+    const [activeId, setActiveId] = useState(sectionIds[0])
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                const visible = entries
+                    .filter((entry) => entry.isIntersecting)
+                    .sort(
+                        (a, b) =>
+                            a.boundingClientRect.top - b.boundingClientRect.top,
+                    )
+                if (visible.length > 0) setActiveId(visible[0].target.id)
+            },
+            { rootMargin: '-120px 0px -55% 0px', threshold: 0 },
+        )
+
+        sectionIds.forEach((id) => {
+            const element = document.getElementById(id)
+            if (element) observer.observe(element)
+        })
+        return () => observer.disconnect()
+    }, [sectionIds])
+
+    return activeId
+}
 
 function SectionHeader({ eyebrow, title, intro }) {
     return (
@@ -45,6 +74,7 @@ export default function FFTSpectrumLearning() {
     const pipelineSteps = t('fftLearn.pipeline.steps', { returnObjects: true })
     const workflowSteps = t('fftLearn.workflow.steps', { returnObjects: true })
     const mistakes = t('fftLearn.mistakes.items', { returnObjects: true })
+    const activeSection = useActiveSection(NAV_KEYS)
 
     return (
         <article className="relative overflow-hidden bg-grid">
@@ -113,18 +143,35 @@ export default function FFTSpectrumLearning() {
 
             <nav
                 aria-label={t('fftLearn.eyebrow')}
-                className="sticky top-14 z-30 border-y border-white/8 bg-[#0a0a0a]/90 backdrop-blur-xl"
+                className="sticky top-14 z-30 border-y border-white/10 bg-[#0a0a0a]/95 backdrop-blur-xl"
             >
-                <div className="mx-auto flex max-w-6xl gap-6 overflow-x-auto px-6 py-3">
-                    {NAV_KEYS.map((key) => (
-                        <a
-                            key={key}
-                            href={`#${key}`}
-                            className="whitespace-nowrap text-xs font-semibold text-slate-500 transition hover:text-[#00f5ff]"
-                        >
-                            {t(`fftLearn.nav.${key}`)}
-                        </a>
-                    ))}
+                <div className="mx-auto flex max-w-6xl gap-1 overflow-x-auto px-6 sm:gap-3">
+                    {NAV_KEYS.map((key, index) => {
+                        const isActive = activeSection === key
+                        return (
+                            <a
+                                key={key}
+                                href={`#${key}`}
+                                aria-current={isActive ? 'true' : undefined}
+                                className={`flex items-center gap-2 whitespace-nowrap border-b-2 px-2 py-4 text-sm font-semibold transition sm:px-3 ${
+                                    isActive
+                                        ? 'border-[#00f5ff] text-[#00f5ff]'
+                                        : 'border-transparent text-slate-300 hover:border-white/25 hover:text-white'
+                                }`}
+                            >
+                                <span
+                                    className={`font-mono text-xs ${
+                                        isActive
+                                            ? 'text-[#00f5ff]'
+                                            : 'text-slate-600'
+                                    }`}
+                                >
+                                    {String(index + 1).padStart(2, '0')}
+                                </span>
+                                {t(`fftLearn.nav.${key}`)}
+                            </a>
+                        )
+                    })}
                 </div>
             </nav>
 

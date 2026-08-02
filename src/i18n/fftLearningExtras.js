@@ -100,9 +100,6 @@ const FFT_LEARNING_EXTRAS = {
             ],
         },
         reference: {
-            title: 'MachinePulseAI control reference',
-            intro:
-                'The groups below follow the application state selected above. Change the screenshot state to bring its FFT Settings, Markers, Compare, Channels or Results controls into the same learning flow; open a group for exact effects, defaults, recompute behavior and interpretation limits.',
             formulasEyebrow: 'Mathematics where the concepts are learned',
             formulasTitle: 'Core equations behind the readouts',
             formulasIntro:
@@ -212,9 +209,6 @@ const FFT_LEARNING_EXTRAS = {
             ],
         },
         reference: {
-            title: 'MachinePulseAI kontrol rehberi',
-            intro:
-                'Aşağıdaki gruplar yukarıda seçtiğiniz uygulama durumunu izler. Aynı öğrenme akışında FFT Settings, Markers, Compare, Channels veya Results kontrollerini getirmek için ekran durumunu değiştirin; kesin etki, varsayılan, yeniden hesap davranışı ve yorum sınırı için ilgili grubu açın.',
             formulasEyebrow: 'Kavramın öğrenildiği yerde matematik',
             formulasTitle: 'Ekrandaki değerlerin temel denklemleri',
             formulasIntro:

@@ -8,7 +8,7 @@ const FFT_INTERFACE_GUIDE = {
         viewHint: 'Choose an application state',
         selectHint:
             'Select a numbered region on the screenshot. The explanation tells you what the control changes, what it does not change, and what a new engineer should verify.',
-        referenceEyebrow: 'Go deeper without leaving this application state',
+        controlsLabel: 'Controls in this region',
         views: [
             {
                 id: 'settings',
@@ -18,12 +18,44 @@ const FFT_INTERFACE_GUIDE = {
                     'MachinePulseAI FFT Settings page with Space theme, two-channel spectrum and Channels panel',
                 points: [
                     {
-                        title: 'FFT Settings is the complete calculation page',
-                        kicker: 'Left panel',
+                        title: 'Input defines which samples the spectrum describes',
+                        kicker: 'Left panel · Input',
                         description:
-                            'Input shows the read-only sample rate, navigator mode and overview channel. Spectrum chooses FFT, Welch PSD or STFT together with the window and block size. Frequency Band changes the visible range; Block Processing controls repeated blocks; Post-processing changes presentation, weighting, integration and octave overlays.',
+                            'Sample Rate is read-only metadata from the MPAI source: it fixes Nyquist at fs/2 and feeds the bin spacing Δf = fs/N. The navigator mode button switches between a dual-boundary range and a single sliding FFT window, and Channel picks the trace drawn in the navigator so the cursors can be placed on the event you actually mean.',
                         check:
-                            'Start by confirming sample rate and Mode. Then choose Block / Lines from the resolution you need and the stationary time you actually have.',
+                            'A mathematically correct FFT of a mixed speed or load state is still an unusable engineering answer. Bound one operating state before anything else.',
+                    },
+                    {
+                        title: 'Spectrum chooses the estimator and defines one block',
+                        kicker: 'Left panel · Spectrum',
+                        description:
+                            'Mode selects amplitude FFT, Welch PSD or the STFT spectrogram. Window controls how the finite block’s ends are tapered, trading leakage against peak width and amplitude accuracy. Block / Lines sets N, and N alone fixes both the bin spacing Δf = fs/N and the evidence duration N/fs.',
+                        check:
+                            'Choose N from two directions at once: the smallest frequency separation the decision must distinguish, and the longest interval that actually stays stationary.',
+                    },
+                    {
+                        title: 'Frequency Band changes the view, not the signal',
+                        kicker: 'Left panel · Frequency Band',
+                        description:
+                            'Min and Max bound the visible x-range of Spectrum, PSD and Phase and limit the optional octave calculation. Both default to 0 Hz, and Max = 0 means Nyquist. Nothing is filtered out of the data: peak detection and the summary metrics still see the full band up to Nyquist.',
+                        check:
+                            'If a peak disappears after you narrow this band, it was hidden from the plot — not removed from the calculation.',
+                    },
+                    {
+                        title: 'Block Processing decides how repeated blocks combine',
+                        kicker: 'Left panel · Block Processing',
+                        description:
+                            'None transforms a single block and keeps its instantaneous detail. Linear gives several blocks equal weight and steadies random variation, Exponential weights recent blocks more, and Max Hold keeps the largest value ever seen in each bin. Blocks and Overlap set how much source time the recipe consumes: N + (Blocks−1)·hop, with hop ≈ N(1−overlap).',
+                        check:
+                            'Averaging is valid only while the combined blocks describe the same process. If speed or load moves across the averaged span, the average describes no real operating point.',
+                    },
+                    {
+                        title: 'Post-processing changes presentation, not the transform',
+                        kicker: 'Left panel · Post-processing',
+                        description:
+                            'Y Axis switches between linear magnitude, logarithmic magnitude and dB. Weighting applies A/B/C acoustic emphasis in the dB domain. Integration divides by frequency to convert calibrated acceleration into velocity or displacement. The octave overlay summarizes band power on top of the narrowband result. These settings repaint cached output instead of recomputing the FFT.',
+                        check:
+                            'dB here is relative to one engineering unit. It is not automatically dB SPL or dBV, and no presentation setting can calibrate an uncalibrated channel.',
                     },
                     {
                         title: 'Spectrum, PSD, Phase and STFT are result views',
@@ -144,7 +176,7 @@ const FFT_INTERFACE_GUIDE = {
         viewHint: 'Uygulama durumunu seçin',
         selectHint:
             'Ekran görüntüsündeki numaralı bölgeyi seçin. Açıklama; kontrolün neyi değiştirdiğini, neyi değiştirmediğini ve yeni bir mühendisin neyi doğrulaması gerektiğini anlatır.',
-        referenceEyebrow: 'Bu çalışma durumundan ayrılmadan ayrıntıya inin',
+        controlsLabel: 'Bu bölgedeki kontroller',
         views: [
             {
                 id: 'settings',
@@ -154,12 +186,44 @@ const FFT_INTERFACE_GUIDE = {
                     'Space temasında FFT Settings sayfası, iki kanallı spektrum ve Channels paneli',
                 points: [
                     {
-                        title: 'FFT Settings hesabın bütün ayarlarını tek sayfada toplar',
-                        kicker: 'Sol panel',
+                        title: 'Input, spektrumun hangi örnekleri anlattığını belirler',
+                        kicker: 'Sol panel · Input',
                         description:
-                            'Input; salt okunur örnekleme hızını, gezgin modunu ve genel bakış kanalını gösterir. Spectrum; FFT, Welch PSD veya STFT ile birlikte pencereyi ve blok boyutunu seçer. Frequency Band görünür aralığı, Block Processing tekrarlı blokları, Post-processing ise sunum, ağırlıklandırma, entegrasyon ve oktav bindirmesini yönetir.',
+                            'Sample Rate, MPAI kaynağından gelen salt okunur meta veridir: Nyquist’i fs/2’de sabitler ve Δf = fs/N bin aralığını besler. Gezgin mod düğmesi çift sınırlı aralık ile tek kayan FFT penceresi arasında geçiş yapar; Channel ise gezginde çizilen izi seçer, böylece imleçleri gerçekten kastettiğiniz olayın üzerine koyabilirsiniz.',
                         check:
-                            'Önce örnekleme hızını ve Mode değerini doğrulayın. Ardından Block / Lines değerini hem gereken çözünürlüğe hem de gerçekten durağan kalan süreye göre seçin.',
+                            'Karışık hız veya yük durumunun matematiksel olarak doğru FFT’si yine de kullanılamaz bir mühendislik cevabıdır. Her şeyden önce tek çalışma durumunu sınırlandırın.',
+                    },
+                    {
+                        title: 'Spectrum kestiriciyi seçer ve tek bloğu tanımlar',
+                        kicker: 'Sol panel · Spectrum',
+                        description:
+                            'Mode; genlik FFT’sini, Welch PSD’yi veya STFT spektrogramını seçer. Window, sonlu bloğun uçlarının nasıl inceltileceğini yönetir; sızıntıyı tepe genişliği ve genlik doğruluğuyla takas eder. Block / Lines N değerini belirler ve tek başına N hem Δf = fs/N bin aralığını hem de N/fs kanıt süresini sabitler.',
+                        check:
+                            'N’yi aynı anda iki yönden seçin: kararın ayırması gereken en küçük frekans farkı ve gerçekten durağan kalan en uzun aralık.',
+                    },
+                    {
+                        title: 'Frequency Band görünümü değiştirir, sinyali değil',
+                        kicker: 'Sol panel · Frequency Band',
+                        description:
+                            'Min ve Max; Spectrum, PSD ve Phase görünümlerinin x aralığını sınırlar ve isteğe bağlı oktav hesabını çevreler. İkisi de varsayılan 0 Hz’dir; Max = 0 Nyquist demektir. Veriden hiçbir şey süzülmez: tepe algılama ve özet metrikler yine Nyquist’e kadar tüm bandı görür.',
+                        check:
+                            'Bandı daralttıktan sonra bir tepe kayboluyorsa o tepe grafikten gizlenmiştir — hesaptan çıkarılmamıştır.',
+                    },
+                    {
+                        title: 'Block Processing tekrarlı blokların nasıl birleşeceğine karar verir',
+                        kicker: 'Sol panel · Block Processing',
+                        description:
+                            'None tek bloğu dönüştürür ve anlık ayrıntısını korur. Linear birden çok bloğa eşit ağırlık verip rastgele değişimi kararlılaştırır, Exponential yeni bloklara daha fazla ağırlık verir, Max Hold ise her binde görülen en büyük değeri tutar. Blocks ve Overlap reçetenin ne kadar kaynak zamanı tükettiğini belirler: N + (Blocks−1)·adım, adım ≈ N(1−örtüşme).',
+                        check:
+                            'Ortalama, yalnız birleşen bloklar aynı süreci anlatırken geçerlidir. Hız veya yük ortalanan aralık boyunca değişiyorsa ortalama hiçbir gerçek çalışma noktasını anlatmaz.',
+                    },
+                    {
+                        title: 'Post-processing sunumu değiştirir, dönüşümü değil',
+                        kicker: 'Sol panel · Post-processing',
+                        description:
+                            'Y Axis; doğrusal genlik, logaritmik genlik ve dB arasında geçiş yapar. Weighting, dB alanında A/B/C akustik vurgusu uygular. Integration, kalibre ivmeyi hıza veya yer değiştirmeye çevirmek için frekansa böler. Oktav bindirmesi dar bant sonucun üzerine bant gücünü özetler. Bu ayarlar FFT’yi yeniden hesaplamaz; önbellekteki çıktıyı yeniden çizer.',
+                        check:
+                            'Buradaki dB, tek bir mühendislik birimine görelidir. Otomatik olarak dB SPL veya dBV değildir ve hiçbir sunum ayarı kalibre olmayan bir kanalı kalibre edemez.',
                     },
                     {
                         title: 'Spectrum, PSD, Phase ve STFT sonuç görünümleridir',

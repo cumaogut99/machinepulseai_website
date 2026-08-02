@@ -32,47 +32,40 @@ function Formula({ latex, fallback }) {
     )
 }
 
-export function FFTControlReference({ groupIndexes }) {
+// Resolve [groupIndex, controlIndex] pairs against the fftControls catalog so
+// the interface tour can attach the exact controls a hotspot points at.
+export function FFTControlCards({ refs }) {
     const { t } = useTranslation()
     const controlGroups = t('fftControls.groups', { returnObjects: true })
-    const visibleGroups = groupIndexes.map((index) => controlGroups[index])
+
+    const entries = refs
+        .map(([groupIndex, controlIndex]) => {
+            const group = controlGroups[groupIndex]
+            const control = group?.controls?.[controlIndex]
+            if (!control) return null
+            return { ...control, groupName: group.name }
+        })
+        .filter(Boolean)
+
+    if (entries.length === 0) return null
 
     return (
-        <div className="grid gap-3 lg:grid-cols-2">
-            {visibleGroups.map((group) => (
-                <details
-                    key={group.name}
-                    className="group rounded-2xl border border-white/10 bg-white/[0.025] open:border-[#00f5ff]/25"
+        <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+            {entries.map((entry) => (
+                <article
+                    key={`${entry.groupName}-${entry.name}`}
+                    className="rounded-xl border border-white/10 bg-white/[0.025] p-4"
                 >
-                    <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-sm font-semibold text-white">
-                        <span>{group.name}</span>
-                        <span
-                            aria-hidden="true"
-                            className="text-lg font-normal text-[#00f5ff] transition group-open:rotate-45"
-                        >
-                            +
-                        </span>
-                    </summary>
-                    <div className="border-t border-white/8 px-5 pb-5 pt-2">
-                        {group.desc && (
-                            <p className="py-3 text-xs leading-5 text-slate-500">
-                                {group.desc}
-                            </p>
-                        )}
-                        <dl className="divide-y divide-white/8">
-                            {group.controls.map((control) => (
-                                <div key={control.name} className="py-4">
-                                    <dt className="text-sm font-semibold text-[#00f5ff]">
-                                        {control.name}
-                                    </dt>
-                                    <dd className="mt-1 text-[13px] leading-6 text-slate-400">
-                                        {control.desc}
-                                    </dd>
-                                </div>
-                            ))}
-                        </dl>
-                    </div>
-                </details>
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-600">
+                        {entry.groupName}
+                    </p>
+                    <h5 className="mt-2 text-sm font-semibold text-[#00f5ff]">
+                        {entry.name}
+                    </h5>
+                    <p className="mt-2 text-[13px] leading-6 text-slate-400">
+                        {entry.desc}
+                    </p>
+                </article>
             ))}
         </div>
     )
@@ -152,5 +145,3 @@ export function FFTEngineeringReference({ detail }) {
         </div>
     )
 }
-
-export default FFTControlReference
