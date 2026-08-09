@@ -5,7 +5,7 @@ const FFT_LEARNING_TRANSLATIONS = {
     en: {
         back: 'Back to module library',
         eyebrow: 'MachinePulseAI Academy · FFT / Spectrum',
-        title: 'From time signal to trustworthy spectrum',
+        title: 'FFT Analysis Workflow',
         intro:
             'Start with no assumed FFT knowledge and progress from physical motion to the current MachinePulseAI controls. Every important setting is connected to the question it answers, the trade-off it creates, the result surface it changes and the interpretation mistake it prevents.',
         badges: ['Real application UI', 'Interactive concepts', 'New-engineer friendly'],
