@@ -8,17 +8,26 @@ const FFT_CONTROL_GUIDE_TR = {
                 {
                     name: 'FFT Settings · Markers · Compare',
                     desc:
-                        'Sol panel sayfalarıdır. FFT Settings hesap parametrelerini (örnekleme, pencere, blok boyutu, ortalama), Markers tepe algılama ve harmonik/yan bant imleçlerini, Compare ise iki kanal veya zaman aralığını kıyaslama ayarlarını açar.',
+                        'Sol panel ayar sayfalarıdır:\n' +
+                        '• FFT Settings: Örnekleme hızı, kestirici (FFT/PSD/STFT), pencere tipi, blok boyutu (N) ve ortalama modunu yapılandırır.\n' +
+                        '• Markers: Tepe dB eşiği, harmonik ailesi (f₀, 2f₀, 3f₀...) ve yan bant imleçlerini yönetir.\n' +
+                        '• Compare: İki farklı kanal veya zaman aralığını dondurup kıyaslamayı sağlar.',
                 },
                 {
                     name: 'Spectrum · PSD · Phase · STFT',
                     desc:
-                        'Orta grafik alanında görüntülenecek sonucu seçer. Spectrum genlik spektrumunu, PSD hertz başına gücü, Phase faz açısını gösterir. STFT ise zaman-frekans haritasını açar.',
+                        'Orta grafik alanında gösterilecek sonucu seçer:\n' +
+                        '• Spectrum: Genlik spektrumunu gösterir (g, mm/s veya dB).\n' +
+                        '• PSD: Hertz başına güç yoğunluğunu gösterir (g²/Hz).\n' +
+                        '• Phase: Frekans adımları arasındaki faz açısını gösterir (derece).\n' +
+                        '• STFT: Zaman-frekans renk haritasını (spektrogram) açar.',
                 },
                 {
                     name: 'Channels · Results',
                     desc:
-                        'Sağ paneli yönetir. Channels analiz edilecek kanalları işaretlemeyi sağlar. Results ise özet değerleri (RMS, THD, SNR), bulunan tepeleri (Peaks) ve karşılaştırma tablosunu (Compare) sunar.',
+                        'Sağ sütun panellerini açar ve kapatır:\n' +
+                        '• Channels: Analiz edilecek sensör kanallarını seçer.\n' +
+                        '• Results: Son analize ait Özet (Summary), Tepeler Tablosu (Peaks) ve Karşılaştırma Tablosunu (Compare) sunar.',
                 },
             ],
         },
@@ -30,22 +39,30 @@ const FFT_CONTROL_GUIDE_TR = {
                 {
                     name: 'Sample Rate (Örnekleme Hızı - fs)',
                     desc:
-                        'MPAI dosyasından gelen salt okunur veridir. Nyquist sınırını (fs/2) ve frekans adımlarını (Δf = fs/N) doğrudan belirler. Donanımın saniyede aldığı örnek sayısını gösterir.',
+                        'MPAI dosyasından okunan salt okunur donanım meta verisidir:\n' +
+                        '• Örnekleme Hızı (fs): Donanımın saniyede aldığı örnek sayısıdır (Hz).\n' +
+                        '• Nyquist Sınırı (fs/2): Ölçülebilecek maksimum frekansı belirler.\n' +
+                        '• Bin Adımı (Δf = fs/N): Frekans çözünürlüğünün tabanını oluşturur.\n' +
+                        '• Salt Okunur: Donanım hızını temsil eder; yeniden örnekleme yapmaz.',
                 },
                 {
                     name: 'Navigator — Dual region (Çift İmleç)',
                     desc:
-                        'Zaman grafiğinde iki dikey imleç ile makinenin sabit hızda çalıştığı kararlı aralığı seçer. İmleç bırakıldığında yeni aralık için C++ tarafında anında yeniden hesaplama yapılır.',
+                        'Zaman gezgininde kararlı çalışma aralığını sınırlar:\n' +
+                        '• Kararlı Aralık Seçimi: İki dikey imleç ile makinenin sabit hızda çalıştığı durağan zaman dilimini dondurur.\n' +
+                        '• Otomatik Yeniden Hesaplama: İmleç bırakıldığında C++ motoru yeni zaman dilimi için spektrumu anında hesaplar.',
                 },
                 {
                     name: 'Navigator — Single sliding window (Kayan Pencere)',
                     desc:
-                        'Sabit genişlikteki bir zaman penceresini sinyal üzerinde gezdirerek anlık frekans değişimlerini izlemenizi sağlar.',
+                        'Dinamik zaman tarama modudur:\n' +
+                        '• Dinamik Tarama: Sabit N boyutundaki zaman penceresini sinyal üzerinde gezdirerek anlık frekans değişimlerini izlemeyi sağlar.',
                 },
                 {
                     name: 'Channel (Gezgin Kanalı)',
                     desc:
-                        'Zaman grafiğinde arka planda görüntülenecek referans kanalı seçer. İmleçlerin doğru zaman olayı üzerine yerleştirilmesine yardımcı olur.',
+                        'Zaman izi referansıdır:\n' +
+                        '• İz Seçimi: Zaman grafiğinde arka planda gösterilecek kanalı seçerek imleçlerin doğru zaman olayı üzerine yerleştirilmesini kolaylaştırır.',
                 },
             ],
         },
@@ -57,37 +74,54 @@ const FFT_CONTROL_GUIDE_TR = {
                 {
                     name: 'Mode — FFT (amplitude)',
                     desc:
-                        'Mil devir frekansları (1x, 2x), harmonikler, dişli geçişleri ve elektriksel gürültüler gibi ayrık deterministik bileşenlerin genlik (g, mm/s) ve fazını ölçmek için kullanılır.',
+                        'Genlik spektrumu modudur:\n' +
+                        '• Kullanım Alanı: Mil devir frekansları (1x, 2x), harmonikler, dişli kavrama ve elektrik tonları gibi ayrık deterministik bileşenler.\n' +
+                        '• Çıktılar: Genlik (g, mm/s), faz açısı ve bulunan tepeler tablosu.',
                 },
                 {
                     name: 'Mode — Welch PSD',
                     desc:
-                        'Rastgele titreşim ve geniş bant gürültü enerjisini hertz başına güç (g²/Hz) olarak hesaplar. Örtüşen periodogram ortalaması alarak gürültüyü kararlılaştırır ve farklı blok boyutlu kayıtları kıyaslanabilir kılar.',
+                        'Güç spektral yoğunluğu modudur:\n' +
+                        '• Kullanım Alanı: Rastgele titreşim, akışkan gürültüsü ve geniş bant enerji dağılımı.\n' +
+                        '• Birim: g²/Hz veya (mm/s)²/Hz. Örtüşen blok ortalaması alarak farklı N boyutlu kayıtları kıyaslanabilir kılar.',
                 },
                 {
                     name: 'Mode — Spectrogram (STFT)',
                     desc:
-                        'Zamanla değişen frekans içeriğini (devir yükselme/düşme, transient darbe) zaman-frekans renk haritası (ısı haritası) üzerinde gösterir.',
+                        'Zaman-frekans analizi modudur:\n' +
+                        '• Kullanım Alanı: Devir yükselme (run-up), devir düşme (coast-down), transient darbeler veya zamanla değişen frekanslar.\n' +
+                        '• Görsel: Zaman-frekans renkli ısı haritası.',
                 },
                 {
                     name: 'Window (Pencereleme Fonksiyonu)',
                     desc:
-                        'Kesilen kaydın iki ucundaki süreksizliği incelterek spektral sızıntıyı (leakage) önler:\n' +
-                        '• Hann (Varsayılan): Genel titreşim ve dönel makine analizlerinin %90\'ında ilk tercihtir. Düzgün kenar yumuşatmasıyla sızıntıyı azaltır; frekans ve genlik doğruluğu arasında ideal bir denge sağlar.\n' +
-                        '• Flat-Top: ISO 10816 / 20816 standartlarına göre genlik/şiddet (RMS/Peak) okuması yapılırken kullanılır. Tepe noktası geniştir; genlik okuma hatasını %0.1\'in altına indirir fakat frekans çözünürlüğünü genişletir.\n' +
-                        '• Blackman / Blackman-Harris: Birbirine çok yakın ancak güçleri çok farklı iki frekans bileşenini (örneğin güçlü mil frekansının dibindeki zayıf elektrik tonunu) ayırmak için yüksek sızıntı bastırma (>92 dB) sağlar.\n' +
-                        '• Rectangular (Pencersiz): Yalnızca sinyal periyodu blok boyutunun tam katı ise (koherent) veya çekiç darbesi gibi transient (geçici) sinyallerde kullanılır. Sürekli titreşimde şiddetli sızıntı yapar.\n' +
-                        '• Kaiser / Tukey / Gaussian: İnce ayar parametreleri (β, α, σ) ile sızıntı bastırma ve tepe genişliğini ihtiyaca göre özelleştiren gelişmiş mühendislik pencereleridir.',
+                        'Kesilen kaydın iki ucundaki süreksizliği yumuşatarak spektral sızıntıyı (leakage) önler:\n\n' +
+                        '• Hann (Varsayılan):\n' +
+                        'Genel titreşim ve dönel makine analizlerinin %90\'ında ilk tercihtir. Düzgün kenar inceltmesiyle sızıntıyı azaltır; frekans çözünürlüğü ve genlik doğruluğu arasında ideal bir denge sağlar.\n\n' +
+                        '• Flat-Top:\n' +
+                        'ISO 10816 / 20816 standartlarına göre genlik/şiddet (RMS/Peak) okuması yapılırken kullanılır. Genlik okuma hatasını %0.1\'in altına indirir fakat tepe genişliğini artırır.\n\n' +
+                        '• Blackman-Harris / Blackman:\n' +
+                        'Güçlü bir frekans bileşeninin hemen dibindeki zayıf bir frekansı ayırmak için yüksek sızıntı bastırma (>92 dB) sağlar.\n\n' +
+                        '• Rectangular (Pencersiz):\n' +
+                        'Yalnızca sinyal periyodu blok boyutunun tam katı ise (koherent) veya çekiç darbe testlerinde (transient) kullanılır. Sürekli titreşimde şiddetli sızıntı yapar.\n\n' +
+                        '• Kaiser / Tukey / Gaussian:\n' +
+                        'İnce ayar katsayıları (β, α, σ) ile sızıntı bastırma ve tepe genişliği takasını özelleştiren gelişmiş mühendislik pencereleridir.',
                 },
                 {
                     name: 'β · σ · α pencere parametresi',
                     desc:
-                        'Kaiser (β: 0.01-50, varsayılan 14), Gaussian (σ: 0.01-5, varsayılan 0.4) veya Tukey (α: 0-1, varsayılan 0.5) pencerelerinin kenar inceltme dikliğini ayarlar. Katsayı büyüdükçe sızıntı azalır ancak tepe genişler.',
+                        'Özel pencere ayar katsayılarıdır:\n' +
+                        '• Kaiser (β: 0.01-50, Varsayılan 14): Yan lob bastırma dikliğini ayarlar.\n' +
+                        '• Gaussian (σ: 0.01-5, Varsayılan 0.4): Çan eğrisi genişliğini düzenler.\n' +
+                        '• Tukey (α: 0-1, Varsayılan 0.5): Taper dikliğini ayarlar (α=0 Rectangular, α=1 Hann).',
                 },
                 {
                     name: 'Block / Lines (N Blok Boyutu)',
                     desc:
-                        'Dönüşüm başına N örnek sayısını (256 - 131072, varsayılan 4096) belirler. Frekans adımı Δf = fs/N ve blok süresi T = N/fs formülüyle hesaplanır. Yüksek N değeri frekans adımlarını yakınlaştırır (örneğin fs=4096 Hz için N=4096 => Δf=1 Hz), ancak daha uzun kararlı zaman verisi gerektirir.',
+                        'Dönüşüm başına N örnek sayısıdır (256 - 131072, varsayılan 4096):\n' +
+                        '• Frekans Adımı (Δf = fs / N): N büyüdükçe frekans çizgileri yakınlaşır.\n' +
+                        '• Blok Süresi (T = N / fs): Örneğin N=4096, fs=4096 Hz iken Δf = 1 Hz ve T = 1 saniyedir.\n' +
+                        '• Seçim Kriteri: Yüksek N daha ince frekans ayrımı sağlar ancak daha uzun kararlı zaman verisi gerektirir.',
                 },
             ],
         },
@@ -97,14 +131,14 @@ const FFT_CONTROL_GUIDE_TR = {
                 'Ekrandaki frekans eksenini yakınlaştırır; donanım seviyesinde sinyali filtrelemez.',
             controls: [
                 {
-                    name: 'Min',
+                    name: 'Min (Alt Frekans Sınırı)',
                     desc:
-                        'Görüntülenecek alt frekans sınırıdır (Hz). Varsayılan 0 Hz (DC) seviyesidir.',
+                        'Grafikte gösterilecek alt frekans sınırıdır (Hz). Varsayılan 0 Hz (DC). Ekranda yakınlaştırma sağlar; veriden frekans silmez.',
                 },
                 {
-                    name: 'Max',
+                    name: 'Max (Üst Frekans Sınırı)',
                     desc:
-                        'Görüntülenecek üst frekans sınırıdır (Hz). Varsayılan 0 değeri otomatik olarak Nyquist sınırını (fs/2) kullanır. Örneğin Max=500 Hz yapmak grafiği 0-500 Hz aralığına yakınlaştırır.',
+                        'Grafikte gösterilecek üst frekans sınırıdır (Hz). Varsayılan 0 değeri otomatik olarak Nyquist (fs/2) sınırını alır. Max=500 Hz yapmak görünümü 0-500 Hz aralığına yakınlaştırır.',
                 },
             ],
         },
@@ -116,32 +150,32 @@ const FFT_CONTROL_GUIDE_TR = {
                 {
                     name: 'Mode — None (Tek Blok)',
                     desc:
-                        'Ortalama almaz, tek bir bloğun dönüşümünü hesaplar. Ham ve anlık spektrumu incelemek için kullanılır.',
+                        'Ortalama almaz, anlık tek bir bloğu dönüştürür. Ham sinyal değişkenliğini görmek için kullanılır.',
                 },
                 {
                     name: 'Mode — Linear (Doğrusal Ortalama)',
                     desc:
-                        'Belirlenen sayıda bloğun spektrum ortalamasını alır. Rastgele gürültüyü kararlılaştırır ve dönel makine bileşenlerini öne çıkarır.',
+                        'Eşit ağırlıklı blok ortalaması alır. Rastgele gürültüyü kararlılaştırır ve sabit dönel makine tonlarını belirginleştirir.',
                 },
                 {
                     name: 'Mode — Exponential (Üstel Ortalama)',
                     desc:
-                        'Yeni gelen bloklara daha fazla ağırlık vererek değişen süreçleri dinamik olarak izlemeyi sağlar.',
+                        'Yeni gelen bloklara daha yüksek ağırlık vererek yavaş değişen süreçleri dinamik izlemeyi sağlar.',
                 },
                 {
                     name: 'Mode — Max Hold (En Yüksek Tutma)',
                     desc:
-                        'Tüm bloklar boyunca her frekansta görülen maksimum genliği saklar. Aralıklı pikleri, transient geçişleri veya en kötü durum titreşim seviyesini yakalamak içindir.',
+                        'Tüm bloklar boyunca her frekanstaki maksimum genliği tutar. Transient pikleri veya en kötü durum titreşim seviyesini yakalamak içindir.',
                 },
                 {
                     name: 'Blocks (Blok Sayısı)',
                     desc:
-                        'Birleştirilecek blok adedidir (1-1000, varsayılan 10). Blok sayısı arttıkça rastgele gürültü azalır ancak daha uzun zaman kaydı gerekir.',
+                        'Birleştirilecek blok adedidir (1-1000, varsayılan 10). Blok sayısı arttıkça rastgele gürültü azalır.',
                 },
                 {
                     name: 'Overlap (Örtüşme Oranı)',
                     desc:
-                        'Bloklar arasındaki örtüşme yüzdesidir (%0, %25, %50, %75; varsayılan %50). %50 örtüşme veri kapsama verimini artırır ve pencereleme nedeniyle oluşan kenar kayıplarını telafi eder.',
+                        'Bloklar arası örtüşme yüzdesidir (%0, %25, %50, %75; varsayılan %50). %50 örtüşme veri kapsama verimini artırır ve pencereleme kenar kayıplarını telafi eder.',
                 },
                 {
                     name: 'Exp. α',
@@ -158,22 +192,29 @@ const FFT_CONTROL_GUIDE_TR = {
                 {
                     name: 'Y Axis (Dikey Ekseni)',
                     desc:
-                        'Doğrusal (Linear: g, mm/s), Logaritmik veya dB (Desibel) ölçekleri arasında geçiş yapar. Zayıf harmonikleri ve gürültü tabanını görmek için dB tercih edilir.',
+                        'Eksen ölçeklendirme modları:\n' +
+                        '• Linear: Doğrusal genlik (g, mm/s).\n' +
+                        '• Logarithmic: Logaritmik ölçekli dikey eksen.\n' +
+                        '• dB (Desibel): Göreli desibel ölçeği; zayıf harmonikleri ve gürültü tabanını ortaya çıkarır.',
                 },
                 {
                     name: 'Weighting (Akustik Ağırlıklandırma)',
                     desc:
-                        'dB modunda A, B veya C akustik frekans ağırlıklandırması uygular. Genel makine titreşim analizlerinde düz (Z / None) seçilmelidir.',
+                        'A / B / C Ağırlıkları:\n' +
+                        'dB modunda insan kulağı işitme eğrilerine göre ağırlıklandırma uygular. Genel makine titreşim analizinde Z (Düz / None) seçilmelidir.',
                 },
                 {
                     name: 'Integration (Entegrasyon)',
                     desc:
-                        'Frekans bölgesinde ivme sinyalini Hıza (mm/s) veya Yer Değiştirmeye (µm) çevirir. DC gürültüsünü önlemek için 0 Hz frekansı sıfırlanır.',
+                        'Birim dönüşüm modları:\n' +
+                        '• Single (Tek Entegrasyon): Frekans bölgesinde ivmeyi Hıza (mm/s) çevirir.\n' +
+                        '• Double (Çift Entegrasyon): İvmeyi Yer Değiştirmeye (µm) çevirir. 0 Hz DC gürültüsünü önlemek için sıfırlanır.',
                 },
                 {
                     name: 'Octave overlay (Oktav Bantları)',
                     desc:
-                        '1/1, 1/3, 1/12 veya 1/24 oktav bant güçlerini dar bant spektrum üzerine bindirerek akustik veya genel titreşim enerjisini özetler.',
+                        'Oktav güç dağılımı:\n' +
+                        '1/1, 1/3, 1/12 veya 1/24 oktav bant güçlerini dar bant spektrum üzerine bindirerek genel enerjiyi özetler.',
                 },
             ],
         },
@@ -202,7 +243,8 @@ const FFT_CONTROL_GUIDE_TR = {
                 {
                     name: 'Max Peaks · Min Magnitude',
                     desc:
-                        'Listelenecek maksimum tepe sayısını ve dB eşiğini belirler. Algılanan tepelere parabolik interpolasyon uygulanarak gerçek tepe frekansı bin adımları arasından hassas hesaplanır.',
+                        'Tepe eşikleri:\n' +
+                        'Listelenecek maksimum tepe sayısını ve dB eşiğini belirler. Parabolik 3-bin interpolasyon ile gerçek tepe frekansı hassas hesaplanır.',
                 },
                 {
                     name: 'Show detected peaks on spectrum',
@@ -217,12 +259,12 @@ const FFT_CONTROL_GUIDE_TR = {
                 {
                     name: 'Manual f0 · Harmonics',
                     desc:
-                        'Temel frekansı elle girmeyi ve çizilecek harmonik adedini belirlemeyi sağlar.',
+                        'Temel frekansı elle girmeyi ve çizilecek harmonik sayısını belirlemeyi sağlar.',
                 },
                 {
                     name: 'Show sideband family · Sideband Δf',
                     desc:
-                        'Baskın tepe çevresine simetrik yan bant çizgileri (Taşıyıcı ± n·Δf) çizer. Dişli modülasyonlarını veya rulman arıza frekanslarını izlemek için kullanılır.',
+                        'Baskın tepe çevresine simetrik yan bant çizgileri (Taşıyıcı ± n·Δf) çizer; dişli veya rulman modülasyonlarını izler.',
                 },
             ],
         },
@@ -234,12 +276,12 @@ const FFT_CONTROL_GUIDE_TR = {
                 {
                     name: 'Reference A · Compare B · Compute and Compare',
                     desc:
-                        'Reference A ve Compare B olarak iki kanalı seçip tek reçeteyle hesaplayarak üst üste bindirir.',
+                        'Reference A ve Compare B olarak iki farklı sensör kanalını tek reçeteyle hesaplayarak üst üste bindirir.',
                 },
                 {
                     name: 'Capture current range as Reference A',
                     desc:
-                        'Mevcut spektrumu dondurarak Reference A olarak saklar. Zaman imlecini başka bir zaman dilimine taşıdığınızda Current B spektrumu hesaplanır ve iki durum tek grafikte kıyaslanır.',
+                        'Mevcut spektrumu dondurarak Reference A olarak saklar. Zaman imlecini başka bir zaman dilimine taşıdığınızda Current B spektrumu hesaplanır ve iki durum kıyaslanır.',
                 },
                 {
                     name: 'Clear Reference A',

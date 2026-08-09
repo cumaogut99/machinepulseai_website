@@ -62,7 +62,7 @@ export function FFTControlCards({ refs }) {
                     <h5 className="mt-2 text-sm font-semibold text-[#00f5ff]">
                         {entry.name}
                     </h5>
-                    <p className="mt-2 text-[13px] leading-6 text-slate-400">
+                    <p className="mt-2 text-[13px] leading-6 text-slate-400 whitespace-pre-line">
                         {entry.desc}
                     </p>
                 </article>
