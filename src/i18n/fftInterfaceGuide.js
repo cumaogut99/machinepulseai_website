@@ -168,168 +168,168 @@ const FFT_INTERFACE_GUIDE = {
         ],
     },
     tr: {
-        title: 'Güncel arayüzü gerçek çalışma durumlarıyla adım adım tanıyın',
+        title: 'MachinePulseAI Arayüzünü Adım Adım Tanıyın',
         intro:
-            'FFT penceresi bütün panelleri aynı anda gösteremez. Aşağıdaki üç görünümü uygulamadaki sırayla kullanın: hesabı ve kanalları yapılandırın, işaretçileri ve bulunan tepeleri inceleyin, ardından kanalları veya çalışma durumlarını karşılaştırın.',
+            'Aşağıdaki 3 görünüm ekranı, MachinePulseAI masaüstü uygulamasında kullanacağınız çalışma akışını temsil eder: Önce hesap ayarlarını ve kanalları yapılandırın, ardından işaretçileri ve bulunan tepeleri inceleyin, son olarak kanalları veya iki farklı zaman aralığını karşılaştırın.',
         imageCaption:
-            'Güncel MachinePulseAI FFT / Spectrum panelinden Space temasında alınmıştır. Bütün kontroller okunabilsin diye eğriler deterministik bir eğitim sonucu kullanır.',
-        viewHint: 'Uygulama durumunu seçin',
+            'MachinePulseAI FFT / Spektrum ekranından alınmıştır. Tüm kontrollerin rahat okunabilmesi için eğriler test verisi kullanmaktadır.',
+        viewHint: 'İncelemek istediğiniz ekran görünümünü seçin',
         selectHint:
-            'Ekran görüntüsündeki numaralı bölgeyi seçin. Açıklama; kontrolün neyi değiştirdiğini, neyi değiştirmediğini ve yeni bir mühendisin neyi doğrulaması gerektiğini anlatır.',
-        controlsLabel: 'Bu bölgedeki kontroller',
+            'Ekran görüntüsündeki numaralı bir bölgeyi seçin. Açıklama; kontrolün ne işe yaradığını ve neyi kontrol etmeniz gerektiğini gösterir.',
+        controlsLabel: 'Bu Bölgedeki Kontroller',
         views: [
             {
                 id: 'settings',
-                tab: 'FFT Settings + Channels',
-                title: 'Analiz reçetesini kurun ve kanıtı oluşturacak sinyalleri seçin',
+                tab: 'FFT Ayarları + Kanallar (Settings & Channels)',
+                title: 'Analiz Parametrelerini Belirleyin ve Kanalları Seçin',
                 imageAlt:
-                    'Space temasında FFT Settings sayfası, iki kanallı spektrum ve Channels paneli',
+                    'FFT Settings sayfası, iki kanallı spektrum ve Channels paneli',
                 points: [
                     {
-                        title: 'Input, spektrumun hangi örnekleri anlattığını belirler',
-                        kicker: 'Sol panel · Input',
+                        title: '1. Input (Girdi ve Örnekleme Meta Verisi)',
+                        kicker: 'Sol Panel · Input',
                         description:
-                            'Sample Rate, MPAI kaynağından gelen salt okunur meta veridir: Nyquist’i fs/2’de sabitler ve Δf = fs/N bin aralığını besler. Gezgin mod düğmesi çift sınırlı aralık ile tek kayan FFT penceresi arasında geçiş yapar; Channel ise gezginde çizilen izi seçer, böylece imleçleri gerçekten kastettiğiniz olayın üzerine koyabilirsiniz.',
+                            'Sample Rate (Örnekleme Hızı), bağlı MPAI dosyasından gelen salt okunur veridir. Nyquist sınırını (fs/2) ve frekans adımlarını (Δf = fs/N) belirler. Gezgin imleçleri ile analiz edilecek sabit çalışma aralığını seçin. Channel açılır menüsünden ise zaman grafiğinde görüntülenecek kanalı belirleyin.',
                         check:
-                            'Karışık hız veya yük durumunun matematiksel olarak doğru FFT’si yine de kullanılamaz bir mühendislik cevabıdır. Her şeyden önce tek çalışma durumunu sınırlandırın.',
+                            'Değişken devir veya yük içeren bir zaman aralığı almak matematiksel olarak sonuç verse de mühendislik açısından hatalı spektrum üretir. Önce sabit kalmış bir aralık seçin.',
                     },
                     {
-                        title: 'Spectrum kestiriciyi seçer ve tek bloğu tanımlar',
-                        kicker: 'Sol panel · Spectrum',
+                        title: '2. Spectrum (Kestirici Modu ve Blok Boyutu)',
+                        kicker: 'Sol Panel · Spectrum',
                         description:
-                            'Mode; genlik FFT’sini, Welch PSD’yi veya STFT spektrogramını seçer. Window, sonlu bloğun uçlarının nasıl inceltileceğini yönetir; sızıntıyı tepe genişliği ve genlik doğruluğuyla takas eder. Block / Lines N değerini belirler ve tek başına N hem Δf = fs/N bin aralığını hem de N/fs kanıt süresini sabitler.',
+                            'Mode seçeneğinden Genlik FFT, Welch PSD veya STFT Spektrogram modunu belirleyin. Window (Pencere) ile sızıntı kontrolünü yapın (Hann varsayılandır). Block / Lines ile N örnek sayısını ayarlayın. N sayısı hem frekans çözünürlüğünü (Δf = fs/N) hem de analiz süresini (N/fs) belirler.',
                         check:
-                            'N’yi aynı anda iki yönden seçin: kararın ayırması gereken en küçük frekans farkı ve gerçekten durağan kalan en uzun aralık.',
+                            'N değerini seçerken ayırmak istediğiniz en küçük frekans farkını (Δf) dikkate alın.',
                     },
                     {
-                        title: 'Frequency Band görünümü değiştirir, sinyali değil',
-                        kicker: 'Sol panel · Frequency Band',
+                        title: '3. Frequency Band (Görünüm Bant Genişliği)',
+                        kicker: 'Sol Panel · Frequency Band',
                         description:
-                            'Min ve Max; Spectrum, PSD ve Phase görünümlerinin x aralığını sınırlar ve isteğe bağlı oktav hesabını çevreler. İkisi de varsayılan 0 Hz’dir; Max = 0 Nyquist demektir. Veriden hiçbir şey süzülmez: tepe algılama ve özet metrikler yine Nyquist’e kadar tüm bandı görür.',
+                            'Min ve Max değerleri ekranda gösterilecek frekans aralığını sınırlar. İkisi de varsayılan olarak 0 Hz\'dir (Max = 0 Nyquist anlamına gelir). Bu ayar sinyali filtrelemez, sadece x eksenindeki görünümü yakınlaştırır.',
                         check:
-                            'Bandı daralttıktan sonra bir tepe kayboluyorsa o tepe grafikten gizlenmiştir — hesaptan çıkarılmamıştır.',
+                            'Min/Max bant sınırını daralttığınızda bir tepe kayboluyorsa, o tepe grafikten gizlenmiştir; hesaptan silinmemiştir.',
                     },
                     {
-                        title: 'Block Processing tekrarlı blokların nasıl birleşeceğine karar verir',
-                        kicker: 'Sol panel · Block Processing',
+                        title: '4. Block Processing (Blok İşleme ve Ortalama)',
+                        kicker: 'Sol Panel · Block Processing',
                         description:
-                            'None tek bloğu dönüştürür ve anlık ayrıntısını korur. Linear birden çok bloğa eşit ağırlık verip rastgele değişimi kararlılaştırır, Exponential yeni bloklara daha fazla ağırlık verir, Max Hold ise her binde görülen en büyük değeri tutar. Blocks ve Overlap reçetenin ne kadar kaynak zamanı tükettiğini belirler: N + (Blocks−1)·adım, adım ≈ N(1−örtüşme).',
+                            'Ortalama modu (Linear, Exponential, Max Hold) tekrarlı blokların nasıl birleştirileceğini seçer. Linear ortalama rastgele gürültüyü kararlılaştırır. Max Hold her frekansta görülen en yüksek tepeyi tutar. Blocks ve Overlap (Örtüşme) ise kaç bloğun birleştirileceğini belirler.',
                         check:
-                            'Ortalama, yalnız birleşen bloklar aynı süreci anlatırken geçerlidir. Hız veya yük ortalanan aralık boyunca değişiyorsa ortalama hiçbir gerçek çalışma noktasını anlatmaz.',
+                            'Ortalama alma işlemi sadece birleştirilen tüm bloklar aynı çalışma durumunu (aynı devir/yük) temsil ediyorsa geçerlidir.',
                     },
                     {
-                        title: 'Post-processing sunumu değiştirir, dönüşümü değil',
-                        kicker: 'Sol panel · Post-processing',
+                        title: '5. Post-processing (Son İşlem ve Görünüm)',
+                        kicker: 'Sol Panel · Post-processing',
                         description:
-                            'Y Axis; doğrusal genlik, logaritmik genlik ve dB arasında geçiş yapar. Weighting, dB alanında A/B/C akustik vurgusu uygular. Integration, kalibre ivmeyi hıza veya yer değiştirmeye çevirmek için frekansa böler. Oktav bindirmesi dar bant sonucun üzerine bant gücünü özetler. Bu ayarlar FFT’yi yeniden hesaplamaz; önbellekteki çıktıyı yeniden çizer.',
+                            'Y Axis ile dikey ekseni Doğrusal (Linear) veya Logaritmik (dB) yapın. Integration (Entegrasyon) ile ivme sinyalini frekans bölgesinde Hıza (mm/s) veya Yer Değiştirmeye (µm) çevirin. Weighting ile A/B/C akustik ağırlıklandırması uygulayın. Bu ayarlar FFT\'yi yeniden hesaplamaz, ekrandaki sunumu günceller.',
                         check:
-                            'Buradaki dB, tek bir mühendislik birimine görelidir. Otomatik olarak dB SPL veya dBV değildir ve hiçbir sunum ayarı kalibre olmayan bir kanalı kalibre edemez.',
+                            'İvmeden Hıza entegrasyon yaparken düşük frekanslardaki (DC) gürültü patlamalarını önlemek için kalibre ivme verisi kullanın.',
                     },
                     {
-                        title: 'Spectrum, PSD, Phase ve STFT sonuç görünümleridir',
-                        kicker: 'Üst orta',
+                        title: '6. Görünüm Sekmeleri (Spectrum, PSD, Phase, STFT)',
+                        kicker: 'Üst Orta Sekmeler',
                         description:
-                            'Bu düğmeler orta görünümü değiştirir ve hesap başlatmaz. Spectrum genliği, PSD hertz başına gücü, Phase açısal zamanlamayı gösterir. Henüz STFT sonucu yoksa STFT düğmesi Spectrogram modunu hazırlar ve ayarlarını açar; zaman–frekans haritası için tek kanal seçip Compute’a basın.',
+                            'Bu sekme düğmeleri orta grafik alanını değiştirir (hesaplama başlatmaz). Spectrum genlik spektrumunu, PSD hertz başına gücü, Phase faz açısını gösterir. STFT sekmesi ise zaman-frekans haritasını açar.',
                         check:
-                            'PSD değerini genlik spektrumuyla doğrudan karşılaştırmayın; fiziksel anlamları ve birimleri farklıdır.',
+                            'Welch PSD birimi (g²/Hz) ile Genlik spektrumu birimini (g) doğrudan birbiriyle kıyaslamayın.',
                     },
                     {
-                        title: 'Channels hangi sinyallerin dönüştürüleceğini belirler',
-                        kicker: 'Sağ panel',
+                        title: '7. Channels (Çoklu Kanal Seçimi)',
+                        kicker: 'Sağ Panel · Channels',
                         description:
-                            'İşaretlenen her sinyal aynı reçeteyle analiz edilir ve ayrı renkle üst üste çizilir. Böylece ayarları değiştirmeden iki sensör konumu veya yönü karşılaştırılabilir. Zaman–frekans matrisi çizgi spektrumundan çok daha büyük olduğu için Spectrogram bilinçli olarak tek kanalla sınırlıdır.',
+                            'Sağ panelde işaretlediğiniz tüm kanallar aynı FFT reçetesiyle hesaplanır ve farklı renklerde üst üste çizilir. Böylece iki farklı sensör yönünü veya yerini tek tıkla karşılaştırabilirsiniz.',
                         check:
-                            'Soldaki Channel alanı gezginde gösterilecek izi; buradaki işaretler ise FFT hesabına gönderilecek kanalları seçer.',
+                            'Soldaki Channel alanı gezgin zaman grafiğini seçer; sağdaki Channels listesi ise FFT hesabına gönderilen tüm kanalları seçer.',
                     },
                     {
-                        title: 'Compute reçeteyi çalıştırır; durum satırı kapsamı kanıtlar',
-                        kicker: 'Sol alt',
+                        title: '8. Compute (Hesapla) ve Durum Bilgisi',
+                        kicker: 'Sol Alt Buton',
                         description:
-                            'Compute; seçilen kanal kümesini, imleç aralığını ve ayarları arka plandaki C++ motora gönderir. Durum satırı tamamlanmayı, kanal sayısını, baskın tepeyi, çözünürlüğü ve ortalamayı raporlar. Sabit blokta analiz edilen bölüm geniş imleç seçiminden kısa olabilir; bu nedenle kullanılan örnek mesajı sonucun bir parçasıdır.',
+                            'Compute butonu seçili imleç aralığını ve ayarları C++ motorunda çalıştırır. Durum satırı tamamlanma süresini, baskın frekansı, çözünürlüğü ve kullanılan örnek sayısını raporlar.',
                         check:
-                            'Vurgulanan aralığın tamamının dönüştürüldüğünü varsaymayın; Compute sonrasında analiz edilen örnek sayısını ve Δf’yi doğrulayın.',
+                            'Zaman imleçlerini her değiştirdiğinizde Compute\'a basarak güncel sonucu elde edin.',
                     },
                 ],
             },
             {
                 id: 'markers',
-                tab: 'Markers + Peaks',
-                title: 'Spektral çizgileri sınanabilir mekanik hipotezlere dönüştürün',
+                tab: 'İşaretçiler ve Tepeler (Markers & Peaks)',
+                title: 'Spektrum Çizgilerini Mekanik Hipotezlere Dönüştürün',
                 imageAlt:
                     'Harmonik ve yan bant işaretçileri ile Peaks sonuç tablosunu gösteren MachinePulseAI Markers sayfası',
                 points: [
                     {
-                        title: 'Peak Detection hangi yerel maksimumların raporlanacağını seçer',
-                        kicker: 'Sol · üst grup',
+                        title: '1. Peak Detection (Tepe Algılama Eşikleri)',
+                        kicker: 'Sol · Üst Grup',
                         description:
-                            'Max Peaks rapor uzunluğunu sınırlar; Min Magnitude seçilen dB eşiğinin altındaki adayları reddeder. İki algılama ayarı da tepe listesini yeniden hesapladığı için yeni Compute ister. “Show detected peaks” yalnızca mevcut listeden çizilen düşey etiketleri açıp kapatır.',
+                            'Max Peaks raporda gösterilecek maksimum tepe sayısını sınırlar; Min Magnitude ise belirlediğiniz dB seviyesinin altındaki gürültü tepelerini eler. Bu ayarlar değiştirildiğinde tepe listesi C++ tarafında yeniden hesaplanır.',
                         check:
-                            'Bulunan tepe matematiksel bir yerel maksimumdur, otomatik arıza tanısı değildir. Hız, geometri, elektrik frekansı veya uyarımla ilişkilendirin.',
+                            'Bulunan bir tepe matematiksel bir yerel maksimumdur; doğrudan otomatik arıza tanısı değildir. Tepeyi devir veya dişli sayısı ile doğrulayın.',
                     },
                     {
-                        title: 'Harmonik işaretçiler tam sayı katlarını sınar',
-                        kicker: 'Sol · orta grup',
+                        title: '2. Harmonic Markers (Harmonik İşaretçileri)',
+                        kicker: 'Sol · Orta Grup',
                         description:
-                            'Harmonik ailesi f₀, 2f₀, 3f₀ ve daha yüksek katları işaretler. Temel frekans baskın tepeyi otomatik izleyebilir veya elle girilebilir; örneğin mil frekansı RPM / 60’tır. Harmonics değeri çizilecek aile üyesi sayısını sınırlar.',
+                            'Harmonik ailesi $f_0, 2f_0, 3f_0 \dots$ katlarını grafik üzerinde imleçlerle gösterir. Temel frekans ($f_0$) en yüksek tepeyi izleyebilir veya elle (örneğin mil devri $1\times = \text{RPM}/60$) girilebilir.',
                         check:
-                            'En güçlü tepe 1× mil hızı değilse otomatik f₀ yanlış fiziksel kaynağı seçebilir.',
+                            'Baskın tepe $1\times$ mil hızı değilse (örneğin dişli geçişiyse), otomatik $f_0$ yanlış frekansı temel alabilir. Manuel frekans girmeyi tercih edin.',
                     },
                     {
-                        title: 'Sideband işaretçileri modülasyon aralığını görünür yapar',
-                        kicker: 'Sol · alt grup',
+                        title: '3. Sideband Markers (Yan Bant İşaretçileri)',
+                        kicker: 'Sol · Alt Grup',
                         description:
-                            'Yan bantlar baskın taşıyıcının çevresine taşıyıcı ± n·Δf biçiminde simetrik yerleştirilir. Düzenli aralık; örneğin mil dönüşüyle modüle edilen dişli kavrama gibi genlik veya frekans modülasyonuna işaret edebilir. Kontroller yalnız kılavuz çizer; yan bant enerjisi hesaplamaz veya nedeni doğrulamaz.',
+                            'Yan bantlar, seçilen ana frekansın çevresine simetrik olarak (Taşıyıcı $\pm n \cdot \Delta f$) yerleştirilir. Dişli kutusu modülasyonları veya rulman hasar frekanslarındaki modülasyon aralıklarını görsel olarak kontrol etmeyi sağlar.',
                         check:
-                            'Aralığı ölçün ve arıza mekanizması atamadan önce hangi bilinen hız veya tekrar oranıyla eşleştiğini sorun.',
+                            'Yan bant aralığını ölçün ve bilinen mil dönüş hızıyla eşleşip eşleşmediğini kontrol edin.',
                     },
                     {
-                        title: 'Peaks tablosu etiketlerin arkasındaki sayısal kanıttır',
-                        kicker: 'Results · Peaks',
+                        title: '4. Peaks Tablosu (Sayısal Tepe Listesi)',
+                        kicker: 'Sağ / Alt Tablo',
                         description:
-                            'Tablo kabul edilen her tepe için iyileştirilmiş frekans, genlik ve fazı listeler. Genlik etkin Y ekseni sunumunu izler; doğrusal veya dB olabilir. Faz senkron kanalları karşılaştırırken değerlidir; tek kanal fazı ise tanımlı zaman referansı olmadan fiziksel anlam taşımaz.',
+                            'Kabul edilen tüm tepelerin iyileştirilmiş frekans, genlik ve faz değerlerini bir tabloda listeler. Parabolik interpolasyon uygulanarak gerçek tepe noktası bin adımlarının arasından hassas olarak hesaplanır.',
                         check:
-                            'Tabloyu Δf ve pencere seçimiyle birlikte okuyun; çok sayıda ondalık basamak aynı fiziksel çözünürlüğü garanti etmez.',
+                            'Tablodaki genlik değerinin etkin Y ekseni birimini (g, dB, mm/s) izlediğini unutmayın.',
                     },
                 ],
             },
             {
                 id: 'compare',
-                tab: 'Compare + Comparison',
-                title: 'Analiz reçetesini kaybetmeden benzeri benzeriyle karşılaştırın',
+                tab: 'Karşılaştırma (Compare)',
+                title: 'Çalışma Durumlarını ve Kanalları Doğrudan Kıyaslayın',
                 imageAlt:
                     'İki bindirilmiş kanal ve sayısal karşılaştırma tablosu bulunan MachinePulseAI Compare sayfası',
                 points: [
                     {
-                        title: 'Compare Channels, A ve B’yi tek reçeteyle çalıştırır',
-                        kicker: 'Sol · üst grup',
+                        title: '1. Compare Channels (İki Farklı Kanalı Karşılaştırma)',
+                        kicker: 'Sol · Üst Grup',
                         description:
-                            'Reference A ve Compare B iki farklı kanal olmalıdır. Compute and Compare ikisini de seçer, aynı FFT ayarlarıyla hesaplar ve spektrumları bindirir. Pencere, blok, bant ve ortalama ayrı çalışmalar arasında kayamadığı için bu en güvenli hızlı karşılaştırmadır.',
+                            'Reference A ve Compare B olarak iki farklı kanalı seçip aynı FFT ayarlarıyla hesaplayın. İki spektrum aynı grafikte iki ayrı renkte üst üste bindirilir. Böylece yatay vs. dikey sensör ölçümlerini anında kıyaslayabilirsiniz.',
                         check:
-                            'Uyumlu birim ve örnekleme meta verisine sahip kanalları kullanın; aksi halde görsel genlik karşılaştırması anlamlı değildir.',
+                            'Karşılaştırılan kanalların birimlerinin (örneğin ikisinin de ivme g olması) aynı olduğundan emin olun.',
                     },
                     {
-                        title: 'Compare Time Ranges iki çalışma durumunu yakalar',
-                        kicker: 'Sol · gelişmiş grup',
+                        title: '2. Compare Time Ranges (İki Çalışma Durumunu Karşılaştırma)',
+                        kicker: 'Sol · Gelişmiş Grup',
                         description:
-                            'Önce bir aralığı hesaplayıp Reference A olarak yakalayın. Sonra gezgini başka bir yük, hız veya zaman aralığına taşıyıp Current B’yi hesaplayın. Bu akış aynı kanalın iki durumunu karşılaştırır ve siz temizleyene kadar A eğrisini dondurulmuş tutar.',
+                            'Önce normal yükteki spektrumu hesaplayıp "Reference A" olarak dondurun. Ardından zaman imlecini yüksek yükteki başka bir aralığa kaydırıp "Current B" spektrumunu hesaplayın. İki farklı yük durumu tek grafikte kıyaslanır.',
                         check:
-                            'FFT reçetesini değiştirmeyin; fiziksel olarak neyin değiştiğini kaydedin: hız, yük, sıcaklık, montaj veya test adımı.',
+                            'İki durum arasında FFT ayarlarını (blok boyutu, pencere) değiştirmeyin; sadece makinede neyin değiştiğini (yük, devir) kaydedin.',
                     },
                     {
-                        title: 'Orta bindirme şekil ve konum değişimini gösterir',
-                        kicker: 'Orta spektrum',
+                        title: '3. Spektrum Üst Üste Bindirme (Center Spectrum)',
+                        kicker: 'Orta Grafik',
                         description:
-                            'Her kanal ayrı renk alır ve A/B baskın frekansları işaretlenir. Frekans kayması, genlik değişimi, yeni harmonikler, kaybolan bileşenler ve gürültü tabanındaki değişimi arayın. Daha büyük çizgi yalnız bozulma değil; daha güçlü kaynak, farklı transfer yolu veya sensör montajından da gelebilir.',
+                            'A ve B eğrileri farklı renklerle çizilir ve baskın tepeleri işaretlenir. Frekans kaymalarını, genlik artışlarını ve yeni oluşan harmonikleri görsel olarak kolayca tespit edin.',
                         check:
-                            'Yalnız en yüksek tepeyi değil, bütün deseni ve test koşullarını karşılaştırın.',
+                            'Sadece en yüksek tepeye değil, tüm spektrum tabanındaki ve harmoniklerdeki değişime odaklanın.',
                     },
                     {
-                        title: 'Results → Compare sayısal karşılaştırma tablosudur',
-                        kicker: 'Sağ · Compare',
+                        title: '4. Results → Compare Tablosu (Sayısal Fark Δ)',
+                        kicker: 'Sağ Tablo',
                         description:
-                            'Tablo; baskın frekans, tepe genliği, THD, SINAD ve SNR için Reference, Compare ve Δ(B−A) değerlerini gösterir. Pozitif fark B’nin sayısal olarak büyük olduğunu söyler; bunun iyi veya kötü olması metriğe ve mühendislik amacına bağlıdır. Eksik değerler sahte sıfır yerine kullanılamaz olarak bırakılır.',
+                            'Tablo; Reference A, Compare B ve aralarındaki sayısal farkı $\Delta(B - A)$ raporlar. Baskın frekans kayması, genlik değişimi ve THD farkları net olarak sunulur.',
                         check:
-                            'Fark ancak iki taraf aynı birim, reçete, kalibrasyon ve temsilî çalışma durumunu kullanıyorsa savunulabilir.',
+                            'Fark ($\Delta$) hesabının anlamlı olması için her iki tarafın da aynı birim ve reçeteyle hesaplandığını doğrulayın.',
                     },
                 ],
             },

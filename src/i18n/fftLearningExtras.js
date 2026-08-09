@@ -110,111 +110,111 @@ const FFT_LEARNING_EXTRAS = {
     },
     tr: {
         pipeline: {
-            title: 'FFT hesabı, FFT’den önce başlar',
+            title: 'FFT Analiz Zinciri: 6 Adımda Güvenilir Ölçüm',
             intro:
-                'Savunulabilir spektrum bir zincirdir. Her aşama, bir sonrakinin anlamını korur.',
+                'Güvenilir bir spektrum bir zincirdir. Her bir adımı doğru atmak sonraki adımın sonucunu korur.',
             steps: [
                 {
-                    title: 'Fiziksel sinyal',
-                    body: 'Yazılım zincire girmeden önce makine hareket, ses veya elektriksel değişim üretir. Sensör bant genişliği, yönü, montajı ve kalibrasyonu hangi bölümün güvenilir ölçülmüş veriye dönüşeceğini belirler; FFT sensörün doğru yakalamadığı hareketi geri getiremez.',
+                    title: '1. Fiziksel Sinyal (Makine Titreşimi)',
+                    body: 'Makine daha yazılım ortamına girmeden önce mekanik titreşim üretir. Sensörün bant genişliği, yönü, montaj şekli ve kalibrasyonu verinizin kalitesini belirler. Sensörün doğru yakalayamadığı bir titreşimi FFT yazılımla geri getiremez.',
                 },
                 {
-                    title: 'Anti-alias filtresi',
-                    body: 'Analog alçak geçiren filtre, örneklendiğinde Nyquist altına katlanacak içeriği zayıflatır. ADC’den önce çalışmak zorundadır; alias olmuş örnekler özgün yüksek frekansı sahte düşük-frekans görüntüsünden ayıracak bilgiyi artık taşımaz.',
+                    title: '2. Analog Anti-Alias Filtresi',
+                    body: 'Donanımdaki analog alçak geçiren filtre, örnekleme hızının yarısının (Nyquist = fs/2) üzerindeki frekansları süzmelidir. Bu işlem ADC öncesinde yapılmalıdır; aksi halde katlanan hayalet frekanslar (aliasing) gerçek veriyle karışır.',
                 },
                 {
-                    title: 'fs ile ADC',
-                    body: 'ADC koşullandırılmış sürekli sinyali fs örnekleme hızıyla eşit aralıklı sayılara dönüştürür. Bu işlem ayrık zaman sinyalini oluşturur, Nyquist’i fs/2 yapar ve zamanlama doğruluğunu bütün sonraki frekans sonuçlarının parçası hâline getirir.',
+                    title: '3. Sayısallaştırma (ADC ve Örnekleme Hızı - fs)',
+                    body: 'ADC (Analog-Sayısal Dönüştürücü), sürekli sinyali eşit zaman aralıklarıyla sayılara dönüştürür. Örnekleme hızı (fs) Nyquist sınırını (fs/2) belirler ve tüm frekans ekseninin temelini oluşturur.',
                 },
                 {
-                    title: 'Temsilî aralık',
-                    body: 'Gezgin imleçleri tek olayı veya yeterince kararlı hız, yük ve sıcaklık durumunu ayırır. Farklı koşulları birleştirmek farklı gerçekliklerin ortalamasını üretir; sonuç düzgün görünürken hiçbir gerçek çalışma noktasını anlatmayabilir.',
+                    title: '4. Temsilî Zaman Aralığının Seçilmesi',
+                    body: 'Zaman imleçleriyle makinenin sabit bir çalışma durumunda (sabit devir, sabit yük) kaldığı bir zaman aralığı seçilir. Değişken devirleri içeren bir aralık almak ortalamayı bozar ve hatalı spektrum üretir.',
                 },
                 {
-                    title: 'Blok + pencere',
-                    body: 'Blok uzunluğu N aynı anda Δf = fs/N frekans aralığını ve N/fs kanıt süresini belirler. Pencere sonlu bloğun iki ucu arasındaki yapay süreksizliği azaltır; yan-lob sızıntısını tepe genişliği ve genlik davranışıyla takas eder.',
+                    title: '5. Blok Boyutu (N) ve Pencereleme (Windowing)',
+                    body: 'Blok uzunluğu (N) frekans adımlarını (Δf = fs/N) belirler. Pencere fonksiyonu (Hann, Flat-Top vb.) ise kesilen kaydın iki ucundaki süreksizliği yumuşatarak enerji sızıntısını (leakage) önler.',
                 },
                 {
-                    title: 'FFT + yorum',
-                    body: 'C++ motor karmaşık binleri, genlik, faz veya yoğunluk görünümlerini ve tanı adaylarını üretir. RPM, geometri, uyarım, birim, kalibrasyon ve referanstan oluşan mühendislik bağlamı bu sayısal özellikleri savunulabilir kanıta dönüştürür.',
+                    title: '6. C++ FFT Motoru ve Mühendislik Yorumu',
+                    body: 'C++ motoru milisaniyeler içinde karmaşık dönüşümü yapar ve spektrumu çizer. Mühendis bu spektrumdaki tepeleri makine devri, dişli sayısı ve rulman frekanslarıyla eşleştirerek doğru teşhisi koyar.',
                 },
             ],
         },
         workflow: {
-            title: 'Savunabileceğiniz ilk analiz reçetesi',
+            title: 'Adım Adım Saha Analiz Adımları',
             intro:
-                'Akıl yürütme otomatikleşene kadar bu sırayı kullanın. Sonraki ayarlar kötü veri toplamayı veya karışık zaman aralığını kurtaramaz.',
+                'Analiz yaparken bu sırayı izleyin. Sonraki ayarlar hatalı veri toplamayı veya karışık bir zaman aralığını düzeltemez.',
             steps: [
                 {
-                    title: 'Veri toplamayı doğrulayın',
-                    body: 'Kanal kimliğini, birimi, kalibrasyonu, sensör yönünü, örnekleme hızını, bant genişliğini ve anti-alias korumasını doğrulayın. Güzel bir spektrum karışmış kanalı, gevşek montajı, doyumu veya yanlış meta veriyi düzeltemez.',
+                    title: '1. Ölçüm Kurulumunu Doğrulayın',
+                    body: 'Kanal adını, birimini (g, mm/s), sensör yönünü ve örnekleme hızını doğrulayın. Yanlış birim veya gevşek monte edilmiş sensörle alınan kaydı spektrum düzeltemez.',
                 },
                 {
-                    title: 'Tek durumu ayırın',
-                    body: 'Zaman izi ve gezginle tek kararlı koşuyu veya açıkça tanımlı olayı sınırlayın. Aralık içinde hız ya da içerik değişiyor ve asıl konu bu değişimse bütün süreyi tek durağan spektruma zorlamak yerine STFT seçin.',
+                    title: '2. Sabit Çalışma Aralığını Seçin',
+                    body: 'Zaman grafiğinde imleçlerle makinenin sabit hızda çalıştığı durağan bir aralığı dondurun. Eğer devir sürekli değişiyorsa FFT yerine STFT Spektrogram modunu kullanın.',
                 },
                 {
-                    title: 'Soruyu yazın',
-                    body: 'Grafiği seçmeden önce istenen cevabı yazın: ton frekansı ve genliği, geniş bant güç yoğunluğu veya değişen içeriğin zamanlaması. Bu cümle FFT, Welch PSD veya STFT’yi belirler ve başka grafik daha temiz göründü diye yöntem değiştirmeyi önler.',
+                    title: '3. Mühendislik Sorusunu Tanımlayın',
+                    body: 'Spektrumu hesaplamadan önce amacınızı belirleyin: Tonal bileşenleri mi arıyorsunuz (Genlik FFT), rastgele gürültü enerjisini mi ölçüyorsunuz (Welch PSD), yoksa zamanla değişen frekansları mı izliyorsunuz (STFT)?',
                 },
                 {
-                    title: 'Çözünürlüğü bütçeleyin',
-                    body: 'Kararın ayırması gereken en küçük frekans farkını seçin ve N = fs/Δf tahmini yapın. N/fs süresinin temsilî durağan aralığa sığdığını kontrol edin; sığmıyorsa istenen frekans ve zaman hassasiyeti fiziksel olarak uyuşmaz.',
+                    title: '4. Frekans Çözünürlüğünü (Δf) Bütçeleyin',
+                    body: 'Ayırmak istediğiniz en küçük frekans farkını belirleyin (örneğin 1 Hz). Buna göre N = fs / Δf formülüyle gerekli blok boyutunu seçin ve sürenin (N/fs) seçtiğiniz zaman aralığına sığdığını kontrol edin.',
                 },
                 {
-                    title: 'Sızıntıyı yönetin',
-                    body: 'Saha bloklarının çoğu tam sayı çevrim içermediği için Hann ile başlayın. Pencereyi yalnız koherent örnekleme, daha iyi ton-genlik doğruluğu veya güçlü yan-lob bastırma gibi açık gerekçeyle değiştirin ve karşılık gelen tepe-genişliği ödününü kabul edin.',
+                    title: '5. Sızıntıyı Kontrol Edin (Pencere Seçimi)',
+                    body: 'Genel titreşim ölçümlerinde varsayılan Hann penceresini kullanın. Hassas genlik/şiddet okuması yapıyorsanız (ISO standartları) Flat-Top, yakın frekansları ayırıyorsanız Blackman-Harris tercih edin.',
                 },
                 {
-                    title: 'Bilinçli kararlılaştırın',
-                    body: 'Tekrarlı bloklar aynı süreci temsil ediyor ve rastgele değişkenlik kestirimi örtüyorsa Linear veya Exponential ortalama ekleyin. Max Hold’u aralıklı veya en kötü durum varlığı için kullanın; bilinçli olarak yüksek taraftadır ve tipik enerjiyi göstermez.',
+                    title: '6. Bilinçli Ortalama Alın',
+                    body: 'Rastgele gürültüyü kararlılaştırmak için Linear ortalama ekleyin. Geçici pikleri veya en kötü durumu görmek için Max Hold kullanın. Makine çalışma durumu değişiyorsa ortalama almayın.',
                 },
                 {
-                    title: 'Hesaplayın ve doğrulayın',
-                    body: 'Compute sonrasında analiz edilen örneği, Δf’yi, ortalama sayısını, Y ekseni sunumunu ve görünür bandı doğrulayın. Bunlar cevabın nasıl üretildiğini anlatır; önce tepeyi okumak test yöntemini görmeden sonucu okumaya benzer.',
+                    title: '7. Compute Edin ve Parametreleri Doğrulayın',
+                    body: 'Compute butonuna bastıktan sonra ekrandaki Δf, kullanılan örnek sayısı ve ortalama adedini doğrulayın.',
                 },
                 {
-                    title: 'Fiziğe bağlayın',
-                    body: 'Aday frekansları ölçülmüş RPM, order, dişli kavrama, kanat geçişi, şebeke ve bilinen uyarımla ilişkilendirin. Bağlantıyı harmonikler, yan bantlar, yön, faz, yük davranışı, trend ve sağlam referansla güçlendirin.',
+                    title: '8. Tepeleri Fiziksel Kaynaklarla Eşleştirin',
+                    body: 'Elde edilen tepe frekanslarını mil devri ($1\times$), harmonikler ($2\times, 3\times$), dişli geçişi ve rulman arıza frekanslarıyla (BPFO/BPFI) eşleştirerek teşhisi tamamlayın.',
                 },
             ],
         },
         mistakes: {
-            title: 'Grafiğin sizi uyarmayacağı altı hata',
+            title: 'Saha Analistlerinin Sık Yaptığı 6 Kritik Hata',
             items: [
                 {
-                    title: '“FFT’de tepe var; yapı rezonanstadır.”',
-                    body: 'Tepe uyarımdan, transfer büyütmesinden veya ikisinden gelebilir. Ayırmak için senkron girdi-çıktı FRF ve koherans kullanın.',
+                    title: '1. “Spektrumda yüksek bir tepe var, kesin rezonans var!”',
+                    body: 'Hata! Yüksek tepe güçlü bir uyarım kaynağından (örneğin şiddetli balanssızlık) da gelebilir. Rezonansı doğrulamak için darbe (çekiç) testi veya Çapraz Spektrum (FRF) kullanılmalıdır.',
                 },
                 {
-                    title: '“Maksimum frekans sinyali filtreledi.”',
-                    body: 'Görünüm bandı yalnız gördüğünüz alanı değiştirir; hesap öncesi bant dışı enerjiyi kaldırmaz.',
+                    title: '2. “Görünüm bandını daralttım, gürültüyü süzdüm.”',
+                    body: 'Hata! Min/Max bant sınırını daraltmak sadece x eksenindeki görüntüyü yakınlaştırır. Verideki bant dışı enerjiyi veya tepeleri hesaptan silmez.',
                 },
                 {
-                    title: '“Zero-padding bana daha fazla çözünürlük verdi.”',
-                    body: 'Gösterilen binleri enterpole etti. Fiziksel ayırma gücü hâlâ ölçülen blok süresi ve pencere davranışından gelir.',
+                    title: '3. “Zero-Padding (sıfır doldurma) yaptım, frekans çözünürlüğüm arttı.”',
+                    body: 'Hata! Zero-padding çizilen frekans çizgisini daha pürüzsüz yapar (interpole eder); ancak fiziksel olarak iki yakın frekansı ayırma gücünü artırmaz.',
                 },
                 {
-                    title: '“Ortalama her zaman sonucu iyileştirir.”',
-                    body: 'Yalnız birleşen bloklar aynı süreci temsil ediyorsa rastgele değişimi azaltır. Değişen durumları gizleyebilir.',
+                    title: '4. “Ortalama sayısı arttıkça sonucum her zaman daha iyi olur.”',
+                    body: 'Hata! Ortalama almak sadece makine çalışma durumu sabitken gürültüyü azaltır. Devir veya yük değişiyorsa, ortalama almak değişkenliği gizler ve hatalı sonuç üretir.',
                 },
                 {
-                    title: '“dB değeri otomatik olarak kalibredir.”',
-                    body: 'dB bir orandır. Tanımlı referans ve kalibre kanal olmadan otomatik olarak dB SPL, dBV veya standart değeri değildir.',
+                    title: '5. “dB değeri otomatik olarak kalibre edilmiş standart seviyedir.”',
+                    body: 'Hata! dB göreceli bir orandır. Tanımlanmış bir referans değer ve kalibre edilmiş bir sensör olmadan doğrudan dB SPL veya standart dBV anlamına gelmez.',
                 },
                 {
-                    title: '“Aliasing kayıt sonrasında temizlenebilir.”',
-                    body: 'İki fiziksel frekans aynı örnekleri ürettiğinde özgün kimlik kaybolur. Aliasing’i veri toplarken önleyin.',
+                    title: '6. “Aliasing hatasını kayıt alındıktan sonra yazılımla temizlerim.”',
+                    body: 'Hata! Örnekleme sırasında Nyquist sınırı aşıldıysa yüksek frekans düşük frekans olarak kaydedilmiştir ve veri bozulmuştur. Aliasing önlemi mutlaka ADC öncesi analog filtre ile alınmalıdır.',
                 },
             ],
         },
         reference: {
-            formulasEyebrow: 'Kavramın öğrenildiği yerde matematik',
-            formulasTitle: 'Ekrandaki değerlerin temel denklemleri',
+            formulasEyebrow: 'Temel Matematiksel Bağıntılar',
+            formulasTitle: 'Ekrandaki Değerlerin Arkasındaki Denklem ve Formüller',
             formulasIntro:
-                'Bu denklemler artık açıkladıkları Fourier temellerinin yanında yer alıyor. Kontrolleri ve ekrandaki değerleri blok uzunluğu, örnekleme, pencereleme, yoğunluk ve entegrasyonla ilişkilendirmek için kullanın; ölçüm zincirinden kopuk formüller olarak değil.',
-            assumptionsTitle: 'Mühendislik sınırları',
-            outputsTitle: 'Modülün ürettiği çıktılar',
+                'Bu formüller kontrollerin ve ekrandaki sonuçların (blok uzunluğu, örnekleme hızı, pencereleme ve entegrasyon) arkasındaki temel bağıntılardır.',
+            assumptionsTitle: 'Mühendislik Kabulleri ve Sınırlar',
+            outputsTitle: 'Modülün Ürettiği Çıktı ve Portlar',
         },
     },
 }

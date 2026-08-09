@@ -172,164 +172,54 @@ const FFT_LEARNING_TRANSLATIONS = {
     },
     tr: {
         back: 'Modül kütüphanesine dön',
-        eyebrow: 'MachinePulseAI Akademi · FFT / Spektrum',
-        title: 'Zaman sinyalinden güvenilir spektruma',
+        eyebrow: 'MachinePulseAI Akademi · FFT / Spektrum Analizi',
+        title: 'Zaman Kaydından Güvenilir Spektruma',
         intro:
-            'Önceden FFT bilgisi varsaymadan fiziksel hareketten güncel MachinePulseAI kontrollerine ilerleyin. Rehber her önemli ayarı; cevapladığı soru, yarattığı ödünleşme, değiştirdiği sonuç yüzeyi ve önlediği yorum hatasıyla ilişkilendirir.',
-        badges: ['Gerçek uygulama arayüzü', 'Etkileşimli kavramlar', 'Yeni mühendis dostu'],
-        start: 'Arayüzden başla',
+            'Önceden FFT bilgisine sahip olmadan başlayın; sensörün kaydettiği zaman sinyalini MachinePulseAI kontrolleriyle güvenilir bir frekans spektrumuna dönüştürün. Bu rehber; örnekleme hızı, blok boyutu, pencereleme ve ortalama gibi tüm kritik ayarların ne işe yaradığını, hangi soruya yanıt verdiğini ve hangi analiz tuzaklarını önlediğini anlatır.',
+        badges: ['Uygulama Arayüzü', 'İnteraktif Deneyler', 'Pratik Mühendislik'],
+        start: 'Arayüzü İnceleyin',
         duration: '30 dakikalık rehberli öğrenme yolu',
-        outcomesTitle: 'Bu sayfanın sonunda şunları yapabileceksiniz',
+        outcomesTitle: 'Bu rehberi tamamladığınızda şunları yapabileceksiniz:',
         outcomes: [
-            'ölçüm sorusuna göre FFT, Welch PSD veya STFT seçmek',
-            'örnekleme hızı, blok, pencere ve ortalamayı bilinçli ayarlamak',
-            'aliasing, sızıntı ve sahte çözünürlük iddialarını fark etmek',
-            'tepe, harmonik, yan bant, faz ve özet metrikleri bağlamında okumak',
+            'Ölçüm amacınıza göre Genlik FFT, Welch PSD veya STFT modunu doğru seçmek',
+            'Örnekleme hızı (fs), blok boyutu (N), pencere tipi ve ortalama sayılarını bilinçli ayarlamak',
+            'Aliasing (örtüşme/hayalet frekans), sızıntı (leakage) ve sahte çözünürlük yanılsamalarını ayırt etmek',
+            'Spektrumdaki tepeleri, harmonikleri, yan bantları ve özet metrikleri doğru yorumlamak',
         ],
         nav: {
-            interface: 'Arayüz ve kontroller',
-            theory: 'Fourier’i anlayın',
-            foundations: 'FFT temelleri',
-            modes: 'Mod seçimi',
-            workflow: 'İlk analiz',
+            interface: 'Arayüz ve Kontroller',
+            theory: 'Fourier Teorisi',
+            foundations: 'FFT Temelleri & Laboratuvar',
+            modes: 'Analiz Modları',
+            workflow: 'Saha Analiz Adımları',
         },
         sectionEyebrow: {
-            interface: '01 · Çalışma ekranını ve kontrolleri tanıyın',
-            foundations: '03 · Sayıları değiştirerek öğrenin',
-            modes: '04 · Yöntemi soruyla eşleştirin',
-            workflow: '05 · Savunulabilir analiz kurun',
+            interface: '01 · Çalışma Ekranını ve Kontrolleri Tanıyın',
+            foundations: '03 · Sayıları Değiştirerek İnteraktif Öğrenin',
+            modes: '04 · Doğru Yöntemi Doğru Soruyla Eşleştirin',
+            workflow: '05 · Güvenilir Bir Analiz Akışı Kurun',
         },
         tour: {
-            title: 'Arayüz, analizin hikâyesidir',
+            title: 'Arayüz Kontrolleri ve Kullanım Akışı',
             intro:
-                'Gerçek MachinePulseAI FFT ekranında numaralı bir bölge seçin. Soldan sağa okuyun: veriyi tanımlayın, hesabı şekillendirin, spektrumu inceleyin ve kanıtı doğrulayın.',
+                'MachinePulseAI FFT ekranındaki numaralı bölgeleri inceleyin. Analiz akışı soldan sağa ilerler: Verinizi seçin, hesap parametrelerini ayarlayın, spektrumu inceleyin ve tepe değerlerini doğrulayın.',
             imageAlt:
                 'Ayarlar, spektrum grafiği ve sonuç özeti bulunan MachinePulseAI FFT Spektrum çalışma ekranı',
             imageCaption:
-                'Deterministik eğitim sinyaliyle gerçek MachinePulseAI FFT / Spektrum bileşeni.',
+                'Deterministik test sinyaliyle MachinePulseAI FFT / Spektrum bileşeni.',
             selectHint: 'Ne işe yaradığını öğrenmek için numaralı bir bölge seçin.',
             items: [
                 {
-                    title: 'Girdi ve analiz aralığı',
-                    kicker: 'Hangi veriyi tarif ediyorum?',
+                    title: '1. Girdi ve Analiz Aralığı (Input)',
+                    kicker: 'Hangi zaman aralığını analiz ediyorum?',
                     description:
-                        'Kanal, örnekleme meta verisi ve zaman gezgini kanıtı tanımlar. Tek çalışma durumunu ayırmak için imleçleri kullanın; farklı hız veya yük durumlarını karıştıran spektrum matematiksel olarak doğru, operasyonel olarak anlamsız olabilir.',
-                    check: 'Compute sonrasında salt okunur örnekleme hızını ve kullanılan örnek sayısını kontrol edin.',
+                        'Analiz edilecek kanalı ve zaman aralığını imleçlerle belirleyin. Spektrumun doğru bilgi vermesi için makinenin bu aralıkta sabit bir devir ve yükte kalması şarttır. Farklı devir veya yük durumlarını karıştıran bir zaman aralığı almak hatalı spektrum üretir.',
+                    check: 'Compute butonuna bastıktan sonra kullanılan örnek sayısını ve örnekleme hızını (fs) doğrulayın.',
                 },
                 {
-                    title: 'Spektrum ayarları',
+                    title: '2. Spektrum Ayarları (Spectrum)',
                     kicker: 'Hangi frekans sorusunu soruyorum?',
                     description:
-                        'Mod, pencere ve Block / Lines kestiriciyi ve ödünleşmelerini belirler. Blok boyutu bin aralığını; pencere sızıntıyı ve tepe şeklini yönetir.',
-                    check: 'N değerini hem gerekli Δf hem de mevcut durağan süreye göre seçin.',
-                },
-                {
-                    title: 'Spektrum sonucu',
-                    kicker: 'Enerji nerede?',
-                    description:
-                        'Orta grafik DC’den Nyquist’e tek taraflı sonucu gösterir. Tepeler ipucudur: arıza adı vermeden önce mil hızı, kanat geçişi, dişli kavrama, elektrik frekansı veya bilinen uyarımla ilişkilendirin.',
-                    check: 'Güçlü bir tepe otomatik olarak rezonans veya arıza değildir.',
-                },
-                {
-                    title: 'Sonuçlar ve tepe kanıtı',
-                    kicker: 'Okumayı savunabilir miyim?',
-                    description:
-                        'Tepe frekansı, genlik, Δf, ortalamalar, THD, SINAD ve SNR güncel hesabı özetler. Bunları izlenebilir kanıt olarak kullanın; grafik ve test bağlamının yerine koymayın.',
-                    check: 'Gösterilen çözünürlük ve ortalama sayısının hedeflenen reçeteyle eşleştiğini doğrulayın.',
-                },
-                {
-                    title: 'Compute',
-                    kicker: 'Seçilen reçeteyi çalıştırır',
-                    description:
-                        'Compute, seçili zaman aralığını arka plandaki C++ FFT motorunda çalıştırır. İmleç değişimleri tüm kaydı belleğe almadan sonucu yeniden hesaplayabilir.',
-                    check: 'Aralık değiştiyse yeni spektrumu farklı bir gözlem olarak değerlendirin.',
-                },
-            ],
-        },
-        lab: {
-            title: 'Nyquist, çözünürlük ve sızıntı — tek bağlantılı deney',
-            intro:
-                'Örnekleme hızını, ton frekansını, blok boyutunu ve pencereyi değiştirin. Kurallar ezberlenmek yerine görünür olsun diye kartlar ve grafikler birlikte güncellenir.',
-            sampleRate: 'Örnekleme hızı (fs)',
-            tone: 'Fiziksel ton',
-            block: 'Blok boyutu (N)',
-            window: 'Pencere',
-            timePlot: 'Örneklenmiş zaman sinyali',
-            spectrumPlot: 'FFT’nin raporladığı',
-            apparent: 'Görünen tepe',
-            nyquist: 'Nyquist',
-            resolution: 'Bin aralığı (Δf)',
-            duration: 'Blok süresi',
-            safeTitle: 'Bu ton Nyquist’in altında',
-            safeBody:
-                'Veri toplama anti-alias filtresi ADC’den önce daha yüksek frekanslı içeriği kaldırdıysa, örneklenmiş veri bu frekansı benzersiz biçimde temsil edebilir.',
-            aliasTitle: 'Aliasing oluşuyor',
-            aliasBody:
-                'Fiziksel ton fs / 2 üzerindedir; örnekler daha düşük frekansı taklit eder. FFT kayıt sonrasında aslı geri getiremez; önlem ADC’den önce alınır.',
-            sampleDots: 'Noktalar alınan örneklerdir; çizgi yalnızca görsel bağlantıdır.',
-            windows: {
-                rectangular: {
-                    name: 'Rectangular',
-                    note: 'Dar ana lob, yüksek sızıntı. Yalnız koherent bloklarda kullanın.',
-                },
-                hann: {
-                    name: 'Hann',
-                    note: 'Genel FFT çalışması için dengeli varsayılan.',
-                },
-                flattop: {
-                    name: 'Flat-Top',
-                    note: 'Daha düz tepe genliği bölgesi; fakat tepeler daha geniştir.',
-                },
-            },
-            whyNyquistTitle: 'Nyquist neyi korur?',
-            whyNyquistBody:
-                'Örnekleme sürekli dalgayı ayrık gözlemlere dönüştürür. Örnekleme hızının yarısının üzerinde farklı fiziksel frekanslar aynı örnek dizisini oluşturabilir. Nyquist benzersizlik sınırını tanımlar; gerçek donanımda analog anti-alias filtresi bu sınırı uygular.',
-            resolutionTitle: 'Daha fazla satır neden zamana mal olur?',
-            resolutionBody:
-                'Δf = fs / N ve blok süresi = N / fs. N iki katına çıktığında bin aralığı yarıya iner, fakat temsilî kalması gereken süre iki katına çıkar. Zero-padding eğriyi daha pürüzsüz çizebilir; yeni ölçülmüş bilgi eklemez.',
-        },
-        modes: {
-            title: 'Ayarlara dokunmadan önce kestiriciyi seçin',
-            intro:
-                'En tanıdık görünen grafikle değil, seçilen zaman aralığının davranışıyla başlayın. Üç mod ilişkili Fourier matematiğini kullanır fakat farklı nicelikleri kestirir; bu yüzden mühendislik sorusu değiştiğinde aynı kanal başka mod isteyebilir.',
-            prompt: 'Seçili aralığı en iyi hangi cümle tarif ediyor?',
-            items: [
-                {
-                    id: 'fft',
-                    tab: 'Ton ve harmonikler',
-                    name: 'Genlik FFT',
-                    question: 'Hangi ayrık frekanslar ve harmonikler var?',
-                    use:
-                        'Periyodik veya yaklaşık kararlı deterministik içerik için kullanın: mil orderları, elektrik tonları, dişli kavrama, kanat geçişi ve bilinen uyarımlar. Genlik tonları bulup kıyaslamayı, faz ise zamanlama veya senkron kanallar söz konusu olduğunda karşılaştırmayı sağlar.',
-                    start: 'Hann ile başlayın ve N’yi gereken Δf’den seçin. Tek blok anlaşılana kadar ortalamayı None tutun; Linear, Exponential veya Max Hold’u yalnız açık bir gerekçeyle ekleyin.',
-                    trap:
-                        'Her tepeye rezonans veya arıza demeyin. Tek-kanal FFT; uyarım, transfer yolu, sensör yönü ve montajın birleşik etkisini görür; ek kanıt olmadan nedenleri ayıramaz.',
-                },
-                {
-                    id: 'welch',
-                    tab: 'Rastgele ve geniş bant',
-                    name: 'Welch PSD',
-                    question: 'Rastgele güç hertz başına nasıl dağılıyor?',
-                    use:
-                        'Durağan gürültü, geniş bant titreşim ve farklı blok boyutlarıyla alınmış kayıtların karşılaştırılması için kullanın. PSD gücü bant genişliğine göre normalize ettiği için düşey anlamı per-bin genlik sonucuna göre Δf’ye daha az bağımlıdır.',
-                    start: 'Hann ve %50 örtüşmeyle başlayın. Çalışma durumunun durağan kaldığını doğrulayarak tekrar kestirimleri karar için yeterince kararlı olana kadar analiz süresini veya segment sayısını artırın.',
-                    trap:
-                        'PSD birimi U²/Hz’dir, U değildir. Düşey değerlerini doğrusal genlik spektrumuyla doğrudan kıyaslamayın; sinyal ortalama sırasında durum değiştiriyorsa daha fazla ortalamayı geçerli saymayın.',
-                },
-                {
-                    id: 'stft',
-                    tab: 'Zamanla değişen',
-                    name: 'Spektrogram (STFT)',
-                    question: 'Her frekans ne zaman beliriyor veya kayboluyor?',
-                    use:
-                        'Hızlanma, yavaşlama, chirp, darbe ve seçim içindeki çalışma-durumu geçişleri için kullanın. Her renk sütunu kısa-zaman spektrumudur; bileşenlerin hareketini, ortaya çıkışını, kayboluşunu veya genişlemesini izlersiniz.',
-                    start: 'Olayı zamanda yerelleştirecek kadar kısa blok seçin; sonra Δf’nin ilgili frekansları hâlâ ayırdığını kontrol edin. Kareler arasındaki görsel boşluğu azaltmak için örtüşme ekleyin, yeni bağımsız bilgi oluşturmak için değil.',
-                    trap:
-                        'Uzun blok frekans-bin aralığını iyileştirir fakat değişimin zamanını yayar; kısa blok zamanlamayı keskinleştirir fakat frekans ayrıntısını genişletir. Bu zaman–frekans ödünleşmesi bir görünüm ayarıyla ortadan kaldırılamaz.',
-                },
-            ],
-            labels: {
-                question: 'Yanıtladığı',
                 use: 'Kullanım alanı',
                 start: 'Pratik başlangıç',
                 trap: 'Yorum sınırı',

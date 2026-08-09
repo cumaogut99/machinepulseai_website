@@ -115,118 +115,121 @@ const FFT_BEGINNER_TRANSLATIONS = {
         ],
     },
     tr: {
-        badge: 'Buradan başlayın · Önceden FFT bilgisi gerekmez',
-        title: 'FFT gerçekte hangi problemi çözüyor?',
+        badge: 'Önceden FFT bilgisi gerekmez · Adım Adım Başlangıç',
+        title: 'FFT Gerçekte Hangi Problemi Çözüyor?',
         intro:
-            'Titreşim sensörü art arda değişen sayılar üretir. Zaman izi sinyalin ne zaman hareket ettiğini gösterir; fakat birden fazla tekrarlı hareket tek karmaşık şeklin içinde karışabilir. FFT, aynı ölçülmüş örnekleri tekrar hızına göre yeniden düzenler ve gizli hareketlerin ayrı ayrı incelenmesini sağlar.',
-        analogyTitle: 'Ölçümü değiştirmek değil, dizini değiştirmek gibi düşünün',
+            'Titreşim sensörü art arda değişen genlik değerleri üretir. Zaman grafiği sinyalin ne zaman hareket ettiğini gösterir; fakat birden fazla tekrarlı hareket tek bir karmaşık dalga içinde üst üste biner. FFT (Hızlı Fourier Dönüşümü), aynı ölçülmüş örnekleri saniyedeki tekrar sayılarına (frekanslarına) göre ayırır ve gizli kalmış her hareketin bağımsız olarak incelenmesini sağlar.',
+        analogyTitle: 'Ölçümü değiştirmek değil, veriye farklı bir pencereden bakmak',
         analogy:
-            'Zaman grafiği kanıtı “ne zaman oldu?” sorusuna göre dosyalar. Spektrum aynı kanıtı “saniyede kaç çevrim içeriyor?” sorusuna göre dosyalar. Yeni titreşim oluşturulmaz; aynı sonlu örnek bloğunu farklı koordinat sisteminden görürsünüz.',
-        journeyTitle: 'Fiziksel hareketten spektrumdaki tek noktaya',
+            'Zaman grafiği veriyi “Ne zaman oldu?” sorusuna göre sıralar. Spektrum ise aynı veriyi “Saniyede kaç çevrim (Hz) içeriyor?” sorusuna göre düzenler. Yeni bir titreşim oluşturulmaz; aynı 1 saniyelik kayıt zaman ekseni yerine frekans ekseninde gösterilir.',
+        journeyTitle: 'Fiziksel hareketten spektrumdaki frekans çizgisine',
         journey: [
             {
-                title: 'Makine hareket eder',
+                title: '1. Makine hareket eder',
                 body:
-                    'Dönen mil, dişli dişi, fan kanadı veya elektriksel kuvvet hareket üretir. Birden fazla kaynak aynı anda etkili olabilir; yapı bazı frekansları diğerlerinden daha fazla büyütebilir.',
+                    'Dönen mil, dişli dişi, fan kanadı veya elektriksel kuvvet mekanik titreşim üretir. Birden fazla kaynak aynı anda çalışabilir ve makine gövdesi bazı frekansları diğerlerine göre daha fazla büyütebilir.',
                 example:
-                    'Örnek: 30 Hz mil, her 1/30 saniyede bir mekanik çevrim tamamlar.',
+                    'Örnek: 1800 RPM ile dönen bir mil, saniyede 30 çevrim yapar (30 Hz).',
             },
             {
-                title: 'Sensör örnekleri kaydeder',
+                title: '2. Sensör örnekleri kaydeder',
                 body:
-                    'Sensör hareketi kalibre sinyale dönüştürür. Veri toplama sistemi değeri eşit zaman aralıklarında saklar. Örnekleme hızı fs, saniyede kaç değer kaydedildiğini söyler.',
+                    'Sensör mekanik hareketi voltaj sinyaline dönüştürür. Veri toplama kartı bu değeri eşit zaman aralıklarında sayısallaştırır. Örnekleme hızı (fs), saniyede kaç örnek alındığını söyler.',
                 example:
-                    'fs = 4096 Hz iken kaydedici bir saniyede 4096 değer saklar.',
+                    'fs = 4096 Hz iken cihaz 1 saniyede 4096 adet sayısal değer kaydeder.',
             },
             {
-                title: 'Sonlu bir blok seçersiniz',
+                title: '3. Zaman aralığını (bloğu) seçersiniz',
                 body:
-                    'FFT soyut sonsuz sinyali değil, ölçülmüş N örneği alır. Seçilen blok tek çalışma durumunu temsil etmelidir. Blok süresi N/fs saniyedir.',
+                    'FFT sonsuz bir kaydı değil, seçtiğiniz N adet örneği analiz eder. Seçilen zaman aralığı makinenin sabit bir çalışma durumunu (sabit devir/yük) temsil etmelidir.',
                 example:
-                    'fs = 4096 Hz ve N = 4096, bir saniyelik kanıt demektir.',
+                    'fs = 4096 Hz ve N = 4096 örnek seçildiğinde, 1 saniyelik veri analiz edilir.',
             },
             {
-                title: 'Blok frekanslara karşı sınanır',
+                title: '4. Sinyal frekans bileşenlerine ayrılır',
                 body:
-                    'DFT, bloğun sinüzoidal temel dalgalar kümesine ne kadar benzediğini sorar. MachinePulseAI bunu FFT algoritmasıyla verimli hesaplar ve her frekans bini için genlik ile fazı korur.',
+                    'FFT algoritması, seçilen bloğun hangi sinüs dalgalarının bileşiminden oluştuğunu hesaplar. Her frekans adımı (bin) için genlik (şiddet) ve faz (zamanlama) değerlerini verir.',
                 example:
-                    'Δf = fs/N = 1 Hz ise sınanan frekanslar 0, 1, 2, 3… Hz olur.',
+                    'Δf = fs/N = 1 Hz çözünürlükte sınanan frekanslar 0, 1, 2, 3… Hz adımlarıdır.',
             },
             {
-                title: 'Spektrum mühendislik ipucuna dönüşür',
+                title: '5. Spektrum mühendislik ipucuna dönüşür',
                 body:
-                    'Bir binin yakınındaki büyük genlik, seçilen blokta o frekans çevresinde güçlü bileşen olduğunu söyler. Kaynağın adını otomatik vermez; mühendis sonucu RPM, geometri, elektrik frekansı, uyarım ve test koşullarıyla ilişkilendirir.',
+                    'Spektrumda belirli bir frekanstaki tepe (yükseklik), o frekansta güçlü bir titreşim olduğunu gösterir. Ancak arızanın adını otomatik koymaz; mühendis bu tepeyi dönel hız, dişli sayısı veya şebeke frekansı ile eşleştirir.',
                 example:
-                    '30 Hz tepe 1× mil hızı olabilir; fakat yalnız ölçülen mil gerçekten yaklaşık 1800 RPM ise.',
+                    '30 Hz\'deki tepe, 1800 RPM (30 Hz) dönen milin balanssızlığı olabilir.',
             },
         ],
-        exampleTitle: 'Formüller soyutlaşmadan önce eksiksiz bir örnek',
+        exampleTitle: 'Sayısal Bir Örnek Üzerinden İnceleme',
         exampleIntro:
-            'Kalibre ivmeölçerin 4096 Hz ile örneklendiğini düşünün. Kararlı çalışma durumundan 4096 örnek seçip genlik FFT’si kullanıyorsunuz.',
+            'Kalibre edilmiş bir ivmeölçerden 4096 Hz örnekleme hızıyla kayıt alındığını ve kararlı çalışma durumundan 4096 örnek seçildiğini varsayalım:',
         exampleCards: [
             {
                 value: 'fs = 4096 Hz',
-                label: 'Ne temsil edilebilir?',
+                label: 'Ölçülebilen Maksimum Frekans',
                 body:
-                    'Nyquist 2048 Hz’dir. Bunun üzerindeki frekanslar veri toplama anti-alias filtresiyle kaldırılmazsa görünür bandın içine katlanabilir.',
+                    'Nyquist sınırı fs/2 = 2048 Hz\'dir. 2048 Hz üzerindeki titreşimler donanımdaki anti-alias filtresiyle süzülmelidir.',
             },
             {
-                value: 'N = 4096',
-                label: 'Kanıt ne kadar sürüyor?',
+                value: 'N = 4096 Örnek',
+                label: 'Analiz Edilen Süre',
                 body:
-                    'Blok N/fs = 1 saniye sürer. Tek spektrumun bu saniyeyi anlatabilmesi için makine bu sürede yeterince kararlı kalmalıdır.',
+                    'Blok süresi N/fs = 1 saniyedir. Bu 1 saniye boyunca makinenin devri ve yükü sabit kalmalıdır.',
             },
             {
                 value: 'Δf = 1 Hz',
-                label: 'Hangi frekans ızgarası sınanıyor?',
+                label: 'Frekans Adımı (Çözünürlük)',
                 body:
-                    'Bin merkezleri 0, 1, 2… 2048 Hz’dir. Pencere şekli bir tonun komşu binlere nasıl yayılacağını yine etkiler.',
+                    'Frekans ekseni 0, 1, 2, 3… 2048 Hz adımlarıyla çizilir. İki yakın tepeyi ayırma gücü 1 Hz\'dir.',
             },
             {
                 value: 'Tepe ≈ 30 Hz',
-                label: 'Hangi sonuca varabilirsiniz?',
+                label: 'Mühendislik Yorumu',
                 body:
-                    'Blok 30 Hz yakınında güçlü periyodik içerik taşır. Buna 1× dönüş demeden önce takometre hızını, birimleri, çalışma durumunu ve alternatif kaynakları doğrulayın.',
+                    'Sinyalde saniyede 30 çevrim yapan güçlü bir bileşen vardır. Mil devri 1800 RPM ise bu 1× dönüş titreşimidir.',
             },
         ],
-        vocabularyTitle: 'Bir ayarı değiştirmeden önce anlayacağınız altı kelime',
+        exampleNoteTitle: 'Veri Kaybı Olmaz (Ters FFT)',
+        exampleNoteBody:
+            'FFT veride bilgi kaybettirmez. Spektrumdaki genlik ve faz değerleri korunduğu sürece, Ters FFT (Inverse FFT) işlemi yapılarak orijinal 1 saniyelik zaman sinyali birebir geri elde edilebilir.',
+        vocabularyTitle: 'Ayarları Değiştirmeden Önce Bilinmesi Gereken 6 Temel Kavram',
         vocabulary: [
             {
-                term: 'Zaman bölgesi',
+                term: 'Zaman Bölgesi (Time Domain)',
                 body:
-                    'Sinyal değerinin zamana göre görünümüdür. Darbe, doyum, sürüklenme, durum değişimi ve analiz edilecek aralığı görmek için uygundur.',
+                    'Sinyal değerinin zamana göre görünümüdür. Darbe, clipping (doyum), ani sıçrama ve analiz edilecek aralığı seçmek için kullanılır.',
             },
             {
-                term: 'Frekans bölgesi',
+                term: 'Frekans Bölgesi (Frequency Domain)',
                 body:
-                    'Sinyal içeriğinin saniyedeki çevrime göre görünümüdür. Zaman izinde üst üste binen eşzamanlı periyodik bileşenleri ayırmak için uygundur.',
+                    'Sinyal içeriğinin saniyedeki çevrim sayısına (Hz) göre görünümüdür. Zaman grafiğinde karmaşık görünen tekrarlı hareketleri ayırır.',
             },
             {
-                term: 'Frekans bini',
+                term: 'Frekans Bini (Frequency Bin)',
                 body:
-                    'Sonlu DFT ızgarasında sınanan tek frekans konumudur. Bin kendi başına fiziksel bileşen değildir; gerçek ton birkaç bine yayılabilir.',
+                    'FFT eksenindeki her bir frekans adımıdır (örneğin 10 Hz, 11 Hz). Gerçek bir titreşim tek bir bine düşebileceği gibi komşu binlere de yayılabilir.',
             },
             {
-                term: 'Genlik',
+                term: 'Genlik (Magnitude)',
                 body:
-                    'Seçilen ölçekleme ve pencere düzeltmesi altında frekans bileşeninin ne kadar bulunduğunu gösterir. Birimini ve sunumunu mutlaka okuyun.',
+                    'Bir frekans bileşeninin ne kadar güçlü olduğunu gösterir. Birimine (g, mm/s, dB) mutlaka dikkat edilmelidir.',
             },
             {
-                term: 'Faz',
+                term: 'Faz (Phase)',
                 body:
-                    'Sinüzoidal bileşenin blok zaman referansına göre çevrimin neresinde olduğunu gösterir. Yalnız genliğin attığı zamanlama bilgisini korur.',
+                    'Sinüs dalgasının zaman referansına göre çevriminin neresinde olduğunu (açısını) gösterir. Zamanlama bilgisini korur.',
             },
             {
-                term: 'Tepe',
+                term: 'Tepe (Peak)',
                 body:
-                    'Gösterilen spektrumdaki yerel maksimumdur. Açıklanması gereken aday özelliktir; otomatik rezonans, order veya arıza değildir.',
+                    'Spektrumdaki yerel yüksek noktadır. İncelenmesi gereken bir titreşim bileşenidir; doğrudan arıza anlamına gelmez.',
             },
         ],
-        ruleTitle: 'Yeni başlayan için üç soruluk güvenlik kontrolü',
+        ruleTitle: 'Analiz Öncesi 3 Soruluk Kontrol Listesi',
         rules: [
-            'Bu spektrum tam olarak hangi örnekleri ve çalışma durumunu anlatıyor?',
-            'Frekans ızgarasını, sızıntı davranışını ve ortalamayı hangi ayarlar oluşturdu?',
-            'Her özelliği hangi fiziksel kaynak üretebilir ve bu bağlantıyı hangi bağımsız kanıt destekliyor?',
+            'Bu spektrum tam olarak hangi zaman aralığını ve çalışma durumunu anlatıyor?',
+            'Frekans adımı (Δf), pencere tipi ve ortalama sayısı ne olarak seçildi?',
+            'Spektrumda görülen tepeler hangi mekanik/elektriksel kaynakla (devir, dişli, rulman, şebeke) eşleşiyor?',
         ],
     },
 }
