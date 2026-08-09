@@ -106,10 +106,9 @@ function AppShell() {
 }
 
 function App() {
-    // Temporary launch gate: visitors only see the "Coming Soon" landing.
-    // The full site (AppShell and every component/route) is intentionally kept
-    // intact below — flip this to `false` to bring the real site back online.
-    const COMING_SOON = true
+    // Production visitors see the launch gate while local Vite development
+    // keeps the complete site available for editing and review.
+    const COMING_SOON = import.meta.env.PROD
 
     if (COMING_SOON) {
         // Note: <Seo /> depends on react-router (useLocation) and must not be
