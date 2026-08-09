@@ -179,12 +179,6 @@ export default function FFTInterfaceTour() {
                 </div>
 
                 <div className="xl:sticky xl:top-32 xl:self-start">
-                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
-                        {t('fftLearn.tour.selectHint')}
-                    </p>
-                    <h3 className="mt-3 text-lg font-semibold leading-7 text-white">
-                        {view.title}
-                    </h3>
                     <div className="mt-4 grid gap-2">
                         {points.map((item, index) => (
                             <button
