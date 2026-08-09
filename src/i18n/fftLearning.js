@@ -199,27 +199,48 @@ const FFT_LEARNING_TRANSLATIONS = {
             modes: '04 · Doğru Yöntemi Doğru Soruyla Eşleştirin',
             workflow: '05 · Güvenilir Bir Analiz Akışı Kurun',
         },
-        tour: {
-            title: 'Arayüz Kontrolleri ve Kullanım Akışı',
+        modes: {
+            title: 'Ayarları Değiştirmeden Önce Doğru Kestiriciyi Seçin',
             intro:
-                'MachinePulseAI FFT ekranındaki numaralı bölgeleri inceleyin. Analiz akışı soldan sağa ilerler: Verinizi seçin, hesap parametrelerini ayarlayın, spektrumu inceleyin ve tepe değerlerini doğrulayın.',
-            imageAlt:
-                'Ayarlar, spektrum grafiği ve sonuç özeti bulunan MachinePulseAI FFT Spektrum çalışma ekranı',
-            imageCaption:
-                'Deterministik test sinyaliyle MachinePulseAI FFT / Spektrum bileşeni.',
-            selectHint: 'Ne işe yaradığını öğrenmek için numaralı bir bölge seçin.',
+                'Analize en tanıdık görünen grafikle değil, seçilen zaman aralığının davranışına uygun yöntemle başlayın. Bu 3 mod aynı Fourier matematiğini kullanır ancak farklı fiziksel büyüklükleri hesaplar.',
+            prompt: 'Seçili aralığı en iyi hangi cümle tanımlıyor?',
             items: [
                 {
-                    title: '1. Girdi ve Analiz Aralığı (Input)',
-                    kicker: 'Hangi zaman aralığını analiz ediyorum?',
-                    description:
-                        'Analiz edilecek kanalı ve zaman aralığını imleçlerle belirleyin. Spektrumun doğru bilgi vermesi için makinenin bu aralıkta sabit bir devir ve yükte kalması şarttır. Farklı devir veya yük durumlarını karıştıran bir zaman aralığı almak hatalı spektrum üretir.',
-                    check: 'Compute butonuna bastıktan sonra kullanılan örnek sayısını ve örnekleme hızını (fs) doğrulayın.',
+                    id: 'fft',
+                    tab: 'Tonlar & Harmonikler',
+                    name: 'Genlik FFT\'si',
+                    question: 'Hangi frekanslar ve harmonikler mevcut?',
+                    use:
+                        'Sinyal periyodik veya kararlı bileşenler içerdiğinde kullanın: mil devir frekansları, elektrik frekansları, dişli kavrama, kanat geçişi gibi uyarım frekansları.',
+                    start: 'Hann penceresi ile başlayın ve gerekli Δf çözünürlüğüne göre N boyutunu seçin.',
+                    trap:
+                        'Her tepeyi rezonans veya arıza sanmayın. Tek kanallı FFT uyarım, transfer yolu ve sensör yönünün bileşimidir.',
                 },
                 {
-                    title: '2. Spektrum Ayarları (Spectrum)',
-                    kicker: 'Hangi frekans sorusunu soruyorum?',
-                    description:
+                    id: 'welch',
+                    tab: 'Rastgele & Geniş Bant',
+                    name: 'Welch PSD',
+                    question: 'Rastgele gürültü gücü hertz başına nasıl dağılıyor?',
+                    use:
+                        'Durağan rastgele gürültü ve geniş bant titreşim analizi için kullanın. PSD gücü bant genişliğine oranlayarak (g²/Hz) çözünürlükten bağımsız karşılaştırma sağlar.',
+                    start: 'Hann penceresi ve %50 örtüşme (overlap) ile başlayın.',
+                    trap:
+                        'PSD birimi g²/Hz\'dir, g değildir. Genlik spektrumuyla doğrudan kıyaslamayın.',
+                },
+                {
+                    id: 'stft',
+                    tab: 'Zamanla Değişen',
+                    name: 'Spektrogram (STFT)',
+                    question: 'Frekanslar ne zaman ortaya çıkıyor veya kayboluyor?',
+                    use:
+                        'Devir yükselme (run-up), devir düşme (coast-down), darbe veya zamanla değişen durumlar için kullanın.',
+                    start: 'Zaman çözünürlüğünü korumak için kısa blok boyutu seçin ve örtüşme ekleyin.',
+                    trap:
+                        'Uzun blok frekans çözünürlüğünü artırır ama zaman bilgisini bulanıklaştırır; kısa blok ise zamanı netleştirip frekansı genişletir.',
+                },
+            ],
+            labels: {
+                question: 'Yanıtladığı soru',
                 use: 'Kullanım alanı',
                 start: 'Pratik başlangıç',
                 trap: 'Yorum sınırı',
