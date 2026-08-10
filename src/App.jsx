@@ -108,7 +108,8 @@ function AppShell() {
 function App() {
     // Production visitors see the launch gate while local Vite development
     // keeps the complete site available for editing and review.
-    const COMING_SOON = import.meta.env.PROD
+    // Temporarily forced off — flip back to `import.meta.env.PROD` to re-arm.
+    const COMING_SOON = false
 
     if (COMING_SOON) {
         // Note: <Seo /> depends on react-router (useLocation) and must not be
