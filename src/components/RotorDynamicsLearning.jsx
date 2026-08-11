@@ -1,20 +1,50 @@
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import RotorBeginnerPrimer from './rotorDynamicsLearning/RotorBeginnerPrimer.jsx'
 import RotorCriticalSpeedLab from './rotorDynamicsLearning/RotorCriticalSpeedLab.jsx'
+import RotorDiagnosticPatterns from './rotorDynamicsLearning/RotorDiagnosticPatterns.jsx'
 import RotorFormulaReference from './rotorDynamicsLearning/RotorFormulaReference.jsx'
-import RotorInterfacePlaceholder from './rotorDynamicsLearning/RotorInterfacePlaceholder.jsx'
+import RotorInterfaceTour from './rotorDynamicsLearning/RotorInterfaceTour.jsx'
 import RotorModeGuide from './rotorDynamicsLearning/RotorModeGuide.jsx'
 import RotorOrbitLab from './rotorDynamicsLearning/RotorOrbitLab.jsx'
 
 const NAV_KEYS = ['interface', 'system', 'orbit', 'speed', 'views', 'workflow']
 const SOURCE_URLS = [
+    'https://www.iso.org/standard/61991.html?browse=tc',
     'https://www.iso.org/standard/63180.html?browse=tc',
     'https://www.iso.org/standard/70047.html',
     'https://www.iso.org/standard/78311.html',
     'https://blogs.sw.siemens.com/simcenter/rotor-dynamics-when-accuracy-is-a-matter-of-life-and-death/',
-    'https://www.bakerhughes.com/bently-nevada/blog/vibration-and-dynamic-measurements',
     'https://dam.bakerhughes.com/m/6f984a1819b1e383/original/BN-Machinery-Diagnostics-Services-MDS-_Web-Version.PDF',
 ]
+
+function useActiveSection(sectionIds) {
+    const [activeId, setActiveId] = useState(sectionIds[0])
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                const visible = entries
+                    .filter((entry) => entry.isIntersecting)
+                    .sort(
+                        (a, b) =>
+                            a.boundingClientRect.top - b.boundingClientRect.top,
+                    )
+                if (visible.length > 0) setActiveId(visible[0].target.id)
+            },
+            { rootMargin: '-120px 0px -55% 0px', threshold: 0 },
+        )
+
+        sectionIds.forEach((id) => {
+            const element = document.getElementById(id)
+            if (element) observer.observe(element)
+        })
+        return () => observer.disconnect()
+    }, [sectionIds])
+
+    return activeId
+}
 
 function SectionHeader({ eyebrow, title, intro }) {
     return (
@@ -38,6 +68,7 @@ export default function RotorDynamicsLearning() {
     const assumptions = t('rotorLearn.reference.assumptions', { returnObjects: true })
     const outputs = t('rotorLearn.reference.outputs', { returnObjects: true })
     const sources = t('rotorLearn.sources.items', { returnObjects: true })
+    const activeSection = useActiveSection(NAV_KEYS)
 
     return (
         <article className="relative overflow-hidden bg-grid">
@@ -75,10 +106,28 @@ export default function RotorDynamicsLearning() {
                 </div>
             </header>
 
-            <nav aria-label={t('rotorLearn.eyebrow')} className="sticky top-14 z-30 border-y border-white/8 bg-[#0a0a0a]/90 backdrop-blur-xl">
-                <div className="mx-auto flex max-w-6xl gap-6 overflow-x-auto px-6 py-3">
-                    {NAV_KEYS.map((key) => (
-                        <a key={key} href={`#${key}`} className="whitespace-nowrap text-xs font-semibold text-slate-500 transition hover:text-[#00f5ff]">{t(`rotorLearn.nav.${key}`)}</a>
+            <nav aria-label={t('rotorLearn.eyebrow')} className="sticky top-14 z-30 border-y border-white/10 bg-[#0a0a0a]/95 backdrop-blur-xl">
+                <div className="mx-auto flex max-w-6xl gap-1 overflow-x-auto px-6 sm:gap-3">
+                    {NAV_KEYS.map((key, index) => (
+                        <a
+                            key={key}
+                            href={`#${key}`}
+                            aria-current={activeSection === key ? 'true' : undefined}
+                            className={`flex items-center gap-2 whitespace-nowrap border-b-2 px-2 py-4 text-sm font-semibold transition sm:px-3 ${
+                                activeSection === key
+                                    ? 'border-[#00f5ff] text-[#00f5ff]'
+                                    : 'border-transparent text-slate-300 hover:border-white/25 hover:text-white'
+                            }`}
+                        >
+                            <span className={`font-mono text-xs ${
+                                activeSection === key
+                                    ? 'text-[#00f5ff]'
+                                    : 'text-slate-600'
+                            }`}>
+                                {String(index + 1).padStart(2, '0')}
+                            </span>
+                            {t(`rotorLearn.nav.${key}`)}
+                        </a>
                     ))}
                 </div>
             </nav>
@@ -86,12 +135,13 @@ export default function RotorDynamicsLearning() {
             <main className="relative mx-auto max-w-6xl px-6">
                 <section id="interface" className="scroll-mt-32 py-16">
                     <SectionHeader eyebrow={t('rotorLearn.sectionEyebrow.interface')} title={t('rotorLearn.interface.title')} intro={t('rotorLearn.interface.intro')} />
-                    <RotorInterfacePlaceholder />
+                    <RotorInterfaceTour />
                 </section>
 
                 <section id="system" className="scroll-mt-32 border-t border-white/8 py-16">
                     <SectionHeader eyebrow={t('rotorLearn.sectionEyebrow.system')} title={t('rotorLearn.system.title')} intro={t('rotorLearn.system.intro')} />
-                    <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-5">
+                    <RotorBeginnerPrimer />
+                    <div className="mt-12 grid gap-3 md:grid-cols-2 lg:grid-cols-5">
                         {chain.map((item) => (
                             <article key={item.tag} className="rounded-2xl border border-white/10 bg-white/[0.025] p-5">
                                 <span className="font-mono text-xs text-[#00f5ff]">{item.tag}</span>
@@ -143,6 +193,14 @@ export default function RotorDynamicsLearning() {
                 <section id="views" className="scroll-mt-32 border-t border-white/8 py-16">
                     <SectionHeader eyebrow={t('rotorLearn.sectionEyebrow.views')} title={t('rotorLearn.views.title')} intro={t('rotorLearn.views.intro')} />
                     <RotorModeGuide />
+                    <div className="mt-14 border-t border-white/8 pt-14">
+                        <SectionHeader
+                            eyebrow={t('rotorLearn.diagnosticPatterns.eyebrow')}
+                            title={t('rotorLearn.diagnosticPatterns.title')}
+                            intro={t('rotorLearn.diagnosticPatterns.intro')}
+                        />
+                        <RotorDiagnosticPatterns />
+                    </div>
                 </section>
 
                 <section id="workflow" className="scroll-mt-32 border-t border-white/8 py-16">
