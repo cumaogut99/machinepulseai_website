@@ -398,11 +398,11 @@ const VIBRATION_WIDGET_DETAILS = {
         en: {
             tagline: 'Turns measured 1× vibration vectors and a trial weight into the exact correction mass and angle that cancel rotor imbalance.',
             intro:
-                'Imbalance — the rotor\'s mass centre not sitting on its rotation axis — is the most common cause of machinery vibration. It shows as a strong once-per-revolution (1×) component whose phase points at the heavy spot. Field balancing is a controlled experiment: measure the original 1× vector, bolt on a known trial weight, measure again, and the change reveals the machine\'s influence coefficient — how much vibration each gram produces and at what phase lag. From that, the correction weight follows directly. The widget solves single- and two-plane cases and checks the result against ISO 21940 balance-quality grades.',
+                'Imbalance — the rotor\'s mass centre not sitting on its rotation axis — is a common cause of machinery vibration. It shows as a strong once-per-revolution (1×) component whose phase is measured against a physical keyphasor. Field balancing is a controlled experiment: measure the original 1× vector, install a known trial weight, measure again, and use the vector change to identify the machine\'s influence coefficient. The validated beta workflow solves one physical correction plane and requires a verification run. Dual-plane balancing remains a mandatory future capability, but it is not exposed as an available beta workflow.',
             inputs: [
-                { name: 'Vibration channel(s)', desc: 'One sensor per balancing plane, bearing-mounted.' },
+                { name: 'Vibration channel', desc: 'One bearing-mounted measurement point for the validated single-plane workflow.' },
                 { name: 'Keyphasor / tacho', desc: 'Phase reference — without it the heavy-spot direction is unknown.' },
-                { name: 'Trial weight & radius', desc: 'The known mass, its angular position and mounting radius for each trial run.' },
+                { name: 'Trial weight & geometry', desc: 'Known mass, trial radius, correction radius, angular datum and rotation direction.' },
             ],
             formulas: [
                 {
@@ -415,7 +415,7 @@ const VIBRATION_WIDGET_DETAILS = {
                     title: 'Correction weight',
                     latex: '\\vec{W}_c = -\\,\\dfrac{\\vec{A}_0}{\\alpha}',
                     expr: 'W_c = − A₀ / α',
-                    where: 'The weight (mass and angle) that produces vibration equal and opposite to the original imbalance. Two-plane balancing solves the 2×2 complex system with cross-coupling coefficients α_ij.',
+                    where: 'For the validated beta, this is the single correction mass and angle that should produce vibration equal and opposite to the original 1× vector at the chosen correction radius.',
                 },
                 {
                     title: 'ISO 21940 permissible residual unbalance',
@@ -426,12 +426,12 @@ const VIBRATION_WIDGET_DETAILS = {
             ],
             steps: [
                 { step: 'Reference run', detail: 'Measure the original 1× amplitude and phase at running speed.' },
-                { step: 'Trial run(s)', detail: 'Add a known trial weight per plane and re-measure; the vector change gives the influence coefficients.' },
-                { step: 'Solve the correction', detail: 'The complex equations yield correction mass and angle per plane; the weight is split across available holes if needed.' },
+                { step: 'Trial run', detail: 'Add one known trial weight in the selected plane and re-measure; the vector change gives the single-plane influence coefficient.' },
+                { step: 'Solve the correction', detail: 'The complex equation yields one correction mass and angle at the selected correction radius.' },
                 { step: 'Verify against ISO 21940', detail: 'A final run confirms the residual unbalance meets the target quality grade.' },
             ],
             outputs: [
-                { name: 'Correction weights', desc: 'Mass and angular position per balancing plane (with hole-splitting).' },
+                { name: 'Single-plane correction', desc: 'One mass and angular position at the selected correction radius.' },
                 { name: 'Polar progress plot', desc: 'The 1× vector shrinking toward the origin run by run.' },
                 { name: 'Influence coefficients', desc: 'Stored machine sensitivity, reusable for one-shot trim balancing later.' },
                 { name: 'ISO 21940 report', desc: 'Residual unbalance versus the permissible value for the chosen grade.' },
@@ -440,11 +440,11 @@ const VIBRATION_WIDGET_DETAILS = {
         tr: {
             tagline: 'Ölçülen 1× titreşim vektörlerini ve bir deneme ağırlığını, rotor balanssızlığını yok eden tam düzeltme kütlesine ve açısına dönüştürür.',
             intro:
-                'Balanssızlık — rotorun kütle merkezinin dönme ekseni üzerinde olmaması — makine titreşiminin en yaygın nedenidir. Fazı ağır noktayı gösteren güçlü bir devir-başına-bir (1×) bileşen olarak görünür. Saha balanslaması kontrollü bir deneydir: özgün 1× vektörünü ölçün, bilinen bir deneme ağırlığı takın, yeniden ölçün; değişim makinenin etki katsayısını — her gramın ne kadar ve hangi faz gecikmesiyle titreşim ürettiğini — ortaya çıkarır. Düzeltme ağırlığı buradan doğrudan çıkar. Widget tek ve çift düzlemli durumları çözer ve sonucu ISO 21940 balans kalite derecelerine göre denetler.',
+                'Balanssızlık — rotorun kütle merkezinin dönme ekseni üzerinde olmaması — yaygın bir makine titreşimi nedenidir. Fiziksel keyphasor’a göre ölçülen güçlü bir devir-başına-bir (1×) bileşen olarak görünür. Saha balanslaması kontrollü bir deneydir: özgün 1× vektörünü ölçün, bilinen bir deneme ağırlığı takın, yeniden ölçün ve vektör değişiminden makinenin etki katsayısını bulun. Doğrulanmış beta akışı tek bir fiziksel düzeltme düzlemi çözer ve doğrulama koşusu ister. Çift düzlem balanslama gelecekte zorunlu bir yetenektir; ancak bugün kullanılabilir beta akışı olarak sunulmaz.',
             inputs: [
-                { name: 'Titreşim kanal(lar)ı', desc: 'Balans düzlemi başına bir sensör, yatağa monte.' },
+                { name: 'Titreşim kanalı', desc: 'Doğrulanmış tek düzlem akışı için yatağa monte tek ölçüm noktası.' },
                 { name: 'Keyphasor / tako', desc: 'Faz referansı — onsuz ağır noktanın yönü bilinemez.' },
-                { name: 'Deneme ağırlığı & yarıçap', desc: 'Her deneme koşusu için bilinen kütle, açısal konumu ve montaj yarıçapı.' },
+                { name: 'Deneme ağırlığı ve geometri', desc: 'Bilinen kütle, deneme yarıçapı, düzeltme yarıçapı, açı referansı ve dönüş yönü.' },
             ],
             formulas: [
                 {
@@ -457,7 +457,7 @@ const VIBRATION_WIDGET_DETAILS = {
                     title: 'Düzeltme ağırlığı',
                     latex: '\\vec{W}_c = -\\,\\dfrac{\\vec{A}_0}{\\alpha}',
                     expr: 'W_c = − A₀ / α',
-                    where: 'Özgün balanssızlığa eşit ve zıt titreşim üreten ağırlık (kütle ve açı). Çift düzlemli balanslama, çapraz etkileşim katsayıları α_ij ile 2×2 karmaşık sistemi çözer.',
+                    where: 'Doğrulanmış betada bu, seçilen düzeltme yarıçapında özgün 1× vektörüne eşit ve zıt titreşim üretmesi beklenen tek düzeltme kütlesi ve açısıdır.',
                 },
                 {
                     title: 'ISO 21940 izin verilen artık balanssızlık',
@@ -468,12 +468,12 @@ const VIBRATION_WIDGET_DETAILS = {
             ],
             steps: [
                 { step: 'Referans koşusu', detail: 'Çalışma hızında özgün 1× genlik ve fazı ölçün.' },
-                { step: 'Deneme koşu(lar)ı', detail: 'Düzlem başına bilinen deneme ağırlığı ekleyip yeniden ölçün; vektör değişimi etki katsayılarını verir.' },
-                { step: 'Düzeltmeyi çöz', detail: 'Karmaşık denklemler düzlem başına düzeltme kütlesi ve açısını verir; gerekirse ağırlık mevcut deliklere bölüştürülür.' },
+                { step: 'Deneme koşusu', detail: 'Seçilen düzleme bilinen tek deneme ağırlığı ekleyip yeniden ölçün; vektör değişimi tek düzlem etki katsayısını verir.' },
+                { step: 'Düzeltmeyi çöz', detail: 'Karmaşık denklem seçilen düzeltme yarıçapında tek kütle ve açı verir.' },
                 { step: 'ISO 21940 ile doğrula', detail: 'Son bir koşu, artık balanssızlığın hedef kalite derecesini karşıladığını teyit eder.' },
             ],
             outputs: [
-                { name: 'Düzeltme ağırlıkları', desc: 'Balans düzlemi başına kütle ve açısal konum (delik bölüştürmeli).' },
+                { name: 'Tek düzlem düzeltmesi', desc: 'Seçilen düzeltme yarıçapında tek kütle ve açısal konum.' },
                 { name: 'Polar ilerleme grafiği', desc: 'Koşudan koşuya orijine doğru küçülen 1× vektörü.' },
                 { name: 'Etki katsayıları', desc: 'Saklanan makine duyarlılığı — sonraki tek-atış ince balans için yeniden kullanılabilir.' },
                 { name: 'ISO 21940 raporu', desc: 'Seçilen derece için izin verilen değere karşı artık balanssızlık.' },
@@ -1067,85 +1067,85 @@ const VIBRATION_WIDGET_DETAILS = {
     structural_health: {
         slug: 'structural-health-monitoring',
         en: {
-            tagline: 'Watches a structure\'s modal fingerprint over months and years, separating genuine damage from weather and load effects.',
+            tagline: 'Turns synchronized multi-sensor vibration into windowed RMS, peak and crest-factor trends, threshold events and a correlation view.',
             intro:
-                'Damage changes dynamics: a crack, a loosened joint or section loss lowers local stiffness, which drops natural frequencies, distorts mode shapes and often raises damping. SHM measures these modal parameters repeatedly — usually with output-only (OMA) identification under ambient excitation — and compares them against a healthy baseline. The hard part is that temperature, humidity and traffic mass also shift the parameters, so robust monitoring models the environmental influence statistically and alarms only on deviations the environment cannot explain.',
+                'The current Structural Health Monitoring widget is a transparent trend-and-screening tool. It divides each selected channel into equal time windows, computes RMS, peak and crest factor with the C++ statistics engine, logs windows that cross the configured RMS alarm threshold and calculates a Pearson correlation matrix across the selected sensors. It reveals when response levels or inter-channel relationships change. It does not yet identify modal frequencies, normalize environmental effects, calculate MAC or localize damage; those conclusions require follow-up EMA, OMA, ODS and engineering context.',
             inputs: [
-                { name: 'Long-term response data', desc: 'Periodic or continuous accelerometer records from the monitored structure.' },
-                { name: 'Healthy baseline', desc: 'Modal parameters and feature statistics captured in known-good condition.' },
-                { name: 'Environment channels (optional)', desc: 'Temperature, humidity or load measurements to explain benign variation.' },
+                { name: 'Synchronized vibration channels', desc: 'Multiple response channels from known locations and directions in one recording.' },
+                { name: 'Sample rate and window duration', desc: 'Define how many samples contribute to each trend point.' },
+                { name: 'RMS alarm threshold', desc: 'A project or baseline-derived screening limit applied to each window.' },
             ],
             formulas: [
                 {
-                    title: 'Stiffness sensitivity of frequency',
-                    latex: '\\omega_n = \\sqrt{\\dfrac{k}{m}} \\quad\\Rightarrow\\quad \\dfrac{\\Delta f}{f} \\approx \\dfrac{1}{2}\\,\\dfrac{\\Delta k}{k}',
-                    expr: 'ω_n = √(k/m)  →  Δf/f ≈ ½·Δk/k',
-                    where: 'Why frequency tracking works: a stiffness loss Δk maps to half its relative size as a frequency drop. Small but consistent downward drifts across several modes are the classic damage pattern.',
+                    title: 'Windowed RMS',
+                    latex: 'x_{\\mathrm{RMS}} = \\sqrt{\\dfrac{1}{N}\\sum_{n=1}^{N}x_n^2}',
+                    expr: 'x_RMS = sqrt((1/N) sum x_n²)',
+                    where: 'One value is calculated for every channel and time window. It represents sustained signal energy in the channel\'s own engineering unit.',
                 },
                 {
-                    title: 'Novelty detection (Mahalanobis distance)',
-                    latex: 'D^{2} = (\\vec{x} - \\vec{\\mu})^{\\mathsf{T}}\\, \\Sigma^{-1}\\, (\\vec{x} - \\vec{\\mu})',
-                    expr: 'D² = (x − μ)ᵀ · Σ⁻¹ · (x − μ)',
-                    where: 'x = current feature vector (frequencies, shape metrics), μ, Σ = baseline mean and covariance including environmental scatter. D² beyond the training threshold flags a state the healthy history cannot explain.',
+                    title: 'Crest factor',
+                    latex: 'CF = \\dfrac{\\max |x_n|}{x_{\\mathrm{RMS}}}',
+                    expr: 'CF = peak / RMS',
+                    where: 'Crest factor rises when isolated peaks grow faster than overall energy. It is a screening clue for impulsive behaviour, not a component diagnosis.',
                 },
                 {
-                    title: 'Shape-change check (MAC drop)',
-                    latex: '1 - \\mathrm{MAC}(\\varphi_{\\mathrm{base}}, \\varphi_{\\mathrm{now}})',
-                    expr: '1 − MAC(φ_base, φ_now)',
-                    where: 'Frequencies locate that something changed; mode-shape deviation localizes where — the largest shape change concentrates near the damaged region.',
+                    title: 'Pearson correlation',
+                    latex: 'r_{xy} = \\dfrac{\\sum (x_i-\\bar{x})(y_i-\\bar{y})}{\\sqrt{\\sum (x_i-\\bar{x})^2\\sum (y_i-\\bar{y})^2}}',
+                    expr: 'r_xy = cov(x,y) / (sigma_x sigma_y)',
+                    where: 'The matrix summarizes the global linear relationship between sensor pairs over the analyzed span. Common forcing, phase and noise also influence it.',
                 },
             ],
             steps: [
-                { step: 'Identify continuously', detail: 'Automated OMA extracts modal parameters from each monitoring window.' },
-                { step: 'Normalize for environment', detail: 'Statistical models remove temperature/load-driven variation from the features.' },
-                { step: 'Detect novelty', detail: 'Distance metrics against the baseline flag unexplained shifts.' },
-                { step: 'Localize and report', detail: 'Mode-shape changes point at the affected region; trends feed the maintenance decision.' },
+                { step: 'Divide into windows', detail: 'The selected record is split using the configured duration and sample rate.' },
+                { step: 'Compute per-channel features', detail: 'C++ windowed statistics produce RMS, peak and crest-factor trend points.' },
+                { step: 'Log threshold events', detail: 'Every window whose RMS exceeds the configured limit is added to the alarm list.' },
+                { step: 'Compare sensor relationships', detail: 'The C++ statistics engine forms the inter-channel Pearson correlation matrix.' },
             ],
             outputs: [
-                { name: 'Modal-parameter trends', desc: 'Frequencies and damping over months/years with environmental correction.' },
-                { name: 'Damage indicators', desc: 'Novelty scores and alarms with confidence levels.' },
-                { name: 'Localization hints', desc: 'Which modes and regions changed most.' },
+                { name: 'RMS / peak / crest trends', desc: 'One synchronized time history of windowed features per selected channel.' },
+                { name: 'RMS alarm log', desc: 'Time, channel, measured value and threshold for every exceeded window.' },
+                { name: 'Correlation matrix', desc: 'Pairwise linear relationship across the selected sensors and analysis span.' },
             ],
         },
         tr: {
-            tagline: 'Bir yapının modal parmak izini aylar ve yıllar boyunca izler; gerçek hasarı hava ve yük etkilerinden ayırır.',
+            tagline: 'Eşzamanlı çoklu sensör titreşimini pencereli RMS, tepe ve crest-factor trendlerine, eşik olaylarına ve korelasyon görünümüne dönüştürür.',
             intro:
-                'Hasar dinamiği değiştirir: bir çatlak, gevşeyen bir bağlantı veya kesit kaybı yerel rijitliği düşürür; bu doğal frekansları düşürür, mod şekillerini bozar ve çoğu zaman sönümü artırır. SHM bu modal parametreleri tekrar tekrar ölçer — genellikle ortam uyarması altında yalnızca-çıkış (OMA) tanımlamayla — ve sağlıklı bir referansla karşılaştırır. Zor kısım şudur: sıcaklık, nem ve trafik kütlesi de parametreleri kaydırır; bu yüzden sağlam bir izleme, çevresel etkiyi istatistiksel olarak modeller ve yalnızca çevrenin açıklayamadığı sapmalarda alarm verir.',
+                'Mevcut Yapısal Sağlık İzleme widget’ı şeffaf bir trend ve tarama aracıdır. Seçilen her kanalı eşit zaman pencerelerine böler; C++ istatistik motoruyla RMS, tepe ve crest factor hesaplar; yapılandırılan RMS alarm eşiğini geçen pencereleri kaydeder ve seçili sensörler arasında Pearson korelasyon matrisi oluşturur. Böylece tepki seviyesi veya kanallar arası ilişkinin ne zaman değiştiği görülür. Bugün modal frekans tanımlamaz, çevresel etkiyi normalize etmez, MAC hesaplamaz ve hasarı yerelleştirmez; bu sonuçlar takip eden EMA, OMA, ODS ve mühendislik bağlamı gerektirir.',
             inputs: [
-                { name: 'Uzun süreli tepki verisi', desc: 'İzlenen yapıdan periyodik veya sürekli ivmeölçer kayıtları.' },
-                { name: 'Sağlıklı referans', desc: 'Bilinen-iyi durumda yakalanmış modal parametreler ve öznitelik istatistikleri.' },
-                { name: 'Çevre kanalları (opsiyonel)', desc: 'İyi huylu değişimi açıklamak için sıcaklık, nem veya yük ölçümleri.' },
+                { name: 'Eşzamanlı titreşim kanalları', desc: 'Tek kayıtta, konumu ve yönü bilinen birden fazla tepki kanalı.' },
+                { name: 'Örnekleme hızı ve pencere süresi', desc: 'Her trend noktasına kaç örnek gireceğini belirler.' },
+                { name: 'RMS alarm eşiği', desc: 'Her pencereye uygulanan proje veya referans tabanlı tarama sınırı.' },
             ],
             formulas: [
                 {
-                    title: 'Frekansın rijitlik duyarlılığı',
-                    latex: '\\omega_n = \\sqrt{\\dfrac{k}{m}} \\quad\\Rightarrow\\quad \\dfrac{\\Delta f}{f} \\approx \\dfrac{1}{2}\\,\\dfrac{\\Delta k}{k}',
-                    expr: 'ω_n = √(k/m)  →  Δf/f ≈ ½·Δk/k',
-                    where: 'Frekans izlemenin işe yarama nedeni: Δk rijitlik kaybı, bağıl büyüklüğünün yarısı kadar frekans düşüşüne eşlenir. Birkaç modda küçük ama tutarlı aşağı sürüklenmeler klasik hasar desenidir.',
+                    title: 'Pencereli RMS',
+                    latex: 'x_{\\mathrm{RMS}} = \\sqrt{\\dfrac{1}{N}\\sum_{n=1}^{N}x_n^2}',
+                    expr: 'x_RMS = sqrt((1/N) sum x_n²)',
+                    where: 'Her kanal ve zaman penceresi için bir değer hesaplanır. Kanalın kendi mühendislik biriminde sürekli sinyal enerjisini temsil eder.',
                 },
                 {
-                    title: 'Yenilik tespiti (Mahalanobis uzaklığı)',
-                    latex: 'D^{2} = (\\vec{x} - \\vec{\\mu})^{\\mathsf{T}}\\, \\Sigma^{-1}\\, (\\vec{x} - \\vec{\\mu})',
-                    expr: 'D² = (x − μ)ᵀ · Σ⁻¹ · (x − μ)',
-                    where: 'x = güncel öznitelik vektörü (frekanslar, şekil metrikleri), μ, Σ = çevresel saçılımı da içeren referans ortalaması ve kovaryansı. Eğitim eşiğini aşan D², sağlıklı geçmişin açıklayamadığı bir durumu işaretler.',
+                    title: 'Crest factor',
+                    latex: 'CF = \\dfrac{\\max |x_n|}{x_{\\mathrm{RMS}}}',
+                    expr: 'CF = tepe / RMS',
+                    where: 'İzole tepeler genel enerjiden hızlı büyürse crest factor yükselir. Darbeli davranış için tarama ipucudur; bileşen tanısı değildir.',
                 },
                 {
-                    title: 'Şekil değişimi denetimi (MAC düşüşü)',
-                    latex: '1 - \\mathrm{MAC}(\\varphi_{\\mathrm{base}}, \\varphi_{\\mathrm{now}})',
-                    expr: '1 − MAC(φ_referans, φ_şimdi)',
-                    where: 'Frekanslar bir şeyin değiştiğini saptar; mod şekli sapması nerede olduğunu konumlar — en büyük şekil değişimi hasarlı bölge yakınında yoğunlaşır.',
+                    title: 'Pearson korelasyonu',
+                    latex: 'r_{xy} = \\dfrac{\\sum (x_i-\\bar{x})(y_i-\\bar{y})}{\\sqrt{\\sum (x_i-\\bar{x})^2\\sum (y_i-\\bar{y})^2}}',
+                    expr: 'r_xy = cov(x,y) / (sigma_x sigma_y)',
+                    where: 'Matris, analiz aralığı boyunca sensör çiftlerinin genel doğrusal ilişkisini özetler. Ortak uyarma, faz ve gürültü de değeri etkiler.',
                 },
             ],
             steps: [
-                { step: 'Sürekli tanımla', detail: 'Otomatik OMA, her izleme penceresinden modal parametreleri çıkarır.' },
-                { step: 'Çevreye göre normalleştir', detail: 'İstatistiksel modeller, sıcaklık/yük kaynaklı değişimi özniteliklerden ayıklar.' },
-                { step: 'Yeniliği tespit et', detail: 'Referansa karşı uzaklık metrikleri açıklanamayan kaymaları işaretler.' },
-                { step: 'Konumla ve raporla', detail: 'Mod şekli değişimleri etkilenen bölgeyi gösterir; trendler bakım kararını besler.' },
+                { step: 'Pencerelere böl', detail: 'Seçilen kayıt, yapılandırılan süre ve örnekleme hızıyla bölünür.' },
+                { step: 'Kanal özniteliklerini hesapla', detail: 'C++ pencereli istatistik motoru RMS, tepe ve crest-factor trend noktalarını üretir.' },
+                { step: 'Eşik olaylarını kaydet', detail: 'RMS’i yapılandırılan sınırı geçen her pencere alarm listesine eklenir.' },
+                { step: 'Sensör ilişkilerini karşılaştır', detail: 'C++ istatistik motoru kanallar arası Pearson korelasyon matrisini oluşturur.' },
             ],
             outputs: [
-                { name: 'Modal parametre trendleri', desc: 'Çevresel düzeltmeli, aylar/yıllar boyunca frekanslar ve sönüm.' },
-                { name: 'Hasar göstergeleri', desc: 'Güven seviyeleriyle yenilik puanları ve alarmlar.' },
-                { name: 'Konumlama ipuçları', desc: 'En çok değişen modlar ve bölgeler.' },
+                { name: 'RMS / tepe / crest trendleri', desc: 'Seçilen her kanal için eşzamanlı pencereli öznitelik zaman geçmişi.' },
+                { name: 'RMS alarm günlüğü', desc: 'Eşiği geçen her pencere için zaman, kanal, ölçülen değer ve sınır.' },
+                { name: 'Korelasyon matrisi', desc: 'Seçilen sensör ve analiz aralığındaki ikili doğrusal ilişki.' },
             ],
         },
     },

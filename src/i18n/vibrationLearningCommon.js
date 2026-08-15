@@ -1,0 +1,106 @@
+const VIBRATION_LEARNING_COMMON = {
+    en: {
+        back: 'Back to the module library',
+        eyebrow: 'Vibration, Structural & Kinematics · Learning guide',
+        start: 'Start with the interface',
+        outcomesTitle: 'What you will be able to do after this guide',
+        nav: {
+            interface: 'Interface',
+            theory: 'Core theory',
+            foundations: 'Engineering depth',
+            modes: 'Read the results',
+            workflow: 'Field workflow',
+        },
+        sectionEyebrow: {
+            interface: '01 · Know the workspace',
+            theory: '02 · Build the mental model',
+            foundations: '03 · Go from concept to calculation',
+            modes: '04 · Choose and interpret',
+            workflow: '05 · Work like an analyst',
+        },
+        interface: {
+            placeholderTag: 'Interface preview',
+            placeholderTitle: 'Application view will be added later',
+            placeholderBody: 'This widget interface is still being refined. The final MachinePulseAI screenshot and control-by-control tour will be placed here when the workflow is ready.',
+            placeholderFootnote: 'The theory and workflow below already follow the widget’s current calculation path and available outputs.',
+            inputsTitle: 'What the analysis needs',
+            inputsIntro: 'Good results start before you press Compute. These are the signals, references and setup values the widget actually uses.',
+        },
+        theory: {
+            formulaTitle: 'The equations behind the result',
+            formulaIntro: 'You do not need to memorize every equation. Use them to see which measurement controls each result, which assumptions are hidden, and where uncertainty enters.',
+        },
+        foundations: {
+            assumptionsTitle: 'Assumptions worth checking',
+            assumptionsIntro: 'These are not fine print. If one of them is false, a clean-looking graph can still tell the wrong story.',
+        },
+        modes: {
+            bestFor: 'Best for',
+            reveals: 'What it reveals',
+            watch: 'Watch out for',
+            interpretationTitle: 'Turn patterns into engineering statements',
+            outputsTitle: 'What MachinePulseAI produces',
+            examplesTitle: 'Example readouts',
+        },
+        workflow: {
+            calculationTitle: 'What happens after Compute',
+            checklistTitle: 'Before you trust the answer',
+            mistakesTitle: 'Common mistakes and why they matter',
+            referencesTitle: 'Standards and further reading',
+            referencesIntro: 'Use these references to connect the practical workflow to accepted terminology, measurement practice and engineering limits.',
+        },
+    },
+    tr: {
+        back: 'Modül kütüphanesine dön',
+        eyebrow: 'Titreşim, Yapısal ve Kinematik · Öğrenme rehberi',
+        start: 'Arayüzden başlayın',
+        outcomesTitle: 'Bu rehberden sonra neleri yapabileceksiniz?',
+        nav: {
+            interface: 'Arayüz',
+            theory: 'Temel teori',
+            foundations: 'Mühendislik derinliği',
+            modes: 'Sonuçları okuma',
+            workflow: 'Saha iş akışı',
+        },
+        sectionEyebrow: {
+            interface: '01 · Çalışma alanını tanıyın',
+            theory: '02 · Zihinsel modeli kurun',
+            foundations: '03 · Kavramdan hesaba geçin',
+            modes: '04 · Yöntemi seçin ve yorumlayın',
+            workflow: '05 · Bir analiz uzmanı gibi çalışın',
+        },
+        interface: {
+            placeholderTag: 'Arayüz önizlemesi',
+            placeholderTitle: 'Uygulama görünümü ileride eklenecek',
+            placeholderBody: 'Bu widget’ın arayüzü hâlâ geliştiriliyor. İş akışı hazır olduğunda gerçek MachinePulseAI ekran görüntüsü ve kontrol kontrol kullanım turu bu alana eklenecek.',
+            placeholderFootnote: 'Aşağıdaki teori ve iş akışı, widget’ın mevcut hesaplama yolu ve gerçek çıktılarıyla şimdiden uyumludur.',
+            inputsTitle: 'Analiz için neler gerekir?',
+            inputsIntro: 'Güvenilir sonuç Compute düğmesine basmadan önce başlar. Widget’ın gerçekten kullandığı sinyaller, referanslar ve kurulum bilgileri şunlardır.',
+        },
+        theory: {
+            formulaTitle: 'Sonucun arkasındaki denklemler',
+            formulaIntro: 'Her denklemi ezberlemeniz gerekmez. Hangi ölçümün sonucu yönettiğini, hangi varsayımların gizli olduğunu ve belirsizliğin nereden girdiğini görmek için denklemleri kullanın.',
+        },
+        foundations: {
+            assumptionsTitle: 'Kontrol edilmesi gereken varsayımlar',
+            assumptionsIntro: 'Bunlar dipnot değildir. İçlerinden biri geçersizse temiz görünen bir grafik bile yanlış bir hikâye anlatabilir.',
+        },
+        modes: {
+            bestFor: 'En uygun kullanım',
+            reveals: 'Ne gösterir?',
+            watch: 'Neye dikkat etmeli?',
+            interpretationTitle: 'Desenleri mühendislik yorumuna dönüştürün',
+            outputsTitle: 'MachinePulseAI ne üretir?',
+            examplesTitle: 'Örnek okumalar',
+        },
+        workflow: {
+            calculationTitle: 'Compute sonrasında ne olur?',
+            checklistTitle: 'Sonuca güvenmeden önce',
+            mistakesTitle: 'Yaygın hatalar ve neden önemli oldukları',
+            referencesTitle: 'Standartlar ve ileri okuma',
+            referencesIntro: 'Pratik iş akışını kabul görmüş terimlere, ölçüm uygulamalarına ve mühendislik sınırlarına bağlamak için bu kaynakları kullanın.',
+        },
+    },
+}
+
+export default VIBRATION_LEARNING_COMMON

@@ -248,7 +248,7 @@ const VIBRATION_WIDGET_EXTRAS = {
                 { name: 'Trends matter more than one point', desc: 'A single RMS value is useful, but rising trend and rate of change are often more actionable.' },
             ],
             exampleMetrics: [
-                { value: 'Zone B, 3.1 mm/s RMS', label: 'Current severity', desc: 'The selected point is acceptable for long-term operation under the chosen class.' },
+                { value: 'Group 3 · Zone B · 3.1 mm/s RMS', label: 'Current severity', desc: 'The selected point falls in Zone B only for the selected Group 3 screening profile; a different machine class can change the result.' },
                 { value: '+0.18 mm/s per week', label: 'Trend rate', desc: 'The vibration level is rising slowly and should be watched.' },
             ],
         },
@@ -258,7 +258,7 @@ const VIBRATION_WIDGET_EXTRAS = {
                 { name: 'Trend tek noktadan daha değerlidir', desc: 'Tek RMS değeri yararlıdır; fakat yükselen trend ve değişim hızı çoğu zaman daha aksiyoneldir.' },
             ],
             exampleMetrics: [
-                { value: 'Bölge B, 3,1 mm/s RMS', label: 'Güncel şiddet', desc: 'Seçilen nokta seçili sınıfta uzun süreli çalışma için kabul edilebilir durumdadır.' },
+                { value: 'Grup 3 · Bölge B · 3,1 mm/s RMS', label: 'Güncel şiddet', desc: 'Seçilen nokta yalnızca seçili Grup 3 tarama profilinde Bölge B içindedir; farklı bir makine sınıfı sonucu değiştirebilir.' },
                 { value: '+0,18 mm/s / hafta', label: 'Trend hızı', desc: 'Titreşim seviyesi yavaş yükseliyor ve izlenmelidir.' },
             ],
         },
@@ -266,22 +266,22 @@ const VIBRATION_WIDGET_EXTRAS = {
     structural_health: {
         en: {
             assumptions: [
-                { name: 'Environment must be separated from damage', desc: 'Temperature and load changes can move modal parameters even when the structure is healthy.' },
-                { name: 'Baseline quality determines alarm quality', desc: 'A weak healthy baseline creates false alarms or missed damage.' },
+                { name: 'Operating state must be comparable', desc: 'Load, speed, temperature and wind can change windowed features even when the structure is unchanged.' },
+                { name: 'Channel units must match the alarm', desc: 'One RMS threshold is meaningful only when the selected channels use the intended physical quantity and unit.' },
             ],
             exampleMetrics: [
-                { value: 'Mode 2 drift = -2.4%', label: 'Frequency shift', desc: 'A consistent downward shift can indicate stiffness loss if environment cannot explain it.' },
-                { value: 'Novelty score = 3.8σ', label: 'Damage indicator', desc: 'The current feature vector sits outside normal baseline variation.' },
+                { value: 'RMS = 4.8 mm/s', label: 'Window alarm', desc: 'One sensor window crossed the configured screening threshold.' },
+                { value: 'r(CH2, CH5) = 0.31', label: 'Relationship change', desc: 'The channel pair is less linearly related over this analysis span and needs contextual follow-up.' },
             ],
         },
         tr: {
             assumptions: [
-                { name: 'Çevre etkisi hasardan ayrılmalı', desc: 'Sıcaklık ve yük değişimleri yapı sağlıklı olsa bile modal parametreleri kaydırabilir.' },
-                { name: 'Referans kalitesi alarm kalitesini belirler', desc: 'Zayıf sağlıklı referans yanlış alarm veya kaçan hasar üretir.' },
+                { name: 'Çalışma durumu karşılaştırılabilir olmalı', desc: 'Yük, hız, sıcaklık ve rüzgâr yapı değişmeden de pencereli öznitelikleri değiştirebilir.' },
+                { name: 'Kanal birimleri alarmla eşleşmeli', desc: 'Tek RMS eşiği ancak seçilen kanallar amaçlanan fiziksel büyüklük ve birimdeyse anlamlıdır.' },
             ],
             exampleMetrics: [
-                { value: 'Mod 2 kayması = -%2,4', label: 'Frekans kayması', desc: 'Çevre açıklayamıyorsa tutarlı aşağı kayma rijitlik kaybına işaret edebilir.' },
-                { value: 'Yenilik skoru = 3,8σ', label: 'Hasar göstergesi', desc: 'Güncel öznitelik vektörü normal referans değişiminin dışındadır.' },
+                { value: 'RMS = 4,8 mm/s', label: 'Pencere alarmı', desc: 'Bir sensör penceresi yapılandırılmış tarama eşiğini geçti.' },
+                { value: 'r(CH2, CH5) = 0,31', label: 'İlişki değişimi', desc: 'Kanal çifti bu analiz aralığında daha az doğrusal ilişkili; bağlamsal takip gerekir.' },
             ],
         },
     },
