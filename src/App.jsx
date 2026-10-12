@@ -7,7 +7,6 @@ import Seo from './seo/Seo.jsx'
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
 import ContactModal from './components/ContactModal.jsx'
-import ComingSoon from './components/ComingSoon.jsx'
 
 // Above-the-fold home content stays in the main bundle; everything else is
 // code-split so the initial page load only ships what it needs.
@@ -106,21 +105,6 @@ function AppShell() {
 }
 
 function App() {
-    // Production visitors see the launch gate while local Vite development
-    // keeps the complete site available for editing and review.
-    const COMING_SOON = import.meta.env.PROD
-
-    if (COMING_SOON) {
-        // Note: <Seo /> depends on react-router (useLocation) and must not be
-        // rendered outside <Router>. The static meta tags in index.html cover
-        // the landing, so we intentionally skip Seo here.
-        return (
-            <HelmetProvider>
-                <ComingSoon />
-            </HelmetProvider>
-        )
-    }
-
     return (
         <HelmetProvider>
             <ContactModalProvider>

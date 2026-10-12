@@ -59,5 +59,5 @@ and Turkish mobile layouts (98 views), control selection, wrong/correct answers,
 slider updates/reset, related routes, equation rendering and horizontal overflow.
 Live language switching and sticky chapter navigation were checked separately.
 
-The existing production launch gate remains in place. These changes are local;
-publishing is a separate action.
+Production and development render the complete site with the same routes.
+Pushing `main` publishes through the existing Vercel deployment integration.
