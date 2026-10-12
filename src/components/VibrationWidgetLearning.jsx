@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import katex from 'katex'
 import 'katex/dist/katex.min.css'
+import LearningWorkbench from './learning/LearningWorkbench.jsx'
+import LearningExercise from './learning/LearningExercise.jsx'
+import LearningConceptLab from './learning/LearningConceptLab.jsx'
+import { CONCEPT_LABS } from '../data/learning/conceptLabs.js'
 
 const NAV_KEYS = ['interface', 'theory', 'foundations', 'modes', 'workflow']
 
@@ -67,13 +71,15 @@ function DetailCards({ items, accent = false }) {
 }
 
 export default function VibrationWidgetLearning({ widgetId }) {
-    const { t } = useTranslation()
+    const { t, i18n } = useTranslation()
+    const lang = i18n.language?.startsWith('tr') ? 'tr' : 'en'
+    const tour = t(`widgetLearn.vibration.${widgetId}`, { returnObjects: true })
     const page = t(`vibrationLearn.widgets.${widgetId}`, { returnObjects: true })
     const detail = page.detail
     const activeSection = useActiveSection(NAV_KEYS)
 
     return (
-        <article className="relative overflow-hidden bg-grid">
+        <article className="relative overflow-x-clip bg-grid">
             <div className="pointer-events-none absolute right-[10%] top-24 h-96 w-96 rounded-full bg-[#00f5ff]/[0.06] blur-[140px]" />
             <div className="pointer-events-none absolute left-[5%] top-[42%] h-96 w-96 rounded-full bg-[#a855f7]/[0.05] blur-[150px]" />
 
@@ -114,15 +120,8 @@ export default function VibrationWidgetLearning({ widgetId }) {
 
             <main className="relative mx-auto max-w-6xl px-6">
                 <section id="interface" className="scroll-mt-32 py-16">
-                    <SectionHeader eyebrow={t('vibrationLearn.sectionEyebrow.interface')} title={page.interface.title} intro={page.interface.intro} />
-                    <div className="flex min-h-[360px] items-center justify-center rounded-3xl border border-dashed border-[#00f5ff]/30 bg-black/25 p-8 text-center">
-                        <div className="max-w-xl">
-                            <span className="rounded-full border border-[#00f5ff]/20 bg-[#00f5ff]/[0.05] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#00f5ff]">{t('vibrationLearn.interface.placeholderTag')}</span>
-                            <h3 className="mt-6 text-2xl font-bold text-white">{t('vibrationLearn.interface.placeholderTitle')}</h3>
-                            <p className="mt-3 text-sm leading-7 text-slate-400">{t('vibrationLearn.interface.placeholderBody')}</p>
-                            <p className="mt-5 text-xs leading-6 text-slate-500">{t('vibrationLearn.interface.placeholderFootnote')}</p>
-                        </div>
-                    </div>
+                    <SectionHeader eyebrow={t('vibrationLearn.sectionEyebrow.interface')} title={page.interface.title} intro={t('widgetLearn.common.workspaceIntro')} />
+                    <LearningWorkbench key={`${widgetId}:${lang}`} name={page.title} controls={tour.controls} inputs={detail.inputs} outputs={detail.outputs} lang={lang} />
                     <div className="mt-12">
                         <SectionHeader eyebrow={t('vibrationLearn.sectionEyebrow.interface')} title={t('vibrationLearn.interface.inputsTitle')} intro={t('vibrationLearn.interface.inputsIntro')} />
                         <DetailCards items={detail.inputs} />
@@ -155,7 +154,9 @@ export default function VibrationWidgetLearning({ widgetId }) {
                     </div>
                     <div className="mt-14"><SectionHeader eyebrow={t('vibrationLearn.sectionEyebrow.modes')} title={t('vibrationLearn.modes.interpretationTitle')} intro={page.interpretation.intro} /><div className="grid gap-3 lg:grid-cols-3">{page.interpretation.items.map((item) => <article key={item.title} className="rounded-2xl border border-[#a855f7]/20 bg-[#a855f7]/[0.035] p-5"><h3 className="font-semibold text-white">{item.title}</h3><p className="mt-3 text-sm leading-6 text-slate-300">{item.signal}</p><p className="mt-3 text-sm leading-6 text-slate-400">{item.meaning}</p><p className="mt-3 border-t border-[#a855f7]/10 pt-3 text-xs leading-6 text-slate-500">{item.confirm}</p></article>)}</div></div>
                     <div className="mt-14"><SectionHeader eyebrow={t('vibrationLearn.sectionEyebrow.modes')} title={t('vibrationLearn.modes.outputsTitle')} /><DetailCards items={detail.outputs} accent /></div>
-                    {detail.exampleMetrics?.length > 0 && <div className="mt-10"><h3 className="mb-5 text-xl font-bold text-white">{t('vibrationLearn.modes.examplesTitle')}</h3><div className="grid gap-3 md:grid-cols-2">{detail.exampleMetrics.map((metric) => <article key={metric.label} className="rounded-2xl border border-white/10 bg-white/[0.025] p-5"><p className="font-mono text-sm font-semibold text-[#00f5ff]">{metric.value}</p><h4 className="mt-2 font-semibold text-white">{metric.label}</h4><p className="mt-1 text-sm leading-6 text-slate-400">{metric.desc}</p></article>)}</div></div>}
+                    {detail.exampleMetrics?.length > 0 && <div className="mt-10"><h3 className="mb-5 text-xl font-bold text-white">{t('vibrationLearn.modes.examplesTitle')}</h3><p className="mb-5 text-xs text-slate-400">{t('widgetLearn.common.illustrative')}</p><div className="grid gap-3 md:grid-cols-2">{detail.exampleMetrics.map((metric) => <article key={metric.label} className="rounded-2xl border border-white/10 bg-white/[0.025] p-5"><p className="font-mono text-sm font-semibold text-[#00f5ff]">{metric.value}</p><h4 className="mt-2 font-semibold text-white">{metric.label}</h4><p className="mt-1 text-sm leading-6 text-slate-400">{metric.desc}</p></article>)}</div></div>}
+                    {CONCEPT_LABS[widgetId] && <LearningConceptLab key={`lab:${widgetId}:${lang}`} widgetId={widgetId} lang={lang} />}
+                    <LearningExercise key={`${widgetId}:${lang}`} widgetId={widgetId} exercise={tour.exercise} lang={lang} />
                 </section>
 
                 <section id="workflow" className="scroll-mt-32 border-t border-white/8 py-16">

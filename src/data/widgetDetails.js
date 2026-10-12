@@ -35,6 +35,7 @@ import FFT_WIDGET_DETAILS from './widgetDetails.fft.js'
 import THERMOFLUIDS_WIDGET_DETAILS from './widgetDetails.thermofluids.js'
 import VIBRATION_WIDGET_EXTRAS from './widgetDetails.vibrationExtras.js'
 import VIBRATION_WIDGET_DETAILS from './widgetDetails.vibration.js'
+import { LEARNING_WIDGET_DETAILS } from './widgetLearning.js'
 
 function mergeDetailExtras(details, extras) {
     return Object.fromEntries(
@@ -296,6 +297,7 @@ const WIDGET_DETAILS = {
 
     // ── THERMODYNAMICS & FLUIDS (see widgetDetails.thermofluids.js) ──────────
     ...THERMOFLUIDS_WIDGET_DETAILS,
+    ...LEARNING_WIDGET_DETAILS,
 }
 
 // Map of slug → widget id, for reverse lookup from the URL.

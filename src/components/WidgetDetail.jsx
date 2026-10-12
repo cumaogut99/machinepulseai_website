@@ -8,6 +8,8 @@ import WIDGET_CATALOG from '../data/widgetCatalog.js'
 import { SLUG_TO_WIDGET_ID, getWidgetDetailById } from '../data/widgetDetails.js'
 import { VIBRATION_LEARNING_IDS } from '../i18n/vibrationLearning.js'
 import VibrationWidgetLearning from './VibrationWidgetLearning.jsx'
+import { getWidgetLearning } from '../data/widgetLearning.js'
+import WidgetLearningPage from './WidgetLearningPage.jsx'
 
 // ─────────────────────────────────────────────────────────────────────────────
 // WidgetDetail — generic, data-driven deep-dive page for any catalog widget
@@ -114,6 +116,9 @@ export default function WidgetDetail() {
     const id = SLUG_TO_WIDGET_ID[slug]
     const detail = id ? getWidgetDetailById(id) : null
     const found = id ? findWidget(id) : null
+
+    const learning = id ? getWidgetLearning(id) : null
+    if (learning) return <WidgetLearningPage key={id} guide={learning} />
 
     if (id && VIBRATION_LEARNING_IDS.includes(id)) {
         return <VibrationWidgetLearning widgetId={id} />

@@ -4,6 +4,8 @@ import { Link, useSearchParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import WIDGET_CATALOG from '../data/widgetCatalog.js'
 import { getWidgetDetailSlug } from '../data/widgetDetails.js'
+import { getWidgetLearning } from '../data/widgetLearning.js'
+import { VIBRATION_CONTROL_IDS } from '../data/learning/vibrationControls.js'
 
 // ─────────────────────────────────────────────────────────────────────────────
 // WidgetCatalog — application-aligned gallery of MachinePulseAI modules.
@@ -28,12 +30,17 @@ function WidgetCard({
     plannedLabel,
     isPlanned,
 }) {
+    const { t } = useTranslation()
     const [open, setOpen] = useState(false)
-    const c = widget[lang] || widget.en
+    const guide = getWidgetLearning(widget.id) ? t(`widgetLearn.pages.${widget.id}`, { returnObjects: true }) : null
+    const course = VIBRATION_CONTROL_IDS.includes(widget.id) ? t(`vibrationLearn.widgets.${widget.id}`, { returnObjects: true }) : null
+    const base = widget[lang] || widget.en
+    const c = guide ? { ...base, summary: guide.intro, theory: `${guide.use}\n\n${guide.concepts.map((item) => item.desc).join('\n\n')}` }
+        : course ? { ...base, summary: course.intro, theory: `${course.theory.intro}\n\n${course.theory.cards.map((item) => item.body).join('\n\n')}` } : base
     const paragraphs = (c.theory || '').split('\n\n')
     // Explicit override (combustion) wins; otherwise use the generic registry.
     const detailSlug = getWidgetDetailSlug(widget.id)
-    const detailPath = widget.detailPath || (detailSlug ? `/widgets/${detailSlug}` : null)
+    const detailPath = isPlanned ? null : widget.detailPath || (detailSlug ? `/widgets/${detailSlug}` : null)
 
     return (
         <motion.div
@@ -72,6 +79,7 @@ function WidgetCard({
                 className="self-start inline-flex items-center gap-1.5 text-xs font-medium mt-1 transition-colors"
                 style={{ color: accent }}
                 aria-expanded={open}
+                aria-controls={`theory-${widget.id}`}
             >
                 {open ? hideLabel : learnLabel}
                 <svg
@@ -86,6 +94,7 @@ function WidgetCard({
                 {open && (
                     <motion.div
                         key="theory"
+                        id={`theory-${widget.id}`}
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
@@ -107,6 +116,9 @@ function WidgetCard({
             </AnimatePresence>
 
             {/* Optional deep-dive link to a dedicated detail page */}
+            {(guide || course) && <p className="text-[11px] leading-5 text-slate-400">
+                {t('widgetLearn.common.card')}
+            </p>}
             {detailPath && (
                 <Link
                     to={detailPath}
@@ -304,7 +316,9 @@ export default function WidgetCatalog() {
                         subgroupMatch ||
                         en.name.toLowerCase().includes(q) ||
                         en.summary.toLowerCase().includes(q) ||
+                        (getWidgetLearning(w.id)?.en.intro || '').toLowerCase().includes(q) ||
                         (tr?.name || '').toLowerCase().includes(q) ||
+                        (getWidgetLearning(w.id)?.tr.intro || '').toLowerCase().includes(q) ||
                         (tr?.summary || '').toLowerCase().includes(q)
                     )
                 })

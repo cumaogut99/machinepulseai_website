@@ -69,7 +69,7 @@ function AppShell() {
     }, [i18n.language])
 
     return (
-        <div className="bg-[#0a0a0a] min-h-screen flex flex-col text-white overflow-x-hidden">
+        <div className="bg-[#0a0a0a] min-h-screen flex flex-col text-white overflow-x-clip">
             <a
                 href="#main"
                 className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[200] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-[#00f5ff] focus:text-black focus:font-semibold"

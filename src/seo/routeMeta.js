@@ -3,6 +3,9 @@
 // and social cards no longer share the generic home metadata across all 8 routes.
 // Keep titles ≤ 60 chars and descriptions ≤ 160 chars.
 
+import { WIDGET_LEARNING } from '../data/widgetLearning.js'
+import WIDGET_CATALOG from '../data/widgetCatalog.js'
+
 export const SITE_URL = 'https://www.machinepulseai.com.tr'
 export const SITE_NAME = 'MachinePulseAI'
 export const OG_IMAGE = `${SITE_URL}/logo.png`
@@ -200,6 +203,18 @@ export const ROUTE_META = {
 
 /** Resolve metadata for a path + language, falling back to home / English. */
 export function resolveRouteMeta(pathname, lang) {
+    const guide = Object.values(WIDGET_LEARNING).find((item) => pathname === `/widgets/${item.slug}`)
+    if (guide) {
+        const widget = WIDGET_CATALOG.flatMap((category) => category.widgets).find((item) => item.id === guide.id)
+        const intro = (guide[lang] || guide.en).intro
+        const sentence = intro.split('. ')[0] + '.'
+        const text = sentence.length >= 70 && sentence.length <= 160 ? sentence : intro
+        const prefix = text.slice(0, 157)
+        return {
+            title: `${widget[lang]?.name || widget.en.name} — ${BRAND}`,
+            description: text.length <= 160 ? text : `${prefix.slice(0, prefix.lastIndexOf(' '))}…`,
+        }
+    }
     const entry = ROUTE_META[pathname] || ROUTE_META['/']
     return entry[lang] || entry.en
 }

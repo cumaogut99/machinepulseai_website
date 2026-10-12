@@ -8,6 +8,7 @@ import FFT_CONTROL_GUIDE_TR from './i18n/fftControlGuide.tr.js';
 import FFT_BEGINNER_TRANSLATIONS from './i18n/fftBeginner.js';
 import ROTOR_DYNAMICS_LEARNING_TRANSLATIONS from './i18n/rotorDynamicsLearning.js';
 import VIBRATION_LEARNING_TRANSLATIONS from './i18n/vibrationLearning.js';
+import WIDGET_LEARNING_TRANSLATIONS from './i18n/widgetLearning.js';
 
 // Çeviri metinleri
 const resources = {
@@ -19,6 +20,7 @@ const resources = {
             "fftBeginner": FFT_BEGINNER_TRANSLATIONS.en,
             "rotorLearn": ROTOR_DYNAMICS_LEARNING_TRANSLATIONS.en,
             "vibrationLearn": VIBRATION_LEARNING_TRANSLATIONS.en,
+            "widgetLearn": WIDGET_LEARNING_TRANSLATIONS.en,
             "nav": {
                 "platform": "Platform",
                 "product": "Product",
@@ -250,6 +252,7 @@ const resources = {
             "fftBeginner": FFT_BEGINNER_TRANSLATIONS.tr,
             "rotorLearn": ROTOR_DYNAMICS_LEARNING_TRANSLATIONS.tr,
             "vibrationLearn": VIBRATION_LEARNING_TRANSLATIONS.tr,
+            "widgetLearn": WIDGET_LEARNING_TRANSLATIONS.tr,
             "nav": {
                 "platform": "Platform",
                 "product": "Ürün",
