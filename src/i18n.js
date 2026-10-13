@@ -39,25 +39,25 @@ const resources = {
                 "featuresViewAll": "Explore the full product",
                 "industriesViewAll": "See all industries",
                 "whyTitle": "Why MachinePulseAI",
-                "whySubtitle": "Three things legacy post-processing tools can't give you.",
+                "whySubtitle": "Core capabilities designed for modern test data scale.",
                 "why": {
-                    "ai": { "title": "Built-in AI Assistant", "desc": "Ask questions in plain language and get data-driven answers — no SQL, no scripting." },
-                    "scale": { "title": "Massive data, modest hardware", "desc": "Out-of-core engine analyzes 200 GB+ datasets on an 8 GB laptop without RAM errors." },
-                    "secure": { "title": "Fully offline & secure", "desc": "Runs air-gapped with no cloud dependency — built for classified and sensitive environments." }
+                    "ai": { "title": "Built-in AI Assistant", "desc": "Query datasets, structure analysis pipelines, and retrieve institutional test records in natural language while deterministic C++ engines compute the math." },
+                    "scale": { "title": "Massive data, modest hardware", "desc": "Out-of-core memory architecture analyzes 200 GB+ datasets on standard workstations under a strict <1 GB RAM footprint." },
+                    "secure": { "title": "Fully offline & secure", "desc": "Runs completely air-gapped with zero cloud dependency — engineered for defense, aerospace, and confidential test environments." }
                 },
                 "problem": {
                     "eyebrow": "The Problem",
                     "title": "Engineering data is growing faster than the tools to analyze it",
-                    "desc": "Gigabytes of sensor data, hours of manual preparation, and legacy tools that choke on large files. MachinePulseAI turns raw measurement data into insight in minutes — not days."
+                    "desc": "Multi-channel high-rate recordings, tedious manual format conversions, and memory limits that bottleneck post-processing. MachinePulseAI delivers interactive, zero-copy analysis directly from raw test data."
                 }
             },
             "appShowcase": {
                 "eyebrow": "The Real Application",
-                "title": "This Is MachinePulseAI",
-                "subtitle": "A visual node-graph workspace: drag widgets onto the canvas, wire them together, and let the built-in AI assistant run the analysis. This is the actual application, not a mockup.",
+                "title": "Visual Engineering Workspace",
+                "subtitle": "A visual node-graph workspace: connect data sources, signal filters, and engineering diagnostics into traceable dataflow pipelines with synchronized multi-channel visualization.",
                 "windowTitle": "Workspace",
                 "alt": "MachinePulseAI main window showing a node-graph analysis pipeline with an AI assistant panel",
-                "caption": "Early prototype of the main workspace — node-graph pipeline, widget palette, output log and AI assistant."
+                "caption": "MachinePulseAI desktop environment: visual pipeline canvas, widget palette, synchronous plot viewports, and local AI assistant."
             },
             "widgets": {
                 "eyebrow": "Technical Library",
@@ -123,7 +123,7 @@ const resources = {
                 "error": "An error occurred while sending your request. Please try again later."
             },
             "footer": {
-                "tagline": "Pioneering the next era of industrial analytics."
+                "tagline": "High-performance test data post-processing and diagnostics platform."
             },
             "features": {
                 "eyebrow": "Platform Features",
@@ -134,7 +134,7 @@ const resources = {
                 "eyebrow": "How It Works",
                 "titleBefore": "From raw data to insight",
                 "titleHighlight": "in minutes",
-                "subtitle": "What used to take hours of manual data preparation now takes a few clicks. The AI handles the heavy lifting so engineers can focus on decisions, not spreadsheets."
+                "subtitle": "Streamline the path from high-rate raw recordings to validated engineering reports. Automated ingestion and out-of-core pipelines eliminate memory bottlenecks so teams focus on engineering decisions."
             },
             "targets": {
                 "eyebrow": "Target Markets",
@@ -145,14 +145,14 @@ const resources = {
                 "eyebrow": "Smart Engineering Assistant",
                 "titleBefore": "A platform with a",
                 "titleHighlight": "built-in AI Agent",
-                "subtitle": "A fully integrated ML + LLM + RAG system that understands your measurement data — and your organization's engineering history."
+                "subtitle": "An integrated offline assistant and machine learning suite: accelerate pipeline setup, detect machinery anomalies, and query past test archives without cloud connectivity."
             },
             "cta": {
                 "label": "Early Access Now Open",
                 "titleBefore": "Start analyzing",
                 "titleHighlight": "smarter",
                 "titleAfter": "today",
-                "subtitle": "Built for engineers in defense, aerospace, and automotive organizations. Request a demo and see MachinePulseAI in action.",
+                "subtitle": "Engineered for test and evaluation teams across defense, aerospace, energy, and automotive industries. Request a technical demonstration.",
                 "primaryCta": "Request a Demo",
                 "secondaryCta": "Talk to the Team",
                 "trustLine": "Windows 10/11 · Minimum 8 GB RAM · No internet required"
@@ -271,25 +271,25 @@ const resources = {
                 "featuresViewAll": "Ürünün tamamını keşfedin",
                 "industriesViewAll": "Tüm sektörleri görün",
                 "whyTitle": "Neden MachinePulseAI",
-                "whySubtitle": "Eski son-işleme araçlarının veremediği üç şey.",
+                "whySubtitle": "Modern test ve ölçüm verilerinin ölçeği için tasarlanmış temel kabiliyetler.",
                 "why": {
-                    "ai": { "title": "Yerleşik AI Asistanı", "desc": "Sorularınızı sade bir dille sorun, veriye dayalı yanıtlar alın — SQL yok, kod yok." },
-                    "scale": { "title": "Devasa veri, mütevazı donanım", "desc": "Bellek-dışı motor, 200 GB+ veri setlerini 8 GB dizüstünde RAM hatası olmadan analiz eder." },
-                    "secure": { "title": "Tamamen çevrimdışı ve güvenli", "desc": "Bulut bağımlılığı olmadan hava-boşluklu çalışır — gizli ve hassas ortamlar için tasarlandı." }
+                    "ai": { "title": "Yerleşik AI Asistanı", "desc": "Veri setlerini doğal dille sorgulayın, analiz hatlarını yapılandırın ve kurumsal hafızaya erişin; deterministik C++ çekirdeği matematiksel kesinliği korur." },
+                    "scale": { "title": "Devasa veri, mütevazı donanım", "desc": "Bellek-dışı (out-of-core) motor, 200 GB+ veri setlerini standart iş istasyonlarında 1 GB altı RAM kullanımıyla kesintisiz işler." },
+                    "secure": { "title": "Tamamen çevrimdışı ve güvenli", "desc": "Bulut bağımlılığı olmadan tamamen hava-boşluklu (air-gapped) çalışır — savunma, havacılık ve gizlilik dereceli test ortamları için tasarlanmıştır." }
                 },
                 "problem": {
                     "eyebrow": "Sorun",
                     "title": "Mühendislik verisi, onu analiz eden araçlardan daha hızlı büyüyor",
-                    "desc": "Gigabaytlarca sensör verisi, saatlerce manuel hazırlık ve büyük dosyalarda tıkanan eski araçlar. MachinePulseAI ham ölçüm verisini günler değil, dakikalar içinde içgörüye dönüştürür."
+                    "desc": "Yüksek örnekleme frekanslı çok kanallı kayıtlar, yorucu dosya dönüşümleri ve bellek yetersizliğinden kilitlenen analiz araçları. MachinePulseAI, ham ölçüm verisini doğrudan disk üzerinden sıfır-kopyalama mimarisiyle işler."
                 }
             },
             "appShowcase": {
                 "eyebrow": "Gerçek Uygulama",
-                "title": "İşte MachinePulseAI",
-                "subtitle": "Görsel bir düğüm-grafiği (node-graph) çalışma alanı: widget'ları tuvale sürükleyin, birbirine bağlayın ve yerleşik yapay zeka asistanının analizi çalıştırmasına izin verin. Bu, bir maket değil, uygulamanın kendisidir.",
+                "title": "Görsel Mühendislik Çalışma Alanı",
+                "subtitle": "Düğüm-grafiği (node-graph) tabanlı analiz ortamı: Veri girişlerini, filtreleri ve tanılama modüllerini görsel veri akış hatlarına bağlayın; senkronize çok kanallı grafiklerle sonuçları inceleyin.",
                 "windowTitle": "Çalışma Alanı",
                 "alt": "MachinePulseAI ana penceresi: düğüm-grafiği analiz hattı ve yapay zeka asistanı paneli",
-                "caption": "Ana çalışma alanının erken prototipi — düğüm-grafiği hattı, widget paleti, çıktı kaydı ve yapay zeka asistanı."
+                "caption": "MachinePulseAI masaüstü arayüzü: görsel analiz hattı tuvali, modül paleti, senkronize grafikler ve yerel analiz asistanı."
             },
             "widgets": {
                 "eyebrow": "Teknik Kütüphane",
@@ -355,7 +355,7 @@ const resources = {
                 "error": "Talebiniz gönderilirken bir hata oluştu. Lütfen daha sonra tekrar deneyin."
             },
             "footer": {
-                "tagline": "Endüstriyel analitiğin yeni çağına öncülük ediyoruz."
+                "tagline": "Büyük ölçekli mühendislik test ve sensör verileri için yüksek başarımlı analiz ve tanılama platformu."
             },
             "features": {
                 "eyebrow": "Platform Özellikleri",
@@ -366,7 +366,7 @@ const resources = {
                 "eyebrow": "Nasıl Çalışır",
                 "titleBefore": "Ham veriden içgörüye",
                 "titleHighlight": "dakikalar içinde",
-                "subtitle": "Eskiden saatler süren manuel veri hazırlığı artık birkaç tıklamayla yapılıyor. Yapay zeka ağır işi üstleniyor, böylece mühendisler tablolarla değil kararlarla ilgilenebiliyor."
+                "subtitle": "Ham ölçüm kayıtlarından doğrulanmış mühendislik raporlarına giden süreci kısaltın. Bellek-dışı işleme ve standartlaştırılmış hatlar sayesinde bellek darboğazları ortadan kalkar, ekipler doğrudan mühendislik kararlarına odaklanır."
             },
             "targets": {
                 "eyebrow": "Hedef Pazarlar",
@@ -377,14 +377,14 @@ const resources = {
                 "eyebrow": "Akıllı Mühendislik Asistanı",
                 "titleBefore": "Platformda",
                 "titleHighlight": "yerleşik bir AI Agent",
-                "subtitle": "Ölçüm verinizi — ve kurumunuzun mühendislik geçmişini — anlayan, tam entegre bir ML + LLM + RAG sistemi."
+                "subtitle": "Tamamen çevrimdışı çalışan yapay zeka asistanı ve makine öğrenmesi paketi: analiz hattı kurulumunu hızlandırır, makine anomalilerini tespit eder ve geçmiş test arşivlerini yerel olarak sorgular."
             },
             "cta": {
                 "label": "Erken Erişim Şimdi Açık",
                 "titleBefore": "Bugün",
                 "titleHighlight": "daha akıllı",
                 "titleAfter": "analiz etmeye başlayın",
-                "subtitle": "Savunma, havacılık ve otomotiv kuruluşlarındaki mühendisler için tasarlandı. Demo isteyin ve MachinePulseAI'ı iş başında görün.",
+                "subtitle": "Savunma, havacılık, enerji ve otomotiv sektörlerindeki test ve değerlendirme ekipleri için tasarlandı. Teknik ürün demosu talep edin.",
                 "primaryCta": "Demo İste",
                 "secondaryCta": "Ekiple Görüşün",
                 "trustLine": "Windows 10/11 · En az 8 GB RAM · İnternet gerektirmez"

@@ -62,9 +62,9 @@ const WIDGET_DETAILS = {
     file_reader: {
         slug: 'file-reader',
         en: {
-            tagline: 'The front door of almost every analysis — it opens your measurement files, even huge ones, without filling up memory.',
+            tagline: 'High-throughput out-of-core measurement file ingestion for standard and industrial DAQ formats.',
             intro:
-                'Before you can analyse anything you have to load it. The File Reader opens common formats (CSV, Excel, Parquet) as well as industrial ones (TDMS from National Instruments, MDF/MF4 from automotive ECUs, and the native MPAI container). The trick is that it does not copy the whole file into RAM: it memory-maps it, so a 200 GB recording opens in seconds and stays well under 1 GB of memory. Before you commit, a live preview shows exactly how the file will be read so you can fix any mistakes up front.',
+                'Before you can analyse anything you have to load it. The File Reader opens common formats (CSV, Excel, Parquet) as well as industrial ones (TDMS from National Instruments, MDF/MF4 from automotive ECUs, and the native MPAI container). Utilizing memory-mapped I/O (mmap) and zero-copy Arrow memory structures, 200 GB+ recordings open in seconds with memory footprint kept strictly under 1 GB. Before committing, an interactive data preview verifies column headers, delimiters, and sample rate timestamps.',
             inputs: [
                 { name: 'A measurement file', desc: 'CSV, Excel, Parquet, TDMS, MDF/MF4 or MPAI — from a spreadsheet to a multi-gigabyte test recording.' },
                 { name: 'Parsing settings', desc: 'Which row is the header, the column/decimal separators, and which column holds time — all adjustable before loading.' },
@@ -81,9 +81,9 @@ const WIDGET_DETAILS = {
             ],
         },
         tr: {
-            tagline: 'Neredeyse her analizin giriş kapısı — ölçüm dosyalarınızı, çok büyük olsalar bile, belleği doldurmadan açar.',
+            tagline: 'Standart ve endüstriyel DAQ formatları için bellek-dışı (out-of-core) yüksek başarımlı veri okuyucu.',
             intro:
-                'Bir şeyi analiz etmeden önce onu yüklemeniz gerekir. Dosya Okuyucu; yaygın formatları (CSV, Excel, Parquet) ve endüstriyel olanları (National Instruments TDMS, otomotiv ECU\'larının MDF/MF4\'ü ve yerel MPAI konteyneri) açar. İşin püf noktası, dosyanın tamamını RAM\'e kopyalamamasıdır: bellek-eşlemli (memory-map) okur; böylece 200 GB\'lık bir kayıt saniyeler içinde açılır ve bellek kullanımı 1 GB\'ın çok altında kalır. Onaylamadan önce canlı bir önizleme, dosyanın tam olarak nasıl okunacağını gösterir; böylece hataları baştan düzeltebilirsiniz.',
+                'Bir şeyi analiz etmeden önce onu yüklemeniz gerekir. Dosya Okuyucu; yaygın formatları (CSV, Excel, Parquet) ve endüstriyel olanları (National Instruments TDMS, otomotiv ECU\'larının MDF/MF4\'ü ve yerel MPAI konteyneri) açar. Bellek-eşlemli G/Ç (mmap) ve sıfır-kopyalama (zero-copy) mimarisi sayesinde 200 GB+ boyutundaki kayıtlar RAM darboğazı oluşturmadan saniyeler içinde açılır ve bellek kullanımı 1 GB altında kalır. İşlem hattına aktarmadan önce etkileşimli önizleme; sütun başlıklarını, ayraçları ve zaman damgalarını doğrulamayı sağlar.',
             inputs: [
                 { name: 'Bir ölçüm dosyası', desc: 'CSV, Excel, Parquet, TDMS, MDF/MF4 veya MPAI — bir elektronik tablodan çok-gigabaytlık bir test kaydına kadar.' },
                 { name: 'Ayrıştırma ayarları', desc: 'Hangi satır başlık, sütun/ondalık ayırıcılar ve hangi sütun zamanı tutuyor — hepsi yüklemeden önce ayarlanabilir.' },

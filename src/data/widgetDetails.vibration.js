@@ -50,6 +50,18 @@ const VIBRATION_WIDGET_DETAILS = {
                     expr: 'c(τ) = IFFT{ log |X(f)|² }',
                     where: 'The cepstrum collapses whole harmonic/sideband families into single peaks at their spacing (quefrency), making shaft-speed modulation easy to spot and to compare between measurements.',
                 },
+                {
+                    title: 'Ball spin and cage fault frequencies (BSF & FTF)',
+                    latex: '\\mathrm{BSF} = \\dfrac{D}{2d} f_r \\left[1 - \\left(\\dfrac{d}{D}\\cos\\phi\\right)^{2}\\right] \\qquad \\mathrm{FTF} = \\dfrac{1}{2} f_r \\left(1 - \\dfrac{d}{D}\\cos\\phi\\right)',
+                    expr: 'BSF = (D / (2d)) · f_r · [1 − ((d/D)·cos φ)²] ; FTF = (1/2) · f_r · [1 − (d/D)·cos φ]',
+                    where: 'd = rolling element diameter, D = pitch diameter, φ = contact angle, f_r = shaft speed. BSF indicates rolling element defects; FTF indicates cage defects or cage rotational frequency.',
+                },
+                {
+                    title: 'Gear condition indicator FM4',
+                    latex: '\\mathrm{FM4} = \\dfrac{N_s \\sum_{i=1}^{N_s} (r_i - \\bar{r})^{4}}{\\left[ \\sum_{i=1}^{N_s} (r_i - \\bar{r})^{2} \\right]^{2}}',
+                    expr: 'FM4 = [N_s · sum (r_i - r_mean)⁴] / [sum (r_i - r_mean)²]²',
+                    where: 'Normalized kurtosis of the difference/residual signal r_i (TSA signal after removing regular gear mesh harmonics and shaft orders). FM4 > 3 flags localized tooth faults (spall, root crack) against background wear.',
+                },
             ],
             steps: [
                 { step: 'Compute fault frequencies', detail: 'Bearing geometry and shaft speed give the expected BPFO/BPFI/BSF/FTF and GMF targets.' },
@@ -104,6 +116,18 @@ const VIBRATION_WIDGET_DETAILS = {
                     latex: 'c(\\tau) = \\mathcal{F}^{-1}\\bigl\\{ \\log |X(f)|^{2} \\bigr\\}',
                     expr: 'c(τ) = IFFT{ log |X(f)|² }',
                     where: 'Kepstrum, bütün harmonik/yan bant ailelerini aralıklarına (quefrency) karşılık gelen tek tepelere indirger; mil hızı modülasyonunu görmeyi ve ölçümler arası karşılaştırmayı kolaylaştırır.',
+                },
+                {
+                    title: 'Bilye dönüşü ve kafes arıza frekansları (BSF & FTF)',
+                    latex: '\\mathrm{BSF} = \\dfrac{D}{2d} f_r \\left[1 - \\left(\\dfrac{d}{D}\\cos\\phi\\right)^{2}\\right] \\qquad \\mathrm{FTF} = \\dfrac{1}{2} f_r \\left(1 - \\dfrac{d}{D}\\cos\\phi\\right)',
+                    expr: 'BSF = (D / (2d)) · f_r · [1 − ((d/D)·cos φ)²] ; FTF = (1/2) · f_r · [1 − (d/D)·cos φ]',
+                    where: 'd = bilye/makara çapı, D = taksimat çapı, φ = temas açısı, f_r = mil frekansı. BSF bilye/makara kusurlarını (her iki bileziğe temas eder); FTF ise kafes arızasını veya modülasyonunu gösterir.',
+                },
+                {
+                    title: 'Dişli durum göstergesi FM4',
+                    latex: '\\mathrm{FM4} = \\dfrac{N_s \\sum_{i=1}^{N_s} (r_i - \\bar{r})^{4}}{\\left[ \\sum_{i=1}^{N_s} (r_i - \\bar{r})^{2} \\right]^{2}}',
+                    expr: 'FM4 = [N_s · sum (r_i - r_mean)⁴] / [sum (r_i - r_mean)²]²',
+                    where: 'Fark/artık sinyali r_i\'nin (düzenli dişli kavrama harmonikleri ve mil orderları çıkarılmış TSA sinyali) normalize edilmiş basıklığıdır. FM4 > 3 olması, tekdüze aşınma yerine yerel diş arızasını (çatlak, parça kopması) gösterir.',
                 },
             ],
             steps: [
@@ -330,6 +354,12 @@ const VIBRATION_WIDGET_DETAILS = {
                     expr: 'x(t) ≈ a(t) · exp( j·∫ω_O(t) dt )',
                     where: 'The filter tracks a single order as a slowly varying complex envelope a(t) locked to the tacho-derived instantaneous frequency ω_O(t), extracting it cleanly even when orders are close or crossing.',
                 },
+                {
+                    title: 'Angular Nyquist order limit',
+                    latex: 'O_{\\max} = \\dfrac{N_{\\mathrm{pulses}}}{2} = \\dfrac{f_s / 2}{N_{\\max} / 60}',
+                    expr: 'O_max = N_pulses / 2 = (f_s / 2) / (N_max / 60)',
+                    where: 'The maximum resolvable order is limited by encoder pulse density (or sample rate divided by maximum operating speed). Prevents angular aliasing when tracking high tooth mesh or blade pass orders.',
+                },
             ],
             steps: [
                 { step: 'Decode the tacho', detail: 'Pulse edges give the instantaneous speed and shaft angle profile over the whole recording.' },
@@ -376,6 +406,12 @@ const VIBRATION_WIDGET_DETAILS = {
                     latex: 'x(t) \\approx a(t)\\, e^{\\,j \\int \\omega_O(t)\\, \\mathrm{d}t}',
                     expr: 'x(t) ≈ a(t) · exp( j·∫ω_O(t) dt )',
                     where: 'Filtre, tek bir order’ı takodan türetilen anlık frekans ω_O(t)\'ye kilitli, yavaş değişen karmaşık zarf a(t) olarak izler; order’lar yakın veya kesişiyor olsa bile temiz çıkarır.',
+                },
+                {
+                    title: 'Açısal Nyquist order sınırı',
+                    latex: 'O_{\\max} = \\dfrac{N_{\\mathrm{pulses}}}{2} = \\dfrac{f_s / 2}{N_{\\max} / 60}',
+                    expr: 'O_max = N_pulses / 2 = (f_s / 2) / (N_max / 60)',
+                    where: 'Çözümlenebilir maksimum order, devir başına enkoder darbe sayısının yarısıyla (veya örnekleme hızı bölü maksimum devirle) sınırlıdır. Yüksek dişli kavrama veya türbin kanat geçiş orderlarında açısal örtüşmeyi (aliasing) engeller.',
                 },
             ],
             steps: [
@@ -604,6 +640,12 @@ const VIBRATION_WIDGET_DETAILS = {
                     expr: 'ΔV = ∫ a(t) dt',
                     where: 'The integral of acceleration over the pulse. Delta-V often correlates with damage better than peak g alone, and low-frequency SRS asymptotes are controlled by it.',
                 },
+                {
+                    title: 'Pseudo-velocity and structural damage threshold',
+                    latex: '\\mathrm{PV}(f_n) = \\dfrac{\\mathrm{SRS}(f_n)}{2\\pi f_n} \\qquad v_{\\mathrm{dam}} \\approx 100~\\mathrm{in/s} \\; (2.54~\\mathrm{m/s})',
+                    expr: 'PV(f_n) = SRS(f_n) / (2π·f_n) ; v_dam ≈ 100 in/s (2.54 m/s)',
+                    where: 'Pseudo-velocity scales SRS acceleration to kinetic severity. Gaberson & Chalmers criteria: dynamic stress in complex equipment correlates with pseudo-velocity across frequency; values exceeding ~100 in/s indicate severe risk of permanent deformation.',
+                },
             ],
             steps: [
                 { step: 'Isolate & condition the pulse', detail: 'Windowing, detrending and pre-shock offset removal so integration does not drift.' },
@@ -650,6 +692,12 @@ const VIBRATION_WIDGET_DETAILS = {
                     latex: '\\Delta V = \\int a(t)\\, \\mathrm{d}t',
                     expr: 'ΔV = ∫ a(t) dt',
                     where: 'Darbe boyunca ivmenin integrali. Delta-V, hasarla çoğu zaman tek başına tepe g\'den daha iyi ilişkilidir ve düşük frekanslı SRS asimptotlarını o kontrol eder.',
+                },
+                {
+                    title: 'Pseudo-hız ve yapısal hasar eşiği',
+                    latex: '\\mathrm{PV}(f_n) = \\dfrac{\\mathrm{SRS}(f_n)}{2\\pi f_n} \\qquad v_{\\mathrm{dam}} \\approx 100~\\mathrm{in/s} \\; (2.54~\\mathrm{m/s})',
+                    expr: 'PV(f_n) = SRS(f_n) / (2π·f_n) ; v_dam ≈ 100 in/s (2.54 m/s)',
+                    where: 'Pseudo-hız, ivme SRS\'ini kinetik hasar ölçeğine dönüştürür. Gaberson & Chalmers kriteri: Karmaşık yapılardaki dinamik gerilme tepe ivmeden (g) ziyade pseudo-hızla orantılıdır; ~2,54 m/s (100 in/s) üzerindeki değerler yüksek kalıcı hasar riski taşır.',
                 },
             ],
             steps: [
