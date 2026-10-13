@@ -40,7 +40,7 @@ export default function WidgetLearningPage({ guide }) {
         <div className="relative mx-auto max-w-6xl px-6">
             <section id="workspace" className="scroll-mt-32 py-16">
                 <LearningHeading number="01" title={labels.workspace} />
-                <LearningWorkbench key={`${guide.id}:${lang}`} name={name} controls={page.controls} inputs={page.inputs} outputs={page.outputs} lang={lang} />
+                <LearningWorkbench key={`${guide.id}:${lang}`} widgetId={guide.id} name={name} controls={page.controls} inputs={page.inputs} outputs={page.outputs} lang={lang} />
                 <div className="mt-10"><h3 className="mb-5 text-xl font-bold text-white">{labels.source}</h3><LearningCards items={page.inputs} /></div>
             </section>
             <section id="theory" className="scroll-mt-32 border-t border-white/10 py-16">

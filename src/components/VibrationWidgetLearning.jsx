@@ -7,6 +7,7 @@ import LearningWorkbench from './learning/LearningWorkbench.jsx'
 import LearningExercise from './learning/LearningExercise.jsx'
 import LearningConceptLab from './learning/LearningConceptLab.jsx'
 import { CONCEPT_LABS } from '../data/learning/conceptLabs.js'
+import { getWidgetScreenshot } from '../data/learning/screenshots.js'
 
 const NAV_KEYS = ['interface', 'theory', 'foundations', 'modes', 'workflow']
 
@@ -120,8 +121,8 @@ export default function VibrationWidgetLearning({ widgetId }) {
 
             <main className="relative mx-auto max-w-6xl px-6">
                 <section id="interface" className="scroll-mt-32 py-16">
-                    <SectionHeader eyebrow={t('vibrationLearn.sectionEyebrow.interface')} title={page.interface.title} intro={t('widgetLearn.common.workspaceIntro')} />
-                    <LearningWorkbench key={`${widgetId}:${lang}`} name={page.title} controls={tour.controls} inputs={detail.inputs} outputs={detail.outputs} lang={lang} />
+                    <SectionHeader eyebrow={t('vibrationLearn.sectionEyebrow.interface')} title={page.interface.title} intro={t(getWidgetScreenshot(widgetId) ? 'widgetLearn.common.screenshotIntro' : 'widgetLearn.common.workspaceIntro')} />
+                    <LearningWorkbench key={`${widgetId}:${lang}`} widgetId={widgetId} name={page.title} controls={tour.controls} inputs={detail.inputs} outputs={detail.outputs} lang={lang} />
                     <div className="mt-12">
                         <SectionHeader eyebrow={t('vibrationLearn.sectionEyebrow.interface')} title={t('vibrationLearn.interface.inputsTitle')} intro={t('vibrationLearn.interface.inputsIntro')} />
                         <DetailCards items={detail.inputs} />
