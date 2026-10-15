@@ -1,8 +1,8 @@
 const ROTOR_INTERFACE_GUIDE = {
     en: {
-        title: 'Tour the current Rotor Dynamics workbench',
+        title: 'Rotor Dynamics workspace',
         intro:
-            'The real window separates measurement setup, speed response and directional-spectrum settings. Choose a captured state, then select a numbered region. Each explanation connects the visible control to the engineering decision it changes.',
+            'The Rotor Dynamics window is organised into three areas: measurement setup, speed response and directional spectrum. Select an application state and then a numbered region on the screenshot; each explanation describes what the control does and which analysis result it affects.',
         imageCaption:
             'Captured from the current MachinePulseAI Rotor Dynamics panel in Space theme. Deterministic training curves keep the controls and result surfaces readable.',
         viewHint: 'Choose an application state',
@@ -169,9 +169,9 @@ const ROTOR_INTERFACE_GUIDE = {
         ],
     },
     tr: {
-        title: 'Güncel Rotor Dynamics Çalışma Ekranını Tanıyın',
+        title: 'Rotor Dynamics çalışma ekranı',
         intro:
-            'Gerçek pencere; ölçüm kurulumu, hız yanıtı ve yönlü spektrum ayarlarını ayırır. Bir ekran durumunu ve ardından numaralı bölgeyi seçin. Her açıklama, görünen kontrolü değiştirdiği mühendislik kararıyla ilişkilendirir.',
+            'Rotor Dynamics penceresi üç bölümden oluşur: ölçüm kurulumu, hız yanıtı ve yönlü spektrum. Bir uygulama durumu, ardından ekran görüntüsündeki numaralı bölgelerden birini seçin; her açıklama ilgili kontrolün ne yaptığını ve hangi analiz sonucunu etkilediğini anlatır.',
         imageCaption:
             'MachinePulseAI Rotor Dynamics panelinin Space temasındaki güncel sürümünden alınmıştır. Kontrollerin ve sonuç yüzeylerinin okunması için deterministik eğitim eğrileri kullanılmıştır.',
         viewHint: 'Bir uygulama durumu seçin',
