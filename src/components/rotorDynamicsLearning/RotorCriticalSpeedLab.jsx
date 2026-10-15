@@ -45,7 +45,9 @@ function Slider({ label, value, display, min, max, step, onChange }) {
 }
 
 export default function RotorCriticalSpeedLab() {
-    const { t } = useTranslation()
+    const { t, i18n } = useTranslation()
+    // Explicit locale keeps prerendered and hydrated number formatting identical.
+    const formatRpm = (value) => Math.round(value).toLocaleString(i18n.language)
     const [mass, setMass] = useState(18)
     const [stiffness, setStiffness] = useState(520)
     const [damping, setDamping] = useState(0.08)
@@ -66,7 +68,7 @@ export default function RotorCriticalSpeedLab() {
                     <dl className="mt-8 grid grid-cols-2 gap-3">
                         <div className="rounded-xl border border-[#00f5ff]/20 bg-[#00f5ff]/[0.05] p-4">
                             <dt className="text-[11px] uppercase tracking-wider text-slate-500">{t('rotorLearn.speedLab.critical')}</dt>
-                            <dd className="mt-2 font-mono text-lg text-[#00f5ff]">{Math.round(chart.criticalRpm).toLocaleString()} rpm</dd>
+                            <dd className="mt-2 font-mono text-lg text-[#00f5ff]">{formatRpm(chart.criticalRpm)} rpm</dd>
                         </div>
                         <div className="rounded-xl border border-[#a855f7]/20 bg-[#a855f7]/[0.04] p-4">
                             <dt className="text-[11px] uppercase tracking-wider text-slate-500">{t('rotorLearn.speedLab.peak')}</dt>
@@ -95,7 +97,7 @@ export default function RotorCriticalSpeedLab() {
                         <text x="375" y="270" fill="#64748b" fontSize="11" textAnchor="middle">{t('rotorLearn.speedLab.speedAxis')}</text>
                         <text x="19" y="140" fill="#64748b" fontSize="11" textAnchor="middle" transform="rotate(-90 19 140)">{t('rotorLearn.speedLab.responseAxis')}</text>
                         <text x="70" y="251" fill="#64748b" fontSize="10">0</text>
-                        <text x="680" y="251" fill="#64748b" fontSize="10" textAnchor="end">{Math.round(chart.xMax).toLocaleString()}</text>
+                        <text x="680" y="251" fill="#64748b" fontSize="10" textAnchor="end">{formatRpm(chart.xMax)}</text>
                     </svg>
                 </div>
             </div>
