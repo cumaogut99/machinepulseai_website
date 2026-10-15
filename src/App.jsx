@@ -1,6 +1,5 @@
-import { useEffect, lazy, Suspense } from 'react'
-import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom'
-import { HelmetProvider } from 'react-helmet-async'
+import { useEffect, Suspense } from 'react'
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { ContactModalProvider, useContactModal } from './context/ContactModalContext.jsx'
 import Seo from './seo/Seo.jsx'
@@ -16,13 +15,64 @@ import WhySection from './components/WhySection.jsx'
 import AppShowcase from './components/AppShowcase.jsx'
 import CTABanner from './components/CTABanner.jsx'
 
-const ProductPage = lazy(() => import('./components/ProductPage.jsx'))
-const Pricing = lazy(() => import('./components/Pricing.jsx'))
-const WidgetCatalog = lazy(() => import('./components/WidgetCatalog.jsx'))
-const CombustionAnalysisDetail = lazy(() => import('./components/CombustionAnalysisDetail.jsx'))
-const FFTSpectrumLearning = lazy(() => import('./components/FFTSpectrumLearning.jsx'))
-const RotorDynamicsLearning = lazy(() => import('./components/RotorDynamicsLearning.jsx'))
-const WidgetDetail = lazy(() => import('./components/WidgetDetail.jsx'))
+// Code-split page. Unlike React.lazy(), which always suspends on its first
+// render (blanking prerendered HTML during hydration), the page renders
+// synchronously once preload() has resolved its chunk; until then it suspends
+// on the pending import so the nearest <Suspense> shows its fallback.
+function lazyPage(loader) {
+    let Loaded = null
+    let error = null
+    let pending = null
+    const preload = () => {
+        pending ??= loader().then((module) => {
+            Loaded = module.default
+            return module
+        }, (err) => {
+            error = err
+        })
+        return pending
+    }
+    const Page = (props) => {
+        if (error) throw error
+        if (!Loaded) throw preload()
+        return <Loaded {...props} />
+    }
+    Page.preload = preload
+    return Page
+}
+
+const ProductPage = lazyPage(() => import('./components/ProductPage.jsx'))
+const Pricing = lazyPage(() => import('./components/Pricing.jsx'))
+const WidgetCatalog = lazyPage(() => import('./components/WidgetCatalog.jsx'))
+const CombustionAnalysisDetail = lazyPage(() => import('./components/CombustionAnalysisDetail.jsx'))
+const FFTSpectrumLearning = lazyPage(() => import('./components/FFTSpectrumLearning.jsx'))
+const RotorDynamicsLearning = lazyPage(() => import('./components/RotorDynamicsLearning.jsx'))
+const WidgetDetail = lazyPage(() => import('./components/WidgetDetail.jsx'))
+
+// Route → page component, used to preload the current page before the first
+// render (client hydration and build-time prerendering).
+const PAGE_ROUTES = [
+    ['/product', ProductPage],
+    ['/widgets', WidgetCatalog],
+    ['/widgets/combustion-analysis', CombustionAnalysisDetail],
+    ['/widgets/fft-spectrum', FFTSpectrumLearning],
+    ['/widgets/rotor-dynamics', RotorDynamicsLearning],
+    ['/pricing', Pricing],
+]
+
+/** Resolve the lazy page chunk for a pathname (null for the home page). */
+export function preloadRoute(pathname) {
+    const path = pathname.replace(/\/+$/, '') || '/'
+    const match = PAGE_ROUTES.find(([route]) => route === path)
+    if (match) return match[1].preload()
+    if (/^\/widgets\/[^/]+$/.test(path)) return WidgetDetail.preload()
+    return Promise.resolve(null)
+}
+
+/** Resolve every lazy page chunk (used by the prerenderer). */
+export function preloadAllRoutes() {
+    return Promise.all([...PAGE_ROUTES.map(([, page]) => page.preload()), WidgetDetail.preload()])
+}
 
 // Scroll to top on route change
 function ScrollToTop() {
@@ -104,17 +154,15 @@ function AppShell() {
     )
 }
 
+// Router and HelmetProvider are supplied by the entry point: BrowserRouter in
+// main.jsx, StaticRouter in entry-server.jsx (build-time prerender).
 function App() {
     return (
-        <HelmetProvider>
-            <ContactModalProvider>
-                <Router>
-                    <ScrollToTop />
-                    <Seo />
-                    <AppShell />
-                </Router>
-            </ContactModalProvider>
-        </HelmetProvider>
+        <ContactModalProvider>
+            <ScrollToTop />
+            <Seo />
+            <AppShell />
+        </ContactModalProvider>
     )
 }
 

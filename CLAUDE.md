@@ -63,7 +63,14 @@ machinepulseai_website/
 ## Routing (SPA)
 
 - `react-router-dom` v7 `BrowserRouter`. 8 routes: `/`, `/features`, `/architecture`, `/how-it-works`, `/solutions`, `/knowledge-base`, `/widgets`, `/pricing`.
-- All client-side routing depends on `vercel.json` rewriting extensionless paths to `index.html`. **Do not remove `vercel.json`** or direct navigation / refresh on sub-routes returns Vercel's 404.
+- All client-side routing depends on `vercel.json` rewriting extensionless paths to the SPA shell (`app-shell.html`). **Do not remove `vercel.json`** or direct navigation / refresh on sub-routes returns Vercel's 404.
+
+## Prerendering (SSG)
+
+- `npm run build` = client build → SSR build of `src/entry-server.jsx` → `scripts/prerender.mjs`, which writes `dist/<route>/index.html` with full page content and per-route `<head>` tags (from `src/seo/Seo.jsx`) so crawlers / LLM fetchers without JavaScript see the real page. `src/main.jsx` hydrates it.
+- The route list is **`public/sitemap.xml`** — add every new public page there (`tests/prerender.test.mjs` checks widget pages). Unlisted routes fall back to the empty SPA shell.
+- Pages are prerendered in Turkish (`PRERENDER_LANG`); visitors whose detected language differs get a fresh client render instead of hydration.
+- Rendered output must be deterministic between Node and the browser: no `Math.random()` / `Date` / locale-default `toLocaleString()` during render (use `i18n.language`), no `window`/`document` outside effects. New code-split pages go through `lazyPage()` in `App.jsx`.
 
 ## Internationalization
 
