@@ -1,10 +1,10 @@
 const ROTOR_DIAGNOSTIC_PATTERNS = {
     en: {
-        eyebrow: 'Engineering deep dive · Hypothesis testing',
-        title: 'Patterns suggest a test; they do not pronounce a verdict',
+        eyebrow: 'Diagnosis · Hypothesis testing',
+        title: 'Diagnostic patterns and verification',
         intro:
-            'Use these families to organize evidence. Each row starts with a measured pattern, then states what would strengthen the hypothesis and what should make you challenge it. Machine design, bearing type and operating history always outrank a generic pattern chart.',
-        prompt: 'Select an evidence family',
+            'The pattern groups below provide a framework for organizing evidence. A pattern indicates which test to run next; it is not a diagnosis on its own. Each row starts with a measured pattern, then states what would strengthen the hypothesis and what should make you challenge it. Machine design, bearing type and operating history always outrank a generic pattern chart.',
+        prompt: 'Select a pattern group',
         labels: {
             signature: 'Observed pattern',
             corroborate: 'Evidence that strengthens it',
@@ -64,11 +64,11 @@ const ROTOR_DIAGNOSTIC_PATTERNS = {
             'Severity and diagnosis are different questions. A standard or site limit can classify a defined vibration quantity; it does not identify the fault mechanism that produced it.',
     },
     tr: {
-        eyebrow: 'Mühendislik derinliği · Hipotez sınama',
-        title: 'Örüntüler bir test önerir; hüküm vermez',
+        eyebrow: 'Teşhis · Hipotez testi',
+        title: 'Tanısal örüntüler ve doğrulama',
         intro:
-            'Bu aileleri kanıtı düzenlemek için kullanın. Her satır önce ölçülen örüntüyü, sonra hipotezi güçlendirecek ve sorgulatacak kanıtı verir. Makine tasarımı, yatak tipi ve işletme geçmişi her zaman genel bir örüntü tablosundan daha önceliklidir.',
-        prompt: 'Bir kanıt ailesi seçin',
+            'Aşağıdaki örüntü grupları kanıtları düzenlemek için bir çerçeve sunar. Bir örüntü, hangi testin yapılması gerektiğini gösterir; tek başına teşhis değildir. Her satır önce ölçülen örüntüyü, sonra hipotezi güçlendirecek ve sorgulatacak kanıtı verir. Makine tasarımı, yatak tipi ve işletme geçmişi her zaman genel bir örüntü tablosundan daha önceliklidir.',
+        prompt: 'Bir örüntü grubu seçin',
         labels: {
             signature: 'Gözlenen örüntü',
             corroborate: 'Hipotezi güçlendiren kanıt',
@@ -89,12 +89,12 @@ const ROTOR_DIAGNOSTIC_PATTERNS = {
                 name: 'Eksen kaçıklığı veya kaplin kuvveti hipotezi',
                 signature: 'Kaplin düzlemi, eksenel veya gövde kanıtının eşlik ettiği 1X ve/veya 2X yanıtı; kaplinin iki tarafındaki faz ilişkisi tek yerel genlikten daha değerli olabilir.',
                 corroborate: 'Bilinen hizalama değişimi, termal büyüme bağlamı, kaplin incelemesi ve makinenin iki tarafındaki senkron ölçümler.',
-                challenge: 'Yalnızca bir şaft-bağıl XY çifti. Benzer harmonikler gevşeklik, rub, geometri veya dalga biçimi bozulmasından da gelebilir.',
+                challenge: 'Yalnızca bir şaft-bağıl XY çifti. Benzer harmonikler gevşeklik, sürtünme, geometri veya dalga biçimi bozulmasından da gelebilir.',
             },
             {
                 id: 'rub',
-                tab: 'Rub / doğrusal olmayan',
-                name: 'Rub veya başka doğrusal olmayan temas hipotezi',
+                tab: 'Sürtünme / doğrusal olmayan',
+                name: 'Sürtünme (rub) veya başka doğrusal olmayan temas hipotezi',
                 signature: 'Orbit kesilmesi ya da ilmekleri, çoklu harmonikler, alt harmonikler, ani faz/genlik değişimi veya farklı run-up ve coast-down yolları.',
                 corroborate: 'Sıcaklık, boşluk veya akustik değişimi; belirli hız/yük sınırında tekrarlanan başlangıç; inceleme izleri veya destekleyici dalga biçimi.',
                 challenge: 'Histerezis ya da teması destekleyen bağlam olmadan temiz, tekrarlanabilir tek-order orbit.',

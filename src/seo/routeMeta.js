@@ -84,8 +84,8 @@ export const ROUTE_META = {
         tr: { title: `Rotor Balanslama — ${BRAND}`, description: 'Deneme ağırlığı, etki katsayısı ve ISO 21940 hedefleriyle tek/çift düzlem rotor balanslama.' },
     },
     '/widgets/rotor-dynamics': {
-        en: { title: `Rotor Dynamics Learning Guide — ${BRAND}`, description: 'Learn XY shaft orbit, keyphasor phase, Bode and Polar response, shaft centreline, full spectrum, whirl direction and critical-speed diagnostics.' },
-        tr: { title: `Rotor Dinamiği Öğrenme Rehberi — ${BRAND}`, description: 'XY şaft orbiti, keyphasor fazı, Bode ve Polar yanıtı, shaft centreline, full spectrum, whirl yönü ve kritik hız analizini öğrenin.' },
+        en: { title: `Rotor Dynamics Analysis Guide — ${BRAND}`, description: 'Measuring shaft motion with XY proximity probes: orbit, critical speed, Bode and Polar response, shaft centreline, full spectrum and forward/backward whirl.' },
+        tr: { title: `Rotor Dinamiği Analiz Rehberi — ${BRAND}`, description: 'XY yakınlık problarıyla şaft hareketinin ölçümü: orbit, kritik hız, Bode ve Polar yanıtı, şaft merkez çizgisi, full spectrum ve ileri/geri whirl.' },
     },
     '/widgets/shock-srs': {
         en: { title: `Shock & SRS — ${BRAND}`, description: 'Shock response spectrum analysis for drop, impact and transient qualification events.' },

@@ -60,6 +60,7 @@ export default function RotorDynamicsLearning() {
     const { t } = useTranslation()
     const badges = t('rotorLearn.badges', { returnObjects: true })
     const outcomes = t('rotorLearn.outcomes', { returnObjects: true })
+    const why = t('rotorLearn.why.items', { returnObjects: true })
     const chain = t('rotorLearn.system.chain', { returnObjects: true })
     const contrast = t('rotorLearn.system.contrast', { returnObjects: true })
     const vocabulary = t('rotorLearn.system.vocabulary', { returnObjects: true })
@@ -93,7 +94,18 @@ export default function RotorDynamicsLearning() {
                         <span className="text-xs text-slate-500">{t('rotorLearn.duration')}</span>
                     </div>
                 </div>
-                <div className="mt-12 rounded-2xl border border-white/10 bg-black/25 p-5 sm:p-6">
+                <section className="mt-12" aria-labelledby="rotor-why">
+                    <h2 id="rotor-why" className="text-2xl font-bold tracking-tight text-white sm:text-3xl">{t('rotorLearn.why.title')}</h2>
+                    <div className="mt-6 grid gap-3 md:grid-cols-2">
+                        {why.map((item) => (
+                            <article key={item.title} className="rounded-2xl border border-white/10 bg-white/[0.025] p-5 sm:p-6">
+                                <h3 className="text-base font-semibold text-[#00f5ff]">{item.title}</h3>
+                                <p className="mt-3 text-sm leading-7 text-slate-400">{item.body}</p>
+                            </article>
+                        ))}
+                    </div>
+                </section>
+                <div className="mt-6 rounded-2xl border border-white/10 bg-black/25 p-5 sm:p-6">
                     <h2 className="text-sm font-semibold text-white">{t('rotorLearn.outcomesTitle')}</h2>
                     <div className="mt-4 grid gap-3 md:grid-cols-2">
                         {outcomes.map((outcome) => (
