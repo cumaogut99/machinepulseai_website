@@ -6,7 +6,10 @@
 export function lesson(record) {
     const localized = (language) => {
         const index = language === 'tr' ? 1 : 0
-        const rows = (items) => items.map((item) => ({ name: item[index], desc: item[index + 2] }))
+        const rows = (items) => items.map((item) => ({
+            name: item[index], desc: item[index + 2],
+            ...(item[4] && { options: item[4].map((option) => ({ name: option[index], desc: option[index + 2] })) }),
+        }))
         return {
             ...(record.title && { title: record.title[index] }),
             ...(record.why && { why: record.why.map((item) => ({ title: item[index], body: item[index + 2] })) }),
