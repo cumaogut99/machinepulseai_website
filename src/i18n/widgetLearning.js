@@ -38,7 +38,7 @@ export const LEARNING_LABELS = {
         nav: ['Çalışma alanı', 'Temel kavramlar', 'Çalışılmış örnek', 'İş akışı', 'İleri okuma'],
         workspace: 'Çalışma alanını anlayın', workspaceIntro: 'Amacını öğrenmek için bir kontrol seçin. Bu uygulama akışının kavramsal rehberidir; uygulama ekran görüntüsü veya canlı analiz değildir.',
         screenshotBadge: 'Gerçek uygulama penceresi',
-        screenshotIntro: 'Bu, widgetın MachinePulseAI uygulamasındaki gerçek penceresidir. Amacını öğrenmek için numaralı bir işarete veya bir kontrole tıklayın.',
+        screenshotIntro: 'Bu, widget’ın MachinePulseAI uygulamasındaki gerçek penceresidir. Amacını öğrenmek için numaralı bir işarete veya bir kontrole tıklayın.',
         screenshotCaption: 'MachinePulseAI masaüstü uygulamasından (Space teması) sentetik demo verisiyle alınmıştır. Görünen değerler açıklayıcıdır; makine ölçümü değildir.',
         screenshotAlt: 'MachinePulseAI masaüstü uygulamasında {{name}} penceresi',
         source: 'Neye ihtiyaç var?', controls: 'Bilmeniz gereken kontroller', result: 'Ne elde edilir?',

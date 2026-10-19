@@ -8,6 +8,7 @@ import LearningExercise from './learning/LearningExercise.jsx'
 import LearningConceptLab from './learning/LearningConceptLab.jsx'
 import { CONCEPT_LABS } from '../data/learning/conceptLabs.js'
 import { getWidgetScreenshot } from '../data/learning/screenshots.js'
+import WIDGET_CATALOG from '../data/widgetCatalog.js'
 
 const NAV_KEYS = ['interface', 'theory', 'foundations', 'modes', 'workflow']
 
@@ -77,6 +78,7 @@ export default function VibrationWidgetLearning({ widgetId }) {
     const tour = t(`widgetLearn.vibration.${widgetId}`, { returnObjects: true })
     const page = t(`vibrationLearn.widgets.${widgetId}`, { returnObjects: true })
     const detail = page.detail
+    const widget = WIDGET_CATALOG.flatMap((category) => category.widgets).find((item) => item.id === widgetId)
     const activeSection = useActiveSection(NAV_KEYS)
 
     return (
@@ -100,7 +102,20 @@ export default function VibrationWidgetLearning({ widgetId }) {
                         <span className="text-xs text-slate-500">{page.duration}</span>
                     </div>
                 </div>
-                <div className="mt-12 rounded-2xl border border-white/10 bg-black/25 p-5 sm:p-6">
+                {page.why?.length > 0 && (
+                    <section className="mt-12" aria-labelledby="why-title">
+                        <h2 id="why-title" className="text-2xl font-bold tracking-tight text-white sm:text-3xl">{t('vibrationLearn.whyTitle')}</h2>
+                        <div className="mt-6 grid gap-3 lg:grid-cols-3">
+                            {page.why.map((item) => (
+                                <article key={item.title} className="rounded-2xl border border-white/10 bg-white/[0.025] p-5 sm:p-6">
+                                    <h3 className="text-base font-semibold text-[#00f5ff]">{item.title}</h3>
+                                    <p className="mt-3 text-sm leading-7 text-slate-400">{item.body}</p>
+                                </article>
+                            ))}
+                        </div>
+                    </section>
+                )}
+                <div className={`${page.why?.length > 0 ? 'mt-6' : 'mt-12'} rounded-2xl border border-white/10 bg-black/25 p-5 sm:p-6`}>
                     <h2 className="text-sm font-semibold text-white">{t('vibrationLearn.outcomesTitle')}</h2>
                     <div className="mt-4 grid gap-3 md:grid-cols-2">
                         {page.outcomes.map((outcome) => <div key={outcome} className="flex gap-3 text-sm leading-6 text-slate-400"><span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-[#00f5ff]" /><span>{outcome}</span></div>)}
@@ -122,7 +137,7 @@ export default function VibrationWidgetLearning({ widgetId }) {
             <main className="relative mx-auto max-w-6xl px-6">
                 <section id="interface" className="scroll-mt-32 py-16">
                     <SectionHeader eyebrow={t('vibrationLearn.sectionEyebrow.interface')} title={page.interface.title} intro={t(getWidgetScreenshot(widgetId) ? 'widgetLearn.common.screenshotIntro' : 'widgetLearn.common.workspaceIntro')} />
-                    <LearningWorkbench key={`${widgetId}:${lang}`} widgetId={widgetId} name={page.title} controls={tour.controls} inputs={detail.inputs} outputs={detail.outputs} lang={lang} />
+                    <LearningWorkbench key={`${widgetId}:${lang}`} widgetId={widgetId} name={widget?.[lang]?.name || page.title} controls={tour.controls} inputs={detail.inputs} outputs={detail.outputs} lang={lang} />
                     <div className="mt-12">
                         <SectionHeader eyebrow={t('vibrationLearn.sectionEyebrow.interface')} title={t('vibrationLearn.interface.inputsTitle')} intro={t('vibrationLearn.interface.inputsIntro')} />
                         <DetailCards items={detail.inputs} />
