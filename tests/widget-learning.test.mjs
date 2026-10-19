@@ -55,8 +55,11 @@ test('both languages have complete matching schemas, valid exercises and parseab
             for (const row of page[field]) assert.ok(row.name && row.desc)
         }
         assert.ok(page.example.explanation && page.example.value)
-        assert.ok(page.exercise.correct >= 0 && page.exercise.correct < page.exercise.options.length)
-        assert.ok(page.exercise.explanation && page.exercise.question)
+        if (page.exercise) {
+            assert.ok(page.exercise.correct >= 0 && page.exercise.correct < page.exercise.options.length)
+            assert.ok(page.exercise.explanation && page.exercise.question)
+        }
+        for (const item of page.why || []) assert.ok(item.title && item.body.length > 60, `${guide.id}.${lang}.why`)
         for (const formula of page.formulas) assert.doesNotThrow(() => katex.renderToString(formula.latex, { throwOnError: true }))
         const seo = resolveRouteMeta(`/widgets/${guide.slug}`, lang)
         assert.ok(seo.description.length <= 160 && seo.description.length > 50)

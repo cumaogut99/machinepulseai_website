@@ -117,7 +117,7 @@ function WidgetCard({
 
             {/* Optional deep-dive link to a dedicated detail page */}
             {(guide || course) && <p className="text-[11px] leading-5 text-slate-400">
-                {t('widgetLearn.common.card')}
+                {t(guide?.exercise ? 'widgetLearn.common.card' : 'widgetLearn.common.cardNoCheck')}
             </p>}
             {detailPath && (
                 <Link
