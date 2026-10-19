@@ -161,7 +161,7 @@ export default function FFTInterfaceTour() {
                                     aria-label={`${index + 1}. ${item.title}`}
                                     aria-pressed={selected}
                                     onClick={() => setActivePointIndex(index)}
-                                    className={`absolute flex h-7 w-7 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border text-[11px] font-bold transition sm:h-9 sm:w-9 sm:text-sm ${
+                                    className={`absolute flex h-5 w-5 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border text-[10px] font-bold transition sm:h-7 sm:w-7 sm:text-xs ${
                                         selected
                                             ? 'border-[#00f5ff] bg-[#00f5ff] text-black shadow-glow-cyan'
                                             : 'border-white/80 bg-black/80 text-white hover:border-[#00f5ff] hover:text-[#00f5ff]'
