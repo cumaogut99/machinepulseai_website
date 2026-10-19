@@ -24,7 +24,7 @@ const VIBRATION_WIDGET_DETAILS = {
                     title: 'Characteristic bearing fault frequencies',
                     latex: '\\mathrm{BPFO} = \\dfrac{N_b}{2} f_r \\left(1 - \\dfrac{d}{D}\\cos\\phi\\right) \\qquad \\mathrm{BPFI} = \\dfrac{N_b}{2} f_r \\left(1 + \\dfrac{d}{D}\\cos\\phi\\right)',
                     expr: 'BPFO = (N_b/2)·f_r·(1 − (d/D)·cos φ) ;  BPFI = (N_b/2)·f_r·(1 + (d/D)·cos φ)',
-                    where: 'N_b = rolling-element count, f_r = shaft frequency, d = ball diameter, D = pitch diameter, φ = contact angle. BSF (ball spin) and FTF (cage) follow from the same geometry. A peak at one of these in the envelope spectrum names the faulty component.',
+                    where: 'N_b = rolling-element count, f_r = shaft frequency, d = ball diameter, D = pitch diameter, φ = contact angle. BSF (ball spin) and FTF (cage) follow from the same geometry. Peaks at one of these frequencies and its harmonics in the envelope spectrum indicate possible damage on the corresponding component.',
                 },
                 {
                     title: 'Envelope via the Hilbert transform',
@@ -60,7 +60,7 @@ const VIBRATION_WIDGET_DETAILS = {
             ],
             outputs: [
                 { name: 'Envelope spectrum', desc: 'With theoretical fault frequencies overlaid and matched peaks labelled.' },
-                { name: 'Kurtogram map', desc: 'The impulsiveness landscape and the automatically chosen band.' },
+                { name: 'Kurtogram map', desc: 'Impulsiveness map with the automatically selected band.' },
                 { name: 'Fault table', desc: 'Per-component (outer race, inner race, ball, cage, gear) detection status and severity.' },
                 { name: 'Cepstrum & TSA plots', desc: 'Sideband spacing and per-shaft averaged waveforms with condition indicators.' },
             ],
@@ -79,7 +79,7 @@ const VIBRATION_WIDGET_DETAILS = {
                     title: 'Karakteristik rulman arıza frekansları',
                     latex: '\\mathrm{BPFO} = \\dfrac{N_b}{2} f_r \\left(1 - \\dfrac{d}{D}\\cos\\phi\\right) \\qquad \\mathrm{BPFI} = \\dfrac{N_b}{2} f_r \\left(1 + \\dfrac{d}{D}\\cos\\phi\\right)',
                     expr: 'BPFO = (N_b/2)·f_r·(1 − (d/D)·cos φ) ;  BPFI = (N_b/2)·f_r·(1 + (d/D)·cos φ)',
-                    where: 'N_b = yuvarlanma elemanı sayısı, f_r = mil frekansı, d = bilye çapı, D = taksimat çapı, φ = temas açısı. BSF (bilye dönüşü) ve FTF (kafes) aynı geometriden çıkar. Zarf spektrumunda bunlardan birindeki tepe, arızalı bileşeni adlandırır.',
+                    where: 'N_b = yuvarlanma elemanı sayısı, f_r = mil frekansı, d = bilye çapı, D = taksimat çapı, φ = temas açısı. BSF (bilye dönüşü) ve FTF (kafes) aynı geometriden çıkar. Zarf spektrumunda bu frekanslardan birinde ve harmoniklerinde görülen tepeler, ilgili bileşende hasar olabileceğine işaret eder.',
                 },
                 {
                     title: 'Hilbert dönüşümü ile zarf',
@@ -115,9 +115,9 @@ const VIBRATION_WIDGET_DETAILS = {
             ],
             outputs: [
                 { name: 'Zarf spektrumu', desc: 'Teorik arıza frekansları bindirilmiş, eşleşen tepeler etiketlenmiş.' },
-                { name: 'Kurtogram haritası', desc: 'Darbesellik manzarası ve otomatik seçilen bant.' },
+                { name: 'Kurtogram haritası', desc: 'Otomatik seçilen bantla birlikte darbesellik haritası.' },
                 { name: 'Arıza tablosu', desc: 'Bileşen başına (dış bilezik, iç bilezik, bilye, kafes, dişli) tespit durumu ve şiddeti.' },
-                { name: 'Kepstrum & TSA grafikleri', desc: 'Yan bant aralıkları ve durum göstergeleriyle mil başına ortalanmış dalga formları.' },
+                { name: 'Kepstrum ve TSA grafikleri', desc: 'Yan bant aralıkları ve durum göstergeleriyle mil başına ortalanmış dalga formları.' },
             ],
         },
     },
@@ -155,7 +155,7 @@ const VIBRATION_WIDGET_DETAILS = {
             ],
             steps: [
                 { step: 'Measure FRFs', detail: 'Force and response spectra are averaged into H1-estimated FRFs with coherence per point.' },
-                { step: 'Build the stabilization diagram', detail: 'The fit is repeated at increasing model order; poles that stay stable in frequency and damping are physical modes.' },
+                { step: 'Build the stabilization diagram', detail: 'The fit is repeated at increasing model order; poles that stay stable in frequency and damping are candidate physical modes.' },
                 { step: 'Fit modal parameters', detail: 'Stable poles give ω_r and ζ_r; residues give the mode-shape coefficients at every point.' },
                 { step: 'Validate and animate', detail: 'AutoMAC checks shape independence; shapes are animated on the geometry for inspection.' },
             ],
@@ -163,7 +163,7 @@ const VIBRATION_WIDGET_DETAILS = {
                 { name: 'Modal parameter table', desc: 'Natural frequency, damping ratio and modal participation per identified mode.' },
                 { name: 'Stabilization diagram', desc: 'Pole stability across model order, overlaid on a mode-indicator function.' },
                 { name: 'Mode-shape animations', desc: 'Deformation patterns on the measurement geometry.' },
-                { name: 'MAC matrix', desc: 'Shape correlation between modes, tests or against FE predictions.' },
+                { name: 'MAC matrix', desc: 'Shape correlation between modes, tests or against finite element (FE) predictions.' },
             ],
         },
         tr: {
@@ -173,7 +173,7 @@ const VIBRATION_WIDGET_DETAILS = {
             inputs: [
                 { name: 'Kuvvet kanal(lar)ı', desc: 'Darbe çekici veya sarsıcı yük hücresi — ölçülen uyarma girişi.' },
                 { name: 'Tepki kanalları', desc: 'Ölçüm ağı noktalarındaki ivmeölçerler (gezen çekiç veya gezen tepki).' },
-                { name: 'Geometri (opsiyonel)', desc: 'Belirlenen mod şekillerini tel kafes üzerinde canlandırmak için nokta koordinatları.' },
+                { name: 'Geometri (isteğe bağlı)', desc: 'Belirlenen mod şekillerini tel kafes üzerinde canlandırmak için nokta koordinatları.' },
             ],
             formulas: [
                 {
@@ -197,7 +197,7 @@ const VIBRATION_WIDGET_DETAILS = {
             ],
             steps: [
                 { step: 'FRF\'leri ölç', detail: 'Kuvvet ve tepki spektrumları, nokta başına koheransla birlikte H1 kestirimli FRF\'lere ortalanır.' },
-                { step: 'Kararlılık diyagramını kur', detail: 'Uydurma artan model derecesinde tekrarlanır; frekans ve sönümde kararlı kalan kutuplar gerçek modlardır.' },
+                { step: 'Kararlılık diyagramını kur', detail: 'Uydurma artan model derecesinde tekrarlanır; frekans ve sönümde kararlı kalan kutuplar fiziksel mod adaylarıdır.' },
                 { step: 'Modal parametreleri uydur', detail: 'Kararlı kutuplar ω_r ve ζ_r\'yi, kalıntılar her noktadaki mod şekli katsayılarını verir.' },
                 { step: 'Doğrula ve canlandır', detail: 'AutoMAC şekil bağımsızlığını denetler; şekiller inceleme için geometri üzerinde canlandırılır.' },
             ],
@@ -205,7 +205,7 @@ const VIBRATION_WIDGET_DETAILS = {
                 { name: 'Modal parametre tablosu', desc: 'Belirlenen her mod için doğal frekans, sönüm oranı ve modal katılım.' },
                 { name: 'Kararlılık diyagramı', desc: 'Mod gösterge fonksiyonu üzerine bindirilmiş, model derecesine göre kutup kararlılığı.' },
                 { name: 'Mod şekli animasyonları', desc: 'Ölçüm geometrisi üzerinde deformasyon desenleri.' },
-                { name: 'MAC matrisi', desc: 'Modlar, testler arası veya SE öngörülerine karşı şekil korelasyonu.' },
+                { name: 'MAC matrisi', desc: 'Modlar, testler arası veya sonlu eleman (SE) modeli öngörülerine karşı şekil korelasyonu.' },
             ],
         },
     },
@@ -248,7 +248,7 @@ const VIBRATION_WIDGET_DETAILS = {
             outputs: [
                 { name: 'Modal parameters', desc: 'Natural frequencies and damping ratios under true operating conditions.' },
                 { name: 'Unscaled mode shapes', desc: 'Deformation patterns (no force reference, so amplitude is relative).' },
-                { name: 'Singular-value plot', desc: 'The FDD landscape with identified peaks marked.' },
+                { name: 'Singular-value plot', desc: 'FDD singular-value curves with identified peaks marked.' },
                 { name: 'Stabilization diagram', desc: 'SSI pole stability versus model order.' },
             ],
         },
@@ -289,7 +289,7 @@ const VIBRATION_WIDGET_DETAILS = {
             outputs: [
                 { name: 'Modal parametreler', desc: 'Gerçek işletme koşullarında doğal frekanslar ve sönüm oranları.' },
                 { name: 'Ölçeksiz mod şekilleri', desc: 'Deformasyon desenleri (kuvvet referansı olmadığından genlik görelidir).' },
-                { name: 'Tekil değer grafiği', desc: 'Belirlenen tepeler işaretlenmiş FDD manzarası.' },
+                { name: 'Tekil değer grafiği', desc: 'Belirlenen tepelerin işaretlendiği FDD tekil değer eğrileri.' },
                 { name: 'Kararlılık diyagramı', desc: 'Model derecesine göre SSI kutup kararlılığı.' },
             ],
         },
@@ -375,19 +375,19 @@ const VIBRATION_WIDGET_DETAILS = {
                     title: 'Vold-Kalman order çıkarımı',
                     latex: 'x(t) \\approx a(t)\\, e^{\\,j \\int \\omega_O(t)\\, \\mathrm{d}t}',
                     expr: 'x(t) ≈ a(t) · exp( j·∫ω_O(t) dt )',
-                    where: 'Filtre, tek bir order\'ı takodan türetilen anlık frekans ω_O(t)\'ye kilitli, yavaş değişen karmaşık zarf a(t) olarak izler; orderlar yakın veya kesişiyor olsa bile temiz çıkarır.',
+                    where: 'Filtre, tek bir order’ı takodan türetilen anlık frekans ω_O(t)\'ye kilitli, yavaş değişen karmaşık zarf a(t) olarak izler; order’lar yakın veya kesişiyor olsa bile temiz çıkarır.',
                 },
             ],
             steps: [
                 { step: 'Takoyu çöz', detail: 'Darbe kenarları tüm kayıt boyunca anlık hızı ve mil açısı profilini verir.' },
                 { step: 'Açıya göre yeniden örnekle', detail: 'Titreşim, devir başına düzgün açı adımlarına aradeğerlenir.' },
                 { step: 'Order spektrumlarını hesapla', detail: 'Devir blokları başına FFT\'ler, order spektrumunu ve order-hız şelalesini kurar.' },
-                { step: 'Çıkar ve haritala', detail: 'Seçilen orderlar devre karşı izlenir (Bode/polar) veya Vold-Kalman ile dalga formu olarak çıkarılır.' },
+                { step: 'Çıkar ve haritala', detail: 'Seçilen order’lar devre karşı izlenir (Bode/polar) veya Vold-Kalman ile dalga formu olarak çıkarılır.' },
             ],
             outputs: [
-                { name: 'Order spektrumu & şelale', desc: 'Kalkış/duruş testleri için order\'a ve hıza karşı genlik.' },
+                { name: 'Order spektrumu ve şelale', desc: 'Kalkış/duruş testleri için order’a ve hıza karşı genlik.' },
                 { name: 'Campbell diyagramı', desc: 'Kritik hızlar işaretlenmiş, yapısal rezonanslara karşı order çizgileri.' },
-                { name: 'Order kesitleri', desc: 'Seçilen orderların devre karşı genlik ve fazı (Bode ve polar grafikler).' },
+                { name: 'Order kesitleri', desc: 'Seçilen order’ların devre karşı genlik ve fazı (Bode ve polar grafikler).' },
                 { name: 'Çıkarılmış order dalga formları', desc: 'Vold-Kalman filtresinden temiz tek-order zaman geçmişleri.' },
             ],
         },
@@ -398,7 +398,7 @@ const VIBRATION_WIDGET_DETAILS = {
         en: {
             tagline: 'Turns measured 1× vibration vectors and a trial weight into the exact correction mass and angle that cancel rotor imbalance.',
             intro:
-                'Imbalance — the rotor\'s mass centre not sitting on its rotation axis — is a common cause of machinery vibration. It shows as a strong once-per-revolution (1×) component whose phase is measured against a physical keyphasor. Field balancing is a controlled experiment: measure the original 1× vector, install a known trial weight, measure again, and use the vector change to identify the machine\'s influence coefficient. The validated beta workflow solves one physical correction plane and requires a verification run. Dual-plane balancing remains a mandatory future capability, but it is not exposed as an available beta workflow.',
+                'Imbalance — the rotor\'s mass centre not sitting on its rotation axis — is a common cause of machinery vibration. It shows as a strong once-per-revolution (1×) component whose phase is measured against a physical keyphasor. Field balancing is a controlled experiment: measure the original 1× vector, install a known trial weight, measure again, and use the vector change to identify the machine\'s influence coefficient. The validated workflow in the current version solves one physical correction plane and requires a verification run. Two-plane balancing is planned but not yet available.',
             inputs: [
                 { name: 'Vibration channel', desc: 'One bearing-mounted measurement point for the validated single-plane workflow.' },
                 { name: 'Keyphasor / tacho', desc: 'Phase reference — without it the heavy-spot direction is unknown.' },
@@ -415,7 +415,7 @@ const VIBRATION_WIDGET_DETAILS = {
                     title: 'Correction weight',
                     latex: '\\vec{W}_c = -\\,\\dfrac{\\vec{A}_0}{\\alpha}',
                     expr: 'W_c = − A₀ / α',
-                    where: 'For the validated beta, this is the single correction mass and angle that should produce vibration equal and opposite to the original 1× vector at the chosen correction radius.',
+                    where: 'In the current version, this is the single correction mass and angle that should produce vibration equal and opposite to the original 1× vector at the chosen correction radius.',
                 },
                 {
                     title: 'ISO 21940 permissible residual unbalance',
@@ -440,7 +440,7 @@ const VIBRATION_WIDGET_DETAILS = {
         tr: {
             tagline: 'Ölçülen 1× titreşim vektörlerini ve bir deneme ağırlığını, rotor balanssızlığını yok eden tam düzeltme kütlesine ve açısına dönüştürür.',
             intro:
-                'Balanssızlık — rotorun kütle merkezinin dönme ekseni üzerinde olmaması — yaygın bir makine titreşimi nedenidir. Fiziksel keyphasor’a göre ölçülen güçlü bir devir-başına-bir (1×) bileşen olarak görünür. Saha balanslaması kontrollü bir deneydir: özgün 1× vektörünü ölçün, bilinen bir deneme ağırlığı takın, yeniden ölçün ve vektör değişiminden makinenin etki katsayısını bulun. Doğrulanmış beta akışı tek bir fiziksel düzeltme düzlemi çözer ve doğrulama koşusu ister. Çift düzlem balanslama gelecekte zorunlu bir yetenektir; ancak bugün kullanılabilir beta akışı olarak sunulmaz.',
+                'Balanssızlık — rotorun kütle merkezinin dönme ekseni üzerinde olmaması — yaygın bir makine titreşimi nedenidir. Fiziksel keyphasor’a göre ölçülen güçlü bir devir-başına-bir (1×) bileşen olarak görünür. Saha balanslaması kontrollü bir deneydir: özgün 1× vektörünü ölçün, bilinen bir deneme ağırlığı takın, yeniden ölçün ve vektör değişiminden makinenin etki katsayısını bulun. Mevcut sürümün doğrulanmış akışı tek bir fiziksel düzeltme düzlemi çözer ve doğrulama koşusu gerektirir. Çift düzlem balanslama planlanmaktadır ancak henüz kullanılamaz.',
             inputs: [
                 { name: 'Titreşim kanalı', desc: 'Doğrulanmış tek düzlem akışı için yatağa monte tek ölçüm noktası.' },
                 { name: 'Keyphasor / tako', desc: 'Faz referansı — onsuz ağır noktanın yönü bilinemez.' },
@@ -457,7 +457,7 @@ const VIBRATION_WIDGET_DETAILS = {
                     title: 'Düzeltme ağırlığı',
                     latex: '\\vec{W}_c = -\\,\\dfrac{\\vec{A}_0}{\\alpha}',
                     expr: 'W_c = − A₀ / α',
-                    where: 'Doğrulanmış betada bu, seçilen düzeltme yarıçapında özgün 1× vektörüne eşit ve zıt titreşim üretmesi beklenen tek düzeltme kütlesi ve açısıdır.',
+                    where: 'Mevcut sürümde bu, seçilen düzeltme yarıçapında özgün 1× vektörüne eşit ve zıt titreşim üretmesi beklenen tek düzeltme kütlesi ve açısıdır.',
                 },
                 {
                     title: 'ISO 21940 izin verilen artık balanssızlık',
@@ -475,7 +475,7 @@ const VIBRATION_WIDGET_DETAILS = {
             outputs: [
                 { name: 'Tek düzlem düzeltmesi', desc: 'Seçilen düzeltme yarıçapında tek kütle ve açısal konum.' },
                 { name: 'Polar ilerleme grafiği', desc: 'Koşudan koşuya orijine doğru küçülen 1× vektörü.' },
-                { name: 'Etki katsayıları', desc: 'Saklanan makine duyarlılığı — sonraki tek-atış ince balans için yeniden kullanılabilir.' },
+                { name: 'Etki katsayıları', desc: 'Saklanan makine duyarlılığı — sonraki tek adımlı ince balanslama için yeniden kullanılabilir.' },
                 { name: 'ISO 21940 raporu', desc: 'Seçilen derece için izin verilen değere karşı artık balanssızlık.' },
             ],
         },
@@ -555,15 +555,15 @@ const VIBRATION_WIDGET_DETAILS = {
             ],
             steps: [
                 { step: 'Probları koşullandır', detail: 'Boşluk gerilimleri denetlenir, sapma yavaş dönmede yakalanır ve açı başına saklanır.' },
-                { step: 'Düzelt & yörüngeleri çiz', detail: 'Yavaş-dönme çıkarımı, ardından yatak başına filtreli (1×, 2×, filtresiz) yörüngeler.' },
+                { step: 'Düzelt ve yörüngeleri çiz', detail: 'Yavaş-dönme çıkarımı, ardından yatak başına filtreli (1×, 2×, filtresiz) yörüngeler.' },
                 { step: 'Tam spektrum analizi', detail: 'Senkron-altı içerik izlenerek hıza karşı ileri/geri ayrışım.' },
                 { step: 'Standartlara göre değerlendir', detail: 'Mile-göre yer değiştirme, hız aralığı boyunca ISO 7919 / ISO 20816 bölge limitleriyle karşılaştırılır.' },
             ],
             outputs: [
                 { name: 'Yörünge grafikleri', desc: 'Yatak başına, keyphasor noktalı, düzeltilmiş ve filtreli yörüngeler.' },
                 { name: 'Tam spektrum kaskadı', desc: 'Hıza karşı ileri/geri fırlama içeriği.' },
-                { name: 'Bode & polar grafikler', desc: 'Kritik hızlardan geçerken 1× genlik ve faz.' },
-                { name: 'Mil ekseni & bölge durumu', desc: 'Boşluk içindeki ortalama konum ve ISO değerlendirme bölgeleri.' },
+                { name: 'Bode ve polar grafikler', desc: 'Kritik hızlardan geçerken 1× genlik ve faz.' },
+                { name: 'Mil ekseni ve bölge durumu', desc: 'Boşluk içindeki ortalama konum ve ISO değerlendirme bölgeleri.' },
             ],
         },
     },
@@ -624,7 +624,7 @@ const VIBRATION_WIDGET_DETAILS = {
             inputs: [
                 { name: 'Şok ivmesi', desc: 'İvmeölçerden geçici olay; en yüksek SRS frekansının ≥ 10 katı hızda örneklenmiş.' },
                 { name: 'SRS parametreleri', desc: 'Frekans aralığı ve adımı (örn. 1/12 oktav), sönüm Q (tipik 10), birincil/artık seçimi.' },
-                { name: 'Test şartnamesi (opsiyonel)', desc: 'Geç/kal karşılaştırması için toleranslı bir referans SRS.' },
+                { name: 'Test şartnamesi (isteğe bağlı)', desc: 'Geç/kal karşılaştırması için toleranslı bir referans SRS.' },
             ],
             formulas: [
                 {
@@ -653,9 +653,9 @@ const VIBRATION_WIDGET_DETAILS = {
                 },
             ],
             steps: [
-                { step: 'Darbeyi yalıt & koşullandır', detail: 'Pencereleme, eğilim giderme ve şok-öncesi ofset kaldırma — integral sürüklenmesin.' },
+                { step: 'Darbeyi yalıt ve koşullandır', detail: 'Pencereleme, eğilim giderme ve şok-öncesi ofset kaldırma — böylece integral kaymaz.' },
                 { step: 'Salınıcı bankasını çalıştır', detail: 'Her ızgara frekansında rampa-değişmez SDOF filtreleri tepki geçmişlerini hesaplar.' },
-                { step: 'Spektrum & metrikleri çıkar', detail: 'Birincil/artık/maximax SRS artı tepe g, süre ve delta-V.' },
+                { step: 'Spektrum ve metrikleri çıkar', detail: 'Birincil/artık/maximax SRS artı tepe g, süre ve delta-V.' },
                 { step: 'Şartnameyle karşılaştır', detail: 'Hesaplanan SRS, uygunluk için referans tolerans bantlarına karşı denetlenir.' },
             ],
             outputs: [
@@ -706,7 +706,7 @@ const VIBRATION_WIDGET_DETAILS = {
         tr: {
             tagline: 'Faz referanslı çok noktalı titreşimden, yapının işletmede gerçekte nasıl deforme olduğunu canlandırır.',
             intro:
-                'Operasyonel Sehim Şekli, bir yapının gerçek işletme yükleri altındaki gerçek deformasyonunu gösterir — teorik modları değil, seçilen bir frekans veya order\'daki toplam hareketi. Bir referans kanalı sabit tutarak çok sayıda noktanın ölçülmesi, noktalar arası bağıl fazı korur; böylece genlikler ve zamanlamalar canlandırılmış bir tel kafese birleştirilebilir. Enerjinin nereye gittiğini görmenin en hızlı yoludur: nefes alan bir panel, kamçılanan bir boru, çalışma hızında burulan bir taban.',
+                'Çalışma sapma şekli (ODS), bir yapının gerçek işletme yükleri altındaki gerçek deformasyonunu gösterir — teorik modları değil, seçilen bir frekans veya order’daki toplam hareketi. Bir referans kanalı sabit tutarak çok sayıda noktanın ölçülmesi, noktalar arası bağıl fazı korur; böylece genlikler ve zamanlamalar canlandırılmış bir tel kafese birleştirilebilir. Enerjinin nereye gittiğini görmenin en hızlı yoludur: nefes alan bir panel, kamçılanan bir boru, çalışma hızında burulan bir taban.',
             inputs: [
                 { name: 'Tepki kanalları', desc: 'Geometri üzerinde parti parti ölçülen gezici ivmeölçer takımları.' },
                 { name: 'Referans kanalı', desc: 'Her partide bulunan tek sabit sensör — tüm noktaları birbirine bağlayan faz çapası.' },
@@ -720,7 +720,7 @@ const VIBRATION_WIDGET_DETAILS = {
                     where: 'Her noktanın spektrumunun referans spektrumuna bölünmesi bağıl genlik ve fazı verir; partiden partiye işletme seviyesi değişimlerinden etkilenmez.',
                 },
                 {
-                    title: 'Tek frekansta sehim şekli',
+                    title: 'Tek frekansta sapma şekli',
                     latex: 'x_i(t) = |T_i|\\, A \\sin\\bigl(\\omega t + \\varphi_i\\bigr)',
                     expr: 'x_i(t) = |T_i| · A · sin(ωt + φ_i)',
                     where: 'Animasyon, her geometri noktasını seçilen frekanstaki ölçülmüş genliği ve fazıyla sürer; fazlı-fazsız hareket eden noktalar deformasyon desenini ortaya çıkarır.',
@@ -733,7 +733,7 @@ const VIBRATION_WIDGET_DETAILS = {
                 { step: 'Canlandır ve teşhis et', detail: 'Tel kafes animasyonu, sorunlu frekanstaki esnemeyi, kamçılanmayı veya burulmayı gözler önüne serer.' },
             ],
             outputs: [
-                { name: 'ODS animasyonları', desc: 'Seçilen frekans veya orderlarda tel kafes deformasyonu.' },
+                { name: 'ODS animasyonları', desc: 'Seçilen frekans veya order’larda tel kafes deformasyonu.' },
                 { name: 'Nokta genlik/faz tablosu', desc: 'Her animasyonun arkasındaki ölçülmüş şekil verisi.' },
                 { name: 'Sorun bölgesi sıralaması', desc: 'En çok hareket eden konumlar — rijitleştirme veya sönümlemenin karşılık vereceği yerler.' },
             ],
@@ -748,7 +748,7 @@ const VIBRATION_WIDGET_DETAILS = {
             inputs: [
                 { name: 'Input channel', desc: 'The excitation signal — force, voltage, or any reference.' },
                 { name: 'Output channel', desc: 'The simultaneous response signal to relate to the input.' },
-                { name: 'Averaging settings', desc: 'Block size, window and overlap — more averages mean smoother spectra and honest coherence.' },
+                { name: 'Averaging settings', desc: 'Block size, window and overlap — more averages give smoother spectra and a more reliable coherence estimate.' },
             ],
             formulas: [
                 {
@@ -789,7 +789,7 @@ const VIBRATION_WIDGET_DETAILS = {
             inputs: [
                 { name: 'Giriş kanalı', desc: 'Uyarma sinyali — kuvvet, gerilim veya herhangi bir referans.' },
                 { name: 'Çıkış kanalı', desc: 'Girişle ilişkilendirilecek eşzamanlı tepki sinyali.' },
-                { name: 'Ortalama ayarları', desc: 'Blok boyu, pencere ve örtüşme — daha çok ortalama, daha pürüzsüz spektrum ve dürüst koherans demektir.' },
+                { name: 'Ortalama ayarları', desc: 'Blok boyu, pencere ve örtüşme — daha fazla ortalama, daha düzgün spektrum ve daha güvenilir koherans kestirimi sağlar.' },
             ],
             formulas: [
                 {
@@ -818,7 +818,7 @@ const VIBRATION_WIDGET_DETAILS = {
                 { step: 'Geçerliliği yargıla', detail: 'Düşük koheranslı FRF bölgeleri işaretlenir; sonraki modal uydurmalar onları yok sayar.' },
             ],
             outputs: [
-                { name: 'FRF (genlik & faz)', desc: 'H1, H2 veya Hv ile Bode tarzı transfer fonksiyonu.' },
+                { name: 'FRF (genlik ve faz)', desc: 'H1, H2 veya Hv ile Bode tarzı transfer fonksiyonu.' },
                 { name: 'Koherans fonksiyonu', desc: 'Ölçüm için frekans başına güven puanı.' },
                 { name: 'Çapraz ve öz spektrumlar', desc: 'Temeldeki ortalanmış spektral yoğunluklar.' },
             ],
@@ -852,7 +852,7 @@ const VIBRATION_WIDGET_DETAILS = {
             steps: [
                 { step: 'Load the calibration', detail: 'The matrix comes from the sensor datasheet or a dedicated cross-axis calibration.' },
                 { step: 'Validate invertibility', detail: 'The matrix is checked for conditioning before use.' },
-                { step: 'Apply per sample', detail: 'Every XYZ triple is multiplied by the inverse matrix — a cheap, exact correction.' },
+                { step: 'Apply per sample', detail: 'Every XYZ triple is multiplied by the inverse matrix — a computationally light correction.' },
             ],
             outputs: [
                 { name: 'Compensated XYZ channels', desc: 'Orthogonal acceleration with cross-axis error removed.' },
@@ -865,14 +865,14 @@ const VIBRATION_WIDGET_DETAILS = {
                 'Hiçbir gerçek üç eksenli ivmeölçer X, Y ve Z\'yi mükemmel bağımsız ölçmez: bir eksen boyunca hareket, diğer ikisine küçük bir sinyal (tipik olarak yüzdenin kesrinden birkaç yüzdeye kadar) sızdırır. Eksenler arasında büyük genlik farkları olduğunda bu, hiçbir ortalamanın gideremeyeceği hayalet bileşenler yaratır; çünkü hata sistematiktir. Çözüm doğrusal cebirdir: sensörün gerçek davranışı, kalibrasyon kağıdındaki 3×3 duyarlılık matrisidir ve ölçülen vektörün bu matrisin tersiyle çarpılması dik fiziksel hareketi geri kazandırır.',
             inputs: [
                 { name: 'Üç eksenli kanallar', desc: 'Tek sensörden ölçülen X, Y, Z sinyalleri.' },
-                { name: 'Duyarlılık matrisi', desc: '3×3 kalibrasyon matrisi — köşegende ana eksen duyarlılıkları, dışında çapraz eksen kuplajları.' },
+                { name: 'Duyarlılık matrisi', desc: '3×3 kalibrasyon matrisi — köşegende ana eksen duyarlılıkları, köşegen dışında eksenler arası bağlaşımlar.' },
             ],
             formulas: [
                 {
                     title: 'Ölçüm modeli',
                     latex: '\\vec{v} = \\mathbf{S}\\, \\vec{a} = \\begin{bmatrix} s_{xx} & s_{xy} & s_{xz} \\\\ s_{yx} & s_{yy} & s_{yz} \\\\ s_{zx} & s_{zy} & s_{zz} \\end{bmatrix} \\vec{a}',
                     expr: 'v = S · a   (S = 3×3 duyarlılık matrisi)',
-                    where: 'a = gerçek ivme vektörü, v = ölçülen çıkışlar. Köşegen terimler ana duyarlılıklar; köşegen dışı terimler istenmeyen çapraz eksen kuplajlarıdır.',
+                    where: 'a = gerçek ivme vektörü, v = ölçülen çıkışlar. Köşegen terimler ana duyarlılıklar; köşegen dışı terimler istenmeyen eksenler arası bağlaşımlardır.',
                 },
                 {
                     title: 'Düzeltme',
@@ -884,7 +884,7 @@ const VIBRATION_WIDGET_DETAILS = {
             steps: [
                 { step: 'Kalibrasyonu yükle', detail: 'Matris, sensör veri sayfasından veya özel bir çapraz eksen kalibrasyonundan gelir.' },
                 { step: 'Ters çevrilebilirliği doğrula', detail: 'Matris kullanılmadan önce koşullanma açısından denetlenir.' },
-                { step: 'Örnek başına uygula', detail: 'Her XYZ üçlüsü ters matrisle çarpılır — ucuz ve kesin bir düzeltme.' },
+                { step: 'Örnek başına uygula', detail: 'Her XYZ üçlüsü ters matrisle çarpılır — hesaplama açısından hafif bir düzeltme.' },
             ],
             outputs: [
                 { name: 'Düzeltilmiş XYZ kanalları', desc: 'Çapraz eksen hatası kaldırılmış dik ivme.' },
@@ -912,10 +912,10 @@ const VIBRATION_WIDGET_DETAILS = {
                     where: 'a_O = translational acceleration at the reference, ω, α = angular velocity and acceleration, r = lever arm to point P. With enough sensors this system is solved for the six unknowns (a_O, α).',
                 },
                 {
-                    title: 'Drift-free integration',
+                    title: 'Frequency-domain integration',
                     latex: 'V(f) = \\dfrac{A(f)}{j\\,2\\pi f} \\qquad X(f) = -\\dfrac{A(f)}{(2\\pi f)^{2}}',
                     expr: 'V(f) = A(f)/(j·2πf) ;  X(f) = −A(f)/(2πf)²',
-                    where: 'Dividing by jω in the frequency domain (with a high-pass cutoff) integrates acceleration to velocity and displacement without the drift that plagues time-domain integration.',
+                    where: 'Dividing by jω in the frequency domain (with a high-pass cutoff) integrates acceleration to velocity and displacement while limiting the drift that accumulates in time-domain integration.',
                 },
                 {
                     title: 'ISO 2631 weighted acceleration',
@@ -938,32 +938,32 @@ const VIBRATION_WIDGET_DETAILS = {
             ],
             outputs: [
                 { name: '6-DOF motion channels', desc: 'Translations and rotations at the reference point.' },
-                { name: 'Velocity & displacement', desc: 'Drift-free integrated motion.' },
+                { name: 'Velocity & displacement', desc: 'Motion obtained by drift-controlled integration.' },
                 { name: 'ISO 2631 exposure metrics', desc: 'a_w, VDV, MTVV with health-guidance zone comparison.' },
                 { name: 'Tilt angles', desc: 'Roll and pitch from the gravity vector.' },
             ],
         },
         tr: {
-            tagline: 'İvmeölçer dizisinden tam katı cisim hareketini yeniden kurar, hız ve yer değiştirmeye entegre eder ve insan maruziyetini ISO 2631\'e göre puanlar.',
+            tagline: 'İvmeölçer dizisinden tam rijit cisim hareketini yeniden kurar, hız ve yer değiştirmeye entegre eder ve insan maruziyetini ISO 2631\'e göre puanlar.',
             intro:
-                'Bir katı cisim altı serbestlik derecesiyle hareket eder — üç öteleme ve üç dönme. Bilinen konumlara birkaç ivmeölçer yerleştirin; katı cisim kinematik denklemleri, herhangi bir referans noktasında tam 6-DOF hareketi yeniden kurmanızı sağlar: koltuk, kabin, platform veya düzenek. İvme, sürüklenmeyi önlemek için frekans bölgesinde hız ve yer değiştirmeye entegre edilir; yerçekimi bileşenleri eğim açılarını verir ve insan-titreşimi işleri için ISO 2631 frekans ağırlıklandırmaları a_w, VDV ve MTVV maruziyet metriklerini üretir.',
+                'Bir rijit cisim altı serbestlik derecesiyle hareket eder — üç öteleme ve üç dönme. Bilinen konumlara birkaç ivmeölçer yerleştirin; rijit cisim kinematik denklemleri, herhangi bir referans noktasında tam 6-DOF hareketi yeniden kurmanızı sağlar: koltuk, kabin, platform veya düzenek. İvme, kaymayı sınırlamak için frekans alanında hız ve yer değiştirmeye entegre edilir; yerçekimi bileşenleri eğim açılarını verir ve insan-titreşimi işleri için ISO 2631 frekans ağırlıklandırmaları a_w, VDV ve MTVV maruziyet metriklerini üretir.',
             inputs: [
-                { name: 'İvmeölçer dizisi', desc: 'Katı cisim üzerinde bilinen koordinatlarda birkaç (üç) eksenli sensör.' },
+                { name: 'İvmeölçer dizisi', desc: 'Rijit cisim üzerinde bilinen koordinatlarda birkaç (üç) eksenli sensör.' },
                 { name: 'Sensör konumları', desc: 'Referans noktasından her sensöre kol mesafeleri r — denklemlerin ters çevirdiği geometri.' },
                 { name: 'Ağırlıklandırma seçimi', desc: 'Maruziyet metrikleri için duruş ve yöne uyan ISO 2631 eğrisi (Wk, Wd, …).' },
             ],
             formulas: [
                 {
-                    title: 'Katı cisim ivme alanı',
+                    title: 'Rijit cisim ivme alanı',
                     latex: '\\vec{a}_P = \\vec{a}_O + \\dot{\\vec{\\omega}} \\times \\vec{r} + \\vec{\\omega} \\times (\\vec{\\omega} \\times \\vec{r})',
                     expr: 'a_P = a_O + α×r + ω×(ω×r)',
                     where: 'a_O = referanstaki öteleme ivmesi, ω, α = açısal hız ve ivme, r = P noktasına kol mesafesi. Yeterli sensörle bu sistem altı bilinmeyen (a_O, α) için çözülür.',
                 },
                 {
-                    title: 'Sürüklenmesiz integral',
+                    title: 'Frekans alanında entegrasyon',
                     latex: 'V(f) = \\dfrac{A(f)}{j\\,2\\pi f} \\qquad X(f) = -\\dfrac{A(f)}{(2\\pi f)^{2}}',
                     expr: 'V(f) = A(f)/(j·2πf) ;  X(f) = −A(f)/(2πf)²',
-                    where: 'Frekans bölgesinde jω\'ya bölmek (yüksek-geçiren kesimle birlikte), zaman bölgesi integralini bozan sürüklenme olmadan ivmeyi hıza ve yer değiştirmeye entegre eder.',
+                    where: 'Frekans alanında jω’ya bölmek (yüksek geçiren kesimle birlikte), zaman alanı entegrasyonunda biriken kaymayı sınırlayarak ivmeyi hıza ve yer değiştirmeye dönüştürür.',
                 },
                 {
                     title: 'ISO 2631 ağırlıklı ivme',
@@ -980,13 +980,13 @@ const VIBRATION_WIDGET_DETAILS = {
             ],
             steps: [
                 { step: 'Kinematiği çöz', detail: 'Sensör dizisi ve geometri, seçilen referans noktasında 6-DOF hareketi verir.' },
-                { step: 'Spektral entegre et', detail: 'Hız ve yer değiştirme, sürüklenme kontrollü frekans bölgesi integralinden gelir.' },
+                { step: 'Spektral entegre et', detail: 'Hız ve yer değiştirme, kayma kontrollü frekans alanı entegrasyonundan elde edilir.' },
                 { step: 'Duruşu kestir', detail: 'Alçak-geçiren yerçekimi bileşenleri yatış/yunuslama eğimini verir; dinamik titreşimden ayrılır.' },
                 { step: 'ISO 2631 uygula', detail: 'Ağırlıklandırma filtreleri ve doz formülleri eksen başına ve birleşik a_w, VDV, MTVV üretir.' },
             ],
             outputs: [
                 { name: '6-DOF hareket kanalları', desc: 'Referans noktasında ötelemeler ve dönmeler.' },
-                { name: 'Hız & yer değiştirme', desc: 'Sürüklenmesiz entegre edilmiş hareket.' },
+                { name: 'Hız ve yer değiştirme', desc: 'Kayma kontrollü entegrasyonla elde edilen hareket.' },
                 { name: 'ISO 2631 maruziyet metrikleri', desc: 'Sağlık kılavuz bölgesi karşılaştırmalı a_w, VDV, MTVV.' },
                 { name: 'Eğim açıları', desc: 'Yerçekimi vektöründen yatış ve yunuslama.' },
             ],
@@ -1020,7 +1020,7 @@ const VIBRATION_WIDGET_DETAILS = {
             steps: [
                 { step: 'Compute severity per point', detail: 'Band-limited RMS velocity for every measurement location.' },
                 { step: 'Classify into zones', detail: 'Each value is placed in ISO zone A–D for its machine class.' },
-                { step: 'Trend and alarm', detail: 'Values are tracked over time; sustained rises and zone transitions raise flags before failure.' },
+                { step: 'Trend and alarm', detail: 'Values are tracked over time; sustained rises and zone transitions generate warnings before failure.' },
             ],
             outputs: [
                 { name: 'Health dashboard', desc: 'Zone-coloured status of every measurement point at a glance.' },
@@ -1035,14 +1035,14 @@ const VIBRATION_WIDGET_DETAILS = {
             inputs: [
                 { name: 'Titreşim kanalları', desc: 'Her yatak ölçüm noktasında hız (veya entegre edilen ivme).' },
                 { name: 'Makine sınıfı', desc: 'Bölge sınır değerlerini belirleyen ISO grup/montaj seçimi.' },
-                { name: 'Geçmiş (opsiyonel)', desc: 'Trend ve değişim-hızı analizi için önceki ölçümler.' },
+                { name: 'Geçmiş (isteğe bağlı)', desc: 'Trend ve değişim-hızı analizi için önceki ölçümler.' },
             ],
             formulas: [
                 {
                     title: 'Geniş bantlı RMS hızı',
                     latex: 'v_{\\mathrm{RMS}} = \\sqrt{ \\dfrac{1}{T} \\int_0^T v^{2}(t)\\, \\mathrm{d}t } \\qquad f \\in 10\\text{–}1000~\\mathrm{Hz}',
                     expr: 'v_RMS = √( (1/T)·∫v²(t) dt ) ,  bant 10–1000 Hz',
-                    where: 'Çoğu makine sınıfı için ISO 20816\'nın standart şiddet bandı. İvme girişleri önce hıza entegre edilir; bant limitleri DC sürüklenmesini ve ultrasonik içeriği dışarıda bırakır.',
+                    where: 'Çoğu makine sınıfı için ISO 20816\'nın standart şiddet bandı. İvme girişleri önce hıza entegre edilir; bant sınırları DC kaymasını ve ultrasonik içeriği dışarıda bırakır.',
                 },
                 {
                     title: 'Bölge sınıflandırması',
@@ -1054,10 +1054,10 @@ const VIBRATION_WIDGET_DETAILS = {
             steps: [
                 { step: 'Nokta başına şiddeti hesapla', detail: 'Her ölçüm konumu için bant sınırlı RMS hızı.' },
                 { step: 'Bölgelere sınıflandır', detail: 'Her değer, makine sınıfı için ISO bölgesi A–D içine yerleştirilir.' },
-                { step: 'Trendle ve alarm ver', detail: 'Değerler zamanla izlenir; sürekli yükselişler ve bölge geçişleri arızadan önce bayrak kaldırır.' },
+                { step: 'Trendle ve alarm ver', detail: 'Değerler zamanla izlenir; sürekli yükselişler ve bölge geçişleri arızadan önce uyarı üretir.' },
             ],
             outputs: [
-                { name: 'Sağlık panosu', desc: 'Her ölçüm noktasının bölge-renkli durumu tek bakışta.' },
+                { name: 'Sağlık paneli', desc: 'Her ölçüm noktasının bölge-renkli durumu tek bakışta.' },
                 { name: 'Şiddet trendleri', desc: 'Değişim-hızı göstergeleriyle nokta başına RMS geçmişi.' },
                 { name: 'İstisna listesi', desc: 'C/D bölgesindeki veya oraya yönelen noktalar — bakım öncelik kuyruğu.' },
             ],
@@ -1200,13 +1200,13 @@ const VIBRATION_WIDGET_DETAILS = {
             ],
         },
         tr: {
-            tagline: 'Sıradan ivmeölçerlere görünmeyen dönel titreşimi ölçer — enkoder darbelerinin zamanlamasından mil burulmasına ve burulma orderlarına.',
+            tagline: 'Sıradan ivmeölçerlere görünmeyen dönel titreşimi ölçer — enkoder darbelerinin zamanlamasından mil burulmasına ve burulma order’larına.',
             intro:
-                'Burulma titreşimi, milin ortalama dönüşü üzerine binen dönme hızı dalgalanmasıdır; motor ateşleme darbeleri, dişli kavraması veya yük değişimi tarafından sürülür. Yanal ivmeölçerler onu göremez; ama kaplinleri, krank millerini ve dişli dişlerini yorar. Ölçüm ilkesi zamanlamadır: bir enkoder, zebra bant veya dişli çark, aralıkları anlık açısal hızı kodlayan darbeler üretir. Eksik dişli çarklar (60-2 krank tetiği gibi) mutlak açı için çözümlenir, tek mildeki iki enkoder dinamik burulmayı ve torku verir, sonucun burulma orderları olarak ifade edilmesi ise uyarma kaynağını adlandırır.',
+                'Burulma titreşimi, milin ortalama dönüşü üzerine binen dönme hızı dalgalanmasıdır; motor ateşleme darbeleri, dişli kavraması veya yük değişimi tarafından sürülür. Yanal ivmeölçerler onu göremez; ama kaplinleri, krank millerini ve dişli dişlerini yorar. Ölçüm ilkesi zamanlamadır: bir enkoder, zebra bant veya dişli çark, aralıkları anlık açısal hızı kodlayan darbeler üretir. Eksik dişli çarklar (60-2 krank tetiği gibi) mutlak açı için çözümlenir, tek mildeki iki enkoder dinamik burulmayı ve torku verir, sonucun burulma order’ları olarak ifade edilmesi ise uyarma kaynağını adlandırır.',
             inputs: [
                 { name: 'Darbe kanal(lar)ı', desc: 'Yüksek çözünürlükte zaman damgalı enkoder, zebra bant veya dişli darbe dizileri.' },
                 { name: 'Çark tanımı', desc: 'Mutlak açı çözümü için devir başına darbe sayısı ve eksik diş deseni.' },
-                { name: 'Mil özellikleri (opsiyonel)', desc: 'Burulma→tork dönüşümü için kayma modülü, polar atalet momenti ve uzunluk.' },
+                { name: 'Mil özellikleri (isteğe bağlı)', desc: 'Burulma→tork dönüşümü için kayma modülü, polar atalet momenti ve uzunluk.' },
             ],
             formulas: [
                 {
@@ -1231,7 +1231,7 @@ const VIBRATION_WIDGET_DETAILS = {
                     title: 'Burulma order spektrumu',
                     latex: '\\Theta(O) = \\mathrm{FFT}\\bigl\\{ \\omega(\\theta) \\bigr\\}, \\qquad O = \\text{mil hızının katları}',
                     expr: 'Θ(O) = devirler üzerinde FFT{ ω(θ) }',
-                    where: 'Devir başına yeniden örneklenen ve dönüştürülen açısal hız, order başına genlik verir: bir motorun ateşleme orderları, bir dişli kutusunun kavrama orderları — burulma rezonansını hangi kaynağın sürdüğünü belirler.',
+                    where: 'Devir başına yeniden örneklenen ve dönüştürülen açısal hız, order başına genlik verir: bir motorun ateşleme order’ları, bir dişli kutusunun kavrama order’ları — burulma rezonansını hangi kaynağın sürdüğünü belirler.',
                 },
             ],
             steps: [
@@ -1242,7 +1242,7 @@ const VIBRATION_WIDGET_DETAILS = {
             ],
             outputs: [
                 { name: 'Hız dalgalanması dalga formu', desc: 'Anlık açısal hız ve devir başına değişimi.' },
-                { name: 'Burulma & dinamik tork', desc: 'Mil uçları arasındaki bağıl açı, torka çevrilmiş.' },
+                { name: 'Burulma ve dinamik tork', desc: 'Mil uçları arasındaki bağıl açı, torka çevrilmiş.' },
                 { name: 'Burulma order spektrumu', desc: 'Hıza karşı rezonans kesişimleriyle order başına genlik.' },
             ],
         },

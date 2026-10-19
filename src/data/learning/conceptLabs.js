@@ -19,7 +19,7 @@ const difference = model([
 ], ['Second − first', 'İkinci − ilk'], 'ms', ({ first, second }) => 1000 * (second - first))
 const order = model([
     field('rpm', 'Rotational speed', 'Dönme hızı', 1800, 300, 6000, 100, 'RPM'),
-    field('order', 'Order', 'Mertebe', 2, 0.5, 10, 0.5),
+    field('order', 'Order', 'Order', 2, 0.5, 10, 0.5),
 ], ['Component frequency', 'Bileşen frekansı'], 'Hz', ({ rpm, order: value }) => rpm * value / 60)
 const duration = model([
     field('samples', 'Window samples', 'Pencere örnekleri', 1000, 100, 10000, 100), rate,
