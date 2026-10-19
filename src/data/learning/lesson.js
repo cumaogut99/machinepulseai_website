@@ -1,12 +1,15 @@
 /** Expand compact bilingual editorial records into independent learning pages.
  * Rows contain [English title, Turkish title, English explanation, Turkish explanation].
  * Content describes application controls; exercises are illustrative, not a DAQ simulator.
+ * Optional fields: title (page heading), why ([title, body] rows) and exercise.
  */
 export function lesson(record) {
     const localized = (language) => {
         const index = language === 'tr' ? 1 : 0
         const rows = (items) => items.map((item) => ({ name: item[index], desc: item[index + 2] }))
         return {
+            ...(record.title && { title: record.title[index] }),
+            ...(record.why && { why: record.why.map((item) => ({ title: item[index], body: item[index + 2] })) }),
             intro: record.intro[index],
             use: record.use[index],
             inputs: rows(record.inputs),
@@ -22,11 +25,13 @@ export function lesson(record) {
                 title: record.example[index], value: record.example[index + 2],
                 explanation: record.example[index + 4],
             },
-            exercise: {
-                question: record.exercise[index],
-                options: record.exercise[index + 2],
-                correct: record.exercise[4], explanation: record.exercise[index + 5],
-            },
+            ...(record.exercise && {
+                exercise: {
+                    question: record.exercise[index],
+                    options: record.exercise[index + 2],
+                    correct: record.exercise[4], explanation: record.exercise[index + 5],
+                },
+            }),
         }
     }
     return {
