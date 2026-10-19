@@ -16,7 +16,7 @@ function WorkbenchScreenshot({ shot, controls, selected, onSelect, name }) {
                 return <button key={`${controls[index].name}-spot`} type="button"
                     aria-label={`${index + 1}. ${controls[index].name}`} aria-pressed={active}
                     onClick={() => onSelect(index)} style={{ left: spot[0], top: spot[1] }}
-                    className={`absolute flex h-7 w-7 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border text-[11px] font-bold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neon-cyan sm:h-9 sm:w-9 sm:text-sm ${active ? 'border-neon-cyan bg-neon-cyan text-black shadow-glow-cyan' : 'border-white/80 bg-black/80 text-white hover:border-neon-cyan hover:text-neon-cyan'}`}>
+                    className={`absolute flex h-5 w-5 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border text-[10px] font-bold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neon-cyan sm:h-7 sm:w-7 sm:text-xs ${active ? 'border-neon-cyan bg-neon-cyan text-black shadow-glow-cyan' : 'border-white/80 bg-black/80 text-white hover:border-neon-cyan hover:text-neon-cyan'}`}>
                     {index + 1}
                 </button>
             })}
@@ -63,6 +63,13 @@ export default function LearningWorkbench({ widgetId, controls, inputs, outputs,
                     <p className="text-xs font-semibold uppercase tracking-widest text-neon-cyan">{labels.selectedControl}</p>
                     <h3 className="mt-3 text-xl font-bold text-white">{current.name}</h3>
                     <p className="mt-3 text-sm leading-7 text-slate-300">{current.desc}</p>
+                    {current.options?.length > 0 && <div className="mt-5 border-t border-neon-cyan/15 pt-4">
+                        <h4 className="text-xs font-semibold uppercase tracking-widest text-slate-400">{labels.optionsTitle}</h4>
+                        <dl className="mt-3 space-y-3">{current.options.map((option) => <div key={option.name}>
+                            <dt className="text-sm font-semibold text-white">{option.name}</dt>
+                            <dd className="mt-1 text-sm leading-6 text-slate-400">{option.desc}</dd>
+                        </div>)}</dl>
+                    </div>}
                 </div>
                 <p className="mt-4 text-xs leading-6 text-slate-400">{shot ? labels.screenshotIntro : labels.workspaceIntro}</p>
             </div>
