@@ -12,7 +12,7 @@ const VIBRATION_WIDGET_EXTRAS = {
         },
         tr: {
             assumptions: [
-                { name: 'Örnekleme hızı rezonans bandını kapsamalı', desc: 'Zarf analizi yalnızca düşük frekanslı mil orderlarını değil, darbelerin yapıyı çınlattığı yüksek frekanslı rezonansı ister.' },
+                { name: 'Örnekleme hızı rezonans bandını kapsamalı', desc: 'Zarf analizi yalnızca düşük frekanslı mil order’larını değil, darbelerin yapıyı çınlattığı yüksek frekanslı rezonansı ister.' },
                 { name: 'Rulman geometrisi güveni artırır', desc: 'Bilye sayısı, taksimat çapı ve temas açısı yoksa modül tekrarlı darbeleri bulabilir; fakat arızalı bileşeni aynı güvenle adlandıramaz.' },
             ],
             exampleMetrics: [
@@ -233,7 +233,7 @@ const VIBRATION_WIDGET_EXTRAS = {
         tr: {
             assumptions: [
                 { name: 'Koordinat sistemleri açık olmalı', desc: 'Altı serbestlik dereceli hareket, sensör, gövde ve global eksenler tanımlandığında anlamlıdır.' },
-                { name: 'İntegral sürüklenmesi kontrol ister', desc: 'İvmeden hız veya yer değiştirme hesabı drift yönetimi ve kısıtlar gerektirir.' },
+                { name: 'Entegrasyon kayması kontrol edilmelidir', desc: 'İvmeden hız veya yer değiştirme hesaplamak kayma (drift) kontrolü ve kısıtlar gerektirir.' },
             ],
             exampleMetrics: [
                 { value: 'Roll RMS = 0,42°', label: 'Açısal hareket', desc: 'Gövde seçilen olay boyunca küçük ama ölçülebilir roll titreşimi gösterir.' },
@@ -245,7 +245,7 @@ const VIBRATION_WIDGET_EXTRAS = {
         en: {
             assumptions: [
                 { name: 'Machine class sets the limit', desc: 'ISO-style severity zones depend on machine type, mounting and power class.' },
-                { name: 'Trends matter more than one point', desc: 'A single RMS value is useful, but rising trend and rate of change are often more actionable.' },
+                { name: 'Trends matter more than one point', desc: 'A single RMS value is useful, but rising trend and rate of change are often more informative.' },
             ],
             exampleMetrics: [
                 { value: 'Group 3 · Zone B · 3.1 mm/s RMS', label: 'Current severity', desc: 'The selected point falls in Zone B only for the selected Group 3 screening profile; a different machine class can change the result.' },
@@ -255,7 +255,7 @@ const VIBRATION_WIDGET_EXTRAS = {
         tr: {
             assumptions: [
                 { name: 'Makine sınıfı limiti belirler', desc: 'ISO tarzı şiddet bölgeleri makine tipi, montaj ve güç sınıfına bağlıdır.' },
-                { name: 'Trend tek noktadan daha değerlidir', desc: 'Tek RMS değeri yararlıdır; fakat yükselen trend ve değişim hızı çoğu zaman daha aksiyoneldir.' },
+                { name: 'Trend tek noktadan daha değerlidir', desc: 'Tek RMS değeri yararlıdır; fakat yükselen trend ve değişim hızı çoğu zaman daha fazla bilgi verir.' },
             ],
             exampleMetrics: [
                 { value: 'Grup 3 · Bölge B · 3,1 mm/s RMS', label: 'Güncel şiddet', desc: 'Seçilen nokta yalnızca seçili Grup 3 tarama profilinde Bölge B içindedir; farklı bir makine sınıfı sonucu değiştirebilir.' },
@@ -302,7 +302,7 @@ const VIBRATION_WIDGET_EXTRAS = {
                 { name: 'Eksik diş çözümü doğru çark tanımı ister', desc: 'Yanlış diş sayısı veya boşluk deseni mutlak açıyı ve order sonuçlarını kaydırır.' },
             ],
             exampleMetrics: [
-                { value: 'Order 2,0 = 0,84° tepe', label: 'Ateşleme orderı burulması', desc: 'Seçilen hız aralığında ikinci order burulma bileşeni baskındır.' },
+                { value: 'Order 2,0 = 0,84° tepe', label: 'Ateşleme order’ı burulması', desc: 'Seçilen hız aralığında ikinci order burulma bileşeni baskındır.' },
                 { value: 'Burulma = 1,6° p-p', label: 'Mil deformasyonu', desc: 'İki enkoder mil kesiti boyunca tepeden tepeye dinamik burulmayı gösterir.' },
             ],
         },

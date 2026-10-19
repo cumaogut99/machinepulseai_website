@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next'
 import katex from 'katex'
 import 'katex/dist/katex.min.css'
 import LearningWorkbench from './learning/LearningWorkbench.jsx'
-import LearningExercise from './learning/LearningExercise.jsx'
 import LearningConceptLab from './learning/LearningConceptLab.jsx'
 import { CONCEPT_LABS } from '../data/learning/conceptLabs.js'
 import { getWidgetScreenshot } from '../data/learning/screenshots.js'
@@ -172,7 +171,6 @@ export default function VibrationWidgetLearning({ widgetId }) {
                     <div className="mt-14"><SectionHeader eyebrow={t('vibrationLearn.sectionEyebrow.modes')} title={t('vibrationLearn.modes.outputsTitle')} /><DetailCards items={detail.outputs} accent /></div>
                     {detail.exampleMetrics?.length > 0 && <div className="mt-10"><h3 className="mb-5 text-xl font-bold text-white">{t('vibrationLearn.modes.examplesTitle')}</h3><p className="mb-5 text-xs text-slate-400">{t('widgetLearn.common.illustrative')}</p><div className="grid gap-3 md:grid-cols-2">{detail.exampleMetrics.map((metric) => <article key={metric.label} className="rounded-2xl border border-white/10 bg-white/[0.025] p-5"><p className="font-mono text-sm font-semibold text-[#00f5ff]">{metric.value}</p><h4 className="mt-2 font-semibold text-white">{metric.label}</h4><p className="mt-1 text-sm leading-6 text-slate-400">{metric.desc}</p></article>)}</div></div>}
                     {CONCEPT_LABS[widgetId] && <LearningConceptLab key={`lab:${widgetId}:${lang}`} widgetId={widgetId} lang={lang} />}
-                    <LearningExercise key={`${widgetId}:${lang}`} widgetId={widgetId} exercise={tour.exercise} lang={lang} />
                 </section>
 
                 <section id="workflow" className="scroll-mt-32 border-t border-white/8 py-16">

@@ -194,7 +194,7 @@ const ENGINEERING_GROUPS = [
         widgets: [
             ['rotor_dynamics', 'Rotor Dynamics', 'Rotor Dinamiği'],
             ['rotor_balancing', 'Rotor Balancing', 'Rotor Balanslama'],
-            ['order_tracking', 'Order Tracking', 'Mertebe Takibi'],
+            ['order_tracking', 'Order Tracking', 'Order Takibi'],
             ['torsional_vibration', 'Torsional & Rotational Vibration', 'Burulma ve Dönel Titreşim'],
             ['modal_analysis', 'Advanced Modal Analysis', 'Gelişmiş Modal Analiz'],
             ['operational_modal_analysis', 'Operational Modal Analysis (OMA)', 'Operasyonel Modal Analiz (OMA)'],
