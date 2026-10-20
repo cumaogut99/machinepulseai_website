@@ -31,6 +31,8 @@ function WidgetCard({
     isPlanned,
 }) {
     const { t } = useTranslation()
+    // Ships in the next application release: visible, but without a learning page.
+    const isComingSoon = widget.status === 'coming_soon'
     const [open, setOpen] = useState(false)
     const guide = getWidgetLearning(widget.id) ? t(`widgetLearn.pages.${widget.id}`, { returnObjects: true }) : null
     const course = VIBRATION_CONTROL_IDS.includes(widget.id) ? t(`vibrationLearn.widgets.${widget.id}`, { returnObjects: true }) : null
@@ -40,13 +42,13 @@ function WidgetCard({
     const paragraphs = (c.theory || '').split('\n\n')
     // Explicit override (combustion) wins; otherwise use the generic registry.
     const detailSlug = getWidgetDetailSlug(widget.id)
-    const detailPath = isPlanned ? null : widget.detailPath || (detailSlug ? `/widgets/${detailSlug}` : null)
+    const detailPath = isPlanned || isComingSoon ? null : widget.detailPath || (detailSlug ? `/widgets/${detailSlug}` : null)
 
     return (
         <motion.div
             variants={cardVariants}
             layout
-            className={`card-hover-glow group relative flex flex-col bg-white/[0.03] border border-white/8 rounded-2xl overflow-hidden p-5 gap-3 ${isPlanned ? 'opacity-75' : ''}`}
+            className={`card-hover-glow group relative flex flex-col bg-white/[0.03] border border-white/8 rounded-2xl overflow-hidden p-5 gap-3 ${isPlanned || isComingSoon ? 'opacity-75' : ''}`}
         >
             {/* Top gradient accent */}
             <div
@@ -59,12 +61,12 @@ function WidgetCard({
                 <h3 className="text-base font-semibold text-white leading-snug pr-2">
                     {c.name}
                 </h3>
-                {isPlanned && (
+                {(isPlanned || isComingSoon) && (
                     <span
                         className="text-[9px] uppercase tracking-wide px-1.5 py-0.5 rounded border whitespace-nowrap"
                         style={{ color: accent, borderColor: `${accent}55`, background: `${accent}12` }}
                     >
-                        {plannedLabel}
+                        {isComingSoon ? t('widgets.comingSoonBadge') : plannedLabel}
                     </span>
                 )}
             </div>
@@ -116,7 +118,14 @@ function WidgetCard({
             </AnimatePresence>
 
             {/* Optional deep-dive link to a dedicated detail page */}
-            {(guide || course) && <p className="text-[11px] leading-5 text-slate-400">
+            {isComingSoon ? (
+                <p
+                    className="self-start mt-1 px-3 py-1.5 rounded-lg border text-xs font-semibold"
+                    style={{ color: accent, borderColor: `${accent}33`, background: `${accent}0a` }}
+                >
+                    {t('widgets.comingSoonNote')}
+                </p>
+            ) : (guide || course) && <p className="text-[11px] leading-5 text-slate-400">
                 {t(guide?.exercise ? 'widgetLearn.common.card' : 'widgetLearn.common.cardNoCheck')}
             </p>}
             {detailPath && (
@@ -272,7 +281,7 @@ export default function WidgetCatalog() {
     const totalAvailable = useMemo(
         () => WIDGET_CATALOG.reduce((sum, category) => {
             if (category.status === 'planned') return sum
-            return sum + category.widgets.filter((item) => item.status !== 'planned').length
+            return sum + category.widgets.filter((item) => !['planned', 'coming_soon'].includes(item.status)).length
         }, 0),
         []
     )

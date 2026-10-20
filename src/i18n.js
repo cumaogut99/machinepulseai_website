@@ -3,8 +3,6 @@ import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import FFT_LEARNING_TRANSLATIONS from './i18n/fftLearning.js';
 import FFT_THEORY_TRANSLATIONS from './i18n/fftTheory.js';
-import FFT_CONTROL_GUIDE_EN from './i18n/fftControlGuide.en.js';
-import FFT_CONTROL_GUIDE_TR from './i18n/fftControlGuide.tr.js';
 import FFT_BEGINNER_TRANSLATIONS from './i18n/fftBeginner.js';
 import ROTOR_DYNAMICS_LEARNING_TRANSLATIONS from './i18n/rotorDynamicsLearning.js';
 import VIBRATION_LEARNING_TRANSLATIONS from './i18n/vibrationLearning.js';
@@ -16,7 +14,6 @@ const resources = {
         translation: {
             "fftLearn": FFT_LEARNING_TRANSLATIONS.en,
             "fftTheory": FFT_THEORY_TRANSLATIONS.en,
-            "fftControls": FFT_CONTROL_GUIDE_EN,
             "fftBeginner": FFT_BEGINNER_TRANSLATIONS.en,
             "rotorLearn": ROTOR_DYNAMICS_LEARNING_TRANSLATIONS.en,
             "vibrationLearn": VIBRATION_LEARNING_TRANSLATIONS.en,
@@ -71,6 +68,8 @@ const resources = {
                 "expandGroup": "Show {{group}} widgets",
                 "collapseGroup": "Hide {{group}} widgets",
                 "plannedBadge": "Planned",
+                "comingSoonBadge": "Coming soon",
+                "comingSoonNote": "Coming in the next release",
                 "noResults": "No widgets match your search.",
                 "detail": {
                     "back": "Back to widget library",
@@ -248,7 +247,6 @@ const resources = {
         translation: {
             "fftLearn": FFT_LEARNING_TRANSLATIONS.tr,
             "fftTheory": FFT_THEORY_TRANSLATIONS.tr,
-            "fftControls": FFT_CONTROL_GUIDE_TR,
             "fftBeginner": FFT_BEGINNER_TRANSLATIONS.tr,
             "rotorLearn": ROTOR_DYNAMICS_LEARNING_TRANSLATIONS.tr,
             "vibrationLearn": VIBRATION_LEARNING_TRANSLATIONS.tr,
@@ -303,6 +301,8 @@ const resources = {
                 "expandGroup": "{{group}} widgetlarını göster",
                 "collapseGroup": "{{group}} widgetlarını gizle",
                 "plannedBadge": "Planlanıyor",
+                "comingSoonBadge": "Yakında",
+                "comingSoonNote": "Bir sonraki sürümde geliyor",
                 "noResults": "Aramanızla eşleşen widget yok.",
                 "detail": {
                     "back": "Widget kütüphanesine dön",

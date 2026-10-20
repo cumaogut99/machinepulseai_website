@@ -5,7 +5,7 @@ import RotorBeginnerPrimer from './rotorDynamicsLearning/RotorBeginnerPrimer.jsx
 import RotorCriticalSpeedLab from './rotorDynamicsLearning/RotorCriticalSpeedLab.jsx'
 import RotorDiagnosticPatterns from './rotorDynamicsLearning/RotorDiagnosticPatterns.jsx'
 import RotorFormulaReference from './rotorDynamicsLearning/RotorFormulaReference.jsx'
-import RotorInterfaceTour from './rotorDynamicsLearning/RotorInterfaceTour.jsx'
+import WidgetInterfaceTour from './learning/WidgetInterfaceTour.jsx'
 import RotorModeGuide from './rotorDynamicsLearning/RotorModeGuide.jsx'
 import RotorOrbitLab from './rotorDynamicsLearning/RotorOrbitLab.jsx'
 
@@ -147,7 +147,7 @@ export default function RotorDynamicsLearning() {
             <main className="relative mx-auto max-w-6xl px-6">
                 <section id="interface" className="scroll-mt-32 py-16">
                     <SectionHeader eyebrow={t('rotorLearn.sectionEyebrow.interface')} title={t('rotorLearn.interface.title')} intro={t('rotorLearn.interface.intro')} />
-                    <RotorInterfaceTour />
+                    <WidgetInterfaceTour widgetId="rotor_dynamics" name="Rotor Dynamics" />
                 </section>
 
                 <section id="system" className="scroll-mt-32 border-t border-white/8 py-16">

@@ -117,6 +117,9 @@ export default function WidgetDetail() {
     const detail = id ? getWidgetDetailById(id) : null
     const found = id ? findWidget(id) : null
 
+    // Modules announced for the next release have no public learning page yet.
+    if (found?.widget.status === 'coming_soon') return <Navigate to="/widgets" replace />
+
     const learning = id ? getWidgetLearning(id) : null
     if (learning) return <WidgetLearningPage key={id} guide={learning} />
 

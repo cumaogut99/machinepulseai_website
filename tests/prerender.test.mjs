@@ -17,7 +17,8 @@ test('sitemap lists every route with SEO metadata', () => {
 test('sitemap lists every available widget page', () => {
     for (const category of WIDGET_CATALOG) for (const widget of category.widgets) {
         const slug = getWidgetDetailSlug(widget.id)
-        if (!slug || (widget.status || category.status) === 'planned') continue
+        // Planned and next-release (coming_soon) modules have no public page yet.
+        if (!slug || ['planned', 'coming_soon'].includes(widget.status || category.status)) continue
         assert.ok(routes.has(`/widgets/${slug}`), `/widgets/${slug} missing from sitemap.xml`)
     }
 })

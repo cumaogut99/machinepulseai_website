@@ -45,6 +45,25 @@ NIST, SciPy and Apache Arrow references explain underlying concepts. They are no
 claims that the desktop application uses SciPy for computation. Numerical examples
 illustrate stated assumptions and are not customer measurements or benchmarks.
 
+## Engineering interface tours
+
+FFT / Spectrum, Frequency Response & Cross Spectrum and the Vibration, Structural
+& Kinematics widgets use `InterfaceTour`: a view selector over several real
+captures of the widget window (one settings page plus one result tab each),
+numbered hotspots and an explanation panel. `TourHotspot` is the single compact
+marker used by every tour on the site.
+
+- Copy: `src/data/learning/tours/*.js`, bilingual `[en, tr]` pairs per view and point.
+- Captures: `src/assets/widget-tours/<widget-id-with-hyphens>--<view>.webp`
+  (2000 × 1060, Space theme, synthetic validation data).
+- Hotspots: `src/data/learning/tours/tourAnchors.js` is generated. The capture
+  script drives the desktop application, opens each window state and measures
+  the geometry of the group boxes, labels, buttons and plots it points at. Do not
+  hand-place coordinates; re-capture the view so markers stay aligned.
+- Structural Health Monitoring and Machine Health Overview ship in the next
+  release: their cards show a “Coming soon” badge, have no learning link, are
+  removed from the sitemap and their routes redirect to `/widgets`.
+
 ## Verification
 
 ```sh

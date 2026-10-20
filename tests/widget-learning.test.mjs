@@ -9,14 +9,21 @@ import TRANSLATIONS from '../src/i18n/widgetLearning.js'
 import { CONCEPT_LABS } from '../src/data/learning/conceptLabs.js'
 import { REFERENCES } from '../src/data/learning/lesson.js'
 import { resolveRouteMeta } from '../src/seo/routeMeta.js'
+import { existsSync, readFileSync } from 'node:fs'
+import TOUR_ANCHORS from '../src/data/learning/tours/tourAnchors.js'
+import FFT_TOURS from '../src/data/learning/tours/fft.js'
+import FREQUENCY_RESPONSE_TOURS from '../src/data/learning/tours/frequencyResponse.js'
+import ROTATING_TOURS from '../src/data/learning/tours/rotating.js'
+import STRUCTURAL_TOURS from '../src/data/learning/tours/structural.js'
+import MOTION_TOURS from '../src/data/learning/tours/motion.js'
 
 test('every in-scope ready widget has a complete authored course or existing flagship guide', () => {
     const specialized = new Set(['fft_spectrum', 'rotor_dynamics', ...VIBRATION_LEARNING_IDS])
     const scope = WIDGET_CATALOG.flatMap((category) => category.widgets.filter((widget) => {
-        if ((widget.status || category.status) === 'planned') return false
+        if (['planned', 'coming_soon'].includes(widget.status || category.status)) return false
         return category.id !== 'engineering' || !widget.subgroup || widget.subgroup.id === 'vibration_structural'
     }))
-    assert.equal(scope.length, 51)
+    assert.equal(scope.length, 49)
     assert.equal(Object.keys(WIDGET_LEARNING).length, 36)
     for (const widget of scope) {
         assert.ok(getWidgetDetailSlug(widget.id), `${widget.id} needs a route`)
@@ -84,4 +91,48 @@ test('teaching models reproduce the worked examples and stay finite at slider bo
         sensor_calibration: 2, groupby_aggregation: 18, shock_srs: 5,
         order_tracking: 60, cross_axis_compensation: 0.02, hypothesis_testing: 2,
     })) assert.ok(Math.abs(CONCEPT_LABS[id].calculate(defaults(CONCEPT_LABS[id])) - expected) < 1e-9, id)
+})
+
+
+test('interface tours cover every engineering vibration widget with captured, anchored, bilingual views', () => {
+    const tours = { ...FFT_TOURS, ...FREQUENCY_RESPONSE_TOURS, ...ROTATING_TOURS, ...STRUCTURAL_TOURS, ...MOTION_TOURS }
+    const engineering = WIDGET_CATALOG.find((category) => category.id === 'engineering').widgets
+    const expected = engineering.filter((widget) => widget.status !== 'coming_soon'
+        && (!widget.subgroup || widget.subgroup.id === 'vibration_structural')).map((widget) => widget.id)
+    assert.deepEqual(Object.keys(tours).sort(), expected.sort())
+    const pair = (value) => Array.isArray(value) && value.length === 2 && value.every((text) => typeof text === 'string' && text.trim())
+    for (const [id, views] of Object.entries(tours)) {
+        assert.ok(views.length >= 1, `${id} needs at least one view`)
+        assert.equal(new Set(views.map((view) => view.id)).size, views.length, `${id} has duplicate views`)
+        for (const view of views) {
+            const key = `${id}--${view.id}`
+            const image = new URL(`../src/assets/widget-tours/${id.replaceAll('_', '-')}--${view.id}.webp`, import.meta.url)
+            assert.ok(existsSync(image), `${key} capture is missing`)
+            assert.ok(pair(view.tab), `${key} tab label`)
+            const anchors = TOUR_ANCHORS[key] || {}
+            const anchored = view.points.filter((point) => anchors[point.id])
+            assert.ok(anchored.length >= 1, `${key} has no measured hotspot`)
+            for (const point of view.points) {
+                assert.ok(pair(point.title) && pair(point.desc), `${key}.${point.id} copy`)
+            }
+            for (const [left, top] of Object.values(anchors)) {
+                for (const value of [left, top]) {
+                    const number = Number.parseFloat(value)
+                    assert.ok(value.endsWith('%') && number >= 1.5 && number <= 98.5, `${key} anchor ${value}`)
+                }
+            }
+        }
+    }
+})
+
+test('modules announced for the next release are visible but not routable', () => {
+    const upcoming = WIDGET_CATALOG.flatMap((category) => category.widgets).filter((widget) => widget.status === 'coming_soon')
+    assert.deepEqual(upcoming.map((widget) => widget.id).sort(), ['machine_health_overview', 'structural_health'])
+    const sitemap = readFileSync(new URL('../public/sitemap.xml', import.meta.url), 'utf8')
+    for (const widget of upcoming) {
+        const slug = getWidgetDetailSlug(widget.id)
+        assert.ok(!sitemap.includes(`/widgets/${slug}<`), `${widget.id} must not be in the sitemap`)
+    }
+    const frf = WIDGET_CATALOG.find((category) => category.id === 'engineering').widgets.find((widget) => widget.id === 'cross_spectrum')
+    assert.equal(frf.subgroup, undefined, 'Frequency Response sits directly under Engineering Modules')
 })

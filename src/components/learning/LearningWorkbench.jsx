@@ -1,6 +1,7 @@
 import { useId, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { getWidgetScreenshot } from '../../data/learning/screenshots.js'
+import TourHotspot from './TourHotspot.jsx'
 
 /** Real application window with numbered markers tied to the control list. */
 function WorkbenchScreenshot({ shot, controls, selected, onSelect, name }) {
@@ -13,12 +14,9 @@ function WorkbenchScreenshot({ shot, controls, selected, onSelect, name }) {
             {shot.hotspots.map((spot, index) => {
                 if (!spot || !controls[index]) return null
                 const active = selected === index
-                return <button key={`${controls[index].name}-spot`} type="button"
-                    aria-label={`${index + 1}. ${controls[index].name}`} aria-pressed={active}
-                    onClick={() => onSelect(index)} style={{ left: spot[0], top: spot[1] }}
-                    className={`absolute flex h-5 w-5 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border text-[10px] font-bold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neon-cyan sm:h-7 sm:w-7 sm:text-xs ${active ? 'border-neon-cyan bg-neon-cyan text-black shadow-glow-cyan' : 'border-white/80 bg-black/80 text-white hover:border-neon-cyan hover:text-neon-cyan'}`}>
-                    {index + 1}
-                </button>
+                return <TourHotspot key={`${controls[index].name}-spot`} number={index + 1}
+                    label={controls[index].name} selected={active}
+                    onSelect={() => onSelect(index)} style={{ left: spot[0], top: spot[1] }} />
             })}
         </div>
         <figcaption className="mt-3 text-xs leading-5 text-slate-500">{labels.screenshotCaption}</figcaption>

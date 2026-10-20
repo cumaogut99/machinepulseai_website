@@ -203,9 +203,8 @@ const ENGINEERING_GROUPS = [
             ['bearing_fault', 'Bearing & Gear Fault Diagnosis', 'Rulman ve Dişli Arıza Tanılama'],
             ['kinematics_6dof', 'Kinematic Chain (6-DOF)', 'Kinematik Zincir (6-DOF)'],
             ['cross_axis_compensation', 'Cross-Axis Compensation', 'Eksenler Arası Kompanzasyon'],
-            ['structural_health', 'Structural Health Monitoring', 'Yapısal Sağlık İzleme'],
-            ['cross_spectrum', 'Cross Spectrum / FRF', 'Çapraz Spektrum / FRF'],
-            ['machine_health_overview', 'Machine Health Overview', 'Makine Sağlığı Genel Görünümü'],
+            ['structural_health', 'Structural Health Monitoring', 'Yapısal Sağlık İzleme', { status: 'coming_soon' }],
+            ['machine_health_overview', 'Machine Health Overview', 'Makine Sağlığı Genel Görünümü', { status: 'coming_soon' }],
         ],
     },
     {
@@ -267,10 +266,13 @@ const ENGINEERING_GROUPS = [
     },
 ]
 
+// Order mirrors the application palette: FFT and Frequency Response sit
+// directly under Engineering Modules, ahead of the domain subgroups.
 const engineeringWidgets = [
     widget('fft_spectrum', 'FFT / Spectrum', 'FFT / Spektrum'),
+    widget('cross_spectrum', 'Frequency Response & Cross Spectrum', 'Frekans Tepkisi ve Çapraz Spektrum'),
     ...ENGINEERING_GROUPS.flatMap((group) => (
-        group.widgets.map(([id, en, tr]) => widget(id, en, tr, { subgroup: group.meta }))
+        group.widgets.map(([id, en, tr, options]) => widget(id, en, tr, { ...options, subgroup: group.meta }))
     )),
 ]
 

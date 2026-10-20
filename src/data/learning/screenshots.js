@@ -1,4 +1,5 @@
-// Real application captures for the learning-page workspace tour.
+// Real application captures for the single-view learning-page workspace tour.
+// Engineering widgets with multi-view tours use data/learning/interfaceTours.js.
 //
 // Each image is the widget's own window from the MachinePulseAI desktop app
 // (Space theme, synthetic demo data), stored as src/assets/widget-ui/<slug>.webp
@@ -46,19 +47,6 @@ const HOTSPOTS = {
     order_map_view: [['59%', '4.5%'], ['8%', '39%'], ['14%', '25.9%']],
     intelligent_report: [['82%', '9.2%'], ['78%', '88.8%'], ['82%', '92%']],
     python_script: [['7.9%', '8.7%'], ['30%', '25%'], ['5.2%', '58.5%']],
-    rotor_balancing: [['93%', '13%'], ['4%', '40%'], ['7%', '92%']],
-    order_tracking: [['93%', '82.5%'], ['9%', '16.3%'], ['53.6%', '4%']],
-    torsional_vibration: [['6.5%', '23.9%'], ['5.6%', '52.8%'], ['2%', '40%']],
-    modal_analysis: [['89%', '19.6%'], ['12%', '18%'], ['12%', '48%']],
-    operational_modal_analysis: [['7%', '18.5%'], ['7%', '21.6%'], ['7%', '46.1%']],
-    time_ods: [['8%', '45.5%'], ['11%', '32.1%'], ['21.4%', '96.3%']],
-    shock_srs: [['11%', '8.5%'], ['11%', '49.5%'], ['11%', '28%']],
-    bearing_fault: [['5%', '24.9%'], ['17.4%', '4%'], ['47.8%', '4%']],
-    kinematics_6dof: [['6%', '7.5%'], ['7%', '25.2%'], ['6%', '60.3%']],
-    cross_axis_compensation: [['93%', '8.3%'], ['7%', '19.6%'], ['4%', '27%']],
-    structural_health: [['93%', '10%'], ['5%', '14%'], ['5.5%', '16.9%']],
-    cross_spectrum: [['5%', '8.6%'], ['5%', '19.3%'], ['5%', '28%']],
-    machine_health_overview: [['54%', '18.8%'], ['12.5%', '8.6%'], ['12%', '18.2%']],
 }
 
 /** Return the real window capture for a widget, or null when none exists. */

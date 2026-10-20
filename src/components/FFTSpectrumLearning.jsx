@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import FFT_WIDGET_DETAILS from '../data/widgetDetails.fft.js'
 import FFTConceptLab from './fftLearning/FFTConceptLab.jsx'
 import FFTFundamentals from './fftLearning/FFTFundamentals.jsx'
-import FFTInterfaceTour from './fftLearning/FFTInterfaceTour.jsx'
+import WidgetInterfaceTour from './learning/WidgetInterfaceTour.jsx'
 import FFTModeGuide from './fftLearning/FFTModeGuide.jsx'
 import {
     FFTEngineeringReference,
@@ -197,7 +197,7 @@ export default function FFTSpectrumLearning() {
                         title={t('fftLearn.tour.title')}
                         intro={t('fftLearn.tour.intro')}
                     />
-                    <FFTInterfaceTour />
+                    <WidgetInterfaceTour widgetId="fft_spectrum" name="FFT / Spectrum" />
                 </section>
 
                 <section

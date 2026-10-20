@@ -26,7 +26,14 @@ const VIBRATION_LEARNING_COMMON = {
             placeholderFootnote: 'The theory and workflow below already follow the widget’s current calculation path and available outputs.',
             inputsTitle: 'What the analysis needs',
             inputsIntro: 'The signals, references and setup values used by the widget are listed below. The reliability of the results depends on the quality of these inputs.',
+            tourIntro: 'The window cannot show every page and result tab at once. Select a screen view below and then a numbered region; each explanation describes what the control does and which result it affects.',
         },
+        tour: {
+            viewHint: 'Choose the screen view you want to inspect',
+            regions: 'Regions in this view',
+            caption: 'Captured from the current MachinePulseAI desktop application (Space theme) with synthetic validation data. Values are illustrative, not machine measurements.',
+        },
+        guideEyebrow: 'Learning guide',
         theory: {
             formulaTitle: 'Governing equations',
             formulaIntro: 'The equations below show which measurements determine each result, which assumptions apply and where uncertainty enters the calculation.',
@@ -78,7 +85,14 @@ const VIBRATION_LEARNING_COMMON = {
             placeholderFootnote: 'Aşağıdaki teori ve iş akışı, widget’ın mevcut hesaplama yolu ve gerçek çıktılarıyla şimdiden uyumludur.',
             inputsTitle: 'Analiz için neler gerekir?',
             inputsIntro: 'Widget’ın kullandığı sinyaller, referanslar ve kurulum değerleri aşağıda listelenmiştir. Sonuçların güvenilirliği bu girdilerin kalitesine bağlıdır.',
+            tourIntro: 'Pencere tüm sayfaları ve sonuç sekmelerini aynı anda gösteremez. Aşağıdan bir ekran görünümü, ardından numaralı bölgelerden birini seçin; her açıklama ilgili kontrolün ne yaptığını ve hangi sonucu etkilediğini anlatır.',
         },
+        tour: {
+            viewHint: 'İncelemek istediğiniz ekran görünümünü seçin',
+            regions: 'Bu görünümdeki bölgeler',
+            caption: 'Güncel MachinePulseAI masaüstü uygulamasından (Space teması) sentetik doğrulama verisiyle alınmıştır. Değerler açıklayıcıdır; makine ölçümü değildir.',
+        },
+        guideEyebrow: 'Öğrenme rehberi',
         theory: {
             formulaTitle: 'Temel denklemler',
             formulaIntro: 'Aşağıdaki denklemler, her sonucu hangi ölçümlerin belirlediğini, hangi varsayımların geçerli olduğunu ve belirsizliğin hesaba nereden girdiğini gösterir.',

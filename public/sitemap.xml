@@ -76,16 +76,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.machinepulseai.com.tr/widgets/machine-health-overview</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.machinepulseai.com.tr/widgets/structural-health-monitoring</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.machinepulseai.com.tr/widgets/torsional-vibration</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

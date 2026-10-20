@@ -7,6 +7,8 @@ import LearningWorkbench from './learning/LearningWorkbench.jsx'
 import LearningConceptLab from './learning/LearningConceptLab.jsx'
 import { CONCEPT_LABS } from '../data/learning/conceptLabs.js'
 import { getWidgetScreenshot } from '../data/learning/screenshots.js'
+import { INTERFACE_TOUR_IDS } from '../data/learning/interfaceTours.js'
+import WidgetInterfaceTour from './learning/WidgetInterfaceTour.jsx'
 import WIDGET_CATALOG from '../data/widgetCatalog.js'
 
 const NAV_KEYS = ['interface', 'theory', 'foundations', 'modes', 'workflow']
@@ -79,6 +81,13 @@ export default function VibrationWidgetLearning({ widgetId }) {
     const detail = page.detail
     const widget = WIDGET_CATALOG.flatMap((category) => category.widgets).find((item) => item.id === widgetId)
     const activeSection = useActiveSection(NAV_KEYS)
+    const hasTour = INTERFACE_TOUR_IDS.includes(widgetId)
+    // Eyebrow follows the application palette: direct Engineering Modules
+    // entries (e.g. Frequency Response) are not part of the vibration subgroup.
+    const category = WIDGET_CATALOG.find((item) => item.widgets.some((entry) => entry.id === widgetId))
+    const eyebrow = widget?.subgroup
+        ? t('vibrationLearn.eyebrow')
+        : `${category?.[lang]?.name || ''} · ${t('vibrationLearn.guideEyebrow')}`
 
     return (
         <article className="relative overflow-x-clip bg-grid">
@@ -90,7 +99,7 @@ export default function VibrationWidgetLearning({ widgetId }) {
                     <span aria-hidden="true">←</span>{t('vibrationLearn.back')}
                 </Link>
                 <div className="mt-10">
-                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#00f5ff]">{t('vibrationLearn.eyebrow')}</p>
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#00f5ff]">{eyebrow}</p>
                     <h1 className="mt-4 max-w-5xl text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">{page.title}</h1>
                     <p className="mt-5 max-w-3xl text-base leading-7 text-slate-300 sm:text-lg">{page.intro}</p>
                     <div className="mt-6 flex flex-wrap gap-2">
@@ -122,7 +131,7 @@ export default function VibrationWidgetLearning({ widgetId }) {
                 </div>
             </header>
 
-            <nav aria-label={t('vibrationLearn.eyebrow')} className="sticky top-14 z-30 border-y border-white/10 bg-[#0a0a0a]/95 backdrop-blur-xl">
+            <nav aria-label={eyebrow} className="sticky top-14 z-30 border-y border-white/10 bg-[#0a0a0a]/95 backdrop-blur-xl">
                 <div className="mx-auto flex max-w-6xl gap-1 overflow-x-auto px-6 sm:gap-3">
                     {NAV_KEYS.map((key, index) => (
                         <a key={key} href={`#${key}`} aria-current={activeSection === key ? 'true' : undefined} className={`flex items-center gap-2 whitespace-nowrap border-b-2 px-2 py-4 text-sm font-semibold transition sm:px-3 ${activeSection === key ? 'border-[#00f5ff] text-[#00f5ff]' : 'border-transparent text-slate-300 hover:border-white/25 hover:text-white'}`}>
@@ -135,8 +144,10 @@ export default function VibrationWidgetLearning({ widgetId }) {
 
             <main className="relative mx-auto max-w-6xl px-6">
                 <section id="interface" className="scroll-mt-32 py-16">
-                    <SectionHeader eyebrow={t('vibrationLearn.sectionEyebrow.interface')} title={page.interface.title} intro={t(getWidgetScreenshot(widgetId) ? 'widgetLearn.common.screenshotIntro' : 'widgetLearn.common.workspaceIntro')} />
-                    <LearningWorkbench key={`${widgetId}:${lang}`} widgetId={widgetId} name={widget?.[lang]?.name || page.title} controls={tour.controls} inputs={detail.inputs} outputs={detail.outputs} lang={lang} />
+                    <SectionHeader eyebrow={t('vibrationLearn.sectionEyebrow.interface')} title={page.interface.title} intro={hasTour ? t('vibrationLearn.interface.tourIntro') : t(getWidgetScreenshot(widgetId) ? 'widgetLearn.common.screenshotIntro' : 'widgetLearn.common.workspaceIntro')} />
+                    {hasTour
+                        ? <WidgetInterfaceTour widgetId={widgetId} name={widget?.[lang]?.name || page.title} />
+                        : <LearningWorkbench key={`${widgetId}:${lang}`} widgetId={widgetId} name={widget?.[lang]?.name || page.title} controls={tour.controls} inputs={detail.inputs} outputs={detail.outputs} lang={lang} />}
                     <div className="mt-12">
                         <SectionHeader eyebrow={t('vibrationLearn.sectionEyebrow.interface')} title={t('vibrationLearn.interface.inputsTitle')} intro={t('vibrationLearn.interface.inputsIntro')} />
                         <DetailCards items={detail.inputs} />

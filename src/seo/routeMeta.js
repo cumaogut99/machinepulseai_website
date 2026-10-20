@@ -96,8 +96,8 @@ export const ROUTE_META = {
         tr: { title: `Zaman Tabanlı ODS — ${BRAND}`, description: 'Senkron tepki kanalları ve ölçüm geometrisinden çalışma şekli animasyonu.' },
     },
     '/widgets/cross-spectrum-frf': {
-        en: { title: `Cross Spectrum & FRF — ${BRAND}`, description: 'Cross-spectrum, coherence and FRF analysis for input-output vibration relationships.' },
-        tr: { title: `Çapraz Spektrum ve FRF — ${BRAND}`, description: 'Giriş-çıkış titreşim ilişkileri için çapraz spektrum, koherans ve FRF analizi.' },
+        en: { title: `Frequency Response & Cross Spectrum — ${BRAND}`, description: 'Cross-spectrum, coherence and FRF analysis for input-output vibration relationships.' },
+        tr: { title: `Frekans Tepkisi ve Çapraz Spektrum — ${BRAND}`, description: 'Giriş-çıkış titreşim ilişkileri için çapraz spektrum, koherans ve FRF analizi.' },
     },
     '/widgets/cross-axis-compensation': {
         en: { title: `Cross-Axis Compensation — ${BRAND}`, description: 'Sensor cross-axis correction for cleaner multi-axis acceleration and motion measurements.' },
@@ -106,14 +106,6 @@ export const ROUTE_META = {
     '/widgets/kinematic-chain-6dof': {
         en: { title: `Kinematic Chain 6DOF — ${BRAND}`, description: 'Six-degree-of-freedom motion reconstruction from accelerometer, gyro and geometry data.' },
         tr: { title: `6DOF Kinematik Zincir — ${BRAND}`, description: 'İvmeölçer, jiroskop ve geometri verisinden altı serbestlik dereceli hareket kurulumu.' },
-    },
-    '/widgets/machine-health-overview': {
-        en: { title: `Machine Health Overview — ${BRAND}`, description: 'ISO-style vibration severity, RMS trends and exception lists for machine health screening.' },
-        tr: { title: `Makine Sağlığı Özeti — ${BRAND}`, description: 'Makine sağlığı taraması için ISO tarzı titreşim şiddeti, RMS trendleri ve istisna listeleri.' },
-    },
-    '/widgets/structural-health-monitoring': {
-        en: { title: `Structural Health Monitoring — ${BRAND}`, description: 'Long-term modal and vibration trend monitoring for detecting structural change and damage.' },
-        tr: { title: `Yapısal Sağlık İzleme — ${BRAND}`, description: 'Yapısal değişim ve hasar tespiti için uzun dönem modal/titreşim trend izleme.' },
     },
     '/widgets/torsional-vibration': {
         en: { title: `Torsional & Rotational Vibration — ${BRAND}`, description: 'Angular speed fluctuation, shaft twist and torsional order analysis from encoder or tacho pulses.' },
