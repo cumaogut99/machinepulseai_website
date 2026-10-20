@@ -11,6 +11,23 @@ const FFT_LEARNING_TRANSLATIONS = {
         badges: ['Real application UI', 'Interactive concepts', 'New-engineer friendly'],
         start: 'Start with the interface',
         duration: '30 min guided learning path',
+        why: {
+            title: 'Why this analysis is needed',
+            items: [
+                {
+                    title: 'What frequency analysis is for',
+                    body: 'A vibration or acoustic signal recorded over time is the sum of many components acting at the same time: shaft rotation, gear meshing, bearing defects, structural resonances, electrical interference and noise. In the time waveform these components overlap and cannot be separated by eye. A spectrum shows each component as a peak at its own frequency, so each one can be linked to a likely source and tracked over time.',
+                },
+                {
+                    title: 'Why the FFT is used',
+                    body: 'The fast Fourier transform (FFT) is the standard method for converting a sampled time signal into its frequency content. Most machine diagnostics are based on it: unbalance appears at 1× running speed, misalignment often at 2×, gear and bearing problems at their characteristic frequencies. Welch PSD and STFT, also available in the widget, extend the FFT to random signals and to signals whose content changes over time.',
+                },
+                {
+                    title: 'Why the settings matter',
+                    body: 'The spectrum is a calculated result and depends on the settings. The sample rate limits the highest frequency that can be represented (Nyquist), the block size sets the frequency resolution, the window controls leakage between neighbouring lines and averaging reduces random scatter. Unsuitable settings can hide real peaks or create false ones; this guide explains how to choose each of them.',
+                },
+            ],
+        },
         outcomesTitle: 'At the end of this page you will be able to',
         outcomes: [
             'choose FFT, Welch PSD or STFT for the measurement question',
@@ -179,6 +196,23 @@ const FFT_LEARNING_TRANSLATIONS = {
         badges: ['Uygulama Arayüzü', 'İnteraktif Deneyler', 'Pratik Mühendislik'],
         start: 'Arayüzü İnceleyin',
         duration: '30 dakikalık rehberli öğrenme yolu',
+        why: {
+            title: 'Bu analize neden ihtiyaç duyulur?',
+            items: [
+                {
+                    title: 'Frekans analizi ne işe yarar?',
+                    body: 'Zaman içinde kaydedilen bir titreşim veya akustik sinyal, aynı anda etkiyen birçok bileşenin toplamıdır: mil dönüşü, dişli kavraması, rulman hasarları, yapısal rezonanslar, elektriksel girişim ve gürültü. Zaman dalga biçiminde bu bileşenler üst üste biner ve gözle ayrılamaz. Spektrum her bileşeni kendi frekansında bir tepe olarak gösterir; böylece her biri olası bir kaynakla ilişkilendirilebilir ve zaman içinde izlenebilir.',
+                },
+                {
+                    title: 'Neden FFT kullanılır?',
+                    body: 'Hızlı Fourier dönüşümü (FFT), örneklenmiş bir zaman sinyalini frekans içeriğine dönüştürmek için kullanılan standart yöntemdir. Makine teşhislerinin çoğu buna dayanır: balanssızlık 1× çalışma devrinde, eksen kaçıklığı çoğu zaman 2×’te, dişli ve rulman sorunları ise kendi karakteristik frekanslarında görülür. Widget’ta bulunan Welch PSD ve STFT, FFT’yi rastgele sinyallere ve içeriği zamanla değişen sinyallere genişletir.',
+                },
+                {
+                    title: 'Ayarlar neden önemlidir?',
+                    body: 'Spektrum hesaplanmış bir sonuçtur ve ayarlara bağlıdır. Örnekleme hızı gösterilebilecek en yüksek frekansı (Nyquist), blok boyutu frekans çözünürlüğünü belirler; pencere komşu çizgiler arasındaki sızıntıyı kontrol eder, ortalama ise rastgele saçılmayı azaltır. Uygun olmayan ayarlar gerçek tepeleri gizleyebilir veya sahte tepeler oluşturabilir; bu rehber her birinin nasıl seçileceğini anlatır.',
+                },
+            ],
+        },
         outcomesTitle: 'Bu rehberi tamamladığınızda şunları yapabileceksiniz:',
         outcomes: [
             'Ölçüm amacınıza göre Genlik FFT, Welch PSD veya STFT modunu doğru seçmek',
