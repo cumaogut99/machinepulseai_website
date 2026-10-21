@@ -330,5 +330,27 @@ export default {
                 ]),
             ],
         },
+        {
+            id: 'result',
+            tab: ['After Apply', 'Apply sonrası'],
+            summary: [
+                'Apply kept 20,013 of the 40,000 rows — every row where tank_level is between 30 and 70 — and sent them on as a new dataset.',
+                'Apply 40.000 satırın 20.013’ünü tuttu — tank_level’ın 30 ile 70 arasında olduğu her satır — ve bunları yeni bir veri seti olarak iletti.',
+            ],
+            points: [
+                pt('status', ['Result status', 'Sonuç durumu'], [
+                    '“Filtered dataset propagated (20,013 rows)” reports the exact number of rows that passed every rule, counted over the whole record, not estimated from the preview.',
+                    '“Filtered dataset propagated (20,013 rows)” her kuralı geçen satır sayısını tam olarak bildirir; sayı önizlemeden tahmin edilmez, tüm kayıt üzerinden sayılır.',
+                ]),
+                pt('rules', ['Rules that were applied', 'Uygulanan kurallar'], [
+                    'The rule list stays as it was, so you can adjust a limit and apply again to produce another filtered dataset.',
+                    'Kural listesi olduğu gibi kalır; bir sınırı değiştirip yeniden Apply ederek başka bir filtrelenmiş veri seti üretebilirsiniz.',
+                ]),
+                pt('preview', ['Source stays untouched', 'Kaynak değişmeden kalır'], [
+                    'The preview still shows the original record: the filtered rows go to a separate dataset for downstream widgets, and the source file is never rewritten.',
+                    'Önizleme hâlâ özgün kaydı gösterir: filtrelenmiş satırlar sonraki widget’lar için ayrı bir veri setine gider ve kaynak dosya hiçbir zaman yeniden yazılmaz.',
+                ]),
+            ],
+        },
     ],
 }

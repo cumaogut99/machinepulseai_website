@@ -145,9 +145,10 @@ export default function VibrationWidgetLearning({ widgetId }) {
             <main className="relative mx-auto max-w-6xl px-6">
                 <section id="interface" className="scroll-mt-32 py-16">
                     <SectionHeader eyebrow={t('vibrationLearn.sectionEyebrow.interface')} title={page.interface.title} intro={hasTour ? t('vibrationLearn.interface.tourIntro') : t(getWidgetScreenshot(widgetId) ? 'widgetLearn.common.screenshotIntro' : 'widgetLearn.common.workspaceIntro')} />
-                    {hasTour
-                        ? <WidgetInterfaceTour widgetId={widgetId} name={widget?.[lang]?.name || page.title} />
-                        : <LearningWorkbench key={`${widgetId}:${lang}`} widgetId={widgetId} name={widget?.[lang]?.name || page.title} controls={tour.controls} inputs={detail.inputs} outputs={detail.outputs} lang={lang} />}
+                    {hasTour && <WidgetInterfaceTour widgetId={widgetId} name={widget?.[lang]?.name || page.title} />}
+                    {/* The per-control option guide stays below the screen tour. */}
+                    {hasTour && <h3 className="mb-5 mt-12 text-xl font-bold text-white">{t('widgetLearn.common.controlGuide')}</h3>}
+                    <LearningWorkbench key={`${widgetId}:${lang}`} widgetId={widgetId} name={widget?.[lang]?.name || page.title} controls={tour.controls} inputs={detail.inputs} outputs={detail.outputs} lang={lang} />
                     <div className="mt-12">
                         <SectionHeader eyebrow={t('vibrationLearn.sectionEyebrow.interface')} title={t('vibrationLearn.interface.inputsTitle')} intro={t('vibrationLearn.interface.inputsIntro')} />
                         <DetailCards items={detail.inputs} />
