@@ -16,6 +16,7 @@ import FREQUENCY_RESPONSE_TOURS from '../src/data/learning/tours/frequencyRespon
 import ROTATING_TOURS from '../src/data/learning/tours/rotating.js'
 import STRUCTURAL_TOURS from '../src/data/learning/tours/structural.js'
 import MOTION_TOURS from '../src/data/learning/tours/motion.js'
+import FILTER_TOURS from '../src/data/learning/tours/filters.js'
 
 test('every in-scope ready widget has a complete authored course or existing flagship guide', () => {
     const specialized = new Set(['fft_spectrum', 'rotor_dynamics', ...VIBRATION_LEARNING_IDS])
@@ -94,11 +95,12 @@ test('teaching models reproduce the worked examples and stay finite at slider bo
 })
 
 
-test('interface tours cover every engineering vibration widget with captured, anchored, bilingual views', () => {
-    const tours = { ...FFT_TOURS, ...FREQUENCY_RESPONSE_TOURS, ...ROTATING_TOURS, ...STRUCTURAL_TOURS, ...MOTION_TOURS }
+test('interface tours cover the signal filters and every engineering vibration widget with captured, anchored, bilingual views', () => {
+    const tours = { ...FILTER_TOURS, ...FFT_TOURS, ...FREQUENCY_RESPONSE_TOURS, ...ROTATING_TOURS, ...STRUCTURAL_TOURS, ...MOTION_TOURS }
     const engineering = WIDGET_CATALOG.find((category) => category.id === 'engineering').widgets
-    const expected = engineering.filter((widget) => widget.status !== 'coming_soon'
-        && (!widget.subgroup || widget.subgroup.id === 'vibration_structural')).map((widget) => widget.id)
+    const filters = WIDGET_CATALOG.find((category) => category.id === 'filters').widgets
+    const expected = [...filters, ...engineering.filter((widget) => widget.status !== 'coming_soon'
+        && (!widget.subgroup || widget.subgroup.id === 'vibration_structural'))].map((widget) => widget.id)
     assert.deepEqual(Object.keys(tours).sort(), expected.sort())
     const pair = (value) => Array.isArray(value) && value.length === 2 && value.every((text) => typeof text === 'string' && text.trim())
     for (const [id, views] of Object.entries(tours)) {

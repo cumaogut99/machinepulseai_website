@@ -8,6 +8,8 @@ import LearningWorkbench from './learning/LearningWorkbench.jsx'
 import LearningExercise from './learning/LearningExercise.jsx'
 import LearningConceptLab from './learning/LearningConceptLab.jsx'
 import { CONCEPT_LABS } from '../data/learning/conceptLabs.js'
+import { INTERFACE_TOUR_IDS } from '../data/learning/interfaceTours.js'
+import WidgetInterfaceTour from './learning/WidgetInterfaceTour.jsx'
 
 const SECTION_IDS = ['workspace', 'theory', 'example', 'workflow', 'references']
 
@@ -19,6 +21,7 @@ export default function WidgetLearningPage({ guide }) {
     const category = WIDGET_CATALOG.find((item) => item.widgets.some((widget) => widget.id === guide.id))
     const widget = category.widgets.find((item) => item.id === guide.id)
     const name = widget[lang].name
+    const hasTour = INTERFACE_TOUR_IDS.includes(guide.id)
     const related = guide.related.map((id) => WIDGET_CATALOG.flatMap((item) => item.widgets).find((item) => item.id === id))
 
     return <article className="relative bg-grid">
@@ -43,7 +46,9 @@ export default function WidgetLearningPage({ guide }) {
         <LearningNavigation ids={SECTION_IDS} labels={labels.nav} title={labels.eyebrow} />
         <div className="relative mx-auto max-w-6xl px-6">
             <section id="workspace" className="scroll-mt-32 py-16">
-                <LearningHeading number="01" title={labels.workspace} />
+                <LearningHeading number="01" title={labels.workspace} intro={hasTour ? t('vibrationLearn.interface.tourIntro') : undefined} />
+                {hasTour && <WidgetInterfaceTour widgetId={guide.id} name={name} />}
+                {hasTour && <h3 className="mb-5 mt-12 text-xl font-bold text-white">{labels.controlGuide}</h3>}
                 <LearningWorkbench key={`${guide.id}:${lang}`} widgetId={guide.id} name={name} controls={page.controls} inputs={page.inputs} outputs={page.outputs} lang={lang} />
                 <div className="mt-10"><h3 className="mb-5 text-xl font-bold text-white">{labels.source}</h3><LearningCards items={page.inputs} /></div>
             </section>

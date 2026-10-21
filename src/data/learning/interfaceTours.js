@@ -10,6 +10,7 @@
 import ANCHORS from './tours/tourAnchors.js'
 import FREQUENCY_RESPONSE_TOURS from './tours/frequencyResponse.js'
 import FFT_TOURS from './tours/fft.js'
+import FILTER_TOURS from './tours/filters.js'
 import ROTATING_TOURS from './tours/rotating.js'
 import STRUCTURAL_TOURS from './tours/structural.js'
 import MOTION_TOURS from './tours/motion.js'
@@ -20,6 +21,7 @@ const IMAGES = import.meta.glob('../../assets/widget-tours/*.webp', { eager: tru
 const SIZE = { width: 2000, height: 1060 }
 
 const TOURS = {
+    ...FILTER_TOURS,
     ...FFT_TOURS,
     ...FREQUENCY_RESPONSE_TOURS,
     ...ROTATING_TOURS,
