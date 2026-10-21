@@ -100,12 +100,12 @@ const FFT_LEARNING_EXTRAS = {
             ],
         },
         reference: {
-            formulasEyebrow: 'Mathematics where the concepts are learned',
-            formulasTitle: 'Core equations behind the readouts',
+            formulasEyebrow: '05.1 · Workbench controls & mathematical foundation',
+            formulasTitle: 'Core equations behind the controls and readouts',
             formulasIntro:
-                'These equations now sit beside the Fourier foundations they explain. Use them to connect the controls and displayed values to block length, sampling, windowing, density and integration—not as formulas detached from the measurement chain.',
-            assumptionsTitle: 'Engineering guardrails',
-            outputsTitle: 'What the module produces',
+                'Every equation below corresponds directly to an active setting or result in the MachinePulseAI workbench. Use this reference to verify the mathematical definitions of block length, sampling, window normalization, spectral density and frequency-domain integration.',
+            assumptionsTitle: 'Engineering guardrails & boundary conditions',
+            outputsTitle: 'Produced data structures & output ports',
         },
     },
     tr: {
@@ -180,39 +180,39 @@ const FFT_LEARNING_EXTRAS = {
             ],
         },
         mistakes: {
-            title: 'Saha Analistlerinin Sık Yaptığı 6 Kritik Hata',
+            title: 'Saha Analizinde Sık Yapılan 6 Yorumlama Yanılgısı',
             items: [
                 {
-                    title: '1. “Spektrumda yüksek bir tepe var, kesin rezonans var!”',
-                    body: 'Hata! Yüksek tepe güçlü bir uyarım kaynağından (örneğin şiddetli balanssızlık) da gelebilir. Rezonansı doğrulamak için darbe (çekiç) testi veya Çapraz Spektrum (FRF) kullanılmalıdır.',
+                    title: '1. “Spektrumdaki baskın tepe doğrudan yapısal rezonansı gösterir.”',
+                    body: 'Yanılgı: Baskın bir tepe rezonanstan değil, yüksek genlikli bir mekanik uyarımdan (örneğin mil balanssızlığı veya dişli teması) kaynaklanabilir. Rezonansı doğrulamak için tek kanallı FFT yeterli değildir; giriş-çıkış transfer fonksiyonu (FRF) ve eşevrelilik (coherence) analizi veya darbe testi gereklidir.',
                 },
                 {
-                    title: '2. “Görünüm bandını daralttım, gürültüyü süzdüm.”',
-                    body: 'Hata! Min/Max bant sınırını daraltmak sadece x eksenindeki görüntüyü yakınlaştırır. Verideki bant dışı enerjiyi veya tepeleri hesaptan silmez.',
+                    title: '2. “Görünüm frekans bandını daraltmak bant dışı gürültüyü filtreler.”',
+                    body: 'Yanılgı: Min/Max frekans aralığını değiştirmek yalnızca ekrandaki grafiği yakınlaştırır (zoom). Sinyali fiziksel olarak filtrelemez; bant dışındaki güçlü bileşenler ve özet metrikler hesaba katılmaya devam eder.',
                 },
                 {
-                    title: '3. “Zero-Padding (sıfır doldurma) yaptım, frekans çözünürlüğüm arttı.”',
-                    body: 'Hata! Zero-padding çizilen frekans çizgisini daha pürüzsüz yapar (interpole eder); ancak fiziksel olarak iki yakın frekansı ayırma gücünü artırmaz.',
+                    title: '3. “Zero-Padding (sıfır ekleme) fiziksel frekans çözünürlüğünü artırır.”',
+                    body: 'Yanılgı: Zero-padding frekans eğrisini daha pürüzsüz interpole eder; ancak fiziksel olarak iki yakın frekansı ayırt etme gücünü artırmaz. Gerçek çözünürlük ölçülen blok süresine (T = N / fs) bağlıdır.',
                 },
                 {
-                    title: '4. “Ortalama sayısı arttıkça sonucum her zaman daha iyi olur.”',
-                    body: 'Hata! Ortalama almak sadece makine çalışma durumu sabitken gürültüyü azaltır. Devir veya yük değişiyorsa, ortalama almak değişkenliği gizler ve hatalı sonuç üretir.',
+                    title: '4. “Ortalama sayısı arttıkça spektrum kalitesi her koşulda artar.”',
+                    body: 'Yanılgı: Ortalama alma işlemi yalnızca makinenin çalışma rejimi (devir, yük, sıcaklık) durağan kaldığında rastgele gürültüyü azaltır. Değişken devirde ortalama almak, rejim değişimlerini ve geçici arızaları görünmez kılar.',
                 },
                 {
-                    title: '5. “dB değeri otomatik olarak kalibre edilmiş standart seviyedir.”',
-                    body: 'Hata! dB göreceli bir orandır. Tanımlanmış bir referans değer ve kalibre edilmiş bir sensör olmadan doğrudan dB SPL veya standart dBV anlamına gelmez.',
+                    title: '5. “dB ölçeği doğrudan kalibre edilmiş mutlak seviyedir.”',
+                    body: 'Yanılgı: Desibel (dB) göreceli bir orandır. Tanımlanmış bir referans genlik (Pref / Aref) ve kalibrasyon katsayısı olmadan mutlak ses (dB SPL) veya gerilim (dBV) standart seviyesi olarak kabul edilemez.',
                 },
                 {
-                    title: '6. “Aliasing hatasını kayıt alındıktan sonra yazılımla temizlerim.”',
-                    body: 'Hata! Örnekleme sırasında Nyquist sınırı aşıldıysa yüksek frekans düşük frekans olarak kaydedilmiştir ve veri bozulmuştur. Aliasing önlemi mutlaka ADC öncesi analog filtre ile alınmalıdır.',
+                    title: '6. “Aliasing (örtüşme) hatası kayıt sonrası dijital filtreyle temizlenebilir.”',
+                    body: 'Yanılgı: Örnekleme anında Nyquist sınırı (fs / 2) aşıldığında, yüksek frekanslı bileşen geri döndürülemez şekilde alçak frekans bölgesine katlanır. Aliasing önlemi mutlaka ADC öncesinde analog anti-alias filtre ile alınmalıdır.',
                 },
             ],
         },
         reference: {
-            formulasEyebrow: 'Temel Matematiksel Bağıntılar',
-            formulasTitle: 'Ekrandaki Değerlerin Arkasındaki Denklem ve Formüller',
+            formulasEyebrow: '05.1 · Parametre & Formül Eşleşmesi',
+            formulasTitle: 'Arayüz Kontrollerinin ve Göstergelerin Matematiksel Karşılıkları',
             formulasIntro:
-                'Bu formüller kontrollerin ve ekrandaki sonuçların (blok uzunluğu, örnekleme hızı, pencereleme ve entegrasyon) arkasındaki temel bağıntılardır.',
+                'Aşağıdaki her formül, MachinePulseAI arayüzündeki somut bir ayar parametresinin veya hesaplanan sonucun matematiksel temelidir. Blok boyutu, örnekleme hızı, pencere normalizasyonu, güç yoğunluğu ve entegrasyon kurallarını bu referanstan inceleyebilirsiniz.',
             assumptionsTitle: 'Mühendislik Kabulleri ve Sınırlar',
             outputsTitle: 'Modülün Ürettiği Çıktı ve Portlar',
         },

@@ -210,14 +210,6 @@ export default function FFTSpectrumLearning() {
                         intro={t('fftTheory.intro')}
                     />
                     <FFTFundamentals />
-                    <div className="mt-14 border-t border-white/8 pt-14">
-                        <SectionHeader
-                            eyebrow={t('fftLearn.reference.formulasEyebrow')}
-                            title={t('fftLearn.reference.formulasTitle')}
-                            intro={t('fftLearn.reference.formulasIntro')}
-                        />
-                        <FFTFormulaReference formulas={detail.formulas} />
-                    </div>
                 </section>
 
                 <section
@@ -245,7 +237,7 @@ export default function FFTSpectrumLearning() {
 
                     <div className="mt-14">
                         <SectionHeader
-                            eyebrow={t('fftLearn.sectionEyebrow.workflow')}
+                            eyebrow={t('fftLearn.sectionEyebrow.pipeline')}
                             title={t('fftLearn.pipeline.title')}
                             intro={t('fftLearn.pipeline.intro')}
                         />
@@ -325,6 +317,15 @@ export default function FFTSpectrumLearning() {
                                 </details>
                             ))}
                         </div>
+                    </div>
+
+                    <div className="mt-14 border-t border-white/8 pt-14">
+                        <SectionHeader
+                            eyebrow={t('fftLearn.sectionEyebrow.reference')}
+                            title={t('fftLearn.reference.formulasTitle')}
+                            intro={t('fftLearn.reference.formulasIntro')}
+                        />
+                        <FFTFormulaReference formulas={detail.formulas} />
                     </div>
 
                     <div className="mt-14 border-t border-white/8 pt-14">

@@ -34,20 +34,29 @@ function Formula({ latex, fallback }) {
 
 export function FFTFormulaReference({ formulas }) {
     return (
-        <div className="grid gap-4">
+        <div className="grid gap-4 md:grid-cols-2">
             {formulas.map((formula) => (
                 <article
                     key={formula.title}
-                    className="rounded-2xl border border-white/10 bg-white/[0.025] p-5"
+                    className="flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.025] p-5 transition hover:border-[#00f5ff]/30"
                 >
-                    <h4 className="text-sm font-semibold text-white">
-                        {formula.title}
-                    </h4>
-                    <div className="mt-3">
-                        <Formula
-                            latex={formula.latex}
-                            fallback={formula.expr}
-                        />
+                    <div>
+                        <div className="flex flex-wrap items-center justify-between gap-2">
+                            <h4 className="text-sm font-semibold text-white">
+                                {formula.title}
+                            </h4>
+                            {formula.param && (
+                                <span className="rounded-md border border-[#00f5ff]/25 bg-[#00f5ff]/[0.08] px-2.5 py-0.5 font-mono text-[11px] font-medium text-[#00f5ff]">
+                                    {formula.param}
+                                </span>
+                            )}
+                        </div>
+                        <div className="mt-3">
+                            <Formula
+                                latex={formula.latex}
+                                fallback={formula.expr}
+                            />
+                        </div>
                     </div>
                     <p className="mt-3 text-[13px] leading-6 text-slate-400">
                         {formula.where}

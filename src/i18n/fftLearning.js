@@ -44,9 +44,11 @@ const FFT_LEARNING_TRANSLATIONS = {
         },
         sectionEyebrow: {
             interface: '01 · Tour the workbench and its controls',
-            foundations: '03 · Learn by changing the numbers',
-            modes: '04 · Match the method to the question',
-            workflow: '05 · Build a defensible analysis',
+            foundations: '03 · Interactive parameter and boundary experiment',
+            modes: '04 · Match the estimator to the engineering question',
+            pipeline: '04.1 · Signal conditioning and processing chain',
+            workflow: '05 · Field analysis workflow and evidence check',
+            reference: '05.1 · Engineering and mathematical specification',
         },
         tour: {
             title: 'The interface is the analysis story',
@@ -229,9 +231,11 @@ const FFT_LEARNING_TRANSLATIONS = {
         },
         sectionEyebrow: {
             interface: '01 · Çalışma Ekranını ve Kontrolleri Tanıyın',
-            foundations: '03 · Sayıları Değiştirerek İnteraktif Öğrenin',
+            foundations: '03 · İnteraktif Parametre ve Sınır Laboratuvarı',
             modes: '04 · Doğru Yöntemi Doğru Soruyla Eşleştirin',
-            workflow: '05 · Güvenilir Bir Analiz Akışı Kurun',
+            pipeline: '04.1 · Sinyal Koşullandırma ve Hesaplama Zinciri',
+            workflow: '05 · Saha Analiz Akışı ve Doğrulama Adımları',
+            reference: '05.1 · Teknik ve Matematiksel Spesifikasyon',
         },
         modes: {
             title: 'Ayarları Değiştirmeden Önce Doğru Kestiriciyi Seçin',
