@@ -21,15 +21,15 @@ const cardVariants = {
     visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.21, 0.47, 0.32, 0.98] } },
 }
 
-// Small uppercase label marking a module the application ships in a later phase.
-function PhaseBadge({ phase, accent }) {
+// Small uppercase label marking a module the application ships in a later version.
+function FutureBadge({ accent }) {
     const { t } = useTranslation()
     return (
         <span
             className="text-[9px] uppercase tracking-wide px-1.5 py-0.5 rounded border whitespace-nowrap"
             style={{ color: accent, borderColor: `${accent}55`, background: `${accent}12` }}
         >
-            {t('widgets.phaseBadge', { phase })}
+            {t('widgets.futureBadge')}
         </span>
     )
 }
@@ -74,7 +74,7 @@ function WidgetCard({
                 <h3 className="text-base font-semibold text-white leading-snug pr-2">
                     {c.name}
                 </h3>
-                {phase && <PhaseBadge phase={phase} accent={accent} />}
+                {phase && <FutureBadge accent={accent} />}
             </div>
 
             <p className="text-sm text-slate-400 leading-relaxed flex-1">
@@ -129,7 +129,7 @@ function WidgetCard({
                     className="self-start mt-1 px-3 py-1.5 rounded-lg border text-xs font-semibold"
                     style={{ color: accent, borderColor: `${accent}33`, background: `${accent}0a` }}
                 >
-                    {t('widgets.phaseNote', { phase })}
+                    {t('widgets.futureNote')}
                 </p>
             ) : (guide || course) && <p className="text-[11px] leading-5 text-slate-400">
                 {t(guide?.exercise ? 'widgetLearn.common.card' : 'widgetLearn.common.cardNoCheck')}
@@ -205,7 +205,7 @@ function WidgetGroup({
                                 {group.label}
                             </span>
                             <span className="text-xs text-slate-600">({group.widgets.length})</span>
-                            {group.phase && <PhaseBadge phase={group.phase} accent={category.accent} />}
+                            {group.phase && <FutureBadge accent={category.accent} />}
                             <span className="ml-auto flex h-7 w-7 items-center justify-center rounded-full border border-white/10 text-slate-400 group-hover:text-white">
                                 <svg
                                     className={`h-4 w-4 transition-transform duration-300 ${visible ? 'rotate-90' : ''}`}
@@ -412,7 +412,7 @@ export default function WidgetCatalog() {
                                 </span>
                                 {cat.phase && (
                                     <span className="text-[9px] uppercase tracking-wide px-1.5 py-0.5 rounded bg-white/10 text-slate-300">
-                                        {t('widgets.phaseBadge', { phase: cat.phase })}
+                                        {t('widgets.futureBadge')}
                                     </span>
                                 )}
                             </button>
@@ -446,7 +446,7 @@ export default function WidgetCatalog() {
                                     {cat.phase && (
                                         <span className="text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-full border"
                                             style={{ color: cat.accent, borderColor: `${cat.accent}55`, background: `${cat.accent}12` }}>
-                                            {t('widgets.phaseBadge', { phase: cat.phase })}
+                                            {t('widgets.futureBadge')}
                                         </span>
                                     )}
                                 </div>

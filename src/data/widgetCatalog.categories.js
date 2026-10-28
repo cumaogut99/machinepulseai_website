@@ -37,8 +37,8 @@ const CATEGORIES = [
     {
         id: 'machine_learning',
         accent: '#a855f7',
-        en: { name: 'Machine Learning', blurb: 'Machine-learning workflow modules arriving in a later application phase.' },
-        tr: { name: 'Makine Öğrenmesi', blurb: 'Uygulamanın ileriki bir fazında gelecek makine öğrenmesi iş akışı modülleri.' },
+        en: { name: 'Machine Learning', blurb: 'Machine-learning workflow modules coming in a later version of the application.' },
+        tr: { name: 'Makine Öğrenmesi', blurb: 'Uygulamanın ileriki bir sürümünde gelecek makine öğrenmesi iş akışı modülleri.' },
     },
     {
         id: 'visualization',

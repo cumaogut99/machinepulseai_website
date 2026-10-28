@@ -47,6 +47,8 @@ const AGENT_CAPABILITIES = [
         color: '#3b82f6',
     },
     {
+        // Machine learning ships in a later application version: not rendered yet.
+        deferred: true,
         id: 'anomaly',
         icon: (
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -136,8 +138,8 @@ const ARCH_LAYERS = [
         color: '#00f5ff',
     },
     {
-        en: { label: 'AI Assistant Layer', sublabel: 'Natural language · RAG · ML diagnostics' },
-        tr: { label: 'AI Asistan Katmanı', sublabel: 'Doğal dil · RAG · ML tanılama' },
+        en: { label: 'AI Assistant Layer', sublabel: 'Natural language · RAG · Guided analysis' },
+        tr: { label: 'AI Asistan Katmanı', sublabel: 'Doğal dil · RAG · Yönlendirmeli analiz' },
         color: '#3b82f6',
     },
     {
@@ -230,7 +232,7 @@ export default function AgenticArch() {
                         whileInView="visible"
                         viewport={{ once: true, margin: '-60px' }}
                     >
-                        {AGENT_CAPABILITIES.map((cap) => (
+                        {AGENT_CAPABILITIES.filter((cap) => !cap.deferred).map((cap) => (
                             (() => {
                                 const content = cap[lang] || cap.en
                                 return (

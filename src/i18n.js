@@ -59,7 +59,7 @@ const resources = {
             "widgets": {
                 "eyebrow": "Technical Library",
                 "title": "Engineering Module Library",
-                "subtitle": "{{count}} ready-to-use modules with theory, input channels, formulas, processing steps and produced outputs — from data import and signal filtering to vibration and structural diagnostics. Modules planned for later application phases are labelled.",
+                "subtitle": "{{count}} ready-to-use modules with theory, input channels, formulas, processing steps and produced outputs — from data import and signal filtering to vibration and structural diagnostics. Modules coming in later versions are labelled.",
                 "searchPlaceholder": "Search widgets…",
                 "allCategories": "All",
                 "learnMore": "Learn the theory",
@@ -67,8 +67,8 @@ const resources = {
                 "viewDetail": "Learn in detail",
                 "expandGroup": "Show {{group}} widgets",
                 "collapseGroup": "Hide {{group}} widgets",
-                "phaseBadge": "Coming later · Phase {{phase}}",
-                "phaseNote": "Planned for Phase {{phase}} of the application. Not available in the current version.",
+                "futureBadge": "Coming later",
+                "futureNote": "Coming in a later version of the application. Not available in the current version.",
                 "noResults": "No widgets match your search.",
                 "detail": {
                     "back": "Back to widget library",
@@ -90,7 +90,7 @@ const resources = {
                 "badge": "Early Access Open",
                 "title1": "Engineering Analysis",
                 "title2": "for Large Measurement Data",
-                "subtitle": "Import CSV, TDMS, MDF/MF4, Parquet and MPAI test data into one workspace; analyze 200 GB+ files with low memory use across vibration, acoustics, power and machine diagnostics.",
+                "subtitle": "Import CSV, TDMS, MDF/MF4, Parquet and MPAI test data into one workspace; analyze 200 GB+ files with low memory use for signal processing, vibration and rotating-machinery diagnostics.",
                 "ctaPrimary": "Request a Demo",
                 "ctaSecondary": "See the App",
                 "stats": {
@@ -143,7 +143,7 @@ const resources = {
                 "eyebrow": "Smart Engineering Assistant",
                 "titleBefore": "A platform with a",
                 "titleHighlight": "built-in AI Agent",
-                "subtitle": "An integrated offline assistant and machine learning suite: accelerate pipeline setup, detect machinery anomalies, and query past test archives without cloud connectivity."
+                "subtitle": "An integrated offline assistant: it speeds up pipeline setup, explains analysis results and searches past test archives without a cloud connection."
             },
             "cta": {
                 "label": "Early Access Now Open",
@@ -186,7 +186,7 @@ const resources = {
                 "groups": {
                     "filters": { "name": "Signal Filters", "desc": "FIR / IIR digital filtering, smoothing, differentiation and integration with mathematically correct boundary handling." },
                     "analysis": { "name": "Frequency & Statistics", "desc": "FFT, PSD, octave spectra and statistical analysis of signals in the frequency and time domains." },
-                    "vibration": { "name": "Vibration & Structural", "desc": "Machinery diagnostics, modal analysis, rotor dynamics, order tracking and structural health." },
+                    "vibration": { "name": "Vibration & Structural", "desc": "Machinery diagnostics, modal analysis, rotor dynamics, order tracking and shock response." },
                     "acoustics": { "name": "Acoustics & NVH", "desc": "Sound level, sound power, octave bands and perceptual sound-quality metrics." },
                     "control": { "name": "Control & Mechatronics", "desc": "PID loop analysis, stability margins, system identification and navigation / IMU fusion." },
                     "electrical": { "name": "Electrical & Power", "desc": "Power quality, harmonics, motor current signature analysis and drive diagnostics." },
@@ -291,7 +291,7 @@ const resources = {
             "widgets": {
                 "eyebrow": "Teknik Kütüphane",
                 "title": "Mühendislik Modül Kütüphanesi",
-                "subtitle": "{{count}} kullanıma hazır modül; teori, giriş kanalları, formüller, işlem adımları ve üretilen çıktılarla açıklanır — veri içe aktarmadan sinyal filtrelemeye, titreşim ve yapısal tanılamaya kadar. İleriki uygulama fazlarında gelecek modüller etiketlenmiştir.",
+                "subtitle": "{{count}} kullanıma hazır modül; teori, giriş kanalları, formüller, işlem adımları ve üretilen çıktılarla açıklanır — veri içe aktarmadan sinyal filtrelemeye, titreşim ve yapısal tanılamaya kadar. İleriki sürümlerde gelecek modüller etiketlenmiştir.",
                 "searchPlaceholder": "Widget ara…",
                 "allCategories": "Tümü",
                 "learnMore": "Teoriyi öğren",
@@ -299,8 +299,8 @@ const resources = {
                 "viewDetail": "Detaylı Öğren",
                 "expandGroup": "{{group}} widgetlarını göster",
                 "collapseGroup": "{{group}} widgetlarını gizle",
-                "phaseBadge": "İleride gelecek · Faz {{phase}}",
-                "phaseNote": "Uygulamanın Faz {{phase}} sürümünde planlanıyor; mevcut sürümde kullanılamaz.",
+                "futureBadge": "İleride gelecek",
+                "futureNote": "Uygulamanın ileriki bir sürümünde gelecek; mevcut sürümde kullanılamaz.",
                 "noResults": "Aramanızla eşleşen widget yok.",
                 "detail": {
                     "back": "Widget kütüphanesine dön",
@@ -322,7 +322,7 @@ const resources = {
                 "badge": "Erken Erişim Açık",
                 "title1": "Büyük Ölçüm Verileri İçin",
                 "title2": "Mühendislik Analiz Platformu",
-                "subtitle": "CSV, TDMS, MDF/MF4, Parquet ve MPAI test verilerini tek çalışma alanında içe aktarın; 200 GB+ dosyaları düşük bellek kullanımıyla titreşim, akustik, güç ve makine tanılama iş akışlarında analiz edin.",
+                "subtitle": "CSV, TDMS, MDF/MF4, Parquet ve MPAI test verilerini tek çalışma alanında içe aktarın; 200 GB+ dosyaları düşük bellek kullanımıyla sinyal işleme, titreşim ve döner makine tanılama iş akışlarında analiz edin.",
                 "ctaPrimary": "Demo İste",
                 "ctaSecondary": "Uygulamayı Gör",
                 "stats": {
@@ -375,7 +375,7 @@ const resources = {
                 "eyebrow": "Akıllı Mühendislik Asistanı",
                 "titleBefore": "Platformda",
                 "titleHighlight": "yerleşik bir AI Agent",
-                "subtitle": "Tamamen çevrimdışı çalışan yapay zeka asistanı ve makine öğrenmesi paketi: analiz hattı kurulumunu hızlandırır, makine anomalilerini tespit eder ve geçmiş test arşivlerini yerel olarak sorgular."
+                "subtitle": "Tamamen çevrimdışı çalışan yapay zeka asistanı: analiz hattı kurulumunu hızlandırır, analiz sonuçlarını açıklar ve geçmiş test arşivlerini yerel olarak sorgular."
             },
             "cta": {
                 "label": "Erken Erişim Şimdi Açık",
@@ -418,7 +418,7 @@ const resources = {
                 "groups": {
                     "filters": { "name": "Sinyal Filtreleri", "desc": "Matematiksel olarak doğru sınır işleme ile FIR / IIR dijital filtreleme, yumuşatma, türev ve integral." },
                     "analysis": { "name": "Frekans ve İstatistik", "desc": "Frekans ve zaman düzleminde FFT, PSD, oktav spektrumları ve istatistiksel sinyal analizi." },
-                    "vibration": { "name": "Titreşim ve Yapısal", "desc": "Makine tanılaması, modal analiz, rotor dinamiği, order tracking ve yapısal sağlık." },
+                    "vibration": { "name": "Titreşim ve Yapısal", "desc": "Makine tanılaması, modal analiz, rotor dinamiği, order tracking ve şok tepki analizi." },
                     "acoustics": { "name": "Akustik ve NVH", "desc": "Ses seviyesi, ses gücü, oktav bantları ve algısal ses-kalitesi metrikleri." },
                     "control": { "name": "Kontrol ve Mekatronik", "desc": "PID döngü analizi, kararlılık marjları, sistem tanımlama ve navigasyon / IMU füzyonu." },
                     "electrical": { "name": "Elektrik ve Güç", "desc": "Güç kalitesi, harmonikler, motor akım imza analizi ve sürücü tanılaması." },

@@ -70,8 +70,8 @@ export const ROUTE_META = {
         tr: { title: `Order Takibi — ${BRAND}`, description: 'Kalkış/duruş, Campbell diyagramları ve hıza bağlı titreşim için döner makine order analizi.' },
     },
     '/widgets/rotor-balancing': {
-        en: { title: `Rotor Balancing — ${BRAND}`, description: 'Single- and two-plane rotor balancing with trial weights, influence coefficients and ISO 21940 targets.' },
-        tr: { title: `Rotor Balanslama — ${BRAND}`, description: 'Deneme ağırlığı, etki katsayısı ve ISO 21940 hedefleriyle tek/çift düzlem rotor balanslama.' },
+        en: { title: `Rotor Balancing — ${BRAND}`, description: 'Single-plane rotor balancing with a trial weight, influence coefficients and a verification run.' },
+        tr: { title: `Rotor Balanslama — ${BRAND}`, description: 'Deneme ağırlığı, etki katsayısı ve doğrulama koşusuyla tek düzlem rotor balanslama.' },
     },
     '/widgets/rotor-dynamics': {
         en: { title: `Rotor Dynamics Analysis Guide — ${BRAND}`, description: 'Measuring shaft motion with XY proximity probes: orbit, critical speed, Bode and Polar response, shaft centreline, full spectrum and forward/backward whirl.' },
@@ -104,11 +104,11 @@ export const ROUTE_META = {
     '/pricing': {
         en: {
             title: `Packages — ${BRAND}`,
-            description: 'A modular base package plus optional widget groups, ML suite and AI assistant. Choose the capabilities that fit your workflow.',
+            description: 'A modular base package plus optional widget groups and an AI assistant. Choose the capabilities that fit your workflow.',
         },
         tr: {
             title: `Paketler — ${BRAND}`,
-            description: 'Modüler bir baz paket ile birlikte isteğe bağlı widget grupları, ML paketi ve yapay zeka asistanı. İş akışınıza uygun yetenekleri seçin.',
+            description: 'Modüler bir baz paket ile birlikte isteğe bağlı widget grupları ve yapay zeka asistanı. İş akışınıza uygun yetenekleri seçin.',
         },
     },
 }
