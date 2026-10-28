@@ -18,6 +18,7 @@ const VIBRATION_LEARNING_COMMON = {
             foundations: '03 · Technical details',
             modes: '04 · Interpreting results',
             workflow: '05 · Analysis procedure',
+            reference: '05.1 · Engineering and mathematical specification',
         },
         interface: {
             placeholderTag: 'Interface preview',
@@ -34,10 +35,6 @@ const VIBRATION_LEARNING_COMMON = {
             caption: 'Captured from the current MachinePulseAI desktop application (Space theme) with synthetic validation data. Values are illustrative, not machine measurements.',
         },
         guideEyebrow: 'Learning guide',
-        theory: {
-            formulaTitle: 'Governing equations',
-            formulaIntro: 'The equations below show which measurements determine each result, which assumptions apply and where uncertainty enters the calculation.',
-        },
         foundations: {
             assumptionsTitle: 'Assumptions worth checking',
             assumptionsIntro: 'If any of these assumptions does not hold, the results may be misleading even when the plots look correct.',
@@ -54,6 +51,8 @@ const VIBRATION_LEARNING_COMMON = {
             calculationTitle: 'Calculation steps',
             checklistTitle: 'Checklist before reporting results',
             mistakesTitle: 'Common interpretation errors',
+            formulasTitle: 'Core equations behind the controls and readouts',
+            formulasIntro: 'Each equation is tagged with the workbench control or readout it governs. Use this reference to check which measurements determine a result, which assumptions apply and where uncertainty enters the calculation.',
             referencesTitle: 'Standards and references',
             referencesIntro: 'Use these references to connect the practical workflow to accepted terminology, measurement practice and engineering limits.',
         },
@@ -77,6 +76,7 @@ const VIBRATION_LEARNING_COMMON = {
             foundations: '03 · Teknik ayrıntılar',
             modes: '04 · Sonuçların yorumlanması',
             workflow: '05 · Analiz prosedürü',
+            reference: '05.1 · Teknik ve matematiksel spesifikasyon',
         },
         interface: {
             placeholderTag: 'Arayüz önizlemesi',
@@ -93,10 +93,6 @@ const VIBRATION_LEARNING_COMMON = {
             caption: 'Güncel MachinePulseAI masaüstü uygulamasından (Space teması) sentetik doğrulama verisiyle alınmıştır. Değerler açıklayıcıdır; makine ölçümü değildir.',
         },
         guideEyebrow: 'Öğrenme rehberi',
-        theory: {
-            formulaTitle: 'Temel denklemler',
-            formulaIntro: 'Aşağıdaki denklemler, her sonucu hangi ölçümlerin belirlediğini, hangi varsayımların geçerli olduğunu ve belirsizliğin hesaba nereden girdiğini gösterir.',
-        },
         foundations: {
             assumptionsTitle: 'Kontrol edilmesi gereken varsayımlar',
             assumptionsIntro: 'Bu varsayımlardan biri geçerli değilse grafikler doğru görünse bile sonuçlar yanıltıcı olabilir.',
@@ -113,6 +109,8 @@ const VIBRATION_LEARNING_COMMON = {
             calculationTitle: 'Hesaplama adımları',
             checklistTitle: 'Sonuç raporlanmadan önce kontrol listesi',
             mistakesTitle: 'Sık yapılan yorum hataları',
+            formulasTitle: 'Arayüz kontrollerinin ve göstergelerin matematiksel karşılıkları',
+            formulasIntro: 'Her denklem, ilgili olduğu arayüz kontrolü veya sonuç göstergesiyle etiketlenmiştir. Bir sonucu hangi ölçümlerin belirlediğini, hangi kabullerin geçerli olduğunu ve belirsizliğin hesaba nereden girdiğini bu referanstan kontrol edin.',
             referencesTitle: 'Standartlar ve kaynaklar',
             referencesIntro: 'Pratik iş akışını kabul görmüş terimlere, ölçüm uygulamalarına ve mühendislik sınırlarına bağlamak için bu kaynakları kullanın.',
         },

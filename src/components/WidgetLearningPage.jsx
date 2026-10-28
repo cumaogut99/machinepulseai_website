@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import WIDGET_CATALOG from '../data/widgetCatalog.js'
 import { getWidgetDetailSlug } from '../data/widgetDetails.js'
 import { REFERENCES } from '../data/learning/lesson.js'
-import { LearningCards, LearningFormula, LearningHeading, LearningNavigation } from './learning/LearningPrimitives.jsx'
+import { FormulaSpecGrid, LearningCards, LearningHeading, LearningNavigation } from './learning/LearningPrimitives.jsx'
 import LearningWorkbench from './learning/LearningWorkbench.jsx'
 import LearningExercise from './learning/LearningExercise.jsx'
 import LearningConceptLab from './learning/LearningConceptLab.jsx'
@@ -55,8 +55,6 @@ export default function WidgetLearningPage({ guide }) {
             <section id="theory" className="scroll-mt-32 border-t border-white/10 py-16">
                 <LearningHeading number="02" title={labels.theory} intro={labels.theoryIntro} />
                 <LearningCards items={page.concepts} />
-                <h3 className="mb-5 mt-10 text-xl font-bold text-white">{labels.equations}</h3>
-                <div className="grid gap-4">{page.formulas.map((formula) => <LearningFormula key={formula.title} formula={formula} />)}</div>
             </section>
             <section id="example" className="scroll-mt-32 border-t border-white/10 py-16">
                 <LearningHeading number="03" title={labels.example} intro={labels.illustrative} />
@@ -74,6 +72,10 @@ export default function WidgetLearningPage({ guide }) {
                 <h3 className="mb-5 mt-10 text-xl font-bold text-white">{labels.result}</h3><LearningCards items={page.outputs} />
                 <h3 className="mb-5 mt-10 text-xl font-bold text-white">{labels.mistakes}</h3>
                 <div className="grid gap-3 md:grid-cols-2">{page.pitfalls.map((item) => <details key={item.name} className="group rounded-2xl border border-neon-purple/20 bg-neon-purple/[0.035]"><summary className="flex cursor-pointer list-none justify-between gap-4 p-5 text-sm font-semibold leading-6 text-white">{item.name}<span aria-hidden="true" className="text-lg text-neon-purple group-open:rotate-45">+</span></summary><p className="border-t border-white/10 p-5 text-sm leading-7 text-slate-400">{item.desc}</p></details>)}</div>
+                <div className="mt-14 border-t border-white/10 pt-14">
+                    <LearningHeading number={labels.specEyebrow} title={labels.equations} intro={labels.equationsIntro} />
+                    <FormulaSpecGrid formulas={page.formulas} />
+                </div>
             </section>
             <section id="references" className="scroll-mt-32 border-t border-white/10 py-16">
                 <LearningHeading number="05" title={labels.references} intro={labels.referencesIntro} />

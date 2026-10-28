@@ -196,10 +196,6 @@ export default function RotorDynamicsLearning() {
                 <section id="speed" className="scroll-mt-32 border-t border-white/8 py-16">
                     <SectionHeader eyebrow={t('rotorLearn.sectionEyebrow.speed')} title={t('rotorLearn.speedLab.title')} intro={t('rotorLearn.speedLab.intro')} />
                     <RotorCriticalSpeedLab />
-                    <div className="mt-14">
-                        <SectionHeader eyebrow={t('rotorLearn.sectionEyebrow.speed')} title={t('rotorLearn.formulas.title')} intro={t('rotorLearn.formulas.intro')} />
-                        <RotorFormulaReference />
-                    </div>
                 </section>
 
                 <section id="views" className="scroll-mt-32 border-t border-white/8 py-16">
@@ -238,6 +234,11 @@ export default function RotorDynamicsLearning() {
                                 </details>
                             ))}
                         </div>
+                    </div>
+
+                    <div className="mt-14 border-t border-white/8 pt-14">
+                        <SectionHeader eyebrow={t('rotorLearn.sectionEyebrow.reference')} title={t('rotorLearn.formulas.title')} intro={t('rotorLearn.formulas.intro')} />
+                        <RotorFormulaReference />
                     </div>
 
                     <div className="mt-14 border-t border-white/8 pt-14">

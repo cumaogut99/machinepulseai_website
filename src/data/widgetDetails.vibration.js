@@ -22,42 +22,49 @@ const VIBRATION_WIDGET_DETAILS = {
             formulas: [
                 {
                     title: 'Characteristic bearing fault frequencies',
+                    param: 'Number of Balls, Pitch / Ball Diameter, Contact Angle & RPM',
                     latex: '\\mathrm{BPFO} = \\dfrac{N_b}{2} f_r \\left(1 - \\dfrac{d}{D}\\cos\\phi\\right) \\qquad \\mathrm{BPFI} = \\dfrac{N_b}{2} f_r \\left(1 + \\dfrac{d}{D}\\cos\\phi\\right)',
                     expr: 'BPFO = (N_b/2)·f_r·(1 − (d/D)·cos φ) ;  BPFI = (N_b/2)·f_r·(1 + (d/D)·cos φ)',
                     where: 'N_b = rolling-element count, f_r = shaft frequency, d = ball diameter, D = pitch diameter, φ = contact angle. BSF (ball spin) and FTF (cage) follow from the same geometry. Peaks at one of these frequencies and its harmonics in the envelope spectrum indicate possible damage on the corresponding component.',
                 },
                 {
                     title: 'Envelope via the Hilbert transform',
+                    param: 'Envelope tab → envelope spectrum',
                     latex: 'e(t) = \\bigl|\\, x(t) + j\\,\\mathcal{H}\\{x(t)\\} \\,\\bigr|',
                     expr: 'e(t) = | x(t) + j·H{x(t)} |',
                     where: 'The analytic signal magnitude of the band-passed vibration x(t) is its envelope. Its spectrum shows the impact repetition rate (the fault frequency) instead of the carrier resonance.',
                 },
                 {
                     title: 'Spectral kurtosis / kurtogram band selection',
+                    param: 'Envelope band → Kurtogram (automatic) & Kurtogram depth',
                     latex: '\\mathrm{SK}(f) = \\dfrac{\\left\\langle |X(t,f)|^{4} \\right\\rangle}{\\left\\langle |X(t,f)|^{2} \\right\\rangle^{2}} - 2',
                     expr: 'SK(f) = ⟨|X(t,f)|⁴⟩ / ⟨|X(t,f)|²⟩² − 2',
                     where: 'X(t,f) is a time–frequency decomposition. High spectral kurtosis marks impulsive bands; the kurtogram scans centre-frequency/bandwidth combinations and demodulation runs in the winning band automatically.',
                 },
                 {
                     title: 'Gear mesh frequency and sidebands',
+                    param: 'Gear / TSA → Gear Teeth & RPM',
                     latex: '\\mathrm{GMF} = z \\cdot f_r \\qquad f_{\\mathrm{sb}} = \\mathrm{GMF} \\pm k \\, f_r',
                     expr: 'GMF = z·f_r ;  sidebands at GMF ± k·f_r',
                     where: 'z = tooth count. Growing sideband families around GMF and its harmonics indicate modulation from eccentricity, a cracked tooth or load fluctuation.',
                 },
                 {
                     title: 'Real cepstrum',
+                    param: 'Cepstrum tab → Cepstrum lifter / Rahmonics',
                     latex: 'c(\\tau) = \\mathcal{F}^{-1}\\bigl\\{ \\log |X(f)|^{2} \\bigr\\}',
                     expr: 'c(τ) = IFFT{ log |X(f)|² }',
                     where: 'The cepstrum collapses whole harmonic/sideband families into single peaks at their spacing (quefrency), making shaft-speed modulation easy to spot and to compare between measurements.',
                 },
                 {
                     title: 'Ball spin and cage fault frequencies (BSF & FTF)',
+                    param: 'Markers → Calculated bearing families (BSF, FTF)',
                     latex: '\\mathrm{BSF} = \\dfrac{D}{2d} f_r \\left[1 - \\left(\\dfrac{d}{D}\\cos\\phi\\right)^{2}\\right] \\qquad \\mathrm{FTF} = \\dfrac{1}{2} f_r \\left(1 - \\dfrac{d}{D}\\cos\\phi\\right)',
                     expr: 'BSF = (D / (2d)) · f_r · [1 − ((d/D)·cos φ)²] ; FTF = (1/2) · f_r · [1 − (d/D)·cos φ]',
                     where: 'd = rolling element diameter, D = pitch diameter, φ = contact angle, f_r = shaft speed. BSF indicates rolling element defects; FTF indicates cage defects or cage rotational frequency.',
                 },
                 {
                     title: 'Gear condition indicator FM4',
+                    param: 'TSA tab → Residual Harmonics → FM4',
                     latex: '\\mathrm{FM4} = \\dfrac{N_s \\sum_{i=1}^{N_s} (r_i - \\bar{r})^{4}}{\\left[ \\sum_{i=1}^{N_s} (r_i - \\bar{r})^{2} \\right]^{2}}',
                     expr: 'FM4 = [N_s · sum (r_i - r_mean)⁴] / [sum (r_i - r_mean)²]²',
                     where: 'Normalized kurtosis of the difference/residual signal r_i (TSA signal after removing regular gear mesh harmonics and shaft orders). FM4 > 3 flags localized tooth faults (spall, root crack) against background wear.',
@@ -89,42 +96,49 @@ const VIBRATION_WIDGET_DETAILS = {
             formulas: [
                 {
                     title: 'Karakteristik rulman arıza frekansları',
+                    param: 'Arayüz Kontrolü: Number of Balls, Pitch / Ball Diameter, Contact Angle & RPM',
                     latex: '\\mathrm{BPFO} = \\dfrac{N_b}{2} f_r \\left(1 - \\dfrac{d}{D}\\cos\\phi\\right) \\qquad \\mathrm{BPFI} = \\dfrac{N_b}{2} f_r \\left(1 + \\dfrac{d}{D}\\cos\\phi\\right)',
                     expr: 'BPFO = (N_b/2)·f_r·(1 − (d/D)·cos φ) ;  BPFI = (N_b/2)·f_r·(1 + (d/D)·cos φ)',
                     where: 'N_b = yuvarlanma elemanı sayısı, f_r = mil frekansı, d = bilye çapı, D = taksimat çapı, φ = temas açısı. BSF (bilye dönüşü) ve FTF (kafes) aynı geometriden çıkar. Zarf spektrumunda bu frekanslardan birinde ve harmoniklerinde görülen tepeler, ilgili bileşende hasar olabileceğine işaret eder.',
                 },
                 {
                     title: 'Hilbert dönüşümü ile zarf',
+                    param: 'Sonuç Göstergesi: Envelope tab → envelope spectrum',
                     latex: 'e(t) = \\bigl|\\, x(t) + j\\,\\mathcal{H}\\{x(t)\\} \\,\\bigr|',
                     expr: 'e(t) = | x(t) + j·H{x(t)} |',
                     where: 'Bant geçirilmiş titreşim x(t)’nin analitik sinyal genliği zarfıdır. Zarfın spektrumu, taşıyıcı rezonans yerine darbe tekrar hızını (arıza frekansını) gösterir.',
                 },
                 {
                     title: 'Spektral basıklık / kurtogram bant seçimi',
+                    param: 'Arayüz Kontrolü: Envelope band → Kurtogram (automatic) & Kurtogram depth',
                     latex: '\\mathrm{SK}(f) = \\dfrac{\\left\\langle |X(t,f)|^{4} \\right\\rangle}{\\left\\langle |X(t,f)|^{2} \\right\\rangle^{2}} - 2',
                     expr: 'SK(f) = ⟨|X(t,f)|⁴⟩ / ⟨|X(t,f)|²⟩² − 2',
                     where: 'X(t,f) bir zaman–frekans ayrışımıdır. Yüksek spektral basıklık darbesel bantları işaretler; kurtogram merkez frekansı/bant genişliği kombinasyonlarını tarar ve demodülasyon kazanan bantta otomatik çalışır.',
                 },
                 {
                     title: 'Dişli kavrama frekansı ve yan bantlar',
+                    param: 'Arayüz Kontrolü: Gear / TSA → Gear Teeth & RPM',
                     latex: '\\mathrm{GMF} = z \\cdot f_r \\qquad f_{\\mathrm{sb}} = \\mathrm{GMF} \\pm k \\, f_r',
                     expr: 'GMF = z·f_r ;  yan bantlar GMF ± k·f_r',
                     where: 'z = diş sayısı. GMF ve harmonikleri çevresinde büyüyen yan bant aileleri; eksantriklik, çatlak diş veya yük dalgalanmasından gelen modülasyona işaret eder.',
                 },
                 {
                     title: 'Gerçek kepstrum',
+                    param: 'Arayüz Kontrolü: Cepstrum tab → Cepstrum lifter / Rahmonics',
                     latex: 'c(\\tau) = \\mathcal{F}^{-1}\\bigl\\{ \\log |X(f)|^{2} \\bigr\\}',
                     expr: 'c(τ) = IFFT{ log |X(f)|² }',
                     where: 'Kepstrum, bütün harmonik/yan bant ailelerini aralıklarına (quefrency) karşılık gelen tek tepelere indirger; mil hızı modülasyonunu görmeyi ve ölçümler arası karşılaştırmayı kolaylaştırır.',
                 },
                 {
                     title: 'Bilye dönüşü ve kafes arıza frekansları (BSF & FTF)',
+                    param: 'Sonuç Göstergesi: Markers → Calculated bearing families (BSF, FTF)',
                     latex: '\\mathrm{BSF} = \\dfrac{D}{2d} f_r \\left[1 - \\left(\\dfrac{d}{D}\\cos\\phi\\right)^{2}\\right] \\qquad \\mathrm{FTF} = \\dfrac{1}{2} f_r \\left(1 - \\dfrac{d}{D}\\cos\\phi\\right)',
                     expr: 'BSF = (D / (2d)) · f_r · [1 − ((d/D)·cos φ)²] ; FTF = (1/2) · f_r · [1 − (d/D)·cos φ]',
                     where: 'd = bilye/makara çapı, D = taksimat çapı, φ = temas açısı, f_r = mil frekansı. BSF bilye/makara kusurlarını (her iki bileziğe temas eder); FTF ise kafes arızasını veya modülasyonunu gösterir.',
                 },
                 {
                     title: 'Dişli durum göstergesi FM4',
+                    param: 'Sonuç Göstergesi: TSA tab → Residual Harmonics → FM4',
                     latex: '\\mathrm{FM4} = \\dfrac{N_s \\sum_{i=1}^{N_s} (r_i - \\bar{r})^{4}}{\\left[ \\sum_{i=1}^{N_s} (r_i - \\bar{r})^{2} \\right]^{2}}',
                     expr: 'FM4 = [N_s · sum (r_i - r_mean)⁴] / [sum (r_i - r_mean)²]²',
                     where: 'Fark/artık sinyali r_i\'nin (düzenli dişli kavrama harmonikleri ve mil orderları çıkarılmış TSA sinyali) normalize edilmiş basıklığıdır. FM4 > 3 olması, tekdüze aşınma yerine yerel diş arızasını (çatlak, parça kopması) gösterir.',
@@ -160,18 +174,21 @@ const VIBRATION_WIDGET_DETAILS = {
             formulas: [
                 {
                     title: 'FRF as a modal sum',
+                    param: 'LSFD fit → Fit Selected Poles',
                     latex: 'H_{ij}(\\omega) = \\sum_{r=1}^{N} \\dfrac{\\varphi_{ir}\\,\\varphi_{jr}}{\\omega_r^{2} - \\omega^{2} + j\\,2\\zeta_r \\omega_r \\omega}',
                     expr: 'H_ij(ω) = Σ_r  φ_ir·φ_jr / (ω_r² − ω² + j·2ζ_r·ω_r·ω)',
                     where: 'H_ij = response at point i per unit force at point j; ω_r, ζ_r, φ_r are natural frequency, damping ratio and mode shape of mode r. Curve-fitting the measured FRFs to this model is what "extracting modal parameters" means.',
                 },
                 {
                     title: 'Half-power damping estimate',
+                    param: 'Markers → Delta (half-power bandwidth)',
                     latex: '\\zeta = \\dfrac{f_2 - f_1}{2 f_n}',
                     expr: 'ζ = (f₂ − f₁) / (2·f_n)',
                     where: 'f₁, f₂ are the −3 dB points either side of the resonance peak at f_n. A quick single-mode damping estimate used to sanity-check the curve-fit values.',
                 },
                 {
                     title: 'Modal Assurance Criterion (MAC)',
+                    param: 'Mode shapes → AutoMAC',
                     latex: '\\mathrm{MAC}(\\varphi_A, \\varphi_B) = \\dfrac{\\left| \\varphi_A^{\\mathsf{T}} \\varphi_B \\right|^{2}}{\\left(\\varphi_A^{\\mathsf{T}} \\varphi_A\\right)\\left(\\varphi_B^{\\mathsf{T}} \\varphi_B\\right)}',
                     expr: 'MAC(φ_A, φ_B) = |φ_Aᵀ·φ_B|² / [(φ_Aᵀ·φ_A)·(φ_Bᵀ·φ_B)]',
                     where: 'Compares two mode-shape vectors: 1 = same shape, 0 = independent. Used to check test repeatability, detect duplicated poles and correlate test modes against a finite-element model.',
@@ -202,18 +219,21 @@ const VIBRATION_WIDGET_DETAILS = {
             formulas: [
                 {
                     title: 'Modal toplam olarak FRF',
+                    param: 'Arayüz Kontrolü: LSFD fit → Fit Selected Poles',
                     latex: 'H_{ij}(\\omega) = \\sum_{r=1}^{N} \\dfrac{\\varphi_{ir}\\,\\varphi_{jr}}{\\omega_r^{2} - \\omega^{2} + j\\,2\\zeta_r \\omega_r \\omega}',
                     expr: 'H_ij(ω) = Σ_r  φ_ir·φ_jr / (ω_r² − ω² + j·2ζ_r·ω_r·ω)',
                     where: 'H_ij = j noktasındaki birim kuvvet başına i noktasındaki tepki; ω_r, ζ_r, φ_r sırasıyla r modunun doğal frekansı, sönüm oranı ve mod şeklidir. "Modal parametre çıkarma", ölçülen FRF\'leri bu modele uydurmak demektir.',
                 },
                 {
                     title: 'Yarı-güç sönüm kestirimi',
+                    param: 'Sonuç Göstergesi: Markers → Delta (half-power bandwidth)',
                     latex: '\\zeta = \\dfrac{f_2 - f_1}{2 f_n}',
                     expr: 'ζ = (f₂ − f₁) / (2·f_n)',
                     where: 'f₁, f₂; f_n\'deki rezonans tepesinin iki yanındaki −3 dB noktalarıdır. Eğri uydurma değerlerini sağlamak için kullanılan hızlı, tek-modlu sönüm kestirimi.',
                 },
                 {
                     title: 'Modal Güvence Kriteri (MAC)',
+                    param: 'Sonuç Göstergesi: Mode shapes → AutoMAC',
                     latex: '\\mathrm{MAC}(\\varphi_A, \\varphi_B) = \\dfrac{\\left| \\varphi_A^{\\mathsf{T}} \\varphi_B \\right|^{2}}{\\left(\\varphi_A^{\\mathsf{T}} \\varphi_A\\right)\\left(\\varphi_B^{\\mathsf{T}} \\varphi_B\\right)}',
                     expr: 'MAC(φ_A, φ_B) = |φ_Aᵀ·φ_B|² / [(φ_Aᵀ·φ_A)·(φ_Bᵀ·φ_B)]',
                     where: 'İki mod şekli vektörünü karşılaştırır: 1 = aynı şekil, 0 = bağımsız. Test tekrarlanabilirliğini denetlemek, tekrarlanan kutupları yakalamak ve test modlarını sonlu eleman modeliyle ilişkilendirmek için kullanılır.',
@@ -246,18 +266,21 @@ const VIBRATION_WIDGET_DETAILS = {
             formulas: [
                 {
                     title: 'Frequency Domain Decomposition (FDD)',
+                    param: 'Algorithm: FDD / EFDD → Singular-value spectrum',
                     latex: 'G_{yy}(j\\omega) = U(j\\omega)\\, S(j\\omega)\\, U^{\\mathsf{H}}(j\\omega)',
                     expr: 'G_yy(jω) = U·S·Uᴴ   (SVD of the response PSD matrix)',
                     where: 'G_yy = spectral-density matrix of all responses. Near a resonance the first singular value peaks and its singular vector is the (unscaled) mode shape — the SVD separates modes that overlap in a single-channel spectrum.',
                 },
                 {
                     title: 'Stochastic state-space model (SSI)',
+                    param: 'Algorithm: SSI-COV → Max Model Order & Block Rows',
                     latex: 'x_{k+1} = A\\,x_k + w_k \\qquad y_k = C\\,x_k + v_k',
                     expr: 'x_(k+1) = A·x_k + w_k ;  y_k = C·x_k + v_k',
                     where: 'SSI fits this model directly to the time data; the eigenvalues of A are the system poles, and C maps them to mode shapes. More robust damping estimates than frequency-domain peak methods.',
                 },
                 {
                     title: 'Poles → frequency and damping',
+                    param: 'Mode table → frequency & damping',
                     latex: '\\lambda = \\dfrac{\\ln \\mu}{\\Delta t} \\qquad f_n = \\dfrac{|\\lambda|}{2\\pi} \\qquad \\zeta = -\\dfrac{\\operatorname{Re}\\lambda}{|\\lambda|}',
                     expr: 'λ = ln(μ)/Δt ;  f_n = |λ|/2π ;  ζ = −Re(λ)/|λ|',
                     where: 'μ = discrete-time eigenvalue of A, Δt = sample interval. Converts identified poles into the physical natural frequency and damping ratio reported for each mode.',
@@ -287,18 +310,21 @@ const VIBRATION_WIDGET_DETAILS = {
             formulas: [
                 {
                     title: 'Frekans Bölgesi Ayrışımı (FDD)',
+                    param: 'Arayüz Kontrolü: Algorithm: FDD / EFDD → Singular-value spectrum',
                     latex: 'G_{yy}(j\\omega) = U(j\\omega)\\, S(j\\omega)\\, U^{\\mathsf{H}}(j\\omega)',
                     expr: 'G_yy(jω) = U·S·Uᴴ   (tepki PSD matrisinin SVD\'si)',
                     where: 'G_yy = tüm tepkilerin spektral yoğunluk matrisi. Rezonans yakınında ilk tekil değer tepe yapar ve tekil vektörü (ölçeksiz) mod şeklidir — SVD, tek kanallı spektrumda üst üste binen modları ayırır.',
                 },
                 {
                     title: 'Stokastik durum-uzayı modeli (SSI)',
+                    param: 'Arayüz Kontrolü: Algorithm: SSI-COV → Max Model Order & Block Rows',
                     latex: 'x_{k+1} = A\\,x_k + w_k \\qquad y_k = C\\,x_k + v_k',
                     expr: 'x_(k+1) = A·x_k + w_k ;  y_k = C·x_k + v_k',
                     where: 'SSI bu modeli doğrudan zaman verisine uydurur; A\'nın özdeğerleri sistem kutupları, C ise bunları mod şekillerine eşler. Frekans bölgesi tepe yöntemlerinden daha gürbüz sönüm kestirimi sağlar.',
                 },
                 {
                     title: 'Kutuplar → frekans ve sönüm',
+                    param: 'Sonuç Göstergesi: Mode table → frequency & damping',
                     latex: '\\lambda = \\dfrac{\\ln \\mu}{\\Delta t} \\qquad f_n = \\dfrac{|\\lambda|}{2\\pi} \\qquad \\zeta = -\\dfrac{\\operatorname{Re}\\lambda}{|\\lambda|}',
                     expr: 'λ = ln(μ)/Δt ;  f_n = |λ|/2π ;  ζ = −Re(λ)/|λ|',
                     where: 'μ = A\'nın ayrık-zaman özdeğeri, Δt = örnekleme aralığı. Belirlenen kutupları her mod için raporlanan fiziksel doğal frekansa ve sönüm oranına çevirir.',
@@ -332,30 +358,35 @@ const VIBRATION_WIDGET_DETAILS = {
             formulas: [
                 {
                     title: 'Order definition',
+                    param: 'RPM Signal / Tacho Signal',
                     latex: 'O = \\dfrac{f}{N/60}',
                     expr: 'O = f / (N/60)',
                     where: 'f = frequency in Hz, N = shaft speed in rpm. Order 1 is once per revolution (imbalance), order 2 twice per revolution, and so on — the natural axis for rotating machinery.',
                 },
                 {
                     title: 'Angular resampling',
+                    param: 'Tacho Signal → Tacho / keyphasor conversion',
                     latex: 'x(t) \\;\\xrightarrow{\\;\\theta(t)\\;}\\; x(\\theta), \\qquad \\Delta\\theta = \\text{const}',
                     expr: 'x(t) → x(θ)  with Δθ = constant  (θ from the tacho)',
                     where: 'The tacho pulses give shaft angle versus time; interpolating the vibration onto uniform angle steps makes an FFT of x(θ) yield an order spectrum directly, immune to speed change (leakage-free order lines).',
                 },
                 {
                     title: 'Campbell diagram lines',
+                    param: 'Campbell Map → Frequency–RPM map',
                     latex: 'f_{O}(N) = O \\cdot \\dfrac{N}{60}',
                     expr: 'f_O(N) = O · N/60',
                     where: 'Each order is a straight line through the origin in the frequency-versus-speed plane. Where an order line crosses a (horizontal) natural-frequency line is a critical speed — the crossing points the analysis highlights.',
                 },
                 {
                     title: 'Vold-Kalman order extraction',
+                    param: 'Order (VK) → Orders to extract & Bandwidth (Hz)',
                     latex: 'x(t) \\approx a(t)\\, e^{\\,j \\int \\omega_O(t)\\, \\mathrm{d}t}',
                     expr: 'x(t) ≈ a(t) · exp( j·∫ω_O(t) dt )',
                     where: 'The filter tracks a single order as a slowly varying complex envelope a(t) locked to the tacho-derived instantaneous frequency ω_O(t), extracting it cleanly even when orders are close or crossing.',
                 },
                 {
                     title: 'Angular Nyquist order limit',
+                    param: 'Setup → Max Order & Order Resolution',
                     latex: 'O_{\\max} = \\dfrac{N_{\\mathrm{pulses}}}{2} = \\dfrac{f_s / 2}{N_{\\max} / 60}',
                     expr: 'O_max = N_pulses / 2 = (f_s / 2) / (N_max / 60)',
                     where: 'The maximum resolvable order is limited by encoder pulse density (or sample rate divided by maximum operating speed). Prevents angular aliasing when tracking high tooth mesh or blade pass orders.',
@@ -385,30 +416,35 @@ const VIBRATION_WIDGET_DETAILS = {
             formulas: [
                 {
                     title: 'Order tanımı',
+                    param: 'Arayüz Kontrolü: RPM Signal / Tacho Signal',
                     latex: 'O = \\dfrac{f}{N/60}',
                     expr: 'O = f / (N/60)',
                     where: 'f = Hz cinsinden frekans, N = dev/dk cinsinden mil hızı. Order 1 devir başına bir (balanssızlık), order 2 devir başına iki vb. — döner makineler için doğal eksen.',
                 },
                 {
                     title: 'Açısal yeniden örnekleme',
+                    param: 'Arayüz Kontrolü: Tacho Signal → Tacho / keyphasor conversion',
                     latex: 'x(t) \\;\\xrightarrow{\\;\\theta(t)\\;}\\; x(\\theta), \\qquad \\Delta\\theta = \\text{sabit}',
                     expr: 'x(t) → x(θ)  Δθ = sabit  (θ takodan)',
                     where: 'Tako darbeleri zamana karşı mil açısını verir; titreşimin düzgün açı adımlarına aradeğerlenmesi, x(θ)\'nın FFT\'sinin doğrudan order spektrumu vermesini sağlar — hız değişiminden etkilenmez (sızıntısız order çizgileri).',
                 },
                 {
                     title: 'Campbell diyagramı çizgileri',
+                    param: 'Sonuç Göstergesi: Campbell Map → Frequency–RPM map',
                     latex: 'f_{O}(N) = O \\cdot \\dfrac{N}{60}',
                     expr: 'f_O(N) = O · N/60',
                     where: 'Her order, frekans-hız düzleminde orijinden geçen bir doğrudur. Bir order doğrusunun (yatay) doğal frekans çizgisini kestiği yer kritik hızdır — analizin vurguladığı kesişim noktaları.',
                 },
                 {
                     title: 'Vold-Kalman order çıkarımı',
+                    param: 'Arayüz Kontrolü: Order (VK) → Orders to extract & Bandwidth (Hz)',
                     latex: 'x(t) \\approx a(t)\\, e^{\\,j \\int \\omega_O(t)\\, \\mathrm{d}t}',
                     expr: 'x(t) ≈ a(t) · exp( j·∫ω_O(t) dt )',
                     where: 'Filtre, tek bir order’ı takodan türetilen anlık frekans ω_O(t)\'ye kilitli, yavaş değişen karmaşık zarf a(t) olarak izler; order’lar yakın veya kesişiyor olsa bile temiz çıkarır.',
                 },
                 {
                     title: 'Açısal Nyquist order sınırı',
+                    param: 'Arayüz Kontrolü: Setup → Max Order & Order Resolution',
                     latex: 'O_{\\max} = \\dfrac{N_{\\mathrm{pulses}}}{2} = \\dfrac{f_s / 2}{N_{\\max} / 60}',
                     expr: 'O_max = N_pulses / 2 = (f_s / 2) / (N_max / 60)',
                     where: 'Çözümlenebilir maksimum order, devir başına enkoder darbe sayısının yarısıyla (veya örnekleme hızı bölü maksimum devirle) sınırlıdır. Yüksek dişli kavrama veya türbin kanat geçiş orderlarında açısal örtüşmeyi (aliasing) engeller.',
@@ -443,18 +479,21 @@ const VIBRATION_WIDGET_DETAILS = {
             formulas: [
                 {
                     title: 'Influence coefficient',
+                    param: 'Balance Setup → Trial Mass, Trial Radius & Trial Angle',
                     latex: '\\alpha = \\dfrac{\\vec{A}_1 - \\vec{A}_0}{\\vec{W}_t}',
                     expr: 'α = (A₁ − A₀) / W_t',
                     where: 'A₀, A₁ = complex 1× vibration vectors (amplitude ∠ phase) before and after the trial weight W_t (mass ∠ angle). α is the machine\'s response per unit weight — its balancing "sensitivity".',
                 },
                 {
                     title: 'Correction weight',
+                    param: 'Calculate Correction → correction mass & angle',
                     latex: '\\vec{W}_c = -\\,\\dfrac{\\vec{A}_0}{\\alpha}',
                     expr: 'W_c = − A₀ / α',
                     where: 'In the current version, this is the single correction mass and angle that should produce vibration equal and opposite to the original 1× vector at the chosen correction radius.',
                 },
                 {
                     title: 'ISO 21940 permissible residual unbalance',
+                    param: 'Unbalance Unit (mass × radius) → compare with U_per',
                     latex: 'U_{\\mathrm{per}} = 9549 \\cdot \\dfrac{G \\cdot m}{N}',
                     expr: 'U_per = 9549 · G·m / N   [g·mm]',
                     where: 'G = balance quality grade (mm/s, e.g. G 2.5), m = rotor mass in kg, N = service speed in rpm. The acceptance target: after correction the residual unbalance must sit below U_per for the machine class.',
@@ -485,18 +524,21 @@ const VIBRATION_WIDGET_DETAILS = {
             formulas: [
                 {
                     title: 'Etki katsayısı',
+                    param: 'Arayüz Kontrolü: Balance Setup → Trial Mass, Trial Radius & Trial Angle',
                     latex: '\\alpha = \\dfrac{\\vec{A}_1 - \\vec{A}_0}{\\vec{W}_t}',
                     expr: 'α = (A₁ − A₀) / W_t',
                     where: 'A₀, A₁ = deneme ağırlığı W_t\'den (kütle ∠ açı) önceki ve sonraki karmaşık 1× titreşim vektörleri (genlik ∠ faz). α, makinenin birim ağırlık başına tepkisi — balans "duyarlılığı"dır.',
                 },
                 {
                     title: 'Düzeltme ağırlığı',
+                    param: 'Sonuç Göstergesi: Calculate Correction → correction mass & angle',
                     latex: '\\vec{W}_c = -\\,\\dfrac{\\vec{A}_0}{\\alpha}',
                     expr: 'W_c = − A₀ / α',
                     where: 'Mevcut sürümde bu, seçilen düzeltme yarıçapında özgün 1× vektörüne eşit ve zıt titreşim üretmesi beklenen tek düzeltme kütlesi ve açısıdır.',
                 },
                 {
                     title: 'ISO 21940 izin verilen artık balanssızlık',
+                    param: 'Sonuç Göstergesi: Unbalance Unit (mass × radius) → U_per ile karşılaştırın',
                     latex: 'U_{\\mathrm{per}} = 9549 \\cdot \\dfrac{G \\cdot m}{N}',
                     expr: 'U_per = 9549 · G·m / N   [g·mm]',
                     where: 'G = balans kalite derecesi (mm/s, örn. G 2.5), m = kg cinsinden rotor kütlesi, N = dev/dk cinsinden servis hızı. Kabul hedefi: düzeltmeden sonra artık balanssızlık, makine sınıfı için U_per\'in altında kalmalıdır.',
@@ -618,30 +660,35 @@ const VIBRATION_WIDGET_DETAILS = {
             formulas: [
                 {
                     title: 'SDOF oscillator response',
+                    param: 'Model → Q Factor / Damping ζ',
                     latex: '\\ddot{x} + 2\\zeta\\omega_n \\dot{x} + \\omega_n^{2} x = -\\ddot{u}(t)',
                     expr: 'ẍ + 2ζω_n·ẋ + ω_n²·x = −ü(t)',
                     where: 'ü(t) = measured base acceleration, ω_n = oscillator natural frequency, ζ = damping ratio. Solved digitally for each frequency in the SRS grid (ramp-invariant filter per ISO 18431-4).',
                 },
                 {
                     title: 'Shock Response Spectrum',
+                    param: 'Maximax (absolute peak) & Primary / Residual split',
                     latex: '\\mathrm{SRS}(f_n) = \\max_t \\bigl| \\ddot{x}_{\\mathrm{abs}}(t;\\, f_n) \\bigr|',
                     expr: 'SRS(f_n) = max_t | ẍ_abs(t; f_n) |',
                     where: 'The peak absolute response of the oscillator tuned to f_n. Taken during the pulse it is the primary SRS; during the free decay afterwards, the residual SRS — comparing the two classifies the shock.',
                 },
                 {
                     title: 'Damping and quality factor',
+                    param: 'Q Factor / Damping ζ',
                     latex: 'Q = \\dfrac{1}{2\\zeta}',
                     expr: 'Q = 1/(2ζ)',
                     where: 'Convention: Q = 10 (ζ = 5%) unless specified otherwise. Every SRS must state its Q — the same pulse gives different SRS levels at different damping.',
                 },
                 {
                     title: 'Velocity change',
+                    param: 'Characterize shock pulse → Pulse summary (ΔV)',
                     latex: '\\Delta V = \\int a(t)\\, \\mathrm{d}t',
                     expr: 'ΔV = ∫ a(t) dt',
                     where: 'The integral of acceleration over the pulse. Delta-V often correlates with damage better than peak g alone, and low-frequency SRS asymptotes are controlled by it.',
                 },
                 {
                     title: 'Pseudo-velocity and structural damage threshold',
+                    param: 'Results → Four-coordinate nomogram (pseudo-velocity)',
                     latex: '\\mathrm{PV}(f_n) = \\dfrac{\\mathrm{SRS}(f_n)}{2\\pi f_n} \\qquad v_{\\mathrm{dam}} \\approx 100~\\mathrm{in/s} \\; (2.54~\\mathrm{m/s})',
                     expr: 'PV(f_n) = SRS(f_n) / (2π·f_n) ; v_dam ≈ 100 in/s (2.54 m/s)',
                     where: 'Pseudo-velocity scales SRS acceleration to kinetic severity. Gaberson & Chalmers criteria: dynamic stress in complex equipment correlates with pseudo-velocity across frequency; values exceeding ~100 in/s indicate severe risk of permanent deformation.',
@@ -671,30 +718,35 @@ const VIBRATION_WIDGET_DETAILS = {
             formulas: [
                 {
                     title: 'SDOF salınıcı tepkisi',
+                    param: 'Arayüz Kontrolü: Model → Q Factor / Damping ζ',
                     latex: '\\ddot{x} + 2\\zeta\\omega_n \\dot{x} + \\omega_n^{2} x = -\\ddot{u}(t)',
                     expr: 'ẍ + 2ζω_n·ẋ + ω_n²·x = −ü(t)',
                     where: 'ü(t) = ölçülen taban ivmesi, ω_n = salınıcı doğal frekansı, ζ = sönüm oranı. SRS ızgarasındaki her frekans için sayısal çözülür (ISO 18431-4\'e göre rampa-değişmez filtre).',
                 },
                 {
                     title: 'Şok Tepki Spektrumu',
+                    param: 'Arayüz Kontrolü: Maximax (absolute peak) & Primary / Residual split',
                     latex: '\\mathrm{SRS}(f_n) = \\max_t \\bigl| \\ddot{x}_{\\mathrm{abs}}(t;\\, f_n) \\bigr|',
                     expr: 'SRS(f_n) = maks_t | ẍ_mutlak(t; f_n) |',
                     where: 'f_n\'e ayarlı salınıcının tepe mutlak tepkisi. Darbe sırasında alınırsa birincil SRS; sonrasındaki serbest sönümde artık SRS — ikisinin karşılaştırılması şoku sınıflandırır.',
                 },
                 {
                     title: 'Sönüm ve kalite faktörü',
+                    param: 'Arayüz Kontrolü: Q Factor / Damping ζ',
                     latex: 'Q = \\dfrac{1}{2\\zeta}',
                     expr: 'Q = 1/(2ζ)',
                     where: 'Gelenek: aksi belirtilmedikçe Q = 10 (ζ = %5). Her SRS, Q değerini belirtmelidir — aynı darbe farklı sönümlerde farklı SRS seviyeleri verir.',
                 },
                 {
                     title: 'Hız değişimi',
+                    param: 'Sonuç Göstergesi: Characterize shock pulse → Pulse summary (ΔV)',
                     latex: '\\Delta V = \\int a(t)\\, \\mathrm{d}t',
                     expr: 'ΔV = ∫ a(t) dt',
                     where: 'Darbe boyunca ivmenin integrali. Delta-V, hasarla çoğu zaman tek başına tepe g\'den daha iyi ilişkilidir ve düşük frekanslı SRS asimptotlarını o kontrol eder.',
                 },
                 {
                     title: 'Pseudo-hız ve yapısal hasar eşiği',
+                    param: 'Sonuç Göstergesi: Results → Four-coordinate nomogram (pseudo-velocity)',
                     latex: '\\mathrm{PV}(f_n) = \\dfrac{\\mathrm{SRS}(f_n)}{2\\pi f_n} \\qquad v_{\\mathrm{dam}} \\approx 100~\\mathrm{in/s} \\; (2.54~\\mathrm{m/s})',
                     expr: 'PV(f_n) = SRS(f_n) / (2π·f_n) ; v_dam ≈ 100 in/s (2.54 m/s)',
                     where: 'Pseudo-hız, ivme SRS\'ini kinetik hasar ölçeğine dönüştürür. Gaberson & Chalmers kriteri: Karmaşık yapılardaki dinamik gerilme tepe ivmeden (g) ziyade pseudo-hızla orantılıdır; ~2,54 m/s (100 in/s) üzerindeki değerler yüksek kalıcı hasar riski taşır.',
@@ -728,12 +780,14 @@ const VIBRATION_WIDGET_DETAILS = {
             formulas: [
                 {
                     title: 'Transmissibility to the reference',
+                    param: 'Reference → Reference DOF',
                     latex: 'T_{i}(\\omega) = \\dfrac{X_i(\\omega)}{X_{\\mathrm{ref}}(\\omega)}',
                     expr: 'T_i(ω) = X_i(ω) / X_ref(ω)',
                     where: 'Each point\'s spectrum divided by the reference spectrum gives relative magnitude and phase, immune to batch-to-batch changes in operating level.',
                 },
                 {
                     title: 'Deflection shape at one frequency',
+                    param: 'Analysis → Extraction method & Frequency band',
                     latex: 'x_i(t) = |T_i|\\, A \\sin\\bigl(\\omega t + \\varphi_i\\bigr)',
                     expr: 'x_i(t) = |T_i| · A · sin(ωt + φ_i)',
                     where: 'The animation drives every geometry point with its measured magnitude and phase at the selected frequency; points moving in and out of phase reveal the deformation pattern.',
@@ -763,12 +817,14 @@ const VIBRATION_WIDGET_DETAILS = {
             formulas: [
                 {
                     title: 'Referansa geçirgenlik',
+                    param: 'Arayüz Kontrolü: Reference → Reference DOF',
                     latex: 'T_{i}(\\omega) = \\dfrac{X_i(\\omega)}{X_{\\mathrm{ref}}(\\omega)}',
                     expr: 'T_i(ω) = X_i(ω) / X_ref(ω)',
                     where: 'Her noktanın spektrumunun referans spektrumuna bölünmesi bağıl genlik ve fazı verir; partiden partiye işletme seviyesi değişimlerinden etkilenmez.',
                 },
                 {
                     title: 'Tek frekansta sapma şekli',
+                    param: 'Arayüz Kontrolü: Analysis → Extraction method & Frequency band',
                     latex: 'x_i(t) = |T_i|\\, A \\sin\\bigl(\\omega t + \\varphi_i\\bigr)',
                     expr: 'x_i(t) = |T_i| · A · sin(ωt + φ_i)',
                     where: 'Animasyon, her geometri noktasını seçilen frekanstaki ölçülmüş genliği ve fazıyla sürer; fazlı-fazsız hareket eden noktalar deformasyon desenini ortaya çıkarır.',
@@ -801,18 +857,21 @@ const VIBRATION_WIDGET_DETAILS = {
             formulas: [
                 {
                     title: 'Cross-spectral density',
+                    param: 'Mode → Cross Spectrum (|Gxy|, ∠Gxy)',
                     latex: 'G_{xy}(f) = \\bigl\\langle X^{*}(f)\\, Y(f) \\bigr\\rangle',
                     expr: 'G_xy(f) = ⟨ X*(f) · Y(f) ⟩',
                     where: 'X, Y = block FFTs of input and output, * = complex conjugate, ⟨⟩ = ensemble average. Magnitude shows shared power; phase shows the input→output lag at each frequency.',
                 },
                 {
                     title: 'FRF estimators',
+                    param: 'Mode → Transfer → H1 / H2 / Hv',
                     latex: 'H_1(f) = \\dfrac{G_{xy}}{G_{xx}} \\qquad H_2(f) = \\dfrac{G_{yy}}{G_{yx}} \\qquad H_1 \\le H \\le H_2',
                     expr: 'H₁ = G_xy/G_xx ;  H₂ = G_yy/G_yx',
                     where: 'H1 assumes noise on the output (default choice), H2 assumes noise on the input (better at resonances); the true FRF lies between them, and Hv balances both. Their ratio equals the coherence.',
                 },
                 {
                     title: 'Coherence',
+                    param: 'Coherence plot (γ²) & Average Count',
                     latex: '\\gamma^{2}(f) = \\dfrac{\\left| G_{xy} \\right|^{2}}{G_{xx}\\, G_{yy}}',
                     expr: 'γ²(f) = |G_xy|² / (G_xx · G_yy)',
                     where: 'The fraction of output power linearly explained by the input, per frequency. γ² near 1 validates the FRF; dips warn of extraneous noise, nonlinearity, leakage or unmeasured inputs.',
@@ -842,18 +901,21 @@ const VIBRATION_WIDGET_DETAILS = {
             formulas: [
                 {
                     title: 'Çapraz spektral yoğunluk',
+                    param: 'Arayüz Kontrolü: Mode → Cross Spectrum (|Gxy|, ∠Gxy)',
                     latex: 'G_{xy}(f) = \\bigl\\langle X^{*}(f)\\, Y(f) \\bigr\\rangle',
                     expr: 'G_xy(f) = ⟨ X*(f) · Y(f) ⟩',
                     where: 'X, Y = giriş ve çıkışın blok FFT\'leri, * = karmaşık eşlenik, ⟨⟩ = topluluk ortalaması. Genlik ortak gücü, faz her frekanstaki giriş→çıkış gecikmesini gösterir.',
                 },
                 {
                     title: 'FRF kestiricileri',
+                    param: 'Arayüz Kontrolü: Mode → Transfer → H1 / H2 / Hv',
                     latex: 'H_1(f) = \\dfrac{G_{xy}}{G_{xx}} \\qquad H_2(f) = \\dfrac{G_{yy}}{G_{yx}} \\qquad H_1 \\le H \\le H_2',
                     expr: 'H₁ = G_xy/G_xx ;  H₂ = G_yy/G_yx',
                     where: 'H1 gürültüyü çıkışta varsayar (varsayılan tercih), H2 girişte varsayar (rezonanslarda daha iyi); gerçek FRF ikisinin arasındadır, Hv ikisini dengeler. Oranları koheransa eşittir.',
                 },
                 {
                     title: 'Koherans',
+                    param: 'Sonuç Göstergesi: Coherence plot (γ²) & Average Count',
                     latex: '\\gamma^{2}(f) = \\dfrac{\\left| G_{xy} \\right|^{2}}{G_{xx}\\, G_{yy}}',
                     expr: 'γ²(f) = |G_xy|² / (G_xx · G_yy)',
                     where: 'Frekans başına, çıkış gücünün girişle doğrusal açıklanan kesri. 1\'e yakın γ² FRF\'yi doğrular; düşüşler yabancı gürültü, doğrusalsızlık, sızıntı veya ölçülmemiş girişler konusunda uyarır.',
@@ -886,12 +948,14 @@ const VIBRATION_WIDGET_DETAILS = {
             formulas: [
                 {
                     title: 'Measurement model',
+                    param: 'Calibration → Sensitivity matrix S',
                     latex: '\\vec{v} = \\mathbf{S}\\, \\vec{a} = \\begin{bmatrix} s_{xx} & s_{xy} & s_{xz} \\\\ s_{yx} & s_{yy} & s_{yz} \\\\ s_{zx} & s_{zy} & s_{zz} \\end{bmatrix} \\vec{a}',
                     expr: 'v = S · a   (S = 3×3 sensitivity matrix)',
                     where: 'a = true acceleration vector, v = measured outputs. Diagonal terms are the main sensitivities; off-diagonal terms are the unwanted cross-axis couplings.',
                 },
                 {
                     title: 'Compensation',
+                    param: 'Applied matrix and inverse → Raw vs compensated',
                     latex: '\\vec{a} = \\mathbf{S}^{-1}\\, \\vec{v}',
                     expr: 'a = S⁻¹ · v',
                     where: 'Inverting the calibration matrix and applying it sample-by-sample removes the systematic leakage, restoring orthogonal X, Y, Z motion.',
@@ -918,12 +982,14 @@ const VIBRATION_WIDGET_DETAILS = {
             formulas: [
                 {
                     title: 'Ölçüm modeli',
+                    param: 'Arayüz Kontrolü: Calibration → Sensitivity matrix S',
                     latex: '\\vec{v} = \\mathbf{S}\\, \\vec{a} = \\begin{bmatrix} s_{xx} & s_{xy} & s_{xz} \\\\ s_{yx} & s_{yy} & s_{yz} \\\\ s_{zx} & s_{zy} & s_{zz} \\end{bmatrix} \\vec{a}',
                     expr: 'v = S · a   (S = 3×3 duyarlılık matrisi)',
                     where: 'a = gerçek ivme vektörü, v = ölçülen çıkışlar. Köşegen terimler ana duyarlılıklar; köşegen dışı terimler istenmeyen eksenler arası bağlaşımlardır.',
                 },
                 {
                     title: 'Düzeltme',
+                    param: 'Sonuç Göstergesi: Applied matrix and inverse → Raw vs compensated',
                     latex: '\\vec{a} = \\mathbf{S}^{-1}\\, \\vec{v}',
                     expr: 'a = S⁻¹ · v',
                     where: 'Kalibrasyon matrisinin ters çevrilip örnek örnek uygulanması sistematik sızıntıyı kaldırır ve dik X, Y, Z hareketini geri getirir.',
@@ -955,24 +1021,28 @@ const VIBRATION_WIDGET_DETAILS = {
             formulas: [
                 {
                     title: 'Rigid-body acceleration field',
+                    param: 'Input Mode → Rigid-body accelerometer array',
                     latex: '\\vec{a}_P = \\vec{a}_O + \\dot{\\vec{\\omega}} \\times \\vec{r} + \\vec{\\omega} \\times (\\vec{\\omega} \\times \\vec{r})',
                     expr: 'a_P = a_O + α×r + ω×(ω×r)',
                     where: 'a_O = translational acceleration at the reference, ω, α = angular velocity and acceleration, r = lever arm to point P. With enough sensors this system is solved for the six unknowns (a_O, α).',
                 },
                 {
                     title: 'Frequency-domain integration',
+                    param: 'Integration: Frequency domain & Drift Compensation: High-pass',
                     latex: 'V(f) = \\dfrac{A(f)}{j\\,2\\pi f} \\qquad X(f) = -\\dfrac{A(f)}{(2\\pi f)^{2}}',
                     expr: 'V(f) = A(f)/(j·2πf) ;  X(f) = −A(f)/(2πf)²',
                     where: 'Dividing by jω in the frequency domain (with a high-pass cutoff) integrates acceleration to velocity and displacement while limiting the drift that accumulates in time-domain integration.',
                 },
                 {
                     title: 'ISO 2631 weighted acceleration',
+                    param: 'ISO 2631 weighting → Wk / Wd',
                     latex: 'a_w = \\left[ \\int W^{2}(f)\\, G_{aa}(f)\\, \\mathrm{d}f \\right]^{1/2}',
                     expr: 'a_w = [ ∫ W²(f)·G_aa(f) df ]^½',
                     where: 'W(f) = the standardized frequency weighting for the body direction, G_aa = acceleration PSD. a_w is the primary comfort/health exposure number.',
                 },
                 {
                     title: 'Vibration Dose Value',
+                    param: 'Metric families → VDV',
                     latex: '\\mathrm{VDV} = \\left[ \\int_0^T a_w^{4}(t)\\, \\mathrm{d}t \\right]^{1/4}',
                     expr: 'VDV = [ ∫ a_w⁴(t) dt ]^¼',
                     where: 'The fourth-power dose emphasises shocks and transients that RMS understates; MTVV (max 1-s running RMS) complements it for short events.',
@@ -1003,24 +1073,28 @@ const VIBRATION_WIDGET_DETAILS = {
             formulas: [
                 {
                     title: 'Rijit cisim ivme alanı',
+                    param: 'Arayüz Kontrolü: Input Mode → Rigid-body accelerometer array',
                     latex: '\\vec{a}_P = \\vec{a}_O + \\dot{\\vec{\\omega}} \\times \\vec{r} + \\vec{\\omega} \\times (\\vec{\\omega} \\times \\vec{r})',
                     expr: 'a_P = a_O + α×r + ω×(ω×r)',
                     where: 'a_O = referanstaki öteleme ivmesi, ω, α = açısal hız ve ivme, r = P noktasına kol mesafesi. Yeterli sensörle bu sistem altı bilinmeyen (a_O, α) için çözülür.',
                 },
                 {
                     title: 'Frekans alanında entegrasyon',
+                    param: 'Arayüz Kontrolü: Integration: Frequency domain & Drift Compensation: High-pass',
                     latex: 'V(f) = \\dfrac{A(f)}{j\\,2\\pi f} \\qquad X(f) = -\\dfrac{A(f)}{(2\\pi f)^{2}}',
                     expr: 'V(f) = A(f)/(j·2πf) ;  X(f) = −A(f)/(2πf)²',
                     where: 'Frekans alanında jω’ya bölmek (yüksek geçiren kesimle birlikte), zaman alanı entegrasyonunda biriken kaymayı sınırlayarak ivmeyi hıza ve yer değiştirmeye dönüştürür.',
                 },
                 {
                     title: 'ISO 2631 ağırlıklı ivme',
+                    param: 'Arayüz Kontrolü: ISO 2631 weighting → Wk / Wd',
                     latex: 'a_w = \\left[ \\int W^{2}(f)\\, G_{aa}(f)\\, \\mathrm{d}f \\right]^{1/2}',
                     expr: 'a_w = [ ∫ W²(f)·G_aa(f) df ]^½',
                     where: 'W(f) = vücut yönü için standart frekans ağırlıklandırması, G_aa = ivme PSD\'si. a_w, temel konfor/sağlık maruziyet sayısıdır.',
                 },
                 {
                     title: 'Titreşim Doz Değeri',
+                    param: 'Sonuç Göstergesi: Metric families → VDV',
                     latex: '\\mathrm{VDV} = \\left[ \\int_0^T a_w^{4}(t)\\, \\mathrm{d}t \\right]^{1/4}',
                     expr: 'VDV = [ ∫ a_w⁴(t) dt ]^¼',
                     where: 'Dördüncü kuvvet dozu, RMS\'in küçümsediği şokları ve geçici olayları vurgular; MTVV (maks 1 sn kayan RMS) kısa olaylar için onu tamamlar.',
@@ -1212,24 +1286,28 @@ const VIBRATION_WIDGET_DETAILS = {
             formulas: [
                 {
                     title: 'Instantaneous angular speed from pulse timing',
+                    param: 'Trigger → Pulses / Rev, Trigger Level & Edge',
                     latex: '\\omega_i = \\dfrac{2\\pi / z}{\\Delta t_i}',
                     expr: 'ω_i = (2π/z) / Δt_i',
                     where: 'z = pulses per revolution, Δt_i = measured interval between consecutive pulse edges. Each interval is one speed sample — timing resolution, not sample rate, sets the accuracy.',
                 },
                 {
                     title: 'Dynamic twist between two encoders',
+                    param: 'Analysis Mode → Torsional (2 encoders)',
                     latex: '\\Delta\\varphi(t) = \\varphi_1(t) - \\varphi_2(t)',
                     expr: 'Δφ(t) = φ₁(t) − φ₂(t)',
                     where: 'The relative angle between the shaft ends, after removing the mean. This is the torsional deformation the shaft actually experiences cycle by cycle.',
                 },
                 {
                     title: 'Twist → torque',
+                    param: 'Twist (Δφ) → manual G·J/L conversion',
                     latex: 'T = \\dfrac{G\\, J}{L}\\, \\Delta\\varphi',
                     expr: 'T = (G·J / L) · Δφ',
                     where: 'G = shear modulus, J = polar moment of inertia, L = length between encoders. Converts measured twist into transmitted dynamic torque and torsional stress.',
                 },
                 {
                     title: 'Torsional order spectrum',
+                    param: 'Orders → Order trends & Order RMS table',
                     latex: '\\Theta(O) = \\mathrm{FFT}\\bigl\\{ \\omega(\\theta) \\bigr\\}, \\qquad O = \\text{multiples of shaft speed}',
                     expr: 'Θ(O) = FFT{ ω(θ) } over revolutions',
                     where: 'Angular speed resampled per revolution and transformed gives amplitude per order: firing orders of an engine, mesh orders of a gearbox — identifying which source drives the torsional resonance.',
@@ -1259,24 +1337,28 @@ const VIBRATION_WIDGET_DETAILS = {
             formulas: [
                 {
                     title: 'Darbe zamanlamasından anlık açısal hız',
+                    param: 'Arayüz Kontrolü: Trigger → Pulses / Rev, Trigger Level & Edge',
                     latex: '\\omega_i = \\dfrac{2\\pi / z}{\\Delta t_i}',
                     expr: 'ω_i = (2π/z) / Δt_i',
                     where: 'z = devir başına darbe sayısı, Δt_i = ardışık darbe kenarları arasındaki ölçülen aralık. Her aralık bir hız örneğidir — doğruluğu örnekleme hızı değil, zamanlama çözünürlüğü belirler.',
                 },
                 {
                     title: 'İki enkoder arası dinamik burulma',
+                    param: 'Arayüz Kontrolü: Analysis Mode → Torsional (2 encoders)',
                     latex: '\\Delta\\varphi(t) = \\varphi_1(t) - \\varphi_2(t)',
                     expr: 'Δφ(t) = φ₁(t) − φ₂(t)',
                     where: 'Ortalama çıkarıldıktan sonra mil uçları arasındaki bağıl açı. Bu, milin çevrim çevrim gerçekte yaşadığı burulma deformasyonudur.',
                 },
                 {
                     title: 'Burulma → tork',
+                    param: 'Sonuç Göstergesi: Twist (Δφ) → G·J/L ile elle dönüşüm',
                     latex: 'T = \\dfrac{G\\, J}{L}\\, \\Delta\\varphi',
                     expr: 'T = (G·J / L) · Δφ',
                     where: 'G = kayma modülü, J = polar atalet momenti, L = enkoderler arası uzunluk. Ölçülen burulmayı iletilen dinamik torka ve burulma gerilmesine çevirir.',
                 },
                 {
                     title: 'Burulma order spektrumu',
+                    param: 'Sonuç Göstergesi: Orders → Order trends & Order RMS table',
                     latex: '\\Theta(O) = \\mathrm{FFT}\\bigl\\{ \\omega(\\theta) \\bigr\\}, \\qquad O = \\text{mil hızının katları}',
                     expr: 'Θ(O) = devirler üzerinde FFT{ ω(θ) }',
                     where: 'Devir başına yeniden örneklenen ve dönüştürülen açısal hız, order başına genlik verir: bir motorun ateşleme order’ları, bir dişli kutusunun kavrama order’ları — burulma rezonansını hangi kaynağın sürdüğünü belirler.',

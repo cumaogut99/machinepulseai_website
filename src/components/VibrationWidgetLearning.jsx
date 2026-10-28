@@ -1,9 +1,8 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import katex from 'katex'
-import 'katex/dist/katex.min.css'
 import LearningWorkbench from './learning/LearningWorkbench.jsx'
+import { FormulaSpecGrid } from './learning/LearningPrimitives.jsx'
 import LearningConceptLab from './learning/LearningConceptLab.jsx'
 import { CONCEPT_LABS } from '../data/learning/conceptLabs.js'
 import { getWidgetScreenshot } from '../data/learning/screenshots.js'
@@ -43,20 +42,6 @@ function SectionHeader({ eyebrow, title, intro }) {
             <h2 className="mt-3 text-2xl font-bold tracking-tight text-white sm:text-3xl">{title}</h2>
             {intro && <p className="mt-3 text-sm leading-7 text-slate-400 sm:text-base">{intro}</p>}
         </div>
-    )
-}
-
-function FormulaCard({ formula }) {
-    const html = useMemo(
-        () => katex.renderToString(formula.latex || formula.expr, { displayMode: true, throwOnError: false }),
-        [formula.expr, formula.latex],
-    )
-    return (
-        <article className="rounded-2xl border border-white/10 bg-white/[0.025] p-5">
-            <h3 className="font-semibold text-white">{formula.title}</h3>
-            <div className="mt-4 overflow-x-auto rounded-xl border border-[#00f5ff]/15 bg-black/30 px-3 py-4 text-white/90" dangerouslySetInnerHTML={{ __html: html }} />
-            <p className="mt-4 text-sm leading-6 text-slate-400">{formula.where}</p>
-        </article>
     )
 }
 
@@ -160,10 +145,6 @@ export default function VibrationWidgetLearning({ widgetId }) {
                     <div className="grid gap-4 lg:grid-cols-3">
                         {page.theory.cards.map((card) => <article key={card.title} className="rounded-2xl border border-white/10 bg-white/[0.025] p-5"><span className="font-mono text-xs text-[#00f5ff]">{card.kicker}</span><h3 className="mt-3 text-lg font-semibold text-white">{card.title}</h3><p className="mt-3 text-sm leading-7 text-slate-400">{card.body}</p></article>)}
                     </div>
-                    <div className="mt-14 border-t border-white/8 pt-14">
-                        <SectionHeader eyebrow={t('vibrationLearn.sectionEyebrow.theory')} title={t('vibrationLearn.theory.formulaTitle')} intro={t('vibrationLearn.theory.formulaIntro')} />
-                        <div className="grid gap-4 lg:grid-cols-2">{detail.formulas.map((formula) => <FormulaCard key={formula.title} formula={formula} />)}</div>
-                    </div>
                 </section>
 
                 <section id="foundations" className="scroll-mt-32 border-t border-white/8 py-16">
@@ -191,6 +172,7 @@ export default function VibrationWidgetLearning({ widgetId }) {
                     <ol className="grid gap-3 md:grid-cols-2">{detail.steps.map((step, index) => <li key={step.step} className="flex gap-4 rounded-2xl border border-white/10 bg-white/[0.025] p-5"><span className="flex h-9 w-9 flex-none items-center justify-center rounded-full border border-[#00f5ff]/30 bg-[#00f5ff]/[0.06] font-mono text-xs text-[#00f5ff]">{index + 1}</span><div><h4 className="font-semibold text-white">{step.step}</h4><p className="mt-1 text-sm leading-6 text-slate-400">{step.detail}</p></div></li>)}</ol>
                     <div className="mt-14 rounded-2xl border border-[#00f5ff]/20 bg-[#00f5ff]/[0.035] p-6"><h3 className="text-xl font-bold text-white">{t('vibrationLearn.workflow.checklistTitle')}</h3><div className="mt-5 grid gap-3 md:grid-cols-2">{page.workflow.checklist.map((item) => <div key={item} className="flex gap-3 text-sm leading-6 text-slate-300"><span className="text-[#00f5ff]">✓</span><span>{item}</span></div>)}</div></div>
                     <div className="mt-14"><h3 className="text-2xl font-bold text-white sm:text-3xl">{t('vibrationLearn.workflow.mistakesTitle')}</h3><div className="mt-6 grid gap-3 lg:grid-cols-2">{page.mistakes.map((mistake) => <details key={mistake.title} className="group rounded-2xl border border-[#a855f7]/20 bg-[#a855f7]/[0.035] open:border-[#a855f7]/40"><summary className="flex cursor-pointer list-none items-start justify-between gap-4 px-5 py-4 text-sm font-semibold leading-6 text-white">{mistake.title}<span aria-hidden="true" className="text-lg font-normal text-[#a855f7] transition group-open:rotate-45">+</span></summary><p className="border-t border-[#a855f7]/10 px-5 py-4 text-sm leading-6 text-slate-400">{mistake.body}</p></details>)}</div></div>
+                    <div className="mt-14 border-t border-white/8 pt-14"><SectionHeader eyebrow={t('vibrationLearn.sectionEyebrow.reference')} title={t('vibrationLearn.workflow.formulasTitle')} intro={t('vibrationLearn.workflow.formulasIntro')} /><FormulaSpecGrid formulas={detail.formulas} /></div>
                     <div className="mt-14 border-t border-white/8 pt-14"><SectionHeader eyebrow={t('vibrationLearn.sectionEyebrow.workflow')} title={t('vibrationLearn.workflow.referencesTitle')} intro={t('vibrationLearn.workflow.referencesIntro')} /><div className="grid gap-3 md:grid-cols-2">{page.sources.map((source) => <a key={source.title} href={source.href} target="_blank" rel="noreferrer" className="rounded-2xl border border-white/10 bg-white/[0.025] p-5 transition hover:border-[#00f5ff]/30"><h3 className="font-semibold text-white">{source.title}</h3><p className="mt-2 text-sm leading-6 text-slate-400">{source.note}</p></a>)}</div></div>
                 </section>
             </main>

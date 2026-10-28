@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import katex from 'katex'
 import WIDGET_CATALOG from '../src/data/widgetCatalog.js'
-import { getWidgetDetailSlug, SLUG_TO_WIDGET_ID } from '../src/data/widgetDetails.js'
+import { getWidgetDetailById, getWidgetDetailSlug, SLUG_TO_WIDGET_ID } from '../src/data/widgetDetails.js'
 import { WIDGET_LEARNING } from '../src/data/widgetLearning.js'
 import { VIBRATION_LEARNING_IDS } from '../src/i18n/vibrationLearning.js'
 import TRANSLATIONS from '../src/i18n/widgetLearning.js'
@@ -17,6 +17,7 @@ import ROTATING_TOURS from '../src/data/learning/tours/rotating.js'
 import STRUCTURAL_TOURS from '../src/data/learning/tours/structural.js'
 import MOTION_TOURS from '../src/data/learning/tours/motion.js'
 import FILTER_TOURS from '../src/data/learning/tours/filters.js'
+import ROTOR_LEARNING from '../src/i18n/rotorDynamicsLearning.js'
 
 test('every in-scope ready widget has a complete authored course or existing flagship guide', () => {
     const specialized = new Set(['fft_spectrum', 'rotor_dynamics', ...VIBRATION_LEARNING_IDS])
@@ -71,6 +72,20 @@ test('both languages have complete matching schemas, valid exercises and parseab
         assert.ok(page.intro.startsWith(seo.description.replace(/…$/, '')))
         assert.ok(seo.title.length <= 60)
         assert.ok(seo.title.includes('MachinePulseAI'))
+    }
+})
+
+test('every equation on a released guide names the control or readout it governs', () => {
+    const released = new Set(WIDGET_CATALOG.flatMap((category) => category.widgets).filter((widget) => !widget.phase).map((widget) => widget.id))
+    const pages = ['en', 'tr'].flatMap((lang) => [
+        ...Object.values(WIDGET_LEARNING).map((guide) => [guide.id, lang, guide[lang].formulas]),
+        ...['fft_spectrum', ...VIBRATION_LEARNING_IDS].filter((id) => released.has(id))
+            .map((id) => [id, lang, getWidgetDetailById(id)[lang].formulas]),
+        ['rotor_dynamics', lang, ROTOR_LEARNING[lang].formulas.items],
+    ])
+    for (const [id, lang, formulas] of pages) {
+        assert.ok(formulas.length > 0, `${id}.${lang} has no equations`)
+        for (const formula of formulas) assert.ok(formula.param?.trim(), `${id}.${lang}: "${formula.title}" needs a control/readout tag`)
     }
 })
 

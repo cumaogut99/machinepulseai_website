@@ -1,5 +1,11 @@
+/** Formula tags name the workbench control or readout an equation governs.
+ * The application UI is English, so the path itself is never translated. */
+export const control = (path) => [path, `Arayüz Kontrolü: ${path}`]
+export const readout = (path) => [path, `Sonuç Göstergesi: ${path}`]
+
 /** Expand compact bilingual editorial records into independent learning pages.
  * Rows contain [English title, Turkish title, English explanation, Turkish explanation].
+ * Math rows append an optional control()/readout() tag.
  * Content describes application controls; exercises are illustrative, not a DAQ simulator.
  * Optional fields: title (page heading), why ([title, body] rows) and exercise.
  */
@@ -21,8 +27,9 @@ export function lesson(record) {
             steps: rows(record.steps),
             outputs: rows(record.outputs),
             pitfalls: rows(record.pitfalls),
-            formulas: record.math.map(([latex, en, tr, enWhere, trWhere]) => ({
+            formulas: record.math.map(([latex, en, tr, enWhere, trWhere, param]) => ({
                 latex, title: index ? tr : en, where: index ? trWhere : enWhere,
+                ...(param && { param: param[index] }),
             })),
             example: {
                 title: record.example[index], value: record.example[index + 2],

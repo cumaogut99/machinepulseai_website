@@ -19,15 +19,36 @@ export function LearningCards({ items }) {
     </div>
 }
 
-export function LearningFormula({ formula }) {
-    const html = useMemo(() => katex.renderToString(formula.latex, {
-        displayMode: true, throwOnError: false, strict: 'ignore',
-    }), [formula.latex])
-    return <article className="rounded-2xl border border-white/10 bg-white/[0.025] p-5">
-        <h3 className="font-semibold text-white">{formula.title}</h3>
-        <div className="mt-4 overflow-x-auto rounded-xl border border-neon-cyan/20 bg-black/30 px-3 py-4 text-white/90" dangerouslySetInnerHTML={{ __html: html }} />
-        <p className="mt-4 text-sm leading-7 text-slate-400">{formula.where}</p>
-    </article>
+function FormulaMath({ latex, fallback }) {
+    const html = useMemo(() => {
+        if (!latex) return null
+        try {
+            return katex.renderToString(latex, { displayMode: true, throwOnError: false, strict: 'ignore' })
+        } catch {
+            return null
+        }
+    }, [latex])
+    if (!html) {
+        return <code className="block overflow-x-auto rounded-lg border border-neon-cyan/15 bg-black/30 px-4 py-3 font-mono text-sm text-neon-cyan">{fallback}</code>
+    }
+    return <div className="katex-formula overflow-x-auto rounded-lg border border-neon-cyan/15 bg-black/30 px-4 py-4 text-white/90" dangerouslySetInnerHTML={{ __html: html }} />
+}
+
+/** Engineering specification grid: each equation is tagged with the workbench
+ * control or readout it governs (`param`). Shared by every learning page. */
+export function FormulaSpecGrid({ formulas }) {
+    return <div className="grid gap-4 md:grid-cols-2">
+        {formulas.map((formula) => <article key={formula.title} className="flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.025] p-5 transition hover:border-neon-cyan/30">
+            <div>
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                    <h4 className="text-sm font-semibold text-white">{formula.title}</h4>
+                    {formula.param && <span className="rounded-md border border-neon-cyan/25 bg-neon-cyan/[0.08] px-2.5 py-0.5 font-mono text-[11px] font-medium text-neon-cyan">{formula.param}</span>}
+                </div>
+                <div className="mt-3"><FormulaMath latex={formula.latex} fallback={formula.expr} /></div>
+            </div>
+            <p className="mt-3 text-[13px] leading-6 text-slate-400">{formula.where}</p>
+        </article>)}
+    </div>
 }
 
 export function LearningNavigation({ ids, labels, title }) {
