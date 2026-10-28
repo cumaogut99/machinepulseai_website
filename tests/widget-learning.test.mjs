@@ -17,6 +17,7 @@ import ROTATING_TOURS from '../src/data/learning/tours/rotating.js'
 import STRUCTURAL_TOURS from '../src/data/learning/tours/structural.js'
 import MOTION_TOURS from '../src/data/learning/tours/motion.js'
 import FILTER_TOURS from '../src/data/learning/tours/filters.js'
+import DATA_IO_TOURS from '../src/data/learning/tours/dataIO.js'
 import ROTOR_LEARNING from '../src/i18n/rotorDynamicsLearning.js'
 
 test('every in-scope ready widget has a complete authored course or existing flagship guide', () => {
@@ -103,12 +104,16 @@ test('teaching models reproduce the worked examples and stay finite at slider bo
 })
 
 
-test('interface tours cover the signal filters and every engineering vibration widget with captured, anchored, bilingual views', () => {
-    const tours = { ...FILTER_TOURS, ...FFT_TOURS, ...FREQUENCY_RESPONSE_TOURS, ...ROTATING_TOURS, ...STRUCTURAL_TOURS, ...MOTION_TOURS }
-    const engineering = WIDGET_CATALOG.find((category) => category.id === 'engineering').widgets
-    const filters = WIDGET_CATALOG.find((category) => category.id === 'filters').widgets
-    const expected = [...filters, ...engineering.filter((widget) => !widget.phase)].map((widget) => widget.id)
-    assert.deepEqual(Object.keys(tours).sort(), expected.sort())
+test('interface tours have captured, anchored, bilingual views and replace the single screenshot', () => {
+    const tours = { ...DATA_IO_TOURS, ...FILTER_TOURS, ...FFT_TOURS, ...FREQUENCY_RESPONSE_TOURS, ...ROTATING_TOURS, ...STRUCTURAL_TOURS, ...MOTION_TOURS }
+    const byCategory = (id) => WIDGET_CATALOG.find((category) => category.id === id).widgets.filter((widget) => !widget.phase)
+    const required = ['data_io', 'filters', 'engineering'].flatMap(byCategory).map((widget) => widget.id)
+    for (const id of required) assert.ok(tours[id], `${id} needs an interface tour`)
+    const released = new Set(WIDGET_CATALOG.flatMap((category) => category.widgets).filter((widget) => !widget.phase).map((widget) => widget.id))
+    for (const id of Object.keys(tours)) {
+        assert.ok(released.has(id), `${id} has a tour but is not a released widget`)
+        assert.ok(!existsSync(new URL(`../src/assets/widget-ui/${id.replaceAll('_', '-')}.webp`, import.meta.url)), `${id} keeps a duplicate single screenshot`)
+    }
     const pair = (value) => Array.isArray(value) && value.length === 2 && value.every((text) => typeof text === 'string' && text.trim())
     for (const [id, views] of Object.entries(tours)) {
         assert.ok(views.length >= 1, `${id} needs at least one view`)
