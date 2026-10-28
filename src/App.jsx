@@ -6,6 +6,7 @@ import Seo from './seo/Seo.jsx'
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
 import ContactModal from './components/ContactModal.jsx'
+import { widgetReleasePhase } from './data/widgetRelease.js'
 
 // Above-the-fold home content stays in the main bundle; everything else is
 // code-split so the initial page load only ships what it needs.
@@ -48,6 +49,10 @@ const CombustionAnalysisDetail = lazyPage(() => import('./components/CombustionA
 const FFTSpectrumLearning = lazyPage(() => import('./components/FFTSpectrumLearning.jsx'))
 const RotorDynamicsLearning = lazyPage(() => import('./components/RotorDynamicsLearning.jsx'))
 const WidgetDetail = lazyPage(() => import('./components/WidgetDetail.jsx'))
+
+// The dedicated combustion page stays withheld while the application defers
+// its module to a later phase (generic pages are gated in WidgetDetail).
+const COMBUSTION_RELEASED = !widgetReleasePhase('combustion_analysis', { subgroupId: 'thermofluids' })
 
 // Route → page component, used to preload the current page before the first
 // render (client hydration and build-time prerendering).
@@ -131,7 +136,7 @@ function AppShell() {
                     <Route path="/" element={<Home />} />
                     <Route path="/product" element={<Page><ProductPage /></Page>} />
                     <Route path="/widgets" element={<Page><WidgetCatalog /></Page>} />
-                    <Route path="/widgets/combustion-analysis" element={<Page><CombustionAnalysisDetail /></Page>} />
+                    <Route path="/widgets/combustion-analysis" element={COMBUSTION_RELEASED ? <Page><CombustionAnalysisDetail /></Page> : <Navigate to="/widgets" replace />} />
                     <Route path="/widgets/fft-spectrum" element={<Page><FFTSpectrumLearning /></Page>} />
                     <Route path="/widgets/rotor-dynamics" element={<Page><RotorDynamicsLearning /></Page>} />
                     <Route path="/widgets/:slug" element={<Page><WidgetDetail /></Page>} />

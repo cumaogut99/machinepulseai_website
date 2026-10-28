@@ -20,10 +20,7 @@ import FILTER_TOURS from '../src/data/learning/tours/filters.js'
 
 test('every in-scope ready widget has a complete authored course or existing flagship guide', () => {
     const specialized = new Set(['fft_spectrum', 'rotor_dynamics', ...VIBRATION_LEARNING_IDS])
-    const scope = WIDGET_CATALOG.flatMap((category) => category.widgets.filter((widget) => {
-        if (['planned', 'coming_soon'].includes(widget.status || category.status)) return false
-        return category.id !== 'engineering' || !widget.subgroup || widget.subgroup.id === 'vibration_structural'
-    }))
+    const scope = WIDGET_CATALOG.flatMap((category) => category.widgets.filter((widget) => !widget.phase))
     assert.equal(scope.length, 49)
     assert.equal(Object.keys(WIDGET_LEARNING).length, 36)
     for (const widget of scope) {
@@ -99,8 +96,7 @@ test('interface tours cover the signal filters and every engineering vibration w
     const tours = { ...FILTER_TOURS, ...FFT_TOURS, ...FREQUENCY_RESPONSE_TOURS, ...ROTATING_TOURS, ...STRUCTURAL_TOURS, ...MOTION_TOURS }
     const engineering = WIDGET_CATALOG.find((category) => category.id === 'engineering').widgets
     const filters = WIDGET_CATALOG.find((category) => category.id === 'filters').widgets
-    const expected = [...filters, ...engineering.filter((widget) => widget.status !== 'coming_soon'
-        && (!widget.subgroup || widget.subgroup.id === 'vibration_structural'))].map((widget) => widget.id)
+    const expected = [...filters, ...engineering.filter((widget) => !widget.phase)].map((widget) => widget.id)
     assert.deepEqual(Object.keys(tours).sort(), expected.sort())
     const pair = (value) => Array.isArray(value) && value.length === 2 && value.every((text) => typeof text === 'string' && text.trim())
     for (const [id, views] of Object.entries(tours)) {
@@ -127,14 +123,23 @@ test('interface tours cover the signal filters and every engineering vibration w
     }
 })
 
-test('modules announced for the next release are visible but not routable', () => {
-    const upcoming = WIDGET_CATALOG.flatMap((category) => category.widgets).filter((widget) => widget.status === 'coming_soon')
-    assert.deepEqual(upcoming.map((widget) => widget.id).sort(), ['machine_health_overview', 'structural_health'])
+test('modules the application defers to a later phase are labelled but not routable', () => {
+    // Mirrors python/ui/factory/widget_release.py in the desktop application.
+    const deferred = WIDGET_CATALOG.flatMap((category) => category.widgets).filter((widget) => widget.phase)
+    assert.deepEqual(deferred.filter((widget) => widget.phase === 2).map((widget) => widget.id).sort(),
+        ['database_widget', 'ftp_reader', 'realtime_stream', 'sensor_widget'])
+    assert.equal(deferred.filter((widget) => widget.phase === 3).length, 39)
+    for (const id of ['structural_health', 'machine_health_overview', 'combustion_analysis', 'sound_level', 'ml_regression']) {
+        assert.ok(deferred.some((widget) => widget.id === id), `${id} must be deferred`)
+    }
     const sitemap = readFileSync(new URL('../public/sitemap.xml', import.meta.url), 'utf8')
-    for (const widget of upcoming) {
+    for (const widget of deferred) {
+        assert.equal(WIDGET_LEARNING[widget.id], undefined, `${widget.id} must not get a learning guide`)
         const slug = getWidgetDetailSlug(widget.id)
         assert.ok(!sitemap.includes(`/widgets/${slug}<`), `${widget.id} must not be in the sitemap`)
+        assert.equal(resolveRouteMeta(`/widgets/${slug}`, 'en').title, resolveRouteMeta('/', 'en').title, `${widget.id} must not keep SEO metadata`)
     }
+    assert.ok(!sitemap.includes('/widgets/combustion-analysis<'))
     const frf = WIDGET_CATALOG.find((category) => category.id === 'engineering').widgets.find((widget) => widget.id === 'cross_spectrum')
     assert.equal(frf.subgroup, undefined, 'Frequency Response sits directly under Engineering Modules')
 })

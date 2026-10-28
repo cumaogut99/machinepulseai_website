@@ -59,7 +59,7 @@ const resources = {
             "widgets": {
                 "eyebrow": "Technical Library",
                 "title": "Engineering Module Library",
-                "subtitle": "{{count}}+ modules with theory, input channels, formulas, processing steps and produced outputs — from data import and signal filtering to vibration, acoustic and engineering diagnostics.",
+                "subtitle": "{{count}} ready-to-use modules with theory, input channels, formulas, processing steps and produced outputs — from data import and signal filtering to vibration and structural diagnostics. Modules planned for later application phases are labelled.",
                 "searchPlaceholder": "Search widgets…",
                 "allCategories": "All",
                 "learnMore": "Learn the theory",
@@ -67,9 +67,8 @@ const resources = {
                 "viewDetail": "Learn in detail",
                 "expandGroup": "Show {{group}} widgets",
                 "collapseGroup": "Hide {{group}} widgets",
-                "plannedBadge": "Planned",
-                "comingSoonBadge": "Coming soon",
-                "comingSoonNote": "Coming in the next release",
+                "phaseBadge": "Coming later · Phase {{phase}}",
+                "phaseNote": "Planned for Phase {{phase}} of the application. Not available in the current version.",
                 "noResults": "No widgets match your search.",
                 "detail": {
                     "back": "Back to widget library",
@@ -292,7 +291,7 @@ const resources = {
             "widgets": {
                 "eyebrow": "Teknik Kütüphane",
                 "title": "Mühendislik Modül Kütüphanesi",
-                "subtitle": "{{count}}+ modül; teori, giriş kanalları, formüller, işlem adımları ve üretilen çıktılarla açıklanır — veri içe aktarmadan sinyal filtrelemeye, titreşim, akustik ve mühendislik tanılamasına kadar.",
+                "subtitle": "{{count}} kullanıma hazır modül; teori, giriş kanalları, formüller, işlem adımları ve üretilen çıktılarla açıklanır — veri içe aktarmadan sinyal filtrelemeye, titreşim ve yapısal tanılamaya kadar. İleriki uygulama fazlarında gelecek modüller etiketlenmiştir.",
                 "searchPlaceholder": "Widget ara…",
                 "allCategories": "Tümü",
                 "learnMore": "Teoriyi öğren",
@@ -300,9 +299,8 @@ const resources = {
                 "viewDetail": "Detaylı Öğren",
                 "expandGroup": "{{group}} widgetlarını göster",
                 "collapseGroup": "{{group}} widgetlarını gizle",
-                "plannedBadge": "Planlanıyor",
-                "comingSoonBadge": "Yakında",
-                "comingSoonNote": "Bir sonraki sürümde geliyor",
+                "phaseBadge": "İleride gelecek · Faz {{phase}}",
+                "phaseNote": "Uygulamanın Faz {{phase}} sürümünde planlanıyor; mevcut sürümde kullanılamaz.",
                 "noResults": "Aramanızla eşleşen widget yok.",
                 "detail": {
                     "back": "Widget kütüphanesine dön",

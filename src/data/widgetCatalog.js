@@ -3,13 +3,14 @@
 // Taxonomy source: python/ui/canvas/canvas_menu_data.py::WIDGET_MENU_TREE
 // Availability sources: python/ui/factory/widget_specs.py and runtime classes
 //
-// The application palette contains 92 visible leaves. Fourteen are visible
-// placeholders (four Data I/O connectors and ten Machine Learning modules);
-// the website keeps them visible but labels them as planned.
+// Release scope: ./widgetRelease.js mirrors python/ui/factory/widget_release.py.
+// The website lists every palette leaf, and modules the application defers to
+// a later phase carry a `phase` number instead of a learning page.
 
 import { CORE_CONTENT_CATEGORIES } from './widgetCatalog.core.js'
 import { ENGINEERING_CATEGORIES } from './widgetCatalog.engineering.js'
 import { WIDGET_CATEGORIES } from './widgetCatalog.categories.js'
+import { subgroupReleasePhase, widgetReleasePhase } from './widgetRelease.js'
 
 const content = (enName, trName, enSummary, trSummary, enTheory, trTheory) => ({
     en: {
@@ -176,17 +177,21 @@ function widget(id, enName, trName, options = {}) {
     if (!base) throw new Error(`Missing website content for application widget: ${id}`)
 
     const copyOverride = COPY_OVERRIDES[id] || {}
-    const { subgroup, status } = options
+    const { subgroup } = options
+    const phase = widgetReleasePhase(id, { subgroupId: subgroup?.id })
     return {
         ...base,
         ...(subgroup ? { subgroup } : {}),
-        ...(status ? { status } : {}),
+        ...(phase ? { phase } : {}),
         en: { ...base.en, ...copyOverride.en, name: enName },
         tr: { ...base.tr, ...copyOverride.tr, name: trName },
     }
 }
 
-const subgroup = (id, en, tr) => ({ id, en, tr })
+const subgroup = (id, en, tr) => {
+    const phase = subgroupReleasePhase(id)
+    return { id, en, tr, ...(phase ? { phase } : {}) }
+}
 
 const ENGINEERING_GROUPS = [
     {
@@ -203,8 +208,8 @@ const ENGINEERING_GROUPS = [
             ['bearing_fault', 'Bearing & Gear Fault Diagnosis', 'Rulman ve Dişli Arıza Tanılama'],
             ['kinematics_6dof', 'Kinematic Chain (6-DOF)', 'Kinematik Zincir (6-DOF)'],
             ['cross_axis_compensation', 'Cross-Axis Compensation', 'Eksenler Arası Kompanzasyon'],
-            ['structural_health', 'Structural Health Monitoring', 'Yapısal Sağlık İzleme', { status: 'coming_soon' }],
-            ['machine_health_overview', 'Machine Health Overview', 'Makine Sağlığı Genel Görünümü', { status: 'coming_soon' }],
+            ['structural_health', 'Structural Health Monitoring', 'Yapısal Sağlık İzleme'],
+            ['machine_health_overview', 'Machine Health Overview', 'Makine Sağlığı Genel Görünümü'],
         ],
     },
     {
@@ -272,7 +277,7 @@ const engineeringWidgets = [
     widget('fft_spectrum', 'FFT / Spectrum', 'FFT / Spektrum'),
     widget('cross_spectrum', 'Frequency Response & Cross Spectrum', 'Frekans Tepkisi ve Çapraz Spektrum'),
     ...ENGINEERING_GROUPS.flatMap((group) => (
-        group.widgets.map(([id, en, tr, options]) => widget(id, en, tr, { ...options, subgroup: group.meta }))
+        group.widgets.map(([id, en, tr]) => widget(id, en, tr, { subgroup: group.meta }))
     )),
 ]
 
@@ -281,18 +286,19 @@ const CATEGORY_BY_ID = new Map(WIDGET_CATEGORIES.map((item) => [item.id, item]))
 function category(id, widgets) {
     const meta = CATEGORY_BY_ID.get(id)
     if (!meta) throw new Error(`Missing website category metadata: ${id}`)
-    return { ...meta, widgets }
+    // A deferred category defers every widget it contains.
+    return { ...meta, widgets: meta.phase ? widgets.map((item) => ({ ...item, phase: meta.phase })) : widgets }
 }
 
 export const WIDGET_CATALOG = [
     category('data_io', [
             widget('file_reader', 'File Reader', 'Dosya Okuyucu'),
             widget('data_merger', 'File Merger', 'Dosya Birleştirici'),
-            widget('database_widget', 'Database', 'Veritabanı', { status: 'planned' }),
-            widget('sensor_widget', 'Sensor Data', 'Sensör Verisi', { status: 'planned' }),
+            widget('database_widget', 'Database', 'Veritabanı'),
+            widget('sensor_widget', 'Sensor Data', 'Sensör Verisi'),
             widget('data_exporter', 'File Exporter', 'Dosya Dışa Aktarıcı'),
-            widget('ftp_reader', 'FTP/SFTP Reader', 'FTP/SFTP Okuyucu', { status: 'planned' }),
-            widget('realtime_stream', 'Real-time Stream', 'Gerçek Zamanlı Akış', { status: 'planned' }),
+            widget('ftp_reader', 'FTP/SFTP Reader', 'FTP/SFTP Okuyucu'),
+            widget('realtime_stream', 'Real-time Stream', 'Gerçek Zamanlı Akış'),
             widget('random_generator', 'Data Generator', 'Veri Üreteci'),
     ]),
     category('preprocessing', [

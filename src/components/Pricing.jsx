@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { useContactModal } from '../context/ContactModalContext.jsx'
+import { categoryReleasePhase, subgroupReleasePhase } from '../data/widgetRelease.js'
 
 // ─── Packages & Modules ─────────────────────────────────────────────────────────
 // No prices on the public site — the page presents the base package plus the
@@ -12,6 +13,8 @@ const BASE_FEATURE_KEYS = [0, 1, 2, 3, 4]
 // Add-on modules: widget groups + intelligence modules. Each id maps to an i18n
 // entry under pricing.groups.* (or pricing.ml / pricing.ai). Accents reuse the
 // existing widget-catalog category colors so the two pages stay visually aligned.
+// Group ids match the catalog subgroups, so deferred groups carry the same
+// release phase as the application palette.
 const ADDON_GROUPS = [
     { id: 'filters', i18n: 'pricing.groups.filters', accent: '#a855f7' },
     { id: 'analysis', i18n: 'pricing.groups.analysis', accent: '#f59e0b' },
@@ -22,10 +25,10 @@ const ADDON_GROUPS = [
     { id: 'materials', i18n: 'pricing.groups.materials', accent: '#f97316' },
     { id: 'thermofluids', i18n: 'pricing.groups.thermofluids', accent: '#f43f5e' },
     { id: 'vehicle', i18n: 'pricing.groups.vehicle', accent: '#22c55e' },
-]
+].map((group) => ({ ...group, phase: subgroupReleasePhase(group.id) }))
 
 const INTELLIGENCE_MODULES = [
-    { id: 'ml', i18n: 'pricing.ml', accent: '#3b82f6' },
+    { id: 'ml', i18n: 'pricing.ml', accent: '#3b82f6', phase: categoryReleasePhase('machine_learning') },
     { id: 'ai', i18n: 'pricing.ai', accent: '#a855f7' },
 ]
 
@@ -166,7 +169,7 @@ export default function Pricing() {
                                 name={t(`${g.i18n}.name`)}
                                 desc={t(`${g.i18n}.desc`)}
                                 accent={g.accent}
-                                label={t('pricing.addonLabel')}
+                                label={g.phase ? t('widgets.phaseBadge', { phase: g.phase }) : t('pricing.addonLabel')}
                                 cta={selectCta}
                                 onSelect={openContact}
                             />
@@ -177,7 +180,7 @@ export default function Pricing() {
                                 name={t(`${m.i18n}.name`)}
                                 desc={t(`${m.i18n}.desc`)}
                                 accent={m.accent}
-                                label={t('pricing.addonLabel')}
+                                label={m.phase ? t('widgets.phaseBadge', { phase: m.phase }) : t('pricing.addonLabel')}
                                 cta={selectCta}
                                 onSelect={openContact}
                             />

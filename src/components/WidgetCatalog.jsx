@@ -10,13 +10,28 @@ import { VIBRATION_CONTROL_IDS } from '../data/learning/vibrationControls.js'
 // ─────────────────────────────────────────────────────────────────────────────
 // WidgetCatalog — application-aligned gallery of MachinePulseAI modules.
 // Layout: search + category filter chips + responsive card grid. Each card shows
-// a summary and expands to reveal the educational "theory" text. Bilingual via
-// the current i18n language (en/tr); content lives in src/data/widgetCatalog.js.
+// a summary and expands to reveal the educational "theory" text. Modules the
+// application defers to a later phase show only a phase label and summary.
+// Bilingual via the current i18n language (en/tr); content lives in
+// src/data/widgetCatalog.js.
 // ─────────────────────────────────────────────────────────────────────────────
 
 const cardVariants = {
     hidden: { opacity: 0, y: 16 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.21, 0.47, 0.32, 0.98] } },
+}
+
+// Small uppercase label marking a module the application ships in a later phase.
+function PhaseBadge({ phase, accent }) {
+    const { t } = useTranslation()
+    return (
+        <span
+            className="text-[9px] uppercase tracking-wide px-1.5 py-0.5 rounded border whitespace-nowrap"
+            style={{ color: accent, borderColor: `${accent}55`, background: `${accent}12` }}
+        >
+            {t('widgets.phaseBadge', { phase })}
+        </span>
+    )
 }
 
 // ── Single widget card ───────────────────────────────────────────────────────
@@ -27,12 +42,10 @@ function WidgetCard({
     learnLabel,
     hideLabel,
     detailLabel,
-    plannedLabel,
-    isPlanned,
 }) {
     const { t } = useTranslation()
-    // Ships in the next application release: visible, but without a learning page.
-    const isComingSoon = widget.status === 'coming_soon'
+    // Deferred to a later application phase: label and summary only, no content.
+    const { phase } = widget
     const [open, setOpen] = useState(false)
     const guide = getWidgetLearning(widget.id) ? t(`widgetLearn.pages.${widget.id}`, { returnObjects: true }) : null
     const course = VIBRATION_CONTROL_IDS.includes(widget.id) ? t(`vibrationLearn.widgets.${widget.id}`, { returnObjects: true }) : null
@@ -42,13 +55,13 @@ function WidgetCard({
     const paragraphs = (c.theory || '').split('\n\n')
     // Explicit override (combustion) wins; otherwise use the generic registry.
     const detailSlug = getWidgetDetailSlug(widget.id)
-    const detailPath = isPlanned || isComingSoon ? null : widget.detailPath || (detailSlug ? `/widgets/${detailSlug}` : null)
+    const detailPath = phase ? null : widget.detailPath || (detailSlug ? `/widgets/${detailSlug}` : null)
 
     return (
         <motion.div
             variants={cardVariants}
             layout
-            className={`card-hover-glow group relative flex flex-col bg-white/[0.03] border border-white/8 rounded-2xl overflow-hidden p-5 gap-3 ${isPlanned || isComingSoon ? 'opacity-75' : ''}`}
+            className={`card-hover-glow group relative flex flex-col bg-white/[0.03] border border-white/8 rounded-2xl overflow-hidden p-5 gap-3 ${phase ? 'opacity-75' : ''}`}
         >
             {/* Top gradient accent */}
             <div
@@ -61,14 +74,7 @@ function WidgetCard({
                 <h3 className="text-base font-semibold text-white leading-snug pr-2">
                     {c.name}
                 </h3>
-                {(isPlanned || isComingSoon) && (
-                    <span
-                        className="text-[9px] uppercase tracking-wide px-1.5 py-0.5 rounded border whitespace-nowrap"
-                        style={{ color: accent, borderColor: `${accent}55`, background: `${accent}12` }}
-                    >
-                        {isComingSoon ? t('widgets.comingSoonBadge') : plannedLabel}
-                    </span>
-                )}
+                {phase && <PhaseBadge phase={phase} accent={accent} />}
             </div>
 
             <p className="text-sm text-slate-400 leading-relaxed flex-1">
@@ -76,7 +82,7 @@ function WidgetCard({
             </p>
 
             {/* Expand / collapse theory */}
-            <button
+            {!phase && <button
                 onClick={() => setOpen((v) => !v)}
                 className="self-start inline-flex items-center gap-1.5 text-xs font-medium mt-1 transition-colors"
                 style={{ color: accent }}
@@ -90,7 +96,7 @@ function WidgetCard({
                 >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
-            </button>
+            </button>}
 
             <AnimatePresence initial={false}>
                 {open && (
@@ -118,12 +124,12 @@ function WidgetCard({
             </AnimatePresence>
 
             {/* Optional deep-dive link to a dedicated detail page */}
-            {isComingSoon ? (
+            {phase ? (
                 <p
                     className="self-start mt-1 px-3 py-1.5 rounded-lg border text-xs font-semibold"
                     style={{ color: accent, borderColor: `${accent}33`, background: `${accent}0a` }}
                 >
-                    {t('widgets.comingSoonNote')}
+                    {t('widgets.phaseNote', { phase })}
                 </p>
             ) : (guide || course) && <p className="text-[11px] leading-5 text-slate-400">
                 {t(guide?.exercise ? 'widgetLearn.common.card' : 'widgetLearn.common.cardNoCheck')}
@@ -153,6 +159,7 @@ function groupWidgets(widgets, lang) {
             groups.set(key, {
                 id: key,
                 label: itemGroup ? (itemGroup[lang] || itemGroup.en) : '',
+                phase: itemGroup?.phase,
                 widgets: [],
             })
         }
@@ -164,7 +171,6 @@ function groupWidgets(widgets, lang) {
 function WidgetGroup({
     category,
     group,
-    isPlanned,
     isExpanded,
     forceOpen,
     onToggle,
@@ -172,7 +178,6 @@ function WidgetGroup({
     learnLabel,
     hideLabel,
     detailLabel,
-    plannedLabel,
     expandLabel,
     collapseLabel,
 }) {
@@ -200,6 +205,7 @@ function WidgetGroup({
                                 {group.label}
                             </span>
                             <span className="text-xs text-slate-600">({group.widgets.length})</span>
+                            {group.phase && <PhaseBadge phase={group.phase} accent={category.accent} />}
                             <span className="ml-auto flex h-7 w-7 items-center justify-center rounded-full border border-white/10 text-slate-400 group-hover:text-white">
                                 <svg
                                     className={`h-4 w-4 transition-transform duration-300 ${visible ? 'rotate-90' : ''}`}
@@ -238,7 +244,7 @@ function WidgetGroup({
                         className="overflow-hidden"
                     >
                         <motion.div
-                            className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 ${isPlanned ? 'opacity-80' : ''}`}
+                            className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 ${category.phase ? 'opacity-80' : ''}`}
                             variants={{ visible: { transition: { staggerChildren: 0.04 } } }}
                             initial="hidden"
                             animate="visible"
@@ -252,8 +258,6 @@ function WidgetGroup({
                                     learnLabel={learnLabel}
                                     hideLabel={hideLabel}
                                     detailLabel={detailLabel}
-                                    plannedLabel={plannedLabel}
-                                    isPlanned={isPlanned || widget.status === 'planned'}
                                 />
                             ))}
                         </motion.div>
@@ -279,10 +283,7 @@ export default function WidgetCatalog() {
     const [expandedGroups, setExpandedGroups] = useState(() => new Set())
 
     const totalAvailable = useMemo(
-        () => WIDGET_CATALOG.reduce((sum, category) => {
-            if (category.status === 'planned') return sum
-            return sum + category.widgets.filter((item) => !['planned', 'coming_soon'].includes(item.status)).length
-        }, 0),
+        () => WIDGET_CATALOG.reduce((sum, category) => sum + category.widgets.filter((item) => !item.phase).length, 0),
         []
     )
 
@@ -339,7 +340,6 @@ export default function WidgetCatalog() {
     const learnLabel = t('widgets.learnMore')
     const hideLabel = t('widgets.hide')
     const detailLabel = t('widgets.viewDetail')
-    const plannedLabel = t('widgets.plannedBadge')
 
     return (
         <section className="relative py-10 px-6 overflow-hidden">
@@ -410,9 +410,9 @@ export default function WidgetCatalog() {
                                 <span className={active ? '' : 'text-slate-400 hover:text-white'}>
                                     {(cat[lang] || cat.en).name}
                                 </span>
-                                {cat.status === 'planned' && (
+                                {cat.phase && (
                                     <span className="text-[9px] uppercase tracking-wide px-1.5 py-0.5 rounded bg-white/10 text-slate-300">
-                                        {t('widgets.plannedBadge')}
+                                        {t('widgets.phaseBadge', { phase: cat.phase })}
                                     </span>
                                 )}
                             </button>
@@ -428,7 +428,6 @@ export default function WidgetCatalog() {
 
                     {visibleCategories.map((cat) => {
                         const meta = cat[lang] || cat.en
-                        const isPlanned = cat.status === 'planned'
                         const widgetGroups = groupWidgets(cat.widgets, lang)
                         return (
                             <motion.div
@@ -444,10 +443,10 @@ export default function WidgetCatalog() {
                                     <span className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ background: cat.accent }} />
                                     <h2 className="text-xl font-bold text-white tracking-tight">{meta.name}</h2>
                                     <span className="text-xs text-slate-500">({cat.widgets.length})</span>
-                                    {isPlanned && (
+                                    {cat.phase && (
                                         <span className="text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-full border"
                                             style={{ color: cat.accent, borderColor: `${cat.accent}55`, background: `${cat.accent}12` }}>
-                                            {t('widgets.plannedBadge')}
+                                            {t('widgets.phaseBadge', { phase: cat.phase })}
                                         </span>
                                     )}
                                 </div>
@@ -464,7 +463,6 @@ export default function WidgetCatalog() {
                                                 key={group.id}
                                                 category={cat}
                                                 group={group}
-                                                isPlanned={isPlanned}
                                                 isExpanded={expandedGroups.has(groupKey)}
                                                 forceOpen={Boolean(query.trim())}
                                                 onToggle={() => toggleGroup(groupKey)}
@@ -472,7 +470,6 @@ export default function WidgetCatalog() {
                                                 learnLabel={learnLabel}
                                                 hideLabel={hideLabel}
                                                 detailLabel={detailLabel}
-                                                plannedLabel={plannedLabel}
                                                 expandLabel={t('widgets.expandGroup', { group: group.label })}
                                                 collapseLabel={t('widgets.collapseGroup', { group: group.label })}
                                             />

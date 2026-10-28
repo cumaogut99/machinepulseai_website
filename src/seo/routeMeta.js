@@ -43,16 +43,6 @@ export const ROUTE_META = {
             description: 'Teori, giriş kanalları, formüller, işlem adımları ve üretilen çıktılarla teknik modül kütüphanesi.',
         },
     },
-    '/widgets/combustion-analysis': {
-        en: {
-            title: `Advanced Combustion Analysis — ${BRAND}`,
-            description: 'In-cylinder combustion diagnostics deep dive: input channels, core formulas, processing pipeline and outputs — from indicated pressure to IMEP, heat release, MFB and knock.',
-        },
-        tr: {
-            title: `Gelişmiş Yanma Analizi — ${BRAND}`,
-            description: 'Silindir-içi yanma teşhisi derinlemesine: giriş kanalları, temel formüller, işlem hattı ve çıktılar — indike basınçtan IMEP, ısı salınımı, MFB ve vuruntuya.',
-        },
-    },
     '/widgets/fft-spectrum': {
         en: {
             title: `FFT & Spectrum Analysis — ${BRAND}`,
@@ -110,76 +100,6 @@ export const ROUTE_META = {
     '/widgets/torsional-vibration': {
         en: { title: `Torsional & Rotational Vibration — ${BRAND}`, description: 'Angular speed fluctuation, shaft twist and torsional order analysis from encoder or tacho pulses.' },
         tr: { title: `Burulma ve Dönel Titreşim — ${BRAND}`, description: 'Enkoder veya tako darbelerinden açısal hız dalgalanması, mil burulması ve burulma order analizi.' },
-    },
-    '/widgets/sound-level-meter': {
-        en: { title: `Sound Level Meter — ${BRAND}`, description: 'SPL, dBA/dBC/dBZ, Leq, peak and percentile sound-level analysis from calibrated microphone data.' },
-        tr: { title: `Ses Seviyesi Ölçer — ${BRAND}`, description: 'Kalibre mikrofon verisinden SPL, dBA/dBC/dBZ, Leq, tepe ve yüzdelik ses seviyesi analizi.' },
-    },
-    '/widgets/sound-intensity-power': {
-        en: { title: `Sound Intensity & Power — ${BRAND}`, description: 'Sound intensity mapping and radiated sound power estimation for acoustic source comparison.' },
-        tr: { title: `Ses Şiddeti ve Gücü — ${BRAND}`, description: 'Akustik kaynak karşılaştırması için ses şiddeti haritalama ve yayılan ses gücü tahmini.' },
-    },
-    '/widgets/octave-band-analysis': {
-        en: { title: `Octave Band Analysis — ${BRAND}`, description: 'Standard 1/1 and 1/3 octave-band analysis for acoustic spectra, targets and reports.' },
-        tr: { title: `Oktav Bandı Analizi — ${BRAND}`, description: 'Akustik spektrum, hedef ve raporlar için standart 1/1 ve 1/3 oktav bandı analizi.' },
-    },
-    '/widgets/psychoacoustics-sound-quality': {
-        en: { title: `Psychoacoustics — ${BRAND}`, description: 'Loudness, sharpness, roughness, fluctuation strength and tonality for perceived sound quality.' },
-        tr: { title: `Psikoakustik — ${BRAND}`, description: 'Algılanan ses kalitesi için loudness, sharpness, roughness, fluctuation strength ve tonality.' },
-    },
-    '/widgets/microphone-correction': {
-        en: { title: `Microphone Correction — ${BRAND}`, description: 'Microphone calibration and free-field or diffuse-field correction for accurate acoustic spectra.' },
-        tr: { title: `Mikrofon Düzeltmesi — ${BRAND}`, description: 'Doğru akustik spektrumlar için mikrofon kalibrasyonu ve serbest/yayılı alan düzeltmesi.' },
-    },
-    '/widgets/heat-transfer-thermal': {
-        en: {
-            title: `Heat Transfer & Thermal — ${BRAND}`,
-            description: 'Thermal analysis for heat duty, exchanger effectiveness, LMTD, NTU, cooling time constants and heat-transfer coefficients.',
-        },
-        tr: {
-            title: `Isı Transferi ve Termal — ${BRAND}`,
-            description: 'Isı yükü, eşanjör etkinliği, LMTD, NTU, soğuma zaman sabiti ve ısı-transfer katsayıları için termal analiz.',
-        },
-    },
-    '/widgets/fluid-dynamics': {
-        en: {
-            title: `Fluid Dynamics — ${BRAND}`,
-            description: 'Pump and piping diagnostics from pressure, flow and speed data: pulsation, cavitation risk, NPSH, water hammer and hydraulic power.',
-        },
-        tr: {
-            title: `Akışkanlar Dinamiği — ${BRAND}`,
-            description: 'Basınç, debi ve hız verisinden pompa/boru teşhisi: pulsasyon, kavitasyon riski, NPSH, su koçu ve hidrolik güç.',
-        },
-    },
-    '/widgets/gas-exchange-scavenging': {
-        en: {
-            title: `Gas Exchange & Scavenging — ${BRAND}`,
-            description: 'Engine breathing analysis from cylinder pressure and crank angle: pumping loop, PMEP, volumetric efficiency and scavenging indicators.',
-        },
-        tr: {
-            title: `Gaz Değişimi ve Süpürme — ${BRAND}`,
-            description: 'Silindir basıncı ve krank açısından motor nefes alma analizi: pompalama çevrimi, PMEP, hacimsel verim ve süpürme.',
-        },
-    },
-    '/widgets/thermodynamic-cycles': {
-        en: {
-            title: `Thermodynamic Cycles — ${BRAND}`,
-            description: 'Ideal and measured cycle comparison for Otto, Diesel, Dual, Brayton and Rankine systems with p-V, T-S, work and efficiency.',
-        },
-        tr: {
-            title: `Termodinamik Çevrimler — ${BRAND}`,
-            description: 'Otto, Diesel, Dual, Brayton ve Rankine sistemleri için p-V, T-S, iş ve verimle ideal/ölçülen çevrim karşılaştırması.',
-        },
-    },
-    '/widgets/work-cycle-analysis': {
-        en: {
-            title: `Work Cycle Analysis — ${BRAND}`,
-            description: 'Pressure-volume work-loop analysis for engines and compressors: IMEP, PMEP, BMEP, FMEP and polytropic exponent.',
-        },
-        tr: {
-            title: `İş Çevrimi Analizi — ${BRAND}`,
-            description: 'Motor ve kompresörler için basınç-hacim iş çevrimi analizi: IMEP, PMEP, BMEP, FMEP ve politropik üs.',
-        },
     },
     '/pricing': {
         en: {

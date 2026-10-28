@@ -81,61 +81,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.machinepulseai.com.tr/widgets/sound-level-meter</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.machinepulseai.com.tr/widgets/sound-intensity-power</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.machinepulseai.com.tr/widgets/octave-band-analysis</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.machinepulseai.com.tr/widgets/psychoacoustics-sound-quality</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.machinepulseai.com.tr/widgets/microphone-correction</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.machinepulseai.com.tr/widgets/combustion-analysis</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.machinepulseai.com.tr/widgets/heat-transfer-thermal</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.machinepulseai.com.tr/widgets/fluid-dynamics</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.machinepulseai.com.tr/widgets/gas-exchange-scavenging</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.machinepulseai.com.tr/widgets/thermodynamic-cycles</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.machinepulseai.com.tr/widgets/work-cycle-analysis</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.machinepulseai.com.tr/pricing</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
