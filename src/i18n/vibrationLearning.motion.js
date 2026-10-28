@@ -40,8 +40,6 @@ const MOTION_LEARNING = {
             ],
             sources: [
                 { title: 'ISO 16063-31:2009 + Amd 1:2025', note: 'Testing transverse sensitivity of velocity and acceleration transducers, including multi-axis excitation methods.', href: 'https://www.iso.org/standard/36407.html' },
-                { title: 'ISO 16063-31 Amendment 1:2025', note: 'The current amendment attached to the transverse-sensitivity calibration standard.', href: 'https://www.iso.org/standard/85633.html' },
-                { title: 'ISO 21289:2008', note: 'Measurement parameters and metadata that should accompany vibration acquisition.', href: 'https://www.iso.org/ics/17.160/x/' },
             ] },
         tr: {
             title: 'Eksenler Arası Kompanzasyon Rehberi',
@@ -83,8 +81,6 @@ const MOTION_LEARNING = {
             ],
             sources: [
                 { title: 'ISO 16063-31:2009 + Amd 1:2025', note: 'Çok eksenli uyarma yöntemleri dâhil hız ve ivme dönüştürücülerinde enine duyarlılık testi.', href: 'https://www.iso.org/standard/36407.html' },
-                { title: 'ISO 16063-31 Amendment 1:2025', note: 'Enine duyarlılık kalibrasyon standardına bağlı güncel değişiklik.', href: 'https://www.iso.org/standard/85633.html' },
-                { title: 'ISO 21289:2008', note: 'Titreşim ölçümüne eşlik etmesi gereken ölçüm parametreleri ve meta veriler.', href: 'https://www.iso.org/ics/17.160/x/' },
             ] },
     },
     kinematics_6dof: {
@@ -128,8 +124,6 @@ const MOTION_LEARNING = {
             ],
             sources: [
                 { title: 'ISO 2631-1:1997 + Amd 1:2010', note: 'General whole-body vibration exposure evaluation, frequency weighting and assessment concepts.', href: 'https://www.iso.org/standard/7612.html' },
-                { title: 'ISO/DIS 2631-1', note: 'The third-edition revision currently under development; useful for tracking future changes without presenting the draft as published law.', href: 'https://www.iso.org/standard/85768.html' },
-                { title: 'ISO 21289:2008', note: 'Acquisition parameters and metadata for vibration and shock measurements.', href: 'https://www.iso.org/ics/17.160/x/' },
             ] },
         tr: {
             title: 'Kinematik Zincir (6-DOF) Analiz Rehberi',
@@ -171,8 +165,6 @@ const MOTION_LEARNING = {
             ],
             sources: [
                 { title: 'ISO 2631-1:1997 + Amd 1:2010', note: 'Genel tüm-vücut titreşim maruziyeti, frekans ağırlığı ve değerlendirme kavramları.', href: 'https://www.iso.org/standard/7612.html' },
-                { title: 'ISO/DIS 2631-1', note: 'Geliştirilmekte olan üçüncü baskı revizyonu; taslağı yayımlanmış kural gibi göstermeden gelecek değişimi izlemek için.', href: 'https://www.iso.org/standard/85768.html' },
-                { title: 'ISO 21289:2008', note: 'Titreşim ve şok ölçümleri için veri toplama parametreleri ve meta veriler.', href: 'https://www.iso.org/ics/17.160/x/' },
             ] },
     },
 }

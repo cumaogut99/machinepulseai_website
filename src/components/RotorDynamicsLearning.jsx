@@ -10,14 +10,6 @@ import RotorModeGuide from './rotorDynamicsLearning/RotorModeGuide.jsx'
 import RotorOrbitLab from './rotorDynamicsLearning/RotorOrbitLab.jsx'
 
 const NAV_KEYS = ['interface', 'system', 'orbit', 'speed', 'views', 'workflow']
-const SOURCE_URLS = [
-    'https://www.iso.org/standard/61991.html?browse=tc',
-    'https://www.iso.org/standard/63180.html?browse=tc',
-    'https://www.iso.org/standard/70047.html',
-    'https://www.iso.org/standard/78311.html',
-    'https://blogs.sw.siemens.com/simcenter/rotor-dynamics-when-accuracy-is-a-matter-of-life-and-death/',
-    'https://dam.bakerhughes.com/m/6f984a1819b1e383/original/BN-Machinery-Diagnostics-Services-MDS-_Web-Version.PDF',
-]
 
 function useActiveSection(sectionIds) {
     const [activeId, setActiveId] = useState(sectionIds[0])
@@ -263,8 +255,8 @@ export default function RotorDynamicsLearning() {
                     <div className="mt-14 border-t border-white/8 pt-14">
                         <SectionHeader eyebrow={t('rotorLearn.eyebrow')} title={t('rotorLearn.sources.title')} intro={t('rotorLearn.sources.intro')} />
                         <div className="grid gap-3 md:grid-cols-2">
-                            {sources.map((source, index) => (
-                                <a key={source.title} href={SOURCE_URLS[index]} target="_blank" rel="noreferrer" className="group rounded-xl border border-white/10 bg-white/[0.025] p-4 transition hover:border-[#00f5ff]/30">
+                            {sources.map((source) => (
+                                <a key={source.title} href={source.href} target="_blank" rel="noreferrer" className="group rounded-xl border border-white/10 bg-white/[0.025] p-4 transition hover:border-[#00f5ff]/30">
                                     <span className="text-xs text-slate-500">{source.source}</span>
                                     <h3 className="mt-2 text-sm font-semibold leading-6 text-white transition group-hover:text-[#00f5ff]">{source.title} ↗</h3>
                                 </a>

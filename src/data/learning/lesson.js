@@ -6,8 +6,8 @@ export const readout = (path) => [path, `Sonuç Göstergesi: ${path}`]
 /** Expand compact bilingual editorial records into independent learning pages.
  * Rows contain [English title, Turkish title, English explanation, Turkish explanation].
  * Math rows append an optional control()/readout() tag.
- * Content describes application controls; exercises are illustrative, not a DAQ simulator.
- * Optional fields: title (page heading), why ([title, body] rows) and exercise.
+ * Content describes application controls; examples are illustrative, not a DAQ simulator.
+ * Optional fields: title (page heading) and why ([title, body] rows).
  */
 export function lesson(record) {
     const localized = (language) => {
@@ -35,13 +35,6 @@ export function lesson(record) {
                 title: record.example[index], value: record.example[index + 2],
                 explanation: record.example[index + 4],
             },
-            ...(record.exercise && {
-                exercise: {
-                    question: record.exercise[index],
-                    options: record.exercise[index + 2],
-                    correct: record.exercise[4], explanation: record.exercise[index + 5],
-                },
-            }),
         }
     }
     return {
@@ -52,8 +45,5 @@ export function lesson(record) {
 }
 
 export const REFERENCES = {
-    arrow: { title: 'Apache Arrow · Columnar format', href: 'https://arrow.apache.org/docs/format/Columnar.html' },
     nist: { title: 'NIST/SEMATECH · Engineering Statistics Handbook', href: 'https://www.itl.nist.gov/div898/handbook/' },
-    signal: { title: 'SciPy · Signal processing reference', href: 'https://docs.scipy.org/doc/scipy/reference/signal.html' },
-    savgol: { title: 'SciPy · Savitzky–Golay filter', href: 'https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.savgol_filter.html' },
 }

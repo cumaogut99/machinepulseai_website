@@ -39,7 +39,6 @@ const MODAL_LEARNING = {
                 { title: 'Treating a displayed shape as absolute displacement', body: 'EMA shapes are typically relative and arbitrarily scaled unless a separate scaling procedure is performed.' },
             ],
             sources: [
-                { title: 'ISO 7626-1:2011', note: 'Basic terms, transducer specifications and measurement concepts for mechanical mobility and FRFs.', href: 'https://www.iso.org/standard/50426.html' },
                 { title: 'ISO 7626-2:2015', note: 'FRF measurement with an attached single-point vibration exciter.', href: 'https://www.iso.org/standard/62483.html' },
                 { title: 'ISO 7626-5:2019', note: 'Impact-excitation procedures and DFT-based signal analysis for structural FRFs.', href: 'https://www.iso.org/standard/68735.html' },
             ] },
@@ -82,7 +81,6 @@ const MODAL_LEARNING = {
                 { title: 'Görüntülenen şekli mutlak yer değiştirme sanmak', body: 'Ayrı bir ölçekleme işlemi yapılmadıkça EMA şekilleri bağıl ve keyfi ölçektedir.' },
             ],
             sources: [
-                { title: 'ISO 7626-1:2011', note: 'Mekanik hareketlilik ve FRF için temel terimler, dönüştürücü özellikleri ve ölçüm kavramları.', href: 'https://www.iso.org/standard/50426.html' },
                 { title: 'ISO 7626-2:2015', note: 'Yapıya bağlı tek noktalı sarsıcıyla FRF ölçümü.', href: 'https://www.iso.org/standard/62483.html' },
                 { title: 'ISO 7626-5:2019', note: 'Darbe uyarmalı yapısal FRF için ölçüm ve DFT tabanlı sinyal analizi.', href: 'https://www.iso.org/standard/68735.html' },
             ] },
@@ -129,7 +127,6 @@ const MODAL_LEARNING = {
             sources: [
                 { title: 'Brincker, Zhang & Andersen · Frequency Domain Decomposition', note: 'Foundational output-only identification paper introducing FDD for ambient response data.', href: 'https://vbn.aau.dk/en/publications/modal-identification-of-output-only-systems-using-frequency-domai/' },
                 { title: 'Peeters & De Roeck · Stochastic Subspace Identification', note: 'Primary research on reference-based SSI for operational modal analysis.', href: 'https://doi.org/10.1016/S0888-3270(99)00014-8' },
-                { title: 'ISO 4866:2010', note: 'Measurement and processing principles for evaluating vibration effects on fixed structures.', href: 'https://www.iso.org/standard/38967.html' },
             ] },
         tr: {
             title: 'Operasyonel Modal Analiz (OMA) Rehberi',
@@ -172,7 +169,6 @@ const MODAL_LEARNING = {
             sources: [
                 { title: 'Brincker, Zhang & Andersen · Frequency Domain Decomposition', note: 'Ortam tepki verisi için FDD’yi tanıtan temel yalnız-çıkış araştırması.', href: 'https://vbn.aau.dk/en/publications/modal-identification-of-output-only-systems-using-frequency-domai/' },
                 { title: 'Peeters & De Roeck · Stochastic Subspace Identification', note: 'Operasyonel modal analiz için referans tabanlı SSI üzerine birincil araştırma.', href: 'https://doi.org/10.1016/S0888-3270(99)00014-8' },
-                { title: 'ISO 4866:2010', note: 'Sabit yapılarda titreşim etkilerini değerlendirmek için ölçüm ve işleme ilkeleri.', href: 'https://www.iso.org/standard/38967.html' },
             ] },
     },
     time_ods: {
@@ -215,9 +211,6 @@ const MODAL_LEARNING = {
                 { title: 'Reading the exaggerated mesh as true displacement', body: 'The display scale is deliberately amplified. Use the computed point amplitudes for quantitative statements.' },
             ],
             sources: [
-                { title: 'ISO 4866:2010', note: 'Structural vibration measurement and processing principles for fixed structures.', href: 'https://www.iso.org/standard/38967.html' },
-                { title: 'ISO 7626-1:2011', note: 'Response transducer and mechanical mobility terminology relevant to phase-referenced structural measurements.', href: 'https://www.iso.org/standard/50426.html' },
-                { title: 'ISO 13373-2:2016', note: 'Time- and frequency-domain vibration processing and presentation practices.', href: 'https://www.iso.org/standard/68128.html' },
             ] },
         tr: {
             title: 'Zaman Tabanlı ODS Analiz Rehberi',
@@ -258,9 +251,6 @@ const MODAL_LEARNING = {
                 { title: 'Büyütülmüş ağı gerçek yer değiştirme sanmak', body: 'Görüntü ölçeği bilerek büyütülür. Nicel ifade için hesaplanan nokta genliklerini kullanın.' },
             ],
             sources: [
-                { title: 'ISO 4866:2010', note: 'Sabit yapılar için yapısal titreşim ölçümü ve işleme ilkeleri.', href: 'https://www.iso.org/standard/38967.html' },
-                { title: 'ISO 7626-1:2011', note: 'Faz referanslı yapısal ölçümlere ilişkin tepki dönüştürücüsü ve mekanik hareketlilik terimleri.', href: 'https://www.iso.org/standard/50426.html' },
-                { title: 'ISO 13373-2:2016', note: 'Zaman ve frekans alanı titreşim işleme ve sunum uygulamaları.', href: 'https://www.iso.org/standard/68128.html' },
             ] },
     },
 }

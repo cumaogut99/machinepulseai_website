@@ -51,7 +51,7 @@ const shape = (value) => Array.isArray(value) ? value.map(shape)
     : value && typeof value === 'object' ? Object.fromEntries(Object.entries(value).map(([key, item]) => [key, shape(item)]))
         : typeof value
 
-test('both languages have complete matching schemas, valid exercises and parseable equations', () => {
+test('both languages have complete matching schemas and parseable equations', () => {
     assert.deepEqual(shape(TRANSLATIONS.en), shape(TRANSLATIONS.tr))
     for (const guide of Object.values(WIDGET_LEARNING)) for (const lang of ['en', 'tr']) {
         const page = guide[lang]
@@ -61,10 +61,6 @@ test('both languages have complete matching schemas, valid exercises and parseab
             for (const row of page[field]) assert.ok(row.name && row.desc)
         }
         assert.ok(page.example.explanation && page.example.value)
-        if (page.exercise) {
-            assert.ok(page.exercise.correct >= 0 && page.exercise.correct < page.exercise.options.length)
-            assert.ok(page.exercise.explanation && page.exercise.question)
-        }
         for (const item of page.why || []) assert.ok(item.title && item.body.length > 60, `${guide.id}.${lang}.why`)
         for (const formula of page.formulas) assert.doesNotThrow(() => katex.renderToString(formula.latex, { throwOnError: true }))
         const seo = resolveRouteMeta(`/widgets/${guide.slug}`, lang)

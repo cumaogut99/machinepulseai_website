@@ -53,8 +53,8 @@ const VIBRATION_LEARNING_COMMON = {
             mistakesTitle: 'Common interpretation errors',
             formulasTitle: 'Core equations behind the controls and readouts',
             formulasIntro: 'Each equation is tagged with the workbench control or readout it governs. Use this reference to check which measurements determine a result, which assumptions apply and where uncertainty enters the calculation.',
-            referencesTitle: 'Standards and references',
-            referencesIntro: 'Use these references to connect the practical workflow to accepted terminology, measurement practice and engineering limits.',
+            referencesTitle: 'Standard and method references',
+            referencesIntro: 'The calculation or limit used by this widget is defined in the documents below.',
         },
     },
     tr: {
@@ -111,8 +111,8 @@ const VIBRATION_LEARNING_COMMON = {
             mistakesTitle: 'Sık yapılan yorum hataları',
             formulasTitle: 'Arayüz kontrollerinin ve göstergelerin matematiksel karşılıkları',
             formulasIntro: 'Her denklem, ilgili olduğu arayüz kontrolü veya sonuç göstergesiyle etiketlenmiştir. Bir sonucu hangi ölçümlerin belirlediğini, hangi kabullerin geçerli olduğunu ve belirsizliğin hesaba nereden girdiğini bu referanstan kontrol edin.',
-            referencesTitle: 'Standartlar ve kaynaklar',
-            referencesIntro: 'Pratik iş akışını kabul görmüş terimlere, ölçüm uygulamalarına ve mühendislik sınırlarına bağlamak için bu kaynakları kullanın.',
+            referencesTitle: 'Standart ve yöntem kaynakları',
+            referencesIntro: 'Bu widget’ın kullandığı hesap veya sınır aşağıdaki belgelerde tanımlanır.',
         },
     },
 }

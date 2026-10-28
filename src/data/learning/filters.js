@@ -2,7 +2,7 @@ import { control, lesson } from './lesson.js'
 
 const records = [
     {
-        id: 'frequency_filter', references: ['signal'], related: ['fft_spectrum', 'smoothing_filter'],
+        id: 'frequency_filter', references: [], related: ['fft_spectrum', 'smoothing_filter'],
         title: ['Frequency Filter Guide', 'Frekans Filtresi Rehberi'],
         intro: ['This guide explains how the Frequency Filter widget keeps or removes selected frequency ranges of a signal. It describes the lowpass, highpass, bandpass, bandstop and notch modes, the effect of cutoff frequency and filter order, and how to check the change in amplitude and phase after filtering.', 'Bu rehber, Frekans Filtresi widget’ının bir sinyalin belirli frekans aralıklarını nasıl koruduğunu veya bastırdığını anlatır. Alçak geçiren (lowpass), yüksek geçiren (highpass), bant geçiren (bandpass), bant durduran (bandstop) ve çentik (notch) modlarını, kesim frekansı ile filtre derecesinin etkisini ve filtreleme sonrası genlik ve fazdaki değişimin nasıl kontrol edileceğini açıklar.'],
         why: [
@@ -42,7 +42,7 @@ const records = [
         pitfalls: [['Filtering to make a fault disappear', 'Arızayı görünmez yapmak için filtrelemek', 'Choose the band from the physical question. Suppressing a peak does not prove that its mechanical cause has gone away.', 'Bandı fiziksel soruya göre seçin. Tepeyi bastırmak mekanik nedenin ortadan kalktığını kanıtlamaz.'], ['Ignoring boundary transients', 'Sınır geçişlerini yok saymak', 'Inspect record ends and abrupt events; a smooth interior does not establish correct behaviour at boundaries.', 'Kayıt uçlarını ve ani olayları inceleyin; düzgün iç bölüm sınır davranışını kanıtlamaz.']],
     },
     {
-        id: 'smoothing_filter', references: ['savgol'], related: ['rolling_window_stats', 'frequency_filter'],
+        id: 'smoothing_filter', references: [], related: ['rolling_window_stats', 'frequency_filter'],
         title: ['Smoothing Filter Guide', 'Yumuşatma Filtresi Rehberi'],
         intro: ['This guide explains how the Smoothing Filter widget reduces noise to reveal slow trends in a signal. It compares the simple moving average (SMA), exponential moving average (EMA) and Savitzky–Golay methods in terms of noise reduction, delay and how well they preserve short events and peaks.', 'Bu rehber, Yumuşatma Filtresi widget’ının sinyaldeki gürültüyü azaltarak yavaş değişen eğilimleri nasıl görünür kıldığını anlatır. Basit hareketli ortalama (SMA), üstel hareketli ortalama (EMA) ve Savitzky–Golay yöntemlerini gürültü azaltma, gecikme ve kısa olaylar ile tepe değerleri koruma açısından karşılaştırır.'],
         why: [
@@ -76,7 +76,7 @@ const records = [
         pitfalls: [['Measuring the original peak after smoothing', 'Yumuşatmadan sonra özgün tepeyi ölçmek', 'Report the processed peak as processed. Use the source if the requirement concerns the acquired peak.', 'İşlenmiş tepeyi işlenmiş olarak belirtin. Gereksinim ölçülmüş tepeyle ilgiliyse kaynağı kullanın.'], ['Using the same sample window at every rate', 'Her hızda aynı örnek penceresini kullanmak', 'Window duration changes with sample rate. Preserve duration when comparing different recordings.', 'Pencere süresi örnekleme hızıyla değişir. Farklı kayıtları karşılaştırırken süreyi koruyun.']],
     },
     {
-        id: 'math_transform', references: ['signal'], related: ['frequency_filter', 'sensor_calibration'],
+        id: 'math_transform', references: [], related: ['frequency_filter', 'sensor_calibration'],
         title: ['Math and Calculus Guide', 'Matematik ve Kalkülüs Rehberi'],
         intro: ['This guide explains how the Math & Calculus widget integrates and differentiates signals, for example to obtain velocity from acceleration or the rate of change of a measurement. It describes how units, sample rate, DC offset and noise affect the result, and the checks required before a transformed signal is used.', 'Bu rehber, Matematik ve Kalkülüs widget’ının sinyallerin integralini ve türevini nasıl aldığını anlatır; örneğin ivmeden hız ya da bir ölçümün değişim hızı elde etmek için. Birim, örnekleme hızı, DC ofset ve gürültünün sonuca etkisini ve dönüştürülmüş bir sinyal kullanılmadan önce yapılması gereken kontrolleri açıklar.'],
         why: [
@@ -109,7 +109,7 @@ const records = [
         pitfalls: [['Treating drift as displacement', 'Kaymayı yer değiştirme saymak', 'Confirm the baseline, initial conditions and low-frequency validity before reporting integrated motion.', 'İntegral hareketi raporlamadan önce tabanı, başlangıç koşullarını ve düşük frekans geçerliliğini doğrulayın.'], ['Ignoring transformed units', 'Dönüştürülmüş birimleri göz ardı etmek', 'Integration multiplies units by seconds; differentiation divides by seconds. Verify the result label.', 'İntegral birimi saniyeyle çarpar, türev saniyeye böler. Sonuç etiketini doğrulayın.']],
     },
     {
-        id: 'advanced_diagnostics', references: ['signal'], related: ['bearing_fault', 'fft_spectrum'],
+        id: 'advanced_diagnostics', references: [], related: ['bearing_fault', 'fft_spectrum'],
         title: ['Advanced Diagnostics Guide', 'Gelişmiş Tanılama Rehberi'],
         intro: ['This guide explains envelope detection with the Hilbert transform in the Advanced Diagnostics widget. It describes why a carrier band is selected, how the envelope reveals the repetition rate of impacts, and how to interpret the result before linking it to a fault hypothesis. The complete diagnostic workflow is available in the Bearing & Gear Fault Diagnosis module.', 'Bu rehber, Gelişmiş Tanılama widget’ında Hilbert dönüşümüyle zarf tespitini anlatır. Taşıyıcı bandın neden seçildiğini, zarfın darbelerin tekrar frekansını nasıl ortaya çıkardığını ve sonucun bir arıza hipotezine bağlanmadan önce nasıl yorumlanacağını açıklar. Kapsamlı tanılama akışı Rulman ve Dişli Arıza Tanılama modülünde bulunur.'],
         why: [
@@ -142,7 +142,7 @@ const records = [
         pitfalls: [['Assuming unavailable options work', 'Kullanılamayan seçenekleri çalışıyor sanmak', 'Use the dedicated Order Tracking module for order analysis; the entries in this panel do not run those analyses.', 'Order analizi için ayrı Order Takibi modülünü kullanın; bu paneldeki seçenekler bu analizleri çalıştırmaz.'], ['Choosing the loudest band blindly', 'En yüksek bandı körlemesine seçmek', 'A loud electrical tone may dominate a band without carrying mechanical impact modulation.', 'Güçlü elektriksel ton mekanik darbe modülasyonu taşımadan banda hakim olabilir.']],
     },
     {
-        id: 'kalman_filter', references: ['nist'], related: ['smoothing_filter', 'line_chart'],
+        id: 'kalman_filter', references: [], related: ['smoothing_filter', 'line_chart'],
         title: ['Kalman Filter Guide', 'Kalman Filtresi Rehberi'],
         intro: ['This guide explains the scalar Kalman filter, which estimates a slowly changing value from noisy measurements. It describes the roles of process noise Q, measurement noise R and initial covariance P₀, how they set the balance between smoothing and responsiveness, and how the result is validated.', 'Bu rehber, gürültülü ölçümlerden yavaş değişen bir değeri kestiren skaler Kalman filtresini anlatır. Süreç gürültüsü Q, ölçüm gürültüsü R ve başlangıç kovaryansı P₀’ın rolünü, bunların yumuşatma ile tepki hızı arasındaki dengeyi nasıl belirlediğini ve sonucun nasıl doğrulanacağını açıklar.'],
         why: [
@@ -177,7 +177,7 @@ const records = [
         pitfalls: [['Using arbitrary noise units', 'Gürültü değerlerini uygun birim olmadan girmek', 'Noise covariance is a variance, not amplitude. Changing channel scale requires compatible covariance settings.', 'Gürültü kovaryansı genlik değil varyanstır. Kanal ölçeği değiştiğinde uyumlu kovaryans ayarı gerekir.'], ['Calling scalar filtering sensor fusion', 'Skaler filtrelemeyi sensör füzyonu saymak', 'A single-channel estimator does not automatically incorporate a multi-axis state model or external sensor measurements.', 'Tek kanal tahmincisi kendiliğinden çok eksenli durum modeli veya dış sensör ölçümleri içermez.']],
     },
     {
-        id: 'spike_detection', references: ['nist'], related: ['data_quality_repair', 'time_graphics'],
+        id: 'spike_detection', references: [], related: ['data_quality_repair', 'time_graphics'],
         title: ['Spike Detection and Removal Guide', 'Sıçrama Tespiti ve Kaldırma Rehberi'],
         intro: ['This guide explains how the Spike Detection/Remove widget identifies short, isolated excursions in a signal and replaces them according to an explicit policy. It compares the Z-score, MAD and absolute threshold methods and explains how to distinguish an acquisition glitch from a real physical event.', 'Bu rehber, Sıçrama Tespiti/Kaldırma widget’ının sinyaldeki kısa ve tekil sıçramaları nasıl belirlediğini ve bunları açıkça tanımlanmış bir kurala göre nasıl değiştirdiğini anlatır. Z-skor, MAD ve mutlak eşik yöntemlerini karşılaştırır ve ölçüm sisteminden kaynaklanan bir hatanın gerçek bir fiziksel olaydan nasıl ayırt edileceğini açıklar.'],
         why: [
@@ -211,7 +211,7 @@ const records = [
         pitfalls: [['Removing real shocks', 'Gerçek şokları kaldırmak', 'Impacts are often the signal of interest. Validate acquisition artifacts before replacing them.', 'Darbeler sıklıkla aranan sinyaldir. Değiştirmeden önce ölçüm hatasını doğrulayın.'], ['Counting preview points as events', 'Önizleme noktalarını olay saymak', 'A decimated preview can combine samples. Use full-processing diagnostics for actual counts.', 'Seyreltilmiş önizleme örnekleri birleştirebilir. Gerçek sayılar için tam işlem tanılarını kullanın.']],
     },
     {
-        id: 'data_quality_repair', references: ['nist'], related: ['spike_detection', 'histogram_widget'],
+        id: 'data_quality_repair', references: [], related: ['spike_detection', 'histogram_widget'],
         title: ['Outlier Detection and Removal Guide', 'Aykırı Değer Tespiti ve Kaldırma Rehberi'],
         intro: ['This guide explains how the Outlier Detection/Remove widget applies a global Z-score rule to a complete channel. It describes what the global reference represents, when changing operating conditions make it misleading, and how to choose between flagging and replacing outliers.', 'Bu rehber, Aykırı Değer Tespiti/Kaldırma widget’ının tüm kanala global bir Z-skor kuralını nasıl uyguladığını anlatır. Global referansın neyi temsil ettiğini, değişen çalışma koşullarının bu referansı ne zaman yanıltıcı hâle getirdiğini ve aykırı değerlerin işaretlenmesi ile değiştirilmesi arasında nasıl seçim yapılacağını açıklar.'],
         why: [
@@ -243,7 +243,7 @@ const records = [
         pitfalls: [['Assuming a Gaussian probability from any score', 'Her skordan Gauss olasılığı çıkarmak', 'The distribution may be skewed or multimodal. A Z-score alone does not establish a tail probability.', 'Dağılım çarpık veya çok tepeli olabilir. Z-skor tek başına kuyruk olasılığını belirlemez.'], ['Repairing before finding the cause', 'Nedeni bulmadan onarmak', 'Sensor saturation, real events and parsing errors require different responses.', 'Sensör doyumu, gerçek olay ve ayrıştırma hataları farklı yaklaşımlar gerektirir.']],
     },
     {
-        id: 'range_filter', references: ['nist'], related: ['statistics_summary', 'time_graphics'],
+        id: 'range_filter', references: [], related: ['statistics_summary', 'time_graphics'],
         title: ['Range Filter Guide', 'Aralık Filtresi Rehberi'],
         intro: ['This guide explains how the Range Filter widget selects samples that satisfy explicit channel rules, for example a speed or temperature range. It describes how to build and check the rule set, and how to report results so that it is clear they represent only the selected operating condition.', 'Bu rehber, Aralık Filtresi widget’ının hız veya sıcaklık aralığı gibi açık kanal kurallarını sağlayan örnekleri nasıl seçtiğini anlatır. Kural kümesinin nasıl oluşturulup kontrol edileceğini ve sonuçların yalnızca seçilen çalışma koşulunu temsil ettiği açıkça anlaşılacak şekilde nasıl raporlanacağını açıklar.'],
         why: [

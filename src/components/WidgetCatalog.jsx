@@ -132,7 +132,7 @@ function WidgetCard({
                     {t('widgets.futureNote')}
                 </p>
             ) : (guide || course) && <p className="text-[11px] leading-5 text-slate-400">
-                {t(guide?.exercise ? 'widgetLearn.common.card' : 'widgetLearn.common.cardNoCheck')}
+                {t('widgetLearn.common.card')}
             </p>}
             {detailPath && (
                 <Link

@@ -40,8 +40,6 @@ const MEASUREMENT_LEARNING = {
             ],
             sources: [
                 { title: 'ISO 18431-4:2007', note: 'Digital shock-response-spectrum calculation using filter methods, including sampling guidance.', href: 'https://www.iso.org/standard/35833.html' },
-                { title: 'NASA · On the Shock-Response-Spectrum Recursive Algorithm', note: 'Technical treatment of the Kelly–Richman recursive SRS algorithm and its numerical behaviour.', href: 'https://ntrs.nasa.gov/api/citations/20100002199/downloads/20100002199.pdf' },
-                { title: 'ISO 21289:2008', note: 'Acquisition parameters that should accompany vibration and shock data.', href: 'https://www.iso.org/ics/17.160/x/' },
             ] },
         tr: {
             title: 'Şok ve SRS Analiz Rehberi',
@@ -83,8 +81,6 @@ const MEASUREMENT_LEARNING = {
             ],
             sources: [
                 { title: 'ISO 18431-4:2007', note: 'Örnekleme önerileriyle birlikte sayısal filtrelerle şok tepki spektrumu hesabı.', href: 'https://www.iso.org/standard/35833.html' },
-                { title: 'NASA · On the Shock-Response-Spectrum Recursive Algorithm', note: 'Kelly–Richman özyinelemeli SRS algoritması ve sayısal davranışına teknik yaklaşım.', href: 'https://ntrs.nasa.gov/api/citations/20100002199/downloads/20100002199.pdf' },
-                { title: 'ISO 21289:2008', note: 'Titreşim ve şok verisine eşlik etmesi gereken veri toplama parametreleri.', href: 'https://www.iso.org/ics/17.160/x/' },
             ] },
     },
     cross_spectrum: {
@@ -127,7 +123,6 @@ const MEASUREMENT_LEARNING = {
                 { title: 'Using a very large NFFT with a single segment', body: 'Fine bins without adequate averaging produce a noisy, low-confidence estimate—especially for coherence.' },
             ],
             sources: [
-                { title: 'ISO 7626-1:2011', note: 'Mechanical mobility/FRF terminology and transducer requirements.', href: 'https://www.iso.org/standard/50426.html' },
                 { title: 'ISO 7626-2:2015', note: 'Procedures for measuring structural mobility and other FRFs using attached excitation.', href: 'https://www.iso.org/standard/62483.html' },
                 { title: 'ISO 7626-5:2019', note: 'Impact-based FRF measurement and DFT signal-analysis practice.', href: 'https://www.iso.org/standard/68735.html' },
             ] },
@@ -170,7 +165,6 @@ const MEASUREMENT_LEARNING = {
                 { title: 'Tek bölütle çok büyük NFFT kullanmak', body: 'Yeterli ortalama olmadan ince binler özellikle koheransta gürültülü ve düşük güvenli kestirim üretir.' },
             ],
             sources: [
-                { title: 'ISO 7626-1:2011', note: 'Mekanik hareketlilik/FRF terimleri ve dönüştürücü gereksinimleri.', href: 'https://www.iso.org/standard/50426.html' },
                 { title: 'ISO 7626-2:2015', note: 'Bağlı uyarıcıyla yapısal hareketlilik ve diğer FRF’lerin ölçüm prosedürleri.', href: 'https://www.iso.org/standard/62483.html' },
                 { title: 'ISO 7626-5:2019', note: 'Darbe tabanlı FRF ölçümü ve DFT sinyal analizi uygulaması.', href: 'https://www.iso.org/standard/68735.html' },
             ] },

@@ -203,14 +203,11 @@ const en = {
     },
     sources: {
         title: 'References',
-        intro: 'The content of this guide is aligned with primary standards and original rotor-monitoring resources. Always check the latest applicable revision and machine/OEM requirements.',
+        intro: 'The acceptance limits used in the Diagnostics view come from these standards. Always use the current revision and the limits the machine maker gives for your machine.',
         items: [
-            { title: 'ISO/TR 19201 — Selecting the appropriate machinery vibration standard', source: 'International Organization for Standardization' },
-            { title: 'ISO 20816-1 — General measurement and evaluation guidance', source: 'International Organization for Standardization' },
-            { title: 'ISO 20816-2 — Large land-based turbines and generators, including Amendment 1', source: 'International Organization for Standardization' },
-            { title: 'ISO 20816-3 — Industrial machinery measurement and evaluation', source: 'International Organization for Standardization' },
-            { title: 'Rotor dynamics: when accuracy is a matter of life and death', source: 'Siemens Digital Industries Software' },
-            { title: 'Machinery Diagnostics Services — Orbit and full spectrum', source: 'Bently Nevada · Baker Hughes' },
+            { title: 'ISO 20816-1 — General measurement and evaluation guidance', source: 'International Organization for Standardization', href: 'https://www.iso.org/standard/63180.html?browse=tc' },
+            { title: 'ISO 20816-2 — Large land-based turbines and generators, including Amendment 1', source: 'International Organization for Standardization', href: 'https://www.iso.org/standard/70047.html' },
+            { title: 'ISO 20816-3 — Industrial machinery measurement and evaluation', source: 'International Organization for Standardization', href: 'https://www.iso.org/standard/78311.html' },
         ],
     },
 }
@@ -416,14 +413,11 @@ const tr = {
     },
     sources: {
         title: 'Kaynaklar',
-        intro: 'Bu rehberdeki içerik, birincil standartlar ve özgün rotor izleme kaynaklarıyla hizalanmıştır. Her zaman güncel geçerli revizyonu ve makine/OEM şartlarını kontrol edin.',
+        intro: 'Tanı görünümündeki kabul sınırları bu standartlardan gelir. Her zaman güncel revizyonu ve makine üreticisinin sizin makineniz için verdiği sınırları kullanın.',
         items: [
-            { title: 'ISO/TR 19201 — Uygun makine titreşimi standardını seçme rehberi', source: 'International Organization for Standardization' },
-            { title: 'ISO 20816-1 — Genel ölçüm ve değerlendirme rehberi', source: 'International Organization for Standardization' },
-            { title: 'ISO 20816-2 — Büyük kara tipi türbinler ve jeneratörler; Amendment 1 dâhil', source: 'International Organization for Standardization' },
-            { title: 'ISO 20816-3 — Endüstriyel makine ölçüm ve değerlendirmesi', source: 'International Organization for Standardization' },
-            { title: 'Rotor dynamics: when accuracy is a matter of life and death', source: 'Siemens Digital Industries Software' },
-            { title: 'Machinery Diagnostics Services — Orbit ve full spectrum', source: 'Bently Nevada · Baker Hughes' },
+            { title: 'ISO 20816-1 — Genel ölçüm ve değerlendirme rehberi', source: 'International Organization for Standardization', href: 'https://www.iso.org/standard/63180.html?browse=tc' },
+            { title: 'ISO 20816-2 — Büyük kara tipi türbinler ve jeneratörler; Amendment 1 dâhil', source: 'International Organization for Standardization', href: 'https://www.iso.org/standard/70047.html' },
+            { title: 'ISO 20816-3 — Endüstriyel makine ölçüm ve değerlendirmesi', source: 'International Organization for Standardization', href: 'https://www.iso.org/standard/78311.html' },
         ],
     },
 }

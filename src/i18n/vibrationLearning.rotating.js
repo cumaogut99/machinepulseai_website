@@ -61,7 +61,6 @@ const ROTATING_LEARNING = {
             sources: [
                 { title: 'ISO 21940-11:2016 + Amd 1:2022', note: 'Procedures and unbalance tolerances for rotors with rigid behaviour, including residual unbalance and correction-plane considerations.', href: 'https://www.iso.org/standard/54074.html' },
                 { title: 'ISO 21940-13:2012', note: 'Criteria and safeguards for in-situ balancing of medium and large rotors.', href: 'https://www.iso.org/ics/21.120.40/x/' },
-                { title: 'ISO 13373-2:2016', note: 'Processing and presentation practices for machinery vibration data and diagnostic signatures.', href: 'https://www.iso.org/standard/68128.html' },
             ],
         },
         tr: {
@@ -125,7 +124,6 @@ const ROTATING_LEARNING = {
             sources: [
                 { title: 'ISO 21940-11:2016 + Amd 1:2022', note: 'Rijit davranışlı rotorlar için artık balanssızlık ve düzeltme düzlemi konularını içeren prosedür ve toleranslar.', href: 'https://www.iso.org/standard/54074.html' },
                 { title: 'ISO 21940-13:2012', note: 'Orta ve büyük rotorların yerinde balanslanması için ölçütler ve güvenlik önlemleri.', href: 'https://www.iso.org/ics/21.120.40/x/' },
-                { title: 'ISO 13373-2:2016', note: 'Makine titreşim verisinin işlenmesi, sunulması ve tanısal imzaların yorumlanması.', href: 'https://www.iso.org/standard/68128.html' },
             ],
         },
     },
@@ -169,9 +167,6 @@ const ROTATING_LEARNING = {
                 { title: 'Over-tightening Vold–Kalman bandwidth', body: 'A narrow tracker looks clean but may fail to follow a fast ramp. Always compare extracted amplitude with the map energy.' },
             ],
             sources: [
-                { title: 'ISO 13373-2:2016', note: 'Common processing, presentation and diagnostic techniques for rotating-machinery vibration data.', href: 'https://www.iso.org/standard/68128.html' },
-                { title: 'ISO 13373-3:2015', note: 'A structured approach to vibration diagnosis and common rotating-machine faults.', href: 'https://www.iso.org/standard/40840.html' },
-                { title: 'ISO 21289:2008', note: 'Parameters that should be specified when acquiring vibration and shock data.', href: 'https://www.iso.org/ics/17.160/x/' },
             ] },
         tr: {
             title: 'Order Takibi Analiz Rehberi',
@@ -212,9 +207,6 @@ const ROTATING_LEARNING = {
                 { title: 'Vold–Kalman bandını aşırı daraltmak', body: 'Dar takip temiz görünür ama hızlı rampayı izleyemeyebilir. Çıkarılan genliği her zaman harita enerjisiyle karşılaştırın.' },
             ],
             sources: [
-                { title: 'ISO 13373-2:2016', note: 'Döner makine titreşim verisi için yaygın işleme, sunum ve tanı teknikleri.', href: 'https://www.iso.org/standard/68128.html' },
-                { title: 'ISO 13373-3:2015', note: 'Titreşim tanısı ve yaygın döner makine arızaları için yapılandırılmış yaklaşım.', href: 'https://www.iso.org/standard/40840.html' },
-                { title: 'ISO 21289:2008', note: 'Titreşim ve şok verisi toplanırken belirtilmesi gereken parametreler.', href: 'https://www.iso.org/ics/17.160/x/' },
             ] },
     },
     torsional_vibration: {
@@ -258,8 +250,6 @@ const ROTATING_LEARNING = {
             ],
             sources: [
                 { title: 'ISO 22266-1:2022', note: 'Torsional natural-frequency and strength assessment for coupled turbine-generator shaft trains under electrical excitation.', href: 'https://www.iso.org/standard/78144.html' },
-                { title: 'ISO 13373-2:2016', note: 'General vibration signal processing and diagnostic presentation practices.', href: 'https://www.iso.org/standard/68128.html' },
-                { title: 'ISO 21289:2008', note: 'Acquisition parameters that should be recorded for vibration and shock measurements.', href: 'https://www.iso.org/ics/17.160/x/' },
             ] },
         tr: {
             title: 'Burulma ve Dönel Titreşim Analiz Rehberi',
@@ -301,8 +291,6 @@ const ROTATING_LEARNING = {
             ],
             sources: [
                 { title: 'ISO 22266-1:2022', note: 'Elektriksel uyarma altındaki bağlı türbin-jeneratör mil hatlarında burulma doğal frekansı ve dayanım değerlendirmesi.', href: 'https://www.iso.org/standard/78144.html' },
-                { title: 'ISO 13373-2:2016', note: 'Genel titreşim sinyal işleme ve tanısal sunum uygulamaları.', href: 'https://www.iso.org/standard/68128.html' },
-                { title: 'ISO 21289:2008', note: 'Titreşim ve şok ölçümleri için kaydedilmesi gereken veri toplama parametreleri.', href: 'https://www.iso.org/ics/17.160/x/' },
             ] },
     },
 }

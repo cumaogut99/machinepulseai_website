@@ -5,7 +5,6 @@ import { getWidgetDetailSlug } from '../data/widgetDetails.js'
 import { REFERENCES } from '../data/learning/lesson.js'
 import { FormulaSpecGrid, LearningCards, LearningHeading, LearningNavigation } from './learning/LearningPrimitives.jsx'
 import LearningWorkbench from './learning/LearningWorkbench.jsx'
-import LearningExercise from './learning/LearningExercise.jsx'
 import LearningConceptLab from './learning/LearningConceptLab.jsx'
 import { CONCEPT_LABS } from '../data/learning/conceptLabs.js'
 import { INTERFACE_TOUR_IDS } from '../data/learning/interfaceTours.js'
@@ -31,7 +30,7 @@ export default function WidgetLearningPage({ guide }) {
             <p className="mt-10 text-xs font-semibold uppercase tracking-[0.2em] text-neon-cyan">{category[lang].name} · {labels.eyebrow}</p>
             <h1 className="mt-4 max-w-5xl text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">{page.title || name}</h1>
             <p className="mt-5 max-w-3xl text-base leading-7 text-slate-300 sm:text-lg">{page.intro}</p>
-            <div className="mt-6 flex flex-wrap gap-2">{(page.exercise ? labels.badges : labels.badges.slice(0, 2)).map((badge) => <span key={badge} className="rounded-full border border-neon-cyan/20 bg-neon-cyan/[0.05] px-3 py-1 text-xs font-medium text-slate-300">{badge}</span>)}</div>
+            <div className="mt-6 flex flex-wrap gap-2">{labels.badges.map((badge) => <span key={badge} className="rounded-full border border-neon-cyan/20 bg-neon-cyan/[0.05] px-3 py-1 text-xs font-medium text-slate-300">{badge}</span>)}</div>
             <a href="#workspace" className="btn-neon mt-7 inline-flex rounded-lg bg-neon-cyan/10 px-5 py-3 text-sm font-semibold text-neon-cyan">{labels.start} <span className="ml-3" aria-hidden="true">↓</span></a>
             {page.why?.length > 0 && <section className="mt-12" aria-labelledby="why-title">
                 <h2 id="why-title" className="text-2xl font-bold tracking-tight text-white sm:text-3xl">{labels.whyTitle}</h2>
@@ -64,7 +63,6 @@ export default function WidgetLearningPage({ guide }) {
                     <p className="mt-5 max-w-3xl text-sm leading-7 text-slate-300">{page.example.explanation}</p>
                 </div>
                 {CONCEPT_LABS[guide.id] && <LearningConceptLab key={`lab:${guide.id}:${lang}`} widgetId={guide.id} lang={lang} />}
-                {page.exercise && <LearningExercise key={`${guide.id}:${lang}`} widgetId={guide.id} exercise={page.exercise} lang={lang} />}
             </section>
             <section id="workflow" className="scroll-mt-32 border-t border-white/10 py-16">
                 <LearningHeading number="04" title={labels.workflow} />
@@ -78,10 +76,10 @@ export default function WidgetLearningPage({ guide }) {
                 </div>
             </section>
             <section id="references" className="scroll-mt-32 border-t border-white/10 py-16">
-                <LearningHeading number="05" title={labels.references} intro={labels.referencesIntro} />
-                <div className="grid gap-3 md:grid-cols-2">{guide.references.map((key) => <a key={key} href={REFERENCES[key].href} target="_blank" rel="noreferrer" className="rounded-2xl border border-white/10 bg-white/[0.025] p-5 text-sm font-semibold text-slate-300 transition hover:border-neon-cyan/40 hover:text-white">{REFERENCES[key].title}<span className="ml-3 text-neon-cyan" aria-hidden="true">↗</span></a>)}</div>
-                <h3 className="mb-5 mt-10 text-xl font-bold text-white">{labels.next}</h3>
+                <LearningHeading number="05" title={labels.next} />
                 <div className="grid gap-4 md:grid-cols-2">{related.map((item) => <Link key={item.id} to={`/widgets/${getWidgetDetailSlug(item.id)}`} className="card-hover-glow rounded-2xl border border-white/10 bg-white/[0.025] p-5"><h4 className="font-semibold text-white">{item[lang].name}</h4><span className="mt-3 inline-flex text-sm text-neon-cyan">{labels.open} <span className="ml-2" aria-hidden="true">→</span></span></Link>)}</div>
+                {guide.references.length > 0 && <><h3 className="mb-5 mt-10 text-xl font-bold text-white">{labels.references}</h3>
+                <div className="grid gap-3 md:grid-cols-2">{guide.references.map((key) => <a key={key} href={REFERENCES[key].href} target="_blank" rel="noreferrer" className="rounded-2xl border border-white/10 bg-white/[0.025] p-5 text-sm font-semibold text-slate-300 transition hover:border-neon-cyan/40 hover:text-white">{REFERENCES[key].title}<span className="ml-3 text-neon-cyan" aria-hidden="true">↗</span></a>)}</div></>}
             </section>
         </div>
     </article>

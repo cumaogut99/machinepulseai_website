@@ -39,8 +39,6 @@ const DIAGNOSTICS_LEARNING = {
                 { title: 'Comparing indicators across different operating states', body: 'Load and speed change RMS and impulsiveness. Trend only comparable conditions or normalize and document the change.' },
             ],
             sources: [
-                { title: 'ISO 13373-2:2016', note: 'Machinery vibration processing, signature analysis and presentation techniques.', href: 'https://www.iso.org/standard/68128.html' },
-                { title: 'ISO 13373-3:2015', note: 'Structured vibration-diagnosis procedure and examples of common rotating-machine faults.', href: 'https://www.iso.org/standard/40840.html' },
                 { title: 'Antoni · The spectral kurtosis', note: 'Primary research establishing spectral kurtosis and the kurtogram for non-stationary fault detection.', href: 'https://doi.org/10.1016/j.ymssp.2004.09.001' },
             ] },
         tr: {
@@ -82,8 +80,6 @@ const DIAGNOSTICS_LEARNING = {
                 { title: 'Farklı çalışma durumlarında göstergeleri karşılaştırmak', body: 'Yük ve hız RMS ile darbeselliği değiştirir. Yalnız karşılaştırılabilir koşulları trendleyin veya değişimi normalize edip belgeleyin.' },
             ],
             sources: [
-                { title: 'ISO 13373-2:2016', note: 'Makine titreşimi işleme, imza analizi ve sunum teknikleri.', href: 'https://www.iso.org/standard/68128.html' },
-                { title: 'ISO 13373-3:2015', note: 'Yapılandırılmış titreşim tanısı ve yaygın döner makine arızaları örnekleri.', href: 'https://www.iso.org/standard/40840.html' },
                 { title: 'Antoni · The spectral kurtosis', note: 'Durağan olmayan arıza tespiti için spektral basıklık ve kurtogramı kuran birincil araştırma.', href: 'https://doi.org/10.1016/j.ymssp.2004.09.001' },
             ] },
     },
@@ -129,7 +125,6 @@ const DIAGNOSTICS_LEARNING = {
             sources: [
                 { title: 'ISO 20816-1:2016', note: 'General procedures for measuring and evaluating vibration magnitude and change on complete machines.', href: 'https://www.iso.org/standard/63180.html' },
                 { title: 'ISO 20816-3:2022', note: 'Machine-specific guidance for industrial machinery over 15 kW and 120–30,000 r/min.', href: 'https://www.iso.org/ics/17.160/x/' },
-                { title: 'ISO 13373-3:2015', note: 'Structured follow-up diagnosis after a condition-monitoring exception is detected.', href: 'https://www.iso.org/standard/40840.html' },
             ] },
         tr: {
             title: 'Makine Sağlığı Genel Görünümü Rehberi',
@@ -172,7 +167,6 @@ const DIAGNOSTICS_LEARNING = {
             sources: [
                 { title: 'ISO 20816-1:2016', note: 'Tam makinelerde titreşim büyüklüğü ve değişiminin ölçülmesi/değerlendirilmesi için genel prosedürler.', href: 'https://www.iso.org/standard/63180.html' },
                 { title: 'ISO 20816-3:2022', note: '15 kW üzeri ve 120–30.000 dev/dk endüstriyel makineler için özel kılavuz.', href: 'https://www.iso.org/ics/17.160/x/' },
-                { title: 'ISO 13373-3:2015', note: 'Durum izleme istisnası sonrası yapılandırılmış takip tanısı.', href: 'https://www.iso.org/standard/40840.html' },
             ] },
     },
     structural_health: {
@@ -215,7 +209,6 @@ const DIAGNOSTICS_LEARNING = {
                 { title: 'Using one window size for every phenomenon', body: 'Short shocks, machinery cycles and seasonal structural change live on different timescales. Choose and document the window accordingly.' },
             ],
             sources: [
-                { title: 'ISO 4866:2010', note: 'Principles for measuring structural vibration and evaluating its effects on fixed structures.', href: 'https://www.iso.org/standard/38967.html' },
                 { title: 'ISO 20816-1:2016', note: 'General machine-vibration magnitude/change concepts relevant to the widget’s legacy zone context.', href: 'https://www.iso.org/standard/63180.html' },
                 { title: 'Farrar & Worden · Structural Health Monitoring', note: 'Foundational framework for separating data acquisition, feature extraction and statistical decision making.', href: 'https://doi.org/10.1098/rsta.2006.1928' },
             ] },
@@ -258,7 +251,6 @@ const DIAGNOSTICS_LEARNING = {
                 { title: 'Her olgu için tek pencere boyu kullanmak', body: 'Kısa şok, makine çevrimi ve mevsimsel yapısal değişim farklı zaman ölçeğindedir. Pencereyi buna göre seçip belgeleyin.' },
             ],
             sources: [
-                { title: 'ISO 4866:2010', note: 'Sabit yapılarda titreşim ölçümü ve etkilerinin değerlendirilmesi için ilkeler.', href: 'https://www.iso.org/standard/38967.html' },
                 { title: 'ISO 20816-1:2016', note: 'Widget’ın eski bölge bağlamıyla ilgili genel makine titreşim büyüklüğü/değişim kavramları.', href: 'https://www.iso.org/standard/63180.html' },
                 { title: 'Farrar & Worden · Structural Health Monitoring', note: 'Veri toplama, öznitelik çıkarma ve istatistiksel karar adımlarını ayıran temel çerçeve.', href: 'https://doi.org/10.1098/rsta.2006.1928' },
             ] },
