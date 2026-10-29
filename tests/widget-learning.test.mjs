@@ -20,6 +20,8 @@ import FILTER_TOURS from '../src/data/learning/tours/filters.js'
 import DATA_IO_TOURS from '../src/data/learning/tours/dataIO.js'
 import PREPROCESSING_TOURS from '../src/data/learning/tours/preprocessing.js'
 import STATISTICS_TOURS from '../src/data/learning/tours/statistics.js'
+import VISUALIZATION_TOURS from '../src/data/learning/tours/visualization.js'
+import VIEW_TOURS from '../src/data/learning/tours/views.js'
 import ROTOR_LEARNING from '../src/i18n/rotorDynamicsLearning.js'
 
 test('every in-scope ready widget has a complete authored course or existing flagship guide', () => {
@@ -106,10 +108,9 @@ test('teaching models reproduce the worked examples and stay finite at slider bo
 })
 
 
-test('interface tours have captured, anchored, bilingual views and replace the single screenshot', () => {
-    const tours = { ...DATA_IO_TOURS, ...PREPROCESSING_TOURS, ...STATISTICS_TOURS, ...FILTER_TOURS, ...FFT_TOURS, ...FREQUENCY_RESPONSE_TOURS, ...ROTATING_TOURS, ...STRUCTURAL_TOURS, ...MOTION_TOURS }
-    const byCategory = (id) => WIDGET_CATALOG.find((category) => category.id === id).widgets.filter((widget) => !widget.phase)
-    const required = ['data_io', 'preprocessing', 'filters', 'engineering', 'statistics'].flatMap(byCategory).map((widget) => widget.id)
+test('every released widget has a captured, anchored, bilingual interface tour', () => {
+    const tours = { ...DATA_IO_TOURS, ...PREPROCESSING_TOURS, ...STATISTICS_TOURS, ...VISUALIZATION_TOURS, ...VIEW_TOURS, ...FILTER_TOURS, ...FFT_TOURS, ...FREQUENCY_RESPONSE_TOURS, ...ROTATING_TOURS, ...STRUCTURAL_TOURS, ...MOTION_TOURS }
+    const required = WIDGET_CATALOG.flatMap((category) => category.widgets).filter((widget) => !widget.phase).map((widget) => widget.id)
     for (const id of required) assert.ok(tours[id], `${id} needs an interface tour`)
     const released = new Set(WIDGET_CATALOG.flatMap((category) => category.widgets).filter((widget) => !widget.phase).map((widget) => widget.id))
     for (const id of Object.keys(tours)) {

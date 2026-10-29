@@ -17,6 +17,8 @@ import MOTION_TOURS from './tours/motion.js'
 import DATA_IO_TOURS from './tours/dataIO.js'
 import PREPROCESSING_TOURS from './tours/preprocessing.js'
 import STATISTICS_TOURS from './tours/statistics.js'
+import VISUALIZATION_TOURS from './tours/visualization.js'
+import VIEW_TOURS from './tours/views.js'
 
 const IMAGES = import.meta.glob('../../assets/widget-tours/*.webp', { eager: true, import: 'default' })
 
@@ -27,6 +29,8 @@ const TOURS = {
     ...DATA_IO_TOURS,
     ...PREPROCESSING_TOURS,
     ...STATISTICS_TOURS,
+    ...VISUALIZATION_TOURS,
+    ...VIEW_TOURS,
     ...FILTER_TOURS,
     ...FFT_TOURS,
     ...FREQUENCY_RESPONSE_TOURS,
