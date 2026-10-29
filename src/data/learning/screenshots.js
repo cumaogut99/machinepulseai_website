@@ -12,10 +12,6 @@ const IMAGES = import.meta.glob('../../assets/widget-ui/*.webp', { eager: true, 
 const SIZE = { width: 2000, height: 1059 }
 
 const HOTSPOTS = {
-    statistics_summary: [['3.6%', '6%'], ['3.6%', '9.2%'], ['7%', '95.6%']],
-    correlation_analysis: [['3%', '9%'], ['3%', '15%'], ['3%', '18.3%']],
-    hypothesis_testing: [['1.5%', '6%'], ['3%', '9.2%'], ['6.4%', '95.6%']],
-    statistical_process_control: [['1.6%', '6.3%'], ['4%', '9.4%'], ['7.7%', '95.6%']],
     chart_dashboard: [['46.8%', '4.5%'], ['28.2%', '19%'], ['50.9%', '4.5%']],
     line_chart: [['6.5%', '25.8%'], ['2%', '15.5%'], ['6%', '20.7%']],
     histogram_widget: [['2.6%', '7.4%'], ['2%', '52.6%'], ['4.5%', '67.6%']],
