@@ -12,14 +12,6 @@ const IMAGES = import.meta.glob('../../assets/widget-ui/*.webp', { eager: true, 
 const SIZE = { width: 2000, height: 1059 }
 
 const HOTSPOTS = {
-    channel_selector: [['10%', '28%'], ['15%', '8.3%'], ['10%', '11.2%']],
-    merge_channels: [['16.5%', '8.3%'], ['7.5%', '11.2%'], ['10.7%', '95%']],
-    table_edit: [['60%', '50%'], ['10.4%', '4%'], ['29.5%', '4%']],
-    normalization_scaling: [['11%', '8.3%'], null, null],
-    groupby_aggregation: [['4.6%', '6%'], ['4.6%', '23.9%'], ['4.6%', '65.5%']],
-    time_alignment: [['26.5%', '62.6%'], ['8.5%', '32.2%'], ['5.8%', '52.2%']],
-    rolling_window_stats: [['5.5%', '8.3%'], ['5.5%', '14.5%'], ['2.6%', '17.3%']],
-    sensor_calibration: [['6.5%', '37.8%'], ['6.5%', '40.7%'], ['6.5%', '59%']],
     statistics_summary: [['3.6%', '6%'], ['3.6%', '9.2%'], ['7%', '95.6%']],
     correlation_analysis: [['3%', '9%'], ['3%', '15%'], ['3%', '18.3%']],
     hypothesis_testing: [['1.5%', '6%'], ['3%', '9.2%'], ['6.4%', '95.6%']],
