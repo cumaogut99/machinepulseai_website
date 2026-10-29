@@ -11,6 +11,19 @@ const FFT_LEARNING_TRANSLATIONS = {
         badges: ['Real application UI', 'Interactive concepts', 'New-engineer friendly'],
         start: 'Start with the interface',
         duration: '30 min guided learning path',
+        factsheet: {
+            title: 'Module Factsheet & Signal Flow',
+            status: 'Ready to use',
+            inputLabel: 'Input Signal',
+            inputVal: 'Single-channel time-series x(t) + fs',
+            outputLabel: 'Output Views',
+            outputVal: 'Amplitude Spectrum, Welch PSD, STFT Spectrogram',
+            paramsLabel: 'Core Controls',
+            paramsVal: 'Block size (N), Window (Hann/Flattop), Overlap %',
+            targetsLabel: 'Diagnostic Scope',
+            targetsVal: 'Harmonics (1X/2X), Resonances, Sidebands, Spectral Energy',
+            quickJump: 'Quick Outline',
+        },
         why: {
             title: 'Why this analysis is needed',
             items: [
@@ -198,6 +211,19 @@ const FFT_LEARNING_TRANSLATIONS = {
         badges: ['Uygulama Arayüzü', 'İnteraktif Deneyler', 'Pratik Mühendislik'],
         start: 'Arayüzü İnceleyin',
         duration: '30 dakikalık rehberli öğrenme yolu',
+        factsheet: {
+            title: 'Modül Künyesi & Sinyal Akışı',
+            status: 'Kullanıma Hazır',
+            inputLabel: 'Giriş Sinyali',
+            inputVal: 'Tek kanallı zaman serisi x(t) + fs',
+            outputLabel: 'Üretilen Çıktılar',
+            outputVal: 'Genlik Spektrumu, Welch PSD, STFT Spektrogramı',
+            paramsLabel: 'Temel Kontroller',
+            paramsVal: 'Blok boyutu (N), Pencereleme (Hann/Flattop), Örtüşme',
+            targetsLabel: 'Teşhis Hedefleri',
+            targetsVal: 'Harmonikler (1X/2X), Rezonanslar, Yan Bantlar, Spektral Enerji',
+            quickJump: 'Sayfa İçi Hızlı Gezinti',
+        },
         why: {
             title: 'Bu analize neden ihtiyaç duyulur?',
             items: [
