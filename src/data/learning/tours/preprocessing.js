@@ -29,7 +29,7 @@ export default {
                 ]),
                 pt('create', ['Create Channel View', 'Create Channel View'], [
                     'Builds the view from the current selection. Downstream widgets connected to the Channel Selector now see only these channels plus time.',
-                    'Mevcut seçimden görünümü oluşturur. Kanal Seçici’ye bağlı sonraki widget’lar artık yalnızca bu kanalları ve zamanı görür.',
+                    'Mevcut seçimden görünümü oluşturur. Channel Selector’a bağlı sonraki widget’lar artık yalnızca bu kanalları ve zamanı görür.',
                 ]),
                 pt('status', ['Result line', 'Sonuç satırı'], [
                     '“Projected 4 channel(s) without copying data”: the number to check against what you intended.',

@@ -59,7 +59,7 @@ export const ROUTE_META = {
     },
     '/widgets/modal-analysis-ema': {
         en: { title: `Advanced Modal Analysis — ${BRAND}`, description: 'Experimental modal analysis from FRFs: natural frequencies, damping, mode shapes, stabilization and MAC.' },
-        tr: { title: `Gelişmiş Modal Analiz — ${BRAND}`, description: 'FRF tabanlı deneysel modal analiz: doğal frekans, sönüm, mod şekli, kararlılık ve MAC.' },
+        tr: { title: `Advanced Modal Analysis — ${BRAND}`, description: 'FRF tabanlı deneysel modal analiz: doğal frekans, sönüm, mod şekli, kararlılık ve MAC.' },
     },
     '/widgets/operational-modal-analysis': {
         en: { title: `Operational Modal Analysis — ${BRAND}`, description: 'Output-only modal identification for structures and machines under real operating loads.' },
@@ -67,27 +67,27 @@ export const ROUTE_META = {
     },
     '/widgets/order-tracking': {
         en: { title: `Order Tracking — ${BRAND}`, description: 'Rotating machinery order analysis for run-up, coast-down, Campbell diagrams and speed-related vibration.' },
-        tr: { title: `Order Takibi — ${BRAND}`, description: 'Kalkış/duruş, Campbell diyagramları ve hıza bağlı titreşim için döner makine order analizi.' },
+        tr: { title: `Order Tracking — ${BRAND}`, description: 'Kalkış/duruş, Campbell diyagramları ve hıza bağlı titreşim için döner makine order analizi.' },
     },
     '/widgets/rotor-balancing': {
         en: { title: `Rotor Balancing — ${BRAND}`, description: 'Single-plane rotor balancing with a trial weight, influence coefficients and a verification run.' },
-        tr: { title: `Rotor Balanslama — ${BRAND}`, description: 'Deneme ağırlığı, etki katsayısı ve doğrulama koşusuyla tek düzlem rotor balanslama.' },
+        tr: { title: `Rotor Balancing — ${BRAND}`, description: 'Deneme ağırlığı, etki katsayısı ve doğrulama koşusuyla tek düzlem rotor balanslama.' },
     },
     '/widgets/rotor-dynamics': {
         en: { title: `Rotor Dynamics Analysis Guide — ${BRAND}`, description: 'Measuring shaft motion with XY proximity probes: orbit, critical speed, Bode and Polar response, shaft centreline, full spectrum and forward/backward whirl.' },
-        tr: { title: `Rotor Dinamiği Analiz Rehberi — ${BRAND}`, description: 'XY yakınlık problarıyla şaft hareketinin ölçümü: orbit, kritik hız, Bode ve Polar yanıtı, şaft merkez çizgisi, full spectrum ve ileri/geri whirl.' },
+        tr: { title: `Rotor Dynamics Analiz Rehberi — ${BRAND}`, description: 'XY yakınlık problarıyla şaft hareketinin ölçümü: orbit, kritik hız, Bode ve Polar yanıtı, şaft merkez çizgisi, full spectrum ve ileri/geri whirl.' },
     },
     '/widgets/shock-srs': {
         en: { title: `Shock & SRS — ${BRAND}`, description: 'Shock response spectrum analysis for drop, impact and transient qualification events.' },
-        tr: { title: `Şok ve SRS — ${BRAND}`, description: 'Düşme, darbe ve geçici yeterlilik olayları için şok tepki spektrumu analizi.' },
+        tr: { title: `Shock & SRS — ${BRAND}`, description: 'Düşme, darbe ve geçici yeterlilik olayları için şok tepki spektrumu analizi.' },
     },
     '/widgets/time-based-ods': {
         en: { title: `Time-Based ODS — ${BRAND}`, description: 'Operating deflection shape animation from synchronized response channels and measurement geometry.' },
-        tr: { title: `Zaman Tabanlı ODS — ${BRAND}`, description: 'Senkron tepki kanalları ve ölçüm geometrisinden çalışma şekli animasyonu.' },
+        tr: { title: `Time-Based ODS — ${BRAND}`, description: 'Senkron tepki kanalları ve ölçüm geometrisinden çalışma şekli animasyonu.' },
     },
     '/widgets/cross-spectrum-frf': {
         en: { title: `Frequency Response & Cross Spectrum — ${BRAND}`, description: 'Cross-spectrum, coherence and FRF analysis for input-output vibration relationships.' },
-        tr: { title: `Frekans Tepkisi ve Çapraz Spektrum — ${BRAND}`, description: 'Giriş-çıkış titreşim ilişkileri için çapraz spektrum, koherans ve FRF analizi.' },
+        tr: { title: `Frequency Response & Cross Spectrum — ${BRAND}`, description: 'Giriş-çıkış titreşim ilişkileri için çapraz spektrum, koherans ve FRF analizi.' },
     },
     '/widgets/cross-axis-compensation': {
         en: { title: `Cross-Axis Compensation — ${BRAND}`, description: 'Sensor cross-axis correction for cleaner multi-axis acceleration and motion measurements.' },
@@ -99,7 +99,7 @@ export const ROUTE_META = {
     },
     '/widgets/torsional-vibration': {
         en: { title: `Torsional & Rotational Vibration — ${BRAND}`, description: 'Angular speed fluctuation, shaft twist and torsional order analysis from encoder or tacho pulses.' },
-        tr: { title: `Burulma ve Dönel Titreşim — ${BRAND}`, description: 'Enkoder veya tako darbelerinden açısal hız dalgalanması, mil burulması ve burulma order analizi.' },
+        tr: { title: `Torsional & Rotational Vibration — ${BRAND}`, description: 'Enkoder veya tako darbelerinden açısal hız dalgalanması, mil burulması ve burulma order analizi.' },
     },
     '/pricing': {
         en: {

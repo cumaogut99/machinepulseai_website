@@ -202,7 +202,7 @@ export default {
             tab: ['Raw channels to CSV', 'Ham kanallardan CSV’ye'],
             summary: [
                 'The exporter connected to a File Reader: nine channels of 200,000 rows sharing one time axis, ready to be written as CSV.',
-                'Bir Dosya Okuyucu’ya bağlı dışa aktarıcı: tek bir zaman eksenini paylaşan, 200.000’er satırlık dokuz kanal; CSV olarak yazılmaya hazır.',
+                'Bir File Reader’a bağlı dışa aktarıcı: tek bir zaman eksenini paylaşan, 200.000’er satırlık dokuz kanal; CSV olarak yazılmaya hazır.',
             ],
             points: [
                 pt('source', ['Source', 'Kaynak'], [

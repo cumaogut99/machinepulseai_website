@@ -3,10 +3,10 @@ import { control, lesson } from './lesson.js'
 const records = [
     {
         id: 'intelligent_report', references: [], related: ['data_exporter', 'statistics_summary'],
-        title: ['Intelligent Report Guide', 'Akıllı Rapor Rehberi'],
+        title: ['Intelligent Report Guide', 'Intelligent Report Rehberi'],
         intro: [
             'This guide explains how the Intelligent Report turns the results on the canvas into a test report: which content can be added, how the structure is built, how limits produce a pass or fail summary, which test information is filled in automatically, and how one report template is regenerated for many recordings.',
-            'Bu rehber, Akıllı Rapor’un kanvastaki sonuçları nasıl bir test raporuna çevirdiğini anlatır: hangi içeriğin eklenebileceğini, yapının nasıl kurulduğunu, sınırların nasıl geçti/kaldı özeti ürettiğini, hangi test bilgilerinin otomatik doldurulduğunu ve tek bir rapor şablonunun birçok kayıt için nasıl yeniden üretildiğini.',
+            'Bu rehber, Intelligent Report’un kanvastaki sonuçları nasıl bir test raporuna çevirdiğini anlatır: hangi içeriğin eklenebileceğini, yapının nasıl kurulduğunu, sınırların nasıl geçti/kaldı özeti ürettiğini, hangi test bilgilerinin otomatik doldurulduğunu ve tek bir rapor şablonunun birçok kayıt için nasıl yeniden üretildiğini.',
         ],
         why: [
             ['What it is for', 'Ne işe yarar?',
@@ -14,7 +14,7 @@ const records = [
                 'Bir test, sonucunu başka biri okuyabilene kadar bitmiş sayılmaz. Grafikleri ve sayıları elle bir belgeye kopyalamak yavaş ve hataya açıktır ve her kayıt için tekrarlanması gerekir. Rapor sonuçları doğrudan bağlı widget’lardan okur, şekilleri ve tabloları numaralar ve PDF, Word veya sunu olarak dışa aktarır.'],
             ['How content gets in', 'İçerik nasıl girer?',
                 'Connect widgets to the report on the canvas: a File Reader or a filter for time signals, FFT or Order Tracking for spectra and maps, Channel Statistics for tables, and visualization widgets for their current view. The Available Content tree groups everything by kind; tick what you want and press Add to Report.',
-                'Widget’ları kanvasta rapora bağlayın: zaman sinyalleri için bir Dosya Okuyucu veya filtre, spektrum ve haritalar için FFT veya Order Tracking, tablolar için Kanal İstatistikleri ve mevcut görünümleri için görselleştirme widget’ları. Available Content ağacı her şeyi türüne göre gruplar; istediğinizi işaretleyip Add to Report’a basın.'],
+                'Widget’ları kanvasta rapora bağlayın: zaman sinyalleri için bir File Reader veya filtre, spektrum ve haritalar için FFT veya Order Tracking, tablolar için Channel Statistics ve mevcut görünümleri için görselleştirme widget’ları. Available Content ağacı her şeyi türüne göre gruplar; istediğinizi işaretleyip Add to Report’a basın.'],
             ['What it does not do', 'Neyi yapmaz?',
                 'The report does not recompute anything. If an upstream result is out of date, the report shows the old result. Compute first, then report.',
                 'Rapor hiçbir şeyi yeniden hesaplamaz. Önceki bir sonuç güncel değilse rapor eski sonucu gösterir. Önce hesaplayın, sonra raporlayın.'],
@@ -62,9 +62,9 @@ const records = [
         outputs: [
             ['Test report', 'Test raporu', 'PDF, Word or slide file with numbered figures and tables, test information and a pass/fail summary.', 'Numaralı şekiller ve tablolar, test bilgisi ve geçti/kaldı özeti içeren PDF, Word veya sunu dosyası.'],
         ],
-        example: ['A first report from a File Reader', 'Bir Dosya Okuyucu’dan ilk rapor', 'Summary INCOMPLETE · 20 s · 5,000 Hz · 2 channels', 'Özet INCOMPLETE · 20 s · 5.000 Hz · 2 kanal',
+        example: ['A first report from a File Reader', 'Bir File Reader’dan ilk rapor', 'Summary INCOMPLETE · 20 s · 5,000 Hz · 2 channels', 'Özet INCOMPLETE · 20 s · 5.000 Hz · 2 kanal',
             'With only a File Reader connected, the report holds a summary, the test information and one time figure of accel_faulty and accel_healthy. The record length, sample rate and channel count were filled in automatically. The summary is INCOMPLETE because no block has limits yet: add an RMS limit to the time block and it becomes PASS or FAIL.',
-            'Yalnızca bir Dosya Okuyucu bağlıyken rapor bir özet, test bilgisi ve accel_faulty ile accel_healthy’nin bir zaman şeklini içeriyor. Kayıt uzunluğu, örnekleme hızı ve kanal sayısı otomatik dolduruldu. Özet INCOMPLETE, çünkü henüz hiçbir blokta sınır yok: zaman bloğuna bir RMS sınırı ekleyin, PASS veya FAIL olur.'],
+            'Yalnızca bir File Reader bağlıyken rapor bir özet, test bilgisi ve accel_faulty ile accel_healthy’nin bir zaman şeklini içeriyor. Kayıt uzunluğu, örnekleme hızı ve kanal sayısı otomatik dolduruldu. Özet INCOMPLETE, çünkü henüz hiçbir blokta sınır yok: zaman bloğuna bir RMS sınırı ekleyin, PASS veya FAIL olur.'],
         pitfalls: [
             ['Reporting stale results', 'Eski sonuçları raporlamak', 'Recompute upstream before exporting; the report shows what the widgets hold now.', 'Dışa aktarmadan önce önceki düğümleri yeniden hesaplayın; rapor widget’ların şu anda tuttuğunu gösterir.'],
             ['Regenerating with wrong mapping', 'Yanlış eşlemeyle yeniden üretmek', 'A channel with the same name may sit at another location in another campaign. Check Map Channels.', 'Aynı adlı bir kanal başka bir kampanyada başka bir konumda olabilir. Map Channels’ı kontrol edin.'],
@@ -73,10 +73,10 @@ const records = [
     },
     {
         id: 'python_script', references: [], related: ['intelligent_report', 'data_exporter'],
-        title: ['Python Script Guide', 'Python Betiği Rehberi'],
+        title: ['Python Script Guide', 'Python Script Rehberi'],
         intro: [
             'This guide explains the Python Script widget, which lets you write your own processing step on the canvas. It covers the four modes, the locked header and footer, Test Run against Run & Emit, cells, parameters, the guard that protects memory on large files, and saving a script as a reusable widget.',
-            'Bu rehber, kanvasta kendi işleme adımınızı yazmanızı sağlayan Python Betiği widget’ını anlatır. Dört modu, kilitli başlık ve alt bilgiyi, Test Run ile Run & Emit farkını, hücreleri, parametreleri, büyük dosyalarda belleği koruyan korumayı ve bir betiği yeniden kullanılabilir bir widget olarak kaydetmeyi açıklar.',
+            'Bu rehber, kanvasta kendi işleme adımınızı yazmanızı sağlayan Python Script widget’ını anlatır. Dört modu, kilitli başlık ve alt bilgiyi, Test Run ile Run & Emit farkını, hücreleri, parametreleri, büyük dosyalarda belleği koruyan korumayı ve bir betiği yeniden kullanılabilir bir widget olarak kaydetmeyi açıklar.',
         ],
         why: [
             ['What it is for', 'Ne işe yarar?',

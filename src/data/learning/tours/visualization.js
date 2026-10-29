@@ -372,7 +372,7 @@ export default {
             tab: ['Settings and categories', 'Settings ve kategoriler'],
             summary: [
                 'RMS of six vibration sensors from Channel Statistics, sorted from largest to smallest, with a 0.5 alarm level drawn across.',
-                'Kanal İstatistikleri’nden altı titreşim sensörünün RMS’i; büyükten küçüğe sıralanmış ve üzerine 0,5’lik bir alarm seviyesi çizilmiş.',
+                'Channel Statistics’ten altı titreşim sensörünün RMS’i; büyükten küçüğe sıralanmış ve üzerine 0,5’lik bir alarm seviyesi çizilmiş.',
             ],
             points: [
                 pt('sort', ['Sort & Filter', 'Sıralama ve filtre'], [

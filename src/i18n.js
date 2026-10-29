@@ -455,7 +455,7 @@ const resources = {
                         "desc": "Sinyal işlemenin temel taşı. FFT, zaman düzlemindeki sinyalleri frekans spektrumlarına dönüştürerek, mühendislerin ham zaman verilerinde görünmeyen spesifik rezonans frekanslarını, harmonikleri ve yapısal hataları tespit etmelerini sağlar."
                     },
                     "order": {
-                        "title": "Sipariş Takibi (Order Tracking)",
+                        "title": "Order Tracking",
                         "desc": "Dönen makine analizi için kritik bir yöntemdir. Veriyi zaman veya mutlak frekans yerine makinenin dönüş hızına (RPM) bağlar. Özellikle motorların hızlanma (run-up) ve yavaşlama (coast-down) testlerinde kullanılır."
                     },
                     "filtering": {

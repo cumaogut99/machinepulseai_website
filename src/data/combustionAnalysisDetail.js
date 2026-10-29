@@ -208,7 +208,7 @@ const COMBUSTION_ANALYSIS_DETAIL = {
 
     tr: {
         eyebrow: 'Termodinamik ve Akışkanlar · Detaylı İnceleme',
-        name: 'Gelişmiş Yanma Analizi',
+        name: 'Advanced Combustion Analysis',
         tagline:
             'Silindir içi basınç izini, motor ekiplerinin yanma kalitesini değerlendirmek için kullandığı metriklere dönüştürür: IMEP, ısı salınımı, CA10/50/90, vuruntu ve çevrim kararlılığı.',
         intro:

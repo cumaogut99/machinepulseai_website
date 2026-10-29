@@ -83,7 +83,7 @@ const WIDGET_DETAILS = {
         tr: {
             tagline: 'Standart ve endüstriyel DAQ formatları için bellek-dışı (out-of-core) yüksek başarımlı veri okuyucu.',
             intro:
-                'Bir şeyi analiz etmeden önce onu yüklemeniz gerekir. Dosya Okuyucu; yaygın formatları (CSV, Excel, Parquet) ve endüstriyel olanları (National Instruments TDMS, otomotiv ECU\'larının MDF/MF4\'ü ve yerel MPAI konteyneri) açar. Bellek-eşlemli G/Ç (mmap) ve sıfır-kopyalama (zero-copy) mimarisi sayesinde 200 GB+ boyutundaki kayıtlar RAM darboğazı oluşturmadan saniyeler içinde açılır ve bellek kullanımı 1 GB altında kalır. İşlem hattına aktarmadan önce etkileşimli önizleme; sütun başlıklarını, ayraçları ve zaman damgalarını doğrulamayı sağlar.',
+                'Bir şeyi analiz etmeden önce onu yüklemeniz gerekir. File Reader; yaygın formatları (CSV, Excel, Parquet) ve endüstriyel olanları (National Instruments TDMS, otomotiv ECU\'larının MDF/MF4\'ü ve yerel MPAI konteyneri) açar. Bellek-eşlemli G/Ç (mmap) ve sıfır-kopyalama (zero-copy) mimarisi sayesinde 200 GB+ boyutundaki kayıtlar RAM darboğazı oluşturmadan saniyeler içinde açılır ve bellek kullanımı 1 GB altında kalır. İşlem hattına aktarmadan önce etkileşimli önizleme; sütun başlıklarını, ayraçları ve zaman damgalarını doğrulamayı sağlar.',
             inputs: [
                 { name: 'Bir ölçüm dosyası', desc: 'CSV, Excel, Parquet, TDMS, MDF/MF4 veya MPAI — bir elektronik tablodan çok-gigabaytlık bir test kaydına kadar.' },
                 { name: 'Ayrıştırma ayarları', desc: 'Hangi satır başlık, sütun/ondalık ayırıcılar ve hangi sütun zamanı tutuyor — hepsi yüklemeden önce ayarlanabilir.' },
@@ -161,7 +161,7 @@ const WIDGET_DETAILS = {
         tr: {
             tagline: 'İki veri kaynağını tek kaynağa diker — ya koşuları üst üste yığarak ya da farklı kanalları yan yana birleştirerek.',
             intro:
-                'Test kampanyaları nadiren tek ve derli toplu bir dosya üretir. Veri Birleştirici iki kaynağı iki yoldan biriyle birleştirir. Dikey birleştirme, aynı kanal düzenindeki tekrarlı koşuları uç uca yığar (zamana göre art arda ekleme) — aynı testin birkaç kez kaydedildiği durumlarda kullanışlıdır. Yatay birleştirme, aynı olayın farklı kanallarını yan yana koyar (zamana göre hizalayıp birleştirme) — iki ayrı toplama sisteminin farklı sensörleri kaydettiği durumlarda kullanışlıdır. Her iki durumda da zaman eksenlerini hizalar; böylece örnekleme saatleri hafif farklı kanallar bile doğru eşleşir.',
+                'Test kampanyaları nadiren tek ve derli toplu bir dosya üretir. File Merger iki kaynağı iki yoldan biriyle birleştirir. Dikey birleştirme, aynı kanal düzenindeki tekrarlı koşuları uç uca yığar (zamana göre art arda ekleme) — aynı testin birkaç kez kaydedildiği durumlarda kullanışlıdır. Yatay birleştirme, aynı olayın farklı kanallarını yan yana koyar (zamana göre hizalayıp birleştirme) — iki ayrı toplama sisteminin farklı sensörleri kaydettiği durumlarda kullanışlıdır. Her iki durumda da zaman eksenlerini hizalar; böylece örnekleme saatleri hafif farklı kanallar bile doğru eşleşir.',
             inputs: [
                 { name: 'İki veri kümesi', desc: 'Ya aynı kanallara sahip iki koşu ya da aynı olaydan farklı kanalların iki kümesi.' },
                 { name: 'Bir birleştirme yönü', desc: 'Dikey (daha çok satır/zaman) veya yatay (daha çok kanal/sütun).' },
@@ -236,7 +236,7 @@ const WIDGET_DETAILS = {
         tr: {
             tagline: 'Çok sayıda küçük dosyadan oluşan bir klasörün tamamını tek işlemde tek sürekli veri kümesine dönüştürür.',
             intro:
-                'Uzun dayanıklılık testleri ve filo verileri çoğu zaman zamana ya da kaydediciye göre bölünmüş yüzlerce/binlerce küçük dosya olarak gelir. Bunları tek tek açmak zahmetlidir ve büyük resmi gizler. Toplu Dosya Birleştirici, tüm bir dizini bir kerede içeri alır, tüm dosyalarda kanal düzenini normalleştirir ve tek sürekli bir veri kümesi üretir — böylece tüm kampanyayı dosya dosya değil, tek bir kayıt olarak analiz edersiniz.',
+                'Uzun dayanıklılık testleri ve filo verileri çoğu zaman zamana ya da kaydediciye göre bölünmüş yüzlerce/binlerce küçük dosya olarak gelir. Bunları tek tek açmak zahmetlidir ve büyük resmi gizler. Toplu File Merger, tüm bir dizini bir kerede içeri alır, tüm dosyalarda kanal düzenini normalleştirir ve tek sürekli bir veri kümesi üretir — böylece tüm kampanyayı dosya dosya değil, tek bir kayıt olarak analiz edersiniz.',
             inputs: [
                 { name: 'Bir dosya klasörü', desc: 'Kanal düzenini paylaşan, zamana veya kaydediciye göre bölünmüş çok sayıda dosya.' },
             ],

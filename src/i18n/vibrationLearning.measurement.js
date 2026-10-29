@@ -42,7 +42,7 @@ const MEASUREMENT_LEARNING = {
                 { title: 'ISO 18431-4:2007', note: 'Digital shock-response-spectrum calculation using filter methods, including sampling guidance.', href: 'https://www.iso.org/standard/35833.html' },
             ] },
         tr: {
-            title: 'Şok ve SRS Analiz Rehberi',
+            title: 'Shock & SRS Analiz Rehberi',
             intro: 'Bu rehber, düşme, darbe ve taşıma şokları gibi geçici ivme olaylarının şok tepki spektrumu (SRS) analizini anlatır. Darbe koşullandırmayı, ISO 18431-4 salınıcı bankasını, maximax, pozitif/negatif ve birincil/artık spektrumları, yalancı hız gösterimini, darbe metriklerini ve şartnameyle karşılaştırmayı açıklar.',
             badges: ['ISO 18431-4 çözücü', 'Maximax · ± · birincil/artık', 'Yalancı hız nomogramı', 'Darbe ve şartname metrikleri'], duration: 'Tahmini okuma süresi: yaklaşık 21 dakika',
             outcomes: ['SRS’yi Fourier spektrumu sanmadan açıklamak.', 'Sönüm/Q, frekans sınırı ve oktav aralığını test şartnamesinden seçmek.', 'Darbe sırasındaki birincil tepkiyi sonrasındaki artık çınlamadan ayırmak.', 'Uygunluk değerlendirmeden önce örnekleme, temel çizgi düzeltmesi ve darbe penceresini kontrol etmek.'],
@@ -51,7 +51,7 @@ const MEASUREMENT_LEARNING = {
                 { title: 'Hangi ölçümler gerekir?', body: 'Şok olayının, tepe değeri kırpılmadan yakalanacak kadar yüksek örnekleme hızı ve yeterli sensör aralığıyla alınmış ivme kaydı gerekir. Sönüm değeri (genellikle %5, Q = 10) ve frekans aralığı tanımlanmalı ve şartnameyle uyumlu olmalıdır.' },
                 { title: 'Neden FFT kullanılmaz?', body: 'FFT giriş sinyalinin frekans içeriğini tanımlar; bir yapının bu sinyale ne kadar güçlü tepki vereceğini göstermez. SRS bu yapısal talebi doğrudan ifade eder; bu da onu ölçülen bir şoku test şartnamesi veya tasarım sınırıyla karşılaştırmak için uygun kılar.' },
             ],
-            interface: { title: 'Şok ve SRS çalışma ekranı', intro: 'İlerideki ekran görüntüsü giriş birimi/düzeltmesini, sönümü, eğri ailelerini, oktav aralığını, frekans sınırını, darbe tanımlamayı, tepki sekmelerini ve sonuç metriklerini gösterecek. Rehber bu gerçek kontrollere dayanır.' },
+            interface: { title: 'Shock & SRS çalışma ekranı', intro: 'İlerideki ekran görüntüsü giriş birimi/düzeltmesini, sönümü, eğri ailelerini, oktav aralığını, frekans sınırını, darbe tanımlamayı, tepki sekmelerini ve sonuç metriklerini gösterecek. Rehber bu gerçek kontrollere dayanır.' },
             theory: { title: 'Şok tepki spektrumu temelleri', intro: 'Doğal frekans boyunca tek serbestlik dereceli sistem bankası düşünün. Her salınıcıyı ölçülen taban ivmesiyle sürün ve en büyük cevabını saklayın. Ortaya çıkan zarf SRS’dir.', cards: [
                 { kicker: 'TEMEL KAVRAM', title: 'SRS bir FFT değildir', body: 'FFT sinyal içeriğini sinüslere ayırır. SRS sönümlü salınıcıların en kötü cevabını raporlar. Süre ve faz geçmişi önemli olduğu için benzer spektrumlu iki darbe farklı SRS üretebilir.' },
                 { kicker: 'SALINICI MODELİ', title: 'Sönüm talebi değiştirir', body: 'Kalite faktörü Q ile sönüm oranı ζ, Q = 1/(2ζ) ilişkisiyle aynı salınıcı keskinliğini anlatır. Düşük sönüm daha dar ve yüksek rezonans cevabı oluşturur.' },
@@ -127,7 +127,7 @@ const MEASUREMENT_LEARNING = {
                 { title: 'ISO 7626-5:2019', note: 'Impact-based FRF measurement and DFT signal-analysis practice.', href: 'https://www.iso.org/standard/68735.html' },
             ] },
         tr: {
-            title: 'Çapraz Spektrum ve FRF Analiz Rehberi',
+            title: 'Frequency Response & Cross Spectrum Rehberi',
             intro: 'Bu rehber, MachinePulseAI’da iki kanallı frekans alanı analizini anlatır. H1, H2 ve Hv kestiricileriyle transfer/transmissibility modunu, bağıl fazla çapraz spektral yoğunluk modunu ve sonuç kalitesinin değerlendirilmesinde Welch ortalaması ile koheransın rolünü açıklar.',
             badges: ['Transfer / transmissibility', 'Çapraz spektral yoğunluk', 'H1 · H2 · Hv', 'Genlik · faz · koherans'], duration: 'Tahmini okuma süresi: yaklaşık 20 dakika',
             outcomes: ['Oto-spektrum, çapraz spektrum, FRF ve koheransı farklı büyüklükler olarak açıklamak.', 'Fiziksel soruya göre transfer veya CSD modunu seçmek.', 'H1/H2/Hv uyuşmazlığını gürültü ipucu olarak yorumlamak.', 'NFFT, pencere, örtüşme ve ortalamayı sahte güven üretmeden kullanmak.'],
@@ -136,7 +136,7 @@ const MEASUREMENT_LEARNING = {
                 { title: 'Hangi ölçümler gerekir?', body: 'Aynı örnekleme hızıyla eşzamanlı kaydedilmiş iki sinyal gerekir. Transfer fonksiyonları için bir kanal giriş (referans), diğeri çıkış olarak tanımlanır; kanal sırası analizden önce belirlenmelidir.' },
                 { title: 'Koherans neyi gösterir?', body: 'Koherans, her frekansta çıkışın ne kadarının girişle doğrusal olarak ilişkili olduğunu 0 ile 1 arasında gösterir. Düşük koherans gürültü, doğrusal olmayan davranış, sızıntı veya ilişkisiz başka kaynaklara işaret eder; bu frekanslardaki kazanç ve faz dikkatle yorumlanmalıdır.' },
             ],
-            interface: { title: 'Çapraz Spektrum / FRF çalışma ekranı', intro: 'Son ekran görüntüsü analiz modunu, salt okunur örnekleme hızını, NFFT’yi, örtüşmeyi, pencereyi, ortalama sayısını, ölçeği ve üst üste genlik/faz/koherans sonuçlarını gösterecek. Teori bu kontrollere uyar.' },
+            interface: { title: 'Frequency Response & Cross Spectrum çalışma ekranı', intro: 'Son ekran görüntüsü analiz modunu, salt okunur örnekleme hızını, NFFT’yi, örtüşmeyi, pencereyi, ortalama sayısını, ölçeği ve üst üste genlik/faz/koherans sonuçlarını gösterecek. Teori bu kontrollere uyar.' },
             theory: { title: 'Çapraz spektrum ve transfer fonksiyonu temelleri', intro: 'Oto-spektrumlar her kanalı ayrı anlatır. Karmaşık çapraz spektrum eşzamanlı kanalları birleştirir; ortak periyodik içerik ve bağıl zamanlama görünür kalır.', cards: [
                 { kicker: 'TEMEL KAVRAM', title: 'Çapraz spektrum transfer fonksiyonu değildir', body: 'Gxy ortak spektral güç ve fazı anlatır. FRF ise giriş–çıkış modeli altında tepki/giriş kestirmek için çapraz ve oto spektrumları böler.' },
                 { kicker: 'NEDENSEL SORU', title: 'Transfer modu referans yönü ister', body: 'İlk kanal giriş/referans, ikincisi tepki kabul edilir. Kazanç birimi ve fiziksel anlam bu sıraya bağlıdır.' },

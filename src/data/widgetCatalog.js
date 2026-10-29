@@ -28,7 +28,7 @@ const content = (enName, trName, enSummary, trSummary, enTheory, trTheory) => ({
 const ADDITIONAL_WIDGETS = {
     sensor_widget: content(
         'Sensor Data',
-        'Sensör Verisi',
+        'Sensor Data',
         'Connects configured sensor channels to the measurement pipeline.',
         'Yapılandırılmış sensör kanallarını ölçüm hattına bağlar.',
         'This palette entry is reserved for direct sensor-source configuration. Hardware-backed acquisition is still being integrated, so the module is shown as planned.',
@@ -36,7 +36,7 @@ const ADDITIONAL_WIDGETS = {
     ),
     ftp_reader: content(
         'FTP/SFTP Reader',
-        'FTP/SFTP Okuyucu',
+        'FTP/SFTP Reader',
         'Reads remote measurement files from FTP and SFTP locations.',
         'Uzak ölçüm dosyalarını FTP ve SFTP konumlarından okur.',
         'The connector will stream remote files into the same import pipeline used by local measurement files while preserving credentials outside project data.',
@@ -44,7 +44,7 @@ const ADDITIONAL_WIDGETS = {
     ),
     realtime_stream: content(
         'Real-time Stream',
-        'Gerçek Zamanlı Akış',
+        'Real-time Stream',
         'Receives continuously arriving samples from a live data source.',
         'Canlı bir veri kaynağından sürekli gelen örnekleri alır.',
         'The planned live source will decouple acquisition from rendering through bounded buffers so high-rate producers do not block the user interface.',
@@ -52,7 +52,7 @@ const ADDITIONAL_WIDGETS = {
     ),
     merge_channels: content(
         'Dataset Merge',
-        'Veri Kümesi Birleştirme',
+        'Dataset Merge',
         'Creates a new MPAI by appending datasets or joining strictly aligned channels.',
         'Veri kümelerini art arda ekleyerek veya tam hizalı kanalları birleştirerek yeni bir MPAI oluşturur.',
         'Use row append for repeated runs with the same schema, or channel append when independent sources share a compatible row or time grid. The result is materialized as a new MPAI source so downstream widgets consume one coherent dataset.',
@@ -60,15 +60,15 @@ const ADDITIONAL_WIDGETS = {
     ),
     time_alignment: content(
         'Time Alignment',
-        'Zaman Hizalama',
+        'Time Alignment',
         'Aligns multiple acquisition sources with manual shifts and a shared crop.',
         'Birden fazla ölçüm kaynağını elle zaman kaydırmaları ve ortak kırpma ile hizalar.',
         'Independent loggers rarely start on exactly the same sample. Time Alignment applies explicit offsets, previews overlap, and crops every selected source to the common interval before combined analysis.',
-        'Bağımsız kaydediciler nadiren tam aynı örnekte başlar. Zaman Hizalama açık zaman ofsetleri uygular, örtüşmeyi önizler ve birleşik analizden önce seçilen her kaynağı ortak aralığa kırpar.',
+        'Bağımsız kaydediciler nadiren tam aynı örnekte başlar. Time Alignment açık zaman ofsetleri uygular, örtüşmeyi önizler ve birleşik analizden önce seçilen her kaynağı ortak aralığa kırpar.',
     ),
     sensor_calibration: content(
         'Sensor Calibration',
-        'Sensör Kalibrasyonu',
+        'Sensor Calibration',
         'Applies sensor gain, offset and engineering-unit conversion.',
         'Sensör kazancı, ofseti ve mühendislik birimi dönüşümünü uygular.',
         'Calibration converts recorder counts or volts into traceable physical quantities using an affine gain and offset. The derived channel retains its source relationship and engineering unit.',
@@ -76,7 +76,7 @@ const ADDITIONAL_WIDGETS = {
     ),
     data_quality_repair: content(
         'Outlier Detection/Remove',
-        'Aykırı Değer Tespiti/Kaldırma',
+        'Outlier Detection/Remove',
         'Flags or replaces global Z-score outliers as derived channels.',
         'Global Z-skor aykırı değerlerini işaretler veya türetilmiş kanallarda değiştirir.',
         'A global statistical pass identifies samples whose standardized distance exceeds the selected threshold. Keeping the result as a derived channel preserves the original measurement for comparison and audit.',
@@ -84,7 +84,7 @@ const ADDITIONAL_WIDGETS = {
     ),
     correlation_analysis: content(
         'Correlation Matrix',
-        'Korelasyon Matrisi',
+        'Correlation Matrix',
         'Computes a block-streamed Pearson matrix and pairwise sample counts.',
         'Bloklar halinde Pearson matrisi ve ikili örnek sayılarını hesaplar.',
         'Correlation measures the strength and direction of linear relationships between channel pairs. Pairwise counts expose missing-data effects, while strongest-pair ranking helps triage large channel sets.',
@@ -92,7 +92,7 @@ const ADDITIONAL_WIDGETS = {
     ),
     hypothesis_testing: content(
         'Statistical Tests',
-        'İstatistiksel Testler',
+        'Statistical Tests',
         'Runs native one-sample, paired and independent statistical tests.',
         'Tek örneklem, eşleştirilmiş ve bağımsız istatistiksel testleri çalıştırır.',
         'Hypothesis tests quantify whether an observed difference is likely systematic rather than random variation. The selected test, confidence level, effect estimate and assumptions should be interpreted together.',
@@ -100,7 +100,7 @@ const ADDITIONAL_WIDGETS = {
     ),
     statistical_process_control: content(
         'Process Capability & SPC',
-        'Proses Yeterliliği ve SPC',
+        'Process Capability & SPC',
         'Provides I-MR, EWMA and CUSUM charts, rule checks and capability indices.',
         'I-MR, EWMA ve CUSUM grafikleri, kural kontrolleri ve yeterlilik indeksleri sunar.',
         'Statistical Process Control separates common-cause variation from special events. Control charts reveal stability; Cp and Cpk compare the stable process spread and centering against specification limits.',
@@ -108,7 +108,7 @@ const ADDITIONAL_WIDGETS = {
     ),
     align_compare: content(
         'Align / Compare',
-        'Hizala / Karşılaştır',
+        'Align / Compare',
         'Overlays multiple sources on a shared grid for direct comparison.',
         'Birden fazla kaynağı doğrudan karşılaştırmak için ortak bir ızgarada üst üste bindirir.',
         'The viewer maps independent sources onto a common coordinate system, then exposes offsets, scale differences and event timing with synchronized cursors.',
@@ -116,7 +116,7 @@ const ADDITIONAL_WIDGETS = {
     ),
     intelligent_report: content(
         'Intelligent Report',
-        'Akıllı Rapor',
+        'Intelligent Report',
         'Builds traceable reports from canvas results, templates and PDF export.',
         'Canvas sonuçları, şablonlar ve PDF dışa aktarma ile izlenebilir raporlar oluşturur.',
         'The report widget collects typed results directly from connected analysis and visualization nodes. Templates organize tables, plots and conclusions without copying values by hand, preserving traceability to the source measurement.',
@@ -163,7 +163,7 @@ const COPY_OVERRIDES = {
         },
         tr: {
             summary: 'Bir klasördeki tüm ölçüm dosyalarını inceleyip tek bir MPAI veri kümesinde birleştirir.',
-            theory: 'Dosya Birleştirici, parçalara ayrılmış kayıtlar için kampanya düzeyinde içe aktarıcıdır. Bir klasörü tarar, uyumlu kanal düzenlerini doğrular ve operatörün dosyaları tek tek açmasına gerek kalmadan tek, sürekli bir MPAI veri kümesi üretir.',
+            theory: 'File Merger, parçalara ayrılmış kayıtlar için kampanya düzeyinde içe aktarıcıdır. Bir klasörü tarar, uyumlu kanal düzenlerini doğrular ve operatörün dosyaları tek tek açmasına gerek kalmadan tek, sürekli bir MPAI veri kümesi üretir.',
         },
     },
     data_exporter: {
@@ -172,7 +172,9 @@ const COPY_OVERRIDES = {
     },
 }
 
-function widget(id, enName, trName, options = {}) {
+// Widget names are the application's English palette names in every language:
+// Turkish readers must recognise the exact module they will open in the app.
+function widget(id, name, options = {}) {
     const base = CONTENT_BY_ID.get(id)
     if (!base) throw new Error(`Missing website content for application widget: ${id}`)
 
@@ -183,8 +185,8 @@ function widget(id, enName, trName, options = {}) {
         ...base,
         ...(subgroup ? { subgroup } : {}),
         ...(phase ? { phase } : {}),
-        en: { ...base.en, ...copyOverride.en, name: enName },
-        tr: { ...base.tr, ...copyOverride.tr, name: trName },
+        en: { ...base.en, ...copyOverride.en, name },
+        tr: { ...base.tr, ...copyOverride.tr, name },
     }
 }
 
@@ -197,76 +199,76 @@ const ENGINEERING_GROUPS = [
     {
         meta: subgroup('vibration_structural', 'Vibration, Structural & Kinematics', 'Titreşim, Yapısal ve Kinematik'),
         widgets: [
-            ['rotor_dynamics', 'Rotor Dynamics', 'Rotor Dinamiği'],
-            ['rotor_balancing', 'Rotor Balancing', 'Rotor Balanslama'],
-            ['order_tracking', 'Order Tracking', 'Order Takibi'],
-            ['torsional_vibration', 'Torsional & Rotational Vibration', 'Burulma ve Dönel Titreşim'],
-            ['modal_analysis', 'Advanced Modal Analysis', 'Gelişmiş Modal Analiz'],
-            ['operational_modal_analysis', 'Operational Modal Analysis (OMA)', 'Operasyonel Modal Analiz (OMA)'],
-            ['time_ods', 'Time-Based ODS', 'Zaman Tabanlı ODS'],
-            ['shock_srs', 'Shock & SRS', 'Şok ve SRS'],
-            ['bearing_fault', 'Bearing & Gear Fault Diagnosis', 'Rulman ve Dişli Arıza Tanılama'],
-            ['kinematics_6dof', 'Kinematic Chain (6-DOF)', 'Kinematik Zincir (6-DOF)'],
-            ['cross_axis_compensation', 'Cross-Axis Compensation', 'Eksenler Arası Kompanzasyon'],
-            ['structural_health', 'Structural Health Monitoring', 'Yapısal Sağlık İzleme'],
-            ['machine_health_overview', 'Machine Health Overview', 'Makine Sağlığı Genel Görünümü'],
+            ['rotor_dynamics', 'Rotor Dynamics'],
+            ['rotor_balancing', 'Rotor Balancing'],
+            ['order_tracking', 'Order Tracking'],
+            ['torsional_vibration', 'Torsional & Rotational Vibration'],
+            ['modal_analysis', 'Advanced Modal Analysis'],
+            ['operational_modal_analysis', 'Operational Modal Analysis (OMA)'],
+            ['time_ods', 'Time-Based ODS'],
+            ['shock_srs', 'Shock & SRS'],
+            ['bearing_fault', 'Bearing & Gear Fault Diagnosis'],
+            ['kinematics_6dof', 'Kinematic Chain (6-DOF)'],
+            ['cross_axis_compensation', 'Cross-Axis Compensation'],
+            ['structural_health', 'Structural Health Monitoring'],
+            ['machine_health_overview', 'Machine Health Overview'],
         ],
     },
     {
         meta: subgroup('thermofluids', 'Thermodynamics, Fluids & Thermal', 'Termodinamik, Akışkanlar ve Termal'),
         widgets: [
-            ['combustion_analysis', 'Advanced Combustion Analysis', 'Gelişmiş Yanma Analizi'],
-            ['gas_exchange', 'Gas Exchange & Scavenging', 'Gaz Değişimi ve Süpürme'],
-            ['work_cycle_analysis', 'Work Cycle (IMEP/BMEP/FMEP)', 'İş Çevrimi (IMEP/BMEP/FMEP)'],
-            ['thermo_cycles', 'Thermodynamic Cycles', 'Termodinamik Çevrimler'],
-            ['fluid_dynamics', 'Fluid Dynamics', 'Akışkanlar Dinamiği'],
-            ['heat_transfer', 'Heat Transfer & Thermal', 'Isı Transferi ve Termal'],
+            ['combustion_analysis', 'Advanced Combustion Analysis'],
+            ['gas_exchange', 'Gas Exchange & Scavenging'],
+            ['work_cycle_analysis', 'Work Cycle (IMEP/BMEP/FMEP)'],
+            ['thermo_cycles', 'Thermodynamic Cycles'],
+            ['fluid_dynamics', 'Fluid Dynamics'],
+            ['heat_transfer', 'Heat Transfer & Thermal'],
         ],
     },
     {
         meta: subgroup('materials', 'Materials, Strength & Tribology', 'Malzeme, Dayanım ve Triboloji'),
         widgets: [
-            ['fatigue_analysis', 'Fatigue Analysis (Rainflow)', 'Yorulma Analizi (Rainflow)'],
-            ['damage_accumulation', 'Damage Accumulation & RUL', 'Hasar Birikimi ve RUL'],
-            ['strain_stress', 'Strain & Stress (Rosette)', 'Gerinim ve Gerilme (Rozet)'],
-            ['lubrication_tribology', 'Lubrication & Tribology', 'Yağlama ve Triboloji'],
+            ['fatigue_analysis', 'Fatigue Analysis (Rainflow)'],
+            ['damage_accumulation', 'Damage Accumulation & RUL'],
+            ['strain_stress', 'Strain & Stress (Rosette)'],
+            ['lubrication_tribology', 'Lubrication & Tribology'],
         ],
     },
     {
         meta: subgroup('electrical', 'Electrical & Electronics', 'Elektrik ve Elektronik'),
         widgets: [
-            ['power_quality', 'Advanced Power Quality', 'Gelişmiş Güç Kalitesi'],
-            ['mcsa', 'Motor Current Signature (MCSA)', 'Motor Akım İmzası (MCSA)'],
-            ['bms_analysis', 'BMS Data Analysis', 'BMS Veri Analizi'],
-            ['harmonics_analysis', 'Harmonics & Interharmonics', 'Harmonikler ve Ara Harmonikler'],
-            ['motor_drive_analysis', 'Motor & Inverter Drive', 'Motor ve İnverter Sürücü'],
-            ['power_electronics_transient', 'Power Electronics Transients', 'Güç Elektroniği Geçicileri'],
-            ['network_analysis', 'Network Analysis (Phasor/Z)', 'Şebeke Analizi (Fazör/Z)'],
+            ['power_quality', 'Advanced Power Quality'],
+            ['mcsa', 'Motor Current Signature (MCSA)'],
+            ['bms_analysis', 'BMS Data Analysis'],
+            ['harmonics_analysis', 'Harmonics & Interharmonics'],
+            ['motor_drive_analysis', 'Motor & Inverter Drive'],
+            ['power_electronics_transient', 'Power Electronics Transients'],
+            ['network_analysis', 'Network Analysis (Phasor/Z)'],
         ],
     },
     {
         meta: subgroup('acoustics', 'Acoustics & NVH', 'Akustik ve NVH'),
         widgets: [
-            ['sound_level', 'Sound Level (A/B/C/Z, Leq)', 'Ses Seviyesi (A/B/C/Z, Leq)'],
-            ['octave_band', 'Octave Band Analysis', 'Oktav Bant Analizi'],
-            ['sound_power', 'Sound Intensity & Power', 'Ses Şiddeti ve Gücü'],
-            ['psychoacoustics', 'Psychoacoustics', 'Psikoakustik'],
-            ['microphone_correction', 'Microphone Correction', 'Mikrofon Düzeltme'],
+            ['sound_level', 'Sound Level (A/B/C/Z, Leq)'],
+            ['octave_band', 'Octave Band Analysis'],
+            ['sound_power', 'Sound Intensity & Power'],
+            ['psychoacoustics', 'Psychoacoustics'],
+            ['microphone_correction', 'Microphone Correction'],
         ],
     },
     {
         meta: subgroup('control', 'Control, Mechatronics & Navigation', 'Kontrol, Mekatronik ve Navigasyon'),
         widgets: [
-            ['system_identification', 'System Identification (TF/SS)', 'Sistem Tanımlama (TF/SS)'],
-            ['pid_analysis', 'PID Analysis', 'PID Analizi'],
-            ['stability_analysis', 'Stability (Bode/Nyquist/RL)', 'Kararlılık (Bode/Nyquist/RL)'],
-            ['navigation_imu', 'Navigation & IMU (EKF)', 'Navigasyon ve IMU (EKF)'],
+            ['system_identification', 'System Identification (TF/SS)'],
+            ['pid_analysis', 'PID Analysis'],
+            ['stability_analysis', 'Stability (Bode/Nyquist/RL)'],
+            ['navigation_imu', 'Navigation & IMU (EKF)'],
         ],
     },
     {
         meta: subgroup('vehicle', 'Vehicle & Platform Dynamics', 'Araç ve Platform Dinamiği'),
         widgets: [
-            ['performance_testing', 'Performance Testing', 'Performans Testi'],
+            ['performance_testing', 'Performance Testing'],
         ],
     },
 ]
@@ -274,10 +276,10 @@ const ENGINEERING_GROUPS = [
 // Order mirrors the application palette: FFT and Frequency Response sit
 // directly under Engineering Modules, ahead of the domain subgroups.
 const engineeringWidgets = [
-    widget('fft_spectrum', 'FFT / Spectrum', 'FFT / Spektrum'),
-    widget('cross_spectrum', 'Frequency Response & Cross Spectrum', 'Frekans Tepkisi ve Çapraz Spektrum'),
+    widget('fft_spectrum', 'FFT / Spectrum'),
+    widget('cross_spectrum', 'Frequency Response & Cross Spectrum'),
     ...ENGINEERING_GROUPS.flatMap((group) => (
-        group.widgets.map(([id, en, tr]) => widget(id, en, tr, { subgroup: group.meta }))
+        group.widgets.map(([id, name]) => widget(id, name, { subgroup: group.meta }))
     )),
 ]
 
@@ -292,71 +294,71 @@ function category(id, widgets) {
 
 export const WIDGET_CATALOG = [
     category('data_io', [
-            widget('file_reader', 'File Reader', 'Dosya Okuyucu'),
-            widget('data_merger', 'File Merger', 'Dosya Birleştirici'),
-            widget('database_widget', 'Database', 'Veritabanı'),
-            widget('sensor_widget', 'Sensor Data', 'Sensör Verisi'),
-            widget('data_exporter', 'File Exporter', 'Dosya Dışa Aktarıcı'),
-            widget('ftp_reader', 'FTP/SFTP Reader', 'FTP/SFTP Okuyucu'),
-            widget('realtime_stream', 'Real-time Stream', 'Gerçek Zamanlı Akış'),
-            widget('random_generator', 'Data Generator', 'Veri Üreteci'),
+            widget('file_reader', 'File Reader'),
+            widget('data_merger', 'File Merger'),
+            widget('database_widget', 'Database'),
+            widget('sensor_widget', 'Sensor Data'),
+            widget('data_exporter', 'File Exporter'),
+            widget('ftp_reader', 'FTP/SFTP Reader'),
+            widget('realtime_stream', 'Real-time Stream'),
+            widget('random_generator', 'Data Generator'),
     ]),
     category('preprocessing', [
-            widget('channel_selector', 'Channel Selector', 'Kanal Seçici'),
-            widget('merge_channels', 'Dataset Merge', 'Veri Kümesi Birleştirme'),
-            widget('table_edit', 'Data Table Editor', 'Veri Tablosu Düzenleyici'),
-            widget('normalization_scaling', 'Normalization & Scaling', 'Normalleştirme ve Ölçekleme'),
-            widget('groupby_aggregation', 'Group By & Aggregation', 'Gruplama ve Toplulaştırma'),
-            widget('time_alignment', 'Time Alignment', 'Zaman Hizalama'),
-            widget('rolling_window_stats', 'Rolling / Window Stats', 'Kayan / Pencere İstatistikleri'),
-            widget('sensor_calibration', 'Sensor Calibration', 'Sensör Kalibrasyonu'),
+            widget('channel_selector', 'Channel Selector'),
+            widget('merge_channels', 'Dataset Merge'),
+            widget('table_edit', 'Data Table Editor'),
+            widget('normalization_scaling', 'Normalization & Scaling'),
+            widget('groupby_aggregation', 'Group By & Aggregation'),
+            widget('time_alignment', 'Time Alignment'),
+            widget('rolling_window_stats', 'Rolling / Window Stats'),
+            widget('sensor_calibration', 'Sensor Calibration'),
     ]),
     category('filters', [
-            widget('frequency_filter', 'Frequency Filter', 'Frekans Filtresi'),
-            widget('smoothing_filter', 'Smoothing Filter', 'Yumuşatma Filtresi'),
-            widget('math_transform', 'Math & Calculus', 'Matematik ve Kalkülüs'),
-            widget('advanced_diagnostics', 'Advanced Diagnostics', 'Gelişmiş Tanılama'),
-            widget('kalman_filter', 'Kalman Filter', 'Kalman Filtresi'),
-            widget('spike_detection', 'Spike Detection/Remove', 'Sıçrama Tespiti/Kaldırma'),
-            widget('data_quality_repair', 'Outlier Detection/Remove', 'Aykırı Değer Tespiti/Kaldırma'),
-            widget('range_filter', 'Range Filter', 'Aralık Filtresi'),
+            widget('frequency_filter', 'Frequency Filter'),
+            widget('smoothing_filter', 'Smoothing Filter'),
+            widget('math_transform', 'Math & Calculus'),
+            widget('advanced_diagnostics', 'Advanced Diagnostics'),
+            widget('kalman_filter', 'Kalman Filter'),
+            widget('spike_detection', 'Spike Detection/Remove'),
+            widget('data_quality_repair', 'Outlier Detection/Remove'),
+            widget('range_filter', 'Range Filter'),
     ]),
     category('engineering', engineeringWidgets),
     category('statistics', [
-            widget('statistics_summary', 'Channel Statistics', 'Kanal İstatistikleri'),
-            widget('correlation_analysis', 'Correlation Matrix', 'Korelasyon Matrisi'),
-            widget('hypothesis_testing', 'Statistical Tests', 'İstatistiksel Testler'),
-            widget('statistical_process_control', 'Process Capability & SPC', 'Proses Yeterliliği ve SPC'),
+            widget('statistics_summary', 'Channel Statistics'),
+            widget('correlation_analysis', 'Correlation Matrix'),
+            widget('hypothesis_testing', 'Statistical Tests'),
+            widget('statistical_process_control', 'Process Capability & SPC'),
     ]),
     category('machine_learning', [
-            widget('ml_data_preprocessing', 'Data Preprocessing', 'Veri Ön İşleme'),
-            widget('ml_classification', 'Classification', 'Sınıflandırma'),
-            widget('ml_regression', 'Regression', 'Regresyon'),
-            widget('ml_clustering', 'Clustering', 'Kümeleme'),
-            widget('ml_neural_network', 'Neural Networks', 'Sinir Ağları'),
-            widget('ml_model_evaluation', 'Model Evaluation', 'Model Değerlendirme'),
-            widget('ml_prediction', 'Prediction', 'Tahmin'),
-            widget('ml_feature_engineering', 'Feature Engineering', 'Özellik Mühendisliği'),
-            widget('ml_hyperparameter_tuning', 'Hyperparameter Tuning', 'Hiperparametre Ayarı'),
-            widget('ml_model_persistence', 'Model Persistence', 'Model Kalıcılığı'),
+            widget('ml_data_preprocessing', 'Data Preprocessing'),
+            widget('ml_classification', 'Classification'),
+            widget('ml_regression', 'Regression'),
+            widget('ml_clustering', 'Clustering'),
+            widget('ml_neural_network', 'Neural Networks'),
+            widget('ml_model_evaluation', 'Model Evaluation'),
+            widget('ml_prediction', 'Prediction'),
+            widget('ml_feature_engineering', 'Feature Engineering'),
+            widget('ml_hyperparameter_tuning', 'Hyperparameter Tuning'),
+            widget('ml_model_persistence', 'Model Persistence'),
     ]),
     category('visualization', [
-            widget('chart_dashboard', 'Chart Dashboard', 'Grafik Panosu'),
-            widget('line_chart', 'Line Chart', 'Çizgi Grafiği'),
-            widget('histogram_widget', 'Histogram', 'Histogram'),
-            widget('scatter_plot', 'Scatter Plot', 'Saçılım Grafiği'),
-            widget('bar_plot', 'Bar Plot', 'Çubuk Grafik'),
-            widget('box_plot', 'Box Plot', 'Kutu Grafiği'),
-            widget('time_graphics', 'Time Graphics', 'Zaman Grafikleri'),
-            widget('align_compare', 'Align / Compare', 'Hizala / Karşılaştır'),
-            widget('frequency_domain', 'Frequency Domain', 'Frekans Düzlemi'),
-            widget('order_map_view', 'Order Map View (2D / VTK 3D)', 'Order Haritası Görünümü (2B / VTK 3B)'),
+            widget('chart_dashboard', 'Chart Dashboard'),
+            widget('line_chart', 'Line Chart'),
+            widget('histogram_widget', 'Histogram'),
+            widget('scatter_plot', 'Scatter Plot'),
+            widget('bar_plot', 'Bar Plot'),
+            widget('box_plot', 'Box Plot'),
+            widget('time_graphics', 'Time Graphics'),
+            widget('align_compare', 'Align / Compare'),
+            widget('frequency_domain', 'Frequency Domain'),
+            widget('order_map_view', 'Order Map View (2D / VTK 3D)'),
     ]),
     category('reporting', [
-            widget('intelligent_report', 'Intelligent Report', 'Akıllı Rapor'),
+            widget('intelligent_report', 'Intelligent Report'),
     ]),
     category('python_script', [
-            widget('python_script', 'Python Script', 'Python Script'),
+            widget('python_script', 'Python Script'),
     ]),
 ]
 

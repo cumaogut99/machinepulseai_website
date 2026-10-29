@@ -42,8 +42,8 @@ const MOTION_LEARNING = {
                 { title: 'ISO 16063-31:2009 + Amd 1:2025', note: 'Testing transverse sensitivity of velocity and acceleration transducers, including multi-axis excitation methods.', href: 'https://www.iso.org/standard/36407.html' },
             ] },
         tr: {
-            title: 'Eksenler Arası Kompanzasyon Rehberi',
-            intro: 'Bu rehber, Eksenler Arası Kompanzasyon widget’ının üç eksenli ivmeölçerlerde eksenler arasındaki bağlaşımı nasıl düzelttiğini anlatır. 3×3 duyarlılık matrisini, oran veya yüzde olarak veri girişini, kalibrasyon verisinin içe aktarılmasını, terslenebilirlik kontrollerini ve veriden kestirilen matrislerin koşul sayısı, bağlaşım ve koheransla doğrulanmasını açıklar.',
+            title: 'Cross-Axis Compensation Rehberi',
+            intro: 'Bu rehber, Cross-Axis Compensation widget’ının üç eksenli ivmeölçerlerde eksenler arasındaki bağlaşımı nasıl düzelttiğini anlatır. 3×3 duyarlılık matrisini, oran veya yüzde olarak veri girişini, kalibrasyon verisinin içe aktarılmasını, terslenebilirlik kontrollerini ve veriden kestirilen matrislerin koşul sayısı, bağlaşım ve koheransla doğrulanmasını açıklar.',
             badges: ['3×3 duyarlılık matrisi', 'Oran veya yüzde girişi', 'Kalibrasyon içe aktarma / kestirim', 'Koşul ve bağlaşım kontrolü'], duration: 'Tahmini okuma süresi: yaklaşık 17 dakika',
             outcomes: ['Ana eksen duyarlılığı ile diyagonal dışı bağlaşımı açıklamak.', 'Aynı kalibrasyonu oran veya yüzde olarak doğru girmek.', 'Kötü koşullanmayı ve gürültü büyütme riskini tanımak.', 'Üretici kalibrasyonuna ne zaman güvenileceğini ve operasyon verisi kestiriminin ne zaman inceleme istediğini belirlemek.'],
             why: [
@@ -51,7 +51,7 @@ const MOTION_LEARNING = {
                 { title: 'Hangi veriler gerekir?', body: 'Sensörün üç ekseninden gelen ham sinyaller ile sensörün kalibrasyon sertifikasından veya bir kalibrasyon ölçümünden alınan eksenler arası duyarlılık değerleri gerekir. Kalibrasyon verisi yoksa matris, baskın hareket yönü bilinen verilerden kalite kontrollerine tabi olarak kestirilebilir.' },
                 { title: 'Kompanzasyon ne zaman önemlidir?', body: 'Bir yöndeki titreşim diğerlerinden çok daha büyük olduğunda—örneğin araç ve bileşen testlerinde veya sarsıcı testlerinde—ya da küçük eksenlerdeki tepkilerin doğru ölçülmesi gerektiğinde kompanzasyon önem kazanır. Tüm yönlerde seviyeler benzer olduğunda etkisi çoğu zaman ihmal edilebilir düzeydedir.' },
             ],
-            interface: { title: 'Eksenler Arası Kompanzasyon çalışma ekranı', intro: 'İlerideki ekran görüntüsü kanal/birim seçimini, oran/yüzde matris girişini, birim matrise sıfırlamayı, kalibrasyon içe aktarmayı, matris kestirimini, güvenlik kapısını ve kompanze sonuçları gösterecek. Rehber bu yetenekleri izler.' },
+            interface: { title: 'Cross-Axis Compensation çalışma ekranı', intro: 'İlerideki ekran görüntüsü kanal/birim seçimini, oran/yüzde matris girişini, birim matrise sıfırlamayı, kalibrasyon içe aktarmayı, matris kestirimini, güvenlik kapısını ve kompanze sonuçları gösterecek. Rehber bu yetenekleri izler.' },
             theory: { title: 'Eksenler arası duyarlılık ve düzeltilmesi', intro: 'Her elektriksel çıkış ağırlıkla hedef eksene duyarlıdır, fakat dik ivmeye de az miktarda cevap verir. Duyarlılık matrisi bu doğrusal karışımı tarif eder.', cards: [
                 { kicker: 'TEMEL KAVRAM', title: 'Diyagonal ana eksen duyarlılığıdır', body: 'İdeal normalize kalibrasyonda diyagonal birlerden oluşur. Gerçek kalibrasyon kazanç hatası içerebilir; diyagonal değerler az farklı olabilir ve sessizce bire zorlanmamalıdır.' },
                 { kicker: 'ÇAPRAZ BAĞLAŞIM', title: 'Diyagonal dışı terimler sızıntıyı anlatır', body: 'Sxy, gerçek Y hareketinin ölçülen X’e katkısını gösterir. 0,02 değeri %2 demektir; %0,02 değil.' },
@@ -126,7 +126,7 @@ const MOTION_LEARNING = {
                 { title: 'ISO 2631-1:1997 + Amd 1:2010', note: 'General whole-body vibration exposure evaluation, frequency weighting and assessment concepts.', href: 'https://www.iso.org/standard/7612.html' },
             ] },
         tr: {
-            title: 'Kinematik Zincir (6-DOF) Analiz Rehberi',
+            title: 'Kinematic Chain (6-DOF) Analiz Rehberi',
             intro: 'Bu rehber, rijit bir cismin hareketinin ivmeölçer ve jiroskop ölçümlerinden nasıl hesaplandığını anlatır. Tek üç eksenli sensör, rijit cisim ivmeölçer dizisi ve IMU giriş modlarını, zaman veya frekans alanında entegrasyonu, yüksek geçiren filtre veya Kalman filtresiyle kayma kontrolünü, öteleme ve dönme çıktılarını, yörünge metriklerini, statik eğimi ve ISO 2631 konfor ölçütlerini açıklar.',
             badges: ['Tek üç eksen · dizi · IMU', 'Zaman veya frekans entegrasyonu', 'Yüksek geçiren / Kalman kayma kontrolü', 'ISO 2631 Wd · Wk'], duration: 'Tahmini okuma süresi: yaklaşık 23 dakika',
             outcomes: ['Sensör ve fiziksel soruya göre giriş modunu seçmek.', 'İvme entegrasyonunun neden kaydığını ve her düzeltmenin neyi kaldırdığını açıklamak.', 'Öteleme, dönme ve yerçekimine bağlı eğimi tutarlı koordinat sisteminde ayırmak.', 'Ağırlıklı RMS, VDV, MTVV ve yörünge metriklerini anlamlarını karıştırmadan yorumlamak.'],

@@ -214,8 +214,8 @@ const en = {
 
 const tr = {
     back: 'Modül kütüphanesine dön',
-    eyebrow: 'MachinePulseAI Akademi · Rotor Dinamiği',
-    title: 'Rotor Dinamiği Analiz Rehberi',
+    eyebrow: 'MachinePulseAI Akademi · Rotor Dynamics',
+    title: 'Rotor Dynamics Analiz Rehberi',
     intro: 'Bu rehber, şaftın yatak içindeki hareketinin iki yakınlık probu ve devir sinyaliyle nasıl ölçüldüğünü ve bu verinin nasıl analiz edildiğini anlatır. Orbit, kritik hız, Bode ve Polar yanıtı, şaft merkez çizgisi ve ileri/geri whirl analizlerinin neyi gösterdiğini, sınırlarını ve bir teşhiste nasıl birlikte değerlendirildiğini açıklar.',
     badges: ['Temel kavramlardan başlar', 'Etkileşimli orbit modeli', 'Etkileşimli kritik hız modeli', 'Standart ve kaynak referansları'],
     start: 'Ölçüm zincirinden başlayın',

@@ -43,7 +43,7 @@ const MODAL_LEARNING = {
                 { title: 'ISO 7626-5:2019', note: 'Impact-excitation procedures and DFT-based signal analysis for structural FRFs.', href: 'https://www.iso.org/standard/68735.html' },
             ] },
         tr: {
-            title: 'Gelişmiş Modal Analiz Rehberi',
+            title: 'Advanced Modal Analysis Rehberi',
             intro: 'Bu rehber, MachinePulseAI’da darbe çekici veya sarsıcı ölçümleriyle deneysel modal analizin (EMA) nasıl yapıldığını anlatır. FRF ölçümünü ve kalite kontrollerini, LSCF kararlılık diyagramıyla kutup seçimini, LSFD ile mod şekli kestirimini, sönüm kestirimini ve AutoMAC ile doğrulamayı açıklar.',
             badges: ['H1 · H2 · Hv', 'Koherans ve Nyquist', 'LSCF + LSFD', 'MIMO mod şekilleri'], duration: 'Tahmini okuma süresi: yaklaşık 24 dakika',
             outcomes: ['Spektrum, FRF ve mod arasındaki farkı açıklamak.', 'Beklenen gürültü konumuna göre H1, H2 veya Hv seçmek.', 'Bir kutbu kabul etmeden önce koherans ve kararlılık diyagramını kullanmak.', 'Rezidüleri uydurup AutoMAC’i incelemek ve 3B şekli ODS ya da mutlak hareket sanmadan yorumlamak.'],
@@ -129,7 +129,7 @@ const MODAL_LEARNING = {
                 { title: 'Peeters & De Roeck · Stochastic Subspace Identification', note: 'Primary research on reference-based SSI for operational modal analysis.', href: 'https://doi.org/10.1016/S0888-3270(99)00014-8' },
             ] },
         tr: {
-            title: 'Operasyonel Modal Analiz (OMA) Rehberi',
+            title: 'Operational Modal Analysis (OMA) Rehberi',
             intro: 'Bu rehber, yapının modal parametrelerini yalnızca tepki ölçümlerinden ve yapı normal yükleri altında çalışırken belirleyen operasyonel modal analizi (OMA) anlatır. MachinePulseAI’daki FDD, EFDD ve SSI-COV yöntemlerini, ölçülmüş kuvvet olmadan sönüm kestirimini ve MPC, MPD ve AutoMAC ile kalite kontrollerini açıklar.',
             badges: ['SSI-COV', 'FDD · EFDD', 'MPC · MPD · AutoMAC', 'Yalnızca çıkış'], duration: 'Tahmini okuma süresi: yaklaşık 22 dakika',
             outcomes: ['Kuvvet ölçmeden OMA’nın neyi tanımlayıp neyi tanımlayamayacağını açıklamak.', 'Kayıt ve soruya göre SSI-COV, FDD veya EFDD seçmek.', 'Kararlılık, tekil değerler ve şekil kalite metriklerini birlikte kullanmak.', 'Çalışma harmoniklerini yapısal modlardan ayırıp bağıl şekilleri dürüstçe raporlamak.'],
@@ -213,7 +213,7 @@ const MODAL_LEARNING = {
             sources: [
             ] },
         tr: {
-            title: 'Zaman Tabanlı ODS Analiz Rehberi',
+            title: 'Time-Based ODS Analiz Rehberi',
             intro: 'Bu rehber, çalışma sapma şekillerinin (ODS) eşzamanlı titreşim ölçümlerinden ve ölçüm noktası geometrisinden nasıl elde edildiğini anlatır. MachinePulseAI’daki bant geçiren zaman, karmaşık frekans ve RPM izleyen order çıkarım yöntemlerini ve ODS ile doğal mod şekli arasındaki farkı açıklar.',
             badges: ['Fazı koruyan zaman ODS', 'Karmaşık frekans şekli', 'RPM izleyen order ODS', '3B geometri animasyonu'], duration: 'Tahmini okuma süresi: yaklaşık 19 dakika',
             outcomes: ['ODS ile modal analiz farkını açıklamak.', 'Kanalları düğümlere ve fiziksel DOF yönlerine tutarlı eşlemek.', 'Gözlenen olay için zaman, frekans veya order çıkarımını seçmek.', 'Deformasyon ölçeği, oklar ve rengi fiziksel büyütme değil görüntüleme yardımı olarak kullanmak.'],
@@ -222,7 +222,7 @@ const MODAL_LEARNING = {
                 { title: 'Hangi ölçümler gerekir?', body: 'Eşzamanlı ya da ortak bir faz referansıyla kaydedilmiş çok sayıda noktadan titreşim ölçümü ile her noktanın koordinatları ve ölçüm yönü gerekir. Order tabanlı ODS için ayrıca devir sinyali gerekir.' },
                 { title: 'ODS’nin mod şeklinden farkı nedir?', body: 'ODS, aynı anda etkiyen tüm kuvvetlerin ve modların birleşik sonucudur; doğal mod şekli değildir. ODS yapının çalışırken nasıl hareket ettiğini, modal analiz ise nasıl hareket edebileceğini gösterir. Bir sorunun aşırı kuvvetten mi yoksa rezonanstan mı kaynaklandığını belirlemek için ikisi sıklıkla birlikte kullanılır.' },
             ],
-            interface: { title: 'Zaman Tabanlı ODS çalışma ekranı', intro: 'İlerideki görüntü referans/tako seçimini, çıkarım yöntemini, frekans veya order kontrollerini, içe aktarılan geometriyi, animasyon görünümünü ve özeti gösterecek. Aşağıdaki rehber bu gerçek kontrollere dayanır.' },
+            interface: { title: 'Time-Based ODS çalışma ekranı', intro: 'İlerideki görüntü referans/tako seçimini, çıkarım yöntemini, frekans veya order kontrollerini, içe aktarılan geometriyi, animasyon görünümünü ve özeti gösterecek. Aşağıdaki rehber bu gerçek kontrollere dayanır.' },
             theory: { title: 'Çalışma sapma şekli (ODS) temelleri', intro: 'Seçilen zaman, bant, frekans veya order’da her ölçüm noktası genlik ve işaret/faz katkısı yapar. Bu değerleri geometriye eşlemek sapma desenini oluşturur.', cards: [
                 { kicker: 'TEMEL KAVRAM', title: 'ODS mod şekli değildir', body: 'ODS çalışma kuvvetleri altındaki tüm tepkileri içerir. Mod şekli modal modelden çıkarılan yapısal özelliktir. Tek baskın rezonans yakınında benzeyebilirler ama iddia farklı kalır.' },
                 { kicker: 'UZAMSAL MODEL', title: 'Geometri veriye anlam kazandırır', body: 'Kanal etiketleri tek başına eğilme veya burulmayı gösteremez. Bağıl hareketin fiziksel şekle dönüşmesi için her sinyal düğüm, koordinat ve DOF eksenine eşlenmelidir.' },

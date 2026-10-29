@@ -324,12 +324,12 @@ export default {
             tab: ['Display settings', 'Görüntü ayarları'],
             summary: [
                 'The FFT of accel_faulty, 0–2,500 Hz in dB, as computed by FFT / Spectrum. A series of tall lines rises above a noise floor near −55 dB.',
-                'FFT / Spektrum’un hesapladığı accel_faulty FFT’si, 0–2.500 Hz, dB cinsinden. Bir dizi yüksek çizgi −55 dB civarındaki bir gürültü tabanının üstüne çıkıyor.',
+                'FFT / Spectrum’un hesapladığı accel_faulty FFT’si, 0–2.500 Hz, dB cinsinden. Bir dizi yüksek çizgi −55 dB civarındaki bir gürültü tabanının üstüne çıkıyor.',
             ],
             points: [
                 pt('source', ['Source FFT', 'Kaynak FFT'], [
                     'The settings the spectrum was computed with: Hann window, 4,096 samples, 50 % overlap, linear averaging. To change them, go back to FFT / Spectrum.',
-                    'Spektrumun hesaplandığı ayarlar: Hann penceresi, 4.096 örnek, %50 örtüşme, doğrusal ortalama. Değiştirmek için FFT / Spektrum’a dönün.',
+                    'Spektrumun hesaplandığı ayarlar: Hann penceresi, 4.096 örnek, %50 örtüşme, doğrusal ortalama. Değiştirmek için FFT / Spectrum’a dönün.',
                 ]),
                 pt('navigator', ['Navigator channel', 'Gezgin kanalı'], [
                     'Chooses which spectrum is shown.',
@@ -452,7 +452,7 @@ export default {
             tab: ['Report editor', 'Rapor editörü'],
             summary: [
                 'A first report built from a File Reader with two accelerometer channels: content on the left, structure in the middle, live preview, and page settings on the right.',
-                'İki ivmeölçer kanallı bir Dosya Okuyucu’dan kurulmuş ilk rapor: solda içerik, ortada yapı, canlı önizleme ve sağda sayfa ayarları.',
+                'İki ivmeölçer kanallı bir File Reader’dan kurulmuş ilk rapor: solda içerik, ortada yapı, canlı önizleme ve sağda sayfa ayarları.',
             ],
             points: [
                 pt('content', ['Available Content', 'Mevcut içerik'], [

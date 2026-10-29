@@ -64,8 +64,8 @@ const ROTATING_LEARNING = {
             ],
         },
         tr: {
-            title: 'Rotor Balanslama Rehberi',
-            intro: 'Bu rehber, MachinePulseAI Rotor Balanslama widget’ı ile tek düzlemde saha balanslamasının nasıl yapıldığını anlatır. 1× titreşim vektörünün devir başına bir darbe veren referans sinyaliyle nasıl ölçüldüğünü, deneme ağırlığıyla makinenin tepkisinin nasıl belirlendiğini ve düzeltmenin nasıl hesaplanıp doğrulandığını açıklar. Mevcut sürüm tek düzlem balanslamayı destekler; çift düzlem balanslama henüz sunulmamaktadır.',
+            title: 'Rotor Balancing Rehberi',
+            intro: 'Bu rehber, MachinePulseAI Rotor Balancing widget’ı ile tek düzlemde saha balanslamasının nasıl yapıldığını anlatır. 1× titreşim vektörünün devir başına bir darbe veren referans sinyaliyle nasıl ölçüldüğünü, deneme ağırlığıyla makinenin tepkisinin nasıl belirlendiğini ve düzeltmenin nasıl hesaplanıp doğrulandığını açıklar. Mevcut sürüm tek düzlem balanslamayı destekler; çift düzlem balanslama henüz sunulmamaktadır.',
             badges: ['Doğrulanmış tek düzlem akışı', 'Fiziksel keyphasor', 'Karmaşık 1× vektörleri', 'ISO 21940 bağlamı'],
             duration: 'Tahmini okuma süresi: yaklaşık 18 dakika',
             outcomes: ['Genlik ve fazı tek bir karmaşık titreşim vektörü olarak açıklamak.', 'Makine durumunu değiştirmeden uyumlu referans ve deneme koşuları yakalamak.', 'Deneme ağırlığının kullanılabilir bir etki katsayısı üretip üretmediğini değerlendirmek.', 'Tek düzlem düzeltmesini uygulayıp doğrulamak.'],
@@ -74,7 +74,7 @@ const ROTATING_LEARNING = {
                 { title: 'Hangi ölçümler gerekir?', body: 'Yatak gövdesine bağlanan bir titreşim sensörü (genellikle ivmeölçer veya hız sensörü) 1× genliğini ölçer. Fazı, yani tepkinin açısal konumunu ölçmek için devir başına bir darbe veren referans sinyali gerekir; bu bir keyphasor ya da yansıtıcı işareti okuyan optik veya lazer takometre olabilir. Faz bilgisi olmadan düzeltme açısı hesaplanamaz.' },
                 { title: 'Neden deneme ağırlığı kullanılır?', body: 'Makinenin belirli bir kütleye verdiği tepki rijitliğine, yataklarına ve taşıyıcı yapısına bağlıdır ve genellikle önceden bilinmez. Bilinen bir deneme ağırlığı geçici olarak takılır ve 1× vektöründe oluşan değişim ölçülür. Bu değişim etki katsayısını verir; düzeltme kütlesi ve açısı bu katsayıdan hesaplanır.' },
             ],
-            interface: { title: 'Rotor Balanslama çalışma ekranı', intro: 'Tamamlandığında bu görünüm seçilen 1× ölçümünü, tek düzlem geometrisini, yakalanan koşuları, polar ilerlemeyi ve doğrulama sonucunu bir araya getirecek. Şimdilik bütün zinciri aşağıdaki rehberle öğrenin.' },
+            interface: { title: 'Rotor Balancing çalışma ekranı', intro: 'Tamamlandığında bu görünüm seçilen 1× ölçümünü, tek düzlem geometrisini, yakalanan koşuları, polar ilerlemeyi ve doğrulama sonucunu bir araya getirecek. Şimdilik bütün zinciri aşağıdaki rehberle öğrenin.' },
             theory: {
                 title: 'Kontrollü bir ölçüm olarak balanslama',
                 intro: 'Makinede zaten bilinmeyen bir balanssızlık vardır. Bilinen deneme kütlesi bu durumu değiştirir. Ölçülen 1× vektöründeki fark, bu makinenin bu hızda ve bu düzlemde kütleye nasıl cevap verdiğini gösterir.',
@@ -169,7 +169,7 @@ const ROTATING_LEARNING = {
             sources: [
             ] },
         tr: {
-            title: 'Order Takibi Analiz Rehberi',
+            title: 'Order Tracking Analiz Rehberi',
             intro: 'Bu rehber, devri değişen döner makinelerin (örneğin kalkış veya duruş sırasında) order analizini anlatır. Bu koşullarda sabit frekanslı spektrumun neden yeterli olmadığını, devir sinyalinin titreşimi açı alanında yeniden örneklemek için nasıl kullanıldığını ve MachinePulseAI’da Campbell, frekans–RPM ve Vold–Kalman görünümlerinin ne zaman kullanılacağını açıklar.',
             badges: ['Campbell haritası', 'Frekans–RPM haritası', 'Tekli ve çoklu Vold–Kalman', 'Kalkış / duruş'], duration: 'Tahmini okuma süresi: yaklaşık 20 dakika',
             outcomes: ['Frekans, RPM ve order arasında tahminsiz dönüşüm yapmak.', 'Açıya göre yeniden örneklemenin hıza bağlı bileşenleri neden keskin tuttuğunu açıklamak.', 'Soruna göre Campbell, frekans–RPM veya Vold–Kalman seçmek.', 'Dönen uyarma order’ını sabit yapısal rezonanstan ayırmak.'],
@@ -178,7 +178,7 @@ const ROTATING_LEARNING = {
                 { title: 'Hangi ölçümler gerekir?', body: 'Aynı zaman tabanında kaydedilmiş bir titreşim sinyali (ivme, hız veya yer değiştirme) ve bir devir sinyali gerekir. Devir sinyali genellikle takometre, enkoder veya devir başına bir darbe veren sensörden gelir; doğruluğu order sonuçlarının doğruluğunu doğrudan belirler.' },
                 { title: 'Standart FFT neden yeterli değildir?', body: 'Kayıt sırasında devir değiştiğinde devre bağlı bileşenlerin frekansı da değişir ve standart FFT bu bileşenleri geniş bir banda yayar. Order takibi sinyali eşit mil açısı adımlarında yeniden örnekler; böylece her order sabit bir konumda kalır ve net olarak ayrılabilir.' },
             ],
-            interface: { title: 'Order Takibi çalışma ekranı', intro: 'Son ekran görüntüsü titreşim ve RPM seçimini, takip çözünürlüğünü, çıkarım yöntemini, harita kontrollerini ve sonuç sekmelerini gösterecek. Aşağıdaki rehber bu gerçek kontrolleri şimdiden izler.' },
+            interface: { title: 'Order Tracking çalışma ekranı', intro: 'Son ekran görüntüsü titreşim ve RPM seçimini, takip çözünürlüğünü, çıkarım yöntemini, harita kontrollerini ve sonuç sekmelerini gösterecek. Aşağıdaki rehber bu gerçek kontrolleri şimdiden izler.' },
             theory: { title: 'Order: mil hızına göre normalize edilmiş frekans', intro: '1× bileşen her mil devrinde bir çevrim; 2× iki çevrim tamamlar. RPM değişirken hertz değerleri hareket eder, order değerleri sabit kalır.', cards: [
                 { kicker: 'TEMEL KAVRAM', title: 'Hertz “ne kadar hızlı?” diye sorar', body: 'Frekans saniyedeki çevrimi sayar. Mil hızı değişse bile doğal frekansı yaklaşık sabit kalan yapısal rezonansları okumak için uygundur.' },
                 { kicker: 'DÖNEL BAKIŞ', title: 'Order “devir başına kaç kez?” diye sorar', body: 'Order, bileşen frekansını dönme frekansına böler. Balanssızlık 1×, eksen kaçıklığı çoğu zaman 2× civarında; dişli veya kanat olayları tekrar sayılarına göre görünür.' },
@@ -252,7 +252,7 @@ const ROTATING_LEARNING = {
                 { title: 'ISO 22266-1:2022', note: 'Torsional natural-frequency and strength assessment for coupled turbine-generator shaft trains under electrical excitation.', href: 'https://www.iso.org/standard/78144.html' },
             ] },
         tr: {
-            title: 'Burulma ve Dönel Titreşim Analiz Rehberi',
+            title: 'Torsional & Rotational Vibration Analiz Rehberi',
             intro: 'Bu rehber, burulma ve dönel titreşimin enkoder veya dişli dişi darbe sinyallerinden nasıl ölçüldüğünü anlatır. Anlık açısal hızın darbe zamanlamasından nasıl hesaplandığını, eksik dişli referans çarklarının nasıl çözümlendiğini, mil burulmasının iki enkoderle nasıl ölçüldüğünü ve burulma order’larının nasıl yorumlandığını açıklar.',
             badges: ['Tek enkoder dönel mod', 'İki enkoder burulma modu', 'Eksik diş çözme', 'Burulma order spektrumu'], duration: 'Tahmini okuma süresi: yaklaşık 18 dakika',
             outcomes: ['Darbe aralığının neden açısal hız bilgisi taşıdığını açıklamak.', 'Mevcut sensörlere göre dönel veya gerçek burulma modunu seçmek.', 'İki enkoderi oran, yön ve faz ofsetiyle hizalamak.', 'Açısal hız, burulma, tork ve order sonuçlarını sınırlarıyla okumak.'],

@@ -208,7 +208,7 @@ const FFT_WIDGET_DETAILS = {
             tagline:
                 'Tek kanallı bir zaman kaydını açıklanabilir bir frekans spektrumuna dönüştürün; seçilen zaman aralığı, blok boyutu, pencere tipi ve ortalamanın sonucu nasıl etkilediğini görün.',
             intro:
-                'FFT / Spektrum widget\'ı "Bu sinyalde hangi frekanslar var?" sorusuna yanıt verir. Genlik FFT\'si ile kararlı tonları ve harmonikleri, Welch PSD ile durağan rastgele gürültü enerjisini, STFT spektrogramı ile zamanla değişen frekans içeriğini gösterir. Hesaplama, bağlı MPAI konteynerinden sadece seçili zaman dilimini okur ve arka planda C++ FFT motorunda çalışır.',
+                'FFT / Spectrum widget\'ı "Bu sinyalde hangi frekanslar var?" sorusuna yanıt verir. Genlik FFT\'si ile kararlı tonları ve harmonikleri, Welch PSD ile durağan rastgele gürültü enerjisini, STFT spektrogramı ile zamanla değişen frekans içeriğini gösterir. Hesaplama, bağlı MPAI konteynerinden sadece seçili zaman dilimini okur ve arka planda C++ FFT motorunda çalışır.',
             inputs: [
                 { name: 'Bağlı MPAI zaman sinyali', desc: 'Signal seçicisi bağlı kaynak kaydındaki zaman dışı kanalları listeler. C++ motoru kaydın tamamını belleğe yüklemeden sadece seçilen zaman dilimini mmap üzerinden doğrudan okur.', },
                 { name: 'Örnekleme hızı meta verisi', desc: 'Sample Rate salt okunurdur ve MPAI dosyasının meta verisinden gelir. Nyquist sınırını (fs/2) ve frekans adımlarını (Δf) belirler.', },
@@ -332,7 +332,7 @@ const FFT_WIDGET_DETAILS = {
                 { name: 'Sabit ve temsilî zaman aralığı seçin', desc: 'Spektrum sadece imleçlerle seçilen zaman dilimini anlatır. FFT ve Welch için kararlı aralık, devir değişiyorsa STFT tercih edin.', },
                 { name: 'Pencere seçimi bir ödünleşmedir', desc: 'Frekans çözünürlüğü ile genlik doğruluğu aynı anda maksimum yapılamaz. Amacınıza uygun pencereyi (Hann, Flat-Top vb.) seçin.', },
                 { name: 'Görünüm bandı filtre değildir', desc: 'Frequency Min/Max sadece ekrandaki yakınlaştırmayı değiştirir; veriyi filtrelemez.', },
-                { name: 'FFT tek başına FRF veya rezonans ölçümü değildir', desc: 'Tek kanallı FFT tepesi uyarım ile yapısal büyütmeyi ayıramaz. Transfer fonksiyonu için Çapraz Spektrum (FRF) kullanın.', },
+                { name: 'FFT tek başına FRF veya rezonans ölçümü değildir', desc: 'Tek kanallı FFT tepesi uyarım ile yapısal büyütmeyi ayıramaz. Transfer fonksiyonu için Frequency Response & Cross Spectrum widget’ını kullanın.', },
             ],
             steps: [
                 {

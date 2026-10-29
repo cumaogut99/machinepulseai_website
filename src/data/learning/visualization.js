@@ -3,15 +3,15 @@ import { control, lesson, readout } from './lesson.js'
 const records = [
     {
         id: 'line_chart', references: [], related: ['time_graphics', 'statistics_summary'],
-        title: ['Line Chart Guide', 'Çizgi Grafiği Rehberi'],
+        title: ['Line Chart Guide', 'Line Chart Rehberi'],
         intro: [
             'This guide explains how the Line Chart draws channels against time, or one channel against another, without losing peaks on very long records. It covers choosing signals and axes, the Min-Max envelope, time and delta markers, finding extremes in a range, and the statistics and insights panels.',
-            'Bu rehber, Çizgi Grafiği’nin kanalları zamana veya bir kanalı diğerine karşı çok uzun kayıtlarda bile tepeleri kaybetmeden nasıl çizdiğini anlatır. Sinyal ve eksen seçimini, Min-Max zarfını, zaman ve fark işaretçilerini, bir aralıktaki uç değerleri bulmayı ve istatistik ve içgörü panellerini açıklar.',
+            'Bu rehber, Line Chart’ın kanalları zamana veya bir kanalı diğerine karşı çok uzun kayıtlarda bile tepeleri kaybetmeden nasıl çizdiğini anlatır. Sinyal ve eksen seçimini, Min-Max zarfını, zaman ve fark işaretçilerini, bir aralıktaki uç değerleri bulmayı ve istatistik ve içgörü panellerini açıklar.',
         ],
         why: [
-            ['What the Line Chart is for', 'Çizgi Grafiği ne işe yarar?',
+            ['What the Line Chart is for', 'Line Chart ne işe yarar?',
                 'Looking at the signal is the first check of almost every analysis: is the sensor alive, is there an event, does the level drift? The Line Chart shows one or many channels over time, lets you zoom from hours down to single samples, and measures times and values with markers.',
-                'Sinyale bakmak neredeyse her analizin ilk kontrolüdür: sensör çalışıyor mu, bir olay var mı, seviye kayıyor mu? Çizgi Grafiği bir veya birçok kanalı zaman içinde gösterir, saatlerden tek tek örneklere kadar yakınlaştırmanızı sağlar ve işaretçilerle zaman ve değer ölçer.'],
+                'Sinyale bakmak neredeyse her analizin ilk kontrolüdür: sensör çalışıyor mu, bir olay var mı, seviye kayıyor mu? Line Chart bir veya birçok kanalı zaman içinde gösterir, saatlerden tek tek örneklere kadar yakınlaştırmanızı sağlar ve işaretçilerle zaman ve değer ölçer.'],
             ['How long records stay fast and honest', 'Uzun kayıtlar nasıl hızlı ve dürüst kalır?',
                 'A screen has about 2,000 pixels across, but a record can have a billion samples. The chart reads ready-made Min-Max overviews from the MPAI file: for every pixel column it draws the lowest and the highest value in that time slice. A 1 ms spike in a 10-hour record therefore stays visible even when you look at the whole record.',
                 'Bir ekranın genişliği yaklaşık 2.000 pikseldir ama bir kayıt bir milyar örnek içerebilir. Grafik MPAI dosyasındaki hazır Min-Max özetlerini okur: her piksel sütunu için o zaman dilimindeki en düşük ve en yüksek değeri çizer. Bu yüzden 10 saatlik bir kayıttaki 1 ms’lik bir sıçrama, kaydın tamamına bakarken bile görünür kalır.'],
@@ -151,10 +151,10 @@ const records = [
     },
     {
         id: 'scatter_plot', references: [], related: ['correlation_analysis', 'time_alignment'],
-        title: ['Scatter Plot Guide', 'Saçılım Grafiği Rehberi'],
+        title: ['Scatter Plot Guide', 'Scatter Plot Rehberi'],
         intro: [
             'This guide explains how the Scatter Plot draws one channel against another to show whether, and how, they are related. It covers choosing X and Y, point appearance, the ordinary least-squares line and the robust Theil–Sen line, and how to read the slope and the correlation.',
-            'Bu rehber, Saçılım Grafiği’nin bir kanalı diğerine karşı çizerek aralarında ilişki olup olmadığını ve nasıl bir ilişki olduğunu nasıl gösterdiğini anlatır. X ve Y seçimini, nokta görünümünü, sıradan en küçük kareler doğrusunu ve sağlam Theil–Sen doğrusunu ve eğim ile korelasyonun nasıl okunacağını açıklar.',
+            'Bu rehber, Scatter Plot’un bir kanalı diğerine karşı çizerek aralarında ilişki olup olmadığını ve nasıl bir ilişki olduğunu nasıl gösterdiğini anlatır. X ve Y seçimini, nokta görünümünü, sıradan en küçük kareler doğrusunu ve sağlam Theil–Sen doğrusunu ve eğim ile korelasyonun nasıl okunacağını açıklar.',
         ],
         why: [
             ['What it is for', 'Ne işe yarar?',
@@ -163,9 +163,9 @@ const records = [
             ['What it needs', 'Ne gerekir?',
                 'Two channels sampled at the same moments, normally from one dataset. Channels from different loggers must be aligned first. All finite pairs are used. Up to 20,000 pairs each point is drawn on its own; above that the plot switches to a full-data raster that counts every pair into pixels, so even 300,000 pairs stay fast and nothing is left out.',
                 'Aynı anlarda örneklenmiş iki kanal; normalde tek bir veri kümesinden. Farklı kaydedicilerden gelen kanallar önce hizalanmalıdır. Tüm sonlu çiftler kullanılır. 20.000 çifte kadar her nokta ayrı çizilir; bunun üstünde grafik her çifti piksellere sayan tam veri rasterine geçer; böylece 300.000 çift bile hızlı kalır ve hiçbir şey dışarıda bırakılmaz.'],
-            ['How it relates to the Correlation widget', 'Korelasyon widget’ıyla ilişkisi',
+            ['How it relates to the Correlation widget', 'Correlation Matrix widget’ıyla ilişkisi',
                 'The Correlation widget gives one number per pair and ranks many candidates. The Scatter Plot shows the shape behind that number, which is how you notice a curved relationship that has a correlation near zero.',
-                'Korelasyon widget’ı çift başına bir sayı verir ve birçok adayı sıralar. Saçılım Grafiği o sayının arkasındaki şekli gösterir; korelasyonu sıfıra yakın olan eğri bir ilişkiyi böyle fark edersiniz.'],
+                'Correlation Matrix widget’ı çift başına bir sayı verir ve birçok adayı sıralar. Scatter Plot o sayının arkasındaki şekli gösterir; korelasyonu sıfıra yakın olan eğri bir ilişkiyi böyle fark edersiniz.'],
         ],
         use: [
             'Choose the X and Y channels in the Channels panel and press Apply Selected, then turn on the regression lines and read the slope and the correlation in Settings and Stats.',
@@ -217,10 +217,10 @@ const records = [
     },
     {
         id: 'bar_plot', references: [], related: ['statistics_summary', 'groupby_aggregation'],
-        title: ['Bar Plot Guide', 'Çubuk Grafik Rehberi'],
+        title: ['Bar Plot Guide', 'Bar Plot Rehberi'],
         intro: [
             'This guide explains how the Bar Plot compares one value per channel or per category, for example the RMS of six vibration sensors. It covers where the values come from, sorting and filtering, orientation, value labels and a reference line for limits.',
-            'Bu rehber, Çubuk Grafik’in kanal veya kategori başına bir değeri, örneğin altı titreşim sensörünün RMS’ini, nasıl karşılaştırdığını anlatır. Değerlerin nereden geldiğini, sıralama ve filtrelemeyi, yönü, değer etiketlerini ve sınırlar için bir referans çizgisini açıklar.',
+            'Bu rehber, Bar Plot’un kanal veya kategori başına bir değeri, örneğin altı titreşim sensörünün RMS’ini, nasıl karşılaştırdığını anlatır. Değerlerin nereden geldiğini, sıralama ve filtrelemeyi, yönü, değer etiketlerini ve sınırlar için bir referans çizgisini açıklar.',
         ],
         why: [
             ['What it is for', 'Ne işe yarar?',
@@ -228,17 +228,17 @@ const records = [
                 'Bazı soruların cevabı öğe başına bir sayıdır: hangi yatak en çok titreşiyor, hangi test adımında sıcaklık en yüksekti, hangi makine sınırı aşıyor. Çubuklar bu tür karşılaştırmaları, özellikle üzerlerinden geçen bir sınır çizgisiyle, anında yapılır kılar.'],
             ['Where the values come from', 'Değerler nereden gelir?',
                 'The Bar Plot draws values that another widget has already computed. Connect Channel Statistics to compare channels (the metric is chosen there, for example RMS), or Group By & Aggregation to compare groups such as test steps.',
-                'Çubuk Grafik başka bir widget’ın önceden hesapladığı değerleri çizer. Kanalları karşılaştırmak için Kanal İstatistikleri’ni (metrik orada seçilir, örneğin RMS) veya test adımları gibi grupları karşılaştırmak için Gruplama ve Toplulaştırma’yı bağlayın.'],
+                'Bar Plot başka bir widget’ın önceden hesapladığı değerleri çizer. Kanalları karşılaştırmak için Channel Statistics’i (metrik orada seçilir, örneğin RMS) veya test adımları gibi grupları karşılaştırmak için Group By & Aggregation’ı bağlayın.'],
             ['What to keep in mind', 'Nelere dikkat edilmeli?',
                 'A bar hides the time dimension and the spread behind the value. Note the metric and the time range the values were computed over; the information line at the top of the settings states both.',
                 'Bir çubuk değerin arkasındaki zaman boyutunu ve yayılımı gizler. Değerlerin hangi metrik ve hangi zaman aralığı üzerinden hesaplandığını not edin; ayarların üstündeki bilgi satırı ikisini de belirtir.'],
         ],
         use: [
             'Connect Channel Statistics (or Group By), choose the metric there, then in the Bar Plot sort the bars, show the values and draw the limit as a reference line.',
-            'Kanal İstatistikleri’ni (veya Group By’ı) bağlayın, metriği orada seçin, sonra Çubuk Grafik’te çubukları sıralayın, değerleri gösterin ve sınırı referans çizgisi olarak çizin.',
+            'Channel Statistics’i (veya Group By’ı) bağlayın, metriği orada seçin, sonra Bar Plot’ta çubukları sıralayın, değerleri gösterin ve sınırı referans çizgisi olarak çizin.',
         ],
         inputs: [
-            ['A summary to compare', 'Karşılaştırılacak bir özet', 'Values from Channel Statistics or Group By & Aggregation, one per channel or group.', 'Kanal İstatistikleri’nden veya Gruplama ve Toplulaştırma’dan değerler; kanal veya grup başına bir tane.'],
+            ['A summary to compare', 'Karşılaştırılacak bir özet', 'Values from Channel Statistics or Group By & Aggregation, one per channel or group.', 'Channel Statistics’ten veya Group By & Aggregation’dan değerler; kanal veya grup başına bir tane.'],
         ],
         controls: [
             ['Sort & Filter', 'Sort & Filter (sırala ve filtrele)',
@@ -261,8 +261,8 @@ const records = [
         ],
         math: [['v_c=\\operatorname{metric}(x_c;\\,t_0,t_1)', 'One bar value', 'Bir çubuk değeri', 'Each bar is the chosen metric (mean, RMS, peak-to-peak…) of channel or group c over the interval t0 to t1 set in the source widget.', 'Her çubuk, kaynak widget’ta belirlenen t0–t1 aralığında c kanalının veya grubunun seçilen metriğidir (ortalama, RMS, tepeden tepeye…).', readout('Categories → bar value (Bar metric of Channel Statistics)')]],
         steps: [
-            ['Compute the values', 'Değerleri hesaplayın', 'Run Channel Statistics with the metric you want, for example RMS.', 'İstediğiniz metrikle, örneğin RMS, Kanal İstatistikleri’ni çalıştırın.'],
-            ['Connect and sort', 'Bağlayıp sıralayın', 'Connect the Bar Plot and sort descending to see the ranking.', 'Çubuk Grafik’i bağlayın ve sıralamayı görmek için azalan sıralayın.'],
+            ['Compute the values', 'Değerleri hesaplayın', 'Run Channel Statistics with the metric you want, for example RMS.', 'İstediğiniz metrikle, örneğin RMS, Channel Statistics’i çalıştırın.'],
+            ['Connect and sort', 'Bağlayıp sıralayın', 'Connect the Bar Plot and sort descending to see the ranking.', 'Bar Plot’u bağlayın ve sıralamayı görmek için azalan sıralayın.'],
             ['Add values and the limit', 'Değerleri ve sınırı ekleyin', 'Show values at bar ends and the target line at your limit.', 'Değerleri çubuk uçlarında ve hedef çizgisini sınırınızda gösterin.'],
             ['Check the outliers', 'Öne çıkanları kontrol edin', 'Open the time signal of any bar above the limit before drawing conclusions.', 'Sonuç çıkarmadan önce sınırın üstündeki her çubuğun zaman sinyalini açın.'],
         ],
@@ -280,15 +280,15 @@ const records = [
     },
     {
         id: 'box_plot', references: [], related: ['histogram_widget', 'hypothesis_testing'],
-        title: ['Box Plot Guide', 'Kutu Grafiği Rehberi'],
+        title: ['Box Plot Guide', 'Box Plot Rehberi'],
         intro: [
             'This guide explains how the Box Plot compares the spread of several channels side by side. It covers what the box, the whiskers and the outlier points mean, the different whisker rules, violin plots, and how to read the insights about medians and spread.',
-            'Bu rehber, Kutu Grafiği’nin birkaç kanalın yayılımını yan yana nasıl karşılaştırdığını anlatır. Kutunun, bıyıkların ve aykırı noktaların ne anlama geldiğini, farklı bıyık kurallarını, keman grafiklerini ve medyanlar ile yayılım hakkındaki içgörülerin nasıl okunacağını açıklar.',
+            'Bu rehber, Box Plot’un birkaç kanalın yayılımını yan yana nasıl karşılaştırdığını anlatır. Kutunun, bıyıkların ve aykırı noktaların ne anlama geldiğini, farklı bıyık kurallarını, keman grafiklerini ve medyanlar ile yayılım hakkındaki içgörülerin nasıl okunacağını açıklar.',
         ],
         why: [
             ['What it is for', 'Ne işe yarar?',
                 'A box plot puts the distribution of many channels on one page. You see at a glance which channel is centred differently, which one spreads widest, and which one has many extreme values. It is the natural companion of a Bar Plot: the bar gives one number, the box shows the spread behind it.',
-                'Bir kutu grafiği birçok kanalın dağılımını tek sayfaya koyar. Hangi kanalın farklı merkezlendiğini, hangisinin en geniş yayıldığını ve hangisinin çok sayıda uç değeri olduğunu bir bakışta görürsünüz. Çubuk Grafik’in doğal tamamlayıcısıdır: çubuk tek bir sayı verir, kutu onun arkasındaki yayılımı gösterir.'],
+                'Bir kutu grafiği birçok kanalın dağılımını tek sayfaya koyar. Hangi kanalın farklı merkezlendiğini, hangisinin en geniş yayıldığını ve hangisinin çok sayıda uç değeri olduğunu bir bakışta görürsünüz. Bar Plot’un doğal tamamlayıcısıdır: çubuk tek bir sayı verir, kutu onun arkasındaki yayılımı gösterir.'],
             ['What it needs', 'Ne gerekir?',
                 'Numeric channels. All finite samples are used for the statistics; only the number of outlier points drawn is limited to keep the plot readable.',
                 'Sayısal kanallar. İstatistikler için tüm sonlu örnekler kullanılır; grafiği okunur tutmak için yalnızca çizilen aykırı nokta sayısı sınırlanır.'],

@@ -3,10 +3,10 @@ import { control, lesson, readout } from './lesson.js'
 const records = [
     {
         id: 'chart_dashboard', references: [], related: ['line_chart', 'histogram_widget'],
-        title: ['Chart Dashboard Guide', 'Grafik Panosu Rehberi'],
+        title: ['Chart Dashboard Guide', 'Chart Dashboard Rehberi'],
         intro: [
             'This guide explains how the Chart Dashboard puts several charts of one recording on a single page: a trend, a spectrogram, a histogram, a box plot, a table of numbers and a gauge. It covers adding and arranging cells, assigning channels, the shared navigator and cursors, and how to keep the page honest about what each number describes.',
-            'Bu rehber, Grafik Panosu’nun bir kaydın birkaç grafiğini tek sayfaya nasıl koyduğunu anlatır: bir eğilim, bir spektrogram, bir histogram, bir kutu grafiği, bir sayı tablosu ve bir gösterge. Hücre eklemeyi ve yerleştirmeyi, kanal atamayı, ortak gezgin ve imleçleri ve sayfanın her sayının neyi tarif ettiği konusunda nasıl dürüst tutulacağını açıklar.',
+            'Bu rehber, Chart Dashboard’un bir kaydın birkaç grafiğini tek sayfaya nasıl koyduğunu anlatır: bir eğilim, bir spektrogram, bir histogram, bir kutu grafiği, bir sayı tablosu ve bir gösterge. Hücre eklemeyi ve yerleştirmeyi, kanal atamayı, ortak gezgin ve imleçleri ve sayfanın her sayının neyi tarif ettiği konusunda nasıl dürüst tutulacağını açıklar.',
         ],
         why: [
             ['What the dashboard is for', 'Pano ne işe yarar?',
@@ -70,18 +70,18 @@ const records = [
     },
     {
         id: 'time_graphics', references: [], related: ['line_chart', 'rolling_window_stats'],
-        title: ['Time Graphics Guide', 'Zaman Grafikleri Rehberi'],
+        title: ['Time Graphics Guide', 'Time Graphics Rehberi'],
         intro: [
             'This guide explains Time Graphics, the multi-graph time viewer with two measuring cursors. It covers dragging parameters onto graphs, the cursor statistics table, duty cycle, decoding status words with a bitmask file, and named markers.',
-            'Bu rehber, iki ölçüm imleçli çoklu grafik zaman görüntüleyicisi Zaman Grafikleri’ni anlatır. Parametreleri grafiklere sürüklemeyi, imleç istatistik tablosunu, görev döngüsünü, bir bitmask dosyasıyla durum sözcüklerini çözmeyi ve adlandırılmış işaretçileri açıklar.',
+            'Bu rehber, iki ölçüm imleçli çoklu grafik zaman görüntüleyicisi Time Graphics’i anlatır. Parametreleri grafiklere sürüklemeyi, imleç istatistik tablosunu, görev döngüsünü, bir bitmask dosyasıyla durum sözcüklerini çözmeyi ve adlandırılmış işaretçileri açıklar.',
         ],
         why: [
             ['What it is for', 'Ne işe yarar?',
                 'Many test records contain dozens of channels that must be read together: speeds, pressures, temperatures and controller status words. Time Graphics stacks them in several graphs on one time axis and gives you two cursors that read every channel at two moments and the statistics between them.',
-                'Birçok test kaydı birlikte okunması gereken onlarca kanal içerir: hızlar, basınçlar, sıcaklıklar ve kontrolcü durum sözcükleri. Zaman Grafikleri bunları tek zaman ekseninde birkaç grafiğe dizer ve size her kanalı iki anda okuyan ve aralarındaki istatistikleri veren iki imleç sunar.'],
-            ['How it differs from the Line Chart', 'Çizgi Grafiği’nden farkı',
+                'Birçok test kaydı birlikte okunması gereken onlarca kanal içerir: hızlar, basınçlar, sıcaklıklar ve kontrolcü durum sözcükleri. Time Graphics bunları tek zaman ekseninde birkaç grafiğe dizer ve size her kanalı iki anda okuyan ve aralarındaki istatistikleri veren iki imleç sunar.'],
+            ['How it differs from the Line Chart', 'Line Chart’tan farkı',
                 'The Line Chart is the quick look at a few channels. Time Graphics is the workbench for long, wide records: the statistics table follows the cursors, it can compute the duty cycle of a signal, and it can turn an integer status channel into readable fault messages.',
-                'Çizgi Grafiği birkaç kanala hızlı bakıştır. Zaman Grafikleri uzun ve geniş kayıtlar için çalışma tezgâhıdır: istatistik tablosu imleçleri izler, bir sinyalin görev döngüsünü hesaplayabilir ve tamsayı bir durum kanalını okunur arıza mesajlarına çevirebilir.'],
+                'Line Chart birkaç kanala hızlı bakıştır. Time Graphics uzun ve geniş kayıtlar için çalışma tezgâhıdır: istatistik tablosu imleçleri izler, bir sinyalin görev döngüsünü hesaplayabilir ve tamsayı bir durum kanalını okunur arıza mesajlarına çevirebilir.'],
             ['What to keep in mind', 'Nelere dikkat edilmeli?',
                 'Showing channels on one time axis does not make them synchronous. Channels from different loggers must be aligned first, otherwise a time difference between cursors may be a clock offset rather than a real delay.',
                 'Kanalları tek zaman ekseninde göstermek onları eşzamanlı yapmaz. Farklı kaydedicilerden gelen kanallar önce hizalanmalıdır; aksi halde imleçler arasındaki zaman farkı gerçek bir gecikme değil bir saat kayması olabilir.'],
@@ -141,10 +141,10 @@ const records = [
     },
     {
         id: 'align_compare', references: [], related: ['time_alignment', 'statistics_summary'],
-        title: ['Align / Compare Guide', 'Hizala / Karşılaştır Rehberi'],
+        title: ['Align / Compare Guide', 'Align / Compare Rehberi'],
         intro: [
             'This guide explains how Align / Compare overlays two or more recordings of the same test, finds the time offset between them, and measures how much they differ. It covers choosing sources and channels, the time reference and automatic offset, the comparison window and grid, the difference trace and the metrics table.',
-            'Bu rehber, Hizala / Karşılaştır’ın aynı testin iki veya daha fazla kaydını nasıl üst üste koyduğunu, aralarındaki zaman kaymasını nasıl bulduğunu ve ne kadar farklı olduklarını nasıl ölçtüğünü anlatır. Kaynak ve kanal seçimini, zaman referansını ve otomatik kaymayı, karşılaştırma penceresini ve ızgarayı, fark izini ve metrik tablosunu açıklar.',
+            'Bu rehber, Align / Compare’in aynı testin iki veya daha fazla kaydını nasıl üst üste koyduğunu, aralarındaki zaman kaymasını nasıl bulduğunu ve ne kadar farklı olduklarını nasıl ölçtüğünü anlatır. Kaynak ve kanal seçimini, zaman referansını ve otomatik kaymayı, karşılaştırma penceresini ve ızgarayı, fark izini ve metrik tablosunu açıklar.',
         ],
         why: [
             ['What it is for', 'Ne işe yarar?',
@@ -153,13 +153,13 @@ const records = [
             ['How it works', 'Nasıl çalışır?',
                 'Each source stays in its own file; nothing is merged or written. The widget shifts each source by an offset, resamples the chosen channels onto one common time grid, and computes the difference and the metrics from that grid in streamed blocks, so long recordings fit in memory.',
                 'Her kaynak kendi dosyasında kalır; hiçbir şey birleştirilmez veya yazılmaz. Widget her kaynağı bir kayma kadar kaydırır, seçilen kanalları tek bir ortak zaman ızgarasına yeniden örnekler ve farkı ve metrikleri bu ızgaradan bloklar halinde hesaplar; böylece uzun kayıtlar belleğe sığar.'],
-            ['When to use Time Alignment instead', 'Ne zaman Zaman Hizalama kullanılmalı?',
+            ['When to use Time Alignment instead', 'Ne zaman Time Alignment kullanılmalı?',
                 'Align / Compare is for looking and measuring. If you need the aligned channels as a new dataset for further analysis, use Time Alignment, which writes them.',
-                'Hizala / Karşılaştır bakmak ve ölçmek içindir. Hizalanmış kanallara sonraki analiz için yeni bir veri kümesi olarak ihtiyacınız varsa onları yazan Zaman Hizalama’yı kullanın.'],
+                'Align / Compare bakmak ve ölçmek içindir. Hizalanmış kanallara sonraki analiz için yeni bir veri kümesi olarak ihtiyacınız varsa onları yazan Time Alignment’ı kullanın.'],
         ],
         use: [
             'Connect two File Readers, tick the same channel in both sources, press Auto offset if the starts differ, then press Compare on the Metrics tab and read RMSE, maximum difference and correlation.',
-            'İki Dosya Okuyucu bağlayın, iki kaynakta da aynı kanalı işaretleyin, başlangıçlar farklıysa Auto offset’e basın, sonra Metrics sekmesinde Compare’e basın ve RMSE, en büyük fark ve korelasyonu okuyun.',
+            'İki File Reader bağlayın, iki kaynakta da aynı kanalı işaretleyin, başlangıçlar farklıysa Auto offset’e basın, sonra Metrics sekmesinde Compare’e basın ve RMSE, en büyük fark ve korelasyonu okuyun.',
         ],
         inputs: [
             ['Two or more sources', 'İki veya daha fazla kaynak', 'Recordings of the same quantity, for example the accelerometer of two runs. Sample rates and lengths may differ.', 'Aynı büyüklüğün kayıtları; örneğin iki koşunun ivmeölçeri. Örnekleme hızları ve uzunluklar farklı olabilir.'],
@@ -208,10 +208,10 @@ const records = [
     },
     {
         id: 'frequency_domain', references: [], related: ['fft_spectrum', 'cross_spectrum'],
-        title: ['Frequency Domain Guide', 'Frekans Alanı Rehberi'],
+        title: ['Frequency Domain Guide', 'Frequency Domain Rehberi'],
         intro: [
             'This guide explains the Frequency Domain viewer, which displays spectra computed by FFT / Spectrum and adds the tools to read them: markers, harmonic and sideband cursors, half-power damping, and a reference curve with a tolerance check.',
-            'Bu rehber, FFT / Spektrum’un hesapladığı spektrumları gösteren ve onları okumak için araçlar ekleyen Frekans Alanı görüntüleyicisini anlatır: işaretçiler, harmonik ve yan bant imleçleri, yarı güç sönümü ve tolerans kontrollü bir referans eğrisi.',
+            'Bu rehber, FFT / Spectrum’un hesapladığı spektrumları gösteren ve onları okumak için araçlar ekleyen Frequency Domain görüntüleyicisini anlatır: işaretçiler, harmonik ve yan bant imleçleri, yarı güç sönümü ve tolerans kontrollü bir referans eğrisi.',
         ],
         why: [
             ['What it is for', 'Ne işe yarar?',
@@ -219,17 +219,17 @@ const records = [
                 'Titreşim teşhislerinin çoğu spektrumda yapılır: çalışma hızındaki bir tepe dengesizliğe, bir harmonik ailesi gevşekliğe, dişli kavrama frekansı çevresindeki yan bantlar hasarlı bir dişe işaret eder. Bu görüntüleyici bu okuma için yapılmıştır. Ayrıca bir spektrumu saklanmış bir referansla karşılaştırır; “sağlam ile şimdiki” kontrolleri böyle yapılır.'],
             ['Where the spectrum comes from', 'Spektrum nereden gelir?',
                 'The FFT is computed upstream in FFT / Spectrum. The panel at the top left repeats its settings (window, FFT size, overlap, averaging) so you know what you are looking at. Nothing here recomputes the FFT: changing the displayed result or the amplitude convention converts the stored values.',
-                'FFT önceki düğümde FFT / Spektrum’da hesaplanır. Sol üstteki panel ayarlarını (pencere, FFT boyutu, örtüşme, ortalama) tekrarlar; böylece neye baktığınızı bilirsiniz. Burada hiçbir şey FFT’yi yeniden hesaplamaz: gösterilen sonucu veya genlik gösterimini değiştirmek saklanmış değerleri dönüştürür.'],
+                'FFT önceki düğümde FFT / Spectrum’da hesaplanır. Sol üstteki panel ayarlarını (pencere, FFT boyutu, örtüşme, ortalama) tekrarlar; böylece neye baktığınızı bilirsiniz. Burada hiçbir şey FFT’yi yeniden hesaplamaz: gösterilen sonucu veya genlik gösterimini değiştirmek saklanmış değerleri dönüştürür.'],
             ['What to keep in mind', 'Nelere dikkat edilmeli?',
                 'To change the resolution or the window, go back to FFT / Spectrum and compute again. A reference only makes sense with the same FFT settings; the tolerance check refuses a reference on a different frequency grid.',
-                'Çözünürlüğü veya pencereyi değiştirmek için FFT / Spektrum’a dönüp yeniden hesaplayın. Bir referans ancak aynı FFT ayarlarıyla anlamlıdır; tolerans kontrolü farklı bir frekans ızgarasındaki referansı reddeder.'],
+                'Çözünürlüğü veya pencereyi değiştirmek için FFT / Spectrum’a dönüp yeniden hesaplayın. Bir referans ancak aynı FFT ayarlarıyla anlamlıdır; tolerans kontrolü farklı bir frekans ızgarasındaki referansı reddeder.'],
         ],
         use: [
             'Connect FFT / Spectrum after it has computed, choose the channel, then right-click the plot to pick the displayed result. Add markers on the peaks, mark harmonics and sidebands, and capture a reference to compare later measurements.',
-            'FFT / Spektrum hesapladıktan sonra onu bağlayın, kanalı seçin, sonra gösterilen sonucu seçmek için grafiğe sağ tıklayın. Tepelere işaretçi ekleyin, harmonikleri ve yan bantları işaretleyin ve sonraki ölçümleri karşılaştırmak için bir referans yakalayın.',
+            'FFT / Spectrum hesapladıktan sonra onu bağlayın, kanalı seçin, sonra gösterilen sonucu seçmek için grafiğe sağ tıklayın. Tepelere işaretçi ekleyin, harmonikleri ve yan bantları işaretleyin ve sonraki ölçümleri karşılaştırmak için bir referans yakalayın.',
         ],
         inputs: [
-            ['Spectra from FFT / Spectrum', 'FFT / Spektrum’dan spektrumlar', 'The FFT result or spectral frames output, with frequency axis and settings.', 'Frekans ekseni ve ayarlarıyla FFT sonucu veya spektral kareler çıkışı.'],
+            ['Spectra from FFT / Spectrum', 'FFT / Spectrum’dan spektrumlar', 'The FFT result or spectral frames output, with frequency axis and settings.', 'Frekans ekseni ve ayarlarıyla FFT sonucu veya spektral kareler çıkışı.'],
         ],
         controls: [
             ['Displayed Result and Amplitude Convention', 'Displayed Result ve Amplitude Convention',
@@ -263,7 +263,7 @@ const records = [
         ],
         math: [['Q=\\frac{f_0}{f_2-f_1},\\qquad \\zeta\\approx\\frac{1}{2Q}', 'Half-power bandwidth', 'Yarı güç bant genişliği', 'f0 is the resonance frequency, f1 and f2 the half-power (−3 dB) frequencies, ζ the damping ratio.', 'f0 rezonans frekansı, f1 ve f2 yarı güç (−3 dB) frekansları, ζ sönüm oranıdır.', control('Markers → Half-power: Measure Q / Damping')]],
         steps: [
-            ['Compute upstream', 'Önceki düğümde hesaplayın', 'Set window and resolution in FFT / Spectrum and compute.', 'FFT / Spektrum’da pencere ve çözünürlüğü ayarlayın ve hesaplayın.'],
+            ['Compute upstream', 'Önceki düğümde hesaplayın', 'Set window and resolution in FFT / Spectrum and compute.', 'FFT / Spectrum’da pencere ve çözünürlüğü ayarlayın ve hesaplayın.'],
             ['Choose the display', 'Görünümü seçin', 'Right-click for the displayed result; dB for tones, PSD for random vibration.', 'Gösterilen sonuç için sağ tıklayın; tonlar için dB, rastgele titreşim için PSD.'],
             ['Read the peaks', 'Tepeleri okuyun', 'Snap markers to peaks and check harmonics and sidebands.', 'İşaretçileri tepelere yakalatın ve harmonikleri ve yan bantları kontrol edin.'],
             ['Compare with a reference', 'Bir referansla karşılaştırın', 'Capture a healthy spectrum and evaluate the new one against it.', 'Sağlam bir spektrum yakalayın ve yenisini ona karşı değerlendirin.'],
@@ -282,10 +282,10 @@ const records = [
     },
     {
         id: 'order_map_view', references: [], related: ['order_tracking', 'fft_spectrum'],
-        title: ['Order Map View Guide', 'Order Haritası Görünümü Rehberi'],
+        title: ['Order Map View Guide', 'Order Map View Rehberi'],
         intro: [
             'This guide explains the Order Map View, which shows maps computed by Order Tracking as a 2D colour map or a 3D waterfall. It covers choosing the surface and metric, colour scales, the pointer readout and prepared guides, and how to read orders against speed.',
-            'Bu rehber, Order Tracking’in hesapladığı haritaları 2D renk haritası veya 3D şelale olarak gösteren Order Haritası Görünümü’nü anlatır. Yüzey ve metrik seçimini, renk ölçeklerini, işaretçi okumasını ve hazır kılavuzları ve order’ların hıza karşı nasıl okunacağını açıklar.',
+            'Bu rehber, Order Tracking’in hesapladığı haritaları 2D renk haritası veya 3D şelale olarak gösteren Order Map View’yu anlatır. Yüzey ve metrik seçimini, renk ölçeklerini, işaretçi okumasını ve hazır kılavuzları ve order’ların hıza karşı nasıl okunacağını açıklar.',
         ],
         why: [
             ['What it is for', 'Ne işe yarar?',

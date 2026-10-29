@@ -3,10 +3,10 @@ import { control, lesson, readout } from './lesson.js'
 const records = [
     {
         id: 'statistics_summary', references: [], related: ['bar_plot', 'histogram_widget'],
-        title: ['Channel Statistics Guide', 'Kanal İstatistikleri Rehberi'],
+        title: ['Channel Statistics Guide', 'Channel Statistics Rehberi'],
         intro: [
             'This guide explains how Channel Statistics (Channel Profile) describes every selected channel with a few reliable numbers. It covers the basic statistics, the data quality checks that reveal missing values, flat lines and clipping, and the robust measures that are not fooled by a few extreme values.',
-            'Bu rehber, Kanal İstatistikleri’nin (Channel Profile) seçilen her kanalı birkaç güvenilir sayıyla nasıl tarif ettiğini anlatır. Temel istatistikleri, eksik değerleri, düz çizgileri ve kırpılmayı ortaya çıkaran veri kalitesi kontrollerini ve birkaç uç değere aldanmayan sağlam ölçüleri açıklar.',
+            'Bu rehber, Channel Statistics’in (Channel Profile) seçilen her kanalı birkaç güvenilir sayıyla nasıl tarif ettiğini anlatır. Temel istatistikleri, eksik değerleri, düz çizgileri ve kırpılmayı ortaya çıkaran veri kalitesi kontrollerini ve birkaç uç değere aldanmayan sağlam ölçüleri açıklar.',
         ],
         why: [
             ['What it is for', 'Ne işe yarar?',
@@ -79,10 +79,10 @@ const records = [
     },
     {
         id: 'correlation_analysis', references: [], related: ['scatter_plot', 'time_alignment'],
-        title: ['Correlation Matrix Guide', 'Korelasyon Matrisi Rehberi'],
+        title: ['Correlation Matrix Guide', 'Correlation Matrix Rehberi'],
         intro: [
             'This guide explains how the Correlation widget (Relationship Explorer) measures how strongly channels move together. It covers choosing a target and candidate channels, the Pearson coefficient and the other relationship measures, lags and rolling windows, and why a high correlation is a clue, not a proof.',
-            'Bu rehber, Korelasyon widget’ının (Relationship Explorer) kanalların birlikte ne kadar güçlü hareket ettiğini nasıl ölçtüğünü anlatır. Bir hedef ve aday kanalların seçimini, Pearson katsayısını ve diğer ilişki ölçülerini, gecikmeleri ve kayan pencereleri, ve yüksek bir korelasyonun neden kanıt değil ipucu olduğunu açıklar.',
+            'Bu rehber, Correlation Matrix widget’ının (Relationship Explorer) kanalların birlikte ne kadar güçlü hareket ettiğini nasıl ölçtüğünü anlatır. Bir hedef ve aday kanalların seçimini, Pearson katsayısını ve diğer ilişki ölçülerini, gecikmeleri ve kayan pencereleri, ve yüksek bir korelasyonun neden kanıt değil ipucu olduğunu açıklar.',
         ],
         why: [
             ['What it is for', 'Ne işe yarar?',
@@ -148,10 +148,10 @@ const records = [
     },
     {
         id: 'hypothesis_testing', references: ['nist'], related: ['box_plot', 'statistics_summary'],
-        title: ['Statistical Tests Guide', 'İstatistiksel Testler Rehberi'],
+        title: ['Statistical Tests Guide', 'Statistical Tests Rehberi'],
         intro: [
             'This guide explains how Statistical Tests decides whether a difference between measurements is likely real or could be due to chance. It covers the one-sample, paired and Welch t-tests, how to choose between them, and how to read the p-value, the confidence interval and the effect size together.',
-            'Bu rehber, İstatistiksel Testler’in ölçümler arasındaki bir farkın gerçek mi yoksa tesadüf mü olduğuna nasıl karar verdiğini anlatır. Tek örneklem, eşleştirilmiş ve Welch t-testlerini, aralarında nasıl seçim yapılacağını ve p-değeri, güven aralığı ve etki büyüklüğünün birlikte nasıl okunacağını açıklar.',
+            'Bu rehber, Statistical Tests’in ölçümler arasındaki bir farkın gerçek mi yoksa tesadüf mü olduğuna nasıl karar verdiğini anlatır. Tek örneklem, eşleştirilmiş ve Welch t-testlerini, aralarında nasıl seçim yapılacağını ve p-değeri, güven aralığı ve etki büyüklüğünün birlikte nasıl okunacağını açıklar.',
         ],
         why: [
             ['What a test is for', 'Bir test ne işe yarar?',
@@ -215,10 +215,10 @@ const records = [
     },
     {
         id: 'statistical_process_control', references: ['nist'], related: ['time_graphics', 'histogram_widget'],
-        title: ['Process Capability & SPC Guide', 'Proses Yeterliliği ve SPC Rehberi'],
+        title: ['Process Capability & SPC Guide', 'Process Capability & SPC Rehberi'],
         intro: [
             'This guide explains how Process Capability & SPC checks whether a process is stable over time and whether it stays inside its specification limits. It covers individuals and moving-range limits, EWMA and CUSUM, the rule counts that flag unusual patterns, and the capability indices Cp and Cpk.',
-            'Bu rehber, Proses Yeterliliği ve SPC’nin bir prosesin zaman içinde kararlı olup olmadığını ve spesifikasyon sınırları içinde kalıp kalmadığını nasıl kontrol ettiğini anlatır. Bireysel değer ve hareketli aralık sınırlarını, EWMA ve CUSUM’u, olağan dışı desenleri işaretleyen kural sayılarını ve Cp ile Cpk yeterlilik indekslerini açıklar.',
+            'Bu rehber, Process Capability & SPC’nin bir prosesin zaman içinde kararlı olup olmadığını ve spesifikasyon sınırları içinde kalıp kalmadığını nasıl kontrol ettiğini anlatır. Bireysel değer ve hareketli aralık sınırlarını, EWMA ve CUSUM’u, olağan dışı desenleri işaretleyen kural sayılarını ve Cp ile Cpk yeterlilik indekslerini açıklar.',
         ],
         why: [
             ['What SPC is for', 'SPC ne işe yarar?',

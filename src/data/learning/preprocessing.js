@@ -3,28 +3,28 @@ import { control, lesson } from './lesson.js'
 const records = [
     {
         id: 'channel_selector', references: [], related: ['statistics_summary', 'line_chart'],
-        title: ['Channel Selector Guide', 'Kanal Seçici Rehberi'],
+        title: ['Channel Selector Guide', 'Channel Selector Rehberi'],
         intro: [
             'This guide explains how the Channel Selector passes only the channels you need to the next widgets, without copying any data. It covers manual selection, selection by name pattern, and why a smaller channel set makes a large pipeline easier to read and faster to work with.',
-            'Bu rehber, Kanal Seçici’nin hiçbir veriyi kopyalamadan yalnızca ihtiyaç duyduğunuz kanalları sonraki widget’lara nasıl ilettiğini anlatır. Elle seçimi, ad kalıbıyla seçimi ve daha küçük bir kanal kümesinin büyük bir analiz hattını neden daha okunur ve hızlı kıldığını açıklar.',
+            'Bu rehber, Channel Selector’ın hiçbir veriyi kopyalamadan yalnızca ihtiyaç duyduğunuz kanalları sonraki widget’lara nasıl ilettiğini anlatır. Elle seçimi, ad kalıbıyla seçimi ve daha küçük bir kanal kümesinin büyük bir analiz hattını neden daha okunur ve hızlı kıldığını açıklar.',
         ],
         why: [
-            ['What the Channel Selector is for', 'Kanal Seçici ne işe yarar?',
+            ['What the Channel Selector is for', 'Channel Selector ne işe yarar?',
                 'Test files often contain far more channels than one analysis needs: a vehicle log can hold 300 signals, of which a vibration study uses six. Connecting all of them to every widget makes channel lists long, plots crowded and mistakes likely. The Channel Selector sits between the source and the analysis and lets only the chosen channels through.',
-                'Test dosyaları çoğu zaman bir analizin ihtiyaç duyduğundan çok daha fazla kanal içerir: bir araç kaydında 300 sinyal olabilir, titreşim çalışması bunların altısını kullanır. Hepsini her widget’a bağlamak kanal listelerini uzatır, grafikleri kalabalıklaştırır ve hata yapmayı kolaylaştırır. Kanal Seçici kaynak ile analiz arasına girer ve yalnızca seçilen kanalları geçirir.'],
+                'Test dosyaları çoğu zaman bir analizin ihtiyaç duyduğundan çok daha fazla kanal içerir: bir araç kaydında 300 sinyal olabilir, titreşim çalışması bunların altısını kullanır. Hepsini her widget’a bağlamak kanal listelerini uzatır, grafikleri kalabalıklaştırır ve hata yapmayı kolaylaştırır. Channel Selector kaynak ile analiz arasına girer ve yalnızca seçilen kanalları geçirir.'],
             ['What it needs', 'Ne gerekir?',
                 'A connected source with named channels, for example a File Reader. If you select by pattern, it helps to know how the channels are named, for instance that all accelerometers start with ACC_.',
-                'Kanal adları belli olan bağlı bir kaynak, örneğin bir Dosya Okuyucu. Kalıpla seçecekseniz kanalların nasıl adlandırıldığını bilmek işe yarar; örneğin tüm ivmeölçerlerin ACC_ ile başladığını.'],
+                'Kanal adları belli olan bağlı bir kaynak, örneğin bir File Reader. Kalıpla seçecekseniz kanalların nasıl adlandırıldığını bilmek işe yarar; örneğin tüm ivmeölçerlerin ACC_ ile başladığını.'],
             ['What it does not do', 'Neyi yapmaz?',
                 'It does not copy, change or delete any sample. The result is a read-only view of the same file: the next widget sees fewer columns, but the numbers come from the original MPAI. The time channel is always kept, so time-based widgets keep working.',
                 'Hiçbir örneği kopyalamaz, değiştirmez veya silmez. Sonuç aynı dosyanın salt okunur bir görünümüdür: sonraki widget daha az sütun görür ama sayılar özgün MPAI’den gelir. Zaman kanalı her zaman korunur; böylece zamana dayalı widget’lar çalışmaya devam eder.'],
         ],
         use: [
             'Place it after the File Reader whenever only part of the channels is needed downstream. Choose the channels by hand or by a name pattern, press Create Channel View, and connect the following widgets to the Channel Selector instead of the reader.',
-            'Sonraki adımlarda kanalların yalnızca bir kısmı gerektiğinde Dosya Okuyucu’dan sonra yerleştirin. Kanalları elle veya bir ad kalıbıyla seçin, Create Channel View’a basın ve sonraki widget’ları okuyucu yerine Kanal Seçici’ye bağlayın.',
+            'Sonraki adımlarda kanalların yalnızca bir kısmı gerektiğinde File Reader’dan sonra yerleştirin. Kanalları elle veya bir ad kalıbıyla seçin, Create Channel View’a basın ve sonraki widget’ları okuyucu yerine Channel Selector’a bağlayın.',
         ],
         inputs: [
-            ['A source with named channels', 'Adlandırılmış kanalları olan bir kaynak', 'A File Reader, a File Merger result or any widget that outputs a dataset.', 'Bir Dosya Okuyucu, bir Dosya Birleştirici sonucu veya veri kümesi çıkaran herhangi bir widget.'],
+            ['A source with named channels', 'Adlandırılmış kanalları olan bir kaynak', 'A File Reader, a File Merger result or any widget that outputs a dataset.', 'Bir File Reader, bir File Merger sonucu veya veri kümesi çıkaran herhangi bir widget.'],
         ],
         controls: [
             ['Selection Rule: Mode', 'Selection Rule: Mode (seçim kuralı)',
@@ -45,16 +45,16 @@ const records = [
                 'Görünümü oluşturur ve kaç kanal içerdiğini bildirir; örneğin “Projected 4 channel(s) without copying data”. Bu sayıyı kontrol edin: 6 kanal beklediğiniz yerde kalıp 2 kanalla eşleştiyse adlar sandığınızdan farklıdır.'],
         ],
         concepts: [
-            ['A view, not a copy', 'Kopya değil, görünüm', 'Copying 6 channels out of a 200 GB file would mean writing several gigabytes. A view writes nothing: it is a list of column names that the next widget uses to read from the same file. That is why the Channel Selector reacts instantly even on very large recordings.', '200 GB’lık bir dosyadan 6 kanal kopyalamak gigabaytlarca yazmak demektir. Görünüm hiçbir şey yazmaz: sonraki widget’ın aynı dosyadan okumak için kullandığı bir sütun adları listesidir. Kanal Seçici’nin çok büyük kayıtlarda bile anında tepki vermesinin nedeni budur.'],
+            ['A view, not a copy', 'Kopya değil, görünüm', 'Copying 6 channels out of a 200 GB file would mean writing several gigabytes. A view writes nothing: it is a list of column names that the next widget uses to read from the same file. That is why the Channel Selector reacts instantly even on very large recordings.', '200 GB’lık bir dosyadan 6 kanal kopyalamak gigabaytlarca yazmak demektir. Görünüm hiçbir şey yazmaz: sonraki widget’ın aynı dosyadan okumak için kullandığı bir sütun adları listesidir. Channel Selector’ın çok büyük kayıtlarda bile anında tepki vermesinin nedeni budur.'],
             ['Patterns follow the data', 'Kalıplar veriyi izler', 'A manual tick list is tied to today’s file. A pattern such as ^ACC_ also works on next week’s file with two more accelerometers. For repeated tests with a consistent naming scheme, patterns save rework and prevent forgotten channels.', 'Elle işaretlenmiş bir liste bugünkü dosyaya bağlıdır. ^ACC_ gibi bir kalıp, iki ivmeölçeri daha olan gelecek haftaki dosyada da çalışır. Tutarlı adlandırılmış tekrarlı testlerde kalıplar yeniden çalışmayı önler ve unutulan kanalların önüne geçer.'],
             ['The time channel always stays', 'Zaman kanalı her zaman kalır', 'Even if you do not select it, the time column is carried along. Widgets that plot against time or compute spectra need it, and dropping it would silently turn time-based results into sample counts.', 'Seçmeseniz bile zaman sütunu taşınır. Zamana karşı çizen veya spektrum hesaplayan widget’ların buna ihtiyacı vardır; atılması zamana dayalı sonuçları sessizce örnek sayılarına çevirirdi.'],
         ],
         math: [['S=\\{c\\in C:\\operatorname{match}(p,c)\\}', 'Channels kept by a pattern', 'Bir kalıbın tuttuğu kanallar', 'C is the set of channel names in the source, p the pattern and S the channels passed on. With Exclude, S is the complement. Samples are not touched.', 'C kaynaktaki kanal adları kümesi, p kalıp, S iletilen kanallardır. Exclude ile S tümleyendir. Örneklere dokunulmaz.', control('Selection Rule → Include regex matches & Pattern')]],
         steps: [
-            ['Connect the source', 'Kaynağı bağlayın', 'Connect the File Reader to the Channel Selector and open it; all channels appear in the list.', 'Dosya Okuyucu’yu Kanal Seçici’ye bağlayıp açın; tüm kanallar listede görünür.'],
+            ['Connect the source', 'Kaynağı bağlayın', 'Connect the File Reader to the Channel Selector and open it; all channels appear in the list.', 'File Reader’ı Channel Selector’a bağlayıp açın; tüm kanallar listede görünür.'],
             ['Describe the selection', 'Seçimi tarif edin', 'Tick channels by hand, or switch to a regex mode and type a pattern.', 'Kanalları elle işaretleyin veya bir regex moduna geçip kalıp yazın.'],
             ['Create and check the count', 'Oluşturup sayıyı kontrol edin', 'Press Create Channel View and compare the reported number of channels with what you expect.', 'Create Channel View’a basın ve bildirilen kanal sayısını beklediğinizle karşılaştırın.'],
-            ['Connect the analysis', 'Analizi bağlayın', 'Connect the following widgets to the Channel Selector so that they see only the chosen channels.', 'Sonraki widget’ları yalnızca seçilen kanalları görsünler diye Kanal Seçici’ye bağlayın.'],
+            ['Connect the analysis', 'Analizi bağlayın', 'Connect the following widgets to the Channel Selector so that they see only the chosen channels.', 'Sonraki widget’ları yalnızca seçilen kanalları görsünler diye Channel Selector’a bağlayın.'],
         ],
         outputs: [
             ['Channel view', 'Kanal görünümü', 'The selected channels plus time, read directly from the source MPAI without a copy.', 'Seçilen kanallar ve zaman; kopyalanmadan doğrudan kaynak MPAI’den okunur.'],
@@ -64,27 +64,27 @@ const records = [
             'Kalıp üç ivmeölçeri tutar. Sonraki test ACC_W eklediğinde hiçbir şey değiştirmeden o da seçilir. Küçük harfle acc_x adlı bir kanal eşleşmezdi.'],
         pitfalls: [
             ['A pattern that is too broad', 'Fazla geniş bir kalıp', '“A” matches almost every name. Anchor patterns with ^ or $ and check the reported channel count.', '“A” neredeyse her adla eşleşir. Kalıpları ^ veya $ ile sabitleyin ve bildirilen kanal sayısını kontrol edin.'],
-            ['Expecting the selector to reduce file size', 'Seçicinin dosya boyutunu küçültmesini beklemek', 'Nothing is written, so the MPAI stays the same size. To deliver fewer channels as a file, use the File Exporter.', 'Hiçbir şey yazılmadığı için MPAI aynı boyutta kalır. Daha az kanalı dosya olarak vermek için Dosya Dışa Aktarıcı’yı kullanın.'],
-            ['Forgetting to reconnect downstream widgets', 'Sonraki widget’ları yeniden bağlamayı unutmak', 'Widgets still connected to the File Reader keep seeing every channel.', 'Hâlâ Dosya Okuyucu’ya bağlı widget’lar tüm kanalları görmeye devam eder.'],
+            ['Expecting the selector to reduce file size', 'Seçicinin dosya boyutunu küçültmesini beklemek', 'Nothing is written, so the MPAI stays the same size. To deliver fewer channels as a file, use the File Exporter.', 'Hiçbir şey yazılmadığı için MPAI aynı boyutta kalır. Daha az kanalı dosya olarak vermek için File Exporter’ı kullanın.'],
+            ['Forgetting to reconnect downstream widgets', 'Sonraki widget’ları yeniden bağlamayı unutmak', 'Widgets still connected to the File Reader keep seeing every channel.', 'Hâlâ File Reader’a bağlı widget’lar tüm kanalları görmeye devam eder.'],
         ],
     },
     {
         id: 'merge_channels', references: [], related: ['time_alignment', 'file_reader'],
-        title: ['Dataset Merge Guide', 'Veri Kümesi Birleştirme Rehberi'],
+        title: ['Dataset Merge Guide', 'Dataset Merge Rehberi'],
         intro: [
             'This guide explains how Dataset Merge joins two datasets that are already on the canvas into one new dataset. It covers stacking runs one after another, placing channels side by side on the same time grid or by row number, and how to check the result before using it.',
-            'Bu rehber, Veri Kümesi Birleştirme’nin canvas’ta zaten bulunan iki veri kümesini nasıl yeni tek bir veri kümesinde birleştirdiğini anlatır. Koşuları arka arkaya eklemeyi, kanalları aynı zaman ızgarasında veya satır numarasına göre yan yana koymayı ve sonucu kullanmadan önce nasıl kontrol edeceğinizi açıklar.',
+            'Bu rehber, Dataset Merge’ün canvas’ta zaten bulunan iki veri kümesini nasıl yeni tek bir veri kümesinde birleştirdiğini anlatır. Koşuları arka arkaya eklemeyi, kanalları aynı zaman ızgarasında veya satır numarasına göre yan yana koymayı ve sonucu kullanmadan önce nasıl kontrol edeceğinizi açıklar.',
         ],
         why: [
-            ['What Dataset Merge is for', 'Veri Kümesi Birleştirme ne işe yarar?',
+            ['What Dataset Merge is for', 'Dataset Merge ne işe yarar?',
                 'Two typical cases. First, two runs of the same test, for example a morning and an afternoon run with the same sensors, should be analysed as one longer record. Second, two loggers recorded different sensors at the same moments, and you want all channels in one table. Dataset Merge handles both and writes the result as a new MPAI dataset.',
-                'İki tipik durum vardır. Birincisi, aynı testin iki koşusu, örneğin aynı sensörlerle sabah ve öğleden sonra yapılan iki koşu, tek ve daha uzun bir kayıt olarak analiz edilmelidir. İkincisi, iki kaydedici aynı anlarda farklı sensörleri kaydetmiştir ve tüm kanalları tek tabloda istersiniz. Veri Kümesi Birleştirme ikisini de yapar ve sonucu yeni bir MPAI veri kümesi olarak yazar.'],
+                'İki tipik durum vardır. Birincisi, aynı testin iki koşusu, örneğin aynı sensörlerle sabah ve öğleden sonra yapılan iki koşu, tek ve daha uzun bir kayıt olarak analiz edilmelidir. İkincisi, iki kaydedici aynı anlarda farklı sensörleri kaydetmiştir ve tüm kanalları tek tabloda istersiniz. Dataset Merge ikisini de yapar ve sonucu yeni bir MPAI veri kümesi olarak yazar.'],
             ['What it needs', 'Ne gerekir?',
                 'Two connected datasets, Input A and Input B. For stacking, both must have the same channel names. For side-by-side on a time grid, both must share the same time step and overlap in time.',
                 'Bağlı iki veri kümesi: Input A ve Input B. Alt alta ekleme için ikisinde de aynı kanal adları bulunmalıdır. Zaman ızgarasında yan yana ekleme için ikisinin aynı zaman adımını paylaşması ve zamanda örtüşmesi gerekir.'],
-            ['How it differs from the File Merger', 'Dosya Birleştirici’den farkı',
+            ['How it differs from the File Merger', 'File Merger’dan farkı',
                 'The File Merger reads a folder of raw files. Dataset Merge works on datasets that are already imported and possibly processed on the canvas. If the two sources were recorded with a time offset, align them first with Time Alignment.',
-                'Dosya Birleştirici ham dosyalarla dolu bir klasörü okur. Veri Kümesi Birleştirme ise canvas’ta zaten içe aktarılmış ve belki işlenmiş veri kümeleriyle çalışır. İki kaynak aralarında zaman farkıyla kaydedildiyse önce Time Alignment ile hizalayın.'],
+                'File Merger ham dosyalarla dolu bir klasörü okur. Dataset Merge ise canvas’ta zaten içe aktarılmış ve belki işlenmiş veri kümeleriyle çalışır. İki kaynak aralarında zaman farkıyla kaydedildiyse önce Time Alignment ile hizalayın.'],
         ],
         use: [
             'Connect both datasets, choose the layout, check the estimate and the preview, and press Create Merged Dataset. The merged dataset becomes the output of the widget and can be connected like any source.',
@@ -140,15 +140,15 @@ const records = [
     },
     {
         id: 'table_edit', references: [], related: ['sensor_calibration', 'data_quality_repair'],
-        title: ['Data Table Editor Guide', 'Veri Tablosu Düzenleyici Rehberi'],
+        title: ['Data Table Editor Guide', 'Data Table Editor Rehberi'],
         intro: [
             'This guide explains how the Data Table Editor lets you look at every sample of a large dataset and correct it without changing the original file. It covers the table, cell edits, and the ten tools for rows, fill, find and replace, formulas, transposing, types, encodings, dates and resampling.',
-            'Bu rehber, Veri Tablosu Düzenleyici’nin büyük bir veri kümesinin her örneğine bakmanızı ve özgün dosyayı değiştirmeden düzeltmenizi nasıl sağladığını anlatır. Tabloyu, hücre düzenlemelerini ve satır, doldurma, bul-değiştir, formül, devrik alma, tip, kodlama, tarih ve yeniden örnekleme için on aracı açıklar.',
+            'Bu rehber, Data Table Editor’ın büyük bir veri kümesinin her örneğine bakmanızı ve özgün dosyayı değiştirmeden düzeltmenizi nasıl sağladığını anlatır. Tabloyu, hücre düzenlemelerini ve satır, doldurma, bul-değiştir, formül, devrik alma, tip, kodlama, tarih ve yeniden örnekleme için on aracı açıklar.',
         ],
         why: [
             ['What the Table Editor is for', 'Tablo Düzenleyici ne işe yarar?',
                 'Sometimes you need to see the actual numbers: a sensor dropped out for three samples, a logger wrote 9999 as an error code, a channel needs to be computed from two others, or a time column is stored as text. The Table Editor shows the dataset as a spreadsheet, even with hundreds of millions of rows, and offers the tools to fix such problems.',
-                'Bazen gerçek sayıları görmeniz gerekir: bir sensör üç örnek boyunca kesilmiştir, bir kaydedici hata kodu olarak 9999 yazmıştır, bir kanalın diğer ikisinden hesaplanması gerekir veya bir zaman sütunu metin olarak saklanmıştır. Tablo Düzenleyici veri kümesini yüz milyonlarca satır olsa bile bir hesap tablosu gibi gösterir ve bu sorunları düzeltecek araçları sunar.'],
+                'Bazen gerçek sayıları görmeniz gerekir: bir sensör üç örnek boyunca kesilmiştir, bir kaydedici hata kodu olarak 9999 yazmıştır, bir kanalın diğer ikisinden hesaplanması gerekir veya bir zaman sütunu metin olarak saklanmıştır. Data Table Editor veri kümesini yüz milyonlarca satır olsa bile bir hesap tablosu gibi gösterir ve bu sorunları düzeltecek araçları sunar.'],
             ['How large files stay fast', 'Büyük dosyalar nasıl hızlı kalır?',
                 'The table only reads the rows you are looking at. Scrolling or jumping to row 50,000,000 reads that block from the file, so memory stays small no matter how big the dataset is.',
                 'Tablo yalnızca baktığınız satırları okur. Kaydırmak veya 50.000.000. satıra atlamak o bloğu dosyadan okur; böylece veri kümesi ne kadar büyük olursa olsun bellek küçük kalır.'],
@@ -196,7 +196,7 @@ const records = [
                 ]],
         ],
         concepts: [
-            ['Only the visible block is in memory', 'Bellekte yalnızca görünen blok vardır', 'A spreadsheet program loads the whole file; the Table Editor loads the 100 or so rows on screen. This is why it can open a 200 GB recording, and also why whole-table operations such as Transpose have a size limit stated in bytes.', 'Bir hesap tablosu programı dosyanın tamamını yükler; Tablo Düzenleyici ise ekrandaki yaklaşık 100 satırı yükler. 200 GB’lık bir kaydı açabilmesinin ve Transpose gibi tüm tabloyu kapsayan işlemlerin bayt cinsinden bir boyut sınırı olmasının nedeni budur.'],
+            ['Only the visible block is in memory', 'Bellekte yalnızca görünen blok vardır', 'A spreadsheet program loads the whole file; the Table Editor loads the 100 or so rows on screen. This is why it can open a 200 GB recording, and also why whole-table operations such as Transpose have a size limit stated in bytes.', 'Bir hesap tablosu programı dosyanın tamamını yükler; Data Table Editor ise ekrandaki yaklaşık 100 satırı yükler. 200 GB’lık bir kaydı açabilmesinin ve Transpose gibi tüm tabloyu kapsayan işlemlerin bayt cinsinden bir boyut sınırı olmasının nedeni budur.'],
             ['Every change leaves the original in place', 'Her değişiklik özgünü yerinde bırakır', 'An edited cell is stored as “row 1234, column temp: 21.5 instead of 9999”. Tools write new channels or new working copies. You can therefore always show what was measured and what was corrected, which matters when results go into a report.', 'Düzenlenen bir hücre “satır 1234, sütun temp: 9999 yerine 21,5” diye saklanır. Araçlar yeni kanallar veya yeni çalışma kopyaları yazar. Böylece neyin ölçüldüğünü ve neyin düzeltildiğini her zaman gösterebilirsiniz; sonuçlar bir rapora girdiğinde bu önemlidir.'],
             ['Resampling is a choice about information', 'Yeniden örnekleme bilgi hakkında bir seçimdir', 'Going down from 500 Hz to 100 Hz throws away everything above 50 Hz; taking the mean of 5 samples smooths peaks, taking the maximum keeps them. Going up adds points but no new information: the interpolated values only connect the measured ones.', '500 Hz’den 100 Hz’e inmek 50 Hz’in üzerindeki her şeyi atar; 5 örneğin ortalamasını almak tepeleri yumuşatır, en büyüğünü almak korur. Hızı artırmak nokta ekler ama yeni bilgi eklemez: ara değerler yalnızca ölçülmüş olanları birleştirir.'],
         ],
@@ -221,10 +221,10 @@ const records = [
     },
     {
         id: 'normalization_scaling', references: [], related: ['sensor_calibration', 'histogram_widget'],
-        title: ['Normalization & Scaling Guide', 'Normalleştirme ve Ölçekleme Rehberi'],
+        title: ['Normalization & Scaling Guide', 'Normalization & Scaling Rehberi'],
         intro: [
             'This guide explains how Normalization & Scaling rescales channels so that signals with very different units and sizes can be compared or fed to the same algorithm. It covers Z-score, Min-Max and robust median/IQR scaling, when each one is the right choice, and how outliers affect them.',
-            'Bu rehber, Normalleştirme ve Ölçekleme’nin çok farklı birim ve büyüklükteki sinyallerin karşılaştırılabilmesi veya aynı algoritmaya verilebilmesi için kanalları nasıl yeniden ölçeklediğini anlatır. Z-skor, Min-Max ve sağlam medyan/IQR ölçeklemeyi, her birinin ne zaman doğru seçim olduğunu ve aykırı değerlerin onları nasıl etkilediğini açıklar.',
+            'Bu rehber, Normalization & Scaling’in çok farklı birim ve büyüklükteki sinyallerin karşılaştırılabilmesi veya aynı algoritmaya verilebilmesi için kanalları nasıl yeniden ölçeklediğini anlatır. Z-skor, Min-Max ve sağlam medyan/IQR ölçeklemeyi, her birinin ne zaman doğru seçim olduğunu ve aykırı değerlerin onları nasıl etkilediğini açıklar.',
         ],
         why: [
             ['What scaling is for', 'Ölçekleme ne işe yarar?',
@@ -285,10 +285,10 @@ const records = [
     },
     {
         id: 'groupby_aggregation', references: [], related: ['bar_plot', 'statistics_summary'],
-        title: ['Group By & Aggregation Guide', 'Gruplama ve Toplulaştırma Rehberi'],
+        title: ['Group By & Aggregation Guide', 'Group By & Aggregation Rehberi'],
         intro: [
             'This guide explains how Group By & Aggregation turns long records into short summary tables. It covers grouping by a column or by fixed time intervals, choosing summary functions such as mean, maximum and count, and how to read the resulting table.',
-            'Bu rehber, Gruplama ve Toplulaştırma’nın uzun kayıtları kısa özet tablolarına nasıl çevirdiğini anlatır. Bir sütuna veya sabit zaman aralıklarına göre gruplamayı, ortalama, en büyük değer ve sayı gibi özet fonksiyonlarını seçmeyi ve ortaya çıkan tabloyu okumayı açıklar.',
+            'Bu rehber, Group By & Aggregation’ın uzun kayıtları kısa özet tablolarına nasıl çevirdiğini anlatır. Bir sütuna veya sabit zaman aralıklarına göre gruplamayı, ortalama, en büyük değer ve sayı gibi özet fonksiyonlarını seçmeyi ve ortaya çıkan tabloyu okumayı açıklar.',
         ],
         why: [
             ['What grouping is for', 'Gruplama ne işe yarar?',
@@ -356,15 +356,15 @@ const records = [
     },
     {
         id: 'time_alignment', references: [], related: ['align_compare', 'merge_channels'],
-        title: ['Time Alignment Guide', 'Zaman Hizalama Rehberi'],
+        title: ['Time Alignment Guide', 'Time Alignment Rehberi'],
         intro: [
             'This guide explains how Time Alignment lines up recordings from different loggers that did not start at the same moment. It covers comparing the sources on one plot, shifting them by hand or automatically, cropping to the time they share, and creating one aligned dataset with a common time axis.',
-            'Bu rehber, Zaman Hizalama’nın aynı anda başlamamış farklı kaydedicilerden gelen kayıtları nasıl hizaladığını anlatır. Kaynakları tek grafikte karşılaştırmayı, onları elle veya otomatik kaydırmayı, ortak oldukları zamana kırpmayı ve ortak zaman ekseniyle tek bir hizalı veri kümesi oluşturmayı açıklar.',
+            'Bu rehber, Time Alignment’ın aynı anda başlamamış farklı kaydedicilerden gelen kayıtları nasıl hizaladığını anlatır. Kaynakları tek grafikte karşılaştırmayı, onları elle veya otomatik kaydırmayı, ortak oldukları zamana kırpmayı ve ortak zaman ekseniyle tek bir hizalı veri kümesi oluşturmayı açıklar.',
         ],
         why: [
             ['What alignment is for', 'Hizalama ne işe yarar?',
                 'In many tests two or more loggers run side by side: one for vibration, one for temperature and pressure, one in the vehicle’s control unit. Each starts when someone presses its start button, so their clocks differ by fractions of a second or more. Before you can say “the pressure dropped when the impact happened”, the records must share one time axis. Time Alignment finds and applies these offsets.',
-                'Birçok testte iki veya daha fazla kaydedici yan yana çalışır: biri titreşim için, biri sıcaklık ve basınç için, biri aracın kontrol ünitesinde. Her biri birisi başlat düğmesine bastığında başlar; bu yüzden saatleri saniyenin kesirleri veya daha fazlası kadar farklıdır. “Darbe olduğunda basınç düştü” diyebilmek için kayıtların tek bir zaman eksenini paylaşması gerekir. Zaman Hizalama bu kaymaları bulur ve uygular.'],
+                'Birçok testte iki veya daha fazla kaydedici yan yana çalışır: biri titreşim için, biri sıcaklık ve basınç için, biri aracın kontrol ünitesinde. Her biri birisi başlat düğmesine bastığında başlar; bu yüzden saatleri saniyenin kesirleri veya daha fazlası kadar farklıdır. “Darbe olduğunda basınç düştü” diyebilmek için kayıtların tek bir zaman eksenini paylaşması gerekir. Time Alignment bu kaymaları bulur ve uygular.'],
             ['What it needs', 'Ne gerekir?',
                 'Two or more connected sources and, ideally, an event that is visible in all of them: an impact, a switch-on, a speed change. Automatic alignment compares the shape of one channel in each source, so channel names must be unique across the sources.',
                 'Bağlı iki veya daha fazla kaynak ve ideal olarak hepsinde görülebilen bir olay: bir darbe, bir açılış, bir hız değişimi. Otomatik hizalama her kaynaktaki bir kanalın şeklini karşılaştırır; bu yüzden kanal adları kaynaklar arasında benzersiz olmalıdır.'],
@@ -431,10 +431,10 @@ const records = [
     },
     {
         id: 'rolling_window_stats', references: [], related: ['time_graphics', 'bearing_fault'],
-        title: ['Rolling / Window Stats Guide', 'Kayan / Pencere İstatistikleri Rehberi'],
+        title: ['Rolling / Window Stats Guide', 'Rolling / Window Stats Rehberi'],
         intro: [
             'This guide explains how Rolling / Window Stats turns a fast signal into slowly changing trend channels such as running RMS, mean or kurtosis. It covers choosing the window length, trailing versus centred windows, and which statistic answers which question.',
-            'Bu rehber, Kayan / Pencere İstatistikleri’nin hızlı bir sinyali kayan RMS, ortalama veya basıklık gibi yavaş değişen eğilim kanallarına nasıl çevirdiğini anlatır. Pencere uzunluğunun seçimini, geriye bakan ve ortalanmış pencereler arasındaki farkı ve hangi istatistiğin hangi soruyu yanıtladığını açıklar.',
+            'Bu rehber, Rolling / Window Stats’ın hızlı bir sinyali kayan RMS, ortalama veya basıklık gibi yavaş değişen eğilim kanallarına nasıl çevirdiğini anlatır. Pencere uzunluğunun seçimini, geriye bakan ve ortalanmış pencereler arasındaki farkı ve hangi istatistiğin hangi soruyu yanıtladığını açıklar.',
         ],
         why: [
             ['What rolling statistics are for', 'Kayan istatistikler ne işe yarar?',
@@ -500,10 +500,10 @@ const records = [
     },
     {
         id: 'sensor_calibration', references: [], related: ['normalization_scaling', 'line_chart'],
-        title: ['Sensor Calibration Guide', 'Sensör Kalibrasyonu Rehberi'],
+        title: ['Sensor Calibration Guide', 'Sensor Calibration Rehberi'],
         intro: [
             'This guide explains how Sensor Calibration converts raw logger values, usually millivolts, into physical units such as g, bar or °C. It covers the sensor presets, linear, polynomial and lookup-table calibration, and how to check that the converted values are plausible.',
-            'Bu rehber, Sensör Kalibrasyonu’nun ham kaydedici değerlerini, genelde milivoltu, g, bar veya °C gibi fiziksel birimlere nasıl çevirdiğini anlatır. Sensör ön ayarlarını, doğrusal, polinom ve tablo kalibrasyonunu ve çevrilmiş değerlerin makul olup olmadığının nasıl kontrol edileceğini açıklar.',
+            'Bu rehber, Sensor Calibration’ın ham kaydedici değerlerini, genelde milivoltu, g, bar veya °C gibi fiziksel birimlere nasıl çevirdiğini anlatır. Sensör ön ayarlarını, doğrusal, polinom ve tablo kalibrasyonunu ve çevrilmiş değerlerin makul olup olmadığının nasıl kontrol edileceğini açıklar.',
         ],
         why: [
             ['What calibration is for', 'Kalibrasyon ne işe yarar?',

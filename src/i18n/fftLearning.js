@@ -191,7 +191,7 @@ const FFT_LEARNING_TRANSLATIONS = {
     },
     tr: {
         back: 'Modül kütüphanesine dön',
-        eyebrow: 'MachinePulseAI Akademi · FFT / Spektrum Analizi',
+        eyebrow: 'MachinePulseAI Akademi · FFT / Spectrum Analizi',
         title: 'FFT Analiz Akışı',
         intro:
             'Önceden FFT bilgisine sahip olmadan başlayın; sensörün kaydettiği zaman sinyalini MachinePulseAI kontrolleriyle güvenilir bir frekans spektrumuna dönüştürün. Bu rehber; örnekleme hızı, blok boyutu, pencereleme ve ortalama gibi tüm kritik ayarların ne işe yaradığını, hangi soruya yanıt verdiğini ve hangi analiz tuzaklarını önlediğini anlatır.',

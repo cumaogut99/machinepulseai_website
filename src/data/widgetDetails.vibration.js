@@ -1232,7 +1232,7 @@ const VIBRATION_WIDGET_DETAILS = {
         tr: {
             tagline: 'Eşzamanlı çoklu sensör titreşimini pencereli RMS, tepe ve crest-factor trendlerine, eşik olaylarına ve korelasyon görünümüne dönüştürür.',
             intro:
-                'Mevcut Yapısal Sağlık İzleme widget’ı şeffaf bir trend ve tarama aracıdır. Seçilen her kanalı eşit zaman pencerelerine böler; C++ istatistik motoruyla RMS, tepe ve crest factor hesaplar; yapılandırılan RMS alarm eşiğini geçen pencereleri kaydeder ve seçili sensörler arasında Pearson korelasyon matrisi oluşturur. Böylece tepki seviyesi veya kanallar arası ilişkinin ne zaman değiştiği görülür. Bugün modal frekans tanımlamaz, çevresel etkiyi normalize etmez, MAC hesaplamaz ve hasarı yerelleştirmez; bu sonuçlar takip eden EMA, OMA, ODS ve mühendislik bağlamı gerektirir.',
+                'Mevcut Structural Health Monitoring widget’ı şeffaf bir trend ve tarama aracıdır. Seçilen her kanalı eşit zaman pencerelerine böler; C++ istatistik motoruyla RMS, tepe ve crest factor hesaplar; yapılandırılan RMS alarm eşiğini geçen pencereleri kaydeder ve seçili sensörler arasında Pearson korelasyon matrisi oluşturur. Böylece tepki seviyesi veya kanallar arası ilişkinin ne zaman değiştiği görülür. Bugün modal frekans tanımlamaz, çevresel etkiyi normalize etmez, MAC hesaplamaz ve hasarı yerelleştirmez; bu sonuçlar takip eden EMA, OMA, ODS ve mühendislik bağlamı gerektirir.',
             inputs: [
                 { name: 'Eşzamanlı titreşim kanalları', desc: 'Tek kayıtta, konumu ve yönü bilinen birden fazla tepki kanalı.' },
                 { name: 'Örnekleme hızı ve pencere süresi', desc: 'Her trend noktasına kaç örnek gireceğini belirler.' },

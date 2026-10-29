@@ -3,15 +3,15 @@ import { control, lesson, readout } from './lesson.js'
 const records = [
     {
         id: 'file_reader', references: [], related: ['channel_selector', 'time_graphics'],
-        title: ['File Reader Guide', 'Dosya Okuyucu Rehberi'],
+        title: ['File Reader Guide', 'File Reader Rehberi'],
         intro: [
             'This guide explains how the File Reader turns a measurement file into data the other widgets can use. It shows how to read the preview, how to set the separator, header, unit and data rows, and how to choose the time axis, because most later errors start with a file that was read the wrong way.',
-            'Bu rehber, Dosya Okuyucu’nun bir ölçüm dosyasını diğer widget’ların kullanabileceği veriye nasıl çevirdiğini anlatır. Önizlemenin nasıl okunacağını, ayraç, başlık, birim ve veri satırlarının nasıl ayarlanacağını ve zaman ekseninin nasıl seçileceğini gösterir; çünkü sonraki hataların çoğu yanlış okunmuş bir dosyayla başlar.',
+            'Bu rehber, File Reader’ın bir ölçüm dosyasını diğer widget’ların kullanabileceği veriye nasıl çevirdiğini anlatır. Önizlemenin nasıl okunacağını, ayraç, başlık, birim ve veri satırlarının nasıl ayarlanacağını ve zaman ekseninin nasıl seçileceğini gösterir; çünkü sonraki hataların çoğu yanlış okunmuş bir dosyayla başlar.',
         ],
         why: [
-            ['What the File Reader is for', 'Dosya Okuyucu ne işe yarar?',
+            ['What the File Reader is for', 'File Reader ne işe yarar?',
                 'Every analysis starts from a file written by a data logger, a test bench or another program, and these files are all a little different. One puts a comma between values, another a semicolon. One starts directly with channel names, another with five lines of test notes. Some have a time column, some only state the sample rate. The File Reader reads the file, shows you how it understood it, and converts it into MPAI, the application’s own format. From then on every widget reads the same, correctly interpreted data.',
-                'Her analiz bir veri kaydedicinin, test düzeneğinin veya başka bir programın yazdığı bir dosyayla başlar ve bu dosyaların her biri biraz farklıdır. Biri değerlerin arasına virgül koyar, diğeri noktalı virgül. Biri doğrudan kanal adlarıyla başlar, diğeri beş satır test notuyla. Bazılarında zaman sütunu vardır, bazılarında yalnızca örnekleme hızı yazar. Dosya Okuyucu dosyayı okur, onu nasıl anladığını size gösterir ve uygulamanın kendi biçimi olan MPAI’ye çevirir. Bundan sonra her widget aynı, doğru yorumlanmış veriyi okur.'],
+                'Her analiz bir veri kaydedicinin, test düzeneğinin veya başka bir programın yazdığı bir dosyayla başlar ve bu dosyaların her biri biraz farklıdır. Biri değerlerin arasına virgül koyar, diğeri noktalı virgül. Biri doğrudan kanal adlarıyla başlar, diğeri beş satır test notuyla. Bazılarında zaman sütunu vardır, bazılarında yalnızca örnekleme hızı yazar. File Reader dosyayı okur, onu nasıl anladığını size gösterir ve uygulamanın kendi biçimi olan MPAI’ye çevirir. Bundan sonra her widget aynı, doğru yorumlanmış veriyi okur.'],
             ['What you need before opening a file', 'Dosyayı açmadan önce ne gerekir?',
                 'A file in a supported format: CSV or TXT, Excel, Parquet, TDMS (National Instruments), MDF/MF4 (vehicle and ECU loggers), WAV/FLAC audio or an existing MPAI file. It also helps to know three facts about the test: how many channels were recorded, how long the recording was, and the sample rate of the logger. These three numbers are what you compare the preview against.',
                 'Desteklenen bir biçimde dosya: CSV veya TXT, Excel, Parquet, TDMS (National Instruments), MDF/MF4 (araç ve ECU kaydedicileri), WAV/FLAC ses dosyası veya mevcut bir MPAI dosyası. Test hakkında üç bilgiyi bilmek de işinizi kolaylaştırır: kaç kanal kaydedildiği, kaydın ne kadar sürdüğü ve kaydedicinin örnekleme hızı. Önizlemeyi bu üç sayıyla karşılaştırırsınız.'],
@@ -21,7 +21,7 @@ const records = [
         ],
         use: [
             'Use it at the start of every pipeline that works on a recorded file. Open the file, compare the preview table with what you know about the test, correct the settings on the right if something looks wrong, and press Import. Then connect the File Reader to the widgets that will process the data.',
-            'Kayıtlı bir dosyayla çalışan her analiz hattının başında kullanın. Dosyayı açın, önizleme tablosunu test hakkında bildiklerinizle karşılaştırın, bir şey yanlış görünüyorsa sağdaki ayarları düzeltin ve Import’a basın. Ardından Dosya Okuyucu’yu veriyi işleyecek widget’lara bağlayın.',
+            'Kayıtlı bir dosyayla çalışan her analiz hattının başında kullanın. Dosyayı açın, önizleme tablosunu test hakkında bildiklerinizle karşılaştırın, bir şey yanlış görünüyorsa sağdaki ayarları düzeltin ve Import’a basın. Ardından File Reader’ı veriyi işleyecek widget’lara bağlayın.',
         ],
         inputs: [
             ['Measurement file', 'Ölçüm dosyası', 'A CSV/TXT, Excel, Parquet, TDMS, MDF/MF4, WAV/FLAC or MPAI file. Very large files are supported: they are converted in blocks, not loaded into memory at once.', 'CSV/TXT, Excel, Parquet, TDMS, MDF/MF4, WAV/FLAC veya MPAI dosyası. Çok büyük dosyalar desteklenir: bellek tek seferde doldurulmaz, dosya bloklar halinde dönüştürülür.'],
@@ -86,15 +86,15 @@ const records = [
     },
     {
         id: 'data_merger', slug: 'data-merger', references: [], related: ['file_reader', 'merge_channels'],
-        title: ['File Merger Guide', 'Dosya Birleştirici Rehberi'],
+        title: ['File Merger Guide', 'File Merger Rehberi'],
         intro: [
             'This guide explains how the File Merger joins a folder of split recordings into one continuous dataset. It covers how files are found and ordered, how the header and data rows of each file are recognised, how the time axis is handled at the joins, and how to check the result.',
-            'Bu rehber, Dosya Birleştirici’nin parçalara bölünmüş kayıtlarla dolu bir klasörü nasıl tek ve sürekli bir veri kümesine çevirdiğini anlatır. Dosyaların nasıl bulunup sıralandığını, her dosyadaki başlık ve veri satırlarının nasıl tanındığını, birleşim noktalarında zaman ekseninin nasıl ele alındığını ve sonucun nasıl kontrol edileceğini açıklar.',
+            'Bu rehber, File Merger’ın parçalara bölünmüş kayıtlarla dolu bir klasörü nasıl tek ve sürekli bir veri kümesine çevirdiğini anlatır. Dosyaların nasıl bulunup sıralandığını, her dosyadaki başlık ve veri satırlarının nasıl tanındığını, birleşim noktalarında zaman ekseninin nasıl ele alındığını ve sonucun nasıl kontrol edileceğini açıklar.',
         ],
         why: [
-            ['What the File Merger is for', 'Dosya Birleştirici ne işe yarar?',
+            ['What the File Merger is for', 'File Merger ne işe yarar?',
                 'Long tests are rarely stored in a single file. Many loggers start a new file every few minutes or every few hundred megabytes, so a day of testing can end up as 50 or 500 parts. Opening them one by one and analysing each part separately hides anything that happens across a file boundary. The File Merger scans the folder, reads the layout of every file and writes all of them into one dataset, as if the logger had never split the recording.',
-                'Uzun testler nadiren tek bir dosyada saklanır. Birçok kaydedici birkaç dakikada bir veya birkaç yüz megabaytta bir yeni dosya açar; böylece bir günlük test 50 ya da 500 parçaya bölünebilir. Parçaları tek tek açıp ayrı ayrı analiz etmek, dosya sınırında olan her şeyi gizler. Dosya Birleştirici klasörü tarar, her dosyanın düzenini okur ve hepsini tek bir veri kümesine yazar; sanki kaydedici kaydı hiç bölmemiş gibi.'],
+                'Uzun testler nadiren tek bir dosyada saklanır. Birçok kaydedici birkaç dakikada bir veya birkaç yüz megabaytta bir yeni dosya açar; böylece bir günlük test 50 ya da 500 parçaya bölünebilir. Parçaları tek tek açıp ayrı ayrı analiz etmek, dosya sınırında olan her şeyi gizler. File Merger klasörü tarar, her dosyanın düzenini okur ve hepsini tek bir veri kümesine yazar; sanki kaydedici kaydı hiç bölmemiş gibi.'],
             ['What it needs', 'Ne gerekir?',
                 'A folder with the parts of one test. Files can be CSV/TXT, Excel, Parquet, TDMS, MDF/MF4, WAV/FLAC or MPAI. For stacking, the parts should contain the same channels; small differences in name spelling are tolerated because names are compared in a normalised form. Notes and headers at the top of each file are found automatically.',
                 'Aynı teste ait parçaların bulunduğu bir klasör. Dosyalar CSV/TXT, Excel, Parquet, TDMS, MDF/MF4, WAV/FLAC veya MPAI olabilir. Alt alta birleştirme için parçalarda aynı kanallar bulunmalıdır; adlar sadeleştirilmiş biçimde karşılaştırıldığı için yazımdaki küçük farklar sorun olmaz. Her dosyanın başındaki notlar ve başlıklar otomatik bulunur.'],
@@ -104,7 +104,7 @@ const records = [
         ],
         use: [
             'Use the File Merger when one test is spread over many files in a folder. If you already have two separate datasets on the canvas and want to join them, use Dataset Merge in Data Preprocessing instead.',
-            'Bir test bir klasördeki birçok dosyaya dağılmışsa Dosya Birleştirici’yi kullanın. Canvas’ta zaten iki ayrı veri kümeniz varsa ve bunları birleştirmek istiyorsanız Veri Ön İşleme’deki Dataset Merge’ü kullanın.',
+            'Bir test bir klasördeki birçok dosyaya dağılmışsa File Merger’ı kullanın. Canvas’ta zaten iki ayrı veri kümeniz varsa ve bunları birleştirmek istiyorsanız Veri Ön İşleme’deki Dataset Merge’ü kullanın.',
         ],
         inputs: [
             ['Folder with the parts of one test', 'Bir teste ait parçaların klasörü', 'Choose it with Browse… and press Scan Folder. Tick Include subfolders when the logger stores parts in daily or hourly subfolders.', 'Browse… ile seçip Scan Folder’a basın. Kaydedici parçaları günlük veya saatlik alt klasörlere yazıyorsa Include subfolders’ı işaretleyin.'],
@@ -166,28 +166,28 @@ const records = [
     },
     {
         id: 'data_exporter', slug: 'data-exporter', references: [], related: ['intelligent_report', 'channel_selector'],
-        title: ['File Exporter Guide', 'Dosya Dışa Aktarıcı Rehberi'],
+        title: ['File Exporter Guide', 'File Exporter Rehberi'],
         intro: [
             'This guide explains how the File Exporter writes channels and computed results to files that other programs can open. It covers which channels are offered, how to choose a format and its options, how to limit the time range, and what happens when channels have different lengths.',
-            'Bu rehber, Dosya Dışa Aktarıcı’nın kanalları ve hesaplanmış sonuçları başka programların açabileceği dosyalara nasıl yazdığını anlatır. Hangi kanalların sunulduğunu, biçimin ve seçeneklerinin nasıl seçileceğini, zaman aralığının nasıl sınırlandırılacağını ve kanalların uzunlukları farklı olduğunda ne olduğunu açıklar.',
+            'Bu rehber, File Exporter’ın kanalları ve hesaplanmış sonuçları başka programların açabileceği dosyalara nasıl yazdığını anlatır. Hangi kanalların sunulduğunu, biçimin ve seçeneklerinin nasıl seçileceğini, zaman aralığının nasıl sınırlandırılacağını ve kanalların uzunlukları farklı olduğunda ne olduğunu açıklar.',
         ],
         why: [
-            ['What the File Exporter is for', 'Dosya Dışa Aktarıcı ne işe yarar?',
+            ['What the File Exporter is for', 'File Exporter ne işe yarar?',
                 'Sooner or later data has to leave the application: a colleague works in MATLAB or Excel, a customer wants a CSV, a simulation needs a measured load in HDF5. The File Exporter takes what is connected to it, whether raw channels or results such as an FFT spectrum, and writes it in the format the receiver can read.',
-                'Er ya da geç veri uygulamadan çıkmak zorundadır: bir meslektaş MATLAB veya Excel ile çalışır, bir müşteri CSV ister, bir simülasyon ölçülmüş bir yükü HDF5 olarak ister. Dosya Dışa Aktarıcı kendisine bağlanan her şeyi, ham kanal da olsa FFT spektrumu gibi bir sonuç da olsa, alıcının okuyabileceği biçimde yazar.'],
+                'Er ya da geç veri uygulamadan çıkmak zorundadır: bir meslektaş MATLAB veya Excel ile çalışır, bir müşteri CSV ister, bir simülasyon ölçülmüş bir yükü HDF5 olarak ister. File Exporter kendisine bağlanan her şeyi, ham kanal da olsa FFT spektrumu gibi bir sonuç da olsa, alıcının okuyabileceği biçimde yazar.'],
             ['What it exports', 'Neyi dışa aktarır?',
                 'Everything the connected widget holds on all its output ports. Connected to a File Reader, it lists the raw channels. Connected to an analysis widget such as FFT, it also lists the computed results, such as spectra and, for maps like spectrograms, whole matrices. When computed results exist they are preselected, because that is usually why you connected the analysis widget.',
-                'Bağlı widget’ın tüm çıkış portlarında tuttuğu her şeyi. Bir Dosya Okuyucu’ya bağlıysa ham kanalları listeler. FFT gibi bir analiz widget’ına bağlıysa hesaplanmış sonuçları da listeler: spektrumlar ve spektrogram gibi haritalarda matrislerin tamamı. Hesaplanmış sonuç varsa önceden seçili gelir; çünkü analiz widget’ını genelde bunun için bağlamışsınızdır.'],
+                'Bağlı widget’ın tüm çıkış portlarında tuttuğu her şeyi. Bir File Reader’a bağlıysa ham kanalları listeler. FFT gibi bir analiz widget’ına bağlıysa hesaplanmış sonuçları da listeler: spektrumlar ve spektrogram gibi haritalarda matrislerin tamamı. Hesaplanmış sonuç varsa önceden seçili gelir; çünkü analiz widget’ını genelde bunun için bağlamışsınızdır.'],
             ['What to keep in mind', 'Nelere dikkat edilmeli?',
                 'An exported file is a copy for exchange, not the project. It does not contain the canvas, the settings of the analysis or anything you did not tick. Each format also has limits: a CSV is easy to read but large, Excel has a row limit, and the receiver needs the axis that goes with the values to make sense of them.',
                 'Dışa aktarılan dosya paylaşım için bir kopyadır, projenin kendisi değildir. Canvas’ı, analiz ayarlarını veya işaretlemediğiniz hiçbir şeyi içermez. Her biçimin sınırları da vardır: CSV kolay okunur ama büyüktür, Excel’in satır sınırı vardır ve alıcının değerleri anlamlandırabilmesi için bunlara ait ekseni de alması gerekir.'],
         ],
         use: [
             'Connect the File Exporter to the widget whose data you want to hand over, open it, tick the channels, choose format and file, and press Export. Use the Intelligent Report instead when the reader needs plots, explanations and conclusions rather than numbers.',
-            'Dosya Dışa Aktarıcı’yı verisini teslim etmek istediğiniz widget’a bağlayın, açın, kanalları işaretleyin, biçimi ve dosyayı seçip Export’a basın. Okuyucunun sayılar yerine grafik, açıklama ve sonuca ihtiyacı varsa Intelligent Report’u kullanın.',
+            'File Exporter’ı verisini teslim etmek istediğiniz widget’a bağlayın, açın, kanalları işaretleyin, biçimi ve dosyayı seçip Export’a basın. Okuyucunun sayılar yerine grafik, açıklama ve sonuca ihtiyacı varsa Intelligent Report’u kullanın.',
         ],
         inputs: [
-            ['A connected widget', 'Bağlı bir widget', 'A File Reader for raw channels, or an analysis widget whose results you want to export.', 'Ham kanallar için bir Dosya Okuyucu veya sonuçlarını aktarmak istediğiniz bir analiz widget’ı.'],
+            ['A connected widget', 'Bağlı bir widget', 'A File Reader for raw channels, or an analysis widget whose results you want to export.', 'Ham kanallar için bir File Reader veya sonuçlarını aktarmak istediğiniz bir analiz widget’ı.'],
             ['The receiver’s needs', 'Alıcının ihtiyaçları', 'Which program will open the file, how large the file may be, and which channels and range they actually need.', 'Dosyayı hangi programın açacağı, dosyanın ne kadar büyük olabileceği ve alıcının gerçekten hangi kanallara ve aralığa ihtiyaç duyduğu.'],
         ],
         controls: [
@@ -226,7 +226,7 @@ const records = [
         ],
         math: [['B_{\\mathrm{raw}}\\approx8NC', 'Size of the raw numbers', 'Ham sayıların boyutu', 'N is the number of rows in the export range and C the number of ticked channels; 8 bytes per value. Text formats are larger, compressed binary formats usually smaller.', 'N dışa aktarma aralığındaki satır sayısı, C işaretli kanal sayısıdır; değer başına 8 bayt. Metin biçimleri daha büyük, sıkıştırılmış ikili biçimler genelde daha küçük olur.', control('Channels & Export Range')]],
         steps: [
-            ['Connect what you want to export', 'Aktarmak istediğinizi bağlayın', 'A File Reader for raw data, or the analysis widget whose result you need.', 'Ham veri için bir Dosya Okuyucu, ya da sonucuna ihtiyacınız olan analiz widget’ı.'],
+            ['Connect what you want to export', 'Aktarmak istediğinizi bağlayın', 'A File Reader for raw data, or the analysis widget whose result you need.', 'Ham veri için bir File Reader, ya da sonucuna ihtiyacınız olan analiz widget’ı.'],
             ['Tick channels and range', 'Kanalları ve aralığı işaretleyin', 'Keep the axis channel ticked and narrow the range if the receiver needs only part of the record.', 'Eksen kanalını işaretli bırakın; alıcının kaydın yalnızca bir kısmına ihtiyacı varsa aralığı daraltın.'],
             ['Choose the format', 'Biçimi seçin', 'Pick the format the receiver’s program reads best and set its options.', 'Alıcının programının en iyi okuduğu biçimi seçip seçeneklerini ayarlayın.'],
             ['Export and open the file', 'Aktarın ve dosyayı açın', 'Press Export, then open the file in the target program and check the row count, one value and the axis.', 'Export’a basın, sonra dosyayı hedef programda açıp satır sayısını, bir değeri ve ekseni kontrol edin.'],
@@ -245,13 +245,13 @@ const records = [
     },
     {
         id: 'random_generator', slug: 'signal-generator', references: [], related: ['fft_spectrum', 'frequency_filter'],
-        title: ['Data Generator Guide', 'Veri Üreteci Rehberi'],
+        title: ['Data Generator Guide', 'Data Generator Rehberi'],
         intro: [
             'This guide explains how the Data Generator creates synthetic test signals whose content you know exactly. It covers the ready-made scenes, the signal types and their parameters, and how to use a generated signal to check that an analysis gives the answer it should.',
-            'Bu rehber, Veri Üreteci’nin içeriğini tam olarak bildiğiniz sentetik test sinyallerini nasıl oluşturduğunu anlatır. Hazır sahneleri, sinyal tiplerini ve parametrelerini, ve üretilmiş bir sinyalin bir analizin vermesi gereken cevabı verip vermediğini kontrol etmek için nasıl kullanılacağını açıklar.',
+            'Bu rehber, Data Generator’ın içeriğini tam olarak bildiğiniz sentetik test sinyallerini nasıl oluşturduğunu anlatır. Hazır sahneleri, sinyal tiplerini ve parametrelerini, ve üretilmiş bir sinyalin bir analizin vermesi gereken cevabı verip vermediğini kontrol etmek için nasıl kullanılacağını açıklar.',
         ],
         why: [
-            ['What the Data Generator is for', 'Veri Üreteci ne işe yarar?',
+            ['What the Data Generator is for', 'Data Generator ne işe yarar?',
                 'With a real measurement you never know the exact answer: a peak in a spectrum could be the machine, the sensor or a setting. With a generated signal you do. If you create a 50 Hz sine with an amplitude of 2, an FFT must show a peak at 50 Hz with the right height. If it does not, the problem is in the settings, not in the machine. The generator is also useful for learning a widget, preparing a demonstration or testing a pipeline before the real data arrives.',
                 'Gerçek bir ölçümde kesin cevabı hiçbir zaman bilemezsiniz: spektrumdaki bir tepe makineden, sensörden veya bir ayardan gelebilir. Üretilmiş bir sinyalde ise bilirsiniz. Genliği 2 olan 50 Hz’lik bir sinüs oluşturursanız FFT 50 Hz’de doğru yükseklikte bir tepe göstermek zorundadır. Göstermiyorsa sorun makinede değil, ayarlardadır. Üreteç ayrıca bir widget’ı öğrenmek, bir sunum hazırlamak veya gerçek veri gelmeden bir analiz hattını denemek için de kullanışlıdır.'],
             ['What it creates', 'Ne oluşturur?',
@@ -263,7 +263,7 @@ const records = [
         ],
         use: [
             'Use the Data Generator to check an analysis with a signal whose answer you know, to learn a widget, or to build a demonstration. Start with a scene, press Generate, connect the generator to the widget you want to test and compare its result with the values you set.',
-            'Veri Üreteci’ni cevabını bildiğiniz bir sinyalle bir analizi kontrol etmek, bir widget’ı öğrenmek veya bir sunum hazırlamak için kullanın. Bir sahneyle başlayın, Generate’e basın, üreteci denemek istediğiniz widget’a bağlayın ve sonucunu ayarladığınız değerlerle karşılaştırın.',
+            'Data Generator’ı cevabını bildiğiniz bir sinyalle bir analizi kontrol etmek, bir widget’ı öğrenmek veya bir sunum hazırlamak için kullanın. Bir sahneyle başlayın, Generate’e basın, üreteci denemek istediğiniz widget’a bağlayın ve sonucunu ayarladığınız değerlerle karşılaştırın.',
         ],
         inputs: [
             ['Recording settings', 'Kayıt ayarları', 'Name, sample rate, duration and random seed of the dataset. No file is needed.', 'Veri kümesinin adı, örnekleme hızı, süresi ve rastgele tohumu. Dosya gerekmez.'],
@@ -280,9 +280,9 @@ const records = [
             ['Example scene', 'Example scene (örnek sahne)',
                 'Choose a scene and press Load to replace the channel list with a complete example. Scenes are a quick start: every value they set can be changed afterwards.',
                 'Bir sahne seçip Load’a basarak kanal listesini tam bir örnekle değiştirin. Sahneler hızlı bir başlangıçtır: ayarladıkları her değer sonradan değiştirilebilir.', [
-                    ['Bearing scenes', 'Rulman sahneleri', 'Healthy bearing, inner race, outer race and ball faults: an acceleration channel with impacts repeating at the fault frequency and ringing at a resonance, plus a shaft signal and a tachometer. Ideal for Bearing & Gear Fault Diagnosis and the envelope filter.', 'Sağlam rulman, iç bilezik, dış bilezik ve bilye arızaları: arıza frekansında tekrarlanan ve bir rezonansta çınlayan darbeler içeren bir ivme kanalı, bir mil sinyali ve bir takometre. Rulman ve Dişli Arıza Tanılama ile zarf filtresi için idealdir.'],
+                    ['Bearing scenes', 'Rulman sahneleri', 'Healthy bearing, inner race, outer race and ball faults: an acceleration channel with impacts repeating at the fault frequency and ringing at a resonance, plus a shaft signal and a tachometer. Ideal for Bearing & Gear Fault Diagnosis and the envelope filter.', 'Sağlam rulman, iç bilezik, dış bilezik ve bilye arızaları: arıza frekansında tekrarlanan ve bir rezonansta çınlayan darbeler içeren bir ivme kanalı, bir mil sinyali ve bir takometre. Bearing & Gear Fault Diagnosis ile zarf filtresi için idealdir.'],
                     ['Unbalance, gear mesh, run-up', 'Balanssızlık, dişli kavraması, kalkış', 'Unbalance gives a strong once-per-revolution component; gear mesh adds a mesh frequency with sidebands; run-up/coast-down sweeps the speed, which is what Order Tracking needs.', 'Balanssızlık devir başına bir kez tekrarlanan güçlü bir bileşen verir; dişli kavraması yan bantlı bir kavrama frekansı ekler; kalkış/duruş hızı tarar; Order Tracking’in ihtiyaç duyduğu da budur.'],
-                    ['Shock, 3-phase power, modal impulse', 'Şok, 3 faz güç, modal darbe', 'A half-sine shock pulse for Shock & SRS, three phase-shifted currents, and a damped impulse response for modal examples.', 'Şok ve SRS için yarım sinüs darbe, faz kaydırmalı üç akım ve modal örnekler için sönümlü darbe cevabı.'],
+                    ['Shock, 3-phase power, modal impulse', 'Şok, 3 faz güç, modal darbe', 'A half-sine shock pulse for Shock & SRS, three phase-shifted currents, and a damped impulse response for modal examples.', 'Shock & SRS için yarım sinüs darbe, faz kaydırmalı üç akım ve modal örnekler için sönümlü darbe cevabı.'],
                 ]],
             ['Signals and Channel parameters', 'Sinyaller ve Channel parameters',
                 'The list shows every channel with its unit and type. Add creates a new channel, Copy duplicates the selected one, Delete removes it and the arrows change the order. Selecting a channel opens its parameters below: name, unit, type, and the fields that belong to that type.',

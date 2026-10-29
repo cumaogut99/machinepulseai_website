@@ -42,7 +42,7 @@ const DIAGNOSTICS_LEARNING = {
                 { title: 'Antoni · The spectral kurtosis', note: 'Primary research establishing spectral kurtosis and the kurtogram for non-stationary fault detection.', href: 'https://doi.org/10.1016/j.ymssp.2004.09.001' },
             ] },
         tr: {
-            title: 'Rulman ve Dişli Arıza Tanılama Rehberi',
+            title: 'Bearing & Gear Fault Diagnosis Rehberi',
             intro: 'Bu rehber, yuvarlanmalı rulman ve dişli arızalarının titreşim verisinden nasıl teşhis edildiğini anlatır. Rulman arıza frekanslarını, manuel veya kurtogram ile bant seçimli zarf analizini, kepstrumu, zaman senkron ortalamayı (TSA), dişli kalıntı sinyallerini ve durum göstergelerini, ayrıca bunların kanıta dayalı bir teşhiste nasıl birleştirildiğini açıklar.',
             badges: ['BPFO · BPFI · BSF · FTF', 'Zarf ve kurtogram', 'Kepstrum ve liftering', 'TSA · FM0 · FM4 · M6A · M8A'], duration: 'Tahmini okuma süresi: yaklaşık 25 dakika',
             outcomes: ['Erken rulman arızasının neden yüksek frekans rezonansında saklandığını açıklamak.', 'Harmonik ve yan bantlarla rulman ailelerini hesaplayıp yorumlamak.', 'Manuel zarf bandı seçmek veya kurtogramın önerisini kullanmak.', 'Rulman veya dişli teşhisi koymadan önce zarf, kepstrum, TSA ve göstergeleri birlikte değerlendirmek.'],
@@ -51,7 +51,7 @@ const DIAGNOSTICS_LEARNING = {
                 { title: 'Hangi ölçümler gerekir?', body: 'Rulman veya dişli kutusuna yakın bir ivmeölçer, darbelerin uyardığı yapısal rezonansları yakalayacak kadar yüksek örnekleme hızı, mil devri ve rulman geometrisi (yuvarlanma elemanı sayısı, çaplar, temas açısı) ya da dişli diş sayıları gerekir.' },
                 { title: 'Neden özel yöntemler gerekir?', body: 'Erken aşamada darbeler zayıftır ve normal spektrumda balanssızlık, eksen kaçıklığı ve dişli kavramasından gelen daha güçlü titreşimlerin altında kalır. Zarf analizi, darbelerin bir rezonansı uyardığı frekans bandını ayırır ve darbelerin tekrar frekansını ortaya çıkarır. Dişlilerde TSA, incelenen mille senkron olmayan bileşenleri bastırır.' },
             ],
-            interface: { title: 'Rulman ve Dişli Arıza Tanılama çalışma ekranı', intro: 'İlerideki görüntü; rulman veritabanı/geometrisi, RPM, dişli/TSA, zarf bandı, kurtogram derinliği, trend blokları ve tanı ayarlarını; Zarf, Kepstrum, TSA, Kurtogram, Trend ve Tanı sonuçlarıyla gösterecek.' },
+            interface: { title: 'Bearing & Gear Fault Diagnosis çalışma ekranı', intro: 'İlerideki görüntü; rulman veritabanı/geometrisi, RPM, dişli/TSA, zarf bandı, kurtogram derinliği, trend blokları ve tanı ayarlarını; Zarf, Kepstrum, TSA, Kurtogram, Trend ve Tanı sonuçlarıyla gösterecek.' },
             theory: { title: 'Yerel hasarın titreşimde ortaya çıkışı', intro: 'Yuvarlanma elemanı küçük kusurun üzerinden geçerken kısa darbe üretir. Darbe çok daha yüksek frekanslı gövde rezonansını uyarır; tekrar hızı rezonans çevresinde genlik modülasyonu olarak kodlanır.', cards: [
                 { kicker: 'TEMEL KAVRAM', title: 'Zarf analizi tekrarı demodüle eder', body: 'Rezonansı banttan geçirin, analitik sinyal büyüklüğünü oluşturun ve spektrumunu alın. Taşıyıcı rezonans geri plana geçer; BPFO/BPFI/BSF/FTF tekrar aileleri okunur.' },
                 { kicker: 'BANT SEÇİMİ', title: 'Kurtogram darbeli bantları arar', body: 'Spektral basıklık, Gauss dışı geçici olayların yoğunlaştığı yeri bulmak için frekans bant ve seviyelerini karşılaştırır. Demodülasyon bandı önerir; bileşeni tek başına tanımaz.' },
@@ -127,8 +127,8 @@ const DIAGNOSTICS_LEARNING = {
                 { title: 'ISO 20816-3:2022', note: 'Machine-specific guidance for industrial machinery over 15 kW and 120–30,000 r/min.', href: 'https://www.iso.org/ics/17.160/x/' },
             ] },
         tr: {
-            title: 'Makine Sağlığı Genel Görünümü Rehberi',
-            intro: 'Bu rehber, çok sayıda titreşim kanalını genel göstergelerle özetleyen Makine Sağlığı Genel Görünümü panelini anlatır. RMS, tepe, crest factor, basıklık ve tepeden tepeye değerlerini, yapılandırılabilir ISO 10816 tarzı tabloya dayalı bölge sınıflandırmasını ve trend ile alarm görünümlerini açıklar. Panel, kesin teşhis için değil, tarama ve önceliklendirme için tasarlanmıştır.',
+            title: 'Machine Health Overview Rehberi',
+            intro: 'Bu rehber, çok sayıda titreşim kanalını genel göstergelerle özetleyen Machine Health Overview panelini anlatır. RMS, tepe, crest factor, basıklık ve tepeden tepeye değerlerini, yapılandırılabilir ISO 10816 tarzı tabloya dayalı bölge sınıflandırmasını ve trend ile alarm görünümlerini açıklar. Panel, kesin teşhis için değil, tarama ve önceliklendirme için tasarlanmıştır.',
             badges: ['Kanal sağlık kartları', 'RMS · tepe · crest · basıklık', 'Bölge A–D taraması', 'Trend ve alarm günlüğü'], duration: 'Tahmini okuma süresi: yaklaşık 15 dakika',
             outcomes: ['Genel RMS’in neyi koruyup neyi sakladığını açıklamak.', 'Bölgeleri okumadan önce doğru yapılandırılmış makine grubunu seçmek.', 'Derin analizi önceliklendirmek için trend ve istisna listesini kullanmak.', 'Paneli otomatik arıza tanısı veya genel ISO uygunluğu gibi sunmamak.'],
             why: [
@@ -136,7 +136,7 @@ const DIAGNOSTICS_LEARNING = {
                 { title: 'Hangi ölçümler gerekir?', body: 'Doğru mühendislik birimleri ve sensör yönleriyle seçili kanalların titreşim sinyalleri gerekir. Titreşim standartlarındaki bölge sınırları genellikle dönmeyen parçalar üzerinde ölçülen geniş bantlı hız RMS (mm/s) değeri için tanımlanır; bu nedenle ölçülen büyüklük kullanılan sınır tablosuyla uyumlu olmalıdır.' },
                 { title: 'Göstergeler neyi gösterir?', body: 'RMS genel titreşim enerjisini yansıtır; tepe değer ve crest factor kısa darbeleri gösterir; basıklık (kurtosis) sinyalin ne kadar darbeli olduğunu ölçer. Crest factor veya basıklığın RMS’ten önce artması, rulman hasarı gibi darbe üreten arızaların erken aşamasına işaret edebilir.' },
             ],
-            interface: { title: 'Makine Sağlığı Genel Görünümü çalışma ekranı', intro: 'Son ekran görüntüsü makine grubunu, kanal seçimini, sağlık kartlarını, RMS trendini ve alarm günlüğünü gösterecek. Aşağıdaki rehber bu gerçek çıktıların anlamını açıklar.' },
+            interface: { title: 'Machine Health Overview çalışma ekranı', intro: 'Son ekran görüntüsü makine grubunu, kanal seçimini, sağlık kartlarını, RMS trendini ve alarm günlüğünü gösterecek. Aşağıdaki rehber bu gerçek çıktıların anlamını açıklar.' },
             theory: { title: 'Genel göstergelerle tarama', intro: 'Sağlık özeti hızlı karşılaştırma için spektral ayrıntıdan vazgeçer. Hangi kanalın yükseldiğini, değiştiğini veya darbeli olduğunu söyler; kök nedeni adlandırmaz.', cards: [
                 { kicker: 'TEMEL KAVRAM', title: 'RMS genel enerjiyi ölçer', body: 'RMS sürekli titreşime duyarlıdır ve şiddet trendi için yararlıdır. Aynı RMS’e sahip iki sinyalin spektrumu ve arıza mekanizması tamamen farklı olabilir.' },
                 { kicker: 'DARBELİLİK', title: 'Tepe, crest ve basıklık şekil ipucu ekler', body: 'Tepe uç değerleri yakalar; crest factor tepeyi RMS’e böler; basıklık ağır kuyruklu darbeli davranışı öne çıkarır. Tarama sağlarlar ama bant ve sensör kurulumuna güçlü biçimde bağlıdırlar.' },
@@ -213,8 +213,8 @@ const DIAGNOSTICS_LEARNING = {
                 { title: 'Farrar & Worden · Structural Health Monitoring', note: 'Foundational framework for separating data acquisition, feature extraction and statistical decision making.', href: 'https://doi.org/10.1098/rsta.2006.1928' },
             ] },
         tr: {
-            title: 'Yapısal Sağlık İzleme Rehberi',
-            intro: 'Bu rehber, çok kanallı titreşim kayıtlarındaki değişimleri zaman içinde izleyen Yapısal Sağlık İzleme widget’ını anlatır. Pencereli RMS, tepe ve crest factor trendlerini, RMS alarm günlüğünü, ISO 10816 sınıf bağlamını ve kanallar arası korelasyon matrisini açıklar. Mevcut sürüm değişimleri tespit etmek için tasarlanmıştır; modal parametrelerle hasar yeri belirlemez.',
+            title: 'Structural Health Monitoring Rehberi',
+            intro: 'Bu rehber, çok kanallı titreşim kayıtlarındaki değişimleri zaman içinde izleyen Structural Health Monitoring widget’ını anlatır. Pencereli RMS, tepe ve crest factor trendlerini, RMS alarm günlüğünü, ISO 10816 sınıf bağlamını ve kanallar arası korelasyon matrisini açıklar. Mevcut sürüm değişimleri tespit etmek için tasarlanmıştır; modal parametrelerle hasar yeri belirlemez.',
             badges: ['Pencereli çok kanal trendi', 'RMS alarm olayları', 'Korelasyon matrisi', 'Geçici analiz sonuçları'], duration: 'Tahmini okuma süresi: yaklaşık 17 dakika',
             outcomes: ['İlgilenilen yapısal değişime uygun pencere süresi tasarlamak.', 'Sensörler arasında RMS, tepe ve crest trendlerini birlikte okumak.', 'Korelasyon değişimini hasar kanıtı değil ipucu olarak kullanmak.', 'Mevcut widget’ın hesapladığını ve gelecekte modal/çevresel analiz gerektiren kısmı açıkça söylemek.'],
             why: [
@@ -222,7 +222,7 @@ const DIAGNOSTICS_LEARNING = {
                 { title: 'Hangi ölçümler gerekir?', body: 'Sabit konumlardaki birden fazla sensörden alınmış uzun süreli veya tekrarlı kayıtlar gerekir; sensör konumları, birimler ile çalışma ve çevre koşulları belgelenmelidir. Anlamlı bir karşılaştırma için sağlıklı olduğu bilinen durumda alınmış bir referans kayıt gerekir.' },
                 { title: 'Yöntemin sınırları', body: 'Titreşim seviyeleri yük, sıcaklık, trafik veya rüzgârla da değişir. Bu nedenle bir eşik aşımı hasarın kanıtı değil, incelenmesi gereken bir değişimin göstergesidir. Karşılaştırmalar yalnızca benzer çalışma ve çevre koşulları arasında geçerlidir.' },
             ],
-            interface: { title: 'Yapısal Sağlık İzleme çalışma ekranı', intro: 'Son ekran görüntüsü kanal seçimini, örnekleme hızını, pencere süresini, ISO sınıfı/alarm eşiğini, trendleri, alarmları ve korelasyonu gösterecek. Bu rehber bilinçli olarak uygulanmış yeteneklerle sınırlıdır.' },
+            interface: { title: 'Structural Health Monitoring çalışma ekranı', intro: 'Son ekran görüntüsü kanal seçimini, örnekleme hızını, pencere süresini, ISO sınıfı/alarm eşiğini, trendleri, alarmları ve korelasyonu gösterecek. Bu rehber bilinçli olarak uygulanmış yeteneklerle sınırlıdır.' },
             theory: { title: 'Öznitelik tabanlı trend izleme', intro: 'Uzun titreşim kaydı zaman pencerelerine bölünür. Her sensöre aynı RMS, tepe ve crest-factor özetleri uygulanır; böylece değişim zaman ve konumlar arasında karşılaştırılır.', cards: [
                 { kicker: 'TEMEL KAVRAM', title: 'Pencere soruyu tanımlar', body: 'Kısa pencere hızlı olayı izler ama gürültülü öznitelik üretir. Uzun pencere trendi kararlı yapar fakat kısa darbeleri veya çalışma geçişlerini yayabilir.' },
                 { kicker: 'ÇOKLU SENSÖR', title: 'Konum desenleri önemlidir', body: 'Yapı genelindeki yük değişimi çoğu kanalı birlikte etkiler. Yerel değişim tek bölgeyi etkileyebilir veya kanallar arasındaki ilişkiyi değiştirebilir.' },
