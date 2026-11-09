@@ -16,12 +16,16 @@ export const ROUTE_META = {
     '/': {
         en: {
             title: `${BRAND} — Engineering Analysis for Large Measurement Data`,
-            description: 'Import CSV, TDMS, MDF/MF4, Parquet and MPAI test data into one workspace; analyze 200 GB+ files with low memory use.',
+            description: 'Import CSV, TDMS, MDF/MF4, Parquet and MPAI test data into one workspace; analyze large recordings with low memory use.',
         },
         tr: {
             title: `${BRAND} — Büyük Ölçüm Verileri İçin Mühendislik Analizi`,
-            description: 'CSV, TDMS, MDF/MF4, Parquet ve MPAI test verilerini tek çalışma alanında içe aktarın; 200 GB+ dosyaları düşük bellek kullanımıyla analiz edin.',
+            description: 'CSV, TDMS, MDF/MF4, Parquet ve MPAI test verilerini tek çalışma alanında içe aktarın; büyük kayıtları düşük bellek kullanımıyla analiz edin.',
         },
+    },
+    '/demo': {
+        en: { title: `Product Tour — ${BRAND}`, description: 'Watch the recorded MachinePulseAI product tour: data preparation, optional AI assistant, engineering analyses and reports, with chapter navigation.' },
+        tr: { title: `Ürün Turu — ${BRAND}`, description: 'MachinePulseAI ürün turu: veri hazırlama, isteğe bağlı AI asistanı, mühendislik analizleri ve raporlar. Bölüm seçimiyle gerçek uygulamayı inceleyin.' },
     },
     '/product': {
         en: {

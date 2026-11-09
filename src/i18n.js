@@ -1,3 +1,4 @@
+import SITE_MARKETING from './i18n/siteMarketing.js';
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
@@ -12,6 +13,7 @@ import WIDGET_LEARNING_TRANSLATIONS from './i18n/widgetLearning.js';
 const resources = {
     en: {
         translation: {
+            "site": SITE_MARKETING.en,
             "fftLearn": FFT_LEARNING_TRANSLATIONS.en,
             "fftTheory": FFT_THEORY_TRANSLATIONS.en,
             "fftBeginner": FFT_BEGINNER_TRANSLATIONS.en,
@@ -39,8 +41,8 @@ const resources = {
                 "whySubtitle": "Core capabilities designed for modern test data scale.",
                 "why": {
                     "ai": { "title": "Built-in AI Assistant", "desc": "Query datasets, structure analysis pipelines, and retrieve institutional test records in natural language while deterministic C++ engines compute the math." },
-                    "scale": { "title": "Massive data, modest hardware", "desc": "Out-of-core memory architecture analyzes 200 GB+ datasets on standard workstations under a strict <1 GB RAM footprint." },
-                    "secure": { "title": "Fully offline & secure", "desc": "Runs completely air-gapped with zero cloud dependency — engineered for defense, aerospace, and confidential test environments." }
+                    "scale": { "title": "Massive data, modest hardware", "desc": "The out-of-core MPAI engine reads bounded windows from disk. Min-Max visualization preserves peaks without loading entire channels into RAM." },
+                    "secure": { "title": "Choose where AI runs", "desc": "Recorded-data analysis runs locally. Choose compatible local models or supported cloud providers; Local Only Mode blocks cloud model providers." }
                 },
                 "problem": {
                     "eyebrow": "The Problem",
@@ -101,20 +103,20 @@ const resources = {
             },
             "hero": {
                 "badge": "Early Access Open",
-                "title1": "Engineering Analysis",
-                "title2": "for Large Measurement Data",
-                "subtitle": "Import CSV, TDMS, MDF/MF4, Parquet and MPAI test data into one workspace; analyze 200 GB+ files with low memory use for signal processing, vibration and rotating-machinery diagnostics.",
+                "title1": "From Measurement Data",
+                "title2": "to Evidence-Based Analysis",
+                "subtitle": "Bring recorded test data into one workspace. Prepare signals, run engineering analyses and inspect the evidence with an optional AI assistant — from question to report.",
                 "ctaPrimary": "Request a Demo",
-                "ctaSecondary": "See the App",
+                "ctaSecondary": "Watch the 48-second Overview",
                 "stats": {
-                    "files": "200 GB+ files",
+                    "files": "Phase 1 · Recorded data",
                     "os": "Windows 10/11",
-                    "ram": "Runs on 8 GB RAM"
+                    "ram": "Optional AI assistant"
                 }
             },
             "contact": {
                 "title": "See MachinePulseAI in action",
-                "subtitle": "Fill in the form and we'll reach out within 1 business day.",
+                "subtitle": "Fill in the form and we'll reach out to discuss your workflow.",
                 "badge": "Request a Demo",
                 "form": {
                     "name": "Full Name *",
@@ -128,7 +130,7 @@ const resources = {
                 },
                 "success": {
                     "title": "Request sent!",
-                    "message": "We have received your demo request. We'll get back to you within 1 business day.",
+                    "message": "We have received your demo request. We'll get back to you to discuss your workflow.",
                     "close": "Close"
                 },
                 "error": "An error occurred while sending your request. Please try again later."
@@ -156,7 +158,7 @@ const resources = {
                 "eyebrow": "Smart Engineering Assistant",
                 "titleBefore": "A platform with a",
                 "titleHighlight": "built-in AI Agent",
-                "subtitle": "An integrated offline assistant: it speeds up pipeline setup, explains analysis results and searches past test archives without a cloud connection."
+                "subtitle": "An optional assistant for questions, analysis actions and reports. Choose a supported cloud provider or a compatible local model. Local Only Mode blocks cloud model providers."
             },
             "cta": {
                 "label": "Early Access Now Open",
@@ -166,7 +168,7 @@ const resources = {
                 "subtitle": "Engineered for test and evaluation teams across defense, aerospace, energy, and automotive industries. Request a technical demonstration.",
                 "primaryCta": "Request a Demo",
                 "secondaryCta": "Talk to the Team",
-                "trustLine": "Windows 10/11 · Minimum 8 GB RAM · No internet required"
+                "trustLine": "Windows 10/11 · Recorded-data analysis · Local or cloud AI options"
             },
             "pricing": {
                 "eyebrow": "Packages & Modules",
@@ -183,7 +185,7 @@ const resources = {
                 "enterpriseBadge": "Custom Quote",
                 "enterpriseDesc": "Full platform access with on-site deployment, custom integrations, unlimited seats, and NDA-covered offline LLM setup for classified or air-gapped environments.",
                 "enterpriseCta": "Request a Demo",
-                "datasheetCta": "Download Datasheet",
+                "datasheetCta": "Request a Datasheet",
                 "base": {
                     "name": "Base Package",
                     "tagline": "Data I/O · Preprocessing · Visualization",
@@ -213,7 +215,7 @@ const resources = {
                 },
                 "ai": {
                     "name": "AI Assistant",
-                    "desc": "A natural-language interface (LLM + RAG) — ask questions in plain language and get data-driven answers. Fully offline, no cloud."
+                    "desc": "Ask questions, run analysis tools and prepare reports with an optional AI assistant. Choose compatible local models or supported cloud providers; local model requirements vary."
                 },
                 "enterpriseFeatures": [
                     "All modules included — unlimited seats",
@@ -257,6 +259,7 @@ const resources = {
     },
     tr: {
         translation: {
+            "site": SITE_MARKETING.tr,
             "fftLearn": FFT_LEARNING_TRANSLATIONS.tr,
             "fftTheory": FFT_THEORY_TRANSLATIONS.tr,
             "fftBeginner": FFT_BEGINNER_TRANSLATIONS.tr,
@@ -284,8 +287,8 @@ const resources = {
                 "whySubtitle": "Modern test ve ölçüm verilerinin ölçeği için tasarlanmış temel kabiliyetler.",
                 "why": {
                     "ai": { "title": "Yerleşik AI Asistanı", "desc": "Veri setlerini doğal dille sorgulayın, analiz hatlarını yapılandırın ve kurumsal hafızaya erişin; deterministik C++ çekirdeği matematiksel kesinliği korur." },
-                    "scale": { "title": "Devasa veri, mütevazı donanım", "desc": "Bellek-dışı (out-of-core) motor, 200 GB+ veri setlerini standart iş istasyonlarında 1 GB altı RAM kullanımıyla kesintisiz işler." },
-                    "secure": { "title": "Tamamen çevrimdışı ve güvenli", "desc": "Bulut bağımlılığı olmadan tamamen hava-boşluklu (air-gapped) çalışır — savunma, havacılık ve gizlilik dereceli test ortamları için tasarlanmıştır." }
+                    "scale": { "title": "Devasa veri, mütevazı donanım", "desc": "Bellek-dışı MPAI motoru diskten sınırlı pencereler okur. Min-Max görselleştirme, kanalların tamamını RAM’e yüklemeden sinyal tepe değerlerini korur." },
+                    "secure": { "title": "AI’ın nerede çalışacağını seçin", "desc": "Kayıtlı veri analizi yerel çalışır. Uyumlu yerel modelleri veya desteklenen bulut sağlayıcılarını seçin; Local Only Mode bulut model sağlayıcılarını engeller." }
                 },
                 "problem": {
                     "eyebrow": "Sorun",
@@ -346,20 +349,20 @@ const resources = {
             },
             "hero": {
                 "badge": "Erken Erişim Açık",
-                "title1": "Büyük Ölçüm Verileri İçin",
-                "title2": "Mühendislik Analiz Platformu",
-                "subtitle": "CSV, TDMS, MDF/MF4, Parquet ve MPAI test verilerini tek çalışma alanında içe aktarın; 200 GB+ dosyaları düşük bellek kullanımıyla sinyal işleme, titreşim ve döner makine tanılama iş akışlarında analiz edin.",
+                "title1": "Ölçüm Verisinden",
+                "title2": "Kanıta Dayalı Analize",
+                "subtitle": "Kayıtlı test verilerini tek çalışma alanına taşıyın. Sinyalleri hazırlayın, mühendislik analizlerini çalıştırın ve isteğe bağlı AI asistanıyla bulguların dayanaklarını inceleyin — sorudan rapora.",
                 "ctaPrimary": "Demo İste",
-                "ctaSecondary": "Uygulamayı Gör",
+                "ctaSecondary": "48 Saniyelik Tanıtımı İzle",
                 "stats": {
-                    "files": "200 GB+ dosya",
+                    "files": "Phase 1 · Kayıtlı veri",
                     "os": "Windows 10/11",
-                    "ram": "8 GB RAM'de Çalışır"
+                    "ram": "İsteğe bağlı AI asistanı"
                 }
             },
             "contact": {
                 "title": "MachinePulseAI'ı iş başında görün",
-                "subtitle": "Formu doldurun, size 1 iş günü içinde ulaşalım.",
+                "subtitle": "İş akışınızı ve demo talebinizi bizimle paylaşın.",
                 "badge": "Demo İste",
                 "form": {
                     "name": "Ad Soyad *",
@@ -373,7 +376,7 @@ const resources = {
                 },
                 "success": {
                     "title": "Talep gönderildi!",
-                    "message": "Demo talebinizi aldık. Size 1 iş günü içinde geri döneceğiz.",
+                    "message": "Demo talebinizi aldık. İş akışınızı görüşmek için sizinle iletişime geçeceğiz.",
                     "close": "Kapat"
                 },
                 "error": "Talebiniz gönderilirken bir hata oluştu. Lütfen daha sonra tekrar deneyin."
@@ -401,7 +404,7 @@ const resources = {
                 "eyebrow": "Akıllı Mühendislik Asistanı",
                 "titleBefore": "Platformda",
                 "titleHighlight": "yerleşik bir AI Agent",
-                "subtitle": "Tamamen çevrimdışı çalışan yapay zeka asistanı: analiz hattı kurulumunu hızlandırır, analiz sonuçlarını açıklar ve geçmiş test arşivlerini yerel olarak sorgular."
+                "subtitle": "Sorular, analiz adımları ve raporlar için isteğe bağlı asistan. Desteklenen bir bulut sağlayıcısını veya uyumlu yerel modeli seçin. Local Only Mode bulut model sağlayıcılarını engeller."
             },
             "cta": {
                 "label": "Erken Erişim Şimdi Açık",
@@ -411,7 +414,7 @@ const resources = {
                 "subtitle": "Savunma, havacılık, enerji ve otomotiv sektörlerindeki test ve değerlendirme ekipleri için tasarlandı. Teknik ürün demosu talep edin.",
                 "primaryCta": "Demo İste",
                 "secondaryCta": "Ekiple Görüşün",
-                "trustLine": "Windows 10/11 · En az 8 GB RAM · İnternet gerektirmez"
+                "trustLine": "Windows 10/11 · Kayıtlı veri analizi · Yerel veya bulut AI seçenekleri"
             },
             "pricing": {
                 "eyebrow": "Paketler ve Modüller",
@@ -428,7 +431,7 @@ const resources = {
                 "enterpriseBadge": "Özel Teklif",
                 "enterpriseDesc": "Yerinde kurulum, özel entegrasyonlar, sınırsız lisans ve gizli veya hava-boşluklu ortamlar için NDA kapsamında çevrimdışı LLM kurulumuyla tam platform erişimi.",
                 "enterpriseCta": "Demo İste",
-                "datasheetCta": "Teknik Föyü İndir",
+                "datasheetCta": "Teknik Föy İste",
                 "base": {
                     "name": "Baz Paket",
                     "tagline": "Veri Giriş/Çıkış · Ön İşleme · Görselleştirme",
@@ -458,7 +461,7 @@ const resources = {
                 },
                 "ai": {
                     "name": "AI Asistanı",
-                    "desc": "Doğal dil arayüzü (LLM + RAG) — sorularınızı sade bir dille sorun, veriye dayalı yanıtlar alın. Tamamen çevrimdışı, bulut yok."
+                    "desc": "İsteğe bağlı AI asistanıyla soru sorun, analiz araçlarını çalıştırın ve rapor hazırlayın. Uyumlu yerel modelleri veya desteklenen bulut sağlayıcılarını seçin; yerel model gereksinimleri değişir."
                 },
                 "enterpriseFeatures": [
                     "Tüm modüller dahil — sınırsız lisans",

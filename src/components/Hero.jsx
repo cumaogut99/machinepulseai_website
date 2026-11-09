@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { useContactModal } from '../context/ContactModalContext.jsx'
-import HeroShowcase from './HeroShowcase.jsx'
+import { Link } from 'react-router-dom'
+import ProductVideo from './ProductVideo.jsx'
+import { PRODUCT_VIDEOS } from '../data/productVideos.js'
 
 // ─── Framer Motion Variants ─────────────────────────────────────────────────
 const containerVariants = {
@@ -109,10 +111,10 @@ export default function Hero() {
                         {t('hero.ctaPrimary')}
                     </button>
 
-                    {/* Secondary CTA — scrolls to the real app screenshot below */}
+                    {/* Secondary CTA opens the product preview section */}
                     <a
                         id="hero-secondary-cta"
-                        href="#app-showcase"
+                        href="#product-preview"
                         className="inline-flex items-center gap-2 text-sm text-slate-300 hover:text-white font-medium px-5 py-3.5 rounded-xl border border-white/10 hover:border-white/25 hover:bg-white/5 transition-all duration-200"
                     >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -128,7 +130,7 @@ export default function Hero() {
                 {/* Trust indicators */}
                 <motion.div
                     variants={fadeUpVariant}
-                    className="flex items-center gap-6 mt-8 text-xs text-slate-500"
+                    className="flex flex-wrap justify-center items-center gap-x-6 gap-y-3 mt-8 text-xs text-slate-500"
                 >
                     <span className="flex items-center gap-1.5">
                         <svg className="w-3.5 h-3.5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
@@ -153,8 +155,7 @@ export default function Hero() {
 
             {/* ── Hero Media Area ────────────────────────────────── */}
             {/*
-        TODO: Place app screenshot, intro video, or animated demo GIF here.
-        Add src, poster, and autoPlay attributes as needed.
+        Actual desktop recordings replace the former illustrative animation.
       */}
             <motion.div
                 variants={mediaVariant}
@@ -169,14 +170,13 @@ export default function Hero() {
                     aria-hidden="true"
                 />
 
-                {/* ── Live Demo Animation ──────────────────────────────── */}
-                {/* Sensor data stream → FFT anomaly spike → AI chat diagnosis */}
-                <div
-                    id="hero-demo"
-                    className="hero-media-glow rounded-2xl overflow-hidden relative border border-white/8"
-                    style={{ aspectRatio: '16/9' }}
-                >
-                    <HeroShowcase />
+                <div id="product-preview" className="scroll-mt-24">
+                    <ProductVideo video={PRODUCT_VIDEOS.overview} priority />
+                    <div className="mt-6 text-center">
+                        <Link to="/demo" className="inline-flex items-center gap-2 text-sm text-neon-cyan hover:text-white">
+                            {t('site.video.fullTour')} <span aria-hidden="true">→</span>
+                        </Link>
+                    </div>
                 </div>
             </motion.div>
         </section>

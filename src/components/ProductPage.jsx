@@ -1,3 +1,4 @@
+import ProductIntroduction from './ProductIntroduction.jsx'
 import Features from './Features.jsx'
 import HowItWorks from './HowItWorks.jsx'
 import AgenticArch from './AgenticArch.jsx'
@@ -9,6 +10,7 @@ import AgenticArch from './AgenticArch.jsx'
 export default function ProductPage() {
     return (
         <>
+            <ProductIntroduction />
             <Features />
             <HowItWorks />
             <AgenticArch />

@@ -42,6 +42,7 @@ function lazyPage(loader) {
     return Page
 }
 
+const DemoPage = lazyPage(() => import('./components/DemoPage.jsx'))
 const ProductPage = lazyPage(() => import('./components/ProductPage.jsx'))
 const Pricing = lazyPage(() => import('./components/Pricing.jsx'))
 const WidgetCatalog = lazyPage(() => import('./components/WidgetCatalog.jsx'))
@@ -58,6 +59,7 @@ const COMBUSTION_RELEASED = !widgetReleasePhase('combustion_analysis', { subgrou
 // render (client hydration and build-time prerendering).
 const PAGE_ROUTES = [
     ['/product', ProductPage],
+    ['/demo', DemoPage],
     ['/widgets', WidgetCatalog],
     ['/widgets/combustion-analysis', CombustionAnalysisDetail],
     ['/widgets/fft-spectrum', FFTSpectrumLearning],
@@ -128,12 +130,13 @@ function AppShell() {
                 href="#main"
                 className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[200] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-[#00f5ff] focus:text-black focus:font-semibold"
             >
-                Skip to main content
+                {i18n.t('site.skipContent')}
             </a>
             <Navbar />
             <div className="flex-grow">
                 <Routes>
                     <Route path="/" element={<Home />} />
+                    <Route path="/demo" element={<Page><DemoPage /></Page>} />
                     <Route path="/product" element={<Page><ProductPage /></Page>} />
                     <Route path="/widgets" element={<Page><WidgetCatalog /></Page>} />
                     <Route path="/widgets/combustion-analysis" element={COMBUSTION_RELEASED ? <Page><CombustionAnalysisDetail /></Page> : <Navigate to="/widgets" replace />} />

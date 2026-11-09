@@ -27,14 +27,14 @@ const STEPS = [
             tag: 'Analyze',
             title: 'Run Engineering Modules',
             description:
-                'Use focused modules for filtering, FFT, frequency response, vibration, rotor and structural diagnostics while the data engine handles 200 GB+ datasets.',
+                'Use focused modules for filtering, FFT, frequency response, vibration, rotor and structural diagnostics while the data engine handles large recorded datasets.',
             detail: 'Filters · FFT · Vibration · Rotor · Modal',
         },
         tr: {
             tag: 'Analiz Et',
             title: 'Mühendislik Modüllerini Çalıştır',
             description:
-                'Filtreleme, FFT, frekans tepkisi, titreşim, rotor ve yapısal tanılama modüllerini kullanın; 200 GB+ veri setlerini güçlü veri motoru işler.',
+                'Filtreleme, FFT, frekans tepkisi, titreşim, rotor ve yapısal tanılama modüllerini kullanın; büyük kayıtlı veri setlerini güçlü veri motoru işler.',
             detail: 'Filtreler · FFT · Titreşim · Rotor · Modal',
         },
         color: '#3b82f6',

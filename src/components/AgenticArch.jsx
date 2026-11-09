@@ -143,8 +143,8 @@ const ARCH_LAYERS = [
         color: '#3b82f6',
     },
     {
-        en: { label: 'MPAI Data Engine', sublabel: 'Multi-format import · 200 GB+ datasets · Min-Max LOD' },
-        tr: { label: 'MPAI Veri Motoru', sublabel: 'Çok formatlı içe aktarma · 200 GB+ veri · Min-Max LOD' },
+        en: { label: 'MPAI Data Engine', sublabel: 'Multi-format import · large recorded datasets · Min-Max LOD' },
+        tr: { label: 'MPAI Veri Motoru', sublabel: 'Çok formatlı içe aktarma · Büyük kayıtlı veri · Min-Max LOD' },
         color: '#a855f7',
     },
     {
@@ -156,8 +156,8 @@ const ARCH_LAYERS = [
 
 const COMPARISON_ROWS = [
     {
-        en: { label: 'Large measurement files', ours: 'Native 200 GB+ path', typical: 'Often split or preprocessed' },
-        tr: { label: 'Büyük ölçüm dosyaları', ours: 'Yerel 200 GB+ akış', typical: 'Çoğu zaman bölme/ön işlem gerekir' },
+        en: { label: 'Large measurement files', ours: 'Disk-backed MPAI workflow', typical: 'Often split or preprocessed' },
+        tr: { label: 'Büyük ölçüm dosyaları', ours: 'Disk tabanlı MPAI akışı', typical: 'Çoğu zaman bölme/ön işlem gerekir' },
     },
     {
         en: { label: 'Engineering modules', ours: 'One connected workspace', typical: 'Separate tools and exports' },

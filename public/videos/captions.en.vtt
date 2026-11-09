@@ -1,0 +1,906 @@
+WEBVTT
+
+1
+00:00:00.030 --> 00:00:06.340
+MachinePulseAI turns measurement data into
+engineering insight.
+
+2
+00:00:06.400 --> 00:00:13.650
+Prepare data, analyze signals and structures,
+and report in one environment.
+
+3
+00:00:13.710 --> 00:00:19.130
+Test and R&D teams can inspect recordings and
+share the results in a report.
+
+4
+00:00:19.190 --> 00:00:23.800
+In MachinePulseAI, the whole workflow from
+data to report shares one workspace.
+
+5
+00:00:23.860 --> 00:00:28.400
+Data I/O opens, combines and exports
+measurement files.
+
+6
+00:00:28.460 --> 00:00:32.010
+Preprocessing organizes the data; filters
+prepare the signal.
+
+7
+00:00:32.070 --> 00:00:36.990
+Engineering brings frequency, vibration, rotor
+and structural analyses together.
+
+8
+00:00:37.050 --> 00:00:42.279
+Thermal and fluids, materials and strength,
+electrical, acoustics, control and vehicle
+
+9
+00:00:42.279 --> 00:00:44.590
+dynamics are planned for later phases.
+
+10
+00:00:44.650 --> 00:00:53.460
+Statistics supports comparison and monitoring.
+Machine Learning is planned for later phases.
+
+11
+00:00:53.520 --> 00:01:02.140
+Inspect results in Visualization, share them
+in Reporting, and add custom Python steps.
+
+12
+00:01:02.200 --> 00:01:06.570
+Drag widgets onto the canvas and connect their
+inputs and outputs to build a workflow.
+
+13
+00:01:06.630 --> 00:01:10.210
+Activity shows operation status and diagnostic
+logs.
+
+14
+00:01:10.270 --> 00:01:14.010
+Inspector shows the selected widget's status
+and connections.
+
+15
+00:01:14.070 --> 00:01:21.150
+Use the AI assistant when you need it, or
+manage the workflow yourself.
+
+16
+00:01:21.210 --> 00:01:31.270
+Ask explains methods and queries data
+read-only, preserving your workflow.
+
+17
+00:01:31.330 --> 00:01:40.430
+Agent can connect tools, run analyses and
+prepare reports. Its use is optional.
+
+18
+00:01:40.490 --> 00:01:48.940
+Choose supported cloud services or compatible
+local models.
+
+19
+00:01:49.000 --> 00:01:57.930
+Use models on your own computer for sensitive
+data. Local Only Mode blocks cloud providers.
+
+20
+00:01:57.990 --> 00:02:02.020
+Data I/O contains five tools available in the
+first phase.
+
+21
+00:02:02.080 --> 00:02:07.340
+File Reader opens measurements and shows their
+channels and recording details.
+
+22
+00:02:07.400 --> 00:02:13.900
+Geometry Source links measurement points to a
+structure for inspecting analysis results.
+
+23
+00:02:13.960 --> 00:02:18.590
+File Merger combines recording parts into one
+data source.
+
+24
+00:02:18.650 --> 00:02:24.150
+File Exporter writes selected channels to
+files for use in other applications.
+
+25
+00:02:24.210 --> 00:02:29.350
+Data Generator creates controlled test signals
+without a measurement file.
+
+26
+00:02:29.410 --> 00:02:34.160
+Let's open these tools and see how they work
+in short examples.
+
+27
+00:02:34.220 --> 00:02:39.810
+File Reader shows the selected file's channels
+and recording details.
+
+28
+00:02:40.459 --> 00:02:47.079
+The file is ready in the workspace and can
+feed different tools.
+
+29
+00:02:47.140 --> 00:02:51.750
+Geometry Source builds a simple beam geometry.
+
+30
+00:02:52.536 --> 00:02:55.776
+The resulting geometry is available for
+structural analyses.
+
+31
+00:02:55.840 --> 00:03:01.530
+File Merger combines recording parts into one
+dataset.
+
+32
+00:03:02.115 --> 00:03:08.015
+The parts now form one source, with the chosen
+time-axis policy.
+
+33
+00:03:08.080 --> 00:03:13.460
+File Exporter lets us choose a channel and
+output format.
+
+34
+00:03:14.157 --> 00:03:20.737
+The selected channel was exported to CSV for
+use in other applications.
+
+35
+00:03:20.810 --> 00:03:26.110
+Data Generator creates test signals without a
+measurement file.
+
+36
+00:03:27.270 --> 00:03:33.320
+The new channel appears immediately and can
+feed other widgets.
+
+37
+00:03:33.380 --> 00:03:37.840
+Preprocessing organizes, scales and prepares
+data for analysis.
+
+38
+00:03:37.900 --> 00:03:42.410
+Channel Selector passes only the channels
+needed by the next steps.
+
+39
+00:03:42.470 --> 00:03:47.530
+Dataset Merge combines separate sources by
+rows or channels.
+
+40
+00:03:47.590 --> 00:03:53.590
+Data Table Editor supports cell editing,
+formulas and other operations within the app.
+
+41
+00:03:53.650 --> 00:03:59.000
+Normalization scales channels to a common
+basis for comparison.
+
+42
+00:03:59.060 --> 00:04:04.390
+Group By summarizes data and computes
+aggregate statistics using selected rules.
+
+43
+00:04:04.450 --> 00:04:08.480
+Time Alignment brings separate recordings onto
+a shared time axis.
+
+44
+00:04:08.540 --> 00:04:13.480
+Rolling statistics show how signal level
+changes throughout a recording.
+
+45
+00:04:13.540 --> 00:04:19.420
+Sensor Calibration converts measured values
+into engineering units.
+
+46
+00:04:19.480 --> 00:04:24.450
+Let's look inside two examples: Data Table
+Editor and Time Alignment.
+
+47
+00:04:24.510 --> 00:04:30.680
+Data Table Editor edits and cleans data within
+the app.
+
+48
+00:04:30.740 --> 00:04:35.320
+Row operations, cleaning and resampling share
+this window.
+
+49
+00:04:35.380 --> 00:04:42.170
+In Formula, we multiply the channel by two.
+Its name and expression are visible.
+
+50
+00:04:42.230 --> 00:04:47.800
+The new channel is in the table and ready for
+downstream analyses.
+
+51
+00:04:47.880 --> 00:04:55.660
+Time Alignment compares two recordings with
+different start times.
+
+52
+00:04:55.720 --> 00:05:02.300
+We shift the second recording left, bringing
+the same event to the same time.
+
+53
+00:05:03.287 --> 00:05:06.957
+The aligned channels are now available
+together in one dataset.
+
+54
+00:05:07.020 --> 00:05:12.520
+Signal Filters reduces noise, transforms
+signals and cleans data.
+
+55
+00:05:12.580 --> 00:05:16.950
+Frequency Filter keeps or suppresses a
+selected frequency band.
+
+56
+00:05:17.010 --> 00:05:22.990
+Smoothing Filter reduces rapid fluctuations to
+reveal signal trends.
+
+57
+00:05:23.050 --> 00:05:28.280
+Math & Calculus applies absolute value,
+differentiation and integration to channels.
+
+58
+00:05:28.340 --> 00:05:33.760
+Advanced Diagnostics uses envelope analysis to
+reveal vibration modulation.
+
+59
+00:05:33.820 --> 00:05:38.380
+Kalman Filter estimates a more stable signal
+from noisy measurements.
+
+60
+00:05:38.440 --> 00:05:43.480
+Spike Detection/Remove finds brief spikes and
+cleans them with the chosen method.
+
+61
+00:05:43.540 --> 00:05:50.570
+Outlier Detection/Remove flags unusual samples
+or replaces them with missing values.
+
+62
+00:05:50.630 --> 00:05:55.840
+Range Filter keeps rows matching selected
+conditions in a new dataset.
+
+63
+00:05:55.900 --> 00:05:59.810
+Let's open all eight tools and look at short
+examples.
+
+64
+00:05:59.890 --> 00:06:06.470
+Frequency Filter reduces high-frequency
+fluctuations with a low-pass filter.
+
+65
+00:06:07.496 --> 00:06:11.406
+The raw signal and new filtered channel share
+the same graph.
+
+66
+00:06:11.470 --> 00:06:16.390
+Smoothing Filter smooths the signal while
+retaining its overall shape.
+
+67
+00:06:17.451 --> 00:06:21.771
+Showing both curves makes the smoothing effect
+clear.
+
+68
+00:06:21.830 --> 00:06:26.700
+Math & Calculus creates an absolute-value
+channel.
+
+69
+00:06:28.323 --> 00:06:32.383
+Negative portions of the raw signal become
+positive in the new channel.
+
+70
+00:06:32.440 --> 00:06:37.620
+Advanced Diagnostics extracts the vibration
+envelope.
+
+71
+00:06:39.188 --> 00:06:42.768
+The new envelope channel is visible alongside
+the raw vibration.
+
+72
+00:06:42.840 --> 00:06:47.520
+Kalman Filter estimates the signal with less
+measurement noise.
+
+73
+00:06:49.203 --> 00:06:54.743
+The raw channel is preserved for comparison
+with the filtered estimate.
+
+74
+00:06:54.810 --> 00:07:00.280
+Spike Detection/Remove finds spikes and
+creates a cleaned channel.
+
+75
+00:07:01.839 --> 00:07:06.229
+The raw and cleaned signals show which samples
+changed.
+
+76
+00:07:06.290 --> 00:07:11.740
+Outlier Detection/Remove flags outlying
+samples in a new channel.
+
+77
+00:07:12.449 --> 00:07:17.299
+The flag channel is in the table and raw
+measurements are preserved.
+
+78
+00:07:17.360 --> 00:07:21.990
+Range Filter keeps rows where the signal is at
+or above zero.
+
+79
+00:07:22.720 --> 00:07:29.370
+Matching rows form a new dataset that can feed
+downstream steps.
+
+80
+00:07:29.430 --> 00:07:34.160
+Engineering starts with spectra and
+relationships between channels.
+
+81
+00:07:34.220 --> 00:07:37.360
+We compare channel spectra.
+
+82
+00:07:37.420 --> 00:07:40.420
+We compare input and response.
+
+83
+00:07:40.480 --> 00:07:43.940
+Let's open these two tools for short examples.
+
+84
+00:07:44.000 --> 00:07:49.420
+FFT Spectrum Analysis: We compare channel
+spectra.
+
+85
+00:07:51.006 --> 00:07:57.026
+Let's switch to a single cursor and precompute
+FFT blocks across the selected range.
+
+86
+00:07:58.009 --> 00:08:01.389
+Moving the cursor brings up the spectrum for
+that moment.
+
+87
+00:08:01.449 --> 00:08:08.649
+Later, the sweep peak moves higher. The cursor
+reuses computed blocks.
+
+88
+00:08:08.709 --> 00:08:11.109
+We can also inspect the phase of the same
+block.
+
+89
+00:08:13.127 --> 00:08:15.407
+Let's add a marker to the selected peak.
+
+90
+00:08:17.912 --> 00:08:22.472
+In the time-frequency view, the sweep appears
+as a rising trace.
+
+91
+00:08:22.532 --> 00:08:32.132
+Spectrum, phase and time-frequency views share
+the same recording.
+
+92
+00:08:32.190 --> 00:08:38.190
+Frequency Response & Cross Spectrum: We
+compare input and response.
+
+93
+00:08:39.654 --> 00:08:44.984
+Amplitude, phase and coherence reveal the
+relationship between channels.
+
+94
+00:08:45.260 --> 00:08:50.780
+This group examines rotating machinery and
+structural motion.
+
+95
+00:08:50.840 --> 00:08:54.100
+We inspect rotor motion.
+
+96
+00:08:54.160 --> 00:08:58.340
+We solve a single-plane balance.
+
+97
+00:08:58.400 --> 00:09:01.520
+We track vibration against speed.
+
+98
+00:09:01.580 --> 00:09:05.300
+We inspect encoder speed variation.
+
+99
+00:09:05.360 --> 00:09:09.340
+We inspect structural modes.
+
+100
+00:09:09.400 --> 00:09:13.360
+We use response-only measurements.
+
+101
+00:09:13.420 --> 00:09:16.710
+We show motion on the structure.
+
+102
+00:09:16.770 --> 00:09:19.960
+We inspect shock response.
+
+103
+00:09:20.020 --> 00:09:24.030
+We inspect bearing and gear evidence.
+
+104
+00:09:24.090 --> 00:09:27.760
+We inspect linked-point motion.
+
+105
+00:09:27.820 --> 00:09:31.230
+We correct cross-axis effects.
+
+106
+00:09:31.290 --> 00:09:34.940
+Let's inspect the important views in short
+examples.
+
+107
+00:09:35.000 --> 00:09:39.730
+Rotor Dynamics: We inspect rotor motion.
+
+108
+00:09:40.696 --> 00:09:45.496
+Orbit, center and diagnostic views show
+different aspects of rotor motion.
+
+109
+00:09:45.800 --> 00:09:51.660
+Rotor Balancing: We solve a single-plane
+balance.
+
+110
+00:09:52.621 --> 00:10:00.231
+The polar view and measurements show the
+correction and verification.
+
+111
+00:10:00.500 --> 00:10:05.180
+Order Tracking: We track vibration against
+speed.
+
+112
+00:10:07.126 --> 00:10:12.666
+Map, trends and cursor cuts reveal orders and
+resonance together.
+
+113
+00:10:12.930 --> 00:10:19.510
+Torsional & Rotational Vibration: We inspect
+encoder speed variation.
+
+114
+00:10:20.448 --> 00:10:25.728
+Time, spectrum and order trends provide
+complementary views.
+
+115
+00:10:26.020 --> 00:10:32.120
+Advanced Modal Analysis: We inspect structural
+modes.
+
+116
+00:10:34.481 --> 00:10:40.891
+The selected poles produce a populated modal
+identification table.
+
+117
+00:10:40.951 --> 00:10:45.991
+Frequency response, Nyquist and identification
+share the same measurement.
+
+118
+00:10:46.260 --> 00:10:53.170
+Operational Modal Analysis (OMA): We use
+response-only measurements.
+
+119
+00:10:54.768 --> 00:10:59.808
+Stabilization, modal parameters and mode
+similarity can be reviewed together.
+
+120
+00:11:00.100 --> 00:11:05.430
+Time-Based ODS: We show motion on the
+structure.
+
+121
+00:11:06.792 --> 00:11:12.362
+Shape, time and phase help locate larger
+motion.
+
+122
+00:11:12.640 --> 00:11:17.680
+Shock & SRS: We inspect shock response.
+
+123
+00:11:19.001 --> 00:11:24.541
+Spectrum, signed responses and nomogram
+describe the same shock.
+
+124
+00:11:24.840 --> 00:11:31.250
+Bearing & Gear Fault Diagnosis: We inspect
+bearing and gear evidence.
+
+125
+00:11:32.648 --> 00:11:38.988
+Diagnosis, kurtogram and trend show candidate
+frequencies and evidence.
+
+126
+00:11:39.310 --> 00:11:46.030
+Kinematic Chain (6-DOF): We inspect
+linked-point motion.
+
+127
+00:11:47.816 --> 00:11:53.476
+3D motion, displacement and RMS trend describe
+the same motion.
+
+128
+00:11:53.740 --> 00:11:59.360
+Cross-Axis Compensation: We correct cross-axis
+effects.
+
+129
+00:12:00.892 --> 00:12:07.272
+Time, matrix and metrics compare raw and
+corrected measurements.
+
+130
+00:12:07.550 --> 00:12:13.000
+Statistics summarizes data, compares
+relationships and monitors changes.
+
+131
+00:12:13.060 --> 00:12:17.000
+We inspect channel statistics.
+
+132
+00:12:17.060 --> 00:12:19.560
+We inspect channel relationships.
+
+133
+00:12:19.620 --> 00:12:22.480
+We inspect events and operating states.
+
+134
+00:12:22.540 --> 00:12:25.420
+We compare measurements with a reference.
+
+135
+00:12:25.480 --> 00:12:28.820
+We extract signal features.
+
+136
+00:12:28.880 --> 00:12:31.860
+We monitor several channels together.
+
+137
+00:12:31.920 --> 00:12:34.870
+Let's see how these tools present their
+results.
+
+138
+00:12:34.950 --> 00:12:40.590
+Channel Profile: We inspect channel
+statistics.
+
+139
+00:12:42.059 --> 00:12:47.479
+Summary, quality and robust statistics
+describe the recording.
+
+140
+00:12:47.760 --> 00:12:52.250
+Relationship Explorer: We inspect channel
+relationships.
+
+141
+00:12:53.621 --> 00:12:58.471
+The results show which channels vary together
+and how strongly.
+
+142
+00:12:58.790 --> 00:13:03.420
+Events & Regimes: We inspect events and
+operating states.
+
+143
+00:13:04.744 --> 00:13:09.564
+The event list and map locate changes in the
+recording.
+
+144
+00:13:09.890 --> 00:13:14.590
+Compare & Validate: We compare measurements
+with a reference.
+
+145
+00:13:15.936 --> 00:13:20.856
+Summary and results present the comparison
+metrics.
+
+146
+00:13:21.140 --> 00:13:26.160
+Feature Designer: We extract signal features.
+
+147
+00:13:27.473 --> 00:13:32.943
+Features and ranking help identify useful
+measures.
+
+148
+00:13:33.240 --> 00:13:38.060
+Multivariate Monitor: We monitor several
+channels together.
+
+149
+00:13:39.514 --> 00:13:45.514
+Model, scores and contributions help explain
+departures from normal behavior.
+
+150
+00:13:45.770 --> 00:13:49.870
+Visualization provides different views of the
+same data.
+
+151
+00:13:49.930 --> 00:13:53.220
+We combine several plot types.
+
+152
+00:13:53.280 --> 00:13:56.330
+We compare time channels.
+
+153
+00:13:56.390 --> 00:13:59.800
+We inspect value distributions.
+
+154
+00:13:59.860 --> 00:14:02.880
+We compare two channels as points.
+
+155
+00:14:02.940 --> 00:14:05.870
+We compare channels by one measure.
+
+156
+00:14:05.930 --> 00:14:08.810
+We compare channel distributions.
+
+157
+00:14:08.870 --> 00:14:12.180
+We inspect several time channels.
+
+158
+00:14:12.240 --> 00:14:16.010
+We overlay a channel and reference.
+
+159
+00:14:16.070 --> 00:14:19.720
+We inspect a computed spectrum.
+
+160
+00:14:19.780 --> 00:14:23.090
+We inspect speed and order together.
+
+161
+00:14:23.150 --> 00:14:25.860
+Let's open short examples of these views.
+
+162
+00:14:25.920 --> 00:14:30.820
+Chart Dashboard: We combine several plot
+types.
+
+163
+00:14:31.619 --> 00:14:36.779
+Time, distribution and comparison plots share
+one data source.
+
+164
+00:14:37.080 --> 00:14:41.400
+Line Chart: We compare time channels.
+
+165
+00:14:44.125 --> 00:14:48.225
+The navigator focuses the graph on a short
+interval.
+
+166
+00:14:48.510 --> 00:14:53.290
+Histogram: We inspect value distributions.
+
+167
+00:14:53.825 --> 00:14:58.145
+The view shows the center, spread and extremes
+of the distribution.
+
+168
+00:14:58.440 --> 00:15:02.980
+Scatter Plot: We compare two channels as
+points.
+
+169
+00:15:03.458 --> 00:15:08.858
+The point pattern reveals linear and nonlinear
+relationships.
+
+170
+00:15:09.120 --> 00:15:13.340
+Bar Plot: We compare channels by one measure.
+
+171
+00:15:13.814 --> 00:15:17.874
+Bars make differences in channel levels easy
+to see.
+
+172
+00:15:18.180 --> 00:15:22.480
+Box Plot: We compare channel distributions.
+
+173
+00:15:22.992 --> 00:15:28.562
+Median, spread and extremes reveal differences
+beyond the mean.
+
+174
+00:15:28.880 --> 00:15:33.560
+Time Graphics: We inspect several time
+channels.
+
+175
+00:15:34.328 --> 00:15:38.768
+A short time window reveals waveform detail.
+
+176
+00:15:39.050 --> 00:15:44.260
+Align / Compare: We overlay a channel and
+reference.
+
+177
+00:15:44.774 --> 00:15:49.164
+Overlay and difference views show where the
+channels diverge.
+
+178
+00:15:49.460 --> 00:15:54.790
+Frequency Domain: We inspect a computed
+spectrum.
+
+179
+00:15:55.294 --> 00:15:59.874
+The view reuses the existing analysis result
+for closer inspection.
+
+180
+00:16:00.160 --> 00:16:06.260
+Order Map View (2D / VTK 3D): We inspect speed
+and order together.
+
+181
+00:16:06.797 --> 00:16:10.277
+The order map also has a 3D waterfall view.
+
+182
+00:16:10.901 --> 00:16:16.251
+The 2D and 3D views help track components as
+speed changes.
+
+183
+00:16:16.540 --> 00:16:20.880
+Reporting brings prepared results into a
+shareable document.
+
+184
+00:16:20.940 --> 00:16:24.420
+We combine results in a report.
+
+185
+00:16:24.480 --> 00:16:27.670
+Let's prepare a report and open the exported
+file.
+
+186
+00:16:27.730 --> 00:16:33.010
+Intelligent Report: We combine results in a
+report.
+
+187
+00:16:33.943 --> 00:16:40.403
+Let's open the exported PDF with its own
+plots, explanations and page layout.
+
+188
+00:16:40.934 --> 00:16:49.314
+These are the exported PDF's own pages,
+containing plots and explanations.
+
+189
+00:16:49.400 --> 00:16:54.200
+Python Script: We add a short engine query.
+
+190
+00:16:55.322 --> 00:17:01.182
+The data engine computed the result; the
+script coordinated the query.

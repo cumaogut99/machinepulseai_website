@@ -1,16 +1,49 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
+import { CONTACT_EMAIL } from '../data/contact.js'
 
 // ─── Contact / Demo Request Modal ──────────────────────────────────────────────
 // Set VITE_CONTACT_FORM_ENDPOINT in production to post to Formspree/CRM/etc.
 const FORM_ENDPOINT = import.meta.env.VITE_CONTACT_FORM_ENDPOINT || ''
-const CONTACT_EMAIL = import.meta.env.VITE_CONTACT_EMAIL || 'hello@machinepulseai.com.tr'
 
 export default function ContactModal({ open, onClose }) {
     const { t } = useTranslation()
     const [form, setForm] = useState({ name: '', company: '', email: '', message: '' })
     const [status, setStatus] = useState('idle') // 'idle' | 'loading' | 'success' | 'error'
+    const dialog = useRef(null)
+
+    useEffect(() => {
+        if (!open) return undefined
+        const previousFocus = document.activeElement
+        const previousOverflow = document.body.style.overflow
+        document.body.style.overflow = 'hidden'
+        dialog.current?.querySelector('input')?.focus()
+        function onKeyDown(event) {
+            if (event.key === 'Escape') {
+                onClose()
+                return
+            }
+            if (event.key !== 'Tab') return
+            const controls = [...dialog.current.querySelectorAll('button, input, textarea, a[href]')]
+                .filter(control => !control.disabled)
+            const first = controls[0]
+            const last = controls[controls.length - 1]
+            if (event.shiftKey && document.activeElement === first) {
+                event.preventDefault()
+                last?.focus()
+            } else if (!event.shiftKey && document.activeElement === last) {
+                event.preventDefault()
+                first?.focus()
+            }
+        }
+        document.addEventListener('keydown', onKeyDown)
+        return () => {
+            document.body.style.overflow = previousOverflow
+            document.removeEventListener('keydown', onKeyDown)
+            previousFocus?.focus()
+        }
+    }, [open, onClose])
 
     function handleChange(e) {
         setForm(f => ({ ...f, [e.target.name]: e.target.value }))
@@ -26,7 +59,7 @@ export default function ContactModal({ open, onClose }) {
                 `Name: ${form.name}\nCompany: ${form.company}\nEmail: ${form.email}\n\nMessage:\n${form.message}`
             )
             window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`
-            setStatus('idle')
+            setStatus('draft')
             return
         }
 
@@ -76,7 +109,8 @@ export default function ContactModal({ open, onClose }) {
                         exit={{ opacity: 0 }}
                     >
                         <motion.div
-                            className="relative w-full max-w-lg rounded-2xl border border-white/10 bg-[#0d1525] shadow-2xl overflow-hidden"
+                            ref={dialog} role="dialog" aria-modal="true" aria-labelledby="contact-title"
+                            className="relative w-full max-w-lg max-h-[90dvh] overflow-y-auto rounded-2xl border border-white/10 bg-[#0d1525] shadow-2xl"
                             initial={{ scale: 0.92, y: 20 }}
                             animate={{ scale: 1, y: 0 }}
                             exit={{ scale: 0.92, y: 20 }}
@@ -92,7 +126,7 @@ export default function ContactModal({ open, onClose }) {
                                 <button
                                     onClick={handleClose}
                                     className="absolute top-4 right-4 w-8 h-8 rounded-lg border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:border-white/25 transition-all"
-                                    aria-label="Close"
+                                    aria-label={t('site.contact.close')}
                                 >
                                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -105,45 +139,45 @@ export default function ContactModal({ open, onClose }) {
                                             <span className="inline-block text-[10px] font-semibold text-[#00f5ff] tracking-widest uppercase mb-2">
                                                 {t('contact.badge')}
                                             </span>
-                                            <h2 className="text-xl font-bold text-white">{t('contact.title')}</h2>
+                                            <h2 id="contact-title" className="text-xl font-bold text-white">{t('contact.title')}</h2>
                                             <p className="text-sm text-slate-400 mt-1">
-                                                {t('contact.subtitle')}
+                                                {t(FORM_ENDPOINT ? 'contact.subtitle' : 'site.contact.emailSubtitle')}
                                             </p>
                                         </div>
 
                                         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-                                            <div className="grid grid-cols-2 gap-4">
+                                            <div className="grid sm:grid-cols-2 gap-4">
                                                 <div className="flex flex-col gap-1.5">
-                                                    <label className="text-xs text-slate-400">{t('contact.form.name')}</label>
+                                                    <label htmlFor="contact-name" className="text-xs text-slate-400">{t('contact.form.name')}</label>
                                                     <input
-                                                        name="name" required value={form.name} onChange={handleChange}
-                                                        placeholder="Jane Smith"
+                                                        id="contact-name" name="name" autoComplete="name" required value={form.name} onChange={handleChange}
+                                                        placeholder={t('site.contact.namePlaceholder')}
                                                         className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2.5 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-[#00f5ff]/40 focus:bg-white/8 transition-all"
                                                     />
                                                 </div>
                                                 <div className="flex flex-col gap-1.5">
-                                                    <label className="text-xs text-slate-400">{t('contact.form.company')}</label>
+                                                    <label htmlFor="contact-company" className="text-xs text-slate-400">{t('contact.form.company')}</label>
                                                     <input
-                                                        name="company" required value={form.company} onChange={handleChange}
-                                                        placeholder="Acme Defense Ltd."
+                                                        id="contact-company" name="company" autoComplete="organization" required value={form.company} onChange={handleChange}
+                                                        placeholder={t('site.contact.companyPlaceholder')}
                                                         className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2.5 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-[#00f5ff]/40 focus:bg-white/8 transition-all"
                                                     />
                                                 </div>
                                             </div>
 
                                             <div className="flex flex-col gap-1.5">
-                                                <label className="text-xs text-slate-400">{t('contact.form.email')}</label>
+                                                <label htmlFor="contact-email" className="text-xs text-slate-400">{t('contact.form.email')}</label>
                                                 <input
-                                                    name="email" type="email" required value={form.email} onChange={handleChange}
-                                                    placeholder="jane@company.com"
+                                                    id="contact-email" name="email" type="email" autoComplete="email" required value={form.email} onChange={handleChange}
+                                                    placeholder={t('site.contact.emailPlaceholder')}
                                                     className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2.5 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-[#00f5ff]/40 focus:bg-white/8 transition-all"
                                                 />
                                             </div>
 
                                             <div className="flex flex-col gap-1.5">
-                                                <label className="text-xs text-slate-400">{t('contact.form.message')}</label>
+                                                <label htmlFor="contact-message" className="text-xs text-slate-400">{t('contact.form.message')}</label>
                                                 <textarea
-                                                    name="message" rows={3} value={form.message} onChange={handleChange}
+                                                    id="contact-message" name="message" rows={3} value={form.message} onChange={handleChange}
                                                     placeholder={t('contact.form.messagePlaceholder')}
                                                     className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2.5 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-[#00f5ff]/40 focus:bg-white/8 transition-all resize-none"
                                                 />
@@ -154,17 +188,19 @@ export default function ContactModal({ open, onClose }) {
                                                     {t('contact.error')}
                                                 </div>
                                             )}
+                                            {status === 'draft' && <p role="status" className="text-xs text-neon-cyan leading-relaxed">{t('site.contact.emailReady')}</p>}
 
                                             <button
                                                 type="submit"
                                                 disabled={status === 'loading'}
                                                 className="w-full btn-neon text-sm font-semibold text-[#00f5ff] py-3 rounded-xl mt-1 disabled:opacity-50 disabled:cursor-not-allowed"
                                             >
-                                                {status === 'loading' ? t('contact.form.sending') : t('contact.form.submit')}
+                                                {status === 'loading' ? t('contact.form.sending') : t(FORM_ENDPOINT ? 'contact.form.submit' : 'site.contact.emailSubmit')}
                                             </button>
                                             <p className="text-center text-[10px] text-slate-600">
                                                 {t('contact.form.privacy')}
                                             </p>
+                                            <p className="text-xs text-slate-400 text-center">{t('site.contact.emailAlternative')} <a href={`mailto:${CONTACT_EMAIL}`} className="text-neon-cyan">{CONTACT_EMAIL}</a></p>
                                         </form>
                                     </>
                                 ) : (
@@ -174,7 +210,7 @@ export default function ContactModal({ open, onClose }) {
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                                             </svg>
                                         </div>
-                                        <h3 className="text-lg font-bold text-white mb-2">{t('contact.success.title')}</h3>
+                                        <h3 id="contact-title" className="text-lg font-bold text-white mb-2">{t('contact.success.title')}</h3>
                                         <p className="text-sm text-slate-400 mb-6">
                                             {t('contact.success.message')}
                                         </p>

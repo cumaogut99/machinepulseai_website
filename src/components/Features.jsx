@@ -34,14 +34,14 @@ const FEATURES = [
             tag: 'Performance',
             title: 'MPAI Data Engine',
             description:
-                'Convert many measurement file types into the native MPAI format, then process 200 GB+ datasets with low memory use and fast interactive access.',
+                'Convert many measurement file types into the native MPAI format, then process large recorded datasets with low memory use and fast interactive access.',
             mediaNote: 'MPAI conversion and memory benchmark',
         },
         tr: {
             tag: 'Performans',
             title: 'MPAI Veri Motoru',
             description:
-                'Birçok ölçüm dosyası türünü yerel MPAI formatına dönüştürün; ardından 200 GB+ veri setlerini düşük bellek kullanımı ve hızlı etkileşimle işleyin.',
+                'Birçok ölçüm dosyası türünü yerel MPAI formatına dönüştürün; ardından büyük kayıtlı veri setlerini düşük bellek kullanımı ve hızlı etkileşimle işleyin.',
             mediaNote: 'MPAI dönüşüm ve bellek karşılaştırması',
         },
         icon: (
