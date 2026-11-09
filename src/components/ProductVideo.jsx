@@ -71,9 +71,6 @@ export default function ProductVideo({ video, chapters = [], priority = false })
                         </button>
                     )}
                 </div>
-                <figcaption className="mt-3 text-right text-xs leading-relaxed text-slate-400">
-                    <span>{t('site.video.language')}</span>
-                </figcaption>
                 {failed && <p role="alert" className="mt-3 text-sm text-slate-300">{t('site.video.error')} <a className="text-neon-cyan underline" href={video.src}>{t('site.video.openFile')}</a></p>}
             </figure>
             {chapters.length > 0 && (

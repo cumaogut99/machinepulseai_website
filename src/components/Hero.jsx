@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { useContactModal } from '../context/ContactModalContext.jsx'
-import { Link } from 'react-router-dom'
 import ProductVideo from './ProductVideo.jsx'
+import ProductTourLink from './ProductTourLink.jsx'
 import { PRODUCT_VIDEOS } from '../data/productVideos.js'
 
 // ─── Framer Motion Variants ─────────────────────────────────────────────────
@@ -42,7 +42,7 @@ export default function Hero() {
     return (
         <section
             id="hero"
-            className="relative min-h-screen flex flex-col items-center justify-start pt-32 pb-20 px-6 overflow-hidden"
+            className="relative min-h-screen flex flex-col items-center justify-start pt-24 sm:pt-28 pb-12 px-6 overflow-hidden"
         >
             {/* ── Background Effects ─────────────────────────────── */}
             {/* Radial spotlight glow behind hero text */}
@@ -65,13 +65,6 @@ export default function Hero() {
                 initial="hidden"
                 animate="visible"
             >
-                {/* Badge */}
-                <motion.div variants={fadeUpVariant}>
-                    <span className="inline-flex items-center gap-2 text-xs font-medium text-[#00f5ff] border border-[#00f5ff]/30 bg-[#00f5ff]/5 rounded-full px-4 py-1.5 mb-8 tracking-wide">
-                        {t('hero.badge')}
-                    </span>
-                </motion.div>
-
                 {/* Main Title */}
                 <motion.h1
                     variants={fadeUpVariant}
@@ -88,7 +81,7 @@ export default function Hero() {
                 {/* Subtitle */}
                 <motion.p
                     variants={fadeUpVariant}
-                    className="text-base sm:text-lg text-slate-400 leading-relaxed max-w-2xl mb-10"
+                    className="text-base sm:text-lg text-slate-400 leading-relaxed max-w-2xl mb-8"
                 >
                     {t('hero.subtitle')}
                 </motion.p>
@@ -130,7 +123,7 @@ export default function Hero() {
                 {/* Trust indicators */}
                 <motion.div
                     variants={fadeUpVariant}
-                    className="flex flex-wrap justify-center items-center gap-x-6 gap-y-3 mt-8 text-xs text-slate-500"
+                    className="flex flex-wrap justify-center items-center gap-x-6 gap-y-3 mt-6 text-xs text-slate-500"
                 >
                     <span className="flex items-center gap-1.5">
                         <svg className="w-3.5 h-3.5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
@@ -161,7 +154,7 @@ export default function Hero() {
                 variants={mediaVariant}
                 initial="hidden"
                 animate="visible"
-                className="relative z-10 w-full max-w-5xl mx-auto mt-16"
+                className="relative z-10 w-full max-w-5xl mx-auto mt-10"
             >
                 {/* Glow aura behind the media box */}
                 <div
@@ -171,12 +164,10 @@ export default function Hero() {
                 />
 
                 <div id="product-preview" className="scroll-mt-24">
-                    <ProductVideo video={PRODUCT_VIDEOS.overview} priority />
-                    <div className="mt-6 text-center">
-                        <Link to="/demo" className="inline-flex items-center gap-2 text-sm text-neon-cyan hover:text-white">
-                            {t('site.video.fullTour')} <span aria-hidden="true">→</span>
-                        </Link>
+                    <div className="mb-6 flex justify-center">
+                        <ProductTourLink />
                     </div>
+                    <ProductVideo video={PRODUCT_VIDEOS.overview} priority />
                 </div>
             </motion.div>
         </section>

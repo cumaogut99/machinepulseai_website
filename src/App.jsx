@@ -13,7 +13,6 @@ import { widgetReleasePhase } from './data/widgetRelease.js'
 import Hero from './components/Hero.jsx'
 import Stats from './components/Stats.jsx'
 import WhySection from './components/WhySection.jsx'
-import AppShowcase from './components/AppShowcase.jsx'
 
 // Code-split page. Unlike React.lazy(), which always suspends on its first
 // render (blanking prerendered HTML during hydration), the page renders
@@ -99,7 +98,6 @@ const Home = () => (
         <Hero />
         <Stats />
         <WhySection />
-        <AppShowcase />
     </main>
 )
 
