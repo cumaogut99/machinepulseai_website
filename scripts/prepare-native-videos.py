@@ -60,7 +60,10 @@ def main() -> None:
     parser.add_argument('--source', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--only', choices=('overview', 'introduction', 'product-tour'))
+    parser.add_argument('--poster-time', type=float)
     args = parser.parse_args()
+    if args.poster_time is not None and (args.only is None or args.poster_time < 0):
+        parser.error('--poster-time requires --only and a non-negative timestamp')
     logging.basicConfig(level=logging.INFO, format='%(message)s')
     for name, stem, timestamp in (
         ('website_preview_TR_EN.mp4', 'overview', 8),
@@ -69,7 +72,8 @@ def main() -> None:
     ):
         if args.only is not None and stem != args.only:
             continue
-        prepare_video(args.source / name, args.output / f'{stem}.mp4', timestamp)
+        prepare_video(args.source / name, args.output / f'{stem}.mp4',
+                      timestamp if args.poster_time is None else args.poster_time)
         logging.info('Prepared %s', stem)
 
 

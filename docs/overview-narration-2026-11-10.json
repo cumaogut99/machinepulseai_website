@@ -1,13 +1,87 @@
 {
-  "edition": "2026-11-10",
-  "duration_seconds": 45.8,
+  "full_decode": "passed",
+  "audio_sha256": "SHA256=b46760117fb9fa668d697393276cc3f70d0ab155cf2e4a3ba77015a63b87fb78",
+  "duration_seconds": 67.18,
+  "edition": "multi-group-canvas-v1",
   "voice": "tr-TR-EmelNeural",
   "rate": "-3%",
-  "sha256": "564c48b8a27878c2f33f1cecb973d4a3a0e90001dfe0bc9713092b60f91b00f6",
-  "full_decode": "passed",
-  "caption_blocks": 7,
+  "sha256": "66345c489a2e5b90b3743504542a374470472a1fc6d7fd1ddb807e1cd861ae13",
   "real_native_footage": true,
   "synthetic_demonstration_data": true,
+  "native_drops": [
+    "random_generator",
+    "channel_selector",
+    "frequency_filter",
+    "fft_spectrum",
+    "bearing_fault",
+    "line_chart",
+    "python_script",
+    "statistics_summary",
+    "intelligent_report"
+  ],
+  "native_connections": [
+    [
+      "random_generator",
+      "data",
+      "channel_selector",
+      "data"
+    ],
+    [
+      "channel_selector",
+      "selected",
+      "frequency_filter",
+      "signal"
+    ],
+    [
+      "channel_selector",
+      "selected",
+      "line_chart",
+      "data"
+    ],
+    [
+      "frequency_filter",
+      "filtered",
+      "fft_spectrum",
+      "data"
+    ],
+    [
+      "frequency_filter",
+      "filtered",
+      "bearing_fault",
+      "vibration"
+    ],
+    [
+      "channel_selector",
+      "selected",
+      "python_script",
+      "data"
+    ],
+    [
+      "python_script",
+      "result",
+      "statistics_summary",
+      "data"
+    ],
+    [
+      "fft_spectrum",
+      "fft_result",
+      "intelligent_report",
+      "data"
+    ],
+    [
+      "bearing_fault",
+      "envelope_spectrum",
+      "intelligent_report",
+      "data"
+    ],
+    [
+      "statistics_summary",
+      "summary",
+      "intelligent_report",
+      "data"
+    ]
+  ],
+  "caption_blocks": 10,
   "narration": [
     {
       "key": "overview_product",
@@ -17,50 +91,39 @@
       "en": "MachinePulseAI is an engineering analysis platform developed for test and R&D teams."
     },
     {
-      "key": "overview_purpose",
+      "key": "overview_canvas",
       "start": 5.63,
-      "duration": 5.51,
-      "tr": "Kayıtlı ölçüm verilerini, analiz araçlarını ve sonuçları tek çalışma alanında bir araya getirir.",
-      "en": "It brings recorded measurements, analysis tools and results into one workspace."
-    },
-    {
-      "key": "overview_preparation",
-      "start": 11.14,
-      "duration": 6.18,
-      "tr": "Ölçüm dosyalarınızı içe aktarabilir, kanalları düzenleyebilir ve sinyalleri analize hazırlayabilirsiniz.",
-      "en": "Import measurement files, organize channels and prepare signals for analysis."
+      "duration": 24.76,
+      "tr": "Veri girişi, ön işleme, filtreler, mühendislik analizi, istatistik ve görselleştirme araçlarını canvas üzerine sürükleyerek iş akışınızı kurabilirsiniz. Rapor ve Python adımlarını da ekleyip aynı veriyi farklı analiz kollarına bağlayabilir, sonuçları tek bir akışta birleştirebilirsiniz. Bağlantılar veri akışını görünür kılar; her analiz kolunu aynı çalışma alanında izleyebilirsiniz.",
+      "en": "Drag tools from each available group onto the canvas. Connect preparation, filters, engineering analysis, statistics and plots. Add reports and Python steps to form a branching workflow. The connections make each analysis path visible in one workspace."
     },
     {
       "key": "overview_analysis",
-      "start": 17.32,
+      "start": 30.39,
       "duration": 7.52,
       "tr": "Frekans, titreşim ve yapısal analiz araçlarıyla ölçümleri inceleyebilir, sonuçları etkileşimli grafiklerde karşılaştırabilirsiniz.",
       "en": "Compare frequency, vibration and structural results in interactive plots."
     },
     {
       "key": "overview_report",
-      "start": 24.84,
+      "start": 37.91,
       "duration": 6.64,
       "tr": "Analiz bulgularını, grafiklerini ve kullanılan ayarları paylaşılabilir mühendislik raporlarında bir araya getirebilirsiniz.",
       "en": "Bring findings, plots and analysis settings together in shareable engineering reports."
     },
     {
       "key": "overview_assistant",
-      "start": 31.48,
-      "duration": 6.95,
-      "tr": "İsteğe bağlı yapay zekâ asistanı, yöntemleri açıklayabilir ve seçtiğiniz analiz adımlarını yürütmenize yardımcı olabilir.",
-      "en": "The optional AI assistant can explain methods and help carry out your chosen analysis steps."
+      "start": 44.55,
+      "duration": 11.39,
+      "tr": "Agent modunda, uyumlu bir modelle uygulamayı yalnızca prompt yazarak kullanabilirsiniz. İsteğe bağlı bu asistan, analiz adımlarını ve rapor hazırlamayı sizin için yürütebilir.",
+      "en": "With a compatible model, use the app through prompts in optional Agent mode. It can run analysis and reporting steps for you."
     },
     {
       "key": "overview_privacy",
-      "start": 38.43,
-      "duration": 7.28,
-      "tr": "Desteklenen bulut servisleriyle veya uyumlu yerel modellerle çalışabilir, ihtiyacınıza uygun modülleri seçebilirsiniz.",
-      "en": "Choose supported cloud or compatible local models, and the modules your workflow needs."
+      "start": 55.94,
+      "duration": 11.17,
+      "tr": "Uyumlu yerel modellerle, gizlilik gerektiren ölçüm verilerinizi bilgisayarınızda tutarak çalışabilirsiniz. Local Only Mode, bulut sağlayıcılarına bağlantıyı engeller.",
+      "en": "Use compatible local models to keep sensitive measurements on your computer. Local Only Mode blocks cloud providers."
     }
-  ],
-  "audio_levels": [
-    "[Parsed_volumedetect_0 @ 000001695d5b3b40] mean_volume: -21.9 dB",
-    "[Parsed_volumedetect_0 @ 000001695d5b3b40] max_volume: -5.8 dB"
   ]
 }

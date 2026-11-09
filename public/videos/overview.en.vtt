@@ -6,31 +6,44 @@ MachinePulseAI is an engineering analysis
 platform developed for test and R&D teams.
 
 2
-00:00:05.660 --> 00:00:11.110
-It brings recorded measurements, analysis
-tools and results into one workspace.
+00:00:05.660 --> 00:00:13.860
+Drag tools from each available group onto the
+canvas. Connect preparation, filters,
 
 3
-00:00:11.170 --> 00:00:17.290
-Import measurement files, organize channels
-and prepare signals for analysis.
+00:00:13.860 --> 00:00:21.962
+engineering analysis, statistics and plots.
+Add reports and Python steps to form a
 
 4
-00:00:17.350 --> 00:00:24.810
+00:00:21.962 --> 00:00:30.360
+branching workflow. The connections make each
+analysis path visible in one workspace.
+
+5
+00:00:30.420 --> 00:00:37.880
 Compare frequency, vibration and structural
 results in interactive plots.
 
-5
-00:00:24.870 --> 00:00:31.450
+6
+00:00:37.940 --> 00:00:44.520
 Bring findings, plots and analysis settings
 together in shareable engineering reports.
 
-6
-00:00:31.510 --> 00:00:38.400
-The optional AI assistant can explain methods
-and help carry out your chosen analysis steps.
-
 7
-00:00:38.460 --> 00:00:45.680
-Choose supported cloud or compatible local
-models, and the modules your workflow needs.
+00:00:44.580 --> 00:00:52.529
+With a compatible model, use the app through
+prompts in optional Agent mode. It can run
+
+8
+00:00:52.529 --> 00:00:55.910
+analysis and reporting steps for you.
+
+9
+00:00:55.970 --> 00:01:04.858
+Use compatible local models to keep sensitive
+measurements on your computer. Local Only Mode
+
+10
+00:01:04.858 --> 00:01:07.080
+blocks cloud providers.

@@ -41,7 +41,7 @@ test('chapters are ordered, within the delivered video and available in both lan
     assert.equal(TOUR_CHAPTERS[0].time, 0.03)
     assert.equal(new Set(TOUR_CHAPTERS.map(chapter => chapter.id)).size, TOUR_CHAPTERS.length)
     for (const [index, chapter] of TOUR_CHAPTERS.entries()) {
-        assert.ok(chapter.time >= 0 && chapter.time < 1021.52)
+        assert.ok(chapter.time >= 0 && chapter.time < PRODUCT_VIDEOS.tour.durationSeconds)
         if (index) assert.ok(chapter.time > TOUR_CHAPTERS[index - 1].time)
         for (const language of ['tr', 'en']) assert.ok(copy[language].chapters[chapter.id])
     }
@@ -72,9 +72,13 @@ test('homepage media and subtitles match the complete-sentence narration receipt
     const movie = readFileSync(new URL(`../public${PRODUCT_VIDEOS.overview.src}`, import.meta.url))
     assert.equal(createHash('sha256').update(movie).digest('hex'), receipt.sha256)
     const subtitles = readFileSync(new URL(`../public${PRODUCT_VIDEOS.overview.captions}`, import.meta.url), 'utf8')
-        .replace(/\s+/g, ' ')
+        .split(/\r?\n/).filter(line => line && line !== 'WEBVTT' && !/^\d+$/.test(line) && !line.includes('-->'))
+        .join(' ').replace(/\s+/g, ' ')
     assert.equal(receipt.voice, 'tr-TR-EmelNeural')
     assert.ok(receipt.narration[1].start < 6 && receipt.narration[2].start >= 11)
+    assert.equal(receipt.narration[1].key, 'overview_canvas')
+    assert.equal(receipt.native_drops.length, 9)
+    assert.equal(receipt.native_connections.length, 10)
     for (const track of receipt.narration) {
         assert.ok(track.tr.endsWith('.'), track.key)
         assert.ok(subtitles.includes(track.en), track.key)

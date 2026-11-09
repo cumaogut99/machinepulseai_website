@@ -1,6 +1,6 @@
 # Native product videos
 
-The home page presents the revised 46-second overview. `/product` contains the
+The home page presents the revised 67-second overview. `/product` contains the
 complete tour with 16 chapter entry points, illustrated capabilities, a practical
 workflow and package selection. The former `/demo` route redirects permanently
 to `/product`; the navigation has one Product destination.
@@ -14,12 +14,20 @@ chapter action. Native controls support pause, seek, volume and fullscreen.
 
 ## Media provenance
 
-The complete tour comes from the application project's `output/video/current/`
-delivery dated 2026-11-09. The homepage overview is a new 2026-11-10 edition:
-seven complete Turkish sentences voiced by the retained Emel voice (-3%),
-opening with the platform and its audience before describing its capabilities.
-All visuals reuse successful native takes selected in that delivery's provenance.
-No AI interaction is fabricated and the complete tour's timeline is unchanged.
+Both movies come from the application project's `output/video/current/`
+delivery updated 2026-11-10. The retained Emel voice (-3%) first introduces the
+platform and its audience. A new native canvas take then shows nine real palette
+drops across every available group plus Python, followed by ten actual port
+connections. The short edit removes idle gaps, preserving every gesture at its
+original speed. The complete tour retains all 58 independent chapters.
+
+Both narrations explicitly explain prompt-driven use through optional Agent
+mode with a compatible model. Compatible local models and Local Only Mode let
+users keep measurements away from cloud providers. The native capture shows
+the actual Ollama provider, ten served models and Local Only Mode; it sends no
+user prompt and loads no model. No AI response or completed AI action is staged.
+The updated introduction shifts the later chapters; all 16 public seek points
+are derived from the new edit rather than applying an assumed uniform offset.
 
 Website copies are cropped from 2560×1440 to 2212×1440 with
 `crop=2212:1440:174:0`; all 58 source chapters have the same horizontal content
@@ -27,7 +35,8 @@ bounds. The full application height and English subtitle band remain visible.
 The Turkish disclosure is embedded at the left of that band. Its right edge
 is x=435; the widest delivered English subtitle starts at x=642, leaving 207px
 of separation. Video is encoded with H.264 CRF 18 and fast-start metadata;
-audio is copied unchanged. Original delivery files are untouched.
+audio is copied unchanged. Previous delivery files are retained in the
+application workspace's `tmp/showcase_delivery_before_multi_group_20261110_v1`.
 Reproduce with `scripts/prepare-native-videos.py --source <delivery> --output public/videos`.
 Posters are extracted from these cropped copies. English subtitles are burned
 into the recordings; both active videos also have WebVTT accessibility tracks.
@@ -35,14 +44,18 @@ into the recordings; both active videos also have WebVTT accessibility tracks.
 Reproduce the new overview from the application repository root:
 
 ```text
-python scripts/prepare_showcase_speech.py --section website-overview --trim-edges --output tmp/showcase_assets/website_overview_v2/speech
-python scripts/prepare_website_overview.py --delivery output/video/current --speech tmp/showcase_assets/website_overview_v2/speech --output <new-edition-directory>
+python scripts/prepare_showcase_speech.py --section website-overview --trim-edges --output <speech-directory>
+python scripts/prepare_website_overview.py --delivery output/video/current --intro-take <validated-native-take> --speech <speech-directory> --output <new-edition-directory>
 ```
 
 Then run this website's `scripts/prepare-native-videos.py --source <new-edition-directory>
 --output public/videos --only overview` and copy that edition's `captions.en.vtt`
 to `public/videos/overview.en.vtt`. The narration source lives in
 `scripts/showcase_production/website_overview.py` in the application repository.
+For a complete verified delivery, `scripts/sync_showcase_website.py --delivery
+<delivery-directory> --website <website-checkout>` synchronizes both movies,
+posters, captions, duration labels and chapter positions together. It does not
+deploy the website.
 
 `src/data/productVideos.js` is the source of truth for media paths and chapter
 positions. Chapter entry points match the delivered `review.html` timestamps.
@@ -72,6 +85,20 @@ When `VITE_CONTACT_FORM_ENDPOINT` is configured, the form posts to that service.
 Otherwise it explicitly prepares an email draft; the visitor completes sending
 in their email application. The website does not claim to have sent a request
 in that mode. No external form service was created by this change.
+
+## Verification (2026-11-10 multi-group edition)
+
+- 14 website tests pass, including shipped media hashes, narration/subtitle
+  agreement, native gestures, chapter ordering and bilingual chapter links.
+- Client/SSR production builds and all 53 current prerendered routes pass.
+- Both public movies pass full decoding; their compressed audio stream hashes
+  match the canonical delivery exactly. See the overview narration receipt and
+  `product-tour-media-2026-11-10.json`.
+- Canonical native validation: nine drops, ten connections, zero sent prompts,
+  selected-source logs without warnings/errors, all 58 chapter-copy hashes and
+  all three complete delivery decodes pass. The application/tooling tests cover
+  69 unique cases. Canvas, Agent and local-provider/privacy frames were reviewed.
+- No website deployment or new browser-interaction check was performed.
 
 ## Verification (original 2026-11-09 delivery)
 
