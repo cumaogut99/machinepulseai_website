@@ -14,9 +14,8 @@ export default {
             openFile: 'Open the video file',
         },
         demo: {
-            back: 'Home', eyebrow: 'Inside the application', title: 'See the complete workflow',
+            back: 'Home', title: 'See the complete workflow',
             description: 'Explore the desktop application, from importing recordings and preparing signals to engineering analysis and reporting. Start at the beginning or choose a chapter.',
-            scope: 'This tour demonstrates Phase 1 recorded-data workflows with synthetic signals. Later-phase capabilities are identified in the recording. The AI assistant is optional; results depend on the selected model, inputs and analysis settings.',
         },
         intro: {
             eyebrow: 'Product introduction', title: 'One workspace, from data to report',
@@ -60,9 +59,8 @@ export default {
             openFile: 'Video dosyasını aç',
         },
         demo: {
-            back: 'Ana sayfa', eyebrow: 'Uygulamanın içinden', title: 'İş akışını baştan sona görün',
+            back: 'Ana sayfa', title: 'İş akışını baştan sona görün',
             description: 'Kayıtları içe aktarmadan sinyal hazırlamaya, mühendislik analizlerinden raporlamaya kadar masaüstü uygulamasını inceleyin. Baştan izleyin veya ilgilendiğiniz bölümü seçin.',
-            scope: 'Bu tur, sentetik sinyallerle Phase 1 kayıtlı veri iş akışlarını gösterir. İleriki aşamalara ait yetenekler kayıtta belirtilir. AI asistanı isteğe bağlıdır; sonuçlar seçilen modele, girdilere ve analiz ayarlarına bağlıdır.',
         },
         intro: {
             eyebrow: 'Ürün tanıtımı', title: 'Veriden rapora tek çalışma alanı',

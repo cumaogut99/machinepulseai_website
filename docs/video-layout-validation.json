@@ -1,0 +1,32 @@
+[
+  {
+    "video": "overview",
+    "dimensions": [
+      2212,
+      1440
+    ],
+    "duration": "00:00:47.51",
+    "audio_hash": "SHA256=829eb656017d64a3bf6568561dc41b666fd3c7a7d9d8c56fa520c48e2213afe6",
+    "decode": "passed"
+  },
+  {
+    "video": "introduction",
+    "dimensions": [
+      2212,
+      1440
+    ],
+    "duration": "00:01:58.02",
+    "audio_hash": "SHA256=f7955f4a5393e63dd9fedbfd2c0d1434d74bee5d70ba735e66ff98ab6104858b",
+    "decode": "passed"
+  },
+  {
+    "video": "product-tour",
+    "dimensions": [
+      2212,
+      1440
+    ],
+    "duration": "00:17:01.52",
+    "audio_hash": "SHA256=5969ae1a5dcb3a7ad4fb12b2bf9c2e8ef1e32d066a4d2f1dd8a2a03148a86a4c",
+    "decode": "passed"
+  }
+]

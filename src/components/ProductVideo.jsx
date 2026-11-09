@@ -40,7 +40,7 @@ export default function ProductVideo({ video, chapters = [], priority = false })
     return (
         <div className={chapters.length ? 'grid lg:grid-cols-[minmax(0,1fr)_280px] gap-6 items-start' : ''}>
             <figure className="min-w-0">
-                <div className="hero-media-glow rounded-2xl overflow-hidden border border-white/10 bg-black aspect-video relative">
+                <div className="hero-media-glow rounded-2xl overflow-hidden border border-white/10 bg-black aspect-[2212/1440] relative">
                     {loaded ? (
                         <video
                             ref={player} src={video.src} poster={video.poster}
@@ -55,7 +55,7 @@ export default function ProductVideo({ video, chapters = [], priority = false })
                     ) : (
                         <button type="button" onClick={() => playFrom()} aria-label={t('site.video.play', { title })}
                             className="group relative w-full h-full block text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-neon-cyan">
-                            <img src={video.poster} alt="" width="1600" height="900"
+                            <img src={video.poster} alt="" width="1106" height="720"
                                 loading={priority ? 'eager' : 'lazy'} fetchpriority={priority ? 'high' : 'auto'}
                                 className="w-full h-full object-cover" />
                             <span className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/15 to-black/10" />
@@ -71,8 +71,7 @@ export default function ProductVideo({ video, chapters = [], priority = false })
                         </button>
                     )}
                 </div>
-                <figcaption className="mt-4 flex flex-wrap justify-between gap-2 text-xs leading-relaxed text-slate-400">
-                    <span>{t('site.video.disclosure')}</span>
+                <figcaption className="mt-3 text-right text-xs leading-relaxed text-slate-400">
                     <span>{t('site.video.language')}</span>
                 </figcaption>
                 {failed && <p role="alert" className="mt-3 text-sm text-slate-300">{t('site.video.error')} <a className="text-neon-cyan underline" href={video.src}>{t('site.video.openFile')}</a></p>}

@@ -14,7 +14,6 @@ import Hero from './components/Hero.jsx'
 import Stats from './components/Stats.jsx'
 import WhySection from './components/WhySection.jsx'
 import AppShowcase from './components/AppShowcase.jsx'
-import CTABanner from './components/CTABanner.jsx'
 
 // Code-split page. Unlike React.lazy(), which always suspends on its first
 // render (blanking prerendered HTML during hydration), the page renders
@@ -101,7 +100,6 @@ const Home = () => (
         <Stats />
         <WhySection />
         <AppShowcase />
-        <CTABanner />
     </main>
 )
 
@@ -110,7 +108,6 @@ const Page = ({ children }) => (
     <main id="main" className="pt-14">
         <Suspense fallback={<PageFallback />}>
             {children}
-            <CTABanner />
         </Suspense>
     </main>
 )
