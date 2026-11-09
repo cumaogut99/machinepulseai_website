@@ -59,6 +59,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--source', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--only', choices=('overview', 'introduction', 'product-tour'))
     args = parser.parse_args()
     logging.basicConfig(level=logging.INFO, format='%(message)s')
     for name, stem, timestamp in (
@@ -66,6 +67,8 @@ def main() -> None:
         ('introduction_TR_EN.mp4', 'introduction', 65),
         ('MachinePulseAI_Phase1_TR_EN.mp4', 'product-tour', 505),
     ):
+        if args.only is not None and stem != args.only:
+            continue
         prepare_video(args.source / name, args.output / f'{stem}.mp4', timestamp)
         logging.info('Prepared %s', stem)
 

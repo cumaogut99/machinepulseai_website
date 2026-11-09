@@ -1,7 +1,6 @@
 // Native, same-origin media. Keep previews out of the initial network payload.
 export const PRODUCT_VIDEOS = {
-    overview: { src: '/videos/overview.mp4', poster: '/videos/overview.webp', duration: '0:48', title: 'overview' },
-    introduction: { src: '/videos/introduction.mp4', poster: '/videos/introduction.webp', duration: '1:58', title: 'introduction' },
+    overview: { src: '/videos/overview.mp4', poster: '/videos/overview.webp', duration: '0:46', title: 'overview', captions: '/videos/overview.en.vtt' },
     tour: { src: '/videos/product-tour.mp4', poster: '/videos/product-tour.webp', duration: '17:02', title: 'tour', captions: '/videos/captions.en.vtt' },
 }
 
@@ -24,6 +23,17 @@ export const TOUR_CHAPTERS = [
     { id: 'reports', time: 976.51 },
     { id: 'python', time: 1009.37 },
 ]
+
+/** Resolve a shared chapter identifier; unknown URL parameters do not load media. */
+export function getTourChapter(id) {
+    return TOUR_CHAPTERS.find(chapter => chapter.id === id)
+}
+
+/** Link to a real chapter of the single product destination. */
+export function tourChapterHref(id) {
+    if (!getTourChapter(id)) throw new RangeError(`Unknown product chapter: ${id}`)
+    return `/product?chapter=${encodeURIComponent(id)}#product-tour`
+}
 
 /** Format a media position without depending on the visitor's locale. */
 export function formatVideoTime(seconds) {

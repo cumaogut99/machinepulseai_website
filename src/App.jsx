@@ -12,7 +12,7 @@ import { widgetReleasePhase } from './data/widgetRelease.js'
 // code-split so the initial page load only ships what it needs.
 import Hero from './components/Hero.jsx'
 import Stats from './components/Stats.jsx'
-import WhySection from './components/WhySection.jsx'
+import Features from './components/Features.jsx'
 
 // Code-split page. Unlike React.lazy(), which always suspends on its first
 // render (blanking prerendered HTML during hydration), the page renders
@@ -40,7 +40,6 @@ function lazyPage(loader) {
     return Page
 }
 
-const DemoPage = lazyPage(() => import('./components/DemoPage.jsx'))
 const ProductPage = lazyPage(() => import('./components/ProductPage.jsx'))
 const Pricing = lazyPage(() => import('./components/Pricing.jsx'))
 const WidgetCatalog = lazyPage(() => import('./components/WidgetCatalog.jsx'))
@@ -57,7 +56,6 @@ const COMBUSTION_RELEASED = !widgetReleasePhase('combustion_analysis', { subgrou
 // render (client hydration and build-time prerendering).
 const PAGE_ROUTES = [
     ['/product', ProductPage],
-    ['/demo', DemoPage],
     ['/widgets', WidgetCatalog],
     ['/widgets/combustion-analysis', CombustionAnalysisDetail],
     ['/widgets/fft-spectrum', FFTSpectrumLearning],
@@ -97,7 +95,7 @@ const Home = () => (
     <main id="main">
         <Hero />
         <Stats />
-        <WhySection />
+        <Features compact />
     </main>
 )
 
@@ -131,7 +129,7 @@ function AppShell() {
             <div className="flex-grow">
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/demo" element={<Page><DemoPage /></Page>} />
+                    <Route path="/demo" element={<Navigate to="/product" replace />} />
                     <Route path="/product" element={<Page><ProductPage /></Page>} />
                     <Route path="/widgets" element={<Page><WidgetCatalog /></Page>} />
                     <Route path="/widgets/combustion-analysis" element={COMBUSTION_RELEASED ? <Page><CombustionAnalysisDetail /></Page> : <Navigate to="/widgets" replace />} />

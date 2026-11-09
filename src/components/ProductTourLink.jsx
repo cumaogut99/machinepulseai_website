@@ -6,7 +6,7 @@ export default function ProductTourLink() {
     const { t } = useTranslation()
     return (
         <Link
-            to="/demo"
+            to="/product"
             className="btn-neon inline-flex w-full sm:w-auto items-center justify-center gap-3 rounded-xl bg-neon-cyan/10 px-6 py-3.5 text-center text-sm sm:text-base font-semibold text-neon-cyan focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neon-cyan"
         >
             {t('site.video.fullTour')}

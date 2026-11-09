@@ -107,7 +107,7 @@ const resources = {
                 "title2": "to Evidence-Based Analysis",
                 "subtitle": "Bring recorded test data into one workspace. Prepare signals, run engineering analyses and inspect the evidence with an optional AI assistant — from question to report.",
                 "ctaPrimary": "Request a Demo",
-                "ctaSecondary": "Watch the 48-second Overview",
+                "ctaSecondary": "Watch the Short Introduction",
                 "stats": {
                     "files": "Phase 1 · Recorded data",
                     "os": "Windows 10/11",
@@ -353,7 +353,7 @@ const resources = {
                 "title2": "Kanıta Dayalı Analize",
                 "subtitle": "Kayıtlı test verilerini tek çalışma alanına taşıyın. Sinyalleri hazırlayın, mühendislik analizlerini çalıştırın ve isteğe bağlı AI asistanıyla bulguların dayanaklarını inceleyin — sorudan rapora.",
                 "ctaPrimary": "Demo İste",
-                "ctaSecondary": "48 Saniyelik Tanıtımı İzle",
+                "ctaSecondary": "Kısa Tanıtımı İzle",
                 "stats": {
                     "files": "Phase 1 · Kayıtlı veri",
                     "os": "Windows 10/11",

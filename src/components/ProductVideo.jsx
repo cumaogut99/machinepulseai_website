@@ -1,19 +1,34 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { formatVideoTime } from '../data/productVideos.js'
 
 /** Click-to-load native video with optional chapter navigation. */
-export default function ProductVideo({ video, chapters = [], priority = false }) {
+export default function ProductVideo({ video, chapters = [], selectedChapter, priority = false }) {
     const { t } = useTranslation()
     const player = useRef(null)
     const requestedTime = useRef(0)
     const [loaded, setLoaded] = useState(false)
     const [failed, setFailed] = useState(false)
     const [activeChapter, setActiveChapter] = useState(0)
+    const [shouldPlay, setShouldPlay] = useState(false)
     const title = t(`site.video.titles.${video.title}`)
+    const selectedTime = chapters.find(chapter => chapter.id === selectedChapter)?.time
+
+    useEffect(() => {
+        if (selectedTime === undefined) return
+        requestedTime.current = selectedTime
+        setFailed(false)
+        setShouldPlay(false)
+        setLoaded(true)
+        if (player.current?.readyState >= 1) {
+            player.current.currentTime = selectedTime
+            player.current.focus({ preventScroll: true })
+        }
+    }, [selectedTime])
 
     function playFrom(time = 0) {
         requestedTime.current = time
+        setShouldPlay(true)
         setFailed(false)
         if (!loaded) {
             setLoaded(true)
@@ -44,7 +59,7 @@ export default function ProductVideo({ video, chapters = [], priority = false })
                     {loaded ? (
                         <video
                             ref={player} src={video.src} poster={video.poster}
-                            controls autoPlay playsInline preload="metadata" tabIndex={0}
+                            controls autoPlay={shouldPlay} playsInline preload="metadata" tabIndex={0}
                             aria-label={title} onLoadedMetadata={onReady}
                             onTimeUpdate={chapters.length ? onTimeUpdate : undefined}
                             onError={() => setFailed(true)}

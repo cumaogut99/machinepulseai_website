@@ -23,18 +23,14 @@ export const ROUTE_META = {
             description: 'CSV, TDMS, MDF/MF4, Parquet ve MPAI test verilerini tek çalışma alanında içe aktarın; büyük kayıtları düşük bellek kullanımıyla analiz edin.',
         },
     },
-    '/demo': {
-        en: { title: `Product Tour — ${BRAND}`, description: 'Watch the recorded MachinePulseAI product tour: data preparation, optional AI assistant, engineering analyses and reports, with chapter navigation.' },
-        tr: { title: `Ürün Turu — ${BRAND}`, description: 'MachinePulseAI ürün turu: veri hazırlama, isteğe bağlı AI asistanı, mühendislik analizleri ve raporlar. Bölüm seçimiyle gerçek uygulamayı inceleyin.' },
-    },
     '/product': {
         en: {
             title: `Product — ${BRAND}`,
-            description: 'Capabilities, workflow and the built-in AI architecture: natural-language analysis, Apache Arrow zero-copy engine, 8 GB RAM operation and multi-axis visualization.',
+            description: 'Explore the complete product tour: recorded-data preparation, engineering analyses, interactive plots, reports and optional AI assistance.',
         },
         tr: {
             title: `Ürün — ${BRAND}`,
-            description: 'Yetenekler, iş akışı ve yerleşik AI mimarisi: doğal dil ile analiz, Apache Arrow sıfır-kopya motoru, 8 GB RAM ile çalışma ve çok-eksenli görselleştirme.',
+            description: 'Kapsamlı ürün turuyla veri hazırlama, mühendislik analizleri, etkileşimli grafikler, raporlama ve isteğe bağlı AI desteğini keşfedin.',
         },
     },
     '/widgets': {

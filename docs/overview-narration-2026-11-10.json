@@ -1,0 +1,66 @@
+{
+  "edition": "2026-11-10",
+  "duration_seconds": 45.8,
+  "voice": "tr-TR-EmelNeural",
+  "rate": "-3%",
+  "sha256": "564c48b8a27878c2f33f1cecb973d4a3a0e90001dfe0bc9713092b60f91b00f6",
+  "full_decode": "passed",
+  "caption_blocks": 7,
+  "real_native_footage": true,
+  "synthetic_demonstration_data": true,
+  "narration": [
+    {
+      "key": "overview_product",
+      "start": 0.0,
+      "duration": 5.63,
+      "tr": "MachinePulseAI, test ve Ar-Ge ekipleri için geliştirdiğimiz bir mühendislik analiz platformudur.",
+      "en": "MachinePulseAI is an engineering analysis platform developed for test and R&D teams."
+    },
+    {
+      "key": "overview_purpose",
+      "start": 5.63,
+      "duration": 5.51,
+      "tr": "Kayıtlı ölçüm verilerini, analiz araçlarını ve sonuçları tek çalışma alanında bir araya getirir.",
+      "en": "It brings recorded measurements, analysis tools and results into one workspace."
+    },
+    {
+      "key": "overview_preparation",
+      "start": 11.14,
+      "duration": 6.18,
+      "tr": "Ölçüm dosyalarınızı içe aktarabilir, kanalları düzenleyebilir ve sinyalleri analize hazırlayabilirsiniz.",
+      "en": "Import measurement files, organize channels and prepare signals for analysis."
+    },
+    {
+      "key": "overview_analysis",
+      "start": 17.32,
+      "duration": 7.52,
+      "tr": "Frekans, titreşim ve yapısal analiz araçlarıyla ölçümleri inceleyebilir, sonuçları etkileşimli grafiklerde karşılaştırabilirsiniz.",
+      "en": "Compare frequency, vibration and structural results in interactive plots."
+    },
+    {
+      "key": "overview_report",
+      "start": 24.84,
+      "duration": 6.64,
+      "tr": "Analiz bulgularını, grafiklerini ve kullanılan ayarları paylaşılabilir mühendislik raporlarında bir araya getirebilirsiniz.",
+      "en": "Bring findings, plots and analysis settings together in shareable engineering reports."
+    },
+    {
+      "key": "overview_assistant",
+      "start": 31.48,
+      "duration": 6.95,
+      "tr": "İsteğe bağlı yapay zekâ asistanı, yöntemleri açıklayabilir ve seçtiğiniz analiz adımlarını yürütmenize yardımcı olabilir.",
+      "en": "The optional AI assistant can explain methods and help carry out your chosen analysis steps."
+    },
+    {
+      "key": "overview_privacy",
+      "start": 38.43,
+      "duration": 7.28,
+      "tr": "Desteklenen bulut servisleriyle veya uyumlu yerel modellerle çalışabilir, ihtiyacınıza uygun modülleri seçebilirsiniz.",
+      "en": "Choose supported cloud or compatible local models, and the modules your workflow needs."
+    }
+  ],
+  "audio_levels": [
+    "[Parsed_volumedetect_0 @ 000001695d5b3b40] mean_volume: -21.9 dB",
+    "[Parsed_volumedetect_0 @ 000001695d5b3b40] max_volume: -5.8 dB"
+  ]
+}

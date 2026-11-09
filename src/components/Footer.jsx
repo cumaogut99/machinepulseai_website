@@ -17,7 +17,6 @@ export default function Footer() {
                     </div>
                     <nav aria-label={t('site.footer.navigation')} className="flex flex-wrap gap-x-8 gap-y-4 text-xs text-slate-400">
                         <Link to="/product" className="hover:text-white">{t('nav.product')}</Link>
-                        <Link to="/demo" className="hover:text-white">{t('site.footer.tour')}</Link>
                         <Link to="/widgets" className="hover:text-white">{t('nav.widgets')}</Link>
                         <Link to="/pricing" className="hover:text-white">{t('nav.pricing')}</Link>
                         <button type="button" onClick={open} className="hover:text-white">{t('site.footer.contact')}</button>

@@ -30,7 +30,6 @@ export default function Navbar() {
                 href: `/widgets?category=${group.id}`,
             })),
         },
-        { label: t('site.footer.tour'), href: '/demo' },
         { label: t('nav.pricing'), href: '/pricing' },
     ]
 

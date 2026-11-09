@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict'
-import { closeSync, existsSync, openSync, readSync, statSync } from 'node:fs'
+import { closeSync, existsSync, openSync, readFileSync, readSync, statSync } from 'node:fs'
+import { createHash } from 'node:crypto'
 import test from 'node:test'
-import { PRODUCT_VIDEOS, TOUR_CHAPTERS } from '../src/data/productVideos.js'
+import { getTourChapter, PRODUCT_VIDEOS, TOUR_CHAPTERS, tourChapterHref } from '../src/data/productVideos.js'
 import copy from '../src/i18n/siteMarketing.js'
 
 /** Read MP4 top-level headers without loading the media payload into memory. */
@@ -52,4 +53,30 @@ test('marketing text has matching Turkish and English keys', () => {
             typeof item === 'object' ? keys(item, `${prefix}${key}.`) : [`${prefix}${key}`])
     }
     assert.deepEqual(keys(copy.en).sort(), keys(copy.tr).sort())
+})
+
+test('shareable product links resolve the same chapter and timestamp used by the player', () => {
+    for (const chapter of TOUR_CHAPTERS) {
+        const url = new URL(tourChapterHref(chapter.id), 'https://www.machinepulseai.com.tr')
+        assert.equal(url.pathname, '/product')
+        assert.equal(url.hash, '#product-tour')
+        assert.equal(getTourChapter(url.searchParams.get('chapter'))?.time, chapter.time)
+    }
+    assert.equal(getTourChapter('not-a-chapter'), undefined)
+    assert.equal(getTourChapter(null), undefined)
+    assert.throws(() => tourChapterHref('not-a-chapter'), RangeError)
+})
+
+test('homepage media and subtitles match the complete-sentence narration receipt', () => {
+    const receipt = JSON.parse(readFileSync(new URL('../docs/overview-narration-2026-11-10.json', import.meta.url), 'utf8'))
+    const movie = readFileSync(new URL(`../public${PRODUCT_VIDEOS.overview.src}`, import.meta.url))
+    assert.equal(createHash('sha256').update(movie).digest('hex'), receipt.sha256)
+    const subtitles = readFileSync(new URL(`../public${PRODUCT_VIDEOS.overview.captions}`, import.meta.url), 'utf8')
+        .replace(/\s+/g, ' ')
+    assert.equal(receipt.voice, 'tr-TR-EmelNeural')
+    assert.ok(receipt.narration[1].start < 6 && receipt.narration[2].start >= 11)
+    for (const track of receipt.narration) {
+        assert.ok(track.tr.endsWith('.'), track.key)
+        assert.ok(subtitles.includes(track.en), track.key)
+    }
 })
