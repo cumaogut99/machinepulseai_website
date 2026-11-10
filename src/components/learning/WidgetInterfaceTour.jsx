@@ -8,5 +8,9 @@ export default function WidgetInterfaceTour({ widgetId, name }) {
     const lang = i18n.language?.startsWith('tr') ? 'tr' : 'en'
     const views = getInterfaceTour(widgetId, lang)
     if (!views) return null
-    return <InterfaceTour key={`${widgetId}:${lang}`} views={views} name={name} labels={t('vibrationLearn.tour', { returnObjects: true })} />
+    const labels = {
+        ...t('vibrationLearn.tour', { returnObjects: true }),
+        optionsTitle: t('widgetLearn.common.optionsTitle'),
+    }
+    return <InterfaceTour key={`${widgetId}:${lang}`} views={views} name={name} labels={labels} />
 }

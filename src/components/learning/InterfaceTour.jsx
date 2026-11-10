@@ -103,6 +103,15 @@ export default function InterfaceTour({ views, labels, name }) {
                     </div>
                 </div>
                 <p className="mt-4 max-w-4xl text-sm leading-7 text-slate-300">{point.desc}</p>
+                {point.details?.length > 0 && <div className="mt-5 border-t border-neon-cyan/15 pt-5">
+                    <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-400">{labels.optionsTitle}</h4>
+                    <dl className="mt-4 grid gap-x-8 gap-y-5 md:grid-cols-2">
+                        {point.details.map((detail) => <div key={detail.name}>
+                            <dt className="text-sm font-semibold text-white">{detail.name}</dt>
+                            <dd className="mt-2 text-sm leading-7 text-slate-400">{detail.desc}</dd>
+                        </div>)}
+                    </dl>
+                </div>}
             </div>
         </div>
     )

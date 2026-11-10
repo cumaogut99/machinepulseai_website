@@ -67,6 +67,7 @@ export default function VibrationWidgetLearning({ widgetId }) {
     const widget = WIDGET_CATALOG.flatMap((category) => category.widgets).find((item) => item.id === widgetId)
     const activeSection = useActiveSection(NAV_KEYS)
     const hasTour = INTERFACE_TOUR_IDS.includes(widgetId)
+    const integratedGuide = widgetId === 'cross_spectrum'
     // Eyebrow follows the application palette: direct Engineering Modules
     // entries (e.g. Frequency Response) are not part of the vibration subgroup.
     const category = WIDGET_CATALOG.find((item) => item.widgets.some((entry) => entry.id === widgetId))
@@ -79,24 +80,27 @@ export default function VibrationWidgetLearning({ widgetId }) {
             <div className="pointer-events-none absolute right-[10%] top-24 h-96 w-96 rounded-full bg-[#00f5ff]/[0.06] blur-[140px]" />
             <div className="pointer-events-none absolute left-[5%] top-[42%] h-96 w-96 rounded-full bg-[#a855f7]/[0.05] blur-[150px]" />
 
-            <header className="relative mx-auto max-w-6xl px-6 pb-12 pt-10">
+            <header className={`relative mx-auto max-w-6xl px-6 ${integratedGuide ? 'pb-8 pt-6' : 'pb-12 pt-10'}`}>
                 <Link to="/widgets" className="inline-flex items-center gap-2 text-sm text-slate-400 transition hover:text-white">
                     <span aria-hidden="true">←</span>{t('vibrationLearn.back')}
                 </Link>
-                <div className="mt-10">
+                <div className={integratedGuide ? 'mt-6' : 'mt-10'}>
                     <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#00f5ff]">{eyebrow}</p>
-                    <h1 className="mt-4 max-w-5xl text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">{page.title}</h1>
-                    <p className="mt-5 max-w-3xl text-base leading-7 text-slate-300 sm:text-lg">{page.intro}</p>
-                    <div className="mt-6 flex flex-wrap gap-2">
+                    {integratedGuide ? <div className="mt-3 flex flex-col items-start gap-4 lg:flex-row lg:items-center lg:justify-between lg:gap-8">
+                        <h1 className="min-w-0 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">{page.title}</h1>
+                        <a href="#interface" className="btn-neon flex-none whitespace-nowrap rounded-lg bg-[#00f5ff]/10 px-5 py-3 text-sm font-semibold text-[#00f5ff]">{t('vibrationLearn.start')}</a>
+                    </div> : <h1 className="mt-4 max-w-5xl text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">{page.title}</h1>}
+                    <p className={`${integratedGuide ? 'mt-4' : 'mt-5'} max-w-3xl text-base leading-7 text-slate-300 sm:text-lg`}>{page.intro}</p>
+                    {!integratedGuide && <div className="mt-6 flex flex-wrap gap-2">
                         {page.badges.map((badge) => <span key={badge} className="rounded-full border border-[#00f5ff]/20 bg-[#00f5ff]/[0.05] px-3 py-1 text-xs font-medium text-slate-300">{badge}</span>)}
-                    </div>
-                    <div className="mt-7 flex flex-wrap items-center gap-4">
+                    </div>}
+                    {!integratedGuide && <div className="mt-7 flex flex-wrap items-center gap-4">
                         <a href="#interface" className="btn-neon rounded-lg bg-[#00f5ff]/10 px-5 py-3 text-sm font-semibold text-[#00f5ff]">{t('vibrationLearn.start')}</a>
                         <span className="text-xs text-slate-500">{page.duration}</span>
-                    </div>
+                    </div>}
                 </div>
                 {page.why?.length > 0 && (
-                    <section className="mt-12" aria-labelledby="why-title">
+                    <section className={integratedGuide ? 'mt-8' : 'mt-12'} aria-labelledby="why-title">
                         <h2 id="why-title" className="text-2xl font-bold tracking-tight text-white sm:text-3xl">{t('vibrationLearn.whyTitle')}</h2>
                         <div className="mt-6 grid gap-3 lg:grid-cols-3">
                             {page.why.map((item) => (
@@ -131,9 +135,10 @@ export default function VibrationWidgetLearning({ widgetId }) {
                 <section id="interface" className="scroll-mt-32 py-16">
                     <SectionHeader eyebrow={t('vibrationLearn.sectionEyebrow.interface')} title={page.interface.title} intro={hasTour ? t('vibrationLearn.interface.tourIntro') : t(getWidgetScreenshot(widgetId) ? 'widgetLearn.common.screenshotIntro' : 'widgetLearn.common.workspaceIntro')} />
                     {hasTour && <WidgetInterfaceTour widgetId={widgetId} name={widget?.[lang]?.name || page.title} />}
-                    {/* The per-control option guide stays below the screen tour. */}
-                    {hasTour && <h3 className="mb-5 mt-12 text-xl font-bold text-white">{t('widgetLearn.common.controlGuide')}</h3>}
-                    <LearningWorkbench key={`${widgetId}:${lang}`} widgetId={widgetId} name={widget?.[lang]?.name || page.title} controls={tour.controls} inputs={detail.inputs} outputs={detail.outputs} lang={lang} />
+                    {!integratedGuide && <>
+                        {hasTour && <h3 className="mb-5 mt-12 text-xl font-bold text-white">{t('widgetLearn.common.controlGuide')}</h3>}
+                        <LearningWorkbench key={`${widgetId}:${lang}`} widgetId={widgetId} name={widget?.[lang]?.name || page.title} controls={tour.controls} inputs={detail.inputs} outputs={detail.outputs} lang={lang} />
+                    </>}
                     <div className="mt-12">
                         <SectionHeader eyebrow={t('vibrationLearn.sectionEyebrow.interface')} title={t('vibrationLearn.interface.inputsTitle')} intro={t('vibrationLearn.interface.inputsIntro')} />
                         <DetailCards items={detail.inputs} />

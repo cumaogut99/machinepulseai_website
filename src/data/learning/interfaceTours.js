@@ -65,6 +65,10 @@ export function getInterfaceTour(widgetId, lang) {
                     at: anchors[point.id],
                     title: point.title[index],
                     desc: point.desc[index],
+                    details: point.details?.map((detail) => ({
+                        name: detail[index],
+                        desc: detail[index + 2],
+                    })),
                 })),
         }
     })
