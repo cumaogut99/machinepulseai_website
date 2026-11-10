@@ -4,10 +4,7 @@ const records = [
     {
         id: 'channel_selector', references: [], related: ['statistics_summary', 'line_chart'],
         title: ['Channel Selector Guide', 'Channel Selector Rehberi'],
-        intro: [
-            'This guide explains how the Channel Selector passes only the channels you need to the next widgets, without copying any data. It covers manual selection, selection by name pattern, and why a smaller channel set makes a large pipeline easier to read and faster to work with.',
-            'Bu rehber, Channel Selector’ın hiçbir veriyi kopyalamadan yalnızca ihtiyaç duyduğunuz kanalları sonraki widget’lara nasıl ilettiğini anlatır. Elle seçimi, ad kalıbıyla seçimi ve daha küçük bir kanal kümesinin büyük bir analiz hattını neden daha okunur ve hızlı kıldığını açıklar.',
-        ],
+        intro: ["Keep the channels you need for the next step. Select them by hand or use a name pattern, then check the resulting list before creating the channel view.", "Sonraki işlemde kullanacağınız kanalları seçin. Seçimi elle yapabilir veya kanal adlarına göre bir desen kullanabilirsiniz. Kanal görünümünü oluşturmadan önce listede hangi kanalların kaldığını kontrol edin."],
         why: [
             ['What the Channel Selector is for', 'Channel Selector ne işe yarar?',
                 'Test files often contain far more channels than one analysis needs: a vehicle log can hold 300 signals, of which a vibration study uses six. Connecting all of them to every widget makes channel lists long, plots crowded and mistakes likely. The Channel Selector sits between the source and the analysis and lets only the chosen channels through.',
@@ -71,10 +68,7 @@ const records = [
     {
         id: 'merge_channels', references: [], related: ['time_alignment', 'file_reader'],
         title: ['Dataset Merge Guide', 'Dataset Merge Rehberi'],
-        intro: [
-            'This guide explains how Dataset Merge joins two datasets that are already on the canvas into one new dataset. It covers stacking runs one after another, placing channels side by side on the same time grid or by row number, and how to check the result before using it.',
-            'Bu rehber, Dataset Merge’ün canvas’ta zaten bulunan iki veri kümesini nasıl yeni tek bir veri kümesinde birleştirdiğini anlatır. Koşuları arka arkaya eklemeyi, kanalları aynı zaman ızgarasında veya satır numarasına göre yan yana koymayı ve sonucu kullanmadan önce nasıl kontrol edeceğinizi açıklar.',
-        ],
+        intro: ["Combine datasets by stacking their rows or placing their channels side by side. Check whether they share a time grid, then choose how to handle time and short channels.", "Veri kümelerini satırlarını arka arkaya ekleyerek veya kanallarını yan yana yerleştirerek birleştirin. Aynı zaman eksenini paylaşıp paylaşmadıklarını kontrol edip zaman ve kısa kanal ayarlarını seçin."],
         why: [
             ['What Dataset Merge is for', 'Dataset Merge ne işe yarar?',
                 'Two typical cases. First, two runs of the same test, for example a morning and an afternoon run with the same sensors, should be analysed as one longer record. Second, two loggers recorded different sensors at the same moments, and you want all channels in one table. Dataset Merge handles both and writes the result as a new MPAI dataset.',
@@ -141,10 +135,7 @@ const records = [
     {
         id: 'table_edit', references: [], related: ['sensor_calibration', 'data_quality_repair'],
         title: ['Data Table Editor Guide', 'Data Table Editor Rehberi'],
-        intro: [
-            'This guide explains how the Data Table Editor lets you look at every sample of a large dataset and correct it without changing the original file. It covers the table, cell edits, and the ten tools for rows, fill, find and replace, formulas, transposing, types, encodings, dates and resampling.',
-            'Bu rehber, Data Table Editor’ın büyük bir veri kümesinin her örneğine bakmanızı ve özgün dosyayı değiştirmeden düzeltmenizi nasıl sağladığını anlatır. Tabloyu, hücre düzenlemelerini ve satır, doldurma, bul-değiştir, formül, devrik alma, tip, kodlama, tarih ve yeniden örnekleme için on aracı açıklar.',
-        ],
+        intro: ["Find a value, repair missing entries or create a calculated column. Row operations, formulas, type conversion and resampling have different uses; choose the tool from the change you need to make.", "Bir değeri bulun, eksik hücreleri düzeltin veya hesaplanmış sütun oluşturun. Satır işlemleri, formüller, tür dönüşümü ve yeniden örnekleme farklı amaçlara hizmet eder; yapmak istediğiniz değişikliğe göre ilerleyin."],
         why: [
             ['What the Table Editor is for', 'Tablo Düzenleyici ne işe yarar?',
                 'Sometimes you need to see the actual numbers: a sensor dropped out for three samples, a logger wrote 9999 as an error code, a channel needs to be computed from two others, or a time column is stored as text. The Table Editor shows the dataset as a spreadsheet, even with hundreds of millions of rows, and offers the tools to fix such problems.',
@@ -222,10 +213,7 @@ const records = [
     {
         id: 'normalization_scaling', references: [], related: ['sensor_calibration', 'histogram_widget'],
         title: ['Normalization & Scaling Guide', 'Normalization & Scaling Rehberi'],
-        intro: [
-            'This guide explains how Normalization & Scaling rescales channels so that signals with very different units and sizes can be compared or fed to the same algorithm. It covers Z-score, Min-Max and robust median/IQR scaling, when each one is the right choice, and how outliers affect them.',
-            'Bu rehber, Normalization & Scaling’in çok farklı birim ve büyüklükteki sinyallerin karşılaştırılabilmesi veya aynı algoritmaya verilebilmesi için kanalları nasıl yeniden ölçeklediğini anlatır. Z-skor, Min-Max ve sağlam medyan/IQR ölçeklemeyi, her birinin ne zaman doğru seçim olduğunu ve aykırı değerlerin onları nasıl etkilediğini açıklar.',
-        ],
+        intro: ["Put channels on a comparable numerical scale with Z-score, Min-Max or robust scaling. Choose the method from the comparison you need, and remember that the result no longer carries the original physical scale.", "Z-score, Min-Max veya robust ölçeklemeyle kanalları karşılaştırılabilir sayısal bir ölçeğe getirin. Yöntemi yapacağınız karşılaştırmaya göre seçin. Sonucun artık özgün fiziksel ölçekte olmadığını hesaba katın."],
         why: [
             ['What scaling is for', 'Ölçekleme ne işe yarar?',
                 'A pressure of 102 bar and a vibration of 0.3 g cannot be drawn on one axis or compared directly: one is 300 times larger only because of its unit. Scaling puts both on the same footing. After Z-score scaling, for example, a value of 2 means “two standard deviations above this channel’s mean”, whatever the channel measures.',
@@ -286,10 +274,7 @@ const records = [
     {
         id: 'groupby_aggregation', references: [], related: ['bar_plot', 'statistics_summary'],
         title: ['Group By & Aggregation Guide', 'Group By & Aggregation Rehberi'],
-        intro: [
-            'This guide explains how Group By & Aggregation turns long records into short summary tables. It covers grouping by a column or by fixed time intervals, choosing summary functions such as mean, maximum and count, and how to read the resulting table.',
-            'Bu rehber, Group By & Aggregation’ın uzun kayıtları kısa özet tablolarına nasıl çevirdiğini anlatır. Bir sütuna veya sabit zaman aralıklarına göre gruplamayı, ortalama, en büyük değer ve sayı gibi özet fonksiyonlarını seçmeyi ve ortaya çıkan tabloyu okumayı açıklar.',
-        ],
+        intro: ["Summarize measurements by category or time interval. Choose what defines a group, which channels to summarize and which statistics answer your question.", "Ölçümleri kategoriye veya zaman aralığına göre özetleyin. Grupları neyin belirleyeceğini, hangi kanalların özetleneceğini ve hangi istatistiğe ihtiyacınız olduğunu seçin."],
         why: [
             ['What grouping is for', 'Gruplama ne işe yarar?',
                 'A 2-hour record at 500 Hz has 3.6 million rows per channel; nobody reads that. Asking “what was the average temperature and the peak vibration in each minute?” turns it into 120 rows that fit on one page. Grouping by a label column, such as the test step or the machine number, answers questions like “which step had the highest vibration?”.',
@@ -357,10 +342,7 @@ const records = [
     {
         id: 'time_alignment', references: [], related: ['align_compare', 'merge_channels'],
         title: ['Time Alignment Guide', 'Time Alignment Rehberi'],
-        intro: [
-            'This guide explains how Time Alignment lines up recordings from different loggers that did not start at the same moment. It covers comparing the sources on one plot, shifting them by hand or automatically, cropping to the time they share, and creating one aligned dataset with a common time axis.',
-            'Bu rehber, Time Alignment’ın aynı anda başlamamış farklı kaydedicilerden gelen kayıtları nasıl hizaladığını anlatır. Kaynakları tek grafikte karşılaştırmayı, onları elle veya otomatik kaydırmayı, ortak oldukları zamana kırpmayı ve ortak zaman ekseniyle tek bir hizalı veri kümesi oluşturmayı açıklar.',
-        ],
+        intro: ["Align recordings that show the same event at different times. Estimate the offset automatically or adjust it by hand, then inspect the overlap before applying the shift.", "Aynı olayı farklı zamanlarda gösteren kayıtları hizalayın. Kaymayı otomatik hesaplatabilir veya elle ayarlayabilirsiniz. Uygulamadan önce sinyallerin örtüştüğü aralığı inceleyin."],
         why: [
             ['What alignment is for', 'Hizalama ne işe yarar?',
                 'In many tests two or more loggers run side by side: one for vibration, one for temperature and pressure, one in the vehicle’s control unit. Each starts when someone presses its start button, so their clocks differ by fractions of a second or more. Before you can say “the pressure dropped when the impact happened”, the records must share one time axis. Time Alignment finds and applies these offsets.',
@@ -432,10 +414,7 @@ const records = [
     {
         id: 'rolling_window_stats', references: [], related: ['time_graphics', 'bearing_fault'],
         title: ['Rolling / Window Stats Guide', 'Rolling / Window Stats Rehberi'],
-        intro: [
-            'This guide explains how Rolling / Window Stats turns a fast signal into slowly changing trend channels such as running RMS, mean or kurtosis. It covers choosing the window length, trailing versus centred windows, and which statistic answers which question.',
-            'Bu rehber, Rolling / Window Stats’ın hızlı bir sinyali kayan RMS, ortalama veya basıklık gibi yavaş değişen eğilim kanallarına nasıl çevirdiğini anlatır. Pencere uzunluğunun seçimini, geriye bakan ve ortalanmış pencereler arasındaki farkı ve hangi istatistiğin hangi soruyu yanıtladığını açıklar.',
-        ],
+        intro: ["Follow changes over time with windowed RMS, mean, peak or other features. Window duration and alignment determine which events remain visible and where each value appears on the time axis.", "Pencereli RMS, ortalama, tepe ve diğer göstergelerle sinyalin zaman içindeki değişimini izleyin. Pencere süresi ve hizalaması, hangi olayların görünür kalacağını ve değerlerin zaman ekseninde nereye yerleşeceğini belirler."],
         why: [
             ['What rolling statistics are for', 'Kayan istatistikler ne işe yarar?',
                 'A raw vibration signal oscillates hundreds of times per second, so it is hard to see whether the machine is getting rougher over minutes. A running RMS over half a second gives one smooth curve that rises when the vibration grows. The same idea with kurtosis shows when the signal becomes spiky, an early sign of bearing damage.',
@@ -501,10 +480,7 @@ const records = [
     {
         id: 'sensor_calibration', references: [], related: ['normalization_scaling', 'line_chart'],
         title: ['Sensor Calibration Guide', 'Sensor Calibration Rehberi'],
-        intro: [
-            'This guide explains how Sensor Calibration converts raw logger values, usually millivolts, into physical units such as g, bar or °C. It covers the sensor presets, linear, polynomial and lookup-table calibration, and how to check that the converted values are plausible.',
-            'Bu rehber, Sensor Calibration’ın ham kaydedici değerlerini, genelde milivoltu, g, bar veya °C gibi fiziksel birimlere nasıl çevirdiğini anlatır. Sensör ön ayarlarını, doğrusal, polinom ve tablo kalibrasyonunu ve çevrilmiş değerlerin makul olup olmadığının nasıl kontrol edileceğini açıklar.',
-        ],
+        intro: ["Convert sensor readings into physical units using the calibration for your measurement chain. Choose a preset, linear relation, polynomial or lookup table, then check a known reference value before applying it.", "Sensör okumalarını ölçüm zincirinin kalibrasyonuna göre fiziksel birime çevirin. Hazır ayar, doğrusal bağıntı, polinom veya tablo kullanabilirsiniz. Uygulamadan önce bilinen bir referans değerle sonucu kontrol edin."],
         why: [
             ['What calibration is for', 'Kalibrasyon ne işe yarar?',
                 'Many loggers store the voltage coming from the sensor, not the quantity the sensor measures. An accelerometer with 100 mV/g that reads 250 mV is experiencing 2.5 g; nobody wants to analyse millivolts. Calibration applies the sensor’s data-sheet or certificate values and gives every following widget numbers with a physical meaning and a unit.',

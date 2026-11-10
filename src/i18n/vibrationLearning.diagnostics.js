@@ -2,7 +2,7 @@ const DIAGNOSTICS_LEARNING = {
     bearing_fault: {
         en: {
             title: 'Bearing and Gear Fault Diagnosis Guide',
-            intro: 'This guide explains how rolling-element bearing and gear faults are diagnosed from vibration data. It describes bearing fault frequencies, envelope analysis with manual or kurtogram band selection, cepstrum, time-synchronous averaging (TSA), gear residual signals and condition indicators, and how these are combined into an evidence-based diagnosis.',
+            intro: "Look for bearing and gear-related patterns in vibration data. Enter the geometry and speed, choose an envelope band, then compare the calculated frequency families with the measured spectrum and time waveform.",
             badges: ['BPFO · BPFI · BSF · FTF', 'Envelope & kurtogram', 'Cepstrum & liftering', 'TSA · FM0 · FM4 · M6A · M8A'], duration: 'Estimated reading time: about 25 minutes',
             outcomes: ['Explain why early bearing faults hide in high-frequency resonance.', 'Calculate and interpret bearing families with harmonics and sidebands.', 'Choose a manual envelope band or let the kurtogram propose one.', 'Combine envelope, cepstrum, TSA and indicators before accepting a bearing or gear verdict.'],
             why: [
@@ -43,7 +43,7 @@ const DIAGNOSTICS_LEARNING = {
             ] },
         tr: {
             title: 'Bearing & Gear Fault Diagnosis Rehberi',
-            intro: 'Bu rehber, yuvarlanmalı rulman ve dişli arızalarının titreşim verisinden nasıl teşhis edildiğini anlatır. Rulman arıza frekanslarını, manuel veya kurtogram ile bant seçimli zarf analizini, kepstrumu, zaman senkron ortalamayı (TSA), dişli kalıntı sinyallerini ve durum göstergelerini, ayrıca bunların kanıta dayalı bir teşhiste nasıl birleştirildiğini açıklar.',
+            intro: "Titreşim verisinde rulman ve dişliyle ilişkili belirtileri araştırın. Geometriyi ve devri girip zarf bandını seçin. Hesaplanan frekans ailelerini ölçülen spektrum ve zaman sinyaliyle birlikte inceleyin.",
             badges: ['BPFO · BPFI · BSF · FTF', 'Zarf ve kurtogram', 'Kepstrum ve liftering', 'TSA · FM0 · FM4 · M6A · M8A'], duration: 'Tahmini okuma süresi: yaklaşık 25 dakika',
             outcomes: ['Erken rulman arızasının neden yüksek frekans rezonansında saklandığını açıklamak.', 'Harmonik ve yan bantlarla rulman ailelerini hesaplayıp yorumlamak.', 'Manuel zarf bandı seçmek veya kurtogramın önerisini kullanmak.', 'Rulman veya dişli teşhisi koymadan önce zarf, kepstrum, TSA ve göstergeleri birlikte değerlendirmek.'],
             why: [

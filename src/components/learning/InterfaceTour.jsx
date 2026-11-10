@@ -103,6 +103,19 @@ export default function InterfaceTour({ views, labels, name }) {
                     </div>
                 </div>
                 <p className="mt-4 max-w-4xl text-sm leading-7 text-slate-300">{point.desc}</p>
+                {point.controls?.length > 0 && <div className="mt-5 space-y-6 border-t border-neon-cyan/15 pt-5">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">{labels.optionsTitle}</p>
+                    {point.controls.map((control) => <section key={control.name}>
+                        <h4 className="text-base font-semibold text-white">{control.name}</h4>
+                        <p className="mt-2 text-sm leading-7 text-slate-300">{control.desc}</p>
+                        {control.options?.length > 0 && <dl className="mt-4 grid gap-x-8 gap-y-5 md:grid-cols-2">
+                            {control.options.map((option) => <div key={option.name}>
+                                <dt className="text-sm font-semibold text-white">{option.name}</dt>
+                                <dd className="mt-2 text-sm leading-7 text-slate-400">{option.desc}</dd>
+                            </div>)}
+                        </dl>}
+                    </section>)}
+                </div>}
                 {point.details?.length > 0 && <div className="mt-5 border-t border-neon-cyan/15 pt-5">
                     <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-400">{labels.optionsTitle}</h4>
                     <dl className="mt-4 grid gap-x-8 gap-y-5 md:grid-cols-2">

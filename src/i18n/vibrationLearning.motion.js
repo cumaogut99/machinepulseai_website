@@ -2,7 +2,7 @@ const MOTION_LEARNING = {
     cross_axis_compensation: {
         en: {
             title: 'Cross-Axis Compensation Guide',
-            intro: 'This guide explains how the Cross-Axis Compensation widget corrects coupling between the axes of triaxial accelerometers. It describes the 3×3 sensitivity matrix, entry as a ratio or percentage, calibration data import, invertibility checks, and validation of matrices estimated from data using condition number, coupling and coherence.',
+            intro: "Correct cross-axis sensitivity with a calibration matrix. Check axis order, units and matrix conditioning, then compare the original and compensated signals before accepting the result.",
             badges: ['3×3 sensitivity matrix', 'Ratio or percent entry', 'Calibration import / estimation', 'Condition & coupling checks'], duration: 'Estimated reading time: about 17 minutes',
             outcomes: ['Explain diagonal sensitivity and off-diagonal cross-axis coupling.', 'Enter the same calibration correctly as ratios or percentages.', 'Recognize ill-conditioning and the risk of noise amplification.', 'Decide when a manufacturer calibration is trustworthy and when an operational-data estimate needs review.'],
             why: [
@@ -43,7 +43,7 @@ const MOTION_LEARNING = {
             ] },
         tr: {
             title: 'Cross-Axis Compensation Rehberi',
-            intro: 'Bu rehber, Cross-Axis Compensation widget’ının üç eksenli ivmeölçerlerde eksenler arasındaki bağlaşımı nasıl düzelttiğini anlatır. 3×3 duyarlılık matrisini, oran veya yüzde olarak veri girişini, kalibrasyon verisinin içe aktarılmasını, terslenebilirlik kontrollerini ve veriden kestirilen matrislerin koşul sayısı, bağlaşım ve koheransla doğrulanmasını açıklar.',
+            intro: "Eksenler arası duyarlılığı kalibrasyon matrisiyle düzeltin. Eksen sırasını, birimleri ve matrisin koşulunu kontrol edin. Sonucu kabul etmeden önce özgün ve düzeltilmiş sinyalleri karşılaştırın.",
             badges: ['3×3 duyarlılık matrisi', 'Oran veya yüzde girişi', 'Kalibrasyon içe aktarma / kestirim', 'Koşul ve bağlaşım kontrolü'], duration: 'Tahmini okuma süresi: yaklaşık 17 dakika',
             outcomes: ['Ana eksen duyarlılığı ile diyagonal dışı bağlaşımı açıklamak.', 'Aynı kalibrasyonu oran veya yüzde olarak doğru girmek.', 'Kötü koşullanmayı ve gürültü büyütme riskini tanımak.', 'Üretici kalibrasyonuna ne zaman güvenileceğini ve operasyon verisi kestiriminin ne zaman inceleme istediğini belirlemek.'],
             why: [
@@ -86,7 +86,7 @@ const MOTION_LEARNING = {
     kinematics_6dof: {
         en: {
             title: 'Kinematic Chain (6-DOF) Analysis Guide',
-            intro: 'This guide explains how the motion of a rigid body is reconstructed from accelerometer and gyroscope measurements. It describes the single triaxial, rigid-body accelerometer array and IMU input modes, integration in the time or frequency domain, drift control with high-pass or Kalman filtering, translation and rotation outputs, trajectory metrics, static tilt and ISO 2631 comfort measures.',
+            intro: "Convert acceleration and motion measurements into the quantities needed for your test. Check axis assignments, units and drift correction before reading velocity, displacement or ISO 2631 results.",
             badges: ['Single triaxial · array · IMU', 'Time or frequency integration', 'High-pass / Kalman drift control', 'ISO 2631 Wd · Wk'], duration: 'Estimated reading time: about 23 minutes',
             outcomes: ['Choose the input mode from the sensors and physical question.', 'Explain why acceleration integration drifts and what each correction removes.', 'Separate translation, rotation and gravity-related tilt in a consistent frame.', 'Interpret weighted RMS, VDV, MTVV and trajectory metrics without mixing their meanings.'],
             why: [
@@ -127,7 +127,7 @@ const MOTION_LEARNING = {
             ] },
         tr: {
             title: 'Kinematic Chain (6-DOF) Analiz Rehberi',
-            intro: 'Bu rehber, rijit bir cismin hareketinin ivmeölçer ve jiroskop ölçümlerinden nasıl hesaplandığını anlatır. Tek üç eksenli sensör, rijit cisim ivmeölçer dizisi ve IMU giriş modlarını, zaman veya frekans alanında entegrasyonu, yüksek geçiren filtre veya Kalman filtresiyle kayma kontrolünü, öteleme ve dönme çıktılarını, yörünge metriklerini, statik eğimi ve ISO 2631 konfor ölçütlerini açıklar.',
+            intro: "İvme ve hareket ölçümlerini testinizde gereken büyüklüklere dönüştürün. Hız, yer değiştirme veya ISO 2631 sonuçlarını okumadan önce eksen atamalarını, birimleri ve kayma düzeltmesini kontrol edin.",
             badges: ['Tek üç eksen · dizi · IMU', 'Zaman veya frekans entegrasyonu', 'Yüksek geçiren / Kalman kayma kontrolü', 'ISO 2631 Wd · Wk'], duration: 'Tahmini okuma süresi: yaklaşık 23 dakika',
             outcomes: ['Sensör ve fiziksel soruya göre giriş modunu seçmek.', 'İvme entegrasyonunun neden kaydığını ve her düzeltmenin neyi kaldırdığını açıklamak.', 'Öteleme, dönme ve yerçekimine bağlı eğimi tutarlı koordinat sisteminde ayırmak.', 'Ağırlıklı RMS, VDV, MTVV ve yörünge metriklerini anlamlarını karıştırmadan yorumlamak.'],
             why: [

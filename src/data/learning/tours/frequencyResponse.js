@@ -226,7 +226,7 @@ export default {
                     'The phase of Gxy tells which channel leads at each frequency. A straight phase slope across the band indicates a pure time delay between the channels.',
                     'Gxy fazı her frekansta hangi kanalın önde olduğunu söyler. Bant boyunca doğrusal bir faz eğimi, kanallar arasında saf bir zaman gecikmesine işaret eder.',
                 ]),
-                pt('coherence', ['Coherence stays the quality gate', 'Koherans kalite kapısı olmaya devam eder'], [
+                pt('coherence', ['Check coherence in both modes', 'İki modda da koheransı kontrol edin'], [
                     'Coherence is identical in both modes because it is built from the same auto- and cross-spectra. Use it to decide which parts of |Gxy| and ∠Gxy are worth interpreting.',
                     'Koherans iki modda da aynıdır, çünkü aynı oto ve çapraz spektrumlardan hesaplanır. |Gxy| ve ∠Gxy’nin hangi bölümlerinin yorumlanmaya değer olduğuna karar vermek için kullanın.',
                 ]),

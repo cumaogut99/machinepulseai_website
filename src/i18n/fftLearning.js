@@ -6,8 +6,7 @@ const FFT_LEARNING_TRANSLATIONS = {
         back: 'Back to module library',
         eyebrow: 'MachinePulseAI Academy · FFT / Spectrum',
         title: 'FFT Analysis Workflow',
-        intro:
-            'Start with no assumed FFT knowledge and progress from physical motion to the current MachinePulseAI controls. Every important setting is connected to the question it answers, the trade-off it creates, the result surface it changes and the interpretation mistake it prevents.',
+        intro: "Separate a signal into its frequency components to inspect peaks, harmonics and broadband energy. Choose FFT, Welch PSD or STFT from what you need to measure, then set the block size, window and averaging.",
         badges: ['Real application UI', 'Interactive concepts', 'New-engineer friendly'],
         start: 'Start with the interface',
         duration: '30 min guided learning path',
@@ -206,8 +205,7 @@ const FFT_LEARNING_TRANSLATIONS = {
         back: 'Modül kütüphanesine dön',
         eyebrow: 'MachinePulseAI Akademi · FFT / Spectrum Analizi',
         title: 'FFT Analiz Akışı',
-        intro:
-            'Önceden FFT bilgisine sahip olmadan başlayın; sensörün kaydettiği zaman sinyalini MachinePulseAI kontrolleriyle güvenilir bir frekans spektrumuna dönüştürün. Bu rehber; örnekleme hızı, blok boyutu, pencereleme ve ortalama gibi tüm kritik ayarların ne işe yaradığını, hangi soruya yanıt verdiğini ve hangi analiz tuzaklarını önlediğini anlatır.',
+        intro: "Tepeleri, harmonikleri ve geniş bant enerjisini incelemek için sinyali frekans bileşenlerine ayırın. Ölçmek istediğiniz büyüklüğe göre FFT, Welch PSD veya STFT seçin. Ardından blok boyutunu, pencereyi ve ortalamayı ayarlayın.",
         badges: ['Uygulama Arayüzü', 'İnteraktif Deneyler', 'Pratik Mühendislik'],
         start: 'Arayüzü İnceleyin',
         duration: '30 dakikalık rehberli öğrenme yolu',

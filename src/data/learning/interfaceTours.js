@@ -9,6 +9,7 @@
 
 import ANCHORS from './tours/tourAnchors.js'
 import FREQUENCY_RESPONSE_TOURS from './tours/frequencyResponse.js'
+import { FLAGSHIP_DETAILS } from './tours/flagshipDetails.js'
 import FFT_TOURS from './tours/fft.js'
 import FILTER_TOURS from './tours/filters.js'
 import ROTATING_TOURS from './tours/rotating.js'
@@ -65,7 +66,7 @@ export function getInterfaceTour(widgetId, lang) {
                     at: anchors[point.id],
                     title: point.title[index],
                     desc: point.desc[index],
-                    details: point.details?.map((detail) => ({
+                    details: (point.details || FLAGSHIP_DETAILS[widgetId]?.[point.id])?.map((detail) => ({
                         name: detail[index],
                         desc: detail[index + 2],
                     })),

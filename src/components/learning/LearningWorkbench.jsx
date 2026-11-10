@@ -69,7 +69,6 @@ export default function LearningWorkbench({ widgetId, controls, inputs, outputs,
                         </div>)}</dl>
                     </div>}
                 </div>
-                <p className="mt-4 text-xs leading-6 text-slate-400">{shot ? labels.screenshotIntro : labels.workspaceIntro}</p>
             </div>
         </div>
     </div>

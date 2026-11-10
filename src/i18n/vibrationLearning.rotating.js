@@ -2,7 +2,7 @@ const ROTATING_LEARNING = {
     rotor_balancing: {
         en: {
             title: 'Rotor Balancing Guide',
-            intro: 'This guide explains single-plane field balancing with the MachinePulseAI Rotor Balancing widget. It describes how the 1× vibration vector is measured with a once-per-revolution reference signal, how a trial weight is used to determine the machine’s response, and how the correction is calculated and verified. The current version supports single-plane balancing; two-plane balancing is not yet available.',
+            intro: "Measure the rotor's 1X vibration before and after adding a trial mass, then calculate a single-plane correction. Use a measured physical keyphasor, keep the trial geometry consistent and finish with a verification run.",
             badges: ['Validated single-plane workflow', 'Physical keyphasor', 'Complex 1× vectors', 'ISO 21940 context'],
             duration: 'Estimated reading time: about 18 minutes',
             outcomes: ['Explain amplitude and phase as one complex vibration vector.', 'Capture compatible reference and trial runs without changing the machine state.', 'Judge whether a trial weight created a usable influence coefficient.', 'Install and verify a single-plane correction.'],
@@ -65,7 +65,7 @@ const ROTATING_LEARNING = {
         },
         tr: {
             title: 'Rotor Balancing Rehberi',
-            intro: 'Bu rehber, MachinePulseAI Rotor Balancing widget’ı ile tek düzlemde saha balanslamasının nasıl yapıldığını anlatır. 1× titreşim vektörünün devir başına bir darbe veren referans sinyaliyle nasıl ölçüldüğünü, deneme ağırlığıyla makinenin tepkisinin nasıl belirlendiğini ve düzeltmenin nasıl hesaplanıp doğrulandığını açıklar. Mevcut sürüm tek düzlem balanslamayı destekler; çift düzlem balanslama henüz sunulmamaktadır.',
+            intro: "Deneme kütlesini eklemeden önce ve sonra rotorun 1X titreşimini ölçüp tek düzlemli düzeltmeyi hesaplayın. Ölçülmüş fiziksel keyphasor kullanın, deneme geometrisini tutarlı tutun ve son durumda doğrulama koşusu yapın.",
             badges: ['Doğrulanmış tek düzlem akışı', 'Fiziksel keyphasor', 'Karmaşık 1× vektörleri', 'ISO 21940 bağlamı'],
             duration: 'Tahmini okuma süresi: yaklaşık 18 dakika',
             outcomes: ['Genlik ve fazı tek bir karmaşık titreşim vektörü olarak açıklamak.', 'Makine durumunu değiştirmeden uyumlu referans ve deneme koşuları yakalamak.', 'Deneme ağırlığının kullanılabilir bir etki katsayısı üretip üretmediğini değerlendirmek.', 'Tek düzlem düzeltmesini uygulayıp doğrulamak.'],
@@ -130,7 +130,7 @@ const ROTATING_LEARNING = {
     order_tracking: {
         en: {
             title: 'Order Tracking Analysis Guide',
-            intro: 'This guide explains order analysis of rotating machines whose speed changes, for example during run-up or coast-down. It describes why a fixed-frequency spectrum is not sufficient under these conditions, how the speed signal is used to resample vibration in the angle domain, and when to use the Campbell, frequency–RPM and Vold–Kalman views in MachinePulseAI.',
+            intro: "Follow vibration components as speed changes. Assign the vibration and rotation reference, choose the order grid and extraction method, then inspect the map and order trends together.",
             badges: ['Campbell map', 'Frequency–RPM map', 'Single & multi Vold–Kalman', 'Run-up / coast-down'], duration: 'Estimated reading time: about 20 minutes',
             outcomes: ['Convert between frequency, RPM and order without guessing.', 'Explain why angle resampling keeps speed-related components sharp.', 'Choose Campbell, frequency–RPM or Vold–Kalman for the question at hand.', 'Distinguish a rotating excitation order from a fixed structural resonance.'],
             why: [
@@ -170,7 +170,7 @@ const ROTATING_LEARNING = {
             ] },
         tr: {
             title: 'Order Tracking Analiz Rehberi',
-            intro: 'Bu rehber, devri değişen döner makinelerin (örneğin kalkış veya duruş sırasında) order analizini anlatır. Bu koşullarda sabit frekanslı spektrumun neden yeterli olmadığını, devir sinyalinin titreşimi açı alanında yeniden örneklemek için nasıl kullanıldığını ve MachinePulseAI’da Campbell, frekans–RPM ve Vold–Kalman görünümlerinin ne zaman kullanılacağını açıklar.',
+            intro: "Devir değişirken titreşim bileşenlerini takip edin. Titreşim kanallarını ve dönme referansını atayın, order aralığını ve çıkarım yöntemini seçin. Ardından haritayı ve order trendlerini birlikte inceleyin.",
             badges: ['Campbell haritası', 'Frekans–RPM haritası', 'Tekli ve çoklu Vold–Kalman', 'Kalkış / duruş'], duration: 'Tahmini okuma süresi: yaklaşık 20 dakika',
             outcomes: ['Frekans, RPM ve order arasında tahminsiz dönüşüm yapmak.', 'Açıya göre yeniden örneklemenin hıza bağlı bileşenleri neden keskin tuttuğunu açıklamak.', 'Soruna göre Campbell, frekans–RPM veya Vold–Kalman seçmek.', 'Dönen uyarma order’ını sabit yapısal rezonanstan ayırmak.'],
             why: [
@@ -212,7 +212,7 @@ const ROTATING_LEARNING = {
     torsional_vibration: {
         en: {
             title: 'Torsional and Rotational Vibration Analysis Guide',
-            intro: 'This guide explains how torsional and rotational vibration is measured from encoder or gear-tooth pulse signals. It describes how instantaneous angular speed is calculated from pulse timing, how missing-tooth reference wheels are decoded, how shaft twist is measured with two encoders and how torsional orders are interpreted.',
+            intro: "Use encoder pulses to examine rotational speed and, with two encoders, torsional motion. Check tooth counts, missing-tooth settings and edge detection before interpreting twist or order results.",
             badges: ['One-encoder rotational mode', 'Two-encoder twist mode', 'Missing-tooth decoding', 'Torsional order spectrum'], duration: 'Estimated reading time: about 18 minutes',
             outcomes: ['Explain why pulse interval carries angular-speed information.', 'Choose rotational or true torsional mode from the available sensors.', 'Align two encoders with ratio, direction and phase offset.', 'Read angular speed, twist, torque and order results with their limits.'],
             why: [
@@ -253,7 +253,7 @@ const ROTATING_LEARNING = {
             ] },
         tr: {
             title: 'Torsional & Rotational Vibration Analiz Rehberi',
-            intro: 'Bu rehber, burulma ve dönel titreşimin enkoder veya dişli dişi darbe sinyallerinden nasıl ölçüldüğünü anlatır. Anlık açısal hızın darbe zamanlamasından nasıl hesaplandığını, eksik dişli referans çarklarının nasıl çözümlendiğini, mil burulmasının iki enkoderle nasıl ölçüldüğünü ve burulma order’larının nasıl yorumlandığını açıklar.',
+            intro: "Enkoder darbeleriyle dönme hızını, iki enkoder kullanıldığında ise burulma hareketini inceleyin. Burulma açısını veya order sonuçlarını yorumlamadan önce diş sayısını, eksik diş ayarlarını ve kenar tespitini kontrol edin.",
             badges: ['Tek enkoder dönel mod', 'İki enkoder burulma modu', 'Eksik diş çözme', 'Burulma order spektrumu'], duration: 'Tahmini okuma süresi: yaklaşık 18 dakika',
             outcomes: ['Darbe aralığının neden açısal hız bilgisi taşıdığını açıklamak.', 'Mevcut sensörlere göre dönel veya gerçek burulma modunu seçmek.', 'İki enkoderi oran, yön ve faz ofsetiyle hizalamak.', 'Açısal hız, burulma, tork ve order sonuçlarını sınırlarıyla okumak.'],
             why: [

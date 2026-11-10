@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import LearningHero from './learning/LearningHero.jsx'
 import WIDGET_CATALOG from '../data/widgetCatalog.js'
 import { getWidgetDetailSlug } from '../data/widgetDetails.js'
 import { REFERENCES } from '../data/learning/lesson.js'
@@ -25,30 +26,23 @@ export default function WidgetLearningPage({ guide }) {
 
     return <article className="relative bg-grid">
         <div className="pointer-events-none absolute right-[10%] top-24 h-96 w-96 rounded-full bg-neon-cyan/[0.06] blur-[140px]" />
-        <header className="relative mx-auto max-w-6xl px-6 pb-12 pt-10">
-            <Link to={`/widgets?category=${category.id}`} className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-white"><span aria-hidden="true">←</span>{labels.back}</Link>
-            <p className="mt-10 text-xs font-semibold uppercase tracking-[0.2em] text-neon-cyan">{category[lang].name} · {labels.eyebrow}</p>
-            <h1 className="mt-4 max-w-5xl text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">{page.title || name}</h1>
-            <p className="mt-5 max-w-3xl text-base leading-7 text-slate-300 sm:text-lg">{page.intro}</p>
-            <div className="mt-6 flex flex-wrap gap-2">{labels.badges.map((badge) => <span key={badge} className="rounded-full border border-neon-cyan/20 bg-neon-cyan/[0.05] px-3 py-1 text-xs font-medium text-slate-300">{badge}</span>)}</div>
-            <a href="#workspace" className="btn-neon mt-7 inline-flex rounded-lg bg-neon-cyan/10 px-5 py-3 text-sm font-semibold text-neon-cyan">{labels.start} <span className="ml-3" aria-hidden="true">↓</span></a>
-            {page.why?.length > 0 && <section className="mt-12" aria-labelledby="why-title">
+        <LearningHero backTo={`/widgets?category=${category.id}`} backLabel={labels.back} eyebrow={`${category[lang].name} · ${labels.eyebrow}`} title={page.title || name} intro={page.intro} startLabel={labels.start} startHref="#workspace">
+            {page.why?.length > 0 && <section className="mt-8" aria-labelledby="why-title">
                 <h2 id="why-title" className="text-2xl font-bold tracking-tight text-white sm:text-3xl">{labels.whyTitle}</h2>
                 <div className="mt-6 grid gap-3 lg:grid-cols-3">{page.why.map((item) => <article key={item.title} className="rounded-2xl border border-white/10 bg-white/[0.025] p-5 sm:p-6"><h3 className="text-base font-semibold text-neon-cyan">{item.title}</h3><p className="mt-3 text-sm leading-7 text-slate-400">{item.body}</p></article>)}</div>
             </section>}
-            <div className={`${page.why?.length > 0 ? 'mt-6' : 'mt-10'} rounded-2xl border border-white/10 bg-black/25 p-5 sm:p-7`}>
+            <div className={`${page.why?.length > 0 ? 'mt-6' : 'mt-8'} rounded-2xl border border-white/10 bg-black/25 p-5 sm:p-7`}>
                 <h2 className="text-sm font-semibold text-white">{labels.outcomes}</h2>
                 <ul className="mt-4 grid gap-3 md:grid-cols-2">{page.concepts.map((item) => <li key={item.name} className="flex gap-3 text-sm leading-6 text-slate-300"><span className="text-neon-cyan" aria-hidden="true">✓</span>{item.name}</li>)}</ul>
                 <p className="mt-5 border-t border-white/10 pt-5 text-sm leading-7 text-slate-400"><strong className="text-slate-200">{labels.purpose}: </strong>{page.use}</p>
             </div>
-        </header>
+        </LearningHero>
         <LearningNavigation ids={SECTION_IDS} labels={labels.nav} title={labels.eyebrow} />
         <div className="relative mx-auto max-w-6xl px-6">
             <section id="workspace" className="scroll-mt-32 py-16">
                 <LearningHeading number="01" title={labels.workspace} intro={hasTour ? t('vibrationLearn.interface.tourIntro') : undefined} />
-                {hasTour && <WidgetInterfaceTour widgetId={guide.id} name={name} />}
-                {hasTour && <h3 className="mb-5 mt-12 text-xl font-bold text-white">{labels.controlGuide}</h3>}
-                <LearningWorkbench key={`${guide.id}:${lang}`} widgetId={guide.id} name={name} controls={page.controls} inputs={page.inputs} outputs={page.outputs} lang={lang} />
+                {hasTour ? <WidgetInterfaceTour widgetId={guide.id} name={name} controls={page.controls} />
+                    : <LearningWorkbench key={`${guide.id}:${lang}`} widgetId={guide.id} name={name} controls={page.controls} inputs={page.inputs} outputs={page.outputs} />}
                 <div className="mt-10"><h3 className="mb-5 text-xl font-bold text-white">{labels.source}</h3><LearningCards items={page.inputs} /></div>
             </section>
             <section id="theory" className="scroll-mt-32 border-t border-white/10 py-16">

@@ -27,7 +27,7 @@ const VIBRATION_LEARNING_COMMON = {
             placeholderFootnote: 'The theory and workflow below already follow the widget’s current calculation path and available outputs.',
             inputsTitle: 'What the analysis needs',
             inputsIntro: 'The signals, references and setup values used by the widget are listed below. The reliability of the results depends on the quality of these inputs.',
-            tourIntro: 'The window cannot show every page and result tab at once. Select a screen view below and then a numbered region; each explanation describes what the control does and which result it affects.',
+            tourIntro: 'Choose a view, then select a numbered region to see what its controls do and when to use each setting.',
         },
         tour: {
             viewHint: 'Choose the screen view you want to inspect',
@@ -85,7 +85,7 @@ const VIBRATION_LEARNING_COMMON = {
             placeholderFootnote: 'Aşağıdaki teori ve iş akışı, widget’ın mevcut hesaplama yolu ve gerçek çıktılarıyla şimdiden uyumludur.',
             inputsTitle: 'Analiz için neler gerekir?',
             inputsIntro: 'Widget’ın kullandığı sinyaller, referanslar ve kurulum değerleri aşağıda listelenmiştir. Sonuçların güvenilirliği bu girdilerin kalitesine bağlıdır.',
-            tourIntro: 'Pencere tüm sayfaları ve sonuç sekmelerini aynı anda gösteremez. Aşağıdan bir ekran görünümü, ardından numaralı bölgelerden birini seçin; her açıklama ilgili kontrolün ne yaptığını ve hangi sonucu etkilediğini anlatır.',
+            tourIntro: 'Bir görünüm seçip numaralı bölgelere tıklayın. İlgili kontrollerin ne yaptığını ve hangi ayarı ne zaman kullanacağınızı aynı kartta bulabilirsiniz.',
         },
         tour: {
             viewHint: 'İncelemek istediğiniz ekran görünümünü seçin',

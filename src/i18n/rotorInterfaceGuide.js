@@ -4,12 +4,12 @@ const ROTOR_INTERFACE_GUIDE = {
     en: {
         title: 'Rotor Dynamics workspace',
         intro:
-            'The Rotor Dynamics window is organised into measurement setup, speed response, directional spectra and diagnostics. Select an application state and then a numbered region on the screenshot; each explanation describes what the control does and which analysis result it affects.',
+            'Choose a view and select a numbered region. Each card explains the relevant settings, from probe geometry to orbit, speed response and diagnostics.',
     },
     tr: {
         title: 'Rotor Dynamics çalışma ekranı',
         intro:
-            'Rotor Dynamics penceresi ölçüm kurulumu, hız yanıtı, yönlü spektrumlar ve tanı bölümlerinden oluşur. Bir uygulama durumu, ardından ekran görüntüsündeki numaralı bölgelerden birini seçin; her açıklama ilgili kontrolün ne yaptığını ve hangi analiz sonucunu etkilediğini anlatır.',
+            'Bir görünüm seçip numaralı bölgelere tıklayın. Prob geometrisinden yörüngeye, hız cevabından tanıya kadar ilgili ayarların açıklamalarını aynı kartta bulabilirsiniz.',
     },
 }
 

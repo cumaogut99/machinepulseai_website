@@ -4,10 +4,7 @@ const records = [
     {
         id: 'statistics_summary', references: [], related: ['bar_plot', 'histogram_widget'],
         title: ['Channel Statistics Guide', 'Channel Statistics Rehberi'],
-        intro: [
-            'This guide explains how Channel Statistics (Channel Profile) describes every selected channel with a few reliable numbers. It covers the basic statistics, the data quality checks that reveal missing values, flat lines and clipping, and the robust measures that are not fooled by a few extreme values.',
-            'Bu rehber, Channel Statistics’in (Channel Profile) seçilen her kanalı birkaç güvenilir sayıyla nasıl tarif ettiğini anlatır. Temel istatistikleri, eksik değerleri, düz çizgileri ve kırpılmayı ortaya çıkaran veri kalitesi kontrollerini ve birkaç uç değere aldanmayan sağlam ölçüleri açıklar.',
-        ],
+        intro: ["Get a first look at signal levels, missing values and unusual samples. Read the Summary, Quality and Robust tables together to separate operating changes from data problems.", "Sinyal seviyesini, eksik değerleri ve olağandışı örnekleri ilk bakışta inceleyin. Çalışma koşulundaki değişimi veri sorunlarından ayırmak için Summary, Quality ve Robust tablolarını birlikte okuyun."],
         why: [
             ['What it is for', 'Ne işe yarar?',
                 'Before any detailed analysis it is worth knowing, for each channel, its level, its spread and whether the data is healthy. A table with mean, RMS, minimum, maximum and the number of missing samples for 50 channels shows in seconds which sensor is dead, which one saturated and which one carries an offset.',
@@ -80,10 +77,7 @@ const records = [
     {
         id: 'correlation_analysis', references: [], related: ['scatter_plot', 'time_alignment'],
         title: ['Correlation Matrix Guide', 'Correlation Matrix Rehberi'],
-        intro: [
-            'This guide explains how the Correlation widget (Relationship Explorer) measures how strongly channels move together. It covers choosing a target and candidate channels, the Pearson coefficient and the other relationship measures, lags and rolling windows, and why a high correlation is a clue, not a proof.',
-            'Bu rehber, Correlation Matrix widget’ının (Relationship Explorer) kanalların birlikte ne kadar güçlü hareket ettiğini nasıl ölçtüğünü anlatır. Bir hedef ve aday kanalların seçimini, Pearson katsayısını ve diğer ilişki ölçülerini, gecikmeleri ve kayan pencereleri, ve yüksek bir korelasyonun neden kanıt değil ipucu olduğunu açıklar.',
-        ],
+        intro: ["Compare a target channel with other measurements to see which ones move together. Choose the relationship and lag from your question; a strong correlation alone does not establish cause and effect.", "Hangi ölçümlerin birlikte değiştiğini görmek için bir hedef kanalı diğerleriyle karşılaştırın. İlişki türünü ve gecikmeyi araştırdığınız soruya göre seçin. Güçlü korelasyon tek başına neden-sonuç ilişkisini göstermez."],
         why: [
             ['What it is for', 'Ne işe yarar?',
                 'With dozens of channels it is hard to see which ones are related. Does the bearing temperature follow the load? Which of 40 sensors reacts like the vibration at the gearbox? The widget compares one target channel with every candidate and ranks them by how strongly they move together.',
@@ -149,10 +143,7 @@ const records = [
     {
         id: 'hypothesis_testing', references: ['nist'], related: ['box_plot', 'statistics_summary'],
         title: ['Statistical Tests Guide', 'Statistical Tests Rehberi'],
-        intro: [
-            'This guide explains how Statistical Tests decides whether a difference between measurements is likely real or could be due to chance. It covers the one-sample, paired and Welch t-tests, how to choose between them, and how to read the p-value, the confidence interval and the effect size together.',
-            'Bu rehber, Statistical Tests’in ölçümler arasındaki bir farkın gerçek mi yoksa tesadüf mü olduğuna nasıl karar verdiğini anlatır. Tek örneklem, eşleştirilmiş ve Welch t-testlerini, aralarında nasıl seçim yapılacağını ve p-değeri, güven aralığı ve etki büyüklüğünün birlikte nasıl okunacağını açıklar.',
-        ],
+        intro: ["Check whether the data supports a difference from a reference mean or between two groups. Choose the test from the comparison, then read the estimated difference and uncertainty alongside the p-value.", "Verinin bir referans ortalamadan veya iki grup arasında farkı destekleyip desteklemediğini inceleyin. Karşılaştırmaya uygun testi seçin; p-değerini hesaplanan fark ve belirsizlikle birlikte değerlendirin."],
         why: [
             ['What a test is for', 'Bir test ne işe yarar?',
                 'After a repair the mean vibration dropped from 0.42 to 0.40 g. Is that an improvement, or the normal scatter between two measurements? A statistical test compares the size of the difference with the scatter of the data and the number of samples, and gives a number for how surprising the difference would be if nothing had really changed.',
@@ -216,10 +207,7 @@ const records = [
     {
         id: 'statistical_process_control', references: ['nist'], related: ['time_graphics', 'histogram_widget'],
         title: ['Process Capability & SPC Guide', 'Process Capability & SPC Rehberi'],
-        intro: [
-            'This guide explains how Process Capability & SPC checks whether a process is stable over time and whether it stays inside its specification limits. It covers individuals and moving-range limits, EWMA and CUSUM, the rule counts that flag unusual patterns, and the capability indices Cp and Cpk.',
-            'Bu rehber, Process Capability & SPC’nin bir prosesin zaman içinde kararlı olup olmadığını ve spesifikasyon sınırları içinde kalıp kalmadığını nasıl kontrol ettiğini anlatır. Bireysel değer ve hareketli aralık sınırlarını, EWMA ve CUSUM’u, olağan dışı desenleri işaretleyen kural sayılarını ve Cp ile Cpk yeterlilik indekslerini açıklar.',
-        ],
+        intro: ["Track process changes and compare the spread with specification limits. Enter the limits that apply to the part or process; calculated control limits and engineering specifications have different meanings.", "Prosesteki değişimleri izleyin ve dağılımı şartname sınırlarıyla karşılaştırın. Parça veya proses için geçerli sınırları girin. Hesaplanan kontrol sınırlarıyla mühendislik şartnamesindeki sınırlar farklı şeylerdir."],
         why: [
             ['What SPC is for', 'SPC ne işe yarar?',
                 'Every process varies a little. Statistical process control separates this normal variation from changes that have a cause, such as a worn tool, a drifting sensor or a new batch of material. It does this by drawing limits from the process’s own behaviour and counting the points and patterns that fall outside them.',

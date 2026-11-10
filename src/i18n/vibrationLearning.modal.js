@@ -2,7 +2,7 @@ const MODAL_LEARNING = {
     modal_analysis: {
         en: {
             title: 'Advanced Modal Analysis Guide',
-            intro: 'This guide explains experimental modal analysis (EMA) with impact-hammer or shaker measurements in MachinePulseAI. It describes FRF measurement and quality checks, pole selection with the LSCF stabilization diagram, mode shape estimation with LSFD, damping estimation and validation with AutoMAC.',
+            intro: "Use measured excitation and response channels to estimate natural frequencies, damping and mode shapes. Check the FRFs and coherence first, then compare stable poles, fitted responses and mode-shape consistency.",
             badges: ['H1 · H2 · Hv', 'Coherence & Nyquist', 'LSCF + LSFD', 'MIMO mode shapes'], duration: 'Estimated reading time: about 24 minutes',
             outcomes: ['Explain the difference between a spectrum, an FRF and a mode.', 'Choose H1, H2 or Hv from the expected noise location.', 'Use coherence and stabilization before accepting a pole.', 'Fit residues, inspect AutoMAC and interpret a 3D shape without treating an ODS as a normalized mode.'],
             why: [
@@ -44,7 +44,7 @@ const MODAL_LEARNING = {
             ] },
         tr: {
             title: 'Advanced Modal Analysis Rehberi',
-            intro: 'Bu rehber, MachinePulseAI’da darbe çekici veya sarsıcı ölçümleriyle deneysel modal analizin (EMA) nasıl yapıldığını anlatır. FRF ölçümünü ve kalite kontrollerini, LSCF kararlılık diyagramıyla kutup seçimini, LSFD ile mod şekli kestirimini, sönüm kestirimini ve AutoMAC ile doğrulamayı açıklar.',
+            intro: "Ölçülmüş uyarım ve tepki kanallarıyla doğal frekansları, sönümü ve mod şekillerini kestirin. Önce FRF’leri ve koheransı kontrol edin. Ardından kararlı kutupları, uydurulan cevapları ve mod şekillerinin tutarlılığını karşılaştırın.",
             badges: ['H1 · H2 · Hv', 'Koherans ve Nyquist', 'LSCF + LSFD', 'MIMO mod şekilleri'], duration: 'Tahmini okuma süresi: yaklaşık 24 dakika',
             outcomes: ['Spektrum, FRF ve mod arasındaki farkı açıklamak.', 'Beklenen gürültü konumuna göre H1, H2 veya Hv seçmek.', 'Bir kutbu kabul etmeden önce koherans ve kararlılık diyagramını kullanmak.', 'Rezidüleri uydurup AutoMAC’i incelemek ve 3B şekli ODS ya da mutlak hareket sanmadan yorumlamak.'],
             why: [
@@ -88,7 +88,7 @@ const MODAL_LEARNING = {
     operational_modal_analysis: {
         en: {
             title: 'Operational Modal Analysis (OMA) Guide',
-            intro: 'This guide explains operational modal analysis (OMA), which identifies the modal parameters of a structure from response measurements only, while the structure operates under its normal loads. It describes the FDD, EFDD and SSI-COV methods available in MachinePulseAI, damping estimation without a measured force, and quality checks with MPC, MPD and AutoMAC.',
+            intro: "Estimate modal properties from response-only measurements during operation. Choose SSI, FDD or EFDD from the available data, then check mode stability and shape consistency before reporting a mode.",
             badges: ['SSI-COV', 'FDD · EFDD', 'MPC · MPD · AutoMAC', 'Output-only'], duration: 'Estimated reading time: about 22 minutes',
             outcomes: ['Explain what OMA can and cannot identify without force measurement.', 'Choose SSI-COV, FDD or EFDD for the record and question.', 'Use stabilization, singular values and shape-quality metrics together.', 'Separate operating harmonics from structural modes and report relative shapes honestly.'],
             why: [
@@ -130,7 +130,7 @@ const MODAL_LEARNING = {
             ] },
         tr: {
             title: 'Operational Modal Analysis (OMA) Rehberi',
-            intro: 'Bu rehber, yapının modal parametrelerini yalnızca tepki ölçümlerinden ve yapı normal yükleri altında çalışırken belirleyen operasyonel modal analizi (OMA) anlatır. MachinePulseAI’daki FDD, EFDD ve SSI-COV yöntemlerini, ölçülmüş kuvvet olmadan sönüm kestirimini ve MPC, MPD ve AutoMAC ile kalite kontrollerini açıklar.',
+            intro: "Çalışma sırasında yalnızca tepki ölçümleriyle modal özellikleri kestirin. Veriye göre SSI, FDD veya EFDD seçin. Bir modu raporlamadan önce kararlılığını ve mod şekillerinin tutarlılığını kontrol edin.",
             badges: ['SSI-COV', 'FDD · EFDD', 'MPC · MPD · AutoMAC', 'Yalnızca çıkış'], duration: 'Tahmini okuma süresi: yaklaşık 22 dakika',
             outcomes: ['Kuvvet ölçmeden OMA’nın neyi tanımlayıp neyi tanımlayamayacağını açıklamak.', 'Kayıt ve soruya göre SSI-COV, FDD veya EFDD seçmek.', 'Kararlılık, tekil değerler ve şekil kalite metriklerini birlikte kullanmak.', 'Çalışma harmoniklerini yapısal modlardan ayırıp bağıl şekilleri dürüstçe raporlamak.'],
             why: [
@@ -174,7 +174,7 @@ const MODAL_LEARNING = {
     time_ods: {
         en: {
             title: 'Time-Based ODS Analysis Guide',
-            intro: 'This guide explains how operating deflection shapes (ODS) are obtained from synchronized vibration measurements and measurement point geometry. It describes the band-pass time, complex frequency and RPM-tracked order extraction methods in MachinePulseAI, and the difference between an ODS and a natural mode shape.',
+            intro: "See how measured points move together at an operating condition. Map the channels to geometry, choose the reference and frequency band, then inspect the deflection shape alongside amplitude and phase.",
             badges: ['Phase-true time ODS', 'Complex frequency shape', 'RPM-tracked order ODS', '3D geometry animation'], duration: 'Estimated reading time: about 19 minutes',
             outcomes: ['Explain the difference between ODS and modal analysis.', 'Map channels to nodes and physical DOF directions consistently.', 'Choose time, frequency or order extraction for the observed event.', 'Use deformation scaling, arrows and colour as display aids—not physical amplification.'],
             why: [
@@ -214,7 +214,7 @@ const MODAL_LEARNING = {
             ] },
         tr: {
             title: 'Time-Based ODS Analiz Rehberi',
-            intro: 'Bu rehber, çalışma sapma şekillerinin (ODS) eşzamanlı titreşim ölçümlerinden ve ölçüm noktası geometrisinden nasıl elde edildiğini anlatır. MachinePulseAI’daki bant geçiren zaman, karmaşık frekans ve RPM izleyen order çıkarım yöntemlerini ve ODS ile doğal mod şekli arasındaki farkı açıklar.',
+            intro: "Ölçülen noktaların bir çalışma koşulunda birlikte nasıl hareket ettiğini görün. Kanalları geometriye eşleyip referansı ve frekans bandını seçin. Deformasyon şeklini genlik ve fazla birlikte inceleyin.",
             badges: ['Fazı koruyan zaman ODS', 'Karmaşık frekans şekli', 'RPM izleyen order ODS', '3B geometri animasyonu'], duration: 'Tahmini okuma süresi: yaklaşık 19 dakika',
             outcomes: ['ODS ile modal analiz farkını açıklamak.', 'Kanalları düğümlere ve fiziksel DOF yönlerine tutarlı eşlemek.', 'Gözlenen olay için zaman, frekans veya order çıkarımını seçmek.', 'Deformasyon ölçeği, oklar ve rengi fiziksel büyütme değil görüntüleme yardımı olarak kullanmak.'],
             why: [

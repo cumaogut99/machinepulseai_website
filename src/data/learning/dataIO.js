@@ -4,10 +4,7 @@ const records = [
     {
         id: 'file_reader', references: [], related: ['channel_selector', 'time_graphics'],
         title: ['File Reader Guide', 'File Reader Rehberi'],
-        intro: [
-            'This guide explains how the File Reader turns a measurement file into data the other widgets can use. It shows how to read the preview, how to set the separator, header, unit and data rows, and how to choose the time axis, because most later errors start with a file that was read the wrong way.',
-            'Bu rehber, File Reader’ın bir ölçüm dosyasını diğer widget’ların kullanabileceği veriye nasıl çevirdiğini anlatır. Önizlemenin nasıl okunacağını, ayraç, başlık, birim ve veri satırlarının nasıl ayarlanacağını ve zaman ekseninin nasıl seçileceğini gösterir; çünkü sonraki hataların çoğu yanlış okunmuş bir dosyayla başlar.',
-        ],
+        intro: ["Check the column separator, data rows and time settings before importing a recording. The preview lets you catch shifted columns or wrong units before they affect later calculations.", "Bir kaydı içe aktarmadan önce sütun ayracını, veri satırlarını ve zaman ayarlarını kontrol edin. Önizlemede kaymış sütunları ve yanlış birimleri görüp sonraki hesapları etkilemeden düzeltebilirsiniz."],
         why: [
             ['What the File Reader is for', 'File Reader ne işe yarar?',
                 'Every analysis starts from a file written by a data logger, a test bench or another program, and these files are all a little different. One puts a comma between values, another a semicolon. One starts directly with channel names, another with five lines of test notes. Some have a time column, some only state the sample rate. The File Reader reads the file, shows you how it understood it, and converts it into MPAI, the application’s own format. From then on every widget reads the same, correctly interpreted data.',
@@ -87,10 +84,7 @@ const records = [
     {
         id: 'data_merger', slug: 'data-merger', references: [], related: ['file_reader', 'merge_channels'],
         title: ['File Merger Guide', 'File Merger Rehberi'],
-        intro: [
-            'This guide explains how the File Merger joins a folder of split recordings into one continuous dataset. It covers how files are found and ordered, how the header and data rows of each file are recognised, how the time axis is handled at the joins, and how to check the result.',
-            'Bu rehber, File Merger’ın parçalara bölünmüş kayıtlarla dolu bir klasörü nasıl tek ve sürekli bir veri kümesine çevirdiğini anlatır. Dosyaların nasıl bulunup sıralandığını, her dosyadaki başlık ve veri satırlarının nasıl tanındığını, birleşim noktalarında zaman ekseninin nasıl ele alındığını ve sonucun nasıl kontrol edileceğini açıklar.',
-        ],
+        intro: ["Assemble recordings stored in several files. Check their order, channel names and row layout in the merge plan before creating the combined dataset.", "Birden fazla dosyada tutulan kayıtları birleştirin. Birleşik veri kümesini oluşturmadan önce dosya sırasını, kanal adlarını ve satır düzenini birleştirme planından kontrol edin."],
         why: [
             ['What the File Merger is for', 'File Merger ne işe yarar?',
                 'Long tests are rarely stored in a single file. Many loggers start a new file every few minutes or every few hundred megabytes, so a day of testing can end up as 50 or 500 parts. Opening them one by one and analysing each part separately hides anything that happens across a file boundary. The File Merger scans the folder, reads the layout of every file and writes all of them into one dataset, as if the logger had never split the recording.',
@@ -167,10 +161,7 @@ const records = [
     {
         id: 'data_exporter', slug: 'data-exporter', references: [], related: ['intelligent_report', 'channel_selector'],
         title: ['File Exporter Guide', 'File Exporter Rehberi'],
-        intro: [
-            'This guide explains how the File Exporter writes channels and computed results to files that other programs can open. It covers which channels are offered, how to choose a format and its options, how to limit the time range, and what happens when channels have different lengths.',
-            'Bu rehber, File Exporter’ın kanalları ve hesaplanmış sonuçları başka programların açabileceği dosyalara nasıl yazdığını anlatır. Hangi kanalların sunulduğunu, biçimin ve seçeneklerinin nasıl seçileceğini, zaman aralığının nasıl sınırlandırılacağını ve kanalların uzunlukları farklı olduğunda ne olduğunu açıklar.',
-        ],
+        intro: ["Choose the channels, output format and range you want to share. Check how different channel lengths are handled and which axis is used for computed results before exporting.", "Paylaşmak istediğiniz kanalları, dosya biçimini ve aralığı seçin. Dışa aktarmadan önce farklı kanal uzunluklarının nasıl ele alındığını ve hesaplanmış sonuçlarda hangi eksenin kullanıldığını kontrol edin."],
         why: [
             ['What the File Exporter is for', 'File Exporter ne işe yarar?',
                 'Sooner or later data has to leave the application: a colleague works in MATLAB or Excel, a customer wants a CSV, a simulation needs a measured load in HDF5. The File Exporter takes what is connected to it, whether raw channels or results such as an FFT spectrum, and writes it in the format the receiver can read.',
@@ -246,10 +237,7 @@ const records = [
     {
         id: 'random_generator', slug: 'signal-generator', references: [], related: ['fft_spectrum', 'frequency_filter'],
         title: ['Data Generator Guide', 'Data Generator Rehberi'],
-        intro: [
-            'This guide explains how the Data Generator creates synthetic test signals whose content you know exactly. It covers the ready-made scenes, the signal types and their parameters, and how to use a generated signal to check that an analysis gives the answer it should.',
-            'Bu rehber, Data Generator’ın içeriğini tam olarak bildiğiniz sentetik test sinyallerini nasıl oluşturduğunu anlatır. Hazır sahneleri, sinyal tiplerini ve parametrelerini, ve üretilmiş bir sinyalin bir analizin vermesi gereken cevabı verip vermediğini kontrol etmek için nasıl kullanılacağını açıklar.',
-        ],
+        intro: ["Build a test recording with known signal components. Choose the sample rate and duration, add the components you need and inspect the waveform before using it in another widget.", "Bilinen sinyal bileşenleriyle bir test kaydı oluşturun. Örnekleme hızını ve süreyi belirleyip ihtiyacınız olan bileşenleri ekleyin. Başka bir widget’a geçmeden önce oluşan dalga biçimini inceleyin."],
         why: [
             ['What the Data Generator is for', 'Data Generator ne işe yarar?',
                 'With a real measurement you never know the exact answer: a peak in a spectrum could be the machine, the sensor or a setting. With a generated signal you do. If you create a 50 Hz sine with an amplitude of 2, an FFT must show a peak at 50 Hz with the right height. If it does not, the problem is in the settings, not in the machine. The generator is also useful for learning a widget, preparing a demonstration or testing a pipeline before the real data arrives.',

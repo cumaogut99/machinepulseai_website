@@ -4,10 +4,7 @@ const records = [
     {
         id: 'intelligent_report', references: [], related: ['data_exporter', 'statistics_summary'],
         title: ['Intelligent Report Guide', 'Intelligent Report Rehberi'],
-        intro: [
-            'This guide explains how the Intelligent Report turns the results on the canvas into a test report: which content can be added, how the structure is built, how limits produce a pass or fail summary, which test information is filled in automatically, and how one report template is regenerated for many recordings.',
-            'Bu rehber, Intelligent Report’un kanvastaki sonuçları nasıl bir test raporuna çevirdiğini anlatır: hangi içeriğin eklenebileceğini, yapının nasıl kurulduğunu, sınırların nasıl geçti/kaldı özeti ürettiğini, hangi test bilgilerinin otomatik doldurulduğunu ve tek bir rapor şablonunun birçok kayıt için nasıl yeniden üretildiğini.',
-        ],
+        intro: ["Turn your prepared results into a report. Select the content, arrange the sections and check the preview before exporting to PDF, Word or slides.", "Hazırladığınız sonuçları rapora dönüştürün. İçeriği seçip bölümleri sıralayın. PDF, Word veya slayt olarak dışa aktarmadan önce grafiklerin, tabloların ve test bilgilerinin yerini önizlemede kontrol edin."],
         why: [
             ['What it is for', 'Ne işe yarar?',
                 'A test is not finished until someone else can read the result. Copying plots and numbers into a document by hand is slow and error-prone, and it has to be repeated for every recording. The report reads the results directly from the connected widgets, numbers figures and tables, and exports PDF, Word or slides.',
@@ -74,10 +71,7 @@ const records = [
     {
         id: 'python_script', references: [], related: ['intelligent_report', 'data_exporter'],
         title: ['Python Script Guide', 'Python Script Rehberi'],
-        intro: [
-            'This guide explains the Python Script widget, which lets you write your own processing step on the canvas. It covers the four modes, the locked header and footer, Test Run against Run & Emit, cells, parameters, the guard that protects memory on large files, and saving a script as a reusable widget.',
-            'Bu rehber, kanvasta kendi işleme adımınızı yazmanızı sağlayan Python Script widget’ını anlatır. Dört modu, kilitli başlık ve alt bilgiyi, Test Run ile Run & Emit farkını, hücreleri, parametreleri, büyük dosyalarda belleği koruyan korumayı ve bir betiği yeniden kullanılabilir bir widget olarak kaydetmeyi açıklar.',
-        ],
+        intro: ["Add a custom step to your workflow with Python Script. Choose a mode, write in the editable section and try Test Run before emitting results. Use the console and variable table to check the output.", "İş akışınıza özel bir adım eklemek için Python Script’i kullanın. Modu seçin, düzenlenebilir bölüme kodunuzu yazın ve sonuçları aktarmadan önce Test Run ile deneyin. Çıktıyı konsoldan ve değişken tablosundan kontrol edin."],
         why: [
             ['What it is for', 'Ne işe yarar?',
                 'Every lab has a calculation the standard widgets do not cover: a company-specific index, a special unit conversion, a check against an in-house limit. The script widget lets you write it once in Python, connect it like any other widget, and share it as a widget in the palette.',

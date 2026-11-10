@@ -80,6 +80,14 @@ machinepulseai_website/
 
 ## Content & Claims
 
+- Write guide copy in a natural, direct voice in both Turkish and English.
+  Explain the user's task, when to choose each setting and what to check in
+  the result. Prefer concrete examples and familiar wording over repeated
+  "this guide explains" openings, slogans, inflated claims or literal translations.
+  Keep technical qualifications that affect correct use.
+- Keep setting explanations beside the matching screenshot region. Do not
+  restore a separate control-reference card, hero keyword badges, reading-time
+  labels or repeated conceptual-guide disclaimers on widget learning pages.
 - Marketing claims with specific numbers (e.g. "70% faster", "0.95 F1-score") MUST be substantiated or softened — do not invent metrics.
 - Avoid unqualified competitor comparisons (legal risk).
 

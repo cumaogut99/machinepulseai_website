@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import LearningHero from './learning/LearningHero.jsx'
 import RotorBeginnerPrimer from './rotorDynamicsLearning/RotorBeginnerPrimer.jsx'
 import RotorCriticalSpeedLab from './rotorDynamicsLearning/RotorCriticalSpeedLab.jsx'
 import RotorDiagnosticPatterns from './rotorDynamicsLearning/RotorDiagnosticPatterns.jsx'
@@ -50,7 +50,6 @@ function SectionHeader({ eyebrow, title, intro }) {
 
 export default function RotorDynamicsLearning() {
     const { t } = useTranslation()
-    const badges = t('rotorLearn.badges', { returnObjects: true })
     const outcomes = t('rotorLearn.outcomes', { returnObjects: true })
     const why = t('rotorLearn.why.items', { returnObjects: true })
     const chain = t('rotorLearn.system.chain', { returnObjects: true })
@@ -68,25 +67,8 @@ export default function RotorDynamicsLearning() {
             <div className="pointer-events-none absolute right-[8%] top-20 h-96 w-96 rounded-full bg-[#00f5ff]/[0.06] blur-[140px]" />
             <div className="pointer-events-none absolute left-[3%] top-[48%] h-96 w-96 rounded-full bg-[#a855f7]/[0.05] blur-[150px]" />
 
-            <header className="relative mx-auto max-w-6xl px-6 pb-12 pt-10">
-                <Link to="/widgets" className="inline-flex items-center gap-2 text-sm text-slate-400 transition hover:text-white">
-                    <span aria-hidden="true">←</span>{t('rotorLearn.back')}
-                </Link>
-                <div className="mt-10">
-                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#00f5ff]">{t('rotorLearn.eyebrow')}</p>
-                    <h1 className="mt-4 max-w-5xl text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">{t('rotorLearn.title')}</h1>
-                    <p className="mt-5 max-w-3xl text-base leading-7 text-slate-300 sm:text-lg">{t('rotorLearn.intro')}</p>
-                    <div className="mt-6 flex flex-wrap gap-2">
-                        {badges.map((badge) => (
-                            <span key={badge} className="rounded-full border border-[#00f5ff]/20 bg-[#00f5ff]/[0.05] px-3 py-1 text-xs font-medium text-slate-300">{badge}</span>
-                        ))}
-                    </div>
-                    <div className="mt-7 flex flex-wrap items-center gap-4">
-                        <a href="#system" className="btn-neon rounded-lg bg-[#00f5ff]/10 px-5 py-3 text-sm font-semibold text-[#00f5ff]">{t('rotorLearn.start')}</a>
-                        <span className="text-xs text-slate-500">{t('rotorLearn.duration')}</span>
-                    </div>
-                </div>
-                <section className="mt-12" aria-labelledby="rotor-why">
+            <LearningHero backLabel={t('rotorLearn.back')} eyebrow={t('rotorLearn.eyebrow')} title={t('rotorLearn.title')} intro={t('rotorLearn.intro')} startLabel={t('vibrationLearn.start')}>
+                <section className="mt-8" aria-labelledby="rotor-why">
                     <h2 id="rotor-why" className="text-2xl font-bold tracking-tight text-white sm:text-3xl">{t('rotorLearn.why.title')}</h2>
                     <div className="mt-6 grid gap-3 md:grid-cols-2">
                         {why.map((item) => (
@@ -108,7 +90,7 @@ export default function RotorDynamicsLearning() {
                         ))}
                     </div>
                 </div>
-            </header>
+            </LearningHero>
 
             <nav aria-label={t('rotorLearn.eyebrow')} className="sticky top-14 z-30 border-y border-white/10 bg-[#0a0a0a]/95 backdrop-blur-xl">
                 <div className="mx-auto flex max-w-6xl gap-1 overflow-x-auto px-6 sm:gap-3">

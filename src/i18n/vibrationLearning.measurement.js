@@ -2,7 +2,7 @@ const MEASUREMENT_LEARNING = {
     shock_srs: {
         en: {
             title: 'Shock and SRS Analysis Guide',
-            intro: 'This guide explains shock response spectrum (SRS) analysis of transient acceleration events such as drops, impacts and transport shocks. It describes pulse conditioning, the ISO 18431-4 oscillator bank, maximax, positive/negative and primary/residual spectra, the pseudo-velocity representation, pulse metrics and comparison with a specification.',
+            intro: "Isolate a shock pulse and calculate its shock response spectrum. Correct the baseline, choose the event window, Q and frequency grid, then compare the response curves with the relevant test spectrum.",
             badges: ['ISO 18431-4 solver', 'Maximax · ± · primary/residual', 'Pseudo-velocity nomogram', 'Pulse & specification metrics'], duration: 'Estimated reading time: about 21 minutes',
             outcomes: ['Explain SRS without treating it as a Fourier spectrum.', 'Choose damping/Q, frequency limits and octave spacing from a test requirement.', 'Distinguish primary response during the pulse from residual ring-down.', 'Check sampling, baseline correction and pulse window before judging compliance.'],
             why: [
@@ -43,7 +43,7 @@ const MEASUREMENT_LEARNING = {
             ] },
         tr: {
             title: 'Shock & SRS Analiz Rehberi',
-            intro: 'Bu rehber, düşme, darbe ve taşıma şokları gibi geçici ivme olaylarının şok tepki spektrumu (SRS) analizini anlatır. Darbe koşullandırmayı, ISO 18431-4 salınıcı bankasını, maximax, pozitif/negatif ve birincil/artık spektrumları, yalancı hız gösterimini, darbe metriklerini ve şartnameyle karşılaştırmayı açıklar.',
+            intro: "Bir darbe olayını ayırıp şok tepki spektrumunu hesaplayın. Taban seviyesini düzeltin; olay penceresini, Q değerini ve frekans aralığını seçin. Ardından tepki eğrilerini ilgili test spektrumuyla karşılaştırın.",
             badges: ['ISO 18431-4 çözücü', 'Maximax · ± · birincil/artık', 'Yalancı hız nomogramı', 'Darbe ve şartname metrikleri'], duration: 'Tahmini okuma süresi: yaklaşık 21 dakika',
             outcomes: ['SRS’yi Fourier spektrumu sanmadan açıklamak.', 'Sönüm/Q, frekans sınırı ve oktav aralığını test şartnamesinden seçmek.', 'Darbe sırasındaki birincil tepkiyi sonrasındaki artık çınlamadan ayırmak.', 'Uygunluk değerlendirmeden önce örnekleme, temel çizgi düzeltmesi ve darbe penceresini kontrol etmek.'],
             why: [
@@ -86,7 +86,7 @@ const MEASUREMENT_LEARNING = {
     cross_spectrum: {
         en: {
             title: 'Cross Spectrum and FRF Analysis Guide',
-            intro: 'This guide explains two-channel frequency-domain analysis in MachinePulseAI. It describes the transfer/transmissibility mode with H1, H2 and Hv estimators, the cross spectral density mode with relative phase, and the role of Welch averaging and coherence in judging result quality.',
+            intro: "Compare two simultaneous signals frequency by frequency. Use transfer mode for response per input, or cross spectrum for shared content; read magnitude, phase and coherence together before drawing a conclusion.",
             badges: ['Transfer / transmissibility', 'Cross spectral density', 'H1 · H2 · Hv', 'Magnitude · phase · coherence'], duration: 'Estimated reading time: about 20 minutes',
             outcomes: ['Explain auto-spectrum, cross-spectrum, FRF and coherence as different quantities.', 'Choose transfer or CSD mode from the physical question.', 'Interpret H1/H2/Hv disagreement as a noise clue.', 'Use NFFT, window, overlap and averages without manufacturing confidence.'],
             why: [
@@ -128,7 +128,7 @@ const MEASUREMENT_LEARNING = {
             ] },
         tr: {
             title: 'Frequency Response & Cross Spectrum Rehberi',
-            intro: 'Bu rehber, MachinePulseAI’da iki kanallı frekans alanı analizini anlatır. H1, H2 ve Hv kestiricileriyle transfer/transmissibility modunu, bağıl fazla çapraz spektral yoğunluk modunu ve sonuç kalitesinin değerlendirilmesinde Welch ortalaması ile koheransın rolünü açıklar.',
+            intro: "Eşzamanlı iki sinyali frekans frekans karşılaştırın. Giriş başına tepki için transfer modunu, ortak içerik için çapraz spektrumu seçin. Sonuç çıkarmadan önce genlik, faz ve koheransı birlikte okuyun.",
             badges: ['Transfer / transmissibility', 'Çapraz spektral yoğunluk', 'H1 · H2 · Hv', 'Genlik · faz · koherans'], duration: 'Tahmini okuma süresi: yaklaşık 20 dakika',
             outcomes: ['Oto-spektrum, çapraz spektrum, FRF ve koheransı farklı büyüklükler olarak açıklamak.', 'Fiziksel soruya göre transfer veya CSD modunu seçmek.', 'H1/H2/Hv uyuşmazlığını gürültü ipucu olarak yorumlamak.', 'NFFT, pencere, örtüşme ve ortalamayı sahte güven üretmeden kullanmak.'],
             why: [

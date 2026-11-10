@@ -2,14 +2,14 @@
 // measured hotspot positions live in src/data/learning/tours/fft.js.
 const FFT_INTERFACE_GUIDE = {
     en: {
-        title: 'Tour the current interface, one real state at a time',
+        title: 'FFT settings and results',
         intro:
-            'The FFT window cannot show every page and result view at once. Use the five views below exactly as you would use the application: configure the calculation and channels, read PSD and the result summary, inspect markers and detected peaks, compare channels, and follow a run-up in the spectrogram.',
+            'Choose a view and select a numbered region. Start with the calculation settings, then inspect PSD, markers, channel comparisons or the spectrogram.',
     },
     tr: {
-        title: 'Güncel arayüzü gerçek ekran durumlarıyla adım adım tanıyın',
+        title: 'FFT ayarları ve sonuçları',
         intro:
-            'FFT penceresi tüm sayfaları ve sonuç görünümlerini aynı anda gösteremez. Aşağıdaki beş görünümü uygulamada kullandığınız sırayla izleyin: hesap ayarlarını ve kanalları yapılandırın, PSD ile sonuç özetini okuyun, işaretçileri ve bulunan tepeleri inceleyin, kanalları karşılaştırın ve bir kalkışı spektrogramda takip edin.',
+            'Bir görünüm seçip numaralı bölgelere tıklayın. Hesap ayarlarıyla başlayabilir; ardından PSD’yi, işaretçileri, kanal karşılaştırmasını veya spektrogramı inceleyebilirsiniz.',
     },
 }
 

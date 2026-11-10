@@ -4,10 +4,7 @@ const records = [
     {
         id: 'line_chart', references: [], related: ['time_graphics', 'statistics_summary'],
         title: ['Line Chart Guide', 'Line Chart Rehberi'],
-        intro: [
-            'This guide explains how the Line Chart draws channels against time, or one channel against another, without losing peaks on very long records. It covers choosing signals and axes, the Min-Max envelope, time and delta markers, finding extremes in a range, and the statistics and insights panels.',
-            'Bu rehber, Line Chart’ın kanalları zamana veya bir kanalı diğerine karşı çok uzun kayıtlarda bile tepeleri kaybetmeden nasıl çizdiğini anlatır. Sinyal ve eksen seçimini, Min-Max zarfını, zaman ve fark işaretçilerini, bir aralıktaki uç değerleri bulmayı ve istatistik ve içgörü panellerini açıklar.',
-        ],
+        intro: ["Plot channels against time to inspect events and measure differences. Set the layout and axes first, then use the navigator, markers and range statistics for the interval you want to examine.", "Olayları incelemek ve farkları ölçmek için kanalları zamana göre çizin. Önce yerleşimi ve eksenleri ayarlayın; ardından ilgilendiğiniz aralıkta navigatörü, işaretçileri ve aralık istatistiklerini kullanın."],
         why: [
             ['What the Line Chart is for', 'Line Chart ne işe yarar?',
                 'Looking at the signal is the first check of almost every analysis: is the sensor alive, is there an event, does the level drift? The Line Chart shows one or many channels over time, lets you zoom from hours down to single samples, and measures times and values with markers.',
@@ -81,10 +78,7 @@ const records = [
     {
         id: 'histogram_widget', slug: 'histogram', references: [], related: ['box_plot', 'statistics_summary'],
         title: ['Histogram Guide', 'Histogram Rehberi'],
-        intro: [
-            'This guide explains how the Histogram shows how often each value occurs in a channel, and what that shape tells you. It covers bin rules, ranges and normalisation, sigma and percentile markers, fitting a distribution with a goodness-of-fit check, and the KDE curve.',
-            'Bu rehber, Histogram’ın bir kanalda her değerin ne sıklıkla görüldüğünü nasıl gösterdiğini ve bu şeklin size ne söylediğini anlatır. Bin kurallarını, aralıkları ve normalleştirmeyi, sigma ve yüzdelik işaretçilerini, uyum testiyle dağılım uydurmayı ve KDE eğrisini açıklar.',
-        ],
+        intro: ["See how often a signal falls within each value range. Bin width, range and Y-axis settings change how the distribution looks; check them before using a fit or overlay.", "Sinyalin hangi değer aralıklarında ne sıklıkla bulunduğunu görün. Kutu genişliği, gösterilen aralık ve Y ekseni dağılımın görünümünü değiştirir. Dağılım uyumunu ve ek eğrileri bu ayarları kontrol ettikten sonra inceleyin."],
         why: [
             ['What a histogram is for', 'Histogram ne işe yarar?',
                 'A time plot shows when things happen, a histogram shows how values are spread. Two operating states appear as two humps, clipping as a tall bar at the edge, an offset as a shifted centre, and occasional impacts as long tails. These are often easier to see here than in a waveform with millions of samples.',
@@ -152,10 +146,7 @@ const records = [
     {
         id: 'scatter_plot', references: [], related: ['correlation_analysis', 'time_alignment'],
         title: ['Scatter Plot Guide', 'Scatter Plot Rehberi'],
-        intro: [
-            'This guide explains how the Scatter Plot draws one channel against another to show whether, and how, they are related. It covers choosing X and Y, point appearance, the ordinary least-squares line and the robust Theil–Sen line, and how to read the slope and the correlation.',
-            'Bu rehber, Scatter Plot’un bir kanalı diğerine karşı çizerek aralarında ilişki olup olmadığını ve nasıl bir ilişki olduğunu nasıl gösterdiğini anlatır. X ve Y seçimini, nokta görünümünü, sıradan en küçük kareler doğrusunu ve sağlam Theil–Sen doğrusunu ve eğim ile korelasyonun nasıl okunacağını açıklar.',
-        ],
+        intro: ["Put one channel on each axis to examine their relationship. Compare the point cloud with correlation and regression results, and check whether outliers or a changing operating state explain the pattern.", "İki kanal arasındaki ilişkiyi görmek için her eksene bir kanal atayın. Nokta dağılımını korelasyon ve regresyonla birlikte inceleyin. Aykırı değerlerin veya çalışma koşulu değişiminin sonuca etkisini kontrol edin."],
         why: [
             ['What it is for', 'Ne işe yarar?',
                 'Plotting every sample of one channel against the same moment of another reveals the relationship directly: a straight band means a linear link, a curve means a nonlinear one, two clouds mean two operating states, and a shapeless cloud means no clear link.',
@@ -218,10 +209,7 @@ const records = [
     {
         id: 'bar_plot', references: [], related: ['statistics_summary', 'groupby_aggregation'],
         title: ['Bar Plot Guide', 'Bar Plot Rehberi'],
-        intro: [
-            'This guide explains how the Bar Plot compares one value per channel or per category, for example the RMS of six vibration sensors. It covers where the values come from, sorting and filtering, orientation, value labels and a reference line for limits.',
-            'Bu rehber, Bar Plot’un kanal veya kategori başına bir değeri, örneğin altı titreşim sensörünün RMS’ini, nasıl karşılaştırdığını anlatır. Değerlerin nereden geldiğini, sıralama ve filtrelemeyi, yönü, değer etiketlerini ve sınırlar için bir referans çizgisini açıklar.',
-        ],
+        intro: ["Compare category values with bars. Adjust the order, orientation and labels so differences are easy to read, and add a reference line when there is a meaningful target or limit.", "Kategori değerlerini çubuklarla karşılaştırın. Farkların rahat okunması için sıralamayı, yönü ve etiketleri ayarlayın. Geçerli bir hedef veya sınır varsa referans çizgisi ekleyin."],
         why: [
             ['What it is for', 'Ne işe yarar?',
                 'Some questions have one number per item as the answer: which bearing vibrates most, which test step had the highest temperature, which machine exceeds the limit. Bars make such comparisons instant, especially with a limit line drawn across them.',
@@ -281,10 +269,7 @@ const records = [
     {
         id: 'box_plot', references: [], related: ['histogram_widget', 'hypothesis_testing'],
         title: ['Box Plot Guide', 'Box Plot Rehberi'],
-        intro: [
-            'This guide explains how the Box Plot compares the spread of several channels side by side. It covers what the box, the whiskers and the outlier points mean, the different whisker rules, violin plots, and how to read the insights about medians and spread.',
-            'Bu rehber, Box Plot’un birkaç kanalın yayılımını yan yana nasıl karşılaştırdığını anlatır. Kutunun, bıyıkların ve aykırı noktaların ne anlama geldiğini, farklı bıyık kurallarını, keman grafiklerini ve medyanlar ile yayılım hakkındaki içgörülerin nasıl okunacağını açıklar.',
-        ],
+        intro: ["Compare the centre, spread and extremes of several channels. Box and violin views highlight different features; keep units and selected ranges consistent when comparing groups.", "Birden fazla kanalın orta değerini, yayılımını ve uç değerlerini karşılaştırın. Kutu ve violin görünümleri farklı ayrıntıları öne çıkarır. Grupları karşılaştırırken birimleri ve seçili aralıkları aynı tutun."],
         why: [
             ['What it is for', 'Ne işe yarar?',
                 'A box plot puts the distribution of many channels on one page. You see at a glance which channel is centred differently, which one spreads widest, and which one has many extreme values. It is the natural companion of a Bar Plot: the bar gives one number, the box shows the spread behind it.',

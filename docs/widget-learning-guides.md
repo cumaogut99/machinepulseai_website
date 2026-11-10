@@ -11,7 +11,7 @@ check components. FFT / Spectrum and Rotor Dynamics retain their dedicated cours
 - Engineering: the existing Vibration, Structural & Kinematics courses.
 - Planned Data I/O, Machine Learning and other engineering subgroups are excluded.
 
-Each new guide includes purpose, prerequisites, three explained controls, core
+Each new guide includes purpose, prerequisites, explained controls, core
 concepts, a typeset relationship, an illustrative worked example, a knowledge
 check, workflow, outputs, mistakes, references and related guides. Thirty-five
 pages also expose adjustable scalar teaching models.
@@ -23,9 +23,20 @@ pages also expose adjustable scalar teaching models.
 schema to the existing detail-route registry. Existing Data I/O URLs are preserved.
 Translations enter i18next through `src/i18n/widgetLearning.js`.
 
-`WidgetLearningPage` is the shared page. `LearningWorkbench` is a labelled
-conceptual control tour, not an invented application screenshot. `LearningExercise`
-handles answer/retry state. `LearningConceptLab` adjusts scalar relationships
+`WidgetLearningPage` is the shared page. All 49 released guides use the compact
+`LearningHero` and real, numbered `WidgetInterfaceTour` captures. Existing control
+descriptions and their options appear inside the relevant region card; there is
+no separate control-reference card. `controlRegions.js` records the bindings,
+and tests check their authored group names, measured hotspots and bilingual
+coverage so content cannot disappear when a tour changes. FFT and Rotor Dynamics
+use additional authored choices in `tours/flagshipDetails.js`.
+
+The header contains a title, short introduction and interface link, followed by
+the existing purpose and learning outcomes. Keyword badges, reading times and
+repeated conceptual-guide disclaimers are omitted. Guide copy should read as
+practical instructions, with concrete reasons for choosing each setting.
+
+`LearningConceptLab` adjusts scalar relationships
 without reading measurement data or running a product analysis. Those models are
 kept in `conceptLabs.js`; outputs must remain clearly labelled as synthetic.
 
@@ -68,6 +79,7 @@ marker used by every tour on the site.
 
 ```sh
 node --test tests/widget-learning.test.mjs
+node --test tests/guide-control-regions.test.mjs
 npm run build
 ```
 

@@ -4,10 +4,7 @@ const records = [
     {
         id: 'chart_dashboard', references: [], related: ['line_chart', 'histogram_widget'],
         title: ['Chart Dashboard Guide', 'Chart Dashboard Rehberi'],
-        intro: [
-            'This guide explains how the Chart Dashboard puts several charts of one recording on a single page: a trend, a spectrogram, a histogram, a box plot, a table of numbers and a gauge. It covers adding and arranging cells, assigning channels, the shared navigator and cursors, and how to keep the page honest about what each number describes.',
-            'Bu rehber, Chart Dashboard’un bir kaydın birkaç grafiğini tek sayfaya nasıl koyduğunu anlatır: bir eğilim, bir spektrogram, bir histogram, bir kutu grafiği, bir sayı tablosu ve bir gösterge. Hücre eklemeyi ve yerleştirmeyi, kanal atamayı, ortak gezgin ve imleçleri ve sayfanın her sayının neyi tarif ettiği konusunda nasıl dürüst tutulacağını açıklar.',
-        ],
+        intro: ["Bring several views of a recording into one dashboard. Add cells, assign their signals and set each view separately; use the shared navigator to inspect the same time interval across the layout.", "Bir kaydın farklı görünümlerini tek panoda bir araya getirin. Hücreleri ekleyip sinyallerini atayın ve her görünümü ayrı ayarlayın. Ortak navigatörle grafikleri aynı zaman aralığında inceleyebilirsiniz."],
         why: [
             ['What the dashboard is for', 'Pano ne işe yarar?',
                 'After a test the same questions come up every time: did anything unusual happen, how big was the vibration, where did the temperature end up? A dashboard answers them on one screen, so you do not have to open five windows and line them up by hand. Saved as a layout, it gives the same overview for every new recording.',
@@ -71,10 +68,7 @@ const records = [
     {
         id: 'time_graphics', references: [], related: ['line_chart', 'rolling_window_stats'],
         title: ['Time Graphics Guide', 'Time Graphics Rehberi'],
-        intro: [
-            'This guide explains Time Graphics, the multi-graph time viewer with two measuring cursors. It covers dragging parameters onto graphs, the cursor statistics table, duty cycle, decoding status words with a bitmask file, and named markers.',
-            'Bu rehber, iki ölçüm imleçli çoklu grafik zaman görüntüleyicisi Time Graphics’i anlatır. Parametreleri grafiklere sürüklemeyi, imleç istatistik tablosunu, görev döngüsünü, bir bitmask dosyasıyla durum sözcüklerini çözmeyi ve adlandırılmış işaretçileri açıklar.',
-        ],
+        intro: ["Inspect time traces with cursors, markers and statistics in one window. Choose the graphs and channels first, then set the parameters and statistics you need for the event under review.", "Zaman sinyallerini imleçler, işaretçiler ve istatistiklerle aynı pencerede inceleyin. Önce grafikleri ve kanalları seçin; ardından ilgilendiğiniz olay için gereken parametreleri ve istatistikleri ayarlayın."],
         why: [
             ['What it is for', 'Ne işe yarar?',
                 'Many test records contain dozens of channels that must be read together: speeds, pressures, temperatures and controller status words. Time Graphics stacks them in several graphs on one time axis and gives you two cursors that read every channel at two moments and the statistics between them.',
@@ -142,10 +136,7 @@ const records = [
     {
         id: 'align_compare', references: [], related: ['time_alignment', 'statistics_summary'],
         title: ['Align / Compare Guide', 'Align / Compare Rehberi'],
-        intro: [
-            'This guide explains how Align / Compare overlays two or more recordings of the same test, finds the time offset between them, and measures how much they differ. It covers choosing sources and channels, the time reference and automatic offset, the comparison window and grid, the difference trace and the metrics table.',
-            'Bu rehber, Align / Compare’in aynı testin iki veya daha fazla kaydını nasıl üst üste koyduğunu, aralarındaki zaman kaymasını nasıl bulduğunu ve ne kadar farklı olduklarını nasıl ölçtüğünü anlatır. Kaynak ve kanal seçimini, zaman referansını ve otomatik kaymayı, karşılaştırma penceresini ve ızgarayı, fark izini ve metrik tablosunu açıklar.',
-        ],
+        intro: ["Compare traces from different recordings on a common time axis. Choose a reference and alignment method, inspect the overlay, then use the difference trace and metrics to quantify what changed.", "Farklı kayıtlardaki sinyalleri ortak zaman ekseninde karşılaştırın. Referansı ve hizalama yöntemini seçip üst üste çizimi inceleyin. Ardından fark sinyali ve ölçütlerle değişimin büyüklüğünü değerlendirin."],
         why: [
             ['What it is for', 'Ne işe yarar?',
                 'Typical questions: did the repaired machine behave like the reference? Are two runs of the same test repeatable? Does the new sensor read like the old one? Each needs the recordings on top of each other, at the same moment, and a number for how different they are.',
@@ -209,10 +200,7 @@ const records = [
     {
         id: 'frequency_domain', references: [], related: ['fft_spectrum', 'cross_spectrum'],
         title: ['Frequency Domain Guide', 'Frequency Domain Rehberi'],
-        intro: [
-            'This guide explains the Frequency Domain viewer, which displays spectra computed by FFT / Spectrum and adds the tools to read them: markers, harmonic and sideband cursors, half-power damping, and a reference curve with a tolerance check.',
-            'Bu rehber, FFT / Spectrum’un hesapladığı spektrumları gösteren ve onları okumak için araçlar ekleyen Frequency Domain görüntüleyicisini anlatır: işaretçiler, harmonik ve yan bant imleçleri, yarı güç sönümü ve tolerans kontrollü bir referans eğrisi.',
-        ],
+        intro: ["Inspect peaks, bands and channel differences in a prepared FFT result. Display settings reuse the computed result; use markers and a reference comparison to read changes without repeating the source analysis.", "Hazır FFT sonucundaki tepeleri, bantları ve kanallar arası farkları inceleyin. Görünüm ayarları hesaplanmış sonucu kullanır. İşaretçiler ve referans karşılaştırmasıyla kaynak analizi tekrarlamadan değişimleri okuyabilirsiniz."],
         why: [
             ['What it is for', 'Ne işe yarar?',
                 'A spectrum is where most vibration diagnoses are made: a peak at running speed points to unbalance, a family of harmonics to looseness, sidebands around a gear mesh to a damaged tooth. This viewer is built for that reading. It also compares a spectrum with a stored reference, which is how “healthy against now” checks are done.',
@@ -283,10 +271,7 @@ const records = [
     {
         id: 'order_map_view', references: [], related: ['order_tracking', 'fft_spectrum'],
         title: ['Order Map View Guide', 'Order Map View Rehberi'],
-        intro: [
-            'This guide explains the Order Map View, which shows maps computed by Order Tracking as a 2D colour map or a 3D waterfall. It covers choosing the surface and metric, colour scales, the pointer readout and prepared guides, and how to read orders against speed.',
-            'Bu rehber, Order Tracking’in hesapladığı haritaları 2D renk haritası veya 3D şelale olarak gösteren Order Map View’yu anlatır. Yüzey ve metrik seçimini, renk ölçeklerini, işaretçi okumasını ve hazır kılavuzları ve order’ların hıza karşı nasıl okunacağını açıklar.',
-        ],
+        intro: ["Explore a prepared order map in two or three dimensions. Choose the source, metric and colour range to follow speed-related components, and use the supplied guides to relate them to the machine.", "Hazır order haritasını iki veya üç boyutta inceleyin. Devre bağlı bileşenleri takip etmek için kaynağı, ölçütü ve renk aralığını seçin. Hazırlanmış kılavuz çizgileriyle bileşenleri makineyle ilişkilendirin."],
         why: [
             ['What it is for', 'Ne işe yarar?',
                 'During a run-up the speed changes, so a single spectrum smears everything together. An order map has order (multiples of shaft speed) on one axis and speed on the other. Anything tied to rotation forms a straight vertical line at its order, while a structural resonance shows up at a fixed frequency and crosses the orders as speed rises.',

@@ -21,7 +21,7 @@ export default {
                     'Direct shows the unfiltered shaft path; nX Filtered isolates the Orbit Order with a band whose half-width is a percentage of that line. Show Revolution Marks places once-per-revolution dots integrated from the measured RPM — consistent within the result, but not a physical keyphasor phase.',
                     'Direct filtrelenmemiş mil yolunu gösterir; nX Filtered, yarı genişliği o çizginin yüzdesi olan bir bantla Orbit Order bileşenini ayırır. Show Revolution Marks ölçülen RPM’den entegre edilen devir başına noktalar koyar — sonuç içinde tutarlıdır ama fiziksel keyphasor fazı değildir.',
                 ]),
-                pt('navigator', ['Evidence window', 'Kanıt penceresi'], [
+                pt('navigator', ['Analysis interval', 'Analiz aralığı'], [
                     'The navigator strip shows the whole run-up; the cursors bound the samples sent to Compute. A short window around one speed gives a clean orbit, the whole run-up is needed for Bode, Polar and the waterfall.',
                     'Navigatör şeridi tüm kalkışı gösterir; imleçler Compute’a gönderilen örnekleri sınırlar. Tek hız etrafındaki kısa pencere temiz yörünge verir; Bode, Polar ve şelale için tüm kalkış gerekir.',
                 ]),
