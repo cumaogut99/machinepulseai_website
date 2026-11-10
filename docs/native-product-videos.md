@@ -1,6 +1,6 @@
 # Native product videos
 
-The home page presents the revised 67-second overview. `/product` contains the
+The home page presents the revised approximately 69-second overview. `/product` contains the
 complete tour with 16 chapter entry points, illustrated capabilities, a practical
 workflow and package selection. The former `/demo` route redirects permanently
 to `/product`; the navigation has one Product destination.
@@ -14,12 +14,31 @@ chapter action. Native controls support pause, seek, volume and fullscreen.
 
 ## Media provenance
 
+### ElevenLabs edition — 2026-11-11
+
+- Website durations: overview 68.60 seconds, introduction 133.23 seconds and
+  complete tour 1047.00 seconds. Labels show 1:09 and 17:27 for the two players.
+- All 17 website checks and client/SSR builds pass; 53 routes prerender.
+- All three MP4s support HTTP byte-range seeking; both external subtitle tracks
+  load successfully. The built MP4 assets match the checked public sources.
+- Public media retain the canonical AAC streams. Dated narration and media
+  receipts bind the supplied audio and new subtitle/seek positions to the
+  shipped files.
+- Browser control is unavailable in this session. Native video frames and
+  generated artifacts were reviewed; no new responsive browser qualification
+  is claimed. The existing Browserslist dataset-age notice remains unchanged.
+
 Both movies come from the application project's `output/video/current/`
-delivery updated 2026-11-10. The retained Emel voice (-3%) first introduces the
-platform and its audience. A new native canvas take then shows nine real palette
+delivery updated 2026-11-11. The user-supplied ElevenLabs Furkan narration first
+introduces the platform and its audience at its original speaking speed.
+The retained native canvas take then shows nine real palette
 drops across every available group plus Python, followed by ten actual port
 connections. The short edit removes idle gaps, preserving every gesture at its
-original speed. The complete tour retains all 58 independent chapters.
+original speed. The complete tour retains all 58 independent chapters. Local
+Whisper word timestamps align the 195 authored cues to the eleven supplied MP3s.
+The edit adjusts recorded idle holds and retains each recorded action through
+its readiness timestamp; it does not accelerate gestures or speech. Each whole
+group recording feeds the final audio mix without sentence-by-sentence silence.
 
 Both narrations explicitly explain prompt-driven use through optional Agent
 mode with a compatible model. Compatible local models and Local Only Mode let
@@ -36,24 +55,23 @@ The Turkish disclosure is embedded at the left of that band. Its right edge
 is x=435; the widest delivered English subtitle starts at x=642, leaving 207px
 of separation. Video is encoded with H.264 CRF 18 and fast-start metadata;
 audio is copied unchanged. Previous delivery files are retained in the
-application workspace's `tmp/showcase_delivery_before_multi_group_20261110_v1`.
+application workspace's `tmp/showcase_delivery_before_elevenlabs_20261111`.
 Reproduce with `scripts/prepare-native-videos.py --source <delivery> --output public/videos`.
 Posters are extracted from these cropped copies. English subtitles are burned
 into the recordings; both active videos also have WebVTT accessibility tracks.
 
-Reproduce the new overview from the application repository root:
+Reproduce the ElevenLabs edition from the application repository root, using
+the original delivery metadata, supplied grouped MP3s and the retained local
+Whisper word-time cache:
 
 ```text
-python scripts/prepare_showcase_speech.py --section website-overview --trim-edges --output <speech-directory>
-python scripts/prepare_website_overview.py --delivery output/video/current --intro-take <validated-native-take> --speech <speech-directory> --output <new-edition-directory>
+python scripts/retime_showcase_narration.py --delivery <original-delivery> --pack docs/showcase_voice/elevenlabs --alignment <word-time-cache> --output <new-edition-directory>
+python scripts/validate_showcase_delivery.py --output <new-edition-directory>
 ```
 
-Then run this website's `scripts/prepare-native-videos.py --source <new-edition-directory>
---output public/videos --only overview` and copy that edition's `captions.en.vtt`
-to `public/videos/overview.en.vtt`. The narration source lives in
-`scripts/showcase_production/website_overview.py` in the application repository.
-For a complete verified delivery, `scripts/sync_showcase_website.py --delivery
-<delivery-directory> --website <website-checkout>` synchronizes both movies,
+Then run `scripts/sync_showcase_website.py --delivery <new-edition-directory>
+--website <website-checkout>` in the application repository. It synchronizes all
+three hosted movies,
 posters, captions, duration labels and chapter positions together. It does not
 deploy the website.
 

@@ -68,14 +68,21 @@ test('shareable product links resolve the same chapter and timestamp used by the
 })
 
 test('homepage media and subtitles match the complete-sentence narration receipt', () => {
-    const receipt = JSON.parse(readFileSync(new URL('../docs/overview-narration-2026-11-10.json', import.meta.url), 'utf8'))
+    const receipt = JSON.parse(readFileSync(new URL('../docs/overview-narration-2026-11-11.json', import.meta.url), 'utf8'))
     const movie = readFileSync(new URL(`../public${PRODUCT_VIDEOS.overview.src}`, import.meta.url))
     assert.equal(createHash('sha256').update(movie).digest('hex'), receipt.sha256)
     const subtitles = readFileSync(new URL(`../public${PRODUCT_VIDEOS.overview.captions}`, import.meta.url), 'utf8')
         .split(/\r?\n/).filter(line => line && line !== 'WEBVTT' && !/^\d+$/.test(line) && !line.includes('-->'))
         .join(' ').replace(/\s+/g, ' ')
-    assert.equal(receipt.voice, 'tr-TR-EmelNeural')
-    assert.ok(receipt.narration[1].start < 6 && receipt.narration[2].start >= 11)
+    assert.equal(receipt.voice, 'ElevenLabs/Furkan - Deep, Natural and Clear')
+    assert.equal(receipt.rate, 'original')
+    assert.equal(receipt.edition, 'elevenlabs-furkan-v1')
+    assert.equal(receipt.narration_audio.length, 11)
+    for (const [index, track] of receipt.narration.entries()) {
+        assert.ok(track.start >= 0 && track.duration > 0)
+        assert.ok(track.start + track.duration <= receipt.duration_seconds + 0.05)
+        if (index) assert.ok(track.start > receipt.narration[index - 1].start)
+    }
     assert.equal(receipt.narration[1].key, 'overview_canvas')
     assert.equal(receipt.native_drops.length, 9)
     assert.equal(receipt.native_connections.length, 10)

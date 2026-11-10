@@ -1,27 +1,27 @@
 // Native, same-origin media. Keep previews out of the initial network payload.
 export const PRODUCT_VIDEOS = {
-    overview: { src: '/videos/overview.mp4', poster: '/videos/overview.webp', durationSeconds: 67.18, duration: '1:08', title: 'overview', captions: '/videos/overview.en.vtt' },
-    tour: { src: '/videos/product-tour.mp4', poster: '/videos/product-tour.webp', durationSeconds: 1042.44, duration: '17:23', title: 'tour', captions: '/videos/captions.en.vtt' },
+    overview: { src: '/videos/overview.mp4', poster: '/videos/overview.webp', durationSeconds: 68.59, duration: '1:09', title: 'overview', captions: '/videos/overview.en.vtt' },
+    tour: { src: '/videos/product-tour.mp4', poster: '/videos/product-tour.webp', durationSeconds: 1046.99, duration: '17:27', title: 'tour', captions: '/videos/captions.en.vtt' },
 }
 
 // These timestamps refer to the delivered tour, not to the shorter edits.
 export const TOUR_CHAPTERS = [
     { id: 'value', time: 0.030 },
-    { id: 'workspace', time: 19.310 },
-    { id: 'assistant', time: 82.883 },
-    { id: 'dataIO', time: 138.880 },
-    { id: 'preprocessing', time: 234.270 },
-    { id: 'filters', time: 327.910 },
-    { id: 'fft', time: 484.890 },
-    { id: 'frf', time: 533.080 },
-    { id: 'vibration', time: 546.150 },
-    { id: 'rotor', time: 595.890 },
-    { id: 'orders', time: 621.390 },
-    { id: 'modal', time: 646.910 },
-    { id: 'statistics', time: 748.440 },
-    { id: 'visualization', time: 846.660 },
-    { id: 'reports', time: 997.430 },
-    { id: 'python', time: 1030.290 },
+    { id: 'workspace', time: 19.840 },
+    { id: 'assistant', time: 82.060 },
+    { id: 'dataIO', time: 133.200 },
+    { id: 'preprocessing', time: 230.633 },
+    { id: 'filters', time: 329.267 },
+    { id: 'fft', time: 490.967 },
+    { id: 'frf', time: 531.467 },
+    { id: 'vibration', time: 544.600 },
+    { id: 'rotor', time: 598.800 },
+    { id: 'orders', time: 623.333 },
+    { id: 'modal', time: 648.900 },
+    { id: 'statistics', time: 747.433 },
+    { id: 'visualization', time: 846.733 },
+    { id: 'reports', time: 1001.400 },
+    { id: 'python', time: 1035.033 },
 ]
 
 /** Resolve a shared chapter identifier; unknown URL parameters do not load media. */

@@ -1,49 +1,49 @@
 WEBVTT
 
 1
-00:00:00.030 --> 00:00:05.600
+00:00:00.000 --> 00:00:06.220
 MachinePulseAI is an engineering analysis
 platform developed for test and R&D teams.
 
 2
-00:00:05.660 --> 00:00:13.860
+00:00:06.780 --> 00:00:14.794
 Drag tools from each available group onto the
 canvas. Connect preparation, filters,
 
 3
-00:00:13.860 --> 00:00:21.962
+00:00:14.794 --> 00:00:22.712
 engineering analysis, statistics and plots.
 Add reports and Python steps to form a
 
 4
-00:00:21.962 --> 00:00:30.360
+00:00:22.712 --> 00:00:30.920
 branching workflow. The connections make each
 analysis path visible in one workspace.
 
 5
-00:00:30.420 --> 00:00:37.880
+00:00:31.480 --> 00:00:39.360
 Compare frequency, vibration and structural
 results in interactive plots.
 
 6
-00:00:37.940 --> 00:00:44.520
+00:00:39.920 --> 00:00:46.720
 Bring findings, plots and analysis settings
 together in shareable engineering reports.
 
 7
-00:00:44.580 --> 00:00:52.529
+00:00:47.280 --> 00:00:54.605
 With a compatible model, use the app through
 prompts in optional Agent mode. It can run
 
 8
-00:00:52.529 --> 00:00:55.910
+00:00:54.605 --> 00:00:57.720
 analysis and reporting steps for you.
 
 9
-00:00:55.970 --> 00:01:04.858
+00:00:58.200 --> 00:01:06.104
 Use compatible local models to keep sensitive
 measurements on your computer. Local Only Mode
 
 10
-00:01:04.858 --> 00:01:07.080
+00:01:06.104 --> 00:01:08.080
 blocks cloud providers.

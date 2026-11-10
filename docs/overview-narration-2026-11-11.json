@@ -1,0 +1,197 @@
+{
+  "full_decode": "passed",
+  "audio_sha256": "SHA256=158ed4fbec9f98b80861c1ceed9f3069367bd209086f767a167884527b30fd12",
+  "duration_seconds": 68.6,
+  "edition": "elevenlabs-furkan-v1",
+  "voice": "ElevenLabs/Furkan - Deep, Natural and Clear",
+  "rate": "original",
+  "narration_audio": [
+    {
+      "id": "00_website_overview",
+      "audio_sha256": "27e09fa73220ecded924d32d147e6968435515cdfd06bae338bf0e188f466fda",
+      "audio_duration": 68.4408125,
+      "duration": 68.56666666666666
+    },
+    {
+      "id": "01_introduction",
+      "audio_sha256": "1fc3c7fd05c767fd170d8bac5c6c417bcdaf6e8f6602d9cf4f1a5b32ccffb031",
+      "audio_duration": 133.06775,
+      "duration": 133.2
+    },
+    {
+      "id": "02_data_io",
+      "audio_sha256": "7cf9d800b74253799c09e06fdfcc5256fa74a036092eef8cdd298d117f3c8d45",
+      "audio_duration": 97.306125,
+      "duration": 97.43333333333334
+    },
+    {
+      "id": "03_preprocessing",
+      "audio_sha256": "9ccc386aec968df4b4dd58e279d3f9cd458dc7bb436c2f5cd8e8332bddd21111",
+      "audio_duration": 98.50775,
+      "duration": 98.63333333333334
+    },
+    {
+      "id": "04_filters",
+      "audio_sha256": "19227714260960ac3ea95b2f6487be90fbe67561c958c64d435075db78db3e38",
+      "audio_duration": 145.3191875,
+      "duration": 145.46666666666667
+    },
+    {
+      "id": "05_engineering_frequency",
+      "audio_sha256": "d2a1fc654d551ebf8155915fcd1035c440595939a32a78b1fb040c5aa37e360f",
+      "audio_duration": 69.7208125,
+      "duration": 69.86666666666666
+    },
+    {
+      "id": "06_vibration_structural_kinematics",
+      "audio_sha256": "f0182650ac0208f13596dc3010209c8f5470359a60ffc88ff32ba8eab38a487e",
+      "audio_duration": 202.6840625,
+      "duration": 202.83333333333334
+    },
+    {
+      "id": "07_statistics",
+      "audio_sha256": "45cb6fb8a3189e8c4fa1072b4e12a72c2bd23846ffcd2345f39d314374ed7d3a",
+      "audio_duration": 99.1608125,
+      "duration": 99.3
+    },
+    {
+      "id": "08_visualization",
+      "audio_sha256": "181fe78a9f5d7109379e7eb3953bcf4abc57badf2f70cf61facfb4c1868dca1c",
+      "audio_duration": 154.5143125,
+      "duration": 154.66666666666666
+    },
+    {
+      "id": "09_reporting",
+      "audio_sha256": "4983646cc0b8d972a5b2436c5c2d6a831d98a6a378a2cf7b2c85393c42f84444",
+      "audio_duration": 33.489,
+      "duration": 33.63333333333333
+    },
+    {
+      "id": "10_python",
+      "audio_sha256": "6b9ccf22e28bd3f52dea6c3e3f69a94300a20a3220291e64093fb1ef9accb0c6",
+      "audio_duration": 11.807375,
+      "duration": 11.933333333333334
+    }
+  ],
+  "sha256": "06b647c25d9066ba32fb2dbc3c6de783a2d1fac6081f587db961ad07ec351a79",
+  "real_native_footage": true,
+  "synthetic_demonstration_data": true,
+  "native_drops": [
+    "random_generator",
+    "channel_selector",
+    "frequency_filter",
+    "fft_spectrum",
+    "bearing_fault",
+    "line_chart",
+    "python_script",
+    "statistics_summary",
+    "intelligent_report"
+  ],
+  "native_connections": [
+    [
+      "random_generator",
+      "data",
+      "channel_selector",
+      "data"
+    ],
+    [
+      "channel_selector",
+      "selected",
+      "frequency_filter",
+      "signal"
+    ],
+    [
+      "channel_selector",
+      "selected",
+      "line_chart",
+      "data"
+    ],
+    [
+      "frequency_filter",
+      "filtered",
+      "fft_spectrum",
+      "data"
+    ],
+    [
+      "frequency_filter",
+      "filtered",
+      "bearing_fault",
+      "vibration"
+    ],
+    [
+      "channel_selector",
+      "selected",
+      "python_script",
+      "data"
+    ],
+    [
+      "python_script",
+      "result",
+      "statistics_summary",
+      "data"
+    ],
+    [
+      "fft_spectrum",
+      "fft_result",
+      "intelligent_report",
+      "data"
+    ],
+    [
+      "bearing_fault",
+      "envelope_spectrum",
+      "intelligent_report",
+      "data"
+    ],
+    [
+      "statistics_summary",
+      "summary",
+      "intelligent_report",
+      "data"
+    ]
+  ],
+  "caption_blocks": 11,
+  "narration": [
+    {
+      "key": "overview_product",
+      "start": 0.0,
+      "duration": 6.733333333333333,
+      "tr": "MachinePulseAI, test ve Ar-Ge ekipleri için geliştirdiğimiz bir mühendislik analiz platformudur.",
+      "en": "MachinePulseAI is an engineering analysis platform developed for test and R&D teams."
+    },
+    {
+      "key": "overview_canvas",
+      "start": 6.733333333333333,
+      "duration": 24.733333333333334,
+      "tr": "Veri girişi, ön işleme, filtreler, mühendislik analizi, istatistik ve görselleştirme araçlarını canvas üzerine sürükleyerek iş akışınızı kurabilirsiniz. Rapor ve Python adımlarını da ekleyip aynı veriyi farklı analiz kollarına bağlayabilir, sonuçları tek bir akışta birleştirebilirsiniz. Bağlantılar veri akışını görünür kılar; her analiz kolunu aynı çalışma alanında izleyebilirsiniz.",
+      "en": "Drag tools from each available group onto the canvas. Connect preparation, filters, engineering analysis, statistics and plots. Add reports and Python steps to form a branching workflow. The connections make each analysis path visible in one workspace."
+    },
+    {
+      "key": "overview_analysis",
+      "start": 31.46666666666667,
+      "duration": 8.433333333333334,
+      "tr": "Frekans, titreşim ve yapısal analiz araçlarıyla ölçümleri inceleyebilir, sonuçları etkileşimli grafiklerde karşılaştırabilirsiniz.",
+      "en": "Compare frequency, vibration and structural results in interactive plots."
+    },
+    {
+      "key": "overview_report",
+      "start": 39.900000000000006,
+      "duration": 7.333333333333333,
+      "tr": "Analiz bulgularını, grafiklerini ve kullanılan ayarları paylaşılabilir mühendislik raporlarında bir araya getirebilirsiniz.",
+      "en": "Bring findings, plots and analysis settings together in shareable engineering reports."
+    },
+    {
+      "key": "overview_assistant",
+      "start": 47.23333333333334,
+      "duration": 10.133333333333333,
+      "tr": "Agent modunda, uyumlu bir modelle uygulamayı yalnızca prompt yazarak kullanabilirsiniz. İsteğe bağlı bu asistan, analiz adımlarını ve rapor hazırlamayı sizin için yürütebilir.",
+      "en": "With a compatible model, use the app through prompts in optional Agent mode. It can run analysis and reporting steps for you."
+    },
+    {
+      "key": "overview_privacy",
+      "start": 57.366666666666674,
+      "duration": 11.2,
+      "tr": "Uyumlu yerel modellerle, gizlilik gerektiren ölçüm verilerinizi bilgisayarınızda tutarak çalışabilirsiniz. Local Only Mode, bulut sağlayıcılarına bağlantıyı engeller.",
+      "en": "Use compatible local models to keep sensitive measurements on your computer. Local Only Mode blocks cloud providers."
+    }
+  ]
+}
