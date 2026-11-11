@@ -60,10 +60,10 @@ export default function Navbar() {
                     <Link to="/" className="flex items-center gap-3 group flex-shrink-0">
                         <img
                             src={logoImg}
-                            alt="MachinePulseAI Logo"
+                            alt=""
                             className="h-12 w-auto transition-all duration-300 group-hover:scale-105 drop-shadow-[0_0_15px_rgba(0,245,255,0.6)]"
                         />
-                        <span className="text-xl font-bold text-white tracking-tight hidden sm:block">
+                        <span className="block text-base font-semibold text-white tracking-tight sm:text-xl sm:font-bold">
                             MachinePulse<span className="text-[#00f5ff]">AI</span>
                         </span>
                     </Link>
