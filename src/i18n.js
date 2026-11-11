@@ -103,16 +103,11 @@ const resources = {
             },
             "hero": {
                 "badge": "Early Access Open",
-                "title1": "From Measurement Data",
-                "title2": "to Evidence-Based Analysis",
-                "subtitle": "Bring recorded test data into one workspace. Prepare signals, run engineering analyses and inspect the evidence with an optional AI assistant — from question to report.",
+                "title1": "Analyze test and measurement data",
+                "title2": "in one place",
+                "subtitle": "MachinePulseAI is a Windows application we built to help engineers analyze and report on recorded test data. Compare measurements such as temperature, pressure and vibration in one workspace. Use the optional AI assistant to ask questions about your data and see which measurements support your findings.",
                 "ctaPrimary": "Request a Demo",
-                "ctaSecondary": "Watch the Short Introduction",
-                "stats": {
-                    "files": "Phase 1 · Recorded data",
-                    "os": "Windows 10/11",
-                    "ram": "Optional AI assistant"
-                }
+                "ctaSecondary": "Watch the Introduction"
             },
             "contact": {
                 "title": "See MachinePulseAI in action",
@@ -349,16 +344,11 @@ const resources = {
             },
             "hero": {
                 "badge": "Erken Erişim Açık",
-                "title1": "Ölçüm Verisinden",
-                "title2": "Kanıta Dayalı Analize",
-                "subtitle": "Kayıtlı test verilerini tek çalışma alanına taşıyın. Sinyalleri hazırlayın, mühendislik analizlerini çalıştırın ve isteğe bağlı AI asistanıyla bulguların dayanaklarını inceleyin — sorudan rapora.",
+                "title1": "Test ve ölçüm verilerinizi",
+                "title2": "tek yerde analiz edin",
+                "subtitle": "MachinePulseAI, mühendislerin kaydedilmiş test verilerini inceleyip raporlaması için geliştirdiğimiz bir Windows uygulamasıdır. Sıcaklık, basınç ve titreşim gibi farklı ölçümleri aynı çalışma alanında karşılaştırabilirsiniz. İsteğe bağlı yapay zekâ asistanıyla verileriniz hakkında soru sorabilir ve bulguların hangi ölçümlere dayandığını inceleyebilirsiniz.",
                 "ctaPrimary": "Demo İste",
-                "ctaSecondary": "Kısa Tanıtımı İzle",
-                "stats": {
-                    "files": "Phase 1 · Kayıtlı veri",
-                    "os": "Windows 10/11",
-                    "ram": "İsteğe bağlı AI asistanı"
-                }
+                "ctaSecondary": "Kısa Tanıtımı İzle"
             },
             "contact": {
                 "title": "MachinePulseAI'ı iş başında görün",

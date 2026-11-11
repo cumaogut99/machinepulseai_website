@@ -72,6 +72,7 @@ export default function Hero() {
                 >
                     {/* First line: plain white */}
                     <span className="block">{t('hero.title1')}</span>
+                    {' '}
                     {/* Second line: neon gradient */}
                     <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#00f5ff] via-[#38bdf8] to-[#818cf8]">
                         {t('hero.title2')}
@@ -89,60 +90,35 @@ export default function Hero() {
                 {/* CTA Buttons */}
                 <motion.div
                     variants={fadeUpVariant}
-                    className="flex flex-col sm:flex-row items-center gap-4"
+                    className="flex max-w-full justify-center gap-2 sm:gap-4"
                 >
                     {/* Primary CTA — opens contact modal */}
                     <button
                         id="hero-primary-cta"
                         onClick={openContact}
-                        className="btn-neon inline-flex items-center gap-2 bg-[#00f5ff]/8 text-[#00f5ff] font-semibold text-sm px-7 py-3.5 rounded-xl"
+                        className="btn-neon inline-flex items-center justify-center gap-1.5 sm:gap-2 bg-[#00f5ff]/8 text-[#00f5ff] font-semibold text-sm px-2.5 sm:px-7 py-3.5 rounded-xl"
                     >
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                                 d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                         </svg>
-                        {t('hero.ctaPrimary')}
+                        <span>{t('hero.ctaPrimary')}</span>
                     </button>
 
                     {/* Secondary CTA opens the product preview section */}
                     <a
                         id="hero-secondary-cta"
                         href="#product-preview"
-                        className="inline-flex items-center gap-2 text-sm text-slate-300 hover:text-white font-medium px-5 py-3.5 rounded-xl border border-white/10 hover:border-white/25 hover:bg-white/5 transition-all duration-200"
+                        className="inline-flex items-center justify-center gap-1.5 sm:gap-2 text-sm text-slate-300 hover:text-white font-medium px-2.5 sm:px-5 py-3.5 rounded-xl border border-white/10 hover:border-white/25 hover:bg-white/5 transition-all duration-200"
                     >
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                                 d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                                 d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        {t('hero.ctaSecondary')}
+                        <span>{t('hero.ctaSecondary')}</span>
                     </a>
-                </motion.div>
-
-                {/* Trust indicators */}
-                <motion.div
-                    variants={fadeUpVariant}
-                    className="flex flex-wrap justify-center items-center gap-x-6 gap-y-3 mt-6 text-xs text-slate-500"
-                >
-                    <span className="flex items-center gap-1.5">
-                        <svg className="w-3.5 h-3.5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        {t('hero.stats.files')}
-                    </span>
-                    <span className="flex items-center gap-1.5">
-                        <svg className="w-3.5 h-3.5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        {t('hero.stats.os')}
-                    </span>
-                    <span className="flex items-center gap-1.5">
-                        <svg className="w-3.5 h-3.5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        {t('hero.stats.ram')}
-                    </span>
                 </motion.div>
             </motion.div>
 
