@@ -73,8 +73,10 @@ export default function ContactModal({ open, purpose = 'demo', onClose }) {
         try {
             const response = await fetch(FORM_ENDPOINT, {
                 method: 'POST',
+                // Form services (e.g. Formspree) answer JSON only when asked to.
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    Accept: 'application/json'
                 },
                 body: JSON.stringify(form)
             })

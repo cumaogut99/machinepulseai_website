@@ -10,7 +10,8 @@ import { SITE_URL, SITE_NAME, OG_IMAGE, resolveRouteMeta } from './routeMeta.js'
 
 export default function Seo() {
     const { i18n } = useTranslation()
-    const { pathname } = useLocation()
+    // Normalize the trailing-slash form of prerendered pages (/pricing/).
+    const pathname = useLocation().pathname.replace(/\/+$/, '') || '/'
 
     const lang = i18n.language?.startsWith('tr') ? 'tr' : 'en'
     const meta = resolveRouteMeta(pathname, lang)

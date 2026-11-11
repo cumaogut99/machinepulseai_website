@@ -17,6 +17,8 @@ export default function Navbar() {
     const [scrolled, setScrolled] = useState(false)
     const [menuOpen, setMenuOpen] = useState(false)
     const location = useLocation()
+    // Prerendered pages are also reachable with a trailing slash (/pricing/).
+    const currentPath = location.pathname.replace(/\/+$/, '') || '/'
     const isTurkish = i18n.language?.startsWith('tr')
 
     // ─── Nav Link Data ──────────────────────────────────────────────────────────
@@ -75,7 +77,7 @@ export default function Navbar() {
                                 <Link
                                     to={link.href}
                                     aria-haspopup={link.dropdown ? 'menu' : undefined}
-                                    className={`text-sm hover:text-white transition-colors duration-200 relative py-2 flex items-center gap-1 ${location.pathname === link.href ? 'text-white' : 'text-slate-400'}`}
+                                    className={`text-sm hover:text-white transition-colors duration-200 relative py-2 flex items-center gap-1 ${currentPath === link.href ? 'text-white' : 'text-slate-400'}`}
                                 >
                                     {link.label}
                                     {link.dropdown && (
@@ -83,7 +85,7 @@ export default function Navbar() {
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                                         </svg>
                                     )}
-                                    <span className={`absolute -bottom-0.5 left-0 h-px bg-neon-cyan transition-all duration-300 ease-out ${location.pathname === link.href ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+                                    <span className={`absolute -bottom-0.5 left-0 h-px bg-neon-cyan transition-all duration-300 ease-out ${currentPath === link.href ? 'w-full' : 'w-0 group-hover:w-full'}`} />
                                 </Link>
 
                                 {/* Dropdown Menu — opens on hover or keyboard focus */}
@@ -162,7 +164,7 @@ export default function Navbar() {
                                         <Link
                                             to={link.href}
                                             onClick={() => setMenuOpen(false)}
-                                            className={`text-sm transition-colors ${location.pathname === link.href ? 'text-white font-medium' : 'text-slate-400 hover:text-white'}`}
+                                            className={`text-sm transition-colors ${currentPath === link.href ? 'text-white font-medium' : 'text-slate-400 hover:text-white'}`}
                                         >
                                             {link.label}
                                         </Link>
@@ -179,7 +181,7 @@ export default function Navbar() {
                                                     key={sublink.href}
                                                     to={sublink.href}
                                                     onClick={() => setMenuOpen(false)}
-                                                    className={`text-sm transition-colors ${location.pathname === sublink.href ? 'text-white font-medium' : 'text-slate-400 hover:text-white'}`}
+                                                    className={`text-sm transition-colors ${currentPath === sublink.href ? 'text-white font-medium' : 'text-slate-400 hover:text-white'}`}
                                                 >
                                                     {sublink.label}
                                                 </Link>
