@@ -13,6 +13,8 @@ import { widgetReleasePhase } from './data/widgetRelease.js'
 import Hero from './components/Hero.jsx'
 import Stats from './components/Stats.jsx'
 import Features from './components/Features.jsx'
+import WhySection from './components/WhySection.jsx'
+import Roadmap from './components/Roadmap.jsx'
 
 // Code-split page. Unlike React.lazy(), which always suspends on its first
 // render (blanking prerendered HTML during hydration), the page renders
@@ -95,7 +97,9 @@ const Home = () => (
     <main id="main">
         <Hero />
         <Stats />
+        <WhySection />
         <Features compact />
+        <Roadmap />
     </main>
 )
 
@@ -110,7 +114,7 @@ const Page = ({ children }) => (
 
 function AppShell() {
     const { i18n } = useTranslation()
-    const { isOpen, close } = useContactModal()
+    const { isOpen, purpose, close } = useContactModal()
 
     // Update document lang attribute when language changes
     useEffect(() => {
@@ -150,7 +154,7 @@ function AppShell() {
             <Footer />
 
             {/* ─── Global Contact / Demo Request Modal ────────────── */}
-            <ContactModal open={isOpen} onClose={close} />
+            <ContactModal open={isOpen} purpose={purpose} onClose={close} />
         </div>
     )
 }

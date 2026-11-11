@@ -19,11 +19,12 @@ export default function Footer() {
                         <Link to="/product" className="hover:text-white">{t('nav.product')}</Link>
                         <Link to="/widgets" className="hover:text-white">{t('nav.widgets')}</Link>
                         <Link to="/pricing" className="hover:text-white">{t('nav.pricing')}</Link>
-                        <button type="button" onClick={open} className="hover:text-white">{t('site.footer.contact')}</button>
+                        <button type="button" onClick={() => open()} className="hover:text-white">{t('site.footer.contact')}</button>
+                        <button type="button" onClick={() => open('partnership')} className="hover:text-white">{t('site.footer.partnership')}</button>
                     </nav>
                 </div>
                 <div className="border-t border-white/5 pt-6 flex flex-col sm:flex-row justify-between gap-4 text-xs text-slate-500">
-                    <p>© MachinePulseAI. {t('site.footer.rights')}</p>
+                    <p>MachinePulseAI</p>
                     <a className="text-neon-cyan hover:text-white" href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
                 </div>
             </div>

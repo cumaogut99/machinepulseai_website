@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 
 // ─── Homepage "Problem → Why" narrative ─────────────────────────────────────────
@@ -35,20 +34,13 @@ const WHY_CARDS = [
 export default function WhySection() {
     const { t } = useTranslation()
 
+    // Static markup: stays readable in prerendered HTML without JavaScript.
     return (
-        <section id="why" className="relative py-10 px-6 overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/8 to-transparent" />
-
-            <div className="max-w-7xl mx-auto relative z-10">
+        <section id="why" className="relative py-12 px-6">
+            <div className="max-w-7xl mx-auto">
                 {/* ── Problem statement ── */}
-                <motion.div
-                    className="max-w-3xl mx-auto text-center mb-12"
-                    initial={{ opacity: 0, y: 24 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: '-80px' }}
-                    transition={{ duration: 0.6 }}
-                >
-                    <span className="inline-block text-xs font-semibold text-[#f59e0b] tracking-widest uppercase mb-4">
+                <div className="max-w-3xl mx-auto text-center mb-12">
+                    <span className="inline-block text-xs font-semibold text-neon-cyan tracking-widest uppercase mb-4">
                         {t('home.problem.eyebrow')}
                     </span>
                     <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-4">
@@ -57,31 +49,18 @@ export default function WhySection() {
                     <p className="text-slate-400 text-base leading-relaxed">
                         {t('home.problem.desc')}
                     </p>
-                </motion.div>
+                </div>
 
                 {/* ── Why cards ── */}
-                <motion.div
-                    className="text-center mb-8"
-                    initial={{ opacity: 0, y: 24 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: '-80px' }}
-                    transition={{ duration: 0.6 }}
-                >
+                <div className="text-center mb-8">
                     <h3 className="text-xl font-bold text-white tracking-tight mb-2">{t('home.whyTitle')}</h3>
-                    <p className="text-sm text-slate-500">{t('home.whySubtitle')}</p>
-                </motion.div>
+                    <p className="text-sm text-slate-400">{t('home.whySubtitle')}</p>
+                </div>
 
-                <motion.div
-                    className="grid grid-cols-1 md:grid-cols-3 gap-4"
-                    variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: '-60px' }}
-                >
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {WHY_CARDS.map((card) => (
-                        <motion.div
+                        <div
                             key={card.id}
-                            variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } }}
                             className="card-hover-glow relative rounded-2xl border p-6 flex flex-col gap-3 overflow-hidden"
                             style={{ borderColor: `${card.accent}20`, background: `${card.accent}06` }}
                         >
@@ -100,9 +79,9 @@ export default function WhySection() {
                             </div>
                             <h4 className="text-base font-semibold text-white">{t(`home.why.${card.id}.title`)}</h4>
                             <p className="text-sm text-slate-400 leading-relaxed">{t(`home.why.${card.id}.desc`)}</p>
-                        </motion.div>
+                        </div>
                     ))}
-                </motion.div>
+                </div>
             </div>
         </section>
     )

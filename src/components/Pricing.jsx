@@ -80,7 +80,9 @@ function AddonCard({ name, desc, accent, label, cta, onSelect }) {
 // ─── Component ─────────────────────────────────────────────────────────────────
 export default function Pricing() {
     const { t } = useTranslation()
-    const { open: openContact } = useContactModal()
+    const { open } = useContactModal()
+    const openContact = () => open('demo')
+    const openPilot = () => open('pilot')
 
     const baseFeatures = t('pricing.base.features', { returnObjects: true }) || []
     const enterpriseFeatures = t('pricing.enterpriseFeatures', { returnObjects: true }) || []
@@ -171,7 +173,7 @@ export default function Pricing() {
                                 accent={g.accent}
                                 label={t('pricing.addonLabel')}
                                 cta={selectCta}
-                                onSelect={openContact}
+                                onSelect={openPilot}
                             />
                         ))}
                         {INTELLIGENCE_MODULES.map((m) => (
@@ -182,7 +184,7 @@ export default function Pricing() {
                                 accent={m.accent}
                                 label={t('pricing.addonLabel')}
                                 cta={selectCta}
-                                onSelect={openContact}
+                                onSelect={openPilot}
                             />
                         ))}
                     </motion.div>
@@ -220,12 +222,6 @@ export default function Pricing() {
                         >
                             {t('pricing.enterpriseCta')}
                         </button>
-                        <a
-                            href="mailto:hello@machinepulseai.com.tr?subject=Datasheet%20Request"
-                            className="w-full text-sm text-slate-400 hover:text-white py-2.5 rounded-xl border border-white/8 hover:border-white/20 hover:bg-white/5 transition-all duration-200 text-center block"
-                        >
-                            {t('pricing.datasheetCta')}
-                        </a>
                     </div>
                 </motion.div>
 

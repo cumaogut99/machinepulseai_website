@@ -105,27 +105,23 @@ const resources = {
                 "badge": "Early Access Open",
                 "title1": "Analyze test and measurement data",
                 "title2": "in one place",
-                "subtitle": "MachinePulseAI is a Windows application we built to help engineers analyze and report on recorded test data. Compare measurements such as temperature, pressure and vibration in one workspace. Use the optional AI assistant to ask questions about your data and see which measurements support your findings.",
+                "subtitle": "MachinePulseAI is a Windows engineering application that takes recorded test data from import to report in one workspace. Connect modules such as filtering, FFT and spectrum analysis, order tracking, rotor dynamics and modal analysis in a visual workflow. Use the optional AI assistant to ask questions about your data and see which measurements support your findings.",
                 "ctaPrimary": "Request a Demo",
                 "ctaSecondary": "Watch the Introduction"
             },
             "contact": {
-                "title": "See MachinePulseAI in action",
-                "subtitle": "Fill in the form and we'll reach out to discuss your workflow.",
-                "badge": "Request a Demo",
+                "subtitle": "Fill in the form and you will get a reply by email.",
                 "form": {
                     "name": "Full Name *",
-                    "company": "Company *",
-                    "email": "Work Email *",
-                    "message": "What are you analyzing?",
-                    "messagePlaceholder": "e.g. vibration data from turbine test rigs, 200 kHz DAQ files...",
+                    "company": "Organization (optional)",
+                    "email": "Email *",
                     "submit": "Send Request",
                     "sending": "Sending...",
-                    "privacy": "No spam. We only use your info to respond to this request."
+                    "privacy": "No spam. Your details are used only to respond to this request."
                 },
                 "success": {
                     "title": "Request sent!",
-                    "message": "We have received your demo request. We'll get back to you to discuss your workflow.",
+                    "message": "Your request has been received. You will get a reply by email.",
                     "close": "Close"
                 },
                 "error": "An error occurred while sending your request. Please try again later."
@@ -168,23 +164,22 @@ const resources = {
             "pricing": {
                 "eyebrow": "Packages & Modules",
                 "title": "Build the platform you need",
-                "subtitle": "Start with the base package, then add the widget groups and intelligence modules that fit your workflow. Contact us for a tailored quote.",
+                "subtitle": "Start with the base package, then add the widget groups and intelligence modules that fit your workflow. During early access, write in to agree the scope of your trial.",
                 "baseLabel": "Always Included",
                 "addonLabel": "Optional Module",
                 "includedHeading": "Base Package",
-                "includedTagline": "The foundation — included in every license.",
+                "includedTagline": "The foundation of every installation.",
                 "addonsHeading": "Add-on Modules",
                 "addonsTagline": "Extend the platform with analysis groups and intelligence modules.",
-                "selectCta": "Request a Quote",
-                "enterpriseTitle": "Enterprise & Defense",
-                "enterpriseBadge": "Custom Quote",
-                "enterpriseDesc": "Full platform access with on-site deployment, custom integrations, unlimited seats, and NDA-covered offline LLM setup for classified or air-gapped environments.",
+                "selectCta": "Request Early Access",
+                "enterpriseTitle": "Team and closed-network use",
+                "enterpriseBadge": "Let's talk",
+                "enterpriseDesc": "Need to work offline or on a closed network, read a specific data format, or try the application across a team? Describe your setup and the scope of a pilot can be worked out together.",
                 "enterpriseCta": "Request a Demo",
-                "datasheetCta": "Request a Datasheet",
                 "base": {
                     "name": "Base Package",
                     "tagline": "Data I/O · Preprocessing · Visualization",
-                    "desc": "Everything you need to import, clean and visualize measurement data — included in every license.",
+                    "desc": "Everything you need to import, clean and visualize measurement data — the foundation of every installation.",
                     "features": [
                         "Data import & export (CSV, MPAI)",
                         "Out-of-core preprocessing engine",
@@ -206,18 +201,16 @@ const resources = {
                 },
                 "ml": {
                     "name": "ML Suite",
-                    "desc": "Production-grade machine learning for fault detection, anomaly diagnosis and predictive maintenance, with validated bearing-fault models."
+                    "desc": "Machine-learning tools for fault detection, anomaly diagnosis and predictive-maintenance studies, starting with bearing faults."
                 },
                 "ai": {
                     "name": "AI Assistant",
                     "desc": "Ask questions, run analysis tools and prepare reports with an optional AI assistant. Choose compatible local models or supported cloud providers; local model requirements vary."
                 },
                 "enterpriseFeatures": [
-                    "All modules included — unlimited seats",
-                    "On-site deployment & hands-on training",
-                    "Custom API & data format integrations",
-                    "Classified / air-gapped LLM configuration",
-                    "Dedicated SLA & priority support"
+                    "Offline use with a local model (Local Only Mode)",
+                    "Specific data formats",
+                    "Team-wide pilot"
                 ]
             },
             "knowledge": {
@@ -346,27 +339,23 @@ const resources = {
                 "badge": "Erken Erişim Açık",
                 "title1": "Test ve ölçüm verilerinizi",
                 "title2": "tek yerde analiz edin",
-                "subtitle": "MachinePulseAI, mühendislerin kaydedilmiş test verilerini inceleyip raporlaması için geliştirdiğimiz bir Windows uygulamasıdır. Sıcaklık, basınç ve titreşim gibi farklı ölçümleri aynı çalışma alanında karşılaştırabilirsiniz. İsteğe bağlı yapay zekâ asistanıyla verileriniz hakkında soru sorabilir ve bulguların hangi ölçümlere dayandığını inceleyebilirsiniz.",
+                "subtitle": "MachinePulseAI, kaydedilmiş test verilerini içe aktarmadan rapora kadar tek çalışma alanında işleyen bir Windows mühendislik analiz uygulamasıdır. Filtreleme, FFT ve spektrum, order tracking, rotor dinamiği ve modal analiz gibi modülleri görsel bir iş akışında birbirine bağlayabilirsiniz. İsteğe bağlı yapay zekâ asistanıyla verileriniz hakkında soru sorabilir ve bulguların hangi ölçümlere dayandığını inceleyebilirsiniz.",
                 "ctaPrimary": "Demo İste",
                 "ctaSecondary": "Kısa Tanıtımı İzle"
             },
             "contact": {
-                "title": "MachinePulseAI'ı iş başında görün",
-                "subtitle": "İş akışınızı ve demo talebinizi bizimle paylaşın.",
-                "badge": "Demo İste",
+                "subtitle": "Formu doldurun; yanıt e-postayla gelir.",
                 "form": {
                     "name": "Ad Soyad *",
-                    "company": "Şirket *",
-                    "email": "İş E-postası *",
-                    "message": "Neleri analiz ediyorsunuz?",
-                    "messagePlaceholder": "Örn: türbin test ünitelerinden titreşim verisi, 200 kHz DAQ dosyaları...",
+                    "company": "Kurum (isteğe bağlı)",
+                    "email": "E-posta *",
                     "submit": "Talebi Gönder",
                     "sending": "Gönderiliyor...",
-                    "privacy": "Spam yok. Bilgilerinizi sadece bu talebe yanıt vermek için kullanırız."
+                    "privacy": "Spam yok. Bilgileriniz yalnızca bu talebe yanıt vermek için kullanılır."
                 },
                 "success": {
                     "title": "Talep gönderildi!",
-                    "message": "Demo talebinizi aldık. İş akışınızı görüşmek için sizinle iletişime geçeceğiz.",
+                    "message": "Talebiniz alındı. Yanıt e-postayla gelecek.",
                     "close": "Kapat"
                 },
                 "error": "Talebiniz gönderilirken bir hata oluştu. Lütfen daha sonra tekrar deneyin."
@@ -409,23 +398,22 @@ const resources = {
             "pricing": {
                 "eyebrow": "Paketler ve Modüller",
                 "title": "İhtiyacınız olan platformu oluşturun",
-                "subtitle": "Baz paketle başlayın, ardından iş akışınıza uyan widget gruplarını ve zeka modüllerini ekleyin. Size özel teklif için bizimle iletişime geçin.",
+                "subtitle": "Baz paketle başlayın, ardından iş akışınıza uyan widget gruplarını ve zeka modüllerini ekleyin. Erken erişim döneminde deneme kapsamını birlikte belirlemek için yazın.",
                 "baseLabel": "Her Zaman Dahil",
                 "addonLabel": "İsteğe Bağlı Modül",
                 "includedHeading": "Baz Paket",
-                "includedTagline": "Temel — her lisansa dahildir.",
+                "includedTagline": "Her kurulumun temeli.",
                 "addonsHeading": "Eklenti Modülleri",
                 "addonsTagline": "Platformu analiz grupları ve zeka modülleriyle genişletin.",
-                "selectCta": "Teklif İste",
-                "enterpriseTitle": "Kurumsal ve Savunma",
-                "enterpriseBadge": "Özel Teklif",
-                "enterpriseDesc": "Yerinde kurulum, özel entegrasyonlar, sınırsız lisans ve gizli veya hava-boşluklu ortamlar için NDA kapsamında çevrimdışı LLM kurulumuyla tam platform erişimi.",
+                "selectCta": "Erken Erişim İste",
+                "enterpriseTitle": "Ekip ve kapalı ağ kullanımı",
+                "enterpriseBadge": "Görüşelim",
+                "enterpriseDesc": "Çevrimdışı ya da kapalı ağda çalışmanız, belirli bir veri formatını okumanız veya uygulamayı ekipçe denemeniz mi gerekiyor? Kurulumunuzu anlatın; pilot kullanımın kapsamını birlikte belirleyelim.",
                 "enterpriseCta": "Demo İste",
-                "datasheetCta": "Teknik Föy İste",
                 "base": {
                     "name": "Baz Paket",
                     "tagline": "Veri Giriş/Çıkış · Ön İşleme · Görselleştirme",
-                    "desc": "Ölçüm verisini içe aktarmak, temizlemek ve görselleştirmek için gereken her şey — her lisansa dahildir.",
+                    "desc": "Ölçüm verisini içe aktarmak, temizlemek ve görselleştirmek için gereken her şey — her kurulumun temelidir.",
                     "features": [
                         "Veri içe/dışa aktarma (CSV, MPAI)",
                         "Bellek-dışı (out-of-core) ön işleme motoru",
@@ -447,18 +435,16 @@ const resources = {
                 },
                 "ml": {
                     "name": "ML Paketi",
-                    "desc": "Doğrulanmış rulman-arıza modelleriyle arıza tespiti, anomali tanılama ve kestirimci bakım için üretim seviyesinde makine öğrenmesi."
+                    "desc": "Rulman arızalarından başlayarak arıza tespiti, anomali tanılama ve kestirimci bakım çalışmaları için makine öğrenmesi araçları."
                 },
                 "ai": {
                     "name": "AI Asistanı",
                     "desc": "İsteğe bağlı AI asistanıyla soru sorun, analiz araçlarını çalıştırın ve rapor hazırlayın. Uyumlu yerel modelleri veya desteklenen bulut sağlayıcılarını seçin; yerel model gereksinimleri değişir."
                 },
                 "enterpriseFeatures": [
-                    "Tüm modüller dahil — sınırsız lisans",
-                    "Yerinde kurulum ve uygulamalı eğitim",
-                    "Özel API ve veri formatı entegrasyonları",
-                    "Gizli / hava-boşluklu LLM yapılandırması",
-                    "Özel SLA ve öncelikli destek"
+                    "Yerel modelle çevrimdışı kullanım (Local Only Mode)",
+                    "Belirli veri formatları",
+                    "Ekip çapında pilot kullanım"
                 ]
             },
             "knowledge": {

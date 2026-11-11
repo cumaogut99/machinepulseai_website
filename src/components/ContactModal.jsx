@@ -7,11 +7,18 @@ import { CONTACT_EMAIL } from '../data/contact.js'
 // Set VITE_CONTACT_FORM_ENDPOINT in production to post to Formspree/CRM/etc.
 const FORM_ENDPOINT = import.meta.env.VITE_CONTACT_FORM_ENDPOINT || ''
 
-export default function ContactModal({ open, onClose }) {
+const PURPOSES = ['demo', 'pilot', 'partnership']
+
+export default function ContactModal({ open, purpose = 'demo', onClose }) {
     const { t } = useTranslation()
-    const [form, setForm] = useState({ name: '', company: '', email: '', message: '' })
+    const [form, setForm] = useState({ purpose, name: '', company: '', email: '', message: '' })
     const [status, setStatus] = useState('idle') // 'idle' | 'loading' | 'success' | 'error'
     const dialog = useRef(null)
+
+    // Each opening starts from the purpose its trigger asked for.
+    useEffect(() => {
+        if (open) setForm(f => ({ ...f, purpose }))
+    }, [open, purpose])
 
     useEffect(() => {
         if (!open) return undefined
@@ -25,7 +32,7 @@ export default function ContactModal({ open, onClose }) {
                 return
             }
             if (event.key !== 'Tab') return
-            const controls = [...dialog.current.querySelectorAll('button, input, textarea, a[href]')]
+            const controls = [...dialog.current.querySelectorAll('button, select, input, textarea, a[href]')]
                 .filter(control => !control.disabled)
             const first = controls[0]
             const last = controls[controls.length - 1]
@@ -54,9 +61,9 @@ export default function ContactModal({ open, onClose }) {
         setStatus('loading')
 
         if (!FORM_ENDPOINT) {
-            const subject = encodeURIComponent(`MachinePulseAI demo request - ${form.company}`)
+            const subject = encodeURIComponent(`MachinePulseAI ${form.purpose} request - ${form.company || form.name}`)
             const body = encodeURIComponent(
-                `Name: ${form.name}\nCompany: ${form.company}\nEmail: ${form.email}\n\nMessage:\n${form.message}`
+                `Purpose: ${form.purpose}\nName: ${form.name}\nOrganization: ${form.company || '-'}\nEmail: ${form.email}\n\nMessage:\n${form.message}`
             )
             window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`
             setStatus('draft')
@@ -84,7 +91,7 @@ export default function ContactModal({ open, onClose }) {
 
     function handleClose() {
         setStatus('idle')
-        setForm({ name: '', company: '', email: '', message: '' })
+        setForm({ purpose, name: '', company: '', email: '', message: '' })
         onClose()
     }
 
@@ -137,15 +144,24 @@ export default function ContactModal({ open, onClose }) {
                                     <>
                                         <div className="mb-6">
                                             <span className="inline-block text-[10px] font-semibold text-[#00f5ff] tracking-widest uppercase mb-2">
-                                                {t('contact.badge')}
+                                                {t(`site.contact.purposes.${form.purpose}.badge`)}
                                             </span>
-                                            <h2 id="contact-title" className="text-xl font-bold text-white">{t('contact.title')}</h2>
+                                            <h2 id="contact-title" className="text-xl font-bold text-white">{t(`site.contact.purposes.${form.purpose}.title`)}</h2>
                                             <p className="text-sm text-slate-400 mt-1">
                                                 {t(FORM_ENDPOINT ? 'contact.subtitle' : 'site.contact.emailSubtitle')}
                                             </p>
                                         </div>
 
                                         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                                            <div className="flex flex-col gap-1.5">
+                                                <label htmlFor="contact-purpose" className="text-xs text-slate-400">{t('site.contact.purposeLabel')}</label>
+                                                <select
+                                                    id="contact-purpose" name="purpose" value={form.purpose} onChange={handleChange}
+                                                    className="w-full bg-[#0d1525] border border-white/10 rounded-lg px-3 py-2.5 text-sm text-white focus:outline-none focus:border-[#00f5ff]/40 transition-all"
+                                                >
+                                                    {PURPOSES.map(id => <option key={id} value={id}>{t(`site.contact.purposes.${id}.label`)}</option>)}
+                                                </select>
+                                            </div>
                                             <div className="grid sm:grid-cols-2 gap-4">
                                                 <div className="flex flex-col gap-1.5">
                                                     <label htmlFor="contact-name" className="text-xs text-slate-400">{t('contact.form.name')}</label>
@@ -158,7 +174,7 @@ export default function ContactModal({ open, onClose }) {
                                                 <div className="flex flex-col gap-1.5">
                                                     <label htmlFor="contact-company" className="text-xs text-slate-400">{t('contact.form.company')}</label>
                                                     <input
-                                                        id="contact-company" name="company" autoComplete="organization" required value={form.company} onChange={handleChange}
+                                                        id="contact-company" name="company" autoComplete="organization" value={form.company} onChange={handleChange}
                                                         placeholder={t('site.contact.companyPlaceholder')}
                                                         className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2.5 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-[#00f5ff]/40 focus:bg-white/8 transition-all"
                                                     />
@@ -175,10 +191,10 @@ export default function ContactModal({ open, onClose }) {
                                             </div>
 
                                             <div className="flex flex-col gap-1.5">
-                                                <label htmlFor="contact-message" className="text-xs text-slate-400">{t('contact.form.message')}</label>
+                                                <label htmlFor="contact-message" className="text-xs text-slate-400">{t(`site.contact.purposes.${form.purpose}.message`)}</label>
                                                 <textarea
                                                     id="contact-message" name="message" rows={3} value={form.message} onChange={handleChange}
-                                                    placeholder={t('contact.form.messagePlaceholder')}
+                                                    placeholder={t(`site.contact.purposes.${form.purpose}.placeholder`)}
                                                     className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2.5 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-[#00f5ff]/40 focus:bg-white/8 transition-all resize-none"
                                                 />
                                             </div>
