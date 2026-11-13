@@ -1,32 +1,34 @@
 export default {
     en: {
         eyebrow: 'The Agent at work',
-        title: 'Two engineering questions, from evidence to report',
-        description: 'Start with the problem and the recordings behind each case. Select Qwen3 Coder 30B on a local OpenVINO server and see how RAG retrieves relevant passages from the reference documents. After the prompt is sent, follow the Agent’s analysis in chat and on the canvas, then open the exported report.',
+        title: 'Give the Agent the problem and your test recordings',
+        description: 'See local Qwen3 Coder 30B open recordings, build analysis workflows and compare possible causes in aircraft and automotive cases. RAG brings the applicable reference documents into the investigation. Review the measured findings and the exported report.',
         report: 'Open the report shown in the video (PDF)',
-        scope: 'Recorded in the Space theme with synthetic test data. The operator supplies the measurement plan and corrects the reports after reviewing the evidence. The brake case shows the confirmation required for a derived-channel edit. Waiting time is edited out. Both assessments are provisional and require physical verification.',
+        demo: 'Request a demo with your test recording',
+        scope: 'Synthetic cases use a preselected investigation procedure and operator evidence review, including report corrections. Waiting periods are edited out. RAG documents persist in the local Knowledge Base for relevant questions in later sessions. The reports identify the physical checks still required.',
         aircraft: {
             title: 'Aircraft: vibration that builds during steady flight',
-            description: 'The Agent compares operating conditions and vibration features, checks independent sensors and a ground recording, and puts the measured evidence and remaining uncertainty into a report.',
+            description: 'Increasing gearbox vibration during cruise also appears in the ground check. Follow the operating-condition comparison and independent sensor checks that focus the next physical inspection.',
         },
         brake: {
             title: 'Automotive: steering judder during braking',
-            description: 'The Agent checks data quality, compares braking and coast at the same wheel speed, and uses independent vibration measurements and calibrated disc inspection to assess the explanation.',
+            description: 'A car’s steering wheel judders under braking. The Agent compares braking and coast at matched wheel speed, evaluates a remount repeat and disc measurements, and assembles the evidence for review.',
         },
     },
     tr: {
         eyebrow: 'Agent çalışırken',
-        title: 'İki mühendislik sorusu: kanıttan rapora',
-        description: 'Her vaka problemle ve toplanan ölçümlerle başlıyor. Yerel OpenVINO sunucusundan Qwen3 Coder 30B’nin nasıl seçildiğini ve RAG’in referans belgelerinden ilgili bölümleri nasıl getirdiğini görün. İstek gönderildikten sonra Agent’ın analizlerini sohbette ve tuvalde izleyebilir, sonunda üretilen raporu açabilirsiniz.',
+        title: 'Problemi ve test kayıtlarınızı Agent’a verin',
+        description: 'Yerel Qwen3 Coder 30B’nin hava aracı ve otomotiv vakalarında kayıtları açmasını, analiz akışını kurmasını ve olası nedenleri karşılaştırmasını izleyin. RAG, ilgili referans belgelerini incelemeye taşır. Ölçülen bulguları ve üretilen raporu birlikte değerlendirin.',
         report: 'Videoda gösterilen raporu açın (PDF)',
-        scope: 'Sentetik test verileriyle Space temasında çekildi. Operatör ölçüm planını verir, kanıtları gözden geçirir ve rapor yorumlarını düzeltir. Fren vakasında türetilmiş kanal değişikliği için gereken onay ekranda gösterilir. Bekleme süreleri kurguda kesilmiştir. Her iki değerlendirme de fiziksel doğrulama gerektirir.',
+        demo: 'Kendi test kaydınızla demo isteyin',
+        scope: 'Sentetik vakalarda önceden seçilmiş inceleme adımları ve operatörün kanıt kontrolü, rapor düzeltmeleriyle birlikte kullanılmıştır. Bekleme süreleri kurguda kesilmiştir. RAG belgeleri sonraki oturumlardaki ilgili sorular için yerel bilgi tabanında saklanır. Raporlar gereken fiziksel kontrolleri belirtir.',
         aircraft: {
             title: 'Hava aracı: sabit uçuş koşullarında artan titreşim',
-            description: 'Agent, çalışma koşullarını ve titreşim özelliklerini karşılaştırır; bağımsız sensörler ve yer kaydıyla kontrol eder. Ölçülen kanıtları ve kalan belirsizlikleri rapora aktarır.',
+            description: 'Seyirde artan dişli kutusu titreşimi yer kontrolünde de görülüyor. Çalışma koşullarının ve bağımsız sensörlerin karşılaştırılmasıyla fiziksel incelemenin nasıl odaklandığını izleyin.',
         },
         brake: {
             title: 'Otomobil: frenlemede direksiyon sarsıntısı',
-            description: 'Agent, veri kalitesini kontrol eder; frenleme ve süzülmeyi aynı tekerlek hızında karşılaştırır. Açıklamasını bağımsız titreşim ölçümleri ve kalibre edilmiş disk ölçümüyle değerlendirir.',
+            description: 'Bir otomobil frenlerken direksiyon sarsılıyor. Agent, aynı tekerlek devrinde frenleme ve süzülmeyi karşılaştırır; sensör montajı sonrası tekrar testini ve disk ölçümlerini değerlendirip kanıtları raporda toplar.',
         },
     },
 }

@@ -1,10 +1,12 @@
 import { useTranslation } from 'react-i18next'
 import ProductVideo from './ProductVideo.jsx'
 import { CASE_STUDY_VIDEOS } from '../data/caseStudyVideos.js'
+import { useContactModal } from '../context/ContactModalContext.jsx'
 
 /** Real Agent recordings and their exported reports, with the demo scope visible. */
 export default function CaseStudyVideos() {
     const { t } = useTranslation()
+    const { open: openContact } = useContactModal()
     if (!CASE_STUDY_VIDEOS.length) return null
     return (
         <section id="agent-case-studies" className="py-12 px-6" aria-labelledby="case-studies-title">
@@ -27,6 +29,10 @@ export default function CaseStudyVideos() {
                         </article>
                     ))}
                 </div>
+                <button type="button" onClick={openContact}
+                    className="btn-neon mt-8 inline-flex items-center justify-center text-neon-cyan font-semibold text-sm px-6 py-3 rounded-xl">
+                    {t('caseStudies.demo')}
+                </button>
                 <p className="mt-7 text-xs text-slate-400 leading-relaxed max-w-4xl">{t('caseStudies.scope')}</p>
             </div>
         </section>

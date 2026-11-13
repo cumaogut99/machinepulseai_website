@@ -8,8 +8,8 @@ export const CASE_STUDY_VIDEOS = [
         "report": "/reports/rca-aircraft.pdf",
         "titleKey": "caseStudies.aircraft.title",
         "aspectRatio": "16 / 9",
-        "durationSeconds": 172.88,
-        "duration": "2:53"
+        "durationSeconds": 118.06,
+        "duration": "1:58"
     },
     {
         "id": "brake",
@@ -19,7 +19,7 @@ export const CASE_STUDY_VIDEOS = [
         "report": "/reports/rca-brake.pdf",
         "titleKey": "caseStudies.brake.title",
         "aspectRatio": "16 / 9",
-        "durationSeconds": 188.25,
-        "duration": "3:08"
+        "durationSeconds": 124.45,
+        "duration": "2:04"
     }
 ]

@@ -1,122 +1,84 @@
 WEBVTT
 
-00:00:00.200 --> 00:00:07.297
-The steering wheel judders during braking. The
-possibilities include brake disc excitation,
+00:00:00.200 --> 00:00:05.797
+A car's steering wheel judders during braking.
+The investigation considers the brake disc,
 
-00:00:07.297 --> 00:00:14.239
-wheel imbalance, steering resonance or sensor
-installation. The inputs are controller and
+00:00:05.797 --> 00:00:11.456
+wheel balance, steering resonance and sensor
+installation using braking/coast recordings, a
 
-00:00:14.239 --> 00:00:21.180
-vibration recordings, a sensor-remount repeat
-and calibrated disc-thickness measurements.
+00:00:11.456 --> 00:00:13.570
+repeat test and disc measurements.
 
-00:00:21.580 --> 00:00:29.115
-In the Assistant settings I choose OpenVINO.
-Its server is on this computer. I select Qwen3
+00:00:13.970 --> 00:00:19.070
+I give MachinePulseAI Agent the problem and
+recordings, asking it to compare possible
 
-00:00:29.115 --> 00:00:36.071
-Coder 30B from the served model list and
-connect. The local indicator appears at the
+00:00:19.070 --> 00:00:20.930
+causes and report the evidence.
 
-00:00:36.071 --> 00:00:37.810
-top of the Assistant.
+00:00:21.330 --> 00:00:27.116
+Local Qwen3 Coder 30B opens the recordings and
+configures the tools. It applies the data
 
-00:00:38.210 --> 00:00:44.304
-I add the setup and quality documents. They
-cover sensor placement, the invalid
+00:00:27.116 --> 00:00:30.930
+correction with engineer approval and verifies
+the output.
 
-00:00:44.304 --> 00:00:50.630
-wheel-speed code, the mounting log and the
-disc measurement method. RAG brings the
+00:00:31.330 --> 00:00:39.670
+Physical-encoder analysis compares both
+responses at the same measured wheel speed and
 
-00:00:50.630 --> 00:00:55.490
-relevant passages and source references into
-the investigation.
+00:00:39.670 --> 00:00:48.399
+with the same peak-amplitude convention. The
+much larger braking 1X response helps isolate
 
-00:00:55.890 --> 00:01:01.871
-I send one investigation request in Agent
-mode: compare braking and coast at the same
+00:00:48.399 --> 00:00:52.860
+braking-related excitation from speed effects.
 
-00:01:01.871 --> 00:01:08.275
-wheel speed, test the explanations against the
-repeat and disc measurements, and export the
+00:00:53.260 --> 00:00:59.840
+RAG retrieves sensor roles, the mounting log
+and the documented disc-inspection limit.
 
-00:01:08.275 --> 00:01:13.130
-evidence in a PDF. I provide the files and
-measurement plan up front.
+00:00:59.840 --> 00:01:06.803
+These references guide interpretation. Indexed
+documents remain in the local Knowledge Base
 
-00:01:13.530 --> 00:01:20.138
-The Agent opens the files, retrieves the setup
-documents and runs data-quality tools. The
+00:01:06.803 --> 00:01:09.940
+for relevant questions in later sessions.
 
-00:01:20.138 --> 00:01:26.300
-chat shows which tools are running and the
-canvas shows the workflow it builds. The
+00:01:10.340 --> 00:01:16.066
+The independent responses persist after
+remounting. FL disc-thickness variation is
 
-00:01:26.300 --> 00:01:31.200
-operator doesn't need to open or configure
-each analysis manually.
+00:01:16.066 --> 00:01:22.351
+twice the documented synthetic fixture limit.
+The Agent combines the repeat and calibrated
 
-00:01:31.600 --> 00:01:38.280
-The app asks for approval to mask the
-documented invalid speed code on a derived
+00:01:22.351 --> 00:01:27.170
+inspection to compare installation and
+brake-excitation explanations.
 
-00:01:38.280 --> 00:01:45.962
-channel. After approval, the Agent applies the
-edit and verifies its output: 33 invalid rows
+00:01:27.570 --> 00:01:33.364
+After engineer evidence review and
+interpretation corrections in this run, brake
 
-00:01:45.962 --> 00:01:49.720
-out of 3,200. The raw recording is preserved.
+00:01:33.364 --> 00:01:39.521
+excitation leads the assessment. Steering
+resonance remains a possible amplifier. The
 
-00:01:50.120 --> 00:01:56.080
-Using the physical encoder, the Agent
-calculates two separate windows. At the same
+00:01:39.521 --> 00:01:45.170
+report links explanations to evidence and
+identifies the next physical checks.
 
-00:01:56.080 --> 00:02:02.186
-measured wheel speed, steering 1X peak
-amplitude is about 0.2056 g under braking and
+00:01:45.570 --> 00:01:53.894
+The latest report contains the assessment,
+comparison plots, measurements and source
 
-00:02:02.186 --> 00:02:08.510
-0.0041 g while coasting. The contrast links
-the symptom to braking under matched speed.
+00:01:53.894 --> 00:02:02.317
+references. Open this same PDF beside the
+video, or request a demonstration with your
 
-00:02:08.910 --> 00:02:16.139
-Independent sensor responses persist after the
-primary sensor is remounted. The front-left
-
-00:02:16.139 --> 00:02:23.207
-disc's thickness variation is 0.030 mm, twice
-this synthetic fixture's documented limit.
-
-00:02:23.207 --> 00:02:28.830
-Taken together, these measurements weaken a
-mounting-only explanation.
-
-00:02:29.230 --> 00:02:35.119
-The initial interpretation gave too much
-weight to sensor mounting. After an operator
-
-00:02:35.119 --> 00:02:41.077
-evidence review, the Agent reports brake
-excitation as the leading explanation, treats
-
-00:02:41.077 --> 00:02:47.105
-steering resonance as possible amplification
-and states the physical verification still
-
-00:02:47.105 --> 00:02:47.590
-needed.
-
-00:02:47.990 --> 00:02:55.742
-The Agent exports the reviewed assessment with
-plots, tables and citations. The engineer can
-
-00:02:55.742 --> 00:03:03.578
-spend time reviewing evidence and choosing the
-next physical test instead of assembling files
-
-00:03:03.578 --> 00:03:07.960
-and charts. The same PDF is linked beside the
-video.
+00:02:02.317 --> 00:02:04.200
+own test recording.

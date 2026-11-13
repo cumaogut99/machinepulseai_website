@@ -1,5 +1,5 @@
 {
-  "edition": "space-rca-2026-11-13",
+  "edition": "rca-v2-2026-11-13",
   "cases": {
     "aircraft": {
       "theme": "space",
@@ -12,14 +12,18 @@
       "model": "Qwen3-Coder-30B-A3B-Instruct-int4-ov",
       "provider": "openvino",
       "model_calls": 17,
-      "tool_calls": 45,
+      "tool_calls": 43,
       "voice": "tr-TR-EmelNeural",
-      "duration_seconds": 172.88,
+      "speech_voices": [
+        "en-US-AvaNeural",
+        "tr-TR-EmelNeural"
+      ],
+      "duration_seconds": 118.06,
       "full_decode": "passed",
-      "video_sha256": "f7b4658f34341f02c22e7b22b41ce23195e0a5564f53b5c2155c3baaf64ca6da",
-      "poster_sha256": "be1e089acff17a6613ec43dbae1918a62b6f0cf7af931a0175a267cce5394049",
-      "captions_sha256": "b6e0045f5dc1f34a093a8725f1a07d7fe9de5e84135dc40e5ce842d0bc1267b0",
-      "report_sha256": "cd9f6af821bada414326a2999d787441838569903c5b5fd9608528a229c475aa"
+      "video_sha256": "e9bef737d77cd54232ceeb3d37d6e1650ad6b4e6dca2318620d08dc6b35b85d2",
+      "poster_sha256": "f4698bc16abe68e8284608c11a570fc9c230c6c285de720cf64d6e05221ec56f",
+      "captions_sha256": "ffeae7a71d80b55be742efaf7c310c41136d486bc600398d92761c9313abaa61",
+      "report_sha256": "bd66a200413bd18f2b9277884faeedc96b0a3f2458ec49939b18761926740170"
     },
     "brake": {
       "theme": "space",
@@ -31,15 +35,19 @@
       "autonomous_qualification": false,
       "model": "Qwen3-Coder-30B-A3B-Instruct-int4-ov",
       "provider": "openvino",
-      "model_calls": 9,
-      "tool_calls": 35,
+      "model_calls": 17,
+      "tool_calls": 40,
       "voice": "tr-TR-EmelNeural",
-      "duration_seconds": 188.25,
+      "speech_voices": [
+        "en-US-AvaNeural",
+        "tr-TR-EmelNeural"
+      ],
+      "duration_seconds": 124.45,
       "full_decode": "passed",
-      "video_sha256": "190c0b221ff88251116a538a3e5aad16c383fd0fc6f2c6abb2e24a77dd08f6af",
-      "poster_sha256": "8472433de974012a9fb1e78f003614ee3be1c7615a4b2eb4fb0d7b1bc8626585",
-      "captions_sha256": "a0e19c48e37481a9b604b3327883fb481eaf94cba450bfcccb23530bfbe245dd",
-      "report_sha256": "1afb118dc09b18db1faa97608d8de715baca4ec59c4182f32fdeda63dd120271"
+      "video_sha256": "b058da5816ef1e37074d52a64d6a72bdf177fe43bebb6df057a4cddd3190d2a4",
+      "poster_sha256": "a0ba2ef7ceb58bc337300e02690230f3749c1a22d540d1466c1301882191f7c6",
+      "captions_sha256": "46d6d54421bd3d61aa6d0b18492b370c59c04ca2f5e9011b5056b135a91fe562",
+      "report_sha256": "9e8c0dad1cc3b6a104f23dbc71d0f1031075c1bae8b9c871062a1cfbe81e4ead"
     }
   }
 }
