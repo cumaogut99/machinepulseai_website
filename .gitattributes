@@ -1,0 +1,2 @@
+# Keep reviewed caption hashes stable across Windows capture and Linux hosting.
+/public/videos/rca-*.en.vtt text eol=lf

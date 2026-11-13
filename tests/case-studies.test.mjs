@@ -13,6 +13,8 @@ test('both guided Agent cases ship with the actual reviewed reports and media', 
         assert.equal(proof.synthetic, true)
         assert.equal(proof.operator_guided, true)
         assert.equal(proof.preselected_operator_plan, true)
+        assert.equal(proof.operator_provided_report_corrections, true)
+        assert.equal(proof.autonomous_qualification, false)
         assert.equal(proof.model, 'Qwen3-Coder-30B-A3B-Instruct-int4-ov')
         assert.equal(proof.full_decode, 'passed')
         assert.ok(proof.model_calls > 0)
@@ -24,6 +26,10 @@ test('both guided Agent cases ship with the actual reviewed reports and media', 
         assert.ok(statSync(movie).size > 10000)
         assert.equal(createHash('sha256').update(readFileSync(movie)).digest('hex'), proof.video_sha256)
         assert.equal(createHash('sha256').update(readFileSync(report)).digest('hex'), proof.report_sha256)
+        for (const [kind, path] of [['poster', video.poster], ['captions', video.captions]]) {
+            const bytes = readFileSync(new URL(`../public${path}`, import.meta.url))
+            assert.equal(createHash('sha256').update(bytes).digest('hex'), proof[`${kind}_sha256`])
+        }
         assert.ok(readFileSync(report).subarray(0, 5).equals(Buffer.from('%PDF-')))
         assert.ok(readFileSync(new URL(`../public${video.captions}`, import.meta.url), 'utf8').startsWith('WEBVTT'))
         assert.ok(video.durationSeconds > 30 && video.durationSeconds < 600)
