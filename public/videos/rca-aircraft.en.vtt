@@ -1,0 +1,90 @@
+WEBVTT
+
+00:00:00.200 --> 00:00:07.330
+Vibration builds during steady flight and is
+also observed on the ground. This uses
+
+00:00:07.330 --> 00:00:14.631
+synthetic data and a preselected operator
+measurement plan, executed with local Qwen3
+
+00:00:14.631 --> 00:00:15.490
+Coder 30B.
+
+00:00:15.890 --> 00:00:22.570
+RAG retrieves relevant setup and quality
+passages with their source IDs and revisions.
+
+00:00:22.570 --> 00:00:28.318
+Bearing geometry is verified against the
+document for the same machine and
+
+00:00:28.318 --> 00:00:35.231
+configuration. Retrieved text is reference
+context; the recordings supply the measurement
+
+00:00:35.231 --> 00:00:35.930
+evidence.
+
+00:00:36.330 --> 00:00:43.810
+The workflow reviews data quality and
+separates the physical vibration monitor from
+
+00:00:43.810 --> 00:00:51.561
+the alarm flag. Flight and ground recordings
+retain independent source identities. The
+
+00:00:51.561 --> 00:00:58.320
+original inputs are preserved; native C++
+tools calculate the measurements.
+
+00:00:58.720 --> 00:01:08.340
+Early and late flight windows compare speed,
+torque and vibration. FFT and measured-encoder
+
+00:01:08.340 --> 00:01:17.854
+order analysis test rotational explanations.
+The ground check is a separate recording, not
+
+00:01:17.854 --> 00:01:20.920
+another window of the flight.
+
+00:01:21.320 --> 00:01:28.282
+Bearing signatures are tested separately on
+both sensors in flight and ground recordings.
+
+00:01:28.282 --> 00:01:35.323
+A single large FFT peak is insufficient: the
+family and harmonics must agree with measured
+
+00:01:35.323 --> 00:01:42.520
+speed and documented geometry, and independent
+evidence must test installation alternatives.
+
+00:01:42.920 --> 00:01:49.642
+Both sensors in both recordings support the
+approximately 107.4 Hz outer-race signature,
+
+00:01:49.642 --> 00:01:55.601
+weakening a single-sensor installation-only
+explanation. The Agent revises its
+
+00:01:55.601 --> 00:02:01.941
+evidence-linked assessment after operator
+report review. Physical damage and repair
+
+00:02:01.941 --> 00:02:05.990
+effectiveness still require independent
+confirmation.
+
+00:02:06.390 --> 00:02:13.641
+Finally, a quick look at the latest report
+from this run: actual computed plots,
+
+00:02:13.641 --> 00:02:21.164
+numerical tables, cited sources and the
+assessment. These are pages of the exported
+
+00:02:21.164 --> 00:02:26.240
+PDF, available through the report link beside
+the video.

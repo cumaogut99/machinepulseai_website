@@ -1,4 +1,5 @@
 import SITE_MARKETING from './i18n/siteMarketing.js';
+import CASE_STUDIES from './i18n/caseStudies.js';
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
@@ -14,6 +15,7 @@ const resources = {
     en: {
         translation: {
             "site": SITE_MARKETING.en,
+            "caseStudies": CASE_STUDIES.en,
             "fftLearn": FFT_LEARNING_TRANSLATIONS.en,
             "fftTheory": FFT_THEORY_TRANSLATIONS.en,
             "fftBeginner": FFT_BEGINNER_TRANSLATIONS.en,
@@ -248,6 +250,7 @@ const resources = {
     tr: {
         translation: {
             "site": SITE_MARKETING.tr,
+            "caseStudies": CASE_STUDIES.tr,
             "fftLearn": FFT_LEARNING_TRANSLATIONS.tr,
             "fftTheory": FFT_THEORY_TRANSLATIONS.tr,
             "fftBeginner": FFT_BEGINNER_TRANSLATIONS.tr,

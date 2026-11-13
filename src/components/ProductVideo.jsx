@@ -11,7 +11,7 @@ export default function ProductVideo({ video, chapters = [], selectedChapter, pr
     const [failed, setFailed] = useState(false)
     const [activeChapter, setActiveChapter] = useState(0)
     const [shouldPlay, setShouldPlay] = useState(false)
-    const title = t(`site.video.titles.${video.title}`)
+    const title = t(video.titleKey || `site.video.titles.${video.title}`)
     const selectedTime = chapters.find(chapter => chapter.id === selectedChapter)?.time
 
     useEffect(() => {
@@ -55,7 +55,8 @@ export default function ProductVideo({ video, chapters = [], selectedChapter, pr
     return (
         <div className={chapters.length ? 'grid lg:grid-cols-[minmax(0,1fr)_280px] gap-6 items-start' : ''}>
             <figure className="min-w-0">
-                <div className="hero-media-glow rounded-2xl overflow-hidden border border-white/10 bg-black aspect-[2212/1440] relative">
+                <div className="hero-media-glow rounded-2xl overflow-hidden border border-white/10 bg-black aspect-[2212/1440] relative"
+                    style={video.aspectRatio ? { aspectRatio: video.aspectRatio } : undefined}>
                     {loaded ? (
                         <video
                             ref={player} src={video.src} poster={video.poster}

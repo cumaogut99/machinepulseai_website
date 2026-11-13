@@ -15,6 +15,7 @@ import Stats from './components/Stats.jsx'
 import Features from './components/Features.jsx'
 import WhySection from './components/WhySection.jsx'
 import Roadmap from './components/Roadmap.jsx'
+import CaseStudyVideos from './components/CaseStudyVideos.jsx'
 
 // Code-split page. Unlike React.lazy(), which always suspends on its first
 // render (blanking prerendered HTML during hydration), the page renders
@@ -99,6 +100,7 @@ const Home = () => (
         <Stats />
         <WhySection />
         <Features compact />
+        <CaseStudyVideos />
         <Roadmap />
     </main>
 )
