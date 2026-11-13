@@ -11,10 +11,12 @@ test('both guided Agent cases ship with the actual reviewed reports and media', 
     for (const video of CASE_STUDY_VIDEOS) {
         const proof = receipt.cases[video.id]
         assert.equal(proof.synthetic, true)
+        assert.equal(proof.theme, 'space')
         assert.equal(proof.operator_guided, true)
         assert.equal(proof.preselected_operator_plan, true)
         assert.equal(proof.operator_provided_report_corrections, true)
         assert.equal(proof.autonomous_qualification, false)
+        assert.equal(proof.operator_approval_required, video.id === 'brake')
         assert.equal(proof.model, 'Qwen3-Coder-30B-A3B-Instruct-int4-ov')
         assert.equal(proof.full_decode, 'passed')
         assert.ok(proof.model_calls > 0)

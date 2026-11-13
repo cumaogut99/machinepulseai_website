@@ -2,9 +2,9 @@ export default {
     en: {
         eyebrow: 'The Agent at work',
         title: 'Two engineering questions, from evidence to report',
-        description: 'Watch Qwen3 Coder 30B investigate aircraft vibration and braking judder. RAG retrieves the applicable setup and quality documents; native analysis tools produce the measurements behind the assessment.',
+        description: 'Start with the problem and the recordings behind each case. Select Qwen3 Coder 30B on a local OpenVINO server and see how RAG retrieves relevant passages from the reference documents. After the prompt is sent, follow the Agent’s analysis in chat and on the canvas, then open the exported report.',
         report: 'Open the report shown in the video (PDF)',
-        scope: 'Edited excerpts from real application runs on synthetic data. An operator plans measurements and provides report corrections; Qwen3 Coder 30B executes tools and exports the reviewed assessment. Waiting periods and retries are cut; result screens are held for narration. These guided demonstrations do not establish autonomous diagnostic reliability or authorize repair or return to service.',
+        scope: 'Recorded in the Space theme with synthetic test data. The operator supplies the measurement plan and corrects the reports after reviewing the evidence. The brake case shows the confirmation required for a derived-channel edit. Waiting time is edited out. Both assessments are provisional and require physical verification.',
         aircraft: {
             title: 'Aircraft: vibration that builds during steady flight',
             description: 'The Agent compares operating conditions and vibration features, checks independent sensors and a ground recording, and puts the measured evidence and remaining uncertainty into a report.',
@@ -17,9 +17,9 @@ export default {
     tr: {
         eyebrow: 'Agent çalışırken',
         title: 'İki mühendislik sorusu: kanıttan rapora',
-        description: 'Qwen3 Coder 30B’nin hava aracındaki titreşimi ve frenlemedeki direksiyon sarsıntısını nasıl incelediğini izleyin. RAG, ilgili kurulum ve veri kalitesi belgelerini getirir; değerlendirmenin dayandığı ölçümleri uygulamanın analiz araçları üretir.',
+        description: 'Her vaka problemle ve toplanan ölçümlerle başlıyor. Yerel OpenVINO sunucusundan Qwen3 Coder 30B’nin nasıl seçildiğini ve RAG’in referans belgelerinden ilgili bölümleri nasıl getirdiğini görün. İstek gönderildikten sonra Agent’ın analizlerini sohbette ve tuvalde izleyebilir, sonunda üretilen raporu açabilirsiniz.',
         report: 'Videoda gösterilen raporu açın (PDF)',
-        scope: 'Sentetik verilerle yapılan gerçek uygulama koşularından seçilmiş kesitlerdir. Operatör ölçüm planını ve rapor düzeltmelerini sağlar; Qwen3 Coder 30B araçları çalıştırıp gözden geçirilmiş raporu dışa aktarır. Beklemeler ve tekrar denemeleri kesilmiştir; sonuç ekranları anlatım boyunca bekletilir. Bu yönlendirilmiş demolar otonom teşhis güvenilirliğini kanıtlamaz; onarım veya operasyona dönüş kararı oluşturmaz.',
+        scope: 'Sentetik test verileriyle Space temasında çekildi. Operatör ölçüm planını verir, kanıtları gözden geçirir ve rapor yorumlarını düzeltir. Fren vakasında türetilmiş kanal değişikliği için gereken onay ekranda gösterilir. Bekleme süreleri kurguda kesilmiştir. Her iki değerlendirme de fiziksel doğrulama gerektirir.',
         aircraft: {
             title: 'Hava aracı: sabit uçuş koşullarında artan titreşim',
             description: 'Agent, çalışma koşullarını ve titreşim özelliklerini karşılaştırır; bağımsız sensörler ve yer kaydıyla kontrol eder. Ölçülen kanıtları ve kalan belirsizlikleri rapora aktarır.',

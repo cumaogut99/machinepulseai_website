@@ -1,85 +1,122 @@
 WEBVTT
 
-00:00:00.200 --> 00:00:07.819
-This automotive case investigates steering
-judder during braking, separating brake
+00:00:00.200 --> 00:00:07.297
+The steering wheel judders during braking. The
+possibilities include brake disc excitation,
 
-00:00:07.819 --> 00:00:16.368
-excitation, wheel balance, steering resonance
-and sensor installation. Local Qwen3 Coder 30B
+00:00:07.297 --> 00:00:14.239
+wheel imbalance, steering resonance or sensor
+installation. The inputs are controller and
 
-00:00:16.368 --> 00:00:22.500
-follows a preselected operator measurement
-plan on synthetic data.
+00:00:14.239 --> 00:00:21.180
+vibration recordings, a sensor-remount repeat
+and calibrated disc-thickness measurements.
 
-00:00:22.900 --> 00:00:31.429
-RAG retrieves the setup and quality documents,
-including sensor roles, installation notes,
+00:00:21.580 --> 00:00:29.115
+In the Assistant settings I choose OpenVINO.
+Its server is on this computer. I select Qwen3
 
-00:00:31.429 --> 00:00:38.630
-the invalid-code rule and calibrated disc
-inspection method. Documents guide
+00:00:29.115 --> 00:00:36.071
+Coder 30B from the served model list and
+connect. The local indicator appears at the
 
-00:00:38.630 --> 00:00:42.800
-interpretation; native measurements test it.
+00:00:36.071 --> 00:00:37.810
+top of the Assistant.
 
-00:00:43.200 --> 00:00:51.411
-The workflow reviews complete-source quality,
-masks the documented invalid wheel-speed code
+00:00:38.210 --> 00:00:44.304
+I add the setup and quality documents. They
+cover sensor placement, the invalid
 
-00:00:51.411 --> 00:00:59.531
-on a derived channel and verifies the actual
-output while preserving raw data. It does not
+00:00:44.304 --> 00:00:50.630
+wheel-speed code, the mounting log and the
+disc measurement method. RAG brings the
 
-00:00:59.531 --> 00:01:03.050
-invent an undocumented unit correction.
+00:00:50.630 --> 00:00:55.490
+relevant passages and source references into
+the investigation.
 
-00:01:03.450 --> 00:01:11.545
-Braking and coast are compared at the same
-measured wheel speed. Physical-encoder order
+00:00:55.890 --> 00:01:01.871
+I send one investigation request in Agent
+mode: compare braking and coast at the same
 
-00:01:11.545 --> 00:01:19.733
-tracking supplies 1X amplitudes using the same
-amplitude convention, helping distinguish
+00:01:01.871 --> 00:01:08.275
+wheel speed, test the explanations against the
+repeat and disc measurements, and export the
 
-00:01:19.733 --> 00:01:22.990
-speed effects from braking effects.
+00:01:08.275 --> 00:01:13.130
+evidence in a PDF. I provide the files and
+measurement plan up front.
 
-00:01:23.390 --> 00:01:30.548
-Independent sensors, the repeat recording and
-calibrated disc-thickness measurements provide
+00:01:13.530 --> 00:01:20.138
+The Agent opens the files, retrieves the setup
+documents and runs data-quality tools. The
 
-00:01:30.548 --> 00:01:36.695
-separate evidence. Resonance amplification
-alone does not identify the exciting
+00:01:20.138 --> 00:01:26.300
+chat shows which tools are running and the
+canvas shows the workflow it builds. The
 
-00:01:36.695 --> 00:01:41.830
-component; the assessment separates excitation
-from amplification.
+00:01:26.300 --> 00:01:31.200
+operator doesn't need to open or configure
+each analysis manually.
 
-00:01:42.230 --> 00:01:49.611
-FL disc-thickness variation is 0.030 mm versus
-the 0.015 mm fixture limit. At 798.732 rpm,
+00:01:31.600 --> 00:01:38.280
+The app asks for approval to mask the
+documented invalid speed code on a derived
 
-00:01:49.611 --> 00:01:56.663
-native 1X peak amplitudes are 0.205628 g
-during braking and 0.00411901 g during coast.
+00:01:38.280 --> 00:01:45.962
+channel. After approval, the Agent applies the
+edit and verifies its output: 33 invalid rows
 
-00:01:56.663 --> 00:02:03.306
-After operator corrections, the assessment
-separates likely brake excitation from
+00:01:45.962 --> 00:01:49.720
+out of 3,200. The raw recording is preserved.
 
-00:02:03.306 --> 00:02:10.030
-possible steering-response amplification.
-Physical confirmation remains necessary.
+00:01:50.120 --> 00:01:56.080
+Using the physical encoder, the Agent
+calculates two separate windows. At the same
 
-00:02:10.430 --> 00:02:19.720
-The video ends with the latest exported report
-from this run, showing actual analysis plots,
+00:01:56.080 --> 00:02:02.186
+measured wheel speed, steering 1X peak
+amplitude is about 0.2056 g under braking and
 
-00:02:19.720 --> 00:02:27.596
-numerical tables, citations and the
-assessment. The adjacent report link opens
+00:02:02.186 --> 00:02:08.510
+0.0041 g while coasting. The contrast links
+the symptom to braking under matched speed.
 
-00:02:27.596 --> 00:02:29.010
-this same PDF.
+00:02:08.910 --> 00:02:16.139
+Independent sensor responses persist after the
+primary sensor is remounted. The front-left
+
+00:02:16.139 --> 00:02:23.207
+disc's thickness variation is 0.030 mm, twice
+this synthetic fixture's documented limit.
+
+00:02:23.207 --> 00:02:28.830
+Taken together, these measurements weaken a
+mounting-only explanation.
+
+00:02:29.230 --> 00:02:35.119
+The initial interpretation gave too much
+weight to sensor mounting. After an operator
+
+00:02:35.119 --> 00:02:41.077
+evidence review, the Agent reports brake
+excitation as the leading explanation, treats
+
+00:02:41.077 --> 00:02:47.105
+steering resonance as possible amplification
+and states the physical verification still
+
+00:02:47.105 --> 00:02:47.590
+needed.
+
+00:02:47.990 --> 00:02:55.742
+The Agent exports the reviewed assessment with
+plots, tables and citations. The engineer can
+
+00:02:55.742 --> 00:03:03.578
+spend time reviewing evidence and choosing the
+next physical test instead of assembling files
+
+00:03:03.578 --> 00:03:07.960
+and charts. The same PDF is linked beside the
+video.

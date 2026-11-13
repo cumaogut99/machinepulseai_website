@@ -1,90 +1,112 @@
 WEBVTT
 
-00:00:00.200 --> 00:00:07.330
-Vibration builds during steady flight and is
-also observed on the ground. This uses
+00:00:00.200 --> 00:00:06.819
+Gearbox vibration builds during steady cruise
+and is also present in a ground check. The
 
-00:00:07.330 --> 00:00:14.631
-synthetic data and a preselected operator
-measurement plan, executed with local Qwen3
+00:00:06.819 --> 00:00:13.589
+inputs are the mission computer log, vibration
+from two independent sensors and a separate
 
-00:00:14.631 --> 00:00:15.490
-Coder 30B.
+00:00:13.589 --> 00:00:20.133
+ground recording. Finding the cause requires
+comparing those recordings with the setup,
 
-00:00:15.890 --> 00:00:22.570
-RAG retrieves relevant setup and quality
-passages with their source IDs and revisions.
+00:00:20.133 --> 00:00:22.690
+data quality and bearing geometry.
 
-00:00:22.570 --> 00:00:28.318
-Bearing geometry is verified against the
-document for the same machine and
+00:00:23.090 --> 00:00:30.551
+In the AI Assistant settings I select
+OpenVINO. Its server runs on this computer. I
 
-00:00:28.318 --> 00:00:35.231
-configuration. Retrieved text is reference
-context; the recordings supply the measurement
+00:00:30.551 --> 00:00:38.641
+choose Qwen3 Coder 30B from the served model
+list and connect. The indicator shows a local
 
-00:00:35.231 --> 00:00:35.930
-evidence.
+00:00:38.641 --> 00:00:39.630
+connection.
 
-00:00:36.330 --> 00:00:43.810
-The workflow reviews data quality and
-separates the physical vibration monitor from
+00:00:40.030 --> 00:00:46.006
+I add the flight setup, quality notes and
+machine record to the Knowledge Base. RAG
 
-00:00:43.810 --> 00:00:51.561
-the alarm flag. Flight and ground recordings
-retain independent source identities. The
+00:00:46.006 --> 00:00:52.486
+retrieves relevant passages and their source
+revisions during the investigation. The Agent
 
-00:00:51.561 --> 00:00:58.320
-original inputs are preserved; native C++
-tools calculate the measurements.
+00:00:52.486 --> 00:00:58.390
+uses the documented sensor roles and bearing
+geometry when comparing measurements.
 
-00:00:58.720 --> 00:01:08.340
-Early and late flight windows compare speed,
-torque and vibration. FFT and measured-encoder
+00:00:58.790 --> 00:01:05.834
+I send one Agent request: compare the flight
+and ground recordings, test gearbox and
 
-00:01:08.340 --> 00:01:17.854
-order analysis test rotational explanations.
-The ground check is a separate recording, not
+00:01:05.834 --> 00:01:13.632
+sensor-installation explanations and export an
+evidence-backed PDF. I specify the measurement
 
-00:01:17.854 --> 00:01:20.920
-another window of the flight.
+00:01:13.632 --> 00:01:19.670
+plan up front. The Agent handles opening files
+and running the analyses.
 
-00:01:21.320 --> 00:01:28.282
-Bearing signatures are tested separately on
-both sensors in flight and ground recordings.
+00:01:20.070 --> 00:01:27.107
+The live chat shows what the Agent is doing:
+importing recordings, retrieving documents and
 
-00:01:28.282 --> 00:01:35.323
-A single large FFT peak is insufficient: the
-family and harmonics must agree with measured
+00:01:27.107 --> 00:01:33.216
+reviewing data quality. It creates and
+connects analysis widgets on the canvas,
 
-00:01:35.323 --> 00:01:42.520
-speed and documented geometry, and independent
-evidence must test installation alternatives.
+00:01:33.216 --> 00:01:39.711
+taking over the manual work of opening files,
+configuring tools and assembling their
 
-00:01:42.920 --> 00:01:49.642
+00:01:39.711 --> 00:01:40.330
+results.
+
+00:01:40.730 --> 00:01:48.358
+The Agent compares vibration, speed and torque
+in early and late flight windows. It reads the
+
+00:01:48.358 --> 00:01:55.575
+flight spectra and measured-encoder order
+analysis, then uses the ground recording as an
+
+00:01:55.575 --> 00:01:58.610
+independent check with its own clock.
+
+00:01:59.010 --> 00:02:06.113
 Both sensors in both recordings support the
-approximately 107.4 Hz outer-race signature,
+approximately 107.4 Hz outer-race family, with
 
-00:01:49.642 --> 00:01:55.601
-weakening a single-sensor installation-only
-explanation. The Agent revises its
+00:02:06.113 --> 00:02:12.270
+five harmonic matches in all four analyses.
+The result weakens a single-sensor
 
-00:01:55.601 --> 00:02:01.941
-evidence-linked assessment after operator
-report review. Physical damage and repair
+00:02:12.270 --> 00:02:17.400
+installation explanation and helps focus the
+physical inspection.
 
-00:02:01.941 --> 00:02:05.990
-effectiveness still require independent
-confirmation.
+00:02:17.800 --> 00:02:24.194
+During report review the operator asks for a
+clear distinction between the measured bearing
 
-00:02:06.390 --> 00:02:13.641
-Finally, a quick look at the latest report
-from this run: actual computed plots,
+00:02:24.194 --> 00:02:30.025
+signature and a physical fault. The Agent
+posts the revised assessment in chat. The
 
-00:02:13.641 --> 00:02:21.164
-numerical tables, cited sources and the
-assessment. These are pages of the exported
+00:02:30.025 --> 00:02:33.960
+recurring signature helps focus the physical
+inspection.
 
-00:02:21.164 --> 00:02:26.240
-PDF, available through the report link beside
-the video.
+00:02:34.360 --> 00:02:41.532
+The Agent collects findings, plots,
+measurement tables and source references in a
+
+00:02:41.532 --> 00:02:49.324
+PDF. An engineer can trace each interpretation
+back to its evidence. The link beside the
+
+00:02:49.324 --> 00:02:52.600
+video opens the same exported report.
