@@ -1,86 +1,158 @@
 WEBVTT
 
-00:00:00.200 --> 00:00:04.435
-An aircraft gearbox develops increasing
-vibration during steady cruise. The symptom
+00:00:00.000 --> 00:00:04.935
+In this video, we explore how we investigate
+the root cause of a test problem with the
 
-00:00:04.435 --> 00:00:08.874
-persists in a ground check. The investigation
-must distinguish a mechanical source from
+00:00:04.935 --> 00:00:06.140
+MachinePulseAI Agent.
 
-00:00:08.874 --> 00:00:11.680
-sensor installation using flight and ground
-recordings.
+00:00:06.700 --> 00:00:11.436
+We follow the complete process in the
+application, from selecting a model and
 
-00:00:12.080 --> 00:00:17.180
-I give MachinePulseAI Agent the problem and
-recordings, asking it to compare possible
+00:00:11.436 --> 00:00:15.680
+sending a request to running analyses and
+preparing the final report.
 
-00:00:17.180 --> 00:00:19.040
-causes and report the evidence.
+00:00:16.140 --> 00:00:20.140
+Let's explore the application's capabilities
+through an aircraft example.
 
-00:00:19.440 --> 00:00:25.707
-Local Qwen3 Coder 30B opens the recordings,
-checks channel quality and configures and runs
+00:00:20.460 --> 00:00:25.600
+In this example, an engineer notices
+increasing gearbox vibration during cruise.
 
-00:00:25.707 --> 00:00:27.030
-the analysis tools.
+00:00:26.040 --> 00:00:28.420
+The same symptom persists in a ground check.
 
-00:00:27.430 --> 00:00:35.573
-The Agent first compares speed, torque and
-vibration in early and late flight windows.
+00:00:28.420 --> 00:00:33.260
+We investigate the increase using the flight
+and ground-test recordings.
 
-00:00:35.573 --> 00:00:43.622
-Spectra and measured-encoder analysis help
-assess the components alongside rotational
+00:00:33.820 --> 00:00:39.720
+First, we select the Qwen3 Coder 30B model
+running on our computer and connect to it.
 
-00:00:43.622 --> 00:00:44.190
+00:00:40.080 --> 00:00:43.500
+In this example, the Agent uses a local model
+to conduct the analysis.
+
+00:00:43.900 --> 00:00:47.440
+We also add the documents used in the
+investigation to the Knowledge Base.
+
+00:00:47.740 --> 00:00:52.160
+These contain technical information such as
+sensor roles and bearing geometry.
+
+00:00:52.620 --> 00:00:58.351
+The documents are stored locally and can be
+reused for relevant questions in later
+
+00:00:58.351 --> 00:00:58.980
+sessions.
+
+00:00:59.460 --> 00:01:04.055
+We describe the observed increase in vibration
+and include the flight and ground-test
+
+00:01:04.055 --> 00:01:05.460
+recordings in our request.
+
+00:01:05.720 --> 00:01:11.240
+We ask the Agent to investigate the cause of
+the increase and report its findings.
+
+00:01:11.660 --> 00:01:13.460
+Then we send the request.
+
+00:01:13.980 --> 00:01:19.608
+The Agent opens the recordings and uses RAG to
+retrieve the sensor roles and bearing geometry
+
+00:01:19.608 --> 00:01:21.060
+from the Knowledge Base.
+
+00:01:21.060 --> 00:01:26.480
+After checking channel data quality, it
+configures and runs the analysis tools.
+
+00:01:26.900 --> 00:01:31.840
+We follow its work through the assistant's
+messages and the analysis windows.
+
+00:01:32.380 --> 00:01:37.900
+It first compares speed, torque and vibration
+in the early and late sections of the flight.
+
+00:01:38.300 --> 00:01:43.040
+The average speed remains unchanged while the
+mean vibration indicator rises.
+
+00:01:43.460 --> 00:01:48.765
+FFT and Order Tracking analyses examine the
+vibration components alongside rotational
+
+00:01:48.765 --> 00:01:49.140
 speed.
 
-00:00:44.590 --> 00:00:51.599
-RAG retrieves the applicable sensor roles and
-bearing geometry. The geometry guides the
+00:01:49.140 --> 00:01:53.340
+The Agent compares the finding in the flight
+recording with the ground test.
 
-00:00:51.599 --> 00:00:58.365
-expected-frequency comparison. Indexed
-documents persist in the local Knowledge Base
+00:01:53.600 --> 00:01:59.525
+It identifies an outer-race frequency family
+near 107.4 Hz in both sensors, in both the
 
-00:00:58.365 --> 00:01:03.360
-and can be retrieved for relevant questions in
-later sessions.
+00:01:59.525 --> 00:02:01.500
+flight and ground recordings.
 
-00:01:03.760 --> 00:01:09.680
-The approximately 107.4 Hz outer-race family
-is supported by both sensors in both
+00:02:01.980 --> 00:02:05.320
+The finding persists in the test after the
+sensor is remounted.
 
-00:01:09.680 --> 00:01:16.184
-recordings, with five harmonic matches in all
-four analyses. Persistence after remounting
+00:02:05.780 --> 00:02:09.680
+This weakens an explanation based solely on
+one sensor's mounting.
 
-00:01:16.184 --> 00:01:20.130
-weakens a single-sensor installation-only
-explanation.
+00:02:10.160 --> 00:02:14.128
+The engineer checks the Agent's initial
+interpretations against the measurements and
 
-00:01:20.530 --> 00:01:26.933
-The evidence focuses the next physical
-inspection on the bearing. An engineer reviews
+00:02:14.128 --> 00:02:15.640
+makes the necessary corrections.
 
-00:01:26.933 --> 00:01:32.657
-the report interpretation, including
-corrections in this run. The assessment
+00:02:15.640 --> 00:02:19.160
+The final assessment directs the investigation
+toward the bearing.
 
-00:01:32.657 --> 00:01:39.060
-presents the measured signature, alternatives
-and physical confirmation still needed.
+00:02:19.600 --> 00:02:23.668
+Confirming this explanation requires a
+physical inspection of the bearing and its
 
-00:01:39.460 --> 00:01:45.692
-The latest report brings the assessment,
-computed plots, measurements and citations
+00:02:23.668 --> 00:02:24.120
+mounting,
 
-00:01:45.692 --> 00:01:52.524
-together. The engineer can review the evidence
-and choose the next test. Open this same PDF
+00:02:24.480 --> 00:02:28.700
+followed by another test under comparable
+conditions.
 
-00:01:52.524 --> 00:01:57.780
-beside the video, or request a demonstration
-with your test recording.
+00:02:29.080 --> 00:02:31.640
+When the investigation is complete, we open
+the final report.
+
+00:02:31.980 --> 00:02:37.580
+The report brings together the analyses, plots
+and reference documents used by the Agent.
+
+00:02:38.260 --> 00:02:42.260
+The engineer can review the evidence and plan
+the next physical inspection.
+
+00:02:42.260 --> 00:02:45.200
+This example uses synthetic data.
+
+00:02:45.660 --> 00:02:50.400
+To see the same process with your own test
+recording, request a demo on our website.

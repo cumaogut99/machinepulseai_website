@@ -1,84 +1,175 @@
 WEBVTT
 
-00:00:00.200 --> 00:00:05.797
-A car's steering wheel judders during braking.
-The investigation considers the brake disc,
+00:00:00.000 --> 00:00:04.774
+In this video, we explore how we investigate
+the root cause of a test problem with the
 
-00:00:05.797 --> 00:00:11.456
-wheel balance, steering resonance and sensor
-installation using braking/coast recordings, a
+00:00:04.774 --> 00:00:05.940
+MachinePulseAI Agent.
 
-00:00:11.456 --> 00:00:13.570
+00:00:06.440 --> 00:00:11.229
+We follow the complete process in the
+application, from selecting a model and
+
+00:00:11.229 --> 00:00:15.520
+sending a request to running analyses and
+preparing the final report.
+
+00:00:15.980 --> 00:00:19.860
+Let's explore the application's capabilities
+through an automotive test.
+
+00:00:20.160 --> 00:00:23.960
+In this example, an engineer feels vibration
+in the steering wheel while braking.
+
+00:00:24.320 --> 00:00:28.680
+We use the data collected during the test to
+investigate its source.
+
+00:00:28.680 --> 00:00:35.060
+First, we select the Qwen3 Coder 30B model
+running on our computer and connect to it.
+
+00:00:35.360 --> 00:00:38.880
+In this example, the Agent uses a local model
+to conduct the analysis.
+
+00:00:39.240 --> 00:00:42.800
+We also add the documents used in the
+investigation to the Knowledge Base.
+
+00:00:43.080 --> 00:00:47.935
+These include sensor locations, the mounting
+log and the test limit for disc thickness
+
+00:00:47.935 --> 00:00:48.500
+variation.
+
+00:00:48.900 --> 00:00:54.505
+The documents are stored locally and can be
+reused for relevant questions in later
+
+00:00:54.505 --> 00:00:55.120
+sessions.
+
+00:00:55.120 --> 00:01:00.790
+We describe the vibration felt during braking
+and give the Agent the driving recordings,
+
+00:01:00.790 --> 00:01:02.980
 repeat test and disc measurements.
 
-00:00:13.970 --> 00:00:19.070
-I give MachinePulseAI Agent the problem and
-recordings, asking it to compare possible
+00:01:03.440 --> 00:01:08.360
+We ask it to compare possible causes and
+report its findings.
 
-00:00:19.070 --> 00:00:20.930
-causes and report the evidence.
+00:01:08.800 --> 00:01:10.520
+Then we send the request.
 
-00:00:21.330 --> 00:00:27.116
-Local Qwen3 Coder 30B opens the recordings and
-configures the tools. It applies the data
+00:01:11.040 --> 00:01:15.528
+The Agent opens the recordings and uses RAG to
+consult the technical documents in the
 
-00:00:27.116 --> 00:00:30.930
-correction with engineer approval and verifies
-the output.
+00:01:15.528 --> 00:01:16.320
+Knowledge Base.
 
-00:00:31.330 --> 00:00:39.670
-Physical-encoder analysis compares both
-responses at the same measured wheel speed and
+00:01:16.640 --> 00:01:21.292
+It checks data quality, builds the analysis
+workflow and cleans the documented invalid
 
-00:00:39.670 --> 00:00:48.399
-with the same peak-amplitude convention. The
-much larger braking 1X response helps isolate
+00:01:21.292 --> 00:01:23.780
+measurement code with the engineer's approval.
 
-00:00:48.399 --> 00:00:52.860
-braking-related excitation from speed effects.
+00:01:23.780 --> 00:01:29.160
+We follow its work through the assistant's
+messages and the analysis windows.
 
-00:00:53.260 --> 00:00:59.840
-RAG retrieves sensor roles, the mounting log
-and the documented disc-inspection limit.
+00:01:29.640 --> 00:01:34.220
+First, we examine the difference between
+braking and coast at the same wheel speed.
 
-00:00:59.840 --> 00:01:06.803
-These references guide interpretation. Indexed
-documents remain in the local Knowledge Base
+00:01:34.680 --> 00:01:40.842
+Using Order Tracking, the Agent compares these
+two sections and shows a pronounced increase
 
-00:01:06.803 --> 00:01:09.940
-for relevant questions in later sessions.
+00:01:40.842 --> 00:01:44.160
+in steering first-order vibration during
+braking.
 
-00:01:10.340 --> 00:01:16.066
-The independent responses persist after
-remounting. FL disc-thickness variation is
+00:01:44.520 --> 00:01:47.420
+It calculates both values using the same
+peak-amplitude convention.
 
-00:01:16.066 --> 00:01:22.351
-twice the documented synthetic fixture limit.
-The Agent combines the repeat and calibrated
+00:01:47.760 --> 00:01:51.920
+This controls for speed and focuses the
+investigation on braking-related excitation.
 
-00:01:22.351 --> 00:01:27.170
-inspection to compare installation and
-brake-excitation explanations.
+00:01:51.920 --> 00:01:57.256
+In the repeat test, vibration persists in
+independent measurements despite the sensor
 
-00:01:27.570 --> 00:01:33.364
-After engineer evidence review and
-interpretation corrections in this run, brake
+00:01:57.256 --> 00:01:58.260
+being remounted.
 
-00:01:33.364 --> 00:01:39.521
-excitation leads the assessment. Steering
-resonance remains a possible amplifier. The
+00:01:58.620 --> 00:02:02.820
+This weakens an explanation based solely on
+one sensor's mounting.
 
-00:01:39.521 --> 00:01:45.170
-report links explanations to evidence and
-identifies the next physical checks.
+00:02:03.200 --> 00:02:07.959
+The Agent also finds that the front-left disc
+thickness variation reaches twice the
 
-00:01:45.570 --> 00:01:53.894
-The latest report contains the assessment,
-comparison plots, measurements and source
+00:02:07.959 --> 00:02:09.220
+documented test limit.
 
-00:01:53.894 --> 00:02:02.317
-references. Open this same PDF beside the
-video, or request a demonstration with your
+00:02:09.540 --> 00:02:13.500
+Considering both findings, it turns toward a
+braking-related explanation.
 
-00:02:02.317 --> 00:02:04.200
-own test recording.
+00:02:13.900 --> 00:02:17.825
+The engineer checks the Agent's initial
+interpretations against the measurements and
+
+00:02:17.825 --> 00:02:19.320
+makes the necessary corrections.
+
+00:02:19.320 --> 00:02:24.267
+In the final assessment, front-left disc
+thickness variation stands out as a likely
+
+00:02:24.267 --> 00:02:25.340
+excitation source.
+
+00:02:25.640 --> 00:02:30.560
+The Agent also considers steering resonance as
+a possible amplifier of the vibration.
+
+00:02:30.840 --> 00:02:35.286
+Confirming this explanation requires a
+physical inspection and another test after
+
+00:02:35.286 --> 00:02:36.000
+intervention.
+
+00:02:36.400 --> 00:02:38.940
+When the investigation is complete, we open
+the final report.
+
+00:02:39.540 --> 00:02:44.908
+The report brings together the analyses,
+comparison plots and reference documents used
+
+00:02:44.908 --> 00:02:45.720
+by the Agent.
+
+00:02:45.720 --> 00:02:50.300
+The engineer can review the evidence and plan
+the next physical inspection.
+
+00:02:50.780 --> 00:02:53.020
+This example uses synthetic data.
+
+00:02:53.520 --> 00:02:58.120
+To see the same process with your own test
+recording, request a demo on our website.

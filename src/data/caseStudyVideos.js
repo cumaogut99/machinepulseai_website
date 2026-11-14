@@ -1,4 +1,4 @@
-// Real local-model recordings and the PDF reports shown in the videos.
+// User-approved full-window recordings with matching captions and final reports.
 export const CASE_STUDY_VIDEOS = [
     {
         "id": "aircraft",
@@ -7,9 +7,9 @@ export const CASE_STUDY_VIDEOS = [
         "captions": "/videos/rca-aircraft.en.vtt",
         "report": "/reports/rca-aircraft.pdf",
         "titleKey": "caseStudies.aircraft.title",
-        "aspectRatio": "16 / 9",
-        "durationSeconds": 118.06,
-        "duration": "1:58"
+        "aspectRatio": "1920 / 1128",
+        "durationSeconds": 170.77,
+        "duration": "2:51"
     },
     {
         "id": "brake",
@@ -18,8 +18,8 @@ export const CASE_STUDY_VIDEOS = [
         "captions": "/videos/rca-brake.en.vtt",
         "report": "/reports/rca-brake.pdf",
         "titleKey": "caseStudies.brake.title",
-        "aspectRatio": "16 / 9",
-        "durationSeconds": 124.45,
-        "duration": "2:04"
+        "aspectRatio": "1920 / 1128",
+        "durationSeconds": 178.43,
+        "duration": "2:58"
     }
 ]
