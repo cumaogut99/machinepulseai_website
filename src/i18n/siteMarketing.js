@@ -3,7 +3,7 @@ export default {
     en: {
         skipContent: 'Skip to main content',
         video: {
-            titles: { overview: 'A short introduction to MachinePulseAI', introduction: 'From measurement to report', tour: 'MachinePulseAI — complete product tour' },
+            titles: { overview: 'A short introduction to MachinePulseAI', tour: 'MachinePulseAI — complete product tour' },
             play: 'Play: {{title}}',
             fullTour: 'Explore the complete product tour',
             chapters: 'Explore by chapter',
@@ -145,7 +145,7 @@ export default {
     tr: {
         skipContent: 'Ana içeriğe geç',
         video: {
-            titles: { overview: 'MachinePulseAI’a kısa bir bakış', introduction: 'Ölçümden rapora', tour: 'MachinePulseAI — kapsamlı ürün turu' },
+            titles: { overview: 'MachinePulseAI’a kısa bir bakış', tour: 'MachinePulseAI — kapsamlı ürün turu' },
             play: 'Oynat: {{title}}',
             fullTour: 'Kapsamlı ürün turunu keşfedin',
             chapters: 'Bölüm seçerek keşfedin',

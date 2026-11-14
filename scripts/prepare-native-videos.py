@@ -55,11 +55,11 @@ def prepare_video(source: Path, destination: Path, poster_time: float) -> None:
 
 
 def main() -> None:
-    """Prepare all three same-origin movies from an explicit delivery folder."""
+    """Prepare the same-origin movies from an explicit delivery folder."""
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--source', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
-    parser.add_argument('--only', choices=('overview', 'introduction', 'product-tour'))
+    parser.add_argument('--only', choices=('overview', 'product-tour'))
     parser.add_argument('--poster-time', type=float)
     args = parser.parse_args()
     if args.poster_time is not None and (args.only is None or args.poster_time < 0):
@@ -67,7 +67,6 @@ def main() -> None:
     logging.basicConfig(level=logging.INFO, format='%(message)s')
     for name, stem, timestamp in (
         ('website_preview_TR_EN.mp4', 'overview', 8),
-        ('introduction_TR_EN.mp4', 'introduction', 65),
         ('MachinePulseAI_Phase1_TR_EN.mp4', 'product-tour', 505),
     ):
         if args.only is not None and stem != args.only:

@@ -10,16 +10,6 @@
     "decode": "passed"
   },
   {
-    "video": "introduction",
-    "dimensions": [
-      2212,
-      1440
-    ],
-    "duration": "00:01:58.02",
-    "audio_hash": "SHA256=f7955f4a5393e63dd9fedbfd2c0d1434d74bee5d70ba735e66ff98ab6104858b",
-    "decode": "passed"
-  },
-  {
     "video": "product-tour",
     "dimensions": [
       2212,
