@@ -4,6 +4,6 @@
     { "source": "/demo", "destination": "/product", "permanent": true }
   ],
   "rewrites": [
-    { "source": "/((?!assets/|images/|.*\\..*).*)", "destination": "/app-shell.html" }
+    { "source": "/((?!api/|assets/|images/|.*\\..*).*)", "destination": "/app-shell.html" }
   ]
 }

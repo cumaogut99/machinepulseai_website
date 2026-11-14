@@ -62,7 +62,7 @@ machinepulseai_website/
 
 ## Routing (SPA)
 
-- `react-router-dom` v7 `BrowserRouter`. 8 routes: `/`, `/features`, `/architecture`, `/how-it-works`, `/solutions`, `/knowledge-base`, `/widgets`, `/pricing`.
+- `react-router-dom` v7 `BrowserRouter`. Main routes: `/`, `/product`, `/widgets` (+ guide pages), `/pricing`, `/about`; legacy paths redirect.
 - All client-side routing depends on `vercel.json` rewriting extensionless paths to the SPA shell (`app-shell.html`). **Do not remove `vercel.json`** or direct navigation / refresh on sub-routes returns Vercel's 404.
 
 ## Prerendering (SSG)
@@ -90,6 +90,13 @@ machinepulseai_website/
   labels or repeated conceptual-guide disclaimers on widget learning pages.
 - Marketing claims with specific numbers (e.g. "70% faster", "0.95 F1-score") MUST be substantiated or softened — do not invent metrics.
 - Avoid unqualified competitor comparisons (legal risk).
+
+## Contact form, analytics, share card and case reports
+
+- **Contact form**: `ContactModal.jsx` posts to `api/contact.js` (Vercel serverless function), which emails the request through Resend with the sender as Reply-To. The receiving inbox lives only in the Vercel env var `CONTACT_TO_EMAIL` (plus `RESEND_API_KEY`, optional `CONTACT_FROM_EMAIL`). **Never** put a personal email address in this public repository or show an address on the site; `vercel.json` must keep `api/` out of the SPA rewrite.
+- **Analytics**: cookie-free Umami Cloud, loaded by `src/analytics.js` only when `VITE_UMAMI_WEBSITE_ID` is set and only on the production domains. Events: `video_play`, `video_progress` (25/50/75/100 %), `report_open`, `contact_open`, `contact_sent`. Use `trackEvent()`; never let analytics break the page.
+- **Share card**: `public/og-card.png` (1200×630) is rendered from `scripts/og-card/og-card.html` with `node scripts/og-card/render.mjs`. Do not use the transparent `logo.png` as `og:image`.
+- **RCA case reports**: `public/reports/rca-*.pdf` are consolidated editions built by `python scripts/rca_reports/build_rca_reports.py` from the untouched app exports in `scripts/rca_reports/source/`. Values must stay identical to the export; update `docs/rca-demo-media-2026-11-14.json` (`report_sha256`) after a rebuild.
 
 ## Conventions
 

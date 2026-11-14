@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next'
 import ProductVideo from './ProductVideo.jsx'
 import { CASE_STUDY_VIDEOS } from '../data/caseStudyVideos.js'
 import { useContactModal } from '../context/ContactModalContext.jsx'
+import { trackEvent } from '../analytics.js'
 
 /** Real Agent recordings and their exported reports, with the demo scope visible. */
 export default function CaseStudyVideos() {
@@ -23,6 +24,7 @@ export default function CaseStudyVideos() {
                             <h3 className="text-lg font-semibold mt-5 mb-2">{t(`caseStudies.${video.id}.title`)}</h3>
                             <p className="text-sm text-slate-400 leading-relaxed mb-4">{t(`caseStudies.${video.id}.description`)}</p>
                             <a href={video.report} target="_blank" rel="noreferrer"
+                                onClick={() => trackEvent('report_open', { report: video.id })}
                                 className="text-sm text-neon-cyan underline underline-offset-4 focus-visible:outline focus-visible:outline-neon-cyan">
                                 {t('caseStudies.report')}
                             </a>

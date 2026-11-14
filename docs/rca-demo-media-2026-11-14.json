@@ -34,7 +34,9 @@
       "video_sha256": "bbe0eaa07c4bb9da122fd6fdd4edd9e27bf28c352d7095144be3e715717e05ac",
       "poster_sha256": "fe4f6a85da19d4133cdd6114715dd09371f45f8788889288084da7ca8b8e2fb1",
       "captions_sha256": "3a66b9561b48223d78679294359486683a20ed3dada7e49903b23a56800a7d67",
-      "report_sha256": "bd66a200413bd18f2b9277884faeedc96b0a3f2458ec49939b18761926740170"
+      "export_report_sha256": "bd66a200413bd18f2b9277884faeedc96b0a3f2458ec49939b18761926740170",
+      "report_sha256": "7650abc73ac54eb575a322bef72ac74ceab617eb82c2fe5ad08ec487c7ed6f81",
+      "report_edition": "Consolidated publication edition 2026-11-15, built by scripts/rca_reports/build_rca_reports.py from the export; repeated computations merged, values unchanged"
     },
     "brake": {
       "theme": "space",
@@ -68,7 +70,9 @@
       "video_sha256": "b07b725f567a258d947c5232e6c560b6398e33a7ec29fe8d7538d029739e97ad",
       "poster_sha256": "466cb3040bcb4aaa098ca158ef26cd8a2cb2296e41589ae861fa9b1547cc2f8f",
       "captions_sha256": "b66a26e96c0c6cc8d5fc4c0311459d505f41e627c1583ee94ca4d6437af9850c",
-      "report_sha256": "1afb118dc09b18db1faa97608d8de715baca4ec59c4182f32fdeda63dd120271"
+      "export_report_sha256": "1afb118dc09b18db1faa97608d8de715baca4ec59c4182f32fdeda63dd120271",
+      "report_sha256": "fcfcba4c35559090d6902b81de9b2ffe5d504e11cd12223c431eb7a05a98c4b6",
+      "report_edition": "Consolidated publication edition 2026-11-15, built by scripts/rca_reports/build_rca_reports.py from the export; repeated computations merged, values unchanged"
     }
   }
 }

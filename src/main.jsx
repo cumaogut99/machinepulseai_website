@@ -5,6 +5,7 @@ import { HelmetProvider } from 'react-helmet-async'
 import App, { preloadRoute } from './App.jsx'
 import './index.css'
 import i18n from './i18n'
+import { startAnalytics } from './analytics.js'
 
 const tree = (
     <React.StrictMode>
@@ -35,3 +36,4 @@ async function bootstrap() {
 }
 
 bootstrap()
+startAnalytics()

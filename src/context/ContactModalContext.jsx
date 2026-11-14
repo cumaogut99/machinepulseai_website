@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useCallback } from 'react'
+import { trackEvent } from '../analytics.js'
 
 // ─── Contact / Demo Modal Context ──────────────────────────────────────────────
 // Replaces the previous `window.openContactModal` global. Any component can call
@@ -13,8 +14,10 @@ export function ContactModalProvider({ children }) {
 
     // `open` is also used directly as a click handler, so ignore event arguments.
     const open = useCallback((nextPurpose) => {
-        setPurpose(typeof nextPurpose === 'string' ? nextPurpose : 'demo')
+        const purpose = typeof nextPurpose === 'string' ? nextPurpose : 'demo'
+        setPurpose(purpose)
         setIsOpen(true)
+        trackEvent('contact_open', { purpose })
     }, [])
     const close = useCallback(() => setIsOpen(false), [])
 

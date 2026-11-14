@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { Link, useLocation } from 'react-router-dom'
 import logoImg from '../assets/logo.png'
 import { WIDGET_CATEGORIES } from '../data/widgetCatalog.categories.js'
+import { useContactModal } from '../context/ContactModalContext.jsx'
 
 const WIDGET_NAV_GROUPS = WIDGET_CATEGORIES.map((category) => ({
     id: category.id,
@@ -17,6 +18,7 @@ export default function Navbar() {
     const [scrolled, setScrolled] = useState(false)
     const [menuOpen, setMenuOpen] = useState(false)
     const location = useLocation()
+    const { open: openContact } = useContactModal()
     // Prerendered pages are also reachable with a trailing slash (/pricing/).
     const currentPath = location.pathname.replace(/\/+$/, '') || '/'
     const isTurkish = i18n.language?.startsWith('tr')
@@ -33,6 +35,7 @@ export default function Navbar() {
             })),
         },
         { label: t('nav.pricing'), href: '/pricing' },
+        { label: t('nav.about'), href: '/about' },
     ]
 
     const toggleLanguage = () => {
@@ -118,13 +121,14 @@ export default function Navbar() {
                         >
                             {isTurkish ? 'EN' : 'TR'}
                         </button>
-                        <Link
+                        <button
                             id="nav-demo-btn"
-                            to="/pricing"
+                            type="button"
+                            onClick={() => openContact('demo')}
                             className="btn-neon text-sm font-medium text-[#00f5ff] px-5 py-2 rounded-lg"
                         >
                             {t('nav.getDemo')}
-                        </Link>
+                        </button>
                     </div>
 
                     {/* ── Mobile Hamburger ──────────────────────────── */}
@@ -191,13 +195,13 @@ export default function Navbar() {
                                 </div>
                             ))}
                             <div className="flex gap-3 pt-2 border-t border-white/5">
-                                <Link
-                                    to="/pricing"
-                                    onClick={() => setMenuOpen(false)}
+                                <button
+                                    type="button"
+                                    onClick={() => { setMenuOpen(false); openContact('demo') }}
                                     className="flex-1 btn-neon text-sm font-medium text-[#00f5ff] py-2 rounded-lg text-center"
                                 >
                                     {t('nav.getDemo')}
-                                </Link>
+                                </button>
                                 <button
                                     onClick={() => { toggleLanguage(); setMenuOpen(false); }}
                                     className="text-xs font-semibold text-slate-400 hover:text-white px-3 py-2 rounded-md border border-white/10 hover:border-white/20 transition-all uppercase"

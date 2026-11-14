@@ -14,8 +14,9 @@ import Hero from './components/Hero.jsx'
 import Stats from './components/Stats.jsx'
 import Features from './components/Features.jsx'
 import WhySection from './components/WhySection.jsx'
-import Roadmap from './components/Roadmap.jsx'
 import CaseStudyVideos from './components/CaseStudyVideos.jsx'
+import Sectors from './components/Sectors.jsx'
+import VisionBand from './components/VisionBand.jsx'
 
 // Code-split page. Unlike React.lazy(), which always suspends on its first
 // render (blanking prerendered HTML during hydration), the page renders
@@ -44,6 +45,7 @@ function lazyPage(loader) {
 }
 
 const ProductPage = lazyPage(() => import('./components/ProductPage.jsx'))
+const AboutPage = lazyPage(() => import('./components/AboutPage.jsx'))
 const Pricing = lazyPage(() => import('./components/Pricing.jsx'))
 const WidgetCatalog = lazyPage(() => import('./components/WidgetCatalog.jsx'))
 const CombustionAnalysisDetail = lazyPage(() => import('./components/CombustionAnalysisDetail.jsx'))
@@ -64,6 +66,7 @@ const PAGE_ROUTES = [
     ['/widgets/fft-spectrum', FFTSpectrumLearning],
     ['/widgets/rotor-dynamics', RotorDynamicsLearning],
     ['/pricing', Pricing],
+    ['/about', AboutPage],
 ]
 
 /** Resolve the lazy page chunk for a pathname (null for the home page). */
@@ -101,7 +104,8 @@ const Home = () => (
         <WhySection />
         <Features compact />
         <CaseStudyVideos />
-        <Roadmap />
+        <Sectors />
+        <VisionBand />
     </main>
 )
 
@@ -143,6 +147,7 @@ function AppShell() {
                     <Route path="/widgets/rotor-dynamics" element={<Page><RotorDynamicsLearning /></Page>} />
                     <Route path="/widgets/:slug" element={<Page><WidgetDetail /></Page>} />
                     <Route path="/pricing" element={<Page><Pricing /></Page>} />
+                    <Route path="/about" element={<Page><AboutPage /></Page>} />
 
                     {/* Redirects from the former route structure */}
                     <Route path="/features" element={<Navigate to="/product" replace />} />

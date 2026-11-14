@@ -60,7 +60,7 @@ export default function Hero() {
 
             {/* ── Hero Text Block ────────────────────────────────── */}
             <motion.div
-                className="relative z-10 flex flex-col items-center text-center max-w-3xl mx-auto"
+                className="relative z-10 flex flex-col items-center text-center max-w-5xl mx-auto"
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
@@ -68,7 +68,7 @@ export default function Hero() {
                 {/* Main Title */}
                 <motion.h1
                     variants={fadeUpVariant}
-                    className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight mb-6"
+                    className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold text-white leading-tight tracking-tight mb-6"
                 >
                     {/* First line: plain white */}
                     <span className="block">{t('hero.title1')}</span>

@@ -1,0 +1,54 @@
+<!doctype html>
+<!--
+  Source of public/og-card.png, the 1200×630 link-preview card (LinkedIn,
+  WhatsApp, X). Uses only the locked site theme: #0a0a0a, neon cyan / blue /
+  purple, Inter. Render with:  node scripts/og-card/render.mjs
+-->
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&display=block" rel="stylesheet">
+<style>
+  html, body { margin: 0; width: 1200px; height: 630px; background: #0a0a0a; overflow: hidden; }
+  body { position: relative; font-family: 'Inter', system-ui, sans-serif; color: #fff; }
+  .grid {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .spot {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 30% 10%, rgba(0,245,255,0.16), transparent 70%),
+                radial-gradient(ellipse 50% 45% at 95% 85%, rgba(168,85,247,0.14), transparent 70%);
+  }
+  .brand { position: absolute; left: 64px; top: 44px; display: flex; align-items: center; gap: 16px; }
+  .brand img { width: 64px; height: 64px; filter: drop-shadow(0 0 14px rgba(0,245,255,0.55)); }
+  .brand span { font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
+  .brand b { color: #00f5ff; font-weight: 700; }
+  h1 { position: absolute; left: 64px; top: 128px; margin: 0; font-size: 56px; line-height: 1.12; font-weight: 800; letter-spacing: -0.02em; }
+  h1 .accent { display: block; color: transparent; background: linear-gradient(90deg, #00f5ff, #38bdf8 45%, #818cf8); -webkit-background-clip: text; background-clip: text; }
+  .chips { position: absolute; left: 64px; top: 286px; display: flex; gap: 10px; }
+  .chips span { font-size: 17px; font-weight: 600; color: #cbd5e1; border: 1px solid rgba(0,245,255,0.3); background: rgba(0,245,255,0.05); border-radius: 999px; padding: 7px 16px; }
+  .chips span.ai { color: #00f5ff; border-color: rgba(0,245,255,0.6); }
+  .shot {
+    position: absolute; left: 64px; top: 346px; width: 1072px; height: 284px; border-radius: 16px 16px 0 0; overflow: hidden;
+    border: 1px solid rgba(0,245,255,0.28); box-shadow: 0 0 60px rgba(0,245,255,0.18), 0 0 120px rgba(59,130,246,0.12);
+    -webkit-mask-image: linear-gradient(to bottom, #000 62%, transparent 100%); mask-image: linear-gradient(to bottom, #000 62%, transparent 100%);
+  }
+  .shot img { width: 100%; display: block; }
+</style>
+</head>
+<body>
+  <div class="grid"></div>
+  <div class="spot"></div>
+  <div class="brand"><img src="../../public/logo.png" alt=""><span>MachinePulse<b>AI</b></span></div>
+  <h1>Büyük test verilerinizi analiz edin<span class="accent">ister kendiniz, ister yapay zekâyla</span></h1>
+  <div class="chips">
+    <span>FFT</span><span>Order Tracking</span><span>Rotor Dynamics</span><span>Modal Analysis</span><span class="ai">AI Agent</span>
+  </div>
+  <div class="shot"><img src="canvas-crop.png" alt=""></div>
+</body>
+</html>

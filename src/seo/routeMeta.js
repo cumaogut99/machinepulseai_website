@@ -8,19 +8,34 @@ import WIDGET_CATALOG from '../data/widgetCatalog.js'
 
 export const SITE_URL = 'https://www.machinepulseai.com.tr'
 export const SITE_NAME = 'MachinePulseAI'
-export const OG_IMAGE = `${SITE_URL}/logo.png`
+// 1200×630 share card (scripts/og-card/). The bare logo is transparent and
+// rendered on white by LinkedIn / WhatsApp, so it must not be used here.
+export const OG_IMAGE = `${SITE_URL}/og-card.png`
+export const OG_IMAGE_WIDTH = 1200
+export const OG_IMAGE_HEIGHT = 630
+export const OG_IMAGE_ALT = 'MachinePulseAI — large test data analysis, yourself or with an AI agent'
 
 const BRAND = 'MachinePulseAI'
 
 export const ROUTE_META = {
     '/': {
         en: {
-            title: `${BRAND} — Engineering Analysis for Large Measurement Data`,
-            description: 'Import CSV, TDMS, MDF/MF4, Parquet and MPAI test data into one workspace; analyze large recordings with low memory use.',
+            title: `${BRAND} — Large Test Data Analysis with an AI Agent`,
+            description: 'Analyze large test recordings with low memory use: FFT, order tracking, rotor dynamics, modal analysis. Work yourself or let the AI agent run the analysis.',
         },
         tr: {
-            title: `${BRAND} — Büyük Ölçüm Verileri İçin Mühendislik Analizi`,
-            description: 'CSV, TDMS, MDF/MF4, Parquet ve MPAI test verilerini tek çalışma alanında içe aktarın; büyük kayıtları düşük bellek kullanımıyla analiz edin.',
+            title: `${BRAND} — Büyük Test Verisi İçin Analiz ve AI Ajanı`,
+            description: 'Büyük test kayıtlarını düşük bellek tüketimiyle analiz edin: FFT, order tracking, rotor dinamiği, modal analiz. İster kendiniz çalışın, ister AI ajanı yapsın.',
+        },
+    },
+    '/about': {
+        en: {
+            title: `About — ${BRAND}`,
+            description: 'MachinePulseAI’s vision, why now, how we build the product, and the roadmap from recorded-data analysis to live measurement.',
+        },
+        tr: {
+            title: `Hakkında — ${BRAND}`,
+            description: 'MachinePulseAI’ın vizyonu, neden şimdi, ürünü nasıl geliştirdiğimiz ve kayıtlı veri analizinden canlı ölçüme uzanan yol haritası.',
         },
     },
     '/product': {

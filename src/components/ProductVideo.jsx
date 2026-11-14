@@ -1,12 +1,19 @@
 import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { formatVideoTime } from '../data/productVideos.js'
+import { trackEvent } from '../analytics.js'
+
+// Watch-depth milestones reported once per page view and video.
+const PROGRESS_MILESTONES = [25, 50, 75, 100]
 
 /** Click-to-load native video with optional chapter navigation. */
 export default function ProductVideo({ video, chapters = [], selectedChapter, priority = false }) {
     const { t } = useTranslation()
     const player = useRef(null)
     const requestedTime = useRef(0)
+    const reportedMilestones = useRef(new Set())
+    // Case-study videos carry an id; product videos are keyed by their title key.
+    const videoId = video.id || video.title
     const [loaded, setLoaded] = useState(false)
     const [failed, setFailed] = useState(false)
     const [activeChapter, setActiveChapter] = useState(0)
@@ -27,6 +34,7 @@ export default function ProductVideo({ video, chapters = [], selectedChapter, pr
     }, [selectedTime])
 
     function playFrom(time = 0) {
+        if (!loaded) trackEvent('video_play', { video: videoId })
         requestedTime.current = time
         setShouldPlay(true)
         setFailed(false)
@@ -47,9 +55,19 @@ export default function ProductVideo({ video, chapters = [], selectedChapter, pr
     }
 
     function onTimeUpdate(event) {
-        const time = event.currentTarget.currentTime
-        const index = chapters.findLastIndex(chapter => chapter.time <= time)
-        setActiveChapter(Math.max(0, index))
+        const { currentTime: time, duration } = event.currentTarget
+        if (chapters.length) {
+            const index = chapters.findLastIndex(chapter => chapter.time <= time)
+            setActiveChapter(Math.max(0, index))
+        }
+        if (!duration) return
+        const watched = (time / duration) * 100
+        for (const milestone of PROGRESS_MILESTONES) {
+            if (watched + 0.5 >= milestone && !reportedMilestones.current.has(milestone)) {
+                reportedMilestones.current.add(milestone)
+                trackEvent('video_progress', { video: videoId, percent: milestone })
+            }
+        }
     }
 
     return (
@@ -62,7 +80,7 @@ export default function ProductVideo({ video, chapters = [], selectedChapter, pr
                             ref={player} src={video.src} poster={video.poster}
                             controls autoPlay={shouldPlay} playsInline preload="metadata" tabIndex={0}
                             aria-label={title} onLoadedMetadata={onReady}
-                            onTimeUpdate={chapters.length ? onTimeUpdate : undefined}
+                            onTimeUpdate={onTimeUpdate}
                             onError={() => setFailed(true)}
                             className="w-full h-full object-contain"
                         >

@@ -1,17 +1,19 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
-import { CONTACT_EMAIL } from '../data/contact.js'
+import { trackEvent } from '../analytics.js'
 
-// ─── Contact / Demo Request Modal ──────────────────────────────────────────────
-// Set VITE_CONTACT_FORM_ENDPOINT in production to post to Formspree/CRM/etc.
-const FORM_ENDPOINT = import.meta.env.VITE_CONTACT_FORM_ENDPOINT || ''
+// ─── Contact / Demo Request Modal ─────────────────────────────────────────────
+// Posts to the site's own serverless endpoint (api/contact.js), which emails the
+// request. The receiving inbox is configured on the server and never shown here.
+const CONTACT_ENDPOINT = '/api/contact'
+const EMPTY_FORM = { name: '', company: '', email: '', message: '', website: '' }
 
 const PURPOSES = ['demo', 'pilot', 'partnership']
 
 export default function ContactModal({ open, purpose = 'demo', onClose }) {
     const { t } = useTranslation()
-    const [form, setForm] = useState({ purpose, name: '', company: '', email: '', message: '' })
+    const [form, setForm] = useState({ purpose, ...EMPTY_FORM })
     const [status, setStatus] = useState('idle') // 'idle' | 'loading' | 'success' | 'error'
     const dialog = useRef(null)
 
@@ -59,41 +61,24 @@ export default function ContactModal({ open, purpose = 'demo', onClose }) {
     async function handleSubmit(e) {
         e.preventDefault()
         setStatus('loading')
-
-        if (!FORM_ENDPOINT) {
-            const subject = encodeURIComponent(`MachinePulseAI ${form.purpose} request - ${form.company || form.name}`)
-            const body = encodeURIComponent(
-                `Purpose: ${form.purpose}\nName: ${form.name}\nOrganization: ${form.company || '-'}\nEmail: ${form.email}\n\nMessage:\n${form.message}`
-            )
-            window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`
-            setStatus('draft')
-            return
-        }
-
         try {
-            const response = await fetch(FORM_ENDPOINT, {
+            const response = await fetch(CONTACT_ENDPOINT, {
                 method: 'POST',
-                // Form services (e.g. Formspree) answer JSON only when asked to.
-                headers: {
-                    'Content-Type': 'application/json',
-                    Accept: 'application/json'
-                },
+                headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
                 body: JSON.stringify(form)
             })
-
-            if (response.ok) {
-                setStatus('success')
-            } else {
-                setStatus('error')
-            }
+            if (!response.ok) throw new Error(`Contact endpoint answered ${response.status}`)
+            trackEvent('contact_sent', { purpose: form.purpose })
+            setStatus('success')
         } catch (error) {
+            console.error('Contact request failed', error)
             setStatus('error')
         }
     }
 
     function handleClose() {
         setStatus('idle')
-        setForm({ purpose, name: '', company: '', email: '', message: '' })
+        setForm({ purpose, ...EMPTY_FORM })
         onClose()
     }
 
@@ -150,7 +135,7 @@ export default function ContactModal({ open, purpose = 'demo', onClose }) {
                                             </span>
                                             <h2 id="contact-title" className="text-xl font-bold text-white">{t(`site.contact.purposes.${form.purpose}.title`)}</h2>
                                             <p className="text-sm text-slate-400 mt-1">
-                                                {t(FORM_ENDPOINT ? 'contact.subtitle' : 'site.contact.emailSubtitle')}
+                                                {t('contact.subtitle')}
                                             </p>
                                         </div>
 
@@ -168,7 +153,7 @@ export default function ContactModal({ open, purpose = 'demo', onClose }) {
                                                 <div className="flex flex-col gap-1.5">
                                                     <label htmlFor="contact-name" className="text-xs text-slate-400">{t('contact.form.name')}</label>
                                                     <input
-                                                        id="contact-name" name="name" autoComplete="name" required value={form.name} onChange={handleChange}
+                                                        id="contact-name" name="name" autoComplete="name" required maxLength={120} value={form.name} onChange={handleChange}
                                                         placeholder={t('site.contact.namePlaceholder')}
                                                         className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2.5 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-[#00f5ff]/40 focus:bg-white/8 transition-all"
                                                     />
@@ -176,7 +161,7 @@ export default function ContactModal({ open, purpose = 'demo', onClose }) {
                                                 <div className="flex flex-col gap-1.5">
                                                     <label htmlFor="contact-company" className="text-xs text-slate-400">{t('contact.form.company')}</label>
                                                     <input
-                                                        id="contact-company" name="company" autoComplete="organization" value={form.company} onChange={handleChange}
+                                                        id="contact-company" name="company" autoComplete="organization" maxLength={160} value={form.company} onChange={handleChange}
                                                         placeholder={t('site.contact.companyPlaceholder')}
                                                         className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2.5 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-[#00f5ff]/40 focus:bg-white/8 transition-all"
                                                     />
@@ -186,7 +171,7 @@ export default function ContactModal({ open, purpose = 'demo', onClose }) {
                                             <div className="flex flex-col gap-1.5">
                                                 <label htmlFor="contact-email" className="text-xs text-slate-400">{t('contact.form.email')}</label>
                                                 <input
-                                                    id="contact-email" name="email" type="email" autoComplete="email" required value={form.email} onChange={handleChange}
+                                                    id="contact-email" name="email" type="email" autoComplete="email" required maxLength={254} value={form.email} onChange={handleChange}
                                                     placeholder={t('site.contact.emailPlaceholder')}
                                                     className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2.5 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-[#00f5ff]/40 focus:bg-white/8 transition-all"
                                                 />
@@ -195,10 +180,17 @@ export default function ContactModal({ open, purpose = 'demo', onClose }) {
                                             <div className="flex flex-col gap-1.5">
                                                 <label htmlFor="contact-message" className="text-xs text-slate-400">{t(`site.contact.purposes.${form.purpose}.message`)}</label>
                                                 <textarea
-                                                    id="contact-message" name="message" rows={3} value={form.message} onChange={handleChange}
+                                                    id="contact-message" name="message" rows={3} maxLength={4000} value={form.message} onChange={handleChange}
                                                     placeholder={t(`site.contact.purposes.${form.purpose}.placeholder`)}
                                                     className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2.5 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-[#00f5ff]/40 focus:bg-white/8 transition-all resize-none"
                                                 />
+                                            </div>
+
+                                            {/* Honeypot: hidden from people and assistive technology; bots fill it. */}
+                                            <div className="absolute -left-[9999px] w-px h-px overflow-hidden" aria-hidden="true">
+                                                <label htmlFor="contact-website">Website</label>
+                                                <input id="contact-website" name="website" type="text" tabIndex={-1} autoComplete="off"
+                                                    value={form.website} onChange={handleChange} />
                                             </div>
 
                                             {status === 'error' && (
@@ -206,19 +198,17 @@ export default function ContactModal({ open, purpose = 'demo', onClose }) {
                                                     {t('contact.error')}
                                                 </div>
                                             )}
-                                            {status === 'draft' && <p role="status" className="text-xs text-neon-cyan leading-relaxed">{t('site.contact.emailReady')}</p>}
 
                                             <button
                                                 type="submit"
                                                 disabled={status === 'loading'}
                                                 className="w-full btn-neon text-sm font-semibold text-[#00f5ff] py-3 rounded-xl mt-1 disabled:opacity-50 disabled:cursor-not-allowed"
                                             >
-                                                {status === 'loading' ? t('contact.form.sending') : t(FORM_ENDPOINT ? 'contact.form.submit' : 'site.contact.emailSubmit')}
+                                                {status === 'loading' ? t('contact.form.sending') : t('contact.form.submit')}
                                             </button>
                                             <p className="text-center text-[10px] text-slate-600">
                                                 {t('contact.form.privacy')}
                                             </p>
-                                            <p className="text-xs text-slate-400 text-center">{t('site.contact.emailAlternative')} <a href={`mailto:${CONTACT_EMAIL}`} className="text-neon-cyan">{CONTACT_EMAIL}</a></p>
                                         </form>
                                     </>
                                 ) : (

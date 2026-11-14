@@ -1,5 +1,6 @@
 import SITE_MARKETING from './i18n/siteMarketing.js';
 import CASE_STUDIES from './i18n/caseStudies.js';
+import ABOUT from './i18n/about.js';
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
@@ -16,6 +17,7 @@ const resources = {
         translation: {
             "site": SITE_MARKETING.en,
             "caseStudies": CASE_STUDIES.en,
+            "about": ABOUT.en,
             "fftLearn": FFT_LEARNING_TRANSLATIONS.en,
             "fftTheory": FFT_THEORY_TRANSLATIONS.en,
             "fftBeginner": FFT_BEGINNER_TRANSLATIONS.en,
@@ -34,7 +36,8 @@ const resources = {
                 "resources": "Resources",
                 "knowledgeBase": "Knowledge Base",
                 "widgets": "Module Library",
-                "getDemo": "Get a Demo"
+                "getDemo": "Get a Demo",
+                "about": "About"
             },
             "home": {
                 "featuresViewAll": "Explore the full product",
@@ -105,9 +108,9 @@ const resources = {
             },
             "hero": {
                 "badge": "Early Access Open",
-                "title1": "Analyze test and measurement data",
-                "title2": "in one place",
-                "subtitle": "MachinePulseAI is a Windows engineering application that takes recorded test data from import to report in one workspace. Connect modules such as filtering, FFT and spectrum analysis, order tracking, rotor dynamics and modal analysis in a visual workflow. Use the optional AI assistant to ask questions about your data and see which measurements support your findings.",
+                "title1": "Analyze large test data",
+                "title2": "yourself, or with AI",
+                "subtitle": "MachinePulseAI is a post-processing application for test data. It works through large recordings with low memory use, without loading them fully into RAM. Run FFT and spectrum analysis, order tracking, rotor dynamics, modal analysis and more yourself, or let the Agent operate the application: it runs the analyses and reports its findings with the evidence behind them.",
                 "ctaPrimary": "Request a Demo",
                 "ctaSecondary": "Watch the Introduction"
             },
@@ -251,6 +254,7 @@ const resources = {
         translation: {
             "site": SITE_MARKETING.tr,
             "caseStudies": CASE_STUDIES.tr,
+            "about": ABOUT.tr,
             "fftLearn": FFT_LEARNING_TRANSLATIONS.tr,
             "fftTheory": FFT_THEORY_TRANSLATIONS.tr,
             "fftBeginner": FFT_BEGINNER_TRANSLATIONS.tr,
@@ -269,7 +273,8 @@ const resources = {
                 "resources": "Kaynaklar",
                 "knowledgeBase": "Bilgi Bankası",
                 "widgets": "Modül Kütüphanesi",
-                "getDemo": "Demo İste"
+                "getDemo": "Demo İste",
+                "about": "Hakkında"
             },
             "home": {
                 "featuresViewAll": "Ürünün tamamını keşfedin",
@@ -340,9 +345,9 @@ const resources = {
             },
             "hero": {
                 "badge": "Erken Erişim Açık",
-                "title1": "Test ve ölçüm verilerinizi",
-                "title2": "tek yerde analiz edin",
-                "subtitle": "MachinePulseAI, kaydedilmiş test verilerini içe aktarmadan rapora kadar tek çalışma alanında işleyen bir Windows mühendislik analiz uygulamasıdır. Filtreleme, FFT ve spektrum, order tracking, rotor dinamiği ve modal analiz gibi modülleri görsel bir iş akışında birbirine bağlayabilirsiniz. İsteğe bağlı yapay zekâ asistanıyla verileriniz hakkında soru sorabilir ve bulguların hangi ölçümlere dayandığını inceleyebilirsiniz.",
+                "title1": "Büyük test verilerinizi analiz edin",
+                "title2": "ister kendiniz, ister yapay zekâyla",
+                "subtitle": "MachinePulseAI, test verileri için bir post-proses analiz uygulamasıdır. Büyük kayıtları belleğe tümüyle yüklemeden, düşük bellek tüketimiyle işler. FFT ve spektrum, order tracking, rotor dinamiği, modal analiz ve daha fazlasını kendiniz çalıştırın ya da uygulamayı Agent’a kullandırın: analizleri o yürütsün, bulguları dayanaklarıyla raporlasın.",
                 "ctaPrimary": "Demo İste",
                 "ctaSecondary": "Kısa Tanıtımı İzle"
             },

@@ -35,6 +35,10 @@ test('both guided Agent cases ship with the actual reviewed reports and media', 
         assert.ok(statSync(movie).size > 10000)
         assert.equal(createHash('sha256').update(readFileSync(movie)).digest('hex'), proof.video_sha256)
         assert.equal(createHash('sha256').update(readFileSync(report)).digest('hex'), proof.report_sha256)
+        // The published PDF is a consolidated edition built from the unmodified application export.
+        const exported = new URL(`../scripts/rca_reports/source/${video.id}_app_export.pdf`, import.meta.url)
+        assert.equal(createHash('sha256').update(readFileSync(exported)).digest('hex'), proof.export_report_sha256)
+        assert.match(proof.report_edition, /values unchanged/)
         for (const [kind, path] of [['poster', video.poster], ['captions', video.captions]]) {
             const bytes = readFileSync(new URL(`../public${path}`, import.meta.url))
             assert.equal(createHash('sha256').update(bytes).digest('hex'), proof[`${kind}_sha256`])
