@@ -68,7 +68,7 @@ test('shareable product links resolve the same chapter and timestamp used by the
 })
 
 test('homepage media and subtitles match the complete-sentence narration receipt', () => {
-    const receipt = JSON.parse(readFileSync(new URL('../docs/overview-narration-2026-11-11.json', import.meta.url), 'utf8'))
+    const receipt = JSON.parse(readFileSync(new URL('../docs/overview-narration-2026-11-15.json', import.meta.url), 'utf8'))
     const movie = readFileSync(new URL(`../public${PRODUCT_VIDEOS.overview.src}`, import.meta.url))
     assert.equal(createHash('sha256').update(movie).digest('hex'), receipt.sha256)
     const subtitles = readFileSync(new URL(`../public${PRODUCT_VIDEOS.overview.captions}`, import.meta.url), 'utf8')
@@ -76,8 +76,15 @@ test('homepage media and subtitles match the complete-sentence narration receipt
         .join(' ').replace(/\s+/g, ' ')
     assert.equal(receipt.voice, 'ElevenLabs/Furkan - Deep, Natural and Clear')
     assert.equal(receipt.rate, 'original')
-    assert.equal(receipt.edition, 'elevenlabs-furkan-v1')
-    assert.equal(receipt.narration_audio.length, 11)
+    assert.equal(receipt.edition, 'widget-window-workflow-v1')
+    assert.equal(receipt.narration_audio.length, 1)
+    assert.deepEqual(receipt.widget_workflow.opened_by_canvas_double_click,
+        ['random_generator', 'frequency_filter', 'fft_spectrum', 'line_chart'])
+    assert.equal(receipt.widget_workflow.witnesses.filter.fft_received_same_payload, true)
+    assert.equal(receipt.widget_workflow.witnesses.filter.chart_received_same_payload, true)
+    assert.equal(receipt.widget_workflow.witnesses.fft.parameters_used.signal_name, 'Demo_filtered')
+    assert.equal(receipt.narration[2].key, 'overview_widget_window')
+    assert.equal(receipt.narration[3].key, 'overview_widget_flow')
     for (const [index, track] of receipt.narration.entries()) {
         assert.ok(track.start >= 0 && track.duration > 0)
         assert.ok(track.start + track.duration <= receipt.duration_seconds + 0.05)

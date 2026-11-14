@@ -1,0 +1,883 @@
+{
+  "full_decode": "passed",
+  "audio_sha256": "SHA256=ffb965bd1dd4b67c4c4f6a5fd47e96a67765999c6e7dcf7a49d73202ae43bf91",
+  "duration_seconds": 87.07,
+  "edition": "widget-window-workflow-v1",
+  "voice": "ElevenLabs/Furkan - Deep, Natural and Clear",
+  "rate": "original",
+  "narration_audio": [
+    {
+      "file": "C:\\Users\\Cuma OGUT\\Desktop\\MachinePulseAI\\docs\\showcase_voice\\widget_workflow_revision_2026-11-15\\overview.mp3",
+      "sha256": "23d96bf5fe868fae95b7834a2ddc4b706f15a821bad7fc3d95f9d6a0650994b5",
+      "duration": 86.909375,
+      "playback_speed": 1.0
+    }
+  ],
+  "sha256": "ac1adfc78d9e69a43a2c066aa40edaebc73a2f717a539a848bf218c21d2a784d",
+  "real_native_footage": true,
+  "synthetic_demonstration_data": true,
+  "native_drops": [
+    "random_generator",
+    "channel_selector",
+    "frequency_filter",
+    "fft_spectrum",
+    "bearing_fault",
+    "line_chart",
+    "python_script",
+    "statistics_summary",
+    "intelligent_report"
+  ],
+  "native_connections": [
+    [
+      "random_generator",
+      "data",
+      "channel_selector",
+      "data"
+    ],
+    [
+      "channel_selector",
+      "selected",
+      "frequency_filter",
+      "signal"
+    ],
+    [
+      "channel_selector",
+      "selected",
+      "line_chart",
+      "data"
+    ],
+    [
+      "frequency_filter",
+      "filtered",
+      "fft_spectrum",
+      "data"
+    ],
+    [
+      "frequency_filter",
+      "filtered",
+      "bearing_fault",
+      "vibration"
+    ],
+    [
+      "channel_selector",
+      "selected",
+      "python_script",
+      "data"
+    ],
+    [
+      "python_script",
+      "result",
+      "statistics_summary",
+      "data"
+    ],
+    [
+      "fft_spectrum",
+      "fft_result",
+      "intelligent_report",
+      "data"
+    ],
+    [
+      "bearing_fault",
+      "envelope_spectrum",
+      "intelligent_report",
+      "data"
+    ],
+    [
+      "statistics_summary",
+      "summary",
+      "intelligent_report",
+      "data"
+    ]
+  ],
+  "widget_workflow": {
+    "opened_by_canvas_double_click": [
+      "random_generator",
+      "frequency_filter",
+      "fft_spectrum",
+      "line_chart"
+    ],
+    "edges": [
+      [
+        "bearing_fault",
+        "envelope_spectrum",
+        "intelligent_report",
+        "data"
+      ],
+      [
+        "channel_selector",
+        "selected",
+        "frequency_filter",
+        "signal"
+      ],
+      [
+        "channel_selector",
+        "selected",
+        "python_script",
+        "data"
+      ],
+      [
+        "fft_spectrum",
+        "fft_result",
+        "intelligent_report",
+        "data"
+      ],
+      [
+        "frequency_filter",
+        "filtered",
+        "bearing_fault",
+        "vibration"
+      ],
+      [
+        "frequency_filter",
+        "filtered",
+        "fft_spectrum",
+        "data"
+      ],
+      [
+        "frequency_filter",
+        "filtered",
+        "line_chart",
+        "data"
+      ],
+      [
+        "python_script",
+        "result",
+        "statistics_summary",
+        "data"
+      ],
+      [
+        "random_generator",
+        "data",
+        "channel_selector",
+        "data"
+      ],
+      [
+        "statistics_summary",
+        "summary",
+        "intelligent_report",
+        "data"
+      ]
+    ],
+    "native_drops": [
+      "random_generator",
+      "channel_selector",
+      "frequency_filter",
+      "fft_spectrum",
+      "bearing_fault",
+      "line_chart",
+      "python_script",
+      "statistics_summary",
+      "intelligent_report"
+    ],
+    "witnesses": {
+      "source": {
+        "rows": 2000,
+        "filter_received_projection": true
+      },
+      "filter": {
+        "output": "Demo_filtered",
+        "fft_received_same_payload": true,
+        "chart_received_same_payload": true,
+        "summary": {
+          "status": "ready",
+          "compute_id": 1,
+          "parameters_used": {
+            "cutoff": 15.0,
+            "cutoff_high": 500.0,
+            "family": "butterworth",
+            "mode": "lowpass",
+            "order": 4,
+            "ripple_db": 1.0,
+            "sample_rate": 999.9999999999991,
+            "stopband_db": 40.0,
+            "type": "lowpass",
+            "zero_phase": true,
+            "signal_names": [
+              "Demo_signal"
+            ],
+            "output_name": "Demo_filtered"
+          },
+          "message": "",
+          "summary": {
+            "output_channels": [
+              "Demo_filtered"
+            ],
+            "analyzed_rows": 2000,
+            "persisted": true
+          }
+        }
+      },
+      "fft": {
+        "status": "ready",
+        "widget_key": "fft_spectrum",
+        "compute_id": 1,
+        "parameters_used": {
+          "mode": "fft",
+          "compute_phase": false,
+          "compute_psd": false,
+          "signal_name": "Demo_filtered",
+          "signal_names": [
+            "Demo_filtered"
+          ],
+          "window": "hann",
+          "window_param": 0.0,
+          "fft_size": 4096,
+          "nperseg": 4096,
+          "averaging": "linear",
+          "num_averages": 0,
+          "overlap_frac": 0.5,
+          "exp_alpha": 0.1,
+          "amplitude_format": "peak",
+          "weighting": "None",
+          "integration": 0,
+          "octave_bands_per_octave": 0,
+          "max_peaks": 5,
+          "min_magnitude": 0.0001,
+          "min_magnitude_scale": "Linear",
+          "peak_min_frequency_hz": 0.0,
+          "peak_max_frequency_hz": 0.0,
+          "peak_extreme": "max",
+          "peak_channel": "",
+          "detect_minima": false,
+          "display_y_scale": "Linear",
+          "harmonic_spacing": 0.0,
+          "harmonic_source": "peak",
+          "harmonic_count": 8,
+          "sideband_spacing": 0.0,
+          "sideband_count": 3,
+          "manual_markers": [],
+          "stft_manual_markers": [],
+          "marker_set": [],
+          "plot_click_markers_enabled": false,
+          "marker_snap_mode": "peak",
+          "peak_snap_radius_hz": 5.0,
+          "detected_markers": null,
+          "noverlap": 2048
+        },
+        "summary": {
+          "type": "fft_result",
+          "compute_phase": false,
+          "compute_psd": false,
+          "freq": {
+            "<ndarray>": true,
+            "shape": [
+              1025
+            ],
+            "dtype": "float64",
+            "preview": [
+              0.0,
+              0.48828124999999956,
+              0.9765624999999991,
+              1.4648437499999987,
+              1.9531249999999982,
+              2.441406249999998,
+              2.9296874999999973,
+              3.417968749999997
+            ]
+          },
+          "frequencies": {
+            "<ndarray>": true,
+            "shape": [
+              1025
+            ],
+            "dtype": "float64",
+            "preview": [
+              0.0,
+              0.48828124999999956,
+              0.9765624999999991,
+              1.4648437499999987,
+              1.9531249999999982,
+              2.441406249999998,
+              2.9296874999999973,
+              3.417968749999997
+            ]
+          },
+          "magnitudes": {
+            "<ndarray>": true,
+            "shape": [
+              1025
+            ],
+            "dtype": "float64",
+            "preview": [
+              1.374620811479521e-05,
+              2.8738446330133e-05,
+              3.2445204301403444e-05,
+              3.861662500835501e-05,
+              4.746648101896718e-05,
+              5.95428461012484e-05,
+              7.58349637851028e-05,
+              9.79461444581873e-05
+            ]
+          },
+          "magnitude_db": {
+            "<ndarray>": true,
+            "shape": [
+              1025
+            ],
+            "dtype": "float64",
+            "preview": [
+              -97.23634170494108,
+              -90.8307342915299,
+              -89.77698973650442,
+              -88.26451370191288,
+              -86.47225927997584,
+              -84.50340820516458,
+              -82.40261032589034,
+              -80.18025309710922
+            ]
+          },
+          "magnitudes_db": {
+            "<ndarray>": true,
+            "shape": [
+              1025
+            ],
+            "dtype": "float64",
+            "preview": [
+              -97.23634170494108,
+              -90.8307342915299,
+              -89.77698973650442,
+              -88.26451370191288,
+              -86.47225927997584,
+              -84.50340820516458,
+              -82.40261032589034,
+              -80.18025309710922
+            ]
+          },
+          "phases": {
+            "<ndarray>": true,
+            "shape": [
+              0
+            ],
+            "dtype": "float64",
+            "preview": []
+          },
+          "psd": {
+            "<ndarray>": true,
+            "shape": [
+              0
+            ],
+            "dtype": "float64",
+            "preview": []
+          },
+          "psd_db": {
+            "<ndarray>": true,
+            "shape": [
+              0
+            ],
+            "dtype": "float64",
+            "preview": []
+          },
+          "asd": {
+            "<ndarray>": true,
+            "shape": [
+              0
+            ],
+            "dtype": "float64",
+            "preview": []
+          },
+          "asd_db": {
+            "<ndarray>": true,
+            "shape": [
+              0
+            ],
+            "dtype": "float64",
+            "preview": []
+          },
+          "peaks": [
+            {
+              "frequency": 10.001521115370988,
+              "magnitude": 0.8337177006980919,
+              "magnitude_db": -0.06714753431983156,
+              "phase_deg": null,
+              "bin_index": 20
+            },
+            {
+              "frequency": 19.99866075802546,
+              "magnitude": 0.045315689511623736,
+              "magnitude_db": -26.864530435473075,
+              "phase_deg": null,
+              "bin_index": 41
+            },
+            {
+              "frequency": 30.003583191158928,
+              "magnitude": 0.0011303106895364109,
+              "magnitude_db": -57.66255573929558,
+              "phase_deg": null,
+              "bin_index": 61
+            }
+          ],
+          "valleys": [],
+          "fft_n": 2048,
+          "fft_size": 2048,
+          "freq_resolution": 0.48828124999999956,
+          "sample_rate": 999.9999999999991,
+          "num_averages": 1,
+          "peak_freq_hz": 10.001521115370988,
+          "detected_peak_freq_hz": 10.001521115370988,
+          "psd_estimator": "disabled",
+          "phase_reference": "unavailable",
+          "phase_reduction": "disabled",
+          "amplitude_format": "peak",
+          "window_correction": "coherent_gain",
+          "normalization_version": 2,
+          "source_units": "g",
+          "output_units": "g",
+          "integration_input_scale": 1.0,
+          "integration_units_version": 1,
+          "analyzed_duration_s": 2.0000000000000018,
+          "thd_pct": null,
+          "sinad_db": null,
+          "snr_db": null,
+          "rms_db": null,
+          "overall_rms": null,
+          "range_reduction": "linear",
+          "range_blocks": 1,
+          "range_segment_length": 2000,
+          "range_hop_size": 1000,
+          "range_source_samples": 2000,
+          "range_covered_samples": 2000,
+          "streaming_working_set_bytes": 16825608,
+          "signal_name": "Demo_filtered",
+          "mpai_path": "C:\\Users\\CUMAOG~1\\AppData\\Local\\Temp\\MachinePulseAI\\sessions\\20261115_013546_716425\\generated\\widget_workflow.mpai",
+          "params": {
+            "mode": "fft",
+            "compute_phase": false,
+            "compute_psd": false,
+            "signal_name": "Demo_filtered",
+            "signal_names": [
+              "Demo_filtered"
+            ],
+            "window": "hann",
+            "window_param": 0.0,
+            "fft_size": 4096,
+            "nperseg": 4096,
+            "averaging": "linear",
+            "num_averages": 0,
+            "overlap_frac": 0.5,
+            "exp_alpha": 0.1,
+            "amplitude_format": "peak",
+            "weighting": "None",
+            "integration": 0,
+            "octave_bands_per_octave": 0,
+            "max_peaks": 5,
+            "min_magnitude": 0.0001,
+            "min_magnitude_scale": "Linear",
+            "peak_min_frequency_hz": 0.0,
+            "peak_max_frequency_hz": 0.0,
+            "peak_extreme": "max",
+            "peak_channel": "",
+            "detect_minima": false,
+            "display_y_scale": "Linear",
+            "harmonic_spacing": 0.0,
+            "harmonic_source": "peak",
+            "harmonic_count": 8,
+            "sideband_spacing": 0.0,
+            "sideband_count": 3,
+            "manual_markers": [],
+            "stft_manual_markers": [],
+            "marker_set": [],
+            "plot_click_markers_enabled": false,
+            "marker_snap_mode": "peak",
+            "peak_snap_radius_hz": 5.0,
+            "detected_markers": null,
+            "noverlap": 2048,
+            "source_units": "g",
+            "integration_input_scale": 1.0,
+            "output_units": "g",
+            "integration_units_version": 1,
+            "sample_rate": 999.9999999999991
+          },
+          "axis_type": "frequency",
+          "analysis_start_row": 0,
+          "analyzed_rows": 2000,
+          "selected_rows": 2000,
+          "source_rows": 2000,
+          "analysis_covers_full_record": true,
+          "signal_names": [
+            "Demo_filtered"
+          ],
+          "channel_count": 1,
+          "channel_results": {
+            "Demo_filtered": {
+              "type": "fft_result",
+              "compute_phase": false,
+              "compute_psd": false,
+              "freq": {
+                "<ndarray>": true,
+                "shape": [
+                  1025
+                ],
+                "dtype": "float64",
+                "preview": [
+                  0.0,
+                  0.48828124999999956,
+                  0.9765624999999991,
+                  1.4648437499999987,
+                  1.9531249999999982,
+                  2.441406249999998,
+                  2.9296874999999973,
+                  3.417968749999997
+                ]
+              },
+              "frequencies": {
+                "<ndarray>": true,
+                "shape": [
+                  1025
+                ],
+                "dtype": "float64",
+                "preview": [
+                  0.0,
+                  0.48828124999999956,
+                  0.9765624999999991,
+                  1.4648437499999987,
+                  1.9531249999999982,
+                  2.441406249999998,
+                  2.9296874999999973,
+                  3.417968749999997
+                ]
+              },
+              "magnitudes": {
+                "<ndarray>": true,
+                "shape": [
+                  1025
+                ],
+                "dtype": "float64",
+                "preview": [
+                  1.374620811479521e-05,
+                  2.8738446330133e-05,
+                  3.2445204301403444e-05,
+                  3.861662500835501e-05,
+                  4.746648101896718e-05,
+                  5.95428461012484e-05,
+                  7.58349637851028e-05,
+                  9.79461444581873e-05
+                ]
+              },
+              "magnitude_db": {
+                "<ndarray>": true,
+                "shape": [
+                  1025
+                ],
+                "dtype": "float64",
+                "preview": [
+                  -97.23634170494108,
+                  -90.8307342915299,
+                  -89.77698973650442,
+                  -88.26451370191288,
+                  -86.47225927997584,
+                  -84.50340820516458,
+                  -82.40261032589034,
+                  -80.18025309710922
+                ]
+              },
+              "magnitudes_db": {
+                "<ndarray>": true,
+                "shape": [
+                  1025
+                ],
+                "dtype": "float64",
+                "preview": [
+                  -97.23634170494108,
+                  -90.8307342915299,
+                  -89.77698973650442,
+                  -88.26451370191288,
+                  -86.47225927997584,
+                  -84.50340820516458,
+                  -82.40261032589034,
+                  -80.18025309710922
+                ]
+              },
+              "phases": {
+                "<ndarray>": true,
+                "shape": [
+                  0
+                ],
+                "dtype": "float64",
+                "preview": []
+              },
+              "psd": {
+                "<ndarray>": true,
+                "shape": [
+                  0
+                ],
+                "dtype": "float64",
+                "preview": []
+              },
+              "psd_db": {
+                "<ndarray>": true,
+                "shape": [
+                  0
+                ],
+                "dtype": "float64",
+                "preview": []
+              },
+              "asd": {
+                "<ndarray>": true,
+                "shape": [
+                  0
+                ],
+                "dtype": "float64",
+                "preview": []
+              },
+              "asd_db": {
+                "<ndarray>": true,
+                "shape": [
+                  0
+                ],
+                "dtype": "float64",
+                "preview": []
+              },
+              "peaks": [
+                {
+                  "frequency": 10.001521115370988,
+                  "magnitude": 0.8337177006980919,
+                  "magnitude_db": -0.06714753431983156,
+                  "phase_deg": null,
+                  "bin_index": 20
+                },
+                {
+                  "frequency": 19.99866075802546,
+                  "magnitude": 0.045315689511623736,
+                  "magnitude_db": -26.864530435473075,
+                  "phase_deg": null,
+                  "bin_index": 41
+                },
+                {
+                  "frequency": 30.003583191158928,
+                  "magnitude": 0.0011303106895364109,
+                  "magnitude_db": -57.66255573929558,
+                  "phase_deg": null,
+                  "bin_index": 61
+                }
+              ],
+              "valleys": [],
+              "fft_n": 2048,
+              "fft_size": 2048,
+              "freq_resolution": 0.48828124999999956,
+              "sample_rate": 999.9999999999991,
+              "num_averages": 1,
+              "peak_freq_hz": 10.001521115370988,
+              "detected_peak_freq_hz": 10.001521115370988,
+              "psd_estimator": "disabled",
+              "phase_reference": "unavailable",
+              "phase_reduction": "disabled",
+              "amplitude_format": "peak",
+              "window_correction": "coherent_gain",
+              "normalization_version": 2,
+              "source_units": "g",
+              "output_units": "g",
+              "integration_input_scale": 1.0,
+              "integration_units_version": 1,
+              "analyzed_duration_s": 2.0000000000000018,
+              "thd_pct": null,
+              "sinad_db": null,
+              "snr_db": null,
+              "rms_db": null,
+              "overall_rms": null,
+              "range_reduction": "linear",
+              "range_blocks": 1,
+              "range_segment_length": 2000,
+              "range_hop_size": 1000,
+              "range_source_samples": 2000,
+              "range_covered_samples": 2000,
+              "streaming_working_set_bytes": 16825608,
+              "signal_name": "Demo_filtered",
+              "mpai_path": "C:\\Users\\CUMAOG~1\\AppData\\Local\\Temp\\MachinePulseAI\\sessions\\20261115_013546_716425\\generated\\widget_workflow.mpai",
+              "params": {
+                "mode": "fft",
+                "compute_phase": false,
+                "compute_psd": false,
+                "signal_name": "Demo_filtered",
+                "signal_names": [
+                  "Demo_filtered"
+                ],
+                "window": "hann",
+                "window_param": 0.0,
+                "fft_size": 4096,
+                "nperseg": 4096,
+                "averaging": "linear",
+                "num_averages": 0,
+                "overlap_frac": 0.5,
+                "exp_alpha": 0.1,
+                "amplitude_format": "peak",
+                "weighting": "None",
+                "integration": 0,
+                "octave_bands_per_octave": 0,
+                "max_peaks": 5,
+                "min_magnitude": 0.0001,
+                "min_magnitude_scale": "Linear",
+                "peak_min_frequency_hz": 0.0,
+                "peak_max_frequency_hz": 0.0,
+                "peak_extreme": "max",
+                "peak_channel": "",
+                "detect_minima": false,
+                "display_y_scale": "Linear",
+                "harmonic_spacing": 0.0,
+                "harmonic_source": "peak",
+                "harmonic_count": 8,
+                "sideband_spacing": 0.0,
+                "sideband_count": 3,
+                "manual_markers": [],
+                "stft_manual_markers": [],
+                "marker_set": [],
+                "plot_click_markers_enabled": false,
+                "marker_snap_mode": "peak",
+                "peak_snap_radius_hz": 5.0,
+                "detected_markers": null,
+                "noverlap": 2048,
+                "source_units": "g",
+                "integration_input_scale": 1.0,
+                "output_units": "g",
+                "integration_units_version": 1,
+                "sample_rate": 999.9999999999991
+              },
+              "axis_type": "frequency",
+              "analysis_start_row": 0,
+              "analyzed_rows": 2000,
+              "selected_rows": 2000,
+              "source_rows": 2000,
+              "analysis_covers_full_record": true
+            }
+          },
+          "fft_schema_variant": "fft-spectrum-wide-v2",
+          "fft_valid_lengths": {
+            "Demo_filtered__frequency": 1025,
+            "Demo_filtered__magnitude_db": 1025,
+            "Demo_filtered__magnitudes": 1025,
+            "frequency": 1025,
+            "magnitude_db": 1025,
+            "magnitudes": 1025
+          },
+          "axis_column": "frequency",
+          "channel_metadata": {
+            "frequency": {
+              "role": "axis",
+              "data_kind": "numeric_1d",
+              "axis_type": "frequency",
+              "axis_reference": "frequency",
+              "row_count": 1025,
+              "source_channel": "Demo_filtered",
+              "unit": "Hz"
+            },
+            "magnitude_db": {
+              "role": "value",
+              "data_kind": "numeric_1d",
+              "axis_type": "frequency",
+              "axis_reference": "frequency",
+              "row_count": 1025,
+              "source_channel": "Demo_filtered",
+              "unit": "dB re g"
+            },
+            "magnitudes": {
+              "role": "value",
+              "data_kind": "numeric_1d",
+              "axis_type": "frequency",
+              "axis_reference": "frequency",
+              "row_count": 1025,
+              "source_channel": "Demo_filtered",
+              "unit": "g"
+            },
+            "Demo_filtered__frequency": {
+              "role": "axis",
+              "data_kind": "numeric_1d",
+              "axis_type": "frequency",
+              "axis_reference": "Demo_filtered__frequency",
+              "row_count": 1025,
+              "source_channel": "Demo_filtered",
+              "unit": "Hz"
+            },
+            "Demo_filtered__magnitude_db": {
+              "role": "value",
+              "data_kind": "numeric_1d",
+              "axis_type": "frequency",
+              "axis_reference": "Demo_filtered__frequency",
+              "row_count": 1025,
+              "source_channel": "Demo_filtered",
+              "unit": "dB re g"
+            },
+            "Demo_filtered__magnitudes": {
+              "role": "value",
+              "data_kind": "numeric_1d",
+              "axis_type": "frequency",
+              "axis_reference": "Demo_filtered__frequency",
+              "row_count": 1025,
+              "source_channel": "Demo_filtered",
+              "unit": "g"
+            }
+          },
+          "source_id": "src_1",
+          "source_path": "C:\\Users\\CUMAOG~1\\AppData\\Local\\Temp\\MachinePulseAI\\sessions\\20261115_013546_716425\\generated\\widget_workflow.mpai",
+          "source_revision": "file:56788:1794695754541252800"
+        }
+      },
+      "chart": {
+        "selected_columns": [
+          "time",
+          "Demo_filtered"
+        ],
+        "rendered_signals": 1
+      }
+    },
+    "synthetic_data": true,
+    "playback_speed": 1.0
+  },
+  "caption_blocks": 14,
+  "narration": [
+    {
+      "key": "overview_product",
+      "start": 0.0,
+      "duration": 6.1,
+      "tr": "MachinePulseAI, test ve Ar-Ge ekipleri için geliştirdiğimiz bir mühendislik analiz platformudur.",
+      "en": "MachinePulseAI is an engineering analysis platform developed for test and R&D teams."
+    },
+    {
+      "key": "overview_canvas",
+      "start": 6.1,
+      "duration": 24.033333333333335,
+      "tr": "Veri girişi, ön işleme, filtreler, mühendislik analizi, istatistik ve görselleştirme araçlarını canvas üzerine sürükleyerek iş akışınızı kurabilirsiniz. Rapor ve Python adımlarını da ekleyip aynı veriyi farklı analiz kollarına bağlayabilir, sonuçları tek bir akışta birleştirebilirsiniz. Bağlantılar veri akışını görünür kılar; her analiz kolunu aynı çalışma alanında izleyebilirsiniz.",
+      "en": "Drag tools from each available group onto the canvas. Connect preparation, filters, engineering analysis, statistics and plots. Add reports and Python steps to form a branching workflow. The connections make each analysis path visible in one workspace."
+    },
+    {
+      "key": "overview_widget_window",
+      "start": 30.133333333333333,
+      "duration": 7.166666666666667,
+      "tr": "Kanvastaki bir widgeta çift tıkladığınızda, o aracın ayarlarını ve sonuçlarını içeren ayrı çalışma penceresi açılır.",
+      "en": "Double-click a canvas widget to open its own window with settings and results."
+    },
+    {
+      "key": "overview_widget_flow",
+      "start": 37.3,
+      "duration": 13.966666666666667,
+      "tr": "Örneğin bir sinyal oluşturup filtreleyebilir, ardından frekans analizini çalıştırıp sonucu grafikte inceleyebilirsiniz. Widgetlar bağlantıları üzerinden birbirleriyle haberleşir; birinde üretilen çıktı diğerinin girdisi olur.",
+      "en": "Generate and filter a signal, then run frequency analysis and inspect the plot. Widgets communicate through their connections: one widget's output becomes another's input."
+    },
+    {
+      "key": "overview_analysis",
+      "start": 51.266666666666666,
+      "duration": 8.066666666666666,
+      "tr": "Frekans, titreşim ve yapısal analiz araçlarıyla ölçümleri inceleyebilir, sonuçları etkileşimli grafiklerde karşılaştırabilirsiniz.",
+      "en": "Compare frequency, vibration and structural results in interactive plots."
+    },
+    {
+      "key": "overview_report",
+      "start": 59.333333333333336,
+      "duration": 7.166666666666667,
+      "tr": "Analiz bulgularını, grafiklerini ve kullanılan ayarları paylaşılabilir mühendislik raporlarında bir araya getirebilirsiniz.",
+      "en": "Bring findings, plots and analysis settings together in shareable engineering reports."
+    },
+    {
+      "key": "overview_assistant",
+      "start": 66.5,
+      "duration": 9.333333333333334,
+      "tr": "Agent modunda, uyumlu bir modelle uygulamayı yalnızca prompt yazarak kullanabilirsiniz. İsteğe bağlı bu asistan, analiz adımlarını ve rapor hazırlamayı sizin için yürütebilir.",
+      "en": "With a compatible model, use the app through prompts in optional Agent mode. It can run analysis and reporting steps for you."
+    },
+    {
+      "key": "overview_privacy",
+      "start": 75.83333333333333,
+      "duration": 11.2,
+      "tr": "Uyumlu yerel modellerle, gizlilik gerektiren ölçüm verilerinizi bilgisayarınızda tutarak çalışabilirsiniz. Local Only Mode, bulut sağlayıcılarına bağlantıyı engeller.",
+      "en": "Use compatible local models to keep sensitive measurements on your computer. Local Only Mode blocks cloud providers."
+    }
+  ]
+}

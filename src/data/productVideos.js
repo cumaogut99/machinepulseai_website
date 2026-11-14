@@ -1,6 +1,6 @@
 // Native, same-origin media. Keep previews out of the initial network payload.
 export const PRODUCT_VIDEOS = {
-    overview: { src: '/videos/overview.mp4', poster: '/videos/overview.webp', durationSeconds: 68.59, duration: '1:09', title: 'overview', captions: '/videos/overview.en.vtt' },
+    overview: { src: '/videos/overview.mp4', poster: '/videos/overview.webp', durationSeconds: 87.07, duration: '1:28', title: 'overview', captions: '/videos/overview.en.vtt' },
     tour: { src: '/videos/product-tour.mp4', poster: '/videos/product-tour.webp', durationSeconds: 1046.99, duration: '17:27', title: 'tour', captions: '/videos/captions.en.vtt' },
 }
 
