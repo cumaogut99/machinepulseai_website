@@ -1,6 +1,7 @@
 export default {
     en: {
         eyebrow: 'The Agent at work',
+        explore: 'Watch the aircraft and automotive case studies',
         title: 'Give the Agent the problem and your test recordings',
         description: 'See local Qwen3 Coder 30B open recordings, build analysis workflows and compare possible causes in aircraft and automotive cases. RAG brings the applicable reference documents into the investigation. Review the measured findings and the exported report.',
         report: 'Open the investigation report (PDF)',
@@ -17,6 +18,7 @@ export default {
     },
     tr: {
         eyebrow: 'Agent çalışırken',
+        explore: 'Hava aracı ve otomotiv vaka analizlerini izleyin',
         title: 'Problemi ve test kayıtlarınızı Agent’a verin',
         description: 'Yerel Qwen3 Coder 30B’nin hava aracı ve otomotiv vakalarında kayıtları açmasını, analiz akışını kurmasını ve olası nedenleri karşılaştırmasını izleyin. RAG, ilgili referans belgelerini incelemeye taşır. Ölçülen bulguları ve üretilen raporu birlikte değerlendirin.',
         report: 'İnceleme raporunu açın (PDF)',

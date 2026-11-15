@@ -449,55 +449,91 @@ export default {
     intelligent_report: [
         {
             id: 'report',
-            tab: ['Report editor', 'Rapor editörü'],
+            tab: ['Blocks and Page', 'Blocks ve Page'],
             summary: [
-                'A first report built from a File Reader with two accelerometer channels: content on the left, structure in the middle, live preview, and page settings on the right.',
-                'İki ivmeölçer kanallı bir File Reader’dan kurulmuş ilk rapor: solda içerik, ortada yapı, canlı önizleme ve sağda sayfa ayarları.',
+                'The current three-region editor: Blocks on the left, Preview in the center and Page on the right. The report compares two synthetic channels over a 0–0.4 s display window; the connected recording remains the source.',
+                'Güncel üç bölmeli editör: solda Blocks, ortada Preview, sağda Page. Rapor iki sentetik kanalı 0–0,4 s görüntüleme aralığında karşılaştırır; bağlı kayıt kaynak olarak korunur.',
+            ],
+            points: [
+                pt('structure', ['Blocks', 'Blocks (bloklar)'], [
+                    'The report in page order: a measurement overview, the time-domain comparison and Test Information. Select a block to edit it; drag rows or use Up and Down to reorder them.',
+                    'Sayfa sırasıyla ölçüm özeti, zaman alanı karşılaştırması ve Test Information. Düzenlemek için bir blok seçin; sıralamak için satırları sürükleyin veya Up ve Down düğmelerini kullanın.',
+                ]),
+                pt('blocks', ['Block buttons', 'Blok düğmeleri'], [
+                    'Add text, test information, a page break, a summary, contents or a table. The Block tab on the right edits the selected block; Repeat reuses a block for other channels.',
+                    'Metin, test bilgisi, sayfa sonu, özet, içindekiler veya tablo ekleyin. Sağdaki Block sekmesi seçili bloğu düzenler; Repeat bir bloğu başka kanallar için tekrarlar.',
+                ]),
+                pt('limits', ['Limits', 'Sınırlar'], [
+                    'Select a compatible data block before defining an acceptance limit or spectral mask. Checks beside Preview lists the resulting verdicts and unresolved blocks; this demonstration has no acceptance limits.',
+                    'Kabul sınırı veya spektral maske tanımlamadan önce uygun bir veri bloğu seçin. Preview yanındaki Checks, sonuçları ve çözülemeyen blokları listeler; bu gösterimde kabul sınırı tanımlı değildir.',
+                ]),
+                pt('preview', ['Preview', 'Önizleme'], [
+                    'The linked time plot shows the 10 Hz and 50 Hz demonstration channels. Click a report block to select it; double-click a figure to edit its presentation. Preview and Checks share the center region.',
+                    'Bağlı zaman grafiği, 10 Hz ve 50 Hz gösterim kanallarını gösterir. Seçmek için bir rapor bloğuna tıklayın; sunumunu düzenlemek için şekle çift tıklayın. Preview ve Checks orta bölmeyi paylaşır.',
+                ]),
+                pt('title', ['Page settings', 'Sayfa ayarları'], [
+                    'Page contains the title, running header and footer, paper size, logo, numbering and optional cover page. Test Info, Templates and Export each have their own toolbar tab.',
+                    'Page; başlığı, üst ve alt bilgiyi, kâğıt boyutunu, logoyu, numaralandırmayı ve isteğe bağlı kapak sayfasını içerir. Test Info, Templates ve Export araç çubuğunda ayrı sekmelerdir.',
+                ]),
+            ],
+        },
+        {
+            id: 'content', tab: ['Content', 'Content (içerik)'],
+            summary: [
+                'Content replaces Blocks in the left region while the report preview stays visible.',
+                'Sol bölmede Blocks yerine Content açılır; rapor önizlemesi görünür kalır.',
             ],
             points: [
                 pt('content', ['Available Content', 'Mevcut içerik'], [
-                    'Everything connected to the report, grouped by kind. Here only Time Domain has entries; the other groups say what to connect to fill them.',
-                    'Rapora bağlı her şey, türüne göre gruplanmış. Burada yalnızca Time Domain’de girdi var; diğer gruplar onları doldurmak için neyin bağlanacağını söylüyor.',
+                    'Connected results are grouped by kind. Here Time Domain contains the File Reader channels; empty groups explain which upstream tool to connect. Use the search field to find an item.',
+                    'Bağlı sonuçlar türüne göre gruplanır. Burada Time Domain, File Reader kanallarını içerir; boş gruplar bağlanması gereken aracı açıklar. Bir öğeyi bulmak için arama alanını kullanın.',
                 ]),
                 pt('add', ['Add to Report', 'Rapora ekle'], [
-                    'Adds the ticked items. With Overlay channels they share one figure.',
-                    'İşaretli öğeleri ekler. Overlay channels ile tek bir şekli paylaşırlar.',
+                    'Tick channels, choose Overlay channels or separate figures, then Add to Report. Add All Connected builds a first draft from all connected sources.',
+                    'Kanalları işaretleyin, Overlay channels veya ayrı şekilleri seçip Add to Report’a basın. Add All Connected tüm bağlı kaynaklardan ilk taslağı oluşturur.',
                 ]),
-                pt('structure', ['Structure', 'Yapı'], [
-                    'The blocks in page order: Summary, Test Information and one time figure with two items.',
-                    'Sayfa sırasına göre bloklar: Summary, Test Information ve iki öğeli bir zaman şekli.',
-                ]),
-                pt('blocks', ['Block buttons', 'Blok düğmeleri'], [
-                    'Add text, test information, a page break, a summary or a table of contents.',
-                    'Metin, test bilgisi, sayfa sonu, özet veya içindekiler tablosu ekleyin.',
-                ]),
-                pt('limits', ['Limits', 'Sınırlar'], [
-                    'Gives the selected block a requirement. Without any limits the summary stays INCOMPLETE, as in the preview.',
-                    'Seçili bloğa bir gereksinim verir. Hiç sınır yoksa özet önizlemedeki gibi INCOMPLETE kalır.',
-                ]),
-                pt('preview', ['Preview', 'Önizleme'], [
-                    'The report as it will be exported: numbered sections, “Table 2: Test Information” and the time figure.',
-                    'Raporun dışa aktarılacağı hali: numaralı bölümler, “Table 2: Test Information” ve zaman şekli.',
-                ]),
-                pt('title', ['Title, header, footer', 'Başlık, üst ve alt bilgi'], [
-                    'Text printed on the title and on every page; Page Size sets A4 or another format.',
-                    'Başlığa ve her sayfaya basılan metin; Page Size A4 veya başka bir biçim belirler.',
-                ]),
-                pt('templates', ['Word and slide templates', 'Word ve sunu şablonları'], [
-                    'Apply your company layout to the Word and slide exports.',
-                    'Word ve sunu çıktılarına şirket yerleşiminizi uygulayın.',
-                ]),
+            ],
+        },
+        {
+            id: 'test_info', tab: ['Test Info', 'Test Info (test bilgisi)'],
+            summary: [
+                'Test Info has a separate settings page; its fields appear in the report’s Test Information table.',
+                'Test Info ayrı bir ayar sayfasıdır; alanları raporun Test Information tablosunda görünür.',
+            ],
+            points: [
                 pt('testinfo', ['Test Information', 'Test bilgisi'], [
-                    'Type project, test article, procedure and operator. Source file, record length (20 s), sample rate (5,000 Hz) and channel count are filled in automatically.',
-                    'Proje, test parçası, prosedür ve operatörü yazın. Kaynak dosya, kayıt uzunluğu (20 s), örnekleme hızı (5.000 Hz) ve kanal sayısı otomatik doldurulur.',
+                    'Enter the project, test article, procedure and operator. The connected demonstration recording supplies the source file, 3 min 20 s duration, 1,000 Hz sample rate and eight-channel count automatically.',
+                    'Proje, test parçası, prosedür ve operatörü girin. Bağlı gösterim kaydı; kaynak dosyayı, 3 dk 20 s süreyi, 1.000 Hz örnekleme hızını ve sekiz kanal bilgisini otomatik sağlar.',
                 ]),
-                pt('exports', ['Export PDF, Word, Slides', 'PDF, Word, Slides dışa aktarma'], [
-                    'Writes the report in the chosen format.',
-                    'Raporu seçilen biçimde yazar.',
+            ],
+        },
+        {
+            id: 'templates', tab: ['Templates', 'Templates (şablonlar)'],
+            summary: [
+                'Reusable report layouts have their own Templates page, separate from page settings and export options.',
+                'Yeniden kullanılabilir rapor yerleşimleri, sayfa ayarları ve çıktı seçeneklerinden ayrı Templates sayfasındadır.',
+            ],
+            points: [
+                pt('templates', ['Report templates', 'Rapor şablonları'], [
+                    'Save the current layout as a named template, load an existing one or exchange .mprt template files with Import and Export. Word and slide document templates are chosen on Export.',
+                    'Mevcut yerleşimi adlandırılmış şablon olarak kaydedin, kayıtlı bir şablonu açın veya Import ve Export ile .mprt şablonlarını paylaşın. Word ve sunu belge şablonları Export sayfasında seçilir.',
+                ]),
+            ],
+        },
+        {
+            id: 'export', tab: ['Export', 'Export (dışa aktarma)'],
+            summary: [
+                'Export brings output format, company document templates and regeneration together on the right.',
+                'Export; çıktı biçimini, şirket belge şablonlarını ve yeniden üretmeyi sağ bölmede toplar.',
+            ],
+            points: [
+                pt('exports', ['Export report', 'Raporu dışa aktar'], [
+                    'Export opens the format and destination chooser for PDF, Word or PowerPoint. The Word Template and Slide Template fields below it apply a company document layout; editable PowerPoint charts are optional.',
+                    'Export; PDF, Word veya PowerPoint için biçim ve hedef seçimini açar. Altındaki Word Template ve Slide Template alanları şirket belge yerleşimini uygular; düzenlenebilir PowerPoint grafikleri isteğe bağlıdır.',
                 ]),
                 pt('regenerate', ['Regenerate for Recordings', 'Kayıtlar için yeniden üret'], [
-                    'Produces the same report for other recordings; Map Channels says which channel takes which role in each.',
-                    'Aynı raporu diğer kayıtlar için üretir; Map Channels her birinde hangi kanalın hangi rolü aldığını söyler.',
+                    'Reuse the report layout for other recordings. Check channel mapping before generating the batch, especially when channel names differ.',
+                    'Rapor yerleşimini diğer kayıtlar için kullanın. Özellikle kanal adları farklıysa toplu üretimden önce kanal eşlemesini kontrol edin.',
                 ]),
             ],
         },

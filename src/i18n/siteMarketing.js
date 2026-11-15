@@ -60,18 +60,21 @@ export default {
                     summary: 'Use the native MPAI container for recorded measurements and project results.',
                     description: 'The native C++ engine handles numerical processing. Disk-backed MPAI access and Min-Max plots support exploring dense recordings while preserving signal peaks.',
                     detail: 'Phase 1 focuses on recorded-data analysis. Live acquisition is planned for a later phase.', link: 'Browse available modules',
+                    alt: 'MachinePulseAI canvas showing connected tools and the workflow activity panel.',
                 },
                 assistant: {
                     title: 'Add AI assistance when useful',
                     summary: 'Ask about methods or get help carrying out selected analysis steps.',
                     description: 'Ask mode explains methods and queries data without changing the workflow. Agent mode can help connect tools, run analyses and prepare reports.',
                     detail: 'AI is optional. Supported models vary in capability; inspect the resulting settings and evidence before using conclusions.',
+                    alt: 'The AI Assistant beside the connected analysis workflow, with Ask and Agent modes.',
                 },
                 privacy: {
                     title: 'Choose how your assistant connects',
                     summary: 'Choose supported local or cloud models for your deployment.',
                     description: 'Use a compatible model on your own computer or choose a supported cloud provider. Local Only Mode blocks cloud-provider connections.',
                     detail: 'Local models need a compatible runtime and sufficient memory. Cloud use depends on the chosen provider and its data policies.',
+                    alt: 'The assistant settings showing the local server address and Local Only Mode.',
                 },
             },
             workflow: {
@@ -202,18 +205,21 @@ export default {
                     summary: 'Kayıtlı ölçümler ve proje sonuçları için yerel MPAI konteynerini kullanın.',
                     description: 'Sayısal işlemleri yerel C++ motoru yürütür. Disk tabanlı MPAI erişimi ve Min-Max grafikler, sinyal tepelerini koruyarak yoğun kayıtları incelemenizi destekler.',
                     detail: 'İlk faz kayıtlı veri analizine odaklanır. Canlı veri toplama sonraki bir faz için planlanmaktadır.', link: 'Kullanılabilir modüllere göz atın',
+                    alt: 'Bağlı araçları ve iş akışı etkinlik panelini gösteren MachinePulseAI kanvası.',
                 },
                 assistant: {
                     title: 'Gerektiğinde AI desteği alın',
                     summary: 'Yöntemler hakkında soru sorun veya seçtiğiniz analiz adımlarını yürütürken destek alın.',
                     description: 'Ask modu, iş akışını değiştirmeden yöntemleri açıklar ve veriyi sorgular. Agent modu araçları bağlama, analizleri çalıştırma ve rapor hazırlama adımlarında yardımcı olabilir.',
                     detail: 'AI kullanımı isteğe bağlıdır. Desteklenen modellerin yetenekleri farklıdır; sonuçları kullanmadan önce ayarları ve dayanakları inceleyin.',
+                    alt: 'Bağlı analiz akışının yanında Ask ve Agent modlarıyla AI Assistant.',
                 },
                 privacy: {
                     title: 'Asistanın bağlantısını siz seçin',
                     summary: 'Kurulumunuza uygun, desteklenen yerel veya bulut modelini seçin.',
                     description: 'Kendi bilgisayarınızda uyumlu bir model kullanın veya desteklenen bulut sağlayıcılarından birini seçin. Local Only Mode, bulut sağlayıcı bağlantılarını engeller.',
                     detail: 'Yerel modeller uyumlu bir çalıştırma ortamı ve yeterli bellek gerektirir. Bulut kullanımı seçilen sağlayıcıya ve veri politikalarına bağlıdır.',
+                    alt: 'Yerel sunucu adresini ve Local Only Mode seçeneğini gösteren asistan ayarları.',
                 },
             },
             workflow: {

@@ -24,6 +24,7 @@ import VIEW_TOURS from './tours/views.js'
 const IMAGES = import.meta.glob('../../assets/widget-tours/*.webp', { eager: true, import: 'default' })
 
 // Captures are 2000 px wide at the application's 1600 x 848 window aspect.
+// Report's current minimum height is 860 logical pixels (1075 captured pixels).
 const SIZE = { width: 2000, height: 1060 }
 
 const TOURS = {
@@ -59,6 +60,7 @@ export function getInterfaceTour(widgetId, lang) {
             summary: view.summary?.[index],
             image,
             ...SIZE,
+            ...(widgetId === 'intelligent_report' ? { height: 1075 } : {}),
             points: view.points
                 .filter((point) => anchors[point.id])
                 .map((point) => ({

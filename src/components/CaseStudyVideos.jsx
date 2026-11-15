@@ -10,7 +10,7 @@ export default function CaseStudyVideos() {
     const { open: openContact } = useContactModal()
     if (!CASE_STUDY_VIDEOS.length) return null
     return (
-        <section id="agent-case-studies" className="py-12 px-6" aria-labelledby="case-studies-title">
+        <section id="agent-case-studies" className="scroll-mt-24 py-12 px-6" aria-labelledby="case-studies-title">
             <div className="max-w-7xl mx-auto">
                 <div className="max-w-3xl mb-8">
                     <p className="text-xs uppercase tracking-widest text-neon-cyan mb-3">{t('caseStudies.eyebrow')}</p>

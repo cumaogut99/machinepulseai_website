@@ -107,6 +107,14 @@ export default function Hero() {
 
                     <ProductTourLink />
                 </motion.div>
+                <motion.a
+                    variants={fadeUpVariant}
+                    href="#agent-case-studies"
+                    className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-neon-cyan hover:text-white focus-visible:outline focus-visible:outline-offset-4 focus-visible:outline-neon-cyan"
+                >
+                    {t('caseStudies.explore')}
+                    <span aria-hidden="true">↓</span>
+                </motion.a>
             </motion.div>
 
             {/* ── Hero Media Area ────────────────────────────────── */}

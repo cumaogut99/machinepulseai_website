@@ -100,10 +100,10 @@ function PageFallback() {
 const Home = () => (
     <main id="main">
         <Hero />
+        <CaseStudyVideos />
         <Stats />
         <WhySection />
         <Features compact />
-        <CaseStudyVideos />
         <Sectors />
         <VisionBand />
     </main>

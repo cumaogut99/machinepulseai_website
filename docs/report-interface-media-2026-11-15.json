@@ -1,0 +1,117 @@
+{
+  "date": "2026-11-15",
+  "application_head": "4ae74a75b9b4d0b03883794407826d5f563d8f70",
+  "report": {
+    "source": "Current native IntelligentReportPanel, Space theme",
+    "synthetic": true,
+    "source_rows": 200000,
+    "sample_rate_hz": 1000,
+    "source_channels": 8,
+    "displayed_channels": [
+      "sine_10hz",
+      "sine_50hz_amp2"
+    ],
+    "display_window_seconds": [
+      0,
+      0.4
+    ],
+    "analysis_selection": "Complete connected recording; only the figure viewport is narrowed",
+    "views": [
+      "report",
+      "content",
+      "test_info",
+      "templates",
+      "export"
+    ],
+    "anchors": "Measured from the same native windows as the captures"
+  },
+  "workspace_and_assistant": {
+    "capture_date": "2026-11-10",
+    "source": "Native main-window workflow captures, Space theme",
+    "assistant": "Offline welcome state with Ask and Agent controls; no model connection claimed"
+  },
+  "privacy": {
+    "capture_date": "2026-11-15",
+    "source": "Native LLM Settings in an isolated demonstration profile",
+    "crop": {
+      "left": 0,
+      "top": 413,
+      "width": 1250,
+      "height": 348
+    },
+    "scope": "Server and Privacy controls only; no provider connection or user configuration changed"
+  },
+  "files": [
+    {
+      "file": "src/assets/product-workspace.webp",
+      "width": 1600,
+      "height": 940,
+      "sha256": "efd3f82c71bd3df75dbf31cf44ef82afe5c377ac1a894b282a6b8caa1157d992"
+    },
+    {
+      "file": "src/assets/product-assistant.webp",
+      "width": 1600,
+      "height": 940,
+      "sha256": "440f32790b1c977e6cce8511b57b34d239a99f264ffbae9cbcf97bf99e6bfa40"
+    },
+    {
+      "file": "src/assets/product-model-privacy.webp",
+      "width": 1250,
+      "height": 348,
+      "sha256": "1cb896557dafce62e89ae668fd4da501dc9fe39c9bddffb006c3d4d325f7cdf1"
+    },
+    {
+      "file": "src/assets/widget-tours/intelligent-report--report.webp",
+      "width": 2000,
+      "height": 1075,
+      "sha256": "8f91e011dcc0a3f1435a99e3337b70d11d1a233bd0a78393a164b16ff50f1ff0"
+    },
+    {
+      "file": "src/assets/widget-tours/intelligent-report--content.webp",
+      "width": 2000,
+      "height": 1075,
+      "sha256": "ba4e15246015d6dd4f6e2df03562649f1b8a72ed3e163d1bd20b4498584d8ba7"
+    },
+    {
+      "file": "src/assets/widget-tours/intelligent-report--test_info.webp",
+      "width": 2000,
+      "height": 1075,
+      "sha256": "84658f6b091d256d01c0b1efb9970798dde070a3ff016e549f97a528c32d55fd"
+    },
+    {
+      "file": "src/assets/widget-tours/intelligent-report--templates.webp",
+      "width": 2000,
+      "height": 1075,
+      "sha256": "a06fd3556763236aacd3a35e3025a6a833bf14efa4c7399c05e311c99838b81d"
+    },
+    {
+      "file": "src/assets/widget-tours/intelligent-report--export.webp",
+      "width": 2000,
+      "height": 1075,
+      "sha256": "85c1068a0ff1e1cfda09cf3f2f9afe5ad9cf7a4dad664526ae24bb4c5073060b"
+    }
+  ],
+  "validation": {
+    "build": "Client, SSR and 54 Turkish prerendered routes passed",
+    "existing_tests": "27 passed",
+    "browser": {
+      "routes": [
+        "/",
+        "/product/",
+        "/widgets/intelligent-report/"
+      ],
+      "languages": [
+        "tr",
+        "en"
+      ],
+      "desktop": "1440 x 1000",
+      "mobile": "390 x 844",
+      "images_per_product": 6,
+      "report_views": 5,
+      "script_exceptions": 0,
+      "horizontal_overflow": false,
+      "case_studies": "Immediately after Hero, with a visible hero anchor"
+    },
+    "quality_review": "views.js remains a cohesive declarative tour collection; no responsibility split needed"
+  }
+}

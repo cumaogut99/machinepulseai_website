@@ -4,14 +4,17 @@ import TourChapterLink from './TourChapterLink.jsx'
 import dataImage from '../assets/widget-tours/file-reader--csv.webp'
 import analysisImage from '../assets/widget-tours/fft-spectrum--compare.webp'
 import reportImage from '../assets/widget-tours/intelligent-report--report.webp'
+import workspaceImage from '../assets/product-workspace.webp'
+import assistantImage from '../assets/product-assistant.webp'
+import privacyImage from '../assets/product-model-privacy.webp'
 
 const FEATURES = [
     { id: 'prepare', image: dataImage, href: '/widgets/file-reader', chapterId: 'dataIO' },
     { id: 'analyze', image: analysisImage, href: '/widgets/fft-spectrum', chapterId: 'fft' },
     { id: 'report', image: reportImage, href: '/widgets/intelligent-report', chapterId: 'reports' },
-    { id: 'engine', href: '/widgets', chapterId: 'dataIO' },
-    { id: 'assistant', chapterId: 'assistant' },
-    { id: 'privacy', chapterId: 'assistant' },
+    { id: 'engine', image: workspaceImage, href: '/widgets', chapterId: 'dataIO' },
+    { id: 'assistant', image: assistantImage, chapterId: 'assistant' },
+    { id: 'privacy', image: privacyImage, chapterId: 'assistant' },
 ]
 
 /** Share concise homepage benefits and detailed, illustrated product capabilities. */
@@ -29,11 +32,9 @@ export default function Features({ compact = false }) {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                     {cards.map(({ id, image, href, chapterId }, index) => (
                         <article key={id} className="card-hover-glow rounded-2xl border border-white/10 bg-white/[0.02] overflow-hidden flex flex-col">
-                            {image && (
-                                <a href={image} target="_blank" rel="noreferrer" className="block focus-visible:outline focus-visible:outline-neon-cyan" aria-label={t('site.product.enlarge', { title: t(`site.product.cards.${id}.title`) })}>
-                                    <img src={image} alt={t(`site.product.cards.${id}.alt`)} loading="lazy" width="1200" height="800" className={`w-full ${compact ? 'aspect-video' : 'aspect-[3/2]'} object-contain bg-black`} />
-                                </a>
-                            )}
+                            <a href={image} target="_blank" rel="noreferrer" className="block focus-visible:outline focus-visible:outline-neon-cyan" aria-label={t('site.product.enlarge', { title: t(`site.product.cards.${id}.title`) })}>
+                                <img src={image} alt={t(`site.product.cards.${id}.alt`)} loading="lazy" width="1200" height="800" className={`w-full ${compact ? 'aspect-video' : 'aspect-[3/2]'} object-contain bg-black`} />
+                            </a>
                             <div className="p-6 flex flex-col gap-3 flex-1">
                                 <span className="text-xs font-semibold text-neon-cyan tabular-nums" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
                                 <h3 className="text-lg font-semibold">{t(`site.product.cards.${id}.title`)}</h3>
