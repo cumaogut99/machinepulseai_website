@@ -14,7 +14,7 @@ export default function Footer() {
                         <Link to="/" className="font-bold text-white">MachinePulse<span className="text-neon-cyan">AI</span></Link>
                         <p className="text-xs text-slate-400 leading-relaxed mt-4">{t('footer.tagline')}</p>
                     </div>
-                    <nav aria-label={t('site.footer.navigation')} className="flex flex-wrap gap-x-8 gap-y-4 text-xs text-slate-400">
+                    <nav aria-label={t('site.footer.navigation')} className="flex flex-wrap items-center self-start gap-x-8 gap-y-4 text-xs text-slate-400">
                         <Link to="/product" className="hover:text-white">{t('nav.product')}</Link>
                         <Link to="/widgets" className="hover:text-white">{t('nav.widgets')}</Link>
                         <Link to="/pricing" className="hover:text-white">{t('nav.pricing')}</Link>
